@@ -1,6 +1,4 @@
-# Final
-KH Final_project
-
+# Final Project <Stream>
 <hr>
 ### 개발환경
 
