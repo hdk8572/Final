@@ -222,9 +222,9 @@
 			      			events : [ 
 			      	    
 			      	            {
-			      	            	title : '<%=vo.getCalendarTitle()%>',
-			      	                start : '<%=vo.getCalendarStart()%>',
-			      	                end : '<%=vo.getCalendarEnd()%>',
+			      	            	title : '풀캘린더완성도',
+			      	                start : '2023-08-23',
+			      	                end : '',
 			      	                color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
 			      	             },
 			    
