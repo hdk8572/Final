@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -340,48 +343,48 @@
 												</tr>
 												<tr>
 													<td>All Bootstrap 5 Components</td>
-													<td class="text-center"><span role="img" aria-label="no">❌</span></td>
-													<td class="text-center"><span role="img" aria-label="yes">✔</span></td>
+													<td class="text-center"><span role="img" aria-label="no">â</span></td>
+													<td class="text-center"><span role="img" aria-label="yes">â</span></td>
 												</tr>
 												<tr>
-													<td>Dark Mode 🌙</td>
-													<td class="text-center"><span role="img" aria-label="no">❌</span></td>
-													<td class="text-center"><span role="img" aria-label="yes">✔</span></td>
+													<td>Dark Mode ð</td>
+													<td class="text-center"><span role="img" aria-label="no">â</span></td>
+													<td class="text-center"><span role="img" aria-label="yes">â</span></td>
 												</tr>
 												<tr>
 													<td>Compact Sidebar</td>
-													<td class="text-center"><span role="img" aria-label="no">❌</span></td>
-													<td class="text-center"><span role="img" aria-label="yes">✔</span></td>
+													<td class="text-center"><span role="img" aria-label="no">â</span></td>
+													<td class="text-center"><span role="img" aria-label="yes">â</span></td>
 												</tr>
 												<tr>
 													<td>Calendar</td>
-													<td class="text-center"><span role="img" aria-label="no">❌</span></td>
-													<td class="text-center"><span role="img" aria-label="yes">✔</span></td>
+													<td class="text-center"><span role="img" aria-label="no">â</span></td>
+													<td class="text-center"><span role="img" aria-label="yes">â</span></td>
 												</tr>
 												<tr>
 													<td>Advanced Forms</td>
-													<td class="text-center"><span role="img" aria-label="no">❌</span></td>
-													<td class="text-center"><span role="img" aria-label="yes">✔</span></td>
+													<td class="text-center"><span role="img" aria-label="no">â</span></td>
+													<td class="text-center"><span role="img" aria-label="yes">â</span></td>
 												</tr>
 												<tr>
 													<td>Drag and Drop</td>
-													<td class="text-center"><span role="img" aria-label="no">❌</span></td>
-													<td class="text-center"><span role="img" aria-label="yes">✔</span></td>
+													<td class="text-center"><span role="img" aria-label="no">â</span></td>
+													<td class="text-center"><span role="img" aria-label="yes">â</span></td>
 												</tr>
 												<tr>
 													<td>Toast Notifications</td>
-													<td class="text-center"><span role="img" aria-label="no">❌</span></td>
-													<td class="text-center"><span role="img" aria-label="yes">✔</span></td>
+													<td class="text-center"><span role="img" aria-label="no">â</span></td>
+													<td class="text-center"><span role="img" aria-label="yes">â</span></td>
 												</tr>
 												<tr>
 													<td>WYSIWYG Editors</td>
-													<td class="text-center"><span role="img" aria-label="no">❌</span></td>
-													<td class="text-center"><span role="img" aria-label="yes">✔</span></td>
+													<td class="text-center"><span role="img" aria-label="no">â</span></td>
+													<td class="text-center"><span role="img" aria-label="yes">â</span></td>
 												</tr>
 												<tr>
 													<td>Premium Support</td>
-													<td class="text-center"><span role="img" aria-label="no">❌</span></td>
-													<td class="text-center"><span role="img" aria-label="yes">✔</span></td>
+													<td class="text-center"><span role="img" aria-label="no">â</span></td>
+													<td class="text-center"><span role="img" aria-label="yes">â</span></td>
 												</tr>
 												<tr>
 													<td></td>
