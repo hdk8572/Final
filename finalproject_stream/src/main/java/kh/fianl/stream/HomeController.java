@@ -37,9 +37,9 @@ public class HomeController {
 		
 		return "home";
 	}
-	@GetMapping("/adminKit/index")
+	@GetMapping("/adminkit/index")
 	public String adminKit0() {
-		return "adminkit/index";
+		return "adminKit/index";
 	}
 	@RequestMapping(value = "/{var}", method = RequestMethod.GET)
 	public String base(@PathVariable String var) {
