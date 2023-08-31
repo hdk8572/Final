@@ -26,6 +26,9 @@
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
 	rel="stylesheet">
 <style>
+ul{
+padding-left: 0;
+}
 .jm-task-aside {
 	float: right;
 	direction: ltr;
@@ -40,6 +43,27 @@
 
 .jm-task-title>div {
 	float: left;
+}
+.jm-serction-task-title div{
+	float: left;
+}
+.jm-title-tno{
+	width: 500px;
+}
+.jm-title-tstatus{
+	width: 100px;
+}
+.jm-title-tmember{
+	width: 100px;
+}
+.jm-title-tstartdate{
+	width: 100px;
+}
+.jm-title-tenddate{
+	width: 100px;
+}
+.jm-title-tdate{
+	width: 100px;
 }
 </style>
 </head>
@@ -365,8 +389,19 @@
 									<button class="jm-project-button">바로가기버튼</button>
 								</div>
 							</div>
-							<ul>
-							
+							<ul class="jm-inner-task">
+								<div class="jm-wrap-section-task-title">
+									<ul class="jm-serction-task-title">
+										<li class="plusplus">
+											<div class="jm-title-tno">내용</div>
+											<div class="jm-title-tstatus">상태</div>
+											<div class="jm-title-tmember">담당자</div>
+											<div class="jm-title-tstartdate">시작일</div>
+											<div class="jm-title-tenddate">마감일</div>
+											<div class="jm-empty-cell">등록일</div>
+										</li>
+									</ul>
+								</div>
 							</ul>
 						</li>
 					</ul>
