@@ -31,9 +31,8 @@
 					<div class="d-table-cell align-middle">
 
 						<div class="text-center mt-4">
-							<h1 class="h2">Welcome back, Charles</h1>
+							<h1 class="h2">Stream에 오신 것을 환영합니다!</h1>
 							<p class="lead">
-								Sign in to your account to continue
 							</p>
 						</div>
 
@@ -41,25 +40,25 @@
 							<div class="card-body">
 								<div class="m-sm-4">
 									<div class="text-center">
-										<img src="img/avatars/avatar.jpg" alt="Charles Hall" class="img-fluid rounded-circle" width="132" height="132" />
+										<h1>Stream로고 들어갑니다</h1>
 									</div>
 									<form>
 										<div class="mb-3">
-											<label class="form-label">Email</label>
-											<input class="form-control form-control-lg" type="email" name="email" placeholder="Enter your email" />
+											<label class="form-label">Username</label>
+											<input class="form-control form-control-lg" type="email" name="email" placeholder="E-mail" />
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Password</label>
-											<input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your password" />
+											<input class="form-control form-control-lg" type="password" name="password" placeholder="비밀번호" />
 											<small>
-            <a href="index.html">Forgot password?</a>
+            <a href="index.html">비밀번호 찾기</a>
           </small>
 										</div>
 										<div>
 											<label class="form-check">
             <input class="form-check-input" type="checkbox" value="remember-me" name="remember-me" checked>
             <span class="form-check-label">
-              Remember me next time
+              자동 로그인
             </span>
           </label>
 										</div>
