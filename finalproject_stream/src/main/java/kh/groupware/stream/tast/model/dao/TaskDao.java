@@ -1,10 +1,10 @@
-package kh.fianl.stream.tast.model.dao;
+package kh.groupware.stream.tast.model.dao;
 
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import kh.fianl.stream.tast.model.vo.TaskVo;
+import kh.groupware.stream.tast.model.vo.TaskVo;
 
 @Repository("taskdao")
 public class TaskDao {

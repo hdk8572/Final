@@ -1,4 +1,4 @@
-package kh.fianl.stream.tast.model.vo;
+package kh.groupware.stream.tast.model.vo;
 
 import java.sql.Date;
 
