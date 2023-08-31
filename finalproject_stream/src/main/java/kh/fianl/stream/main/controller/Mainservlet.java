@@ -11,5 +11,10 @@ public class Mainservlet {
 		
 		return "test/maintask";
 	}
+	@GetMapping("/test/maintask2")
+	public String Maintast2() {
+		return "test/maintask2";
+	}
+	
 
 }
