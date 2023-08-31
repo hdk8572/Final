@@ -24,7 +24,7 @@
 
 <link href="${pageContext.request.contextPath }/css/app.css"
 	rel="stylesheet">
-<link href="${pageContext.request.contextPath }/css/login.css"
+<link href="${pageContext.request.contextPath }/css/signup.css"
 	rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
@@ -210,25 +210,7 @@
 					</ul>
 				</div>
 			</nav>
-			<div id="login-wrap">
-				<div id="loginLayer">
-					<div id="login-text">로그인</div>
-					<div class="id-input">
-						<input id="username" type="text" placeholder="아이디" maxlength="50">
-					</div>
-					<div class="pwd-input">
-						<input id="password" type="password" placeholder="비밀번호"
-							maxlength="20">
-					</div>
-					<div id="search-login">
-						<a><span class="search-id">아이디 찾기</span></a> <a><span
-							class="search-pwd">비밀번호 찾기</span></a><br>
-					</div>
-					<a id="login-button">로그인</a>
-					<div class="autologin">
-					<input type="checkbox" id="autologin" name="autoin" value="a">자동로그인</div>
-				</div>
-			</div>
+			<div> signup </div>
 			<!-- 
 			<main class="content">
 				<div class="container-fluid p-0">

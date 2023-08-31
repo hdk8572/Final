@@ -59,4 +59,16 @@
 	font-weight: 700;
 	font-size: 16px;
 }
+.autologin{
+	display: block;
+	margin-top: 20px;
+	cursor: pointer;
+	font-size: 14px;
+	color: black;
+	font-weight: 500;
+	text-align: left;
+}
+#autologin{
+	
+}
 /*# sourceMappingURL=app.css.map*/
