@@ -16,24 +16,75 @@
 			</form>
 		</div>
 		<div class="task-table">
-			<table border="1">
-				<tr>
-					<th>업무명</th>
-					<th>상태</th>
-					<th>담당자</th>
-					<th>시작일</th>
-					<th>마감일</th>
-					<th>등록일</th>
-				</tr>
-				<tr>
-					<td>업무명 입니다</td>
-					<td>요청중</td>
-					<td>담당자 입니다</td>
-					<td>2023-08-31</td>
-					<td>2024-08-31</td>
-					<td>2023-08-31</td>
-				</tr>
-			</table>
+			<table class="table table-hover my-0">
+									<thead>
+										<tr>
+											<th>Name</th>
+											<th class="d-none d-xl-table-cell">Start Date</th>
+											<th class="d-none d-xl-table-cell">End Date</th>
+											<th>Status</th>
+											<th class="d-none d-md-table-cell">Assignee</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Project Apollo</td>
+											<td class="d-none d-xl-table-cell">01/01/2021</td>
+											<td class="d-none d-xl-table-cell">31/06/2021</td>
+											<td><span class="badge bg-success">Done</span></td>
+											<td class="d-none d-md-table-cell">Vanessa Tucker</td>
+										</tr>
+										<tr>
+											<td>Project Fireball</td>
+											<td class="d-none d-xl-table-cell">01/01/2021</td>
+											<td class="d-none d-xl-table-cell">31/06/2021</td>
+											<td><span class="badge bg-danger">Cancelled</span></td>
+											<td class="d-none d-md-table-cell">William Harris</td>
+										</tr>
+										<tr>
+											<td>Project Hades</td>
+											<td class="d-none d-xl-table-cell">01/01/2021</td>
+											<td class="d-none d-xl-table-cell">31/06/2021</td>
+											<td><span class="badge bg-success">Done</span></td>
+											<td class="d-none d-md-table-cell">Sharon Lessman</td>
+										</tr>
+										<tr>
+											<td>Project Nitro</td>
+											<td class="d-none d-xl-table-cell">01/01/2021</td>
+											<td class="d-none d-xl-table-cell">31/06/2021</td>
+											<td><span class="badge bg-warning">In progress</span></td>
+											<td class="d-none d-md-table-cell">Vanessa Tucker</td>
+										</tr>
+										<tr>
+											<td>Project Phoenix</td>
+											<td class="d-none d-xl-table-cell">01/01/2021</td>
+											<td class="d-none d-xl-table-cell">31/06/2021</td>
+											<td><span class="badge bg-success">Done</span></td>
+											<td class="d-none d-md-table-cell">William Harris</td>
+										</tr>
+										<tr>
+											<td>Project X</td>
+											<td class="d-none d-xl-table-cell">01/01/2021</td>
+											<td class="d-none d-xl-table-cell">31/06/2021</td>
+											<td><span class="badge bg-success">Done</span></td>
+											<td class="d-none d-md-table-cell">Sharon Lessman</td>
+										</tr>
+										<tr>
+											<td>Project Romeo</td>
+											<td class="d-none d-xl-table-cell">01/01/2021</td>
+											<td class="d-none d-xl-table-cell">31/06/2021</td>
+											<td><span class="badge bg-success">Done</span></td>
+											<td class="d-none d-md-table-cell">Christina Mason</td>
+										</tr>
+										<tr>
+											<td>Project Wombat</td>
+											<td class="d-none d-xl-table-cell">01/01/2021</td>
+											<td class="d-none d-xl-table-cell">31/06/2021</td>
+											<td><span class="badge bg-warning">In progress</span></td>
+											<td class="d-none d-md-table-cell">William Harris</td>
+										</tr>
+									</tbody>
+								</table>
 		</div>
 	</div>
 

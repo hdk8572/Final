@@ -26,19 +26,66 @@
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
 	rel="stylesheet">
 <style>
-.main{
-	overflow: hidden;
-}
 .jm-task-aside {
-	float: left;
+	float: right;
+	direction: ltr;
+	max-width: 260px;
+	min-width: 260px;
+	background: #dfdfdf;
 }
 
+.jm-task-title {
+	overflow: hidden;
+}
+
+.jm-task-title>div {
+	float: left;
+}
 </style>
 </head>
 <body>
 	<div class="wrapper">
 		<%-- <%@include file="/WEB-INF/views/adminKit/sidebar.jsp"%> --%>
+		<aside class="jm-task-aside">
+			<div>
+				<ul>
+					<li>
+						<div>상태</div>
+						<div>
+							<ul>
+								<li><input type="checkbox">요청</li>
+								<li><input type="checkbox">진행</li>
+								<li><input type="checkbox">피드백</li>
+								<li><input type="checkbox">완료</li>
+								<li><input type="checkbox">보류</li>
+							</ul>
+						</div>
+					</li>
 
+					<li>
+						<div>시작일</div>
+						<ul>
+							<li><input type="radio" name="startdate">전체</li>
+							<li><input type="radio" name="startdate">오늘</li>
+							<li><input type="radio" name="startdate">이번 주</li>
+							<li><input type="radio" name="startdate">이번 달</li>
+							<li><input type="radio" name="startdate">미정</li>
+						</ul>
+					</li>
+					<li>
+						<div>마감일</div>
+						<ul>
+							<li><input type="radio" name="enddate">전체</li>
+							<li><input type="radio" name="enddate">지연</li>
+							<li><input type="radio" name="enddate">오늘</li>
+							<li><input type="radio" name="enddate">이번 주</li>
+							<li><input type="radio" name="enddate">이번 달</li>
+							<li><input type="radio" name="enddate">미정</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</aside>
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
 				<a class="sidebar-toggle js-sidebar-toggle"> <i
@@ -215,143 +262,117 @@
 					</ul>
 				</div>
 			</nav>
-
-			<div>
-				<div class="jm-task-header">
-					<h2>전체 업무</h2>
-					<div class="task-form">
-						<form action="#">
-							<input type="text" placeholder="업무명 또는 업무번호를 검색하세요"> <input
-								type="submit" value="검색하기">
-						</form>
+			<div class="jm-task-page">
+				<div class="jm-task-layer">
+					<div class="jm-task-header">
+						<h2>전체 업무</h2>
+						<div class="task-form">
+							<form action="#">
+								<input type="text" placeholder="업무명 또는 업무번호를 검색하세요"> <input
+									type="submit" value="검색하기">
+							</form>
+						</div>
 					</div>
-				</div>
-				<div class="jm-rwap-task">
-					<div class="jm-task-title">
-						<div class="jm-title-tno">
-							<span>업무명</span>
-							<button>
-								<i></i>
-							</button>
-							<div>
-								<ul>
-									<li>오름차순</li>
-									<li>내림차순</li>
-									<li>정렬 해제</li>
-								</ul>
+					<div class="jm-rwap-task">
+						<div class="jm-task-title">
+							<div class="jm-title-tno">
+								<span>업무명</span>
+								<button>
+									<i></i>
+								</button>
+								<div>
+									<ul>
+										<li>오름차순</li>
+										<li>내림차순</li>
+										<li>정렬 해제</li>
+									</ul>
+								</div>
 							</div>
-						</div>
-						<div class="jm-title-tstatus">
-							<span>상태</span>
-							<button>
-								<i></i>
-							</button>
-							<div>
-								<ul>
-									<li>오름차순</li>
-									<li>내림차순</li>
-									<li>정렬 해제</li>
-								</ul>
+							<div class="jm-title-tstatus">
+								<span>상태</span>
+								<button>
+									<i></i>
+								</button>
+								<div>
+									<ul>
+										<li>오름차순</li>
+										<li>내림차순</li>
+										<li>정렬 해제</li>
+									</ul>
+								</div>
 							</div>
-						</div>
-						<div class="jm-title-tmember">
-							<span>담당자</span>
-							<button>
-								<i></i>
-							</button>
-							<div>
-								<ul>
-									<li>오름차순</li>
-									<li>내림차순</li>
-									<li>정렬 해제</li>
-								</ul>
+							<div class="jm-title-tmember">
+								<span>담당자</span>
+								<button>
+									<i></i>
+								</button>
+								<div>
+									<ul>
+										<li>오름차순</li>
+										<li>내림차순</li>
+										<li>정렬 해제</li>
+									</ul>
+								</div>
 							</div>
-						</div>
-						<div class="jm-title-tstartdate">
-							<span>시작일</span>
-							<button>
-								<i></i>
-							</button>
-							<div>
-								<ul>
-									<li>오름차순</li>
-									<li>내림차순</li>
-									<li>정렬 해제</li>
-								</ul>
+							<div class="jm-title-tstartdate">
+								<span>시작일</span>
+								<button>
+									<i></i>
+								</button>
+								<div>
+									<ul>
+										<li>오름차순</li>
+										<li>내림차순</li>
+										<li>정렬 해제</li>
+									</ul>
+								</div>
 							</div>
-						</div>
-						<div class="jm-title-tenddate">
-							<span>마감일</span>
-							<button>
-								<i></i>
-							</button>
-							<div>
-								<ul>
-									<li>오름차순</li>
-									<li>내림차순</li>
-									<li>정렬 해제</li>
-								</ul>
+							<div class="jm-title-tenddate">
+								<span>마감일</span>
+								<button>
+									<i></i>
+								</button>
+								<div>
+									<ul>
+										<li>오름차순</li>
+										<li>내림차순</li>
+										<li>정렬 해제</li>
+									</ul>
+								</div>
 							</div>
-						</div>
-						<div class="jm-title-tdate">
-							<span>등록일</span>
-							<button>
-								<i></i>
-							</button>
-							<div>
-								<ul>
-									<li>오름차순</li>
-									<li>내림차순</li>
-									<li>정렬 해제</li>
-								</ul>
+							<div class="jm-title-tdate">
+								<span>등록일</span>
+								<button>
+									<i></i>
+								</button>
+								<div>
+									<ul>
+										<li>오름차순</li>
+										<li>내림차순</li>
+										<li>정렬 해제</li>
+									</ul>
+								</div>
 							</div>
+							<div class="jm-empty-cell">빈공간</div>
 						</div>
-						<div class="jm-empty-cell">빈공간</div>
 					</div>
-				</div>
-
-			</div>
-
-			<aside class="jm-task-aside">
-				<div>
-					<ul>
-						<li>
-							<div>상태</div>
-							<div>
-								<ul>
-									<li><input type="checkbox">요청</li>
-									<li><input type="checkbox">진행</li>
-									<li><input type="checkbox">피드백</li>
-									<li><input type="checkbox">완료</li>
-									<li><input type="checkbox">보류</li>
-								</ul>
+					<ul id="taskContentUI">
+						<li id="projectNo">
+							<div class="jm-title-button">
+								<div class="jm-wrap-project-title">
+									<span class="jm-project-title">프로젝트명</span>
+									<span class="jm-project-task-count">(0)업무개수</span>
+									<button class="jm-project-button">바로가기버튼</button>
+								</div>
 							</div>
-						</li>
-
-						<li>
-							<div>시작일</div>
 							<ul>
-								<li><input type="radio" name="startdate">전체</li>
-								<li><input type="radio" name="startdate">오늘</li>
-								<li><input type="radio" name="startdate">이번 주</li>
-								<li><input type="radio" name="startdate">이번 달</li>
-								<li><input type="radio" name="startdate">미정</li>
-							</ul>
-						</li>
-						<li>
-							<div>마감일</div>
-							<ul>
-								<li><input type="radio" name="enddate">전체</li>
-								<li><input type="radio" name="enddate">지연</li>
-								<li><input type="radio" name="enddate">오늘</li>
-								<li><input type="radio" name="enddate">이번 주</li>
-								<li><input type="radio" name="enddate">이번 달</li>
-								<li><input type="radio" name="enddate">미정</li>
+							
 							</ul>
 						</li>
 					</ul>
 				</div>
-			</aside>
+			</div>
+
 
 			<%@include file="/WEB-INF/views/adminKit/footer.jsp"%>
 		</div>
