@@ -2234,7 +2234,7 @@ textarea.form-control-lg {
 }
 
 .form-check-input:disabled ~.form-check-label, .form-check-input[disabled]
-	~.form-check-label {
+	 ~.form-check-label {
 	opacity: .5
 }
 
@@ -2465,7 +2465,7 @@ textarea.form-control-lg {
 }
 
 .form-floating>.form-control:focus ~label, .form-floating>.form-control:not(:placeholder-shown)
-	~label, .form-floating>.form-select ~label {
+	 ~label, .form-floating>.form-select ~label {
 	opacity: .65;
 	transform: scale(.85) translateY(-.5rem) translateX(.15rem)
 }
@@ -2575,7 +2575,7 @@ textarea.form-control-lg {
 }
 
 .is-valid ~.valid-feedback, .is-valid ~.valid-tooltip, .was-validated :valid
-	~.valid-feedback, .was-validated :valid ~.valid-tooltip {
+	 ~.valid-feedback, .was-validated :valid ~.valid-tooltip {
 	display: block
 }
 
@@ -2612,7 +2612,7 @@ textarea.form-control-lg {
 }
 
 .form-check-input.is-valid ~.form-check-label, .was-validated .form-check-input:valid
-	~.form-check-label {
+	 ~.form-check-label {
 	color: #1cbb8c
 }
 
@@ -2695,7 +2695,7 @@ textarea.form-control-lg {
 }
 
 .form-check-input.is-invalid ~.form-check-label, .was-validated .form-check-input:invalid
-	~.form-check-label {
+	 ~.form-check-label {
 	color: #dc3545
 }
 
@@ -12561,7 +12561,7 @@ keyframes jvm-line-animation { 0%{
 .flatpickr-current-month .numInputWrapper {
 	display: inline-block;
 	width: 6ch;
-	width: 7ch\0
+	width: 7ch\0
 }
 
 .flatpickr-current-month .numInputWrapper span.arrowUp:after {
@@ -13106,4 +13106,4 @@ to {
 	top: 0;
 	width: 260px
 }
-/*# sourceMappingURL=app.css.map*/
+
