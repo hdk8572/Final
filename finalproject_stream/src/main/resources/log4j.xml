@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="kh.fianl.stream">
+	<logger name="kh.groupware.stream">
 		<level value="info" />
 	</logger>
 	
