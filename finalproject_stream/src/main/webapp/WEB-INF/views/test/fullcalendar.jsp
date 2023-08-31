@@ -5,53 +5,73 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
-	<meta name="author" content="AdminKit">
-	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description"
+	content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+<meta name="author" content="AdminKit">
+<meta name="keywords"
+	content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="shortcut icon" href="adminKit/img/icons/icon-48x48.png" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="shortcut icon" href="adminKit/img/icons/icon-48x48.png" />
 
-	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
+<link rel="canonical" href="https://demo-basic.adminkit.io/" />
 
-	<title>fullcalendar 테스트</title>
+<title>fullcalendar 테스트</title>
 
-	<link href="${pageContext.request.contextPath }/css/app.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-	<!-- //fullcalendar css -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
+<link href="${pageContext.request.contextPath }/css/app.css"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+	rel="stylesheet">
+<!-- //fullcalendar css -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
+
 <!-- //fullcalendar script -->
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
 <!-- //fullcalendar 언어 설정관련 script -->
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
+
+<style type="text/css">
+/*more버튼*/
+.fc-daygrid-more-link.fc-more-link {
+	color: #000;
+}
+</style>
+
 </head>
 
 <body>
 	<div class="wrapper">
-		<%@include file="/WEB-INF/views/adminKit/sidebar.jsp" %>
+		<%@include file="/WEB-INF/views/adminKit/sidebar.jsp"%>
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
-				<a class="sidebar-toggle js-sidebar-toggle">
-          <i class="hamburger align-self-center"></i>
-        </a>
+				<a class="sidebar-toggle js-sidebar-toggle"> <i
+					class="hamburger align-self-center"></i>
+				</a>
 
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
-						<li class="nav-item dropdown">
-							<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
+						<li class="nav-item dropdown"><a
+							class="nav-icon dropdown-toggle" href="#" id="alertsDropdown"
+							data-bs-toggle="dropdown">
 								<div class="position-relative">
-									<i class="align-middle" data-feather="bell"></i>
-									<span class="indicator">4</span>
+									<i class="align-middle" data-feather="bell"></i> <span
+										class="indicator">4</span>
 								</div>
-							</a>
-							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
-								<div class="dropdown-menu-header">
-									4 New Notifications
-								</div>
+						</a>
+							<div
+								class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
+								aria-labelledby="alertsDropdown">
+								<div class="dropdown-menu-header">4 New Notifications</div>
 								<div class="list-group">
 									<a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
@@ -60,24 +80,24 @@
 											</div>
 											<div class="col-10">
 												<div class="text-dark">Update completed</div>
-												<div class="text-muted small mt-1">Restart server 12 to complete the update.</div>
+												<div class="text-muted small mt-1">Restart server 12
+													to complete the update.</div>
 												<div class="text-muted small mt-1">30m ago</div>
 											</div>
 										</div>
-									</a>
-									<a href="#" class="list-group-item">
+									</a> <a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
 												<i class="text-warning" data-feather="bell"></i>
 											</div>
 											<div class="col-10">
 												<div class="text-dark">Lorem ipsum</div>
-												<div class="text-muted small mt-1">Aliquam ex eros, imperdiet vulputate hendrerit et.</div>
+												<div class="text-muted small mt-1">Aliquam ex eros,
+													imperdiet vulputate hendrerit et.</div>
 												<div class="text-muted small mt-1">2h ago</div>
 											</div>
 										</div>
-									</a>
-									<a href="#" class="list-group-item">
+									</a> <a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
 												<i class="text-primary" data-feather="home"></i>
@@ -87,15 +107,15 @@
 												<div class="text-muted small mt-1">5h ago</div>
 											</div>
 										</div>
-									</a>
-									<a href="#" class="list-group-item">
+									</a> <a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
 												<i class="text-success" data-feather="user-plus"></i>
 											</div>
 											<div class="col-10">
 												<div class="text-dark">New connection</div>
-												<div class="text-muted small mt-1">Christina accepted your request.</div>
+												<div class="text-muted small mt-1">Christina accepted
+													your request.</div>
 												<div class="text-muted small mt-1">14h ago</div>
 											</div>
 										</div>
@@ -104,66 +124,74 @@
 								<div class="dropdown-menu-footer">
 									<a href="#" class="text-muted">Show all notifications</a>
 								</div>
-							</div>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-bs-toggle="dropdown">
+							</div></li>
+						<li class="nav-item dropdown"><a
+							class="nav-icon dropdown-toggle" href="#" id="messagesDropdown"
+							data-bs-toggle="dropdown">
 								<div class="position-relative">
 									<i class="align-middle" data-feather="message-square"></i>
 								</div>
-							</a>
-							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
+						</a>
+							<div
+								class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
+								aria-labelledby="messagesDropdown">
 								<div class="dropdown-menu-header">
-									<div class="position-relative">
-										4 New Messages
-										
-									</div>
+									<div class="position-relative">4 New Messages</div>
 								</div>
 								<div class="list-group">
 									<a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
-												<img src="img/avatars/avatar-5.jpg" class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
+												<img src="img/avatars/avatar-5.jpg"
+													class="avatar img-fluid rounded-circle"
+													alt="Vanessa Tucker">
 											</div>
 											<div class="col-10 ps-2">
 												<div class="text-dark">Vanessa Tucker</div>
-												<div class="text-muted small mt-1">Nam pretium turpis et arcu. Duis arcu tortor.</div>
+												<div class="text-muted small mt-1">Nam pretium turpis
+													et arcu. Duis arcu tortor.</div>
 												<div class="text-muted small mt-1">15m ago</div>
 											</div>
 										</div>
-									</a>
-									<a href="#" class="list-group-item">
+									</a> <a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
-												<img src="img/avatars/avatar-2.jpg" class="avatar img-fluid rounded-circle" alt="William Harris">
+												<img src="img/avatars/avatar-2.jpg"
+													class="avatar img-fluid rounded-circle"
+													alt="William Harris">
 											</div>
 											<div class="col-10 ps-2">
 												<div class="text-dark">William Harris</div>
-												<div class="text-muted small mt-1">Curabitur ligula sapien euismod vitae.</div>
+												<div class="text-muted small mt-1">Curabitur ligula
+													sapien euismod vitae.</div>
 												<div class="text-muted small mt-1">2h ago</div>
 											</div>
 										</div>
-									</a>
-									<a href="#" class="list-group-item">
+									</a> <a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
-												<img src="img/avatars/avatar-4.jpg" class="avatar img-fluid rounded-circle" alt="Christina Mason">
+												<img src="img/avatars/avatar-4.jpg"
+													class="avatar img-fluid rounded-circle"
+													alt="Christina Mason">
 											</div>
 											<div class="col-10 ps-2">
 												<div class="text-dark">Christina Mason</div>
-												<div class="text-muted small mt-1">Pellentesque auctor neque nec urna.</div>
+												<div class="text-muted small mt-1">Pellentesque auctor
+													neque nec urna.</div>
 												<div class="text-muted small mt-1">4h ago</div>
 											</div>
 										</div>
-									</a>
-									<a href="#" class="list-group-item">
+									</a> <a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
-												<img src="img/avatars/avatar-3.jpg" class="avatar img-fluid rounded-circle" alt="Sharon Lessman">
+												<img src="img/avatars/avatar-3.jpg"
+													class="avatar img-fluid rounded-circle"
+													alt="Sharon Lessman">
 											</div>
 											<div class="col-10 ps-2">
 												<div class="text-dark">Sharon Lessman</div>
-												<div class="text-muted small mt-1">Aenean tellus metus, bibendum sed, posuere ac, mattis non.</div>
+												<div class="text-muted small mt-1">Aenean tellus
+													metus, bibendum sed, posuere ac, mattis non.</div>
 												<div class="text-muted small mt-1">5h ago</div>
 											</div>
 										</div>
@@ -172,35 +200,42 @@
 								<div class="dropdown-menu-footer">
 									<a href="#" class="text-muted">Show all messages</a>
 								</div>
-							</div>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
-                <i class="align-middle" data-feather="settings"></i>
-              </a>
-
-							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark">Charles Hall</span>
-              </a>
+							</div></li>
+						<li class="nav-item dropdown"><a
+							class="nav-icon dropdown-toggle d-inline-block d-sm-none"
+							href="#" data-bs-toggle="dropdown"> <i class="align-middle"
+								data-feather="settings"></i>
+						</a> <a class="nav-link dropdown-toggle d-none d-sm-inline-block"
+							href="#" data-bs-toggle="dropdown"> <img
+								src="img/avatars/avatar.jpg"
+								class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span
+								class="text-dark">Charles Hall</span>
+						</a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
-								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
+								<a class="dropdown-item" href="pages-profile.html"><i
+									class="align-middle me-1" data-feather="user"></i> Profile</a> <a
+									class="dropdown-item" href="#"><i class="align-middle me-1"
+									data-feather="pie-chart"></i> Analytics</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
-								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
+								<a class="dropdown-item" href="index.html"><i
+									class="align-middle me-1" data-feather="settings"></i> Settings
+									& Privacy</a> <a class="dropdown-item" href="#"><i
+									class="align-middle me-1" data-feather="help-circle"></i> Help
+									Center</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="#">Log out</a>
-							</div>
-						</li>
+							</div></li>
 					</ul>
 				</div>
 			</nav>
- 
+
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3"><strong>Analytics</strong> Dashboard</h1>
-	
+					<h1 class="h3 mb-3">
+						<strong>Analytics</strong> Dashboard
+					</h1>
+
 					<script>
 			      document.addEventListener('DOMContentLoaded', function() {
 			        var calendarEl = document.getElementById('calendar');
@@ -211,6 +246,11 @@
 			      			center : 'title',
 			      			end : 'dayGridMonth,dayGridWeek,dayGridDay'
 			      		},
+			      		 dateClick: function(info) {
+			                    alert('Clicked on: ' + info.dateStr); 
+			                    // change the day's background color just for fun
+			                    info.dayEl.style.backgroundColor = 'red';
+			                },
 			      		titleFormat : function(date) {
 			      			return date.date.year + '년 ' + (parseInt(date.date.month) + 1) + '월';
 			      		},
@@ -219,39 +259,112 @@
 			      		droppable : true,
 			      		editable : true,
 			      		nowIndicator: true, // 현재 시간 마크
-			      		locale: 'ko', // 한국어 설정
+			      		dayMaxEvents: 3,	// 일정 more 
+			    	//	locale: 'ko', // 한국어 설정 
 			      			events : [ 
-			      	    
 			      	            {
 			      	            	title : '풀캘린더완성도',
 			      	                start : '2023-08-23',
-			      	                end : '',
+			      	                end : '2023-08-30',
 			      	                color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
 			      	             },
+			      	           {
+				      	            	title : '풀캘린더완성도',
+				      	                start : '2023-08-23',
+				      	                end : '2023-08-30',
+				      	                color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
+				      	             },
+				      	           {
+					      	            	title : '풀캘린더완성도',
+					      	                start : '2023-08-23',
+					      	                end : '2023-08-30',
+					      	                color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
+					      	             },
+					      	           {
+						      	            	title : '풀캘린더완성도',
+						      	                start : '2023-08-23',
+						      	                end : '2023-08-30',
+						      	                color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
+						      	             },
+						      	           {
+							      	            	title : '풀캘린더완성도',
+							      	                start : '2023-08-23',
+							      	                end : '2023-08-30',
+							      	                color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
+							      	             },
 			    
 			      					]
+			      		
+			    
 			        });
 			        calendar.render();
 			      });
 			</script>
-			
+					<!-- Edit Modal -->
+					<div class="modal fade" id="calendarModal" tabindex="-1"
+						role="dialog" aria-labelledby="exampleModalLabel"
+						aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">일정을 입력하세요.</h5>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<div class="form-group">
+										<label for="taskId" class="col-form-label">일정 내용</label> <input
+											type="text" class="form-control" id="calendar_content"
+											name="calendar_content"> <label for="taskId"
+											class="col-form-label">시작 날짜</label> <input type="date"
+											class="form-control" id="calendar_start_date"
+											name="calendar_start_date"> <label for="taskId"
+											class="col-form-label">종료 날짜</label> <input type="date"
+											class="form-control" id="calendar_end_date"
+											name="calendar_end_date">
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-warning" id="addCalendar">추가</button>
+									<button type="button" class="btn btn-secondary"
+										data-dismiss="modal" id="sprintSettingModalClose">취소</button>
+								</div>
+
+							</div>
+						</div>
+					</div>
 					<div class="row">
 						<div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">
 							<div class="card flex-fill w-100">
 								<div class="card-header">
+									<div class="btns-wr">
+										<div class="project-search-area all-file-header-type-3">
+											<div class="project-search">
+												<input type="text" placeholder="일정명을 입력해주세요"
+													class="js-calendar-search-input">
+											</div>
+										</div>
+										<div class="btns-area">
+											<button id="scheduleAdd" type="button"
+												class="collect-add-button" data-post-code="2"
+												style="display: block;">+일정추가</button>
+										</div>
+									</div>
 
-									<h5 class="card-title mb-0">Real-Time</h5>
 								</div>
 								<div class="card-body px-4">
-									<div id="world_map" style="height:350px;"></div>
+									<div id="world_map"></div>
+									<!-- style="height:50px;" -->
 									<div id="calendar"></div>
 								</div>
 							</div>
 						</div>
 					</div>
-								
-								
-					<div class="row">
+
+
+					<!-- 	<div class="row">
 						<div class="col-12 col-md-6 col-xxl-3 d-flex order-2 order-xxl-3">
 							<div class="card flex-fill w-100">
 								<div class="card-header">
@@ -312,9 +425,9 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 
-					<div class="row">
+					<!-- 	<div class="row">
 						<div class="col-12 col-lg-8 col-xxl-9 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
@@ -405,12 +518,12 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 
 				</div>
-			</main> 
+			</main>
 
-			<%@include file="/WEB-INF/views/adminKit/footer.jsp" %>
+			<%@include file="/WEB-INF/views/adminKit/footer.jsp"%>
 		</div>
 	</div>
 
@@ -486,6 +599,7 @@
 			});
 		});
 	</script>
+
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
 			// Pie chart
