@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class Mainservlet {
 	
-	@GetMapping
-	public MainTask list() {
+	@GetMapping("/test/maintask")
+	public String MainTask() {
 		
-		return 
+		return "test/maintask";
 	}
 
 }

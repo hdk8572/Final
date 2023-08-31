@@ -7,6 +7,6 @@
 <title>업무 전체보기</title>
 </head>
 <body>
-
+	<h2>전체 업무</h2>
 </body>
 </html>
