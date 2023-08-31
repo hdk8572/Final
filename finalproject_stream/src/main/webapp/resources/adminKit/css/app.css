@@ -6706,16 +6706,17 @@ textarea.form-control-lg {
 	text-decoration: none !important;
 }
 
-.text-muted-ing {
-	color: #939ba2;
+.text-muted-nav {
+	color: #009b77;
 }
 
-.text-muted a:hover {
+.text-muted-nav:hover {
 	border-left-color: transparent;
 	color: #05917e;
     transition: 0.9s;
     transform: scale(1.1);
     display: block;
+    text-decoration: none;
 }
 
 .text-black-50 { -

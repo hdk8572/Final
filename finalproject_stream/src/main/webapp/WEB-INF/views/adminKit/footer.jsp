@@ -5,13 +5,13 @@
 		<div class="row text-muted">
 			<div class="col-6 text-start">
 				<ul class="list-inline">
-					<li class="list-inline-item"><a class="text-muted"
+					<li class="list-inline-item"><a class="text-muted-nav"
 						href="https://adminkit.io/" target="_blank"><i class="fa-solid fa-house"></i> 피드</a></li>
-					<li class="list-inline-item"><a class="text-muted"
+					<li class="list-inline-item"><a class="text-muted-nav"
 						href="https://adminkit.io/" target="_blank">업무</a></li>
-					<li class="list-inline-item"><a class="text-muted"
+					<li class="list-inline-item"><a class="text-muted-nav"
 						href="https://adminkit.io/" target="_blank">캘린더</a></li>
-					<li class="list-inline-item"><a class="text-muted"
+					<li class="list-inline-item"><a class="text-muted-nav"
 						href="https://adminkit.io/" target="_blank">파일</a></li>
 				</ul>
 			</div>
