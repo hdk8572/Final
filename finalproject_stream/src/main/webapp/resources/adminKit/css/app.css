@@ -852,6 +852,10 @@ progress {
 		width: 33.33%;
 		padding-right: 20px;
 	}
+/* 	.col-sm-6 card:hover {
+		background-color: black;
+		transition: 0.7s;
+	} */
 	.col-sm-7 {
 		flex: 0 0 auto;
 		width: 58.33333%
@@ -4446,6 +4450,7 @@ textarea.form-control-lg {
 .card-body {
 	flex: 1 1 auto;
 	padding: 1.25rem;
+	border-left: 2mm solid orange;
 }
 
 .card-title {

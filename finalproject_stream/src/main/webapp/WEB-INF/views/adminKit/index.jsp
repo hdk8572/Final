@@ -189,7 +189,7 @@
 					</ul>
 				</div>
 			</nav>
-
+			<%@include file="/WEB-INF/views/adminKit/footer.jsp" %>
 			<main class="content">
 				<div class="container-fluid p-0">
 					<h1 class="h3 mb-3"><strong>프로젝트</strong> 목록</h1>
@@ -198,134 +198,195 @@
 							<div class="w-100">
 								<div class="row">
 									<div class="col-sm-6">
-										<div class="card">
-											<div class="card-body">
-												<div class="row">
-													<div class="col mt-0">
-														<h5 class="card-title">PROJECT</h5>
-													</div>
-													<div class="col-auto">
-														<div class="stat text-primary">
-															<i class="align-middle" data-feather="truck"></i>
+										<a href:"#">
+											<div class="card">
+												<div class="card-body">
+													<div class="row">
+														<div class="col mt-0">
+															<h5 class="card-title">PROJECT</h5>
+														</div>
+														<div class="col-auto">
+															<div class="stat text-primary">
+																<i class="align-middle" data-feather="truck"></i>
+															</div>
 														</div>
 													</div>
-												</div>
-												<h1 class="mt-1 mb-3">KH정보교육원</h1>
-												<div class="mb-0">
-													<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
-													<span class="text-muted-ing">진행 중</span>
+													<h1 class="mt-1 mb-3">KH정보교육원</h1>
+													<div class="mb-0">
+														<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
+														<span class="text-muted-ing">진행 중</span>
+													</div>
 												</div>
 											</div>
-										</div>
+										</a>
 									</div>
 									<div class="col-sm-6">
-										<div class="card">
-											<div class="card-body">
-												<div class="row">
-													<div class="col mt-0">
-														<h5 class="card-title">PROJECT</h5>
-													</div>
-													<div class="col-auto">
-														<div class="stat text-primary">
-															<i class="align-middle" data-feather="truck"></i>
+										<a href:"#">
+											<div class="card">
+												<div class="card-body">
+													<div class="row">
+														<div class="col mt-0">
+															<h5 class="card-title">PROJECT</h5>
+														</div>
+														<div class="col-auto">
+															<div class="stat text-primary">
+																<i class="align-middle" data-feather="truck"></i>
+															</div>
 														</div>
 													</div>
-												</div>
-												<h1 class="mt-1 mb-3">KH정보교육원</h1>
-												<div class="mb-0">
-													<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
-													<span class="text-muted-ing">진행 중</span>
+													<h1 class="mt-1 mb-3">KH정보교육원</h1>
+													<div class="mb-0">
+														<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
+														<span class="text-muted-ing">진행 중</span>
+													</div>
 												</div>
 											</div>
-										</div>
+										</a>
 									</div>
 									<div class="col-sm-6">
-										<div class="card">
-											<div class="card-body">
-												<div class="row">
-													<div class="col mt-0">
-														<h5 class="card-title">PROJECT</h5>
-													</div>
-													<div class="col-auto">
-														<div class="stat text-primary">
-															<i class="align-middle" data-feather="truck"></i>
+										<a href:"#">
+											<div class="card">
+												<div class="card-body">
+													<div class="row">
+														<div class="col mt-0">
+															<h5 class="card-title">PROJECT</h5>
+														</div>
+														<div class="col-auto">
+															<div class="stat text-primary">
+																<i class="align-middle" data-feather="truck"></i>
+															</div>
 														</div>
 													</div>
-												</div>
-												<h1 class="mt-1 mb-3">KH정보교육원</h1>
-												<div class="mb-0">
-													<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
-													<span class="text-muted-ing">진행 중</span>
+													<h1 class="mt-1 mb-3">KH정보교육원</h1>
+													<div class="mb-0">
+														<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
+														<span class="text-muted-ing">진행 중</span>
+													</div>
 												</div>
 											</div>
-										</div>
+										</a>
 									</div>
 									<div class="col-sm-6">
-										<div class="card">
-											<div class="card-body">
-												<div class="row">
-													<div class="col mt-0">
-														<h5 class="card-title">PROJECT</h5>
-													</div>
-													<div class="col-auto">
-														<div class="stat text-primary">
-															<i class="align-middle" data-feather="truck"></i>
+										<a href:"#">
+											<div class="card">
+												<div class="card-body">
+													<div class="row">
+														<div class="col mt-0">
+															<h5 class="card-title">PROJECT</h5>
+														</div>
+														<div class="col-auto">
+															<div class="stat text-primary">
+																<i class="align-middle" data-feather="truck"></i>
+															</div>
 														</div>
 													</div>
-												</div>
-												<h1 class="mt-1 mb-3">KH정보교육원</h1>
-												<div class="mb-0">
-													<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
-													<span class="text-muted-ing">진행 중</span>
+													<h1 class="mt-1 mb-3">KH정보교육원</h1>
+													<div class="mb-0">
+														<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
+														<span class="text-muted-ing">진행 중</span>
+													</div>
 												</div>
 											</div>
-										</div>
+										</a>
 									</div>
 									<div class="col-sm-6">
-										<div class="card">
-											<div class="card-body">
-												<div class="row">
-													<div class="col mt-0">
-														<h5 class="card-title">PROJECT</h5>
-													</div>
-													<div class="col-auto">
-														<div class="stat text-primary">
-															<i class="align-middle" data-feather="truck"></i>
+										<a href:"#">
+											<div class="card">
+												<div class="card-body">
+													<div class="row">
+														<div class="col mt-0">
+															<h5 class="card-title">PROJECT</h5>
+														</div>
+														<div class="col-auto">
+															<div class="stat text-primary">
+																<i class="align-middle" data-feather="truck"></i>
+															</div>
 														</div>
 													</div>
-												</div>
-												<h1 class="mt-1 mb-3">KH정보교육원</h1>
-												<div class="mb-0">
-													<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
-													<span class="text-muted-ing">진행 중</span>
+													<h1 class="mt-1 mb-3">KH정보교육원</h1>
+													<div class="mb-0">
+														<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
+														<span class="text-muted-ing">진행 중</span>
+													</div>
 												</div>
 											</div>
-										</div>
+										</a>
 									</div>
 									<div class="col-sm-6">
-										<div class="card">
-											<div class="card-body">
-												<div class="row">
-													<div class="col mt-0">
-														<h5 class="card-title">PROJECT</h5>
-													</div>
-													<div class="col-auto">
-														<div class="stat text-primary">
-															<i class="align-middle" data-feather="truck"></i>
+										<a href:"#">
+											<div class="card">
+												<div class="card-body">
+													<div class="row">
+														<div class="col mt-0">
+															<h5 class="card-title">PROJECT</h5>
+														</div>
+														<div class="col-auto">
+															<div class="stat text-primary">
+																<i class="align-middle" data-feather="truck"></i>
+															</div>
 														</div>
 													</div>
-												</div>
-												<h1 class="mt-1 mb-3">KH정보교육원</h1>
-												<div class="mb-0">
-													<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
-													<span class="text-muted-ing">진행 중</span>
+													<h1 class="mt-1 mb-3">KH정보교육원</h1>
+													<div class="mb-0">
+														<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
+														<span class="text-muted-ing">진행 중</span>
+													</div>
 												</div>
 											</div>
-										</div>
+										</a>
+									</div>
+									<div class="col-sm-6">
+										<a href:"#">
+											<div class="card">
+												<div class="card-body">
+													<div class="row">
+														<div class="col mt-0">
+															<h5 class="card-title">PROJECT</h5>
+														</div>
+														<div class="col-auto">
+															<div class="stat text-primary">
+																<i class="align-middle" data-feather="truck"></i>
+															</div>
+														</div>
+													</div>
+													<h1 class="mt-1 mb-3">KH정보교육원</h1>
+													<div class="mb-0">
+														<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
+														<span class="text-muted-ing">진행 중</span>
+													</div>
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-sm-6">
+										<a href:"#">
+											<div class="card">
+												<div class="card-body">
+													<div class="row">
+														<div class="col mt-0">
+															<h5 class="card-title">PROJECT</h5>
+														</div>
+														<div class="col-auto">
+															<div class="stat text-primary">
+																<i class="align-middle" data-feather="truck"></i>
+															</div>
+														</div>
+													</div>
+													<h1 class="mt-1 mb-3">KH정보교육원</h1>
+													<div class="mb-0">
+														<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
+														<span class="text-muted-ing">진행 중</span>
+													</div>
+												</div>
+											</div>
+										</a>
 									</div>
 								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</main>
-			<%@include file="/WEB-INF/views/adminKit/footer.jsp" %>
 		</div>
 	</div>
 	<script src="js/app.js"></script>
