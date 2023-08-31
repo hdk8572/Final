@@ -465,7 +465,7 @@ progress {
 
 .list-inline, .list-unstyled {
 	list-style: none;
-	padding-left: 0
+	padding-left: 0;
 }
 
 .list-inline-item {
@@ -2757,11 +2757,10 @@ textarea.form-control-lg {
 }
 
 .btn-primary {
-	background-color: #3b7ddd;
-	border-color: #3b7ddd;
-	color: #fff
+    background-color: #009b77;
+    border-color: #009b77;
 }
-
+.sidebar-brand
 .btn-check:focus+.btn-primary, .btn-primary:focus, .btn-primary:hover {
 	background-color: #326abc;
 	border-color: #2f64b1;
@@ -6695,19 +6694,28 @@ textarea.form-control-lg {
 		!important
 }
 
-.text-muted { -
+.text-muted { 
 	-bs-text-opacity: 1;
-	color: #6c757d !important
+	color: #009b77;
+	text-decoration: none !important;
+}
+
+.text-muted a:hover {
+	border-left-color: transparent;
+	color: #05917e;
+    transition: 0.9s;
+    transform: scale(1.1);
+    display: block;
 }
 
 .text-black-50 { -
 	-bs-text-opacity: 1;
-	color: rgba(0, 0, 0, .5) !important
+	color: rgba(0, 0, 0, .5) !important;
 }
 
 .text-white-50 { -
 	-bs-text-opacity: 1;
-	color: rgba(255, 255, 255, .5) !important
+	color: rgba(255, 255, 255, .5) !important;
 }
 
 .text-reset { -
@@ -11323,7 +11331,7 @@ textarea.form-control-lg {
 	flex: 1;
 	max-width: 100vw;
 	padding: 1.5rem 1.5rem .75rem;
-	width: 100vw
+	width: 100vw;
 }
 
 @media ( min-width :768px) {
@@ -11447,32 +11455,32 @@ to {
 footer.footer {
 	background: #fff;
 	direction: ltr;
-	padding: 1rem .875rem
+	padding: 1rem .875rem;
 }
 
 footer.footer ul {
-	margin-bottom: 0
+	margin-bottom: 0;
 }
 
 @media ( max-width :767.98px) {
 	footer.footer {
-		width: 100vw
+		width: 100vw;
 	}
 }
 
 .hamburger, .hamburger:after, .hamburger:before {
-	background: #495057;
+	background: black;
 	border-radius: 1px;
 	content: "";
 	cursor: pointer;
 	display: block;
 	height: 3px;
 	transition: background .1s ease-in-out, color .1s ease-in-out;
-	width: 24px
+	width: 24px;
 }
 
 .hamburger {
-	position: relative
+	position: relative;
 }
 
 .hamburger:before {
@@ -11582,7 +11590,7 @@ a.list-group-item {
 }
 
 .nav-item .indicator {
-	background: #3b7ddd;
+	background: #009b77;
 	border-radius: 50%;
 	box-shadow: 0 .1rem .2rem rgba(0, 0, 0, .05);
 	color: #fff;
@@ -11666,13 +11674,13 @@ body {
 }
 
 .sidebar, .sidebar-content {
-	background: #ffffff;
+	background: white;
 	transition: margin-left .35s ease-in-out, left .35s ease-in-out,
 		margin-right .35s ease-in-out, right .35s ease-in-out
 }
 
 .sidebar-content {
-	display: flex;
+	display: flex; 
 	flex-direction: column;
 	height: 100vh
 }
@@ -11685,9 +11693,9 @@ body {
 }
 
 .sidebar-link, a.sidebar-link {
-	background: #222e3c;
+	background: white;
 	border-left: 3px solid transparent;
-	color: rgba(233, 236, 239, .5);
+    color: #009b77;
 	cursor: pointer;
 	display: block;
 	font-weight: 400;
@@ -11700,28 +11708,26 @@ body {
 .sidebar-link i, .sidebar-link svg, a.sidebar-link i, a.sidebar-link svg
 	{
 	color: rgba(233, 236, 239, .5);
-	margin-right: .75rem
+	margin-right: .75rem;
 }
 
 .sidebar-link:focus {
-	outline: 0
+	outline: 0;
 }
 
 .sidebar-link:hover {
-	background: #222e3c;
-	border-left-color: transparent
+	background: #009b77;
+	border-left-color: transparent;
+	color: white !important;
 }
 
 .sidebar-link:hover, .sidebar-link:hover i, .sidebar-link:hover svg {
-	color: rgba(233, 236, 239, .75)
+	color: white;
 }
 
 .sidebar-item.active .sidebar-link:hover, .sidebar-item.active>.sidebar-link
 	{
-	background: linear-gradient(90deg, rgba(59, 125, 221, .1),
-		rgba(59, 125, 221, .0875) 50%, transparent);
-	border-left-color: #3b7ddd;
-	color: #e9ecef
+	color: #009b77;
 }
 
 .sidebar-item.active .sidebar-link:hover i, .sidebar-item.active .sidebar-link:hover svg,
@@ -11731,15 +11737,15 @@ body {
 }
 
 .sidebar-brand {
-	color: #f8f9fa;
-	display: block;
-	font-size: 1.15rem;
-	font-weight: 600;
-	padding: 1.15rem 1.5rem
+    color: #009b77;
+    display: block;
+    font-size: 1.15rem;
+    font-weight: 600;
+    padding: 1.15rem 1.5rem;
 }
 
 .sidebar-brand:hover {
-	color: #f8f9fa;
+	color: #009b77;
 	text-decoration: none
 }
 
@@ -11773,7 +11779,7 @@ body {
 
 .sidebar-header {
 	background: transparent;
-	color: #ced4da;
+	color: #009b77;
 	font-size: .75rem;
 	padding: 1.5rem 1.5rem .375rem
 }
@@ -11783,14 +11789,6 @@ body {
 	right: 15px;
 	top: 14px;
 	z-index: 1
-}
-
-.sidebar-cta-content {
-	background: #2b3947;
-	border-radius: .3rem;
-	color: #e9ecef;
-	margin: 1.75rem;
-	padding: 1.5rem
 }
 
 .min-vw-50 {
