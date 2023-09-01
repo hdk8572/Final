@@ -1,3 +1,5 @@
+--사용하셔도 되지만 수정은 말아주세요
+
 
 INSERT INTO COMPANY VALUES ('C01', '올리브영');
 INSERT INTO COMPANY VALUES ('C02', '교촌치킨');
