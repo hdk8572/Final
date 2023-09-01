@@ -27,6 +27,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
 	rel="stylesheet">
+
 <!-- //fullcalendar css -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
@@ -41,6 +42,7 @@
 	src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
 
 <style type="text/css">
+
 /*more버튼*/
 .fc-daygrid-more-link.fc-more-link {
 	color: #000;
@@ -229,6 +231,10 @@
 				</div>
 			</nav>
 
+
+			<%@include file="/WEB-INF/views/adminKit/footer.jsp"%>
+
+
 			<main class="content">
 				<div class="container-fluid p-0">
 
@@ -264,32 +270,32 @@
 			      			events : [ 
 			      	            {
 			      	            	title : '풀캘린더완성도',
-			      	                start : '2023-08-23',
-			      	                end : '2023-08-30',
+			      	                start : '2023-09-12',
+			      	                end : '2023-09-20',
 			      	                color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
 			      	             },
 			      	           {
 				      	            	title : '풀캘린더완성도',
-				      	                start : '2023-08-23',
-				      	                end : '2023-08-30',
+				      	                start : '2023-09-12',
+				      	                end : '2023-09-20',
 				      	                color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
 				      	             },
 				      	           {
 					      	            	title : '풀캘린더완성도',
-					      	                start : '2023-08-23',
-					      	                end : '2023-08-30',
+					      	                start : '2023-09-12',
+					      	                end : '2023-09-20',
 					      	                color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
 					      	             },
 					      	           {
 						      	            	title : '풀캘린더완성도',
-						      	                start : '2023-08-23',
-						      	                end : '2023-08-30',
+						      	                start : '2023-09-12',
+						      	                end : '2023-09-20',
 						      	                color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
 						      	             },
 						      	           {
 							      	            	title : '풀캘린더완성도',
-							      	                start : '2023-08-23',
-							      	                end : '2023-08-30',
+							      	                start : '2023-09-12',
+							      	                end : '2023-09-20',
 							      	                color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
 							      	             },
 			    
@@ -301,7 +307,7 @@
 			      });
 			</script>
 					<!-- Edit Modal -->
-					<div class="modal fade" id="calendarModal" tabindex="-1"
+					<!-- <div class="modal fade" id="calendarModal" tabindex="-1"
 						role="dialog" aria-labelledby="exampleModalLabel"
 						aria-hidden="true">
 						<div class="modal-dialog" role="document">
@@ -334,7 +340,8 @@
 
 							</div>
 						</div>
-					</div>
+					</div> -->
+
 					<div class="row">
 						<div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">
 							<div class="card flex-fill w-100">
@@ -364,7 +371,7 @@
 					</div>
 
 
-					<!-- 	<div class="row">
+					<div class="row">
 						<div class="col-12 col-md-6 col-xxl-3 d-flex order-2 order-xxl-3">
 							<div class="card flex-fill w-100">
 								<div class="card-header">
@@ -406,7 +413,7 @@
 									<h5 class="card-title mb-0">Real-Time</h5>
 								</div>
 								<div class="card-body px-4">
-									<div id="world_map" style="height:350px;"></div>
+									<div id="world_map" style="height: 350px;"></div>
 								</div>
 							</div>
 						</div>
@@ -425,7 +432,7 @@
 								</div>
 							</div>
 						</div>
-					</div> -->
+					</div>
 
 					<!-- 	<div class="row">
 						<div class="col-12 col-lg-8 col-xxl-9 d-flex">
@@ -523,7 +530,7 @@
 				</div>
 			</main>
 
-			<%@include file="/WEB-INF/views/adminKit/footer.jsp"%>
+
 		</div>
 	</div>
 
