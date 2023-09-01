@@ -31,9 +31,9 @@
 					<div class="d-table-cell align-middle">
 
 						<div class="text-center mt-4">
-							<h1 class="h2">Get started</h1>
+							<h1 class="h2">기업 가입</h1>
 							<p class="lead">
-								Start creating the best possible user experience for you customers.
+								기업 정보를 입력 후 그룹웨어 Stream을 이용해보세요!
 							</p>
 						</div>
 
@@ -42,7 +42,7 @@
 								<div class="m-sm-4">
 									<form>
 										<div class="mb-3">
-											<label class="form-label">Name</label>
+											<label class="form-label">회사 명</label>
 											<input class="form-control form-control-lg" type="text" name="name" placeholder="Enter your name" />
 										</div>
 										<div class="mb-3">
