@@ -4,6 +4,16 @@
  * Copyright 2021 AdminKit
  * Licensed under MIT (https://github.com/adminkit/adminkit/blob/master/LICENSE)
  */
+ 
+ /*font IBM Plex Sans KR*/
+ /*font-family: 'IBM Plex Sans KR', sans-serif;*/
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap"
+	rel="stylesheet">
+
+ 
 :root { -
 	-bs-blue: #3b7ddd; -
 	-bs-indigo: #0a0a0a; -
@@ -64,7 +74,8 @@
 }
 
 *, :after, :before {
-	box-sizing: border-box
+	box-sizing: border-box;
+	font-family: 'IBM Plex Sans KR', sans-serif;
 }
 
 @media ( prefers-reduced-motion :no-preference) {
@@ -1546,7 +1557,8 @@ progress {
 	}
 	.col-xxl-9 {
 		flex: 0 0 auto;
-		width: 75%
+		/* width: 75% */ /* 리스트 크기 */
+		width: 100%
 	}
 	.col-xxl-10 {
 		flex: 0 0 auto;

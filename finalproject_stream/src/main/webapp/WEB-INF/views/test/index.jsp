@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -197,134 +197,190 @@
 						<div class="col-xl-6 col-xxl-5 d-flex">
 							<div class="w-100">
 								<div class="row">
-									<div class="row">
-										<div class="col-12 col-lg-8 col-xxl-9 d-flex">
-											<div class="card flex-fill">
-												<div class="card-header">
-													<h5 class="card-title mb-0">Latest Projects</h5>
+									<div class="col-sm-6">
+										<a href:"#">
+											<div class="card">
+												<div class="card-body">
+													<div class="row">
+														<div class="col mt-0">
+															<h5 class="card-title">PROJECT</h5>
+														</div>
+														<div class="col-auto">
+															<div class="stat text-primary">
+																<i class="align-middle" data-feather="truck"></i>
+															</div>
+														</div>
+													</div>
+													<h1 class="mt-1 mb-3">KH정보교육원</h1>
+													<div class="mb-0">
+														<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
+														<span class="text-muted-ing">진행 중</span>
+													</div>
 												</div>
-												<table class="table table-hover my-0">
-													<tr>
-														<td>글번호</td>
-														<td>프로젝트번호</td>
-														<td>아이디</td>
-														<td>비밀번호</td>
-														<td>글내용</td>
-														<td>진행도</td>
-														<td>작성날짜</td>
-														<td>시작일</td>
-														<td>마감일</td>
-													</tr>
-													<c:forEach items="${volist}" var="list">
-													<tr>
-														<td>${list.tno}</td>
-														<td>${list.pno}</td>
-														<td>${list.mno}</td>
-														<td>${list.tmember}</td>
-														<td>${list.tcontent}</td>
-														<td>${list.tstatus}</td>
-														<td>${list.tdate}</td>
-														<td>${list.tstartDate}</td>
-														<td>${list.tendDate}</td>
-													</tr>		
-													</c:forEach>
-													<!-- <thead>
-														<tr>
-															<th>Name</th>
-															<th class="d-none d-xl-table-cell">Start Date</th>
-															<th class="d-none d-xl-table-cell">End Date</th>
-															<th>Status</th>
-															<th class="d-none d-md-table-cell">Assignee</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td>Project Apollo</td>
-															<td class="d-none d-xl-table-cell">01/01/2021</td>
-															<td class="d-none d-xl-table-cell">31/06/2021</td>
-															<td><span class="badge bg-success">Done</span></td>
-															<td class="d-none d-md-table-cell">Vanessa Tucker</td>
-														</tr>
-														<tr>
-															<td>Project Fireball</td>
-															<td class="d-none d-xl-table-cell">01/01/2021</td>
-															<td class="d-none d-xl-table-cell">31/06/2021</td>
-															<td><span class="badge bg-danger">Cancelled</span></td>
-															<td class="d-none d-md-table-cell">William Harris</td>
-														</tr>
-														<tr>
-															<td>Project Hades</td>
-															<td class="d-none d-xl-table-cell">01/01/2021</td>
-															<td class="d-none d-xl-table-cell">31/06/2021</td>
-															<td><span class="badge bg-success">Done</span></td>
-															<td class="d-none d-md-table-cell">Sharon Lessman</td>
-														</tr>
-														<tr>
-															<td>Project Nitro</td>
-															<td class="d-none d-xl-table-cell">01/01/2021</td>
-															<td class="d-none d-xl-table-cell">31/06/2021</td>
-															<td><span class="badge bg-warning">In progress</span></td>
-															<td class="d-none d-md-table-cell">Vanessa Tucker</td>
-														</tr>
-														<tr>
-															<td>Project Phoenix</td>
-															<td class="d-none d-xl-table-cell">01/01/2021</td>
-															<td class="d-none d-xl-table-cell">31/06/2021</td>
-															<td><span class="badge bg-success">Done</span></td>
-															<td class="d-none d-md-table-cell">William Harris</td>
-														</tr>
-														<tr>
-															<td>Project X</td>
-															<td class="d-none d-xl-table-cell">01/01/2021</td>
-															<td class="d-none d-xl-table-cell">31/06/2021</td>
-															<td><span class="badge bg-success">Done</span></td>
-															<td class="d-none d-md-table-cell">Sharon Lessman</td>
-														</tr>
-														<tr>
-															<td>Project Romeo</td>
-															<td class="d-none d-xl-table-cell">01/01/2021</td>
-															<td class="d-none d-xl-table-cell">31/06/2021</td>
-															<td><span class="badge bg-success">Done</span></td>
-															<td class="d-none d-md-table-cell">Christina Mason</td>
-														</tr>
-														<tr>
-															<td>Project Wombat</td>
-															<td class="d-none d-xl-table-cell">01/01/2021</td>
-															<td class="d-none d-xl-table-cell">31/06/2021</td>
-															<td><span class="badge bg-warning">In progress</span></td>
-															<td class="d-none d-md-table-cell">William Harris</td>
-														</tr>
-													</tbody> -->
-												</table>
 											</div>
-										</div>
+										</a>
 									</div>
-									<%-- <table border="1">
-										<tr>
-											<td>글번호</td>
-											<td>프로젝트번호</td>
-											<td>아이디</td>
-											<td>비밀번호</td>
-											<td>글내용</td>
-											<td>진행도</td>
-											<td>작성날짜</td>
-											<td>시작일</td>
-											<td>마감일</td>
-										</tr>
-										<c:forEach items="${volist}" var="list">
-										<tr>
-											<td>${list.tno}</td>
-											<td>${list.pno}</td>
-											<td>${list.mno}</td>
-											<td>${list.tmember}</td>
-											<td>${list.tcontent}</td>
-											<td>${list.tstatus}</td>
-											<td>${list.tdate}</td>
-											<td>${list.tstartDate}</td>
-											<td>${list.tendDate}</td>
-										</tr>		
-										</c:forEach>
-									</table> --%>
+									<div class="col-sm-6">
+										<a href:"#">
+											<div class="card">
+												<div class="card-body">
+													<div class="row">
+														<div class="col mt-0">
+															<h5 class="card-title">PROJECT</h5>
+														</div>
+														<div class="col-auto">
+															<div class="stat text-primary">
+																<i class="align-middle" data-feather="truck"></i>
+															</div>
+														</div>
+													</div>
+													<h1 class="mt-1 mb-3">KH정보교육원</h1>
+													<div class="mb-0">
+														<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
+														<span class="text-muted-ing">진행 중</span>
+													</div>
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-sm-6">
+										<a href:"#">
+											<div class="card">
+												<div class="card-body">
+													<div class="row">
+														<div class="col mt-0">
+															<h5 class="card-title">PROJECT</h5>
+														</div>
+														<div class="col-auto">
+															<div class="stat text-primary">
+																<i class="align-middle" data-feather="truck"></i>
+															</div>
+														</div>
+													</div>
+													<h1 class="mt-1 mb-3">KH정보교육원</h1>
+													<div class="mb-0">
+														<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
+														<span class="text-muted-ing">진행 중</span>
+													</div>
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-sm-6">
+										<a href:"#">
+											<div class="card">
+												<div class="card-body">
+													<div class="row">
+														<div class="col mt-0">
+															<h5 class="card-title">PROJECT</h5>
+														</div>
+														<div class="col-auto">
+															<div class="stat text-primary">
+																<i class="align-middle" data-feather="truck"></i>
+															</div>
+														</div>
+													</div>
+													<h1 class="mt-1 mb-3">KH정보교육원</h1>
+													<div class="mb-0">
+														<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
+														<span class="text-muted-ing">진행 중</span>
+													</div>
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-sm-6">
+										<a href:"#">
+											<div class="card">
+												<div class="card-body">
+													<div class="row">
+														<div class="col mt-0">
+															<h5 class="card-title">PROJECT</h5>
+														</div>
+														<div class="col-auto">
+															<div class="stat text-primary">
+																<i class="align-middle" data-feather="truck"></i>
+															</div>
+														</div>
+													</div>
+													<h1 class="mt-1 mb-3">KH정보교육원</h1>
+													<div class="mb-0">
+														<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
+														<span class="text-muted-ing">진행 중</span>
+													</div>
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-sm-6">
+										<a href:"#">
+											<div class="card">
+												<div class="card-body">
+													<div class="row">
+														<div class="col mt-0">
+															<h5 class="card-title">PROJECT</h5>
+														</div>
+														<div class="col-auto">
+															<div class="stat text-primary">
+																<i class="align-middle" data-feather="truck"></i>
+															</div>
+														</div>
+													</div>
+													<h1 class="mt-1 mb-3">KH정보교육원</h1>
+													<div class="mb-0">
+														<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
+														<span class="text-muted-ing">진행 중</span>
+													</div>
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-sm-6">
+										<a href:"#">
+											<div class="card">
+												<div class="card-body">
+													<div class="row">
+														<div class="col mt-0">
+															<h5 class="card-title">PROJECT</h5>
+														</div>
+														<div class="col-auto">
+															<div class="stat text-primary">
+																<i class="align-middle" data-feather="truck"></i>
+															</div>
+														</div>
+													</div>
+													<h1 class="mt-1 mb-3">KH정보교육원</h1>
+													<div class="mb-0">
+														<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
+														<span class="text-muted-ing">진행 중</span>
+													</div>
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-sm-6">
+										<a href:"#">
+											<div class="card">
+												<div class="card-body">
+													<div class="row">
+														<div class="col mt-0">
+															<h5 class="card-title">PROJECT</h5>
+														</div>
+														<div class="col-auto">
+															<div class="stat text-primary">
+																<i class="align-middle" data-feather="truck"></i>
+															</div>
+														</div>
+													</div>
+													<h1 class="mt-1 mb-3">KH정보교육원</h1>
+													<div class="mb-0">
+														<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span> -->
+														<span class="text-muted-ing">진행 중</span>
+													</div>
+												</div>
+											</div>
+										</a>
+									</div>
 								</div>
 							</div>
 						</div>
