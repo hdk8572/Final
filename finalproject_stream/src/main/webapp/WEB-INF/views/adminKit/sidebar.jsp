@@ -18,7 +18,7 @@
 			<li class="sidebar-header">모아보기</li>
 
 			<li class="sidebar-item"><a class="sidebar-link"
-				href="ui-buttons.html"> <i class="align-middle"
+				href="../test/maintask2"> <i class="align-middle"
 					data-feather="square"></i> <span class="align-middle">전체 업무</span>
 			</a></li>
 

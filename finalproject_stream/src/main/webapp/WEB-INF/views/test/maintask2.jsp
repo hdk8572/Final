@@ -69,7 +69,8 @@ padding-left: 0;
 </head>
 <body>
 	<div class="wrapper">
-		<%-- <%@include file="/WEB-INF/views/adminKit/sidebar.jsp"%> --%>
+		<%@include file="/WEB-INF/views/test/maintast-side.jsp"%>
+		<!-- 
 		<aside class="jm-task-aside">
 			<div>
 				<ul>
@@ -109,7 +110,8 @@ padding-left: 0;
 					</li>
 				</ul>
 			</div>
-		</aside>
+		</aside> 
+		-->
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
 				<a class="sidebar-toggle js-sidebar-toggle"> <i
