@@ -12,5 +12,8 @@ public class TestController {
 		
 		return mv;
 	}
-
+	@GetMapping("/test/indextest")
+	public String adminKit3() {
+		return "test/indextest";
+	}
 }
