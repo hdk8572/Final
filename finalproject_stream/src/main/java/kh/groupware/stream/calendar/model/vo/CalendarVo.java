@@ -2,58 +2,50 @@ package kh.groupware.stream.calendar.model.vo;
 
 public class CalendarVo {
 /*
-	"SNO"	VARCHAR2(10)		NOT NULL,
-	"MNO"	VARCHAR2(10)		NULL,
+	"USERID"	VARCHAR2(40)		NOT NULL,
 	"SSTARTDATE"	VARCHAR2(20)		NOT NULL,
 	"SENDDATE"	VARCHAR2(20)		NOT NULL,
 	"SPLACE"	VARCHAR2(50)		NULL,
 	"SMEMO"	VARCHAR2(100)		NULL,
-    "STITLE" VARCHAR2(100)     NOT NULL
+	"STITLE"	VARCHAR2(100)		NOT NULL,
+	"SNO"	VARCHAR2(10)		NOT NULL
 */
-	private String sno;	//ÀÏÁ¤¹øÈ£
-	private String mno;	//Âü¼®ÀÚ
-	private String sstartdate;	//½ÃÀÛÀÏ
-	private String senddate;	//Á¾·áÀÏ
-	private String splace;	//Àå¼Ò	
-	private String smemo;	//ÀÏÁ¤³»¿ë
-	private String stitle;	//ÀÏÁ¤¸í
+	private String userId;	//email
+	private String sstartDate;	//ì‹œì‘ì¼ì‹œ
+	private String sendDate;	//ì¢…ë£Œì¼ì‹œ
+	private String splace;	//ì¥ì†Œ	
+	private String smemo;	//ì¼ì •ë‚´ìš©
+	private String stitle;	//ì¼ì •ëª…
+	private String sno;	//ì¼ì •ë²ˆí˜¸
 	
 	@Override
 	public String toString() {
-		return "CalendarVo [sno=" + sno + ", mno=" + mno + ", sstartdate=" + sstartdate + ", senddate=" + senddate
-				+ ", splace=" + splace + ", smemo=" + smemo + ", stitle=" + stitle + "]";
+		return "CalendarVo [userId=" + userId + ", sstartDate=" + sstartDate + ", sendDate=" + sendDate + ", splace="
+				+ splace + ", smemo=" + smemo + ", stitle=" + stitle + ", sno=" + sno + "]";
 	}
 
-	public String getSno() {
-		return sno;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setSno(String sno) {
-		this.sno = sno;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
-	public String getMno() {
-		return mno;
+	public String getSstartDate() {
+		return sstartDate;
 	}
 
-	public void setMno(String mno) {
-		this.mno = mno;
+	public void setSstartDate(String sstartDate) {
+		this.sstartDate = sstartDate;
 	}
 
-	public String getSstartdate() {
-		return sstartdate;
+	public String getSendDate() {
+		return sendDate;
 	}
 
-	public void setSstartdate(String sstartdate) {
-		this.sstartdate = sstartdate;
-	}
-
-	public String getSenddate() {
-		return senddate;
-	}
-
-	public void setSenddate(String senddate) {
-		this.senddate = senddate;
+	public void setSendDate(String sendDate) {
+		this.sendDate = sendDate;
 	}
 
 	public String getSplace() {
@@ -79,6 +71,16 @@ public class CalendarVo {
 	public void setStitle(String stitle) {
 		this.stitle = stitle;
 	}
+
+	public String getSno() {
+		return sno;
+	}
+
+	public void setSno(String sno) {
+		this.sno = sno;
+	}
+	
+	
 	
 	
 }
