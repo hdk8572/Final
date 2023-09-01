@@ -15,7 +15,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="shortcut icon" href="adminKit/img/icons/icon-48x48.png" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	
+
 	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
 
 	<title>AdminKit Demo - Bootstrap 한글깨짐 확인 Admin Template</title>
@@ -26,6 +26,7 @@
 </head>
 
 <body>
+</script>
 	<div class="wrapper">
 		<%@include file="/WEB-INF/views/adminKit/sidebar.jsp" %>
 		<div class="main">
