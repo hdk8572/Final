@@ -1551,7 +1551,8 @@ progress {
 	}
 	.col-xxl-9 {
 		flex: 0 0 auto;
-		width: 75%
+		/* width: 75% */ /* 리스트 크기 */
+		width: 100%
 	}
 	.col-xxl-10 {
 		flex: 0 0 auto;
