@@ -28,7 +28,7 @@
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
 	rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap"
@@ -38,7 +38,7 @@
 .card {
 	font-family: 'IBM Plex Sans KR', sans-serif;
 }
-</style>
+</style> -->
 </head>
 
 <body>
@@ -80,8 +80,7 @@
 											</label>
 										</div>
 										<div class="text-center mt-3">
-											<a href="index.html" class="btn btn-lg btn-primary">Sign
-												in</a>
+											<a href="index.html" class="btn btn-lg btn-primary">로그인</a>
 											<!-- <button type="submit" class="btn btn-lg btn-primary">Sign in</button> -->
 										</div>
 									</form>
