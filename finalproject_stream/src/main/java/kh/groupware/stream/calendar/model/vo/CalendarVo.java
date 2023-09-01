@@ -10,17 +10,18 @@ public class CalendarVo {
 	"SMEMO"	VARCHAR2(100)		NULL,
     "STITLE" VARCHAR2(100)     NOT NULL
 */
-	private String sno;
-	private String mno;
-	private String sstartdate;
-	private String senddate;
-	private String smemo;
-	private String stitle;
+	private String sno;	//일정번호
+	private String mno;	//참석자
+	private String sstartdate;	//시작일
+	private String senddate;	//종료일
+	private String splace;	//장소	
+	private String smemo;	//일정내용
+	private String stitle;	//일정명
 	
 	@Override
 	public String toString() {
 		return "CalendarVo [sno=" + sno + ", mno=" + mno + ", sstartdate=" + sstartdate + ", senddate=" + senddate
-				+ ", smemo=" + smemo + ", stitle=" + stitle + "]";
+				+ ", splace=" + splace + ", smemo=" + smemo + ", stitle=" + stitle + "]";
 	}
 
 	public String getSno() {
@@ -55,6 +56,14 @@ public class CalendarVo {
 		this.senddate = senddate;
 	}
 
+	public String getSplace() {
+		return splace;
+	}
+
+	public void setSplace(String splace) {
+		this.splace = splace;
+	}
+
 	public String getSmemo() {
 		return smemo;
 	}
@@ -70,7 +79,6 @@ public class CalendarVo {
 	public void setStitle(String stitle) {
 		this.stitle = stitle;
 	}
-	
 	
 	
 }
