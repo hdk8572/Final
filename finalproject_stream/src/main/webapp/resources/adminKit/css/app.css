@@ -11715,7 +11715,7 @@ body {
 	padding-left: 0
 }
 
-.sidebar-link, a.sidebar-link {
+.sidebar-link, a.sidebar-link, .jm-side {
 	background: white;
 	border-left: 3px solid transparent;
     color: #009b77;
@@ -11756,7 +11756,7 @@ body {
 .sidebar-item.active .sidebar-link:hover i, .sidebar-item.active .sidebar-link:hover svg,
 	.sidebar-item.active>.sidebar-link i, .sidebar-item.active>.sidebar-link svg
 	{
-	color: #e9ecef
+	color: #e9ecef;
 }
 
 .sidebar-brand {
