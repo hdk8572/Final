@@ -47,24 +47,24 @@
 									<form>
 										<div class="mb-3">
 											<label class="form-label">E-mail</label> <input
-												class="form-control" type="text"
+												class="form-control" type="email"
 												placeholder="Readonly input" readonly>
 
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Password</label> <input
-												class="form-control form-control-lg" type="text"
-												name="company" placeholder="비밀번호를 입력하세요" />
+												class="form-control form-control-lg" type="password"
+												name="password" placeholder="비밀번호를 입력하세요" />
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Repeat Password</label> <input
-												class="form-control form-control-lg" type="email"
-												name="email" placeholder="" />
+												class="form-control form-control-lg" type="password"
+												name="password" placeholder="" />
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Company Code</label> <input
-												class="form-control form-control-lg" type="password"
-												name="password" placeholder="회사코드를 입력하세요" />
+												class="form-control form-control-lg" type="text"
+												name="ccode" placeholder="회사코드를 입력하세요" />
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Department</label> <select
