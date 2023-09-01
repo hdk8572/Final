@@ -228,7 +228,9 @@
 					</ul>
 				</div>
 			</nav>
-
+			
+			<%@include file="/WEB-INF/views/adminKit/footer.jsp"%>
+			
 			<main class="content">
 				<div class="container-fluid p-0">
 
@@ -301,7 +303,7 @@
 			      });
 			</script>
 					<!-- Edit Modal -->
-					<div class="modal fade" id="calendarModal" tabindex="-1"
+					<!-- <div class="modal fade" id="calendarModal" tabindex="-1"
 						role="dialog" aria-labelledby="exampleModalLabel"
 						aria-hidden="true">
 						<div class="modal-dialog" role="document">
@@ -334,7 +336,9 @@
 
 							</div>
 						</div>
-					</div>
+					</div> -->
+					
+					
 					<div class="row">
 						<div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">
 							<div class="card flex-fill w-100">
@@ -523,7 +527,7 @@
 				</div>
 			</main>
 
-			<%@include file="/WEB-INF/views/adminKit/footer.jsp"%>
+			
 		</div>
 	</div>
 
