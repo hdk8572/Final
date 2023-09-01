@@ -7,7 +7,7 @@ public class PtaskVo {
 
 	private String tno;
 	private String pno;
-	private String mno;
+	private String userId;
 	private String tmember;
 	private String tcontent;
 	private String tstatus;
@@ -17,7 +17,7 @@ public class PtaskVo {
 	
 	@Override
 	public String toString() {
-		return "PtaskVo [tno=" + tno + ", pno=" + pno + ", mno=" + mno + ", tmember=" + tmember + ", tcontent="
+		return "PtaskVo [tno=" + tno + ", pno=" + pno + ", userId=" + userId + ", tmember=" + tmember + ", tcontent="
 				+ tcontent + ", tstatus=" + tstatus + ", tdate=" + tdate + ", tstartDate=" + tstartDate + ", tendDate="
 				+ tendDate + "]";
 	}
@@ -38,12 +38,12 @@ public class PtaskVo {
 		this.pno = pno;
 	}
 
-	public String getMno() {
-		return mno;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setMno(String mno) {
-		this.mno = mno;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getTmember() {
@@ -93,7 +93,6 @@ public class PtaskVo {
 	public void setTendDate(String tendDate) {
 		this.tendDate = tendDate;
 	}
-	
 }
 
 

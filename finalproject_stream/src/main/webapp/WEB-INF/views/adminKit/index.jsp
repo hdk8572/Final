@@ -20,7 +20,8 @@
 
 	<title>AdminKit Demo - Bootstrap 한글깨짐 확인 Admin Template</title>
 
-	<link href="${pageContext.request.contextPath }/css/app.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/app.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/adminkit/css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 	
 </head>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<link rel="stylesheet" href="/src/main/webapp/resources/adminKit/css/app.css">
+<!-- <link rel="stylesheet" href="/src/main/webapp/resources/adminKit/css/app.css"> -->
 
 <nav id="sidebar" class="sidebar js-sidebar">
 	<div class="sidebar-content js-simplebar">

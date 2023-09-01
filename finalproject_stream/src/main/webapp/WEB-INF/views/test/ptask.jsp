@@ -205,24 +205,18 @@
 												</div>
 												<table class="table table-hover my-0">
 													<tr>
-														<td>글번호</td>
-														<td>프로젝트번호</td>
-														<td>아이디</td>
-														<td>비밀번호</td>
-														<td>글내용</td>
-														<td>진행도</td>
-														<td>작성날짜</td>
-														<td>시작일</td>
-														<td>마감일</td>
+														<th class="d-none d-xl-table-cell">업무명</td>
+														<th class="d-none d-xl-table-cell">작성자</td>
+														<th class="d-none d-xl-table-cell">진행도</td>
+														<th class="d-none d-xl-table-cell">작성날짜</td>
+														<th class="d-none d-xl-table-cell">시작일</td>
+														<th class="d-none d-xl-table-cell">마감일</td>
 													</tr>
 													<c:forEach items="${volist}" var="list">
 													<tr>
-														<td>${list.tno}</td>
-														<td>${list.pno}</td>
-														<td>${list.mno}</td>
-														<td>${list.tmember}</td>
 														<td>${list.tcontent}</td>
-														<td>${list.tstatus}</td>
+														<td>${list.tmember}</td>
+														<td><span class="badge bg-warning">${list.tstatus}</span></td>
 														<td>${list.tdate}</td>
 														<td>${list.tstartDate}</td>
 														<td>${list.tendDate}</td>
@@ -299,32 +293,6 @@
 											</div>
 										</div>
 									</div>
-									<%-- <table border="1">
-										<tr>
-											<td>글번호</td>
-											<td>프로젝트번호</td>
-											<td>아이디</td>
-											<td>비밀번호</td>
-											<td>글내용</td>
-											<td>진행도</td>
-											<td>작성날짜</td>
-											<td>시작일</td>
-											<td>마감일</td>
-										</tr>
-										<c:forEach items="${volist}" var="list">
-										<tr>
-											<td>${list.tno}</td>
-											<td>${list.pno}</td>
-											<td>${list.mno}</td>
-											<td>${list.tmember}</td>
-											<td>${list.tcontent}</td>
-											<td>${list.tstatus}</td>
-											<td>${list.tdate}</td>
-											<td>${list.tstartDate}</td>
-											<td>${list.tendDate}</td>
-										</tr>		
-										</c:forEach>
-									</table> --%>
 								</div>
 							</div>
 						</div>
