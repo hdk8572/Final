@@ -11701,31 +11701,27 @@ body {
 
 .sidebar-link i, .sidebar-link svg, a.sidebar-link i, a.sidebar-link svg
 	{
-	color: #009b77;
-	margin-right: .75rem
+/* 	color: #009b77;
+	margin-right: .75rem */
 }
 
 .sidebar-link:focus {
 	outline: 0;
 }
 
-.sidebar-link:hover {
-	background: #009b77;
-	border-left-color: transparent;
-	color: white;
-}
-
 .sidebar-link:hover, .sidebar-link:hover i, .sidebar-link:hover svg {
-	color: rgba(233, 236, 239, .75);
+	/* color: rgba(233, 236, 239, .75); */
 }
 
 .sidebar-item.active .sidebar-link:hover, .sidebar-item.active>.sidebar-link
 	{
-	background: linear-gradient(90deg, rgba(59, 125, 221, .1),
+/* 	background: linear-gradient(90deg, rgba(59, 125, 221, .1),
 		rgba(59, 125, 221, .0875) 50%, transparent);
 	border-left-color: #009b77;
-	color: white;
+	color: white; */
 }
+
+
 
 
 .sidebar-item.active .sidebar-link:hover i, .sidebar-item.active .sidebar-link:hover svg,

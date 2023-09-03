@@ -15,7 +15,8 @@
 	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
 
 	<title>AdminKit Demo - Bootstrap 5 Admin Template</title>
-
+	
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 	<link href="css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -206,6 +207,31 @@
 		document.addEventListener("DOMContentLoaded", function() {
 		});
 	</script>
+	
+	<script>
+	$(document).ready(function() {
+		  $(".sidebar-link").mouseover(function() {
+		    $(this).css({
+		      "background-color": "#009b77",
+		    });
+		    $(this).find("span").css({
+		      "color": "white"	
+		    });
+		    $(this).find("svg").css({
+		      "color": "white"	
+		    });
+		  }).mouseout(function() {
+		    $(this).css({
+		      "background-color": "white",
+		    });
+		    $(this).find("span").css({
+		      "color": "#009b77"	
+		    });
+		    $(this).find("svg").css({
+		      "color": "#009b77"	
+		    });
+		  });
+		});
+	</script>
 </body>
-
 </html>
