@@ -1,5 +1,8 @@
 package kh.groupware.stream.login.model.vo;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class LoginVo {
 //	USERID    NOT NULL VARCHAR2(40) 
 //	DEPTNO    NOT NULL VARCHAR2(10) 

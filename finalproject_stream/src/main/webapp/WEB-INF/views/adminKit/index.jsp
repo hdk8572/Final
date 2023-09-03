@@ -33,8 +33,8 @@
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
 				<a class="sidebar-toggle js-sidebar-toggle">
-          <i class="hamburger align-self-center"></i>
-        </a>
+			          <i class="hamburger align-self-center"></i>
+			        </a>
 
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
@@ -172,12 +172,11 @@
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
-                <i class="align-middle" data-feather="settings"></i>
-              </a>
-
+					                <i class="align-middle" data-feather="settings"></i>
+					              </a>
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                <img src="http://placehold.it/40X40" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark">#사용자명</span>
-              </a>
+				                <img src="http://placehold.it/40X40" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark">#사용자명</span>
+				              </a>
 							<div class="dropdown-menu dropdown-menu-end">
 								<a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
 								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>

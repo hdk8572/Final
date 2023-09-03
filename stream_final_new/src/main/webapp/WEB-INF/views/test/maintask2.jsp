@@ -492,7 +492,7 @@ ul {
 				</div>
 			</main>
 
-			<%@include file="/WEB-INF/views/adminKit/footer.jsp"%>
+			<%@include file="/WEB-INF/views/footer.jsp"%>
 		</div>
 	</div>
 
