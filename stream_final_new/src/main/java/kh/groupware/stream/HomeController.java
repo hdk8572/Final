@@ -37,7 +37,7 @@ public class HomeController {
 		return "index";
 	}
 	
-	@GetMapping("task/maintask")
+	@GetMapping("/maintask")
 	public String maintask() {
 		return "/task/maintask2";
 	}
