@@ -8,9 +8,11 @@
 
 	<typeAliases>
 		<typeAlias type="kh.groupware.stream.ptask.model.vo.PtaskVo" alias="PtaskVo"/>
+		<typeAlias type="kh.groupware.stream.member.model.vo.MemberVo" alias="MemberVo"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mappers/ptask-mappers.xml"/>
+		<mapper resource="mappers/member-mapper.xml"/>
 	</mappers>	
 </configuration>

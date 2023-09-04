@@ -1,0 +1,2 @@
+-- query test용
+SELECT MNAME FROM USERS WHERE USERID= 'skin01@gmail.com' AND PASSWORD= '12345';

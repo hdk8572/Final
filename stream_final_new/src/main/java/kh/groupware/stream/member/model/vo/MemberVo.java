@@ -1,6 +1,6 @@
 package kh.groupware.stream.member.model.vo;
 
-public class LoginVo {
+public class MemberVo {
 //	USERID    NOT NULL VARCHAR2(40) 
 //	DEPTNO    NOT NULL VARCHAR2(10) 
 //	CCODE     NOT NULL VARCHAR2(10) 
@@ -23,16 +23,16 @@ public class LoginVo {
 	
 	@Override
 	public String toString() {
-		return "LoginVo [userId=" + userId + ", deptNo=" + deptNo + ", cCode=" + cCode + ", password=" + password
+		return "MemberVo [userId=" + userId + ", deptNo=" + deptNo + ", cCode=" + cCode + ", password=" + password
 				+ ", enabled=" + enabled + ", authority=" + authority + ", mName=" + mName + ", mPhone=" + mPhone
 				+ ", mRank=" + mRank + "]";
 	}
 
-	public LoginVo() {
+	public MemberVo() {
 		super();
 	}
 
-	public LoginVo(String userId, String deptNo, String cCode, String password, int enabled, String authority,
+	public MemberVo(String userId, String deptNo, String cCode, String password, int enabled, String authority,
 			String mName, String mPhone, String mRank) {
 		super();
 		this.userId = userId;

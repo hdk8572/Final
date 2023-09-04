@@ -19,6 +19,7 @@ public class MemberController {
 		return mv;
 	}
 	
+	
 	//post 방식에서 return String
 	//ajax 자료형 그자체
 	
