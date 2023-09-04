@@ -27,8 +27,10 @@
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <style>
-ul {
-	padding-left: 0;
+.jm-body ul, li{
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 .jm-task-aside {
@@ -351,11 +353,11 @@ ul {
 								<div class="card-header">
 									<h5 class="card-title mb-0">Empty card</h5>
 								</div>
-								<div class="card-body">
+								<div class="card-body jm-body">
 									<div class="jm-rwap-task">
 										<div class="jm-task-title row">
 											<!-- dropdown -->
-											<div class="dropdown col-lg-2">
+											<div class="dropdown col-lg-4">
 												<div class="jm-title" id="tno">
 													<span class="card-subtitle text-muted dropdown-toggle"
 														data-bs-toggle="dropdown" >업무명</span>
@@ -368,60 +370,73 @@ ul {
 													</div>
 												</div>
 											</div>
-											<div class="jm-title col-lg-2" id="tstatus">
-												<span class="card-subtitle text-muted">상태</span>
-												<div class="mini-pop">
-													<ul>
-														<li>오름차순</li>
-														<li>내림차순</li>
-														<li>정렬 해제</li>
-													</ul>
+											<div class="dropdown col-lg-1">
+												<div class="jm-title" id="tno">
+													<span class="card-subtitle text-muted dropdown-toggle"
+														data-bs-toggle="dropdown" >상태</span>
+													<div class="mini-pop dropdown-menu dropdown-menu-end">
+														<ul>
+															<li class="dropdown-item">오름차순</li>
+															<li class="dropdown-item">내림차순</li>
+															<li class="dropdown-item">정렬 해제</li>
+														</ul>
+													</div>
 												</div>
 											</div>
-											<div class="jm-title col-lg-2" id="tmember">
-												<span class="card-subtitle text-muted">담당자</span>
-												<div class="mini-pop">
-													<ul>
-														<li>오름차순</li>
-														<li>내림차순</li>
-														<li>정렬 해제</li>
-													</ul>
+											<div class="dropdown col-lg-1">
+												<div class="jm-title" id="tno">
+													<span class="card-subtitle text-muted dropdown-toggle"
+														data-bs-toggle="dropdown" >담당자</span>
+													<div class="mini-pop dropdown-menu dropdown-menu-end">
+														<ul>
+															<li class="dropdown-item">오름차순</li>
+															<li class="dropdown-item">내림차순</li>
+															<li class="dropdown-item">정렬 해제</li>
+														</ul>
+													</div>
 												</div>
 											</div>
-											<div class="jm-title col-lg-2" id="tstartdate">
-												<span class="card-subtitle text-muted">시작일</span>
-												<div class="mini-pop">
-													<ul>
-														<li>오름차순</li>
-														<li>내림차순</li>
-														<li>정렬 해제</li>
-													</ul>
+											<div class="dropdown col-lg-1">
+												<div class="jm-title" id="tno">
+													<span class="card-subtitle text-muted dropdown-toggle"
+														data-bs-toggle="dropdown" >시작일</span>
+													<div class="mini-pop dropdown-menu dropdown-menu-end">
+														<ul>
+															<li class="dropdown-item">오름차순</li>
+															<li class="dropdown-item">내림차순</li>
+															<li class="dropdown-item">정렬 해제</li>
+														</ul>
+													</div>
 												</div>
 											</div>
-											<div class="jm-title col-lg-auto" id="tenddate">
-												<span class="card-subtitle text-muted">마감일</span>
-												<div class="mini-pop">
-													<ul>
-														<li>오름차순</li>
-														<li>내림차순</li>
-														<li>정렬 해제</li>
-													</ul>
+											<div class="dropdown col-lg-1">
+												<div class="jm-title" id="tno">
+													<span class="card-subtitle text-muted dropdown-toggle"
+														data-bs-toggle="dropdown" >마감일</span>
+													<div class="mini-pop dropdown-menu dropdown-menu-end">
+														<ul>
+															<li class="dropdown-item">오름차순</li>
+															<li class="dropdown-item">내림차순</li>
+															<li class="dropdown-item">정렬 해제</li>
+														</ul>
+													</div>
 												</div>
 											</div>
-											<div class="jm-title col-lg-auto" id="tdate">
-												<span class="card-subtitle text-muted">등록일</span>
-												<button>
-													<i></i>
-												</button>
-												<div class="mini-pop">
-													<ul>
-														<li>오름차순</li>
-														<li>내림차순</li>
-														<li>정렬 해제</li>
-													</ul>
+											<div class="dropdown col-lg-1">
+												<div class="jm-title" id="tno">
+													<span class="card-subtitle text-muted dropdown-toggle"
+														data-bs-toggle="dropdown" >등록일</span>
+													<div class="mini-pop dropdown-menu dropdown-menu-end">
+														<ul>
+															<li class="dropdown-item">오름차순</li>
+															<li class="dropdown-item">내림차순</li>
+															<li class="dropdown-item">정렬 해제</li>
+														</ul>
+													</div>
 												</div>
 											</div>
-											<div class="jm-empty-cell col-lg-auto">빈공간</div>
+											
+											<div class="jm-empty-cell col-lg-auto text-muted">빈공간</div>
 										</div>
 									</div>
 									<ul id="taskContentUI">
@@ -430,19 +445,19 @@ ul {
 												<div class="jm-wrap-project-title">
 													<span class="jm-project-title">프로젝트명</span> <span
 														class="jm-project-task-count">(0)업무개수</span>
-													<button class="jm-project-button">바로가기버튼</button>
+													<button class="jm-project-button">바로가기</button>
 												</div>
 											</div>
 											<ul class="jm-inner-task">
 												<div class="jm-wrap-section-task-title">
 													<ul class="jm-serction-task-title">
-														<li class="plusplus">
-															<div class="jm-title-tno">내용</div>
-															<div class="jm-title-tstatus">상태</div>
-															<div class="jm-title-tmember">담당자</div>
-															<div class="jm-title-tstartdate">시작일</div>
-															<div class="jm-title-tenddate">마감일</div>
-															<div class="jm-empty-cell">등록일</div>
+														<li class="plusplus row">
+															<div class="jm-title-tno col-lg-4">프로젝트명</div>
+															<div class="jm-title-tstatus col-lg-1">상태</div>
+															<div class="jm-title-tmember col-lg-1">담당자</div>
+															<div class="jm-title-tstartdate col-lg-1">시작일</div>
+															<div class="jm-title-tenddate col-lg-1">마감일</div>
+															<div class="jm-empty-cell col-lg-1">등록일</div>
 														</li>
 													</ul>
 												</div>
