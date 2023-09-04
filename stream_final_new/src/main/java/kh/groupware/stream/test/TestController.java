@@ -7,8 +7,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class TestController {
 	@GetMapping("test/full")
-	public ModelAndView testFull(ModelAndView mv) {
-		mv.setViewName("test/fullcalendar");
+	public ModelAndView FullCalendar(ModelAndView mv) {
+		mv.setViewName("calendar/calendar");
 		
 		return mv;
 	}
