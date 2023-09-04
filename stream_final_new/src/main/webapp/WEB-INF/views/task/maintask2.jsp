@@ -359,8 +359,10 @@
 											<!-- dropdown -->
 											<div class="dropdown col-lg-4">
 												<div class="jm-title" id="tno">
-													<span class="card-subtitle text-muted dropdown-toggle"
-														data-bs-toggle="dropdown" >업무명</span>
+													<div class="card-subtitle text-muted dropdown-toggle"
+														data-bs-toggle="dropdown" >
+														<span>업무명</span>
+													</div>
 													<div class="mini-pop dropdown-menu dropdown-menu-end">
 														<ul>
 															<li class="dropdown-item">오름차순</li>
@@ -372,8 +374,10 @@
 											</div>
 											<div class="dropdown col-lg-1">
 												<div class="jm-title" id="tno">
-													<span class="card-subtitle text-muted dropdown-toggle"
-														data-bs-toggle="dropdown" >상태</span>
+													<div class="card-subtitle text-muted dropdown-toggle"
+														data-bs-toggle="dropdown" >
+														<span>상태</span>
+													</div>
 													<div class="mini-pop dropdown-menu dropdown-menu-end">
 														<ul>
 															<li class="dropdown-item">오름차순</li>
@@ -385,8 +389,10 @@
 											</div>
 											<div class="dropdown col-lg-1">
 												<div class="jm-title" id="tno">
-													<span class="card-subtitle text-muted dropdown-toggle"
-														data-bs-toggle="dropdown" >담당자</span>
+													<div class="card-subtitle text-muted dropdown-toggle"
+														data-bs-toggle="dropdown" >
+														<span>담당자</span>
+													</div>
 													<div class="mini-pop dropdown-menu dropdown-menu-end">
 														<ul>
 															<li class="dropdown-item">오름차순</li>
@@ -398,8 +404,10 @@
 											</div>
 											<div class="dropdown col-lg-1">
 												<div class="jm-title" id="tno">
-													<span class="card-subtitle text-muted dropdown-toggle"
-														data-bs-toggle="dropdown" >시작일</span>
+													<div class="card-subtitle text-muted dropdown-toggle"
+														data-bs-toggle="dropdown" >
+														<span>시작일</span>
+													</div>
 													<div class="mini-pop dropdown-menu dropdown-menu-end">
 														<ul>
 															<li class="dropdown-item">오름차순</li>
@@ -411,8 +419,10 @@
 											</div>
 											<div class="dropdown col-lg-1">
 												<div class="jm-title" id="tno">
-													<span class="card-subtitle text-muted dropdown-toggle"
-														data-bs-toggle="dropdown" >마감일</span>
+													<div class="card-subtitle text-muted dropdown-toggle"
+														data-bs-toggle="dropdown" >
+														<span>마감일</span>
+													</div>
 													<div class="mini-pop dropdown-menu dropdown-menu-end">
 														<ul>
 															<li class="dropdown-item">오름차순</li>
@@ -424,8 +434,10 @@
 											</div>
 											<div class="dropdown col-lg-1">
 												<div class="jm-title" id="tno">
-													<span class="card-subtitle text-muted dropdown-toggle"
-														data-bs-toggle="dropdown" >등록일</span>
+													<div class="card-subtitle text-muted dropdown-toggle"
+														data-bs-toggle="dropdown" >
+														<span>등록일</span>
+													</div>
 													<div class="mini-pop dropdown-menu dropdown-menu-end">
 														<ul>
 															<li class="dropdown-item">오름차순</li>
