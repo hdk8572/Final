@@ -27,6 +27,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
 	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
 <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,31 +60,36 @@
 									<div class="text-center">
 										<h1>Stream로고 들어갑니다</h1>
 									</div>
-									<form>
-										<div class="mb-3">
-											<label class="form-label">Username</label> <input
-												class="form-control form-control-lg" type="email"
-												name="email" placeholder="E-mail" />
-										</div>
-										<div class="mb-3">
-											<label class="form-label">Password</label> <input
-												class="form-control form-control-lg" type="password"
-												name="password" placeholder="비밀번호" /> <small> <a
-												href="index.html">비밀번호 찾기</a>
-											</small>
-										</div>
-										<div>
-											<label class="form-check"> <input
-												class="form-check-input" type="checkbox" value="remember-me"
-												name="remember-me" checked> <span
-												class="form-check-label"> 자동 로그인 </span>
-											</label>
-										</div>
-										<div class="text-center mt-3">
-											<a href="index.html" class="btn btn-lg btn-primary">로그인</a>
-											<!-- <button type="submit" class="btn btn-lg btn-primary">Sign in</button> -->
-										</div>
-									</form>
+									<div>
+										<form id="frmLogin">
+											<div class="mb-3">
+
+												<label class="form-label">Username</label> <input
+													class="form-control form-control-lg" type="email"
+													name="userId" placeholder="E-mail" required="required" />
+											</div>
+											<div class="mb-3">
+												<label class="form-label">Password</label> <input
+													class="form-control form-control-lg" type="password"
+													name="password" placeholder="비밀번호" required="required" />
+												<small> <a href="index.html">비밀번호 찾기</a>
+												</small>
+											</div>
+											<div>
+												<label class="form-check"> <input
+													class="form-check-input" type="checkbox"
+													value="remember-me" name="remember-me" checked> <span
+													class="form-check-label"> 자동 로그인 </span>
+												</label>
+											</div>
+											<div class="text-center mt-3">
+												<!-- <a href="index.html" class="btn btn-lg btn-primary">로그인</a>-->
+												<button type="button" class="btn btn-lg btn-primary login">로그인</button>
+
+											</div>
+										</form>
+									</div>
+
 								</div>
 							</div>
 						</div>
@@ -93,7 +99,21 @@
 			</div>
 		</div>
 	</main>
+	<script>
+		$(".btn.login").click(btnLoginClickHandler);
+		function btnLoginClickHandler() {
+			console.log($("#frmLogin").serialize());
 
+			$.ajax({
+				url : "${pageContext.request.contextPath}/login",
+				type : "post",
+				data : $("#frmLogin").serialize(),
+				success : function(result) {
+					console.log(result);
+				}
+			});
+		}
+	</script>
 	<script src="js/app.js"></script>
 
 </body>

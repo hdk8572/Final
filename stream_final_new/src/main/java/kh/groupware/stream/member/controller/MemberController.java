@@ -1,22 +1,38 @@
 package kh.groupware.stream.member.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import kh.groupware.stream.member.model.service.MemberService;
+import kh.groupware.stream.member.model.vo.MemberVo;
 
 @Controller
 public class MemberController {
+	
+	@Autowired
+	private MemberService memberService;
 	
 	@GetMapping("/newmember")
 	public ModelAndView newMember(ModelAndView mv) {
 		mv.setViewName("login/newmember");
 		return mv;
 	}
-	
 	@GetMapping("/login")
-	public ModelAndView logIn(ModelAndView mv) {
+	public ModelAndView login(ModelAndView mv) {
 		mv.setViewName("login/login");
 		return mv;
+	}
+	
+	@PostMapping("/login")
+	@ResponseBody
+	public String login(Model model, MemberVo mvo) {
+		return memberService.selectOne(mvo);
+
 	}
 	
 	

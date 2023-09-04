@@ -1,5 +1,8 @@
 package kh.groupware.stream.member.model.vo;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemberVo {
 //	USERID    NOT NULL VARCHAR2(40) 
 //	DEPTNO    NOT NULL VARCHAR2(10) 
@@ -11,7 +14,7 @@ public class MemberVo {
 //	MPHONE             VARCHAR2(20) 
 //	MRANK              VARCHAR2(12) 
 	
-	private String userId;
+	private String userId; 
 	private String deptNo;
 	private String cCode;
 	private String password;
@@ -45,6 +48,7 @@ public class MemberVo {
 		this.mPhone = mPhone;
 		this.mRank = mRank;
 	}
+
 
 	public String getUserId() {
 		return userId;

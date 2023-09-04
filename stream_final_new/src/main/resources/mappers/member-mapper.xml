@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
-	<select id="selectOne" resultType="MemberVo">
+	<select id="selectOne" resultType="string" parameterType="MemberVo">
 		SELECT MNAME FROM USERS WHERE
-		USERID= #{userid} AND PASSWORD= #{password}
+		USERID= #{userId} AND PASSWORD= #{password}
 	</select>
 	
 </mapper>
