@@ -12,5 +12,8 @@ public class TestController {
 		
 		return mv;
 	}
-
+	@GetMapping("/indexchat")
+	public String maintask() {
+		return "/indexchat";
+	}
 }
