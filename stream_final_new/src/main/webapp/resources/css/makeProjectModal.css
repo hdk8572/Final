@@ -20,11 +20,28 @@
   float: right;
   padding: 0px;
   border: 1px solid #888;
-  width: 40%; /* Could be more or less, depending on screen size */
+  width: 40%;  /* Could be more or less, depending on screen size */ 
+  /* width: calc(100% - 65px); Subtract the width of the modal header from the full width */
   height: 100%;
   border-radius: 40px 0 0 40px;
   
+  	animation-name: slideInRight; 
+	animation-duration: 0.5s; 
+	animation-timing-function: ease-in-out; 
+	
+
 }
+
+@keyframes slideInRight {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(100%);
+	}
+}
+
+
 
 .modal-header {
 	height: 65px;
@@ -49,7 +66,21 @@
   font-size: 28px;
   font-weight: bold;
   padding-right: 10px;
+
+  	animation-naZme: slideOutRight;
+  	animation-duration: 0.5s; 
+	animation-timing-function: ease-in-out; 
+
 }
+@keyframes slideOutRight {
+	from {
+		transform: translateX(100%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
 
 .close:hover,
 .close:focus {
