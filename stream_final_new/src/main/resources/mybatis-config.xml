@@ -18,4 +18,5 @@
 		<mapper resource="mappers/member-mapper.xml"/>
 		<mapper resource="mappers/company-mapper.xml"/>
 	</mappers>	
+	
 </configuration>

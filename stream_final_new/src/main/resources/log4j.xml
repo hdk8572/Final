@@ -12,7 +12,7 @@
 	
 	<!-- Application Loggers -->
 	<logger name="kh.groupware.stream">
-		<level value="info" />
+		<level value="trace" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
