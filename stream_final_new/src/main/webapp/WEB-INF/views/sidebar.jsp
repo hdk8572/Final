@@ -21,7 +21,7 @@
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="/test/maintask2">
+						<a class="sidebar-link" href="task/maintask">
               <i class="align-middle" data-feather="square"></i> <span class="align-middle">전체업무</span>
             </a>
 					</li>
