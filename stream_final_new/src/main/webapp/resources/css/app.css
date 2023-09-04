@@ -4,7 +4,15 @@
  * Copyright 2021 AdminKit
  * Licensed under MIT (https://github.com/adminkit/adminkit/blob/master/LICENSE)
  */
-:root { -
+
+/*font IBM Plex Sans KR*/
+/*font-family: 'IBM Plex Sans KR', sans-serif;*/
+<
+link rel ="preconnect " href ="https: //fonts.googleapis.com "> <link rel
+	="preconnect " href ="https: //fonts.gstatic.com " crossorigin> <link
+	href ="https: //fonts.googleapis.com /css2 ?family =IBM+Plex+Sans+KR:wght
+	@100 ;200 ;300 ;400 ;500 ;600 ;700 &display =swap "
+	rel ="stylesheet ">:root { -
 	-bs-blue: #3b7ddd; -
 	-bs-indigo: #0a0a0a; -
 	-bs-purple: #6f42c1; -
@@ -64,7 +72,8 @@
 }
 
 *, :after, :before {
-	box-sizing: border-box
+	box-sizing: border-box;
+	font-family: 'IBM Plex Sans KR', sans-serif;
 }
 
 @media ( prefers-reduced-motion :no-preference) {
@@ -848,10 +857,9 @@ progress {
 		width: 41.66667%
 	}
 	.col-sm-6 {
-	    flex: 0 0 auto;
-    	width: 30%;
-   		margin-right: 24px;
-   		
+		flex: 0 0 auto;
+		width: 30%;
+		margin-right: 24px;
 	}
 	.col-sm-7 {
 		flex: 0 0 auto;
@@ -2236,7 +2244,7 @@ textarea.form-control-lg {
 }
 
 .form-check-input:disabled ~.form-check-label, .form-check-input[disabled]
-	~.form-check-label {
+	 ~.form-check-label {
 	opacity: .5
 }
 
@@ -2467,7 +2475,7 @@ textarea.form-control-lg {
 }
 
 .form-floating>.form-control:focus ~label, .form-floating>.form-control:not(:placeholder-shown)
-	~label, .form-floating>.form-select ~label {
+	 ~label, .form-floating>.form-select ~label {
 	opacity: .65;
 	transform: scale(.85) translateY(-.5rem) translateX(.15rem)
 }
@@ -2577,7 +2585,7 @@ textarea.form-control-lg {
 }
 
 .is-valid ~.valid-feedback, .is-valid ~.valid-tooltip, .was-validated :valid
-	~.valid-feedback, .was-validated :valid ~.valid-tooltip {
+	 ~.valid-feedback, .was-validated :valid ~.valid-tooltip {
 	display: block
 }
 
@@ -2614,7 +2622,7 @@ textarea.form-control-lg {
 }
 
 .form-check-input.is-valid ~.form-check-label, .was-validated .form-check-input:valid
-	~.form-check-label {
+	 ~.form-check-label {
 	color: #1cbb8c
 }
 
@@ -2697,7 +2705,7 @@ textarea.form-control-lg {
 }
 
 .form-check-input.is-invalid ~.form-check-label, .was-validated .form-check-input:invalid
-	~.form-check-label {
+	 ~.form-check-label {
 	color: #dc3545
 }
 
@@ -2769,7 +2777,7 @@ textarea.form-control-lg {
 	background-color: #008966;
 	border-color: #2f64b1;
 	color: #fff;
-    transition: 0.7s;
+	transition: 0.7s;
 }
 
 .btn-check:focus+.btn-primary, .btn-primary:focus {
@@ -4450,10 +4458,9 @@ textarea.form-control-lg {
 .card-body {
 	flex: 1 1 auto;
 	padding: 1.25rem;
-	
 }
 
-.card > a {
+.card>a {
 	text-decoration: none;
 }
 
@@ -6033,7 +6040,7 @@ textarea.form-control-lg {
 	margin-bottom: 1rem !important;
 }
 
-.mb-3 > button {
+.mb-3>button {
 	background-color: #009b77;
 }
 
@@ -11708,8 +11715,9 @@ body {
 
 .sidebar-link i, .sidebar-link svg, a.sidebar-link i, a.sidebar-link svg
 	{
-/* 	color: #009b77;
+	/* 	color: #009b77;
 	margin-right: .75rem */
+	
 }
 
 .sidebar-link:focus {
@@ -11718,25 +11726,24 @@ body {
 
 .sidebar-link:hover, .sidebar-link:hover i, .sidebar-link:hover svg {
 	/* color: rgba(233, 236, 239, .75); */
+	
 }
 
 .sidebar-item.active .sidebar-link:hover, .sidebar-item.active>.sidebar-link
 	{
-/* 	background: linear-gradient(90deg, rgba(59, 125, 221, .1),
+	/* 	background: linear-gradient(90deg, rgba(59, 125, 221, .1),
 		rgba(59, 125, 221, .0875) 50%, transparent);
 	border-left-color: #009b77;
 	color: white; */
+	
 }
-
-
-
 
 .sidebar-item.active .sidebar-link:hover i, .sidebar-item.active .sidebar-link:hover svg,
 	.sidebar-item.active>.sidebar-link i, .sidebar-item.active>.sidebar-link svg
 	{
 	color: #009b77;
 }
-	
+
 .sidebar-brand {
 	color: #009b77;
 	display: block;
@@ -11766,19 +11773,19 @@ body {
 }
 
 .sidebar-brand-new {
-	    padding: 1.15rem 1.5rem;
-	    height: 64.39px;
+	padding: 1.15rem 1.5rem;
+	height: 64.39px;
 }
 
 .align-brand-middle {
-	    padding: 1.15rem 1.5rem;
-	    height: 64.39px;	
+	padding: 1.15rem 1.5rem;
+	height: 64.39px;
 }
 
-.align-brand-middle > a {
-	    color: #009b77;
-	    text-decoration: none;	
-	    transform: scale(0.5);
+.align-brand-middle>a {
+	color: #009b77;
+	text-decoration: none;
+	transform: scale(0.5);
 }
 
 @media ( min-width :1px) and (max-width:991.98px) {
@@ -12584,7 +12591,7 @@ keyframes jvm-line-animation { 0%{
 .flatpickr-current-month .numInputWrapper {
 	display: inline-block;
 	width: 6ch;
-	width: 7ch\0
+	width: 7ch\0
 }
 
 .flatpickr-current-month .numInputWrapper span.arrowUp:after {
