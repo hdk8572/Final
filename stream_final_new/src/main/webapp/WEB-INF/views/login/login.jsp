@@ -21,7 +21,7 @@
 <link rel="canonical"
 	href="https://demo-basic.adminkit.io/pages-sign-in.html" />
 
-<title>Sign In | AdminKit Demo</title>
+<title>로그인</title>
 
 <link href="css/app.css" rel="stylesheet">
 <link
