@@ -9,15 +9,16 @@ public class MemberController {
 	
 	@GetMapping("/newmember")
 	public ModelAndView newMember(ModelAndView mv) {
-		mv.setViewName("login/newmember.jsp");
+		mv.setViewName("login/newmember");
 		return mv;
 	}
 	
 	@GetMapping("/login")
 	public ModelAndView logIn(ModelAndView mv) {
-		mv.setViewName("login/login.jsp");
+		mv.setViewName("login/login");
 		return mv;
 	}
+	
 	
 	//post 방식에서 return String
 	//ajax 자료형 그자체

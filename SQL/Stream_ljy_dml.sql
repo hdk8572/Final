@@ -1,8 +1,8 @@
 --사용하셔도 되지만 수정은 말아주세요
 
 
-INSERT INTO COMPANY VALUES ('C01', '올리브영');
-INSERT INTO COMPANY VALUES ('C02', '교촌치킨');
+INSERT INTO COMPANY VALUES ('C01', '올리브영', NULL, NULL, 'oliveyoung');
+INSERT INTO COMPANY VALUES ('C02', '교촌치킨', NULL, NULL, 'kyochon');
 
 INSERT INTO DEPT VALUES ('A', 'C01', '스킨케어');
 INSERT INTO DEPT VALUES ('B', 'C01', '헤어케어');

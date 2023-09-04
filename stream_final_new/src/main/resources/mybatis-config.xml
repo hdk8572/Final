@@ -4,13 +4,18 @@
 
 	<settings>
 		<setting name="jdbcTypeForNull" value="NULL"/>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 
 	<typeAliases>
 		<typeAlias type="kh.groupware.stream.ptask.model.vo.PtaskVo" alias="PtaskVo"/>
+		<typeAlias type="kh.groupware.stream.member.model.vo.MemberVo" alias="MemberVo"/>
+		<typeAlias type="kh.groupware.stream.company.model.vo.CompanyVo" alias="CompanyVo"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mappers/ptask-mappers.xml"/>
+		<mapper resource="mappers/member-mapper.xml"/>
+		<mapper resource="mappers/company-mapper.xml"/>
 	</mappers>	
 </configuration>

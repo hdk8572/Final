@@ -7,7 +7,7 @@ public class CompanyContoller {
 
 	@GetMapping("/newcompany")
 	public ModelAndView newCompany(ModelAndView mv) {
-		mv.setViewName("login/newcompany.jsp");
+		mv.setViewName("login/newcompany");
 		return mv;
 	}
 }
