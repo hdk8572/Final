@@ -51,7 +51,7 @@
 }
 
 /* 일정추가 css */
-#modal {
+#cmodal {
 	display: none;
 	position: relative;
 	width: 100%;
@@ -59,17 +59,17 @@
 	z-index: 1;
 }
 
-#modal h2 {
+#cmodal h2 {
 	margin: 0;
 }
 
-#modal button {
+#cmodal button {
 	display: inline-block;
 	width: 100px;
 	margin-left: calc(100% - 100px - 10px);
 }
 
-#modal .modal_content {
+#cmodal .cmodal_content {
 	width: 300px;
 	margin: 100px auto;
 	padding: 20px 10px;
@@ -77,7 +77,7 @@
 	border: 2px solid #666;
 }
 
-#modal .modal_layer {
+#cmodal .modal_layer {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -214,13 +214,18 @@
 											<button type="button" id="modal_opne_btn">+일정추가</button>
 										</div>
 												
-										<div id="modal">
-											<div class="modal_content">
-												<h2>모달 창</h2>
-												<p>모달 창 입니다.</p>
-												<button type="button" id="modal_close_btn">모달 창 닫기</button>
-											</div>
+										<div id="cmodal">
+											<div class="cmodal_content">
+												<div class="create-post-header">
+													<div class="header-wrap">
+														<h4>일정 작성</h4>
+															<p>모달 창 입니다.</p>
+															<button type="button" id="modal_close_btn">모달 창 닫기</button>
+													</div>
+												</div>
+											
 											<div class="modal_layer"></div>
+											</div>
 										</div>
 
 		
