@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
-
+<html>
 <head>
-	<meta charset="utf-8">
+ 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
@@ -16,18 +16,13 @@
 
 	<title>AdminKit Demo - Bootstrap 5 Admin Template</title>
 	
-	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-	<!-- css 적용할 것들 -->
 	<link href="css/app.css" rel="stylesheet">
-	<link href="css/makeProjectModal.css" rel="stylesheet">
-	<link href="css/index.css" rel="stylesheet">
-	
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<link href="css/makeProjectModal.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 	
-	<!-- Bootstrap for Modal CDN -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-	
+	<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 </head>
 
 <body>
@@ -40,6 +35,7 @@
 				<a class="sidebar-toggle js-sidebar-toggle">
           <i class="hamburger align-self-center"></i>
         </a>
+        
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
 						<li class="nav-item dropdown">
@@ -197,8 +193,17 @@
 			</nav>
 			<main class="content">
 				<div class="container-fluid p-0">
-					<h1 class="h3 mb-3"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">프로젝트 추가+</button></h1>
-						<%@ include file="/WEB-INF/views/modal.jsp" %>
+					
+					<h1 class="h3 mb-3">
+					<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
+						프로젝트 추가+
+					</button> -->
+					<button class="btn btn-primary" id="myBtn">Open Modal</button>
+					</h1>
+						
+					<%@ include file="/WEB-INF/views/modal.jsp" %>
+						
+					
 						<div class="row">
 						<div class="col-xl-6 col-xxl-5 d-flex">
 							<div class="w-100">
@@ -211,6 +216,7 @@
 														<div class="col mt-0">
 															<h5 class="card-title">Project</h5>
 														</div>
+														
 														<div class="col-auto">
 															<div class="stat text-primary">
 																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck align-middle"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
@@ -389,8 +395,10 @@
 							</div>
 						</div>
 					</div>
+					
 				</div>
 			</main>
+			
 			<%@ include file="/WEB-INF/views/footer.jsp" %>			
 		</div>
 	</div>
@@ -451,7 +459,31 @@
 	});
 	</script>
 	<script>
- 	
+	// Get the modal
+	var modal = document.getElementById("myModal");
+
+	// Get the button that opens the modal
+	var btn = document.getElementById("myBtn");
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+
+	// When the user clicks on the button, open the modal
+	btn.onclick = function() {
+	  modal.style.display = "block";
+	}
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+/* 	window.onclick = function(event) {
+	  if (event.target == modal) {
+	    modal.style.display = "none";
+	  }
+	} */
 	</script>
 </body>
 </html>
