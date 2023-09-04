@@ -1,4 +1,4 @@
-package kh.groupware.stream.login.model.vo;
+package kh.groupware.stream.member.model.vo;
 
 public class LoginVo {
 //	USERID    NOT NULL VARCHAR2(40) 
