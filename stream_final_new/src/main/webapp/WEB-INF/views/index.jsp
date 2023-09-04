@@ -17,8 +17,17 @@
 	<title>AdminKit Demo - Bootstrap 5 Admin Template</title>
 	
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<!-- css 적용할 것들 -->
 	<link href="css/app.css" rel="stylesheet">
+	<link href="css/makeProjectModal.css" rel="stylesheet">
+	<link href="css/index.css" rel="stylesheet">
+	
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	
+	<!-- Bootstrap for Modal CDN -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+	
 </head>
 
 <body>
@@ -186,28 +195,207 @@
 					</ul>
 				</div>
 			</nav>
-
 			<main class="content">
 				<div class="container-fluid p-0">
-					<h1 class="h3 mb-3"><strong>업무</strong>
+					<h1 class="h3 mb-3"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">프로젝트 추가+</button></h1>
+						<%@ include file="/WEB-INF/views/modal.jsp" %>
+						<div class="row">
+						<div class="col-xl-6 col-xxl-5 d-flex">
+							<div class="w-100">
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="card">
+											<a href="">
+												<div class="card-body">
+													<div class="row">
+														<div class="col mt-0">
+															<h5 class="card-title">Project</h5>
+														</div>
+														<div class="col-auto">
+															<div class="stat text-primary">
+																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck align-middle"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+															</div>
+														</div>
+													</div>
+													<h1 class="mt-1 mb-3">KH정보교육원</h1>
+													<div class="mb-0">
+														<span class="text-muted">진행 중</span>
+													</div>
+												</div>
+											</a>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="card">
+											<div class="card-body">
+												<div class="row">
+													<div class="col mt-0">
+														<h5 class="card-title">Project</h5>
+													</div>
+													<div class="col-auto">
+														<div class="stat text-primary">
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck align-middle"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+														</div>
+													</div>
+												</div>
+												<h1 class="mt-1 mb-3">KH정보교육원</h1>
+												<div class="mb-0">
+													<span class="text-muted">진행 중</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="card">
+											<div class="card-body">
+												<div class="row">
+													<div class="col mt-0">
+														<h5 class="card-title">Project</h5>
+													</div>
+													<div class="col-auto">
+														<div class="stat text-primary">
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck align-middle"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+														</div>
+													</div>
+												</div>
+												<h1 class="mt-1 mb-3">KH정보교육원</h1>
+												<div class="mb-0">
+													<span class="text-muted">진행 중</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="card">
+											<div class="card-body">
+												<div class="row">
+													<div class="col mt-0">
+														<h5 class="card-title">Project</h5>
+													</div>
+													<div class="col-auto">
+														<div class="stat text-primary">
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck align-middle"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+														</div>
+													</div>
+												</div>
+												<h1 class="mt-1 mb-3">KH정보교육원</h1>
+												<div class="mb-0">
+													<span class="text-muted">진행 중</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="card">
+											<div class="card-body">
+												<div class="row">
+													<div class="col mt-0">
+														<h5 class="card-title">Project</h5>
+													</div>
+													<div class="col-auto">
+														<div class="stat text-primary">
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck align-middle"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+														</div>
+													</div>
+												</div>
+												<h1 class="mt-1 mb-3">KH정보교육원</h1>
+												<div class="mb-0">
+													<span class="text-muted">진행 중</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="card">
+											<div class="card-body">
+												<div class="row">
+													<div class="col mt-0">
+														<h5 class="card-title">Project</h5>
+													</div>
+													<div class="col-auto">
+														<div class="stat text-primary">
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck align-middle"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+														</div>
+													</div>
+												</div>
+												<h1 class="mt-1 mb-3">KH정보교육원</h1>
+												<div class="mb-0">
+													<span class="text-muted">진행 중</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="card">
+											<div class="card-body">
+												<div class="row">
+													<div class="col mt-0">
+														<h5 class="card-title">Project</h5>
+													</div>
+													<div class="col-auto">
+														<div class="stat text-primary">
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck align-middle"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+														</div>
+													</div>
+												</div>
+												<h1 class="mt-1 mb-3">KH정보교육원</h1>
+												<div class="mb-0">
+													<span class="text-muted">진행 중</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="card">
+											<div class="card-body">
+												<div class="row">
+													<div class="col mt-0">
+														<h5 class="card-title">Project</h5>
+													</div>
+													<div class="col-auto">
+														<div class="stat text-primary">
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck align-middle"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+														</div>
+													</div>
+												</div>
+												<h1 class="mt-1 mb-3">KH정보교육원</h1>
+												<div class="mb-0">
+													<span class="text-muted">진행 중</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="card">
+											<div class="card-body">
+												<div class="row">
+													<div class="col mt-0">
+														<h5 class="card-title">Project</h5>
+													</div>
+													<div class="col-auto">
+														<div class="stat text-primary">
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck align-middle"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+														</div>
+													</div>
+												</div>
+												<h1 class="mt-1 mb-3">KH정보교육원</h1>
+												<div class="mb-0">
+													<span class="text-muted">진행 중</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</main>
-
 			<%@ include file="/WEB-INF/views/footer.jsp" %>			
 		</div>
 	</div>
 
 	<script src="js/app.js"></script>
-	
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-		});
-	</script>
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-		});
-	</script>
-	
 	<script>
 	$(document).ready(function() {
 		  $(".sidebar-link").mouseover(function() {
@@ -232,6 +420,38 @@
 		    });
 		  });
 		});
+	</script>
+	<script>
+	$(document).ready(function() {
+		$(".card-body").mouseover(function() {
+			$(this).css({
+				"box-shadow":"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
+			});
+		});
+		$(".card-body").mouseout(function() {
+			$(this).css({
+				"box-shadow":""
+			});
+		});
+	});
+	</script>
+	<script>
+	// click on 라벨 추가 모달 열기
+	$(document).on('click', '#add-btn', function (e) {
+	  console.log("click event");
+	  $('#modal').addClass('show');
+	 
+	});
+	 
+	// 모달 닫기
+	$(document).on('click', '#close_btn', function (e) {
+	  console.log("click event");
+	  $('#modal').removeClass('show');
+	 
+	});
+	</script>
+	<script>
+ 	
 	</script>
 </body>
 </html>
