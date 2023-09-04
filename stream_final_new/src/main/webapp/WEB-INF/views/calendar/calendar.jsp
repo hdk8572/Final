@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,20 +23,19 @@
 
 <link href="${pageContext.request.contextPath }/css/app.css"
 	rel="stylesheet">
+
 <link
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
 	rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
-<!-- //fullcalendar css -->
+<!-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> -->
+
+<!-- fullcalendar  -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
-
-<!-- //fullcalendar script -->
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-
 <!-- //fullcalendar 언어 설정관련 script -->
 <script
 	src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
@@ -51,7 +51,7 @@
 }
 
 /* 일정추가 css */
-#modal {
+#cmodal {
 	display: none;
 	position: relative;
 	width: 100%;
@@ -59,25 +59,25 @@
 	z-index: 1;
 }
 
-#modal h2 {
+#cmodal h2 {
 	margin: 0;
 }
 
-#modal button {
+#cmodal button {
 	display: inline-block;
 	width: 100px;
 	margin-left: calc(100% - 100px - 10px);
 }
 
-#modal .modal_content {
-	width: 300px;
+#cmodal .cmodal_content {
+	width: 674px;
 	margin: 100px auto;
 	padding: 20px 10px;
 	background: #fff;
 	border: 2px solid #666;
 }
 
-#modal .modal_layer {
+#cmodal .modal_layer {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -89,10 +89,10 @@
 </style>
 </head>
 <body>
-<div class="wrapper">
+	<div class="wrapper">
 		<%@include file="/WEB-INF/views/calendar/calendar-side.jsp"%>
 		<div class="main">
-	<nav class="navbar navbar-expand navbar-light navbar-bg">
+			<nav class="navbar navbar-expand navbar-light navbar-bg">
 				<a class="sidebar-toggle js-sidebar-toggle"> <i
 					class="hamburger align-self-center"></i>
 				</a>
@@ -284,22 +284,40 @@
 											</div>
 										</div>
 										<!-- 모달창  -->
-										<div id="root">
+										<div id="croot">
 											<button type="button" id="modal_opne_btn">+일정추가</button>
 										</div>
-												
-										<div id="modal">
-											<div class="modal_content">
-												<h2>모달 창</h2>
-												<p>모달 창 입니다.</p>
-												<button type="button" id="modal_close_btn">모달 창 닫기</button>
+
+										<div id="cmodal">
+											<div class="cmodal_content">
+												<div class="create-post-header">
+													<div class="header-wrap">
+														<h4>일정 작성</h4>
+														<div class="dropdown-center">
+															<button class="btn btn-secondary dropdown-toggle"
+																type="button" data-bs-toggle="dropdown"
+																aria-expanded="false">Centered</button>
+															<ul class="dropdown-menu">
+																<li><a class="dropdown-item" href="#">Action</a></li>
+																<li><a class="dropdown-item" href="#">Action
+																		two</a></li>
+																<li><a class="dropdown-item" href="#">Action
+																		three</a></li>
+															</ul>
+														</div>
+													</div>
+													<p>모달 창 입니다.</p>
+													<button type="button" id="modal_close_btn">모달 창 닫기</button>
+
+												</div>
+
+												<div class="modal_layer"></div>
 											</div>
-											<div class="modal_layer"></div>
 										</div>
 									</div>
 								</div>
 								<div class="ccard-body px-4">
-										<div id="calendar"></div>
+									<div id="calendar"></div>
 								</div>
 							</div>
 						</div>
@@ -308,8 +326,20 @@
 			</main>
 		</div>
 	</div>
+	<!-- <div class="title-dropdown">
+		<button class="btn btn-secondary dropdown-toggle" type="button"
+			data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+		<ul class="dropdown-menu">
+			<li><button class="dropdown-item" type="button">Action</button></li>
+			<li><button class="dropdown-item" type="button">Another
+					action</button></li>
+			<li><button class="dropdown-item" type="button">Something
+					else here</button></li>
+		</ul>
 
-<!-- 달력을 구성  -->
+	</div> -->
+
+	<!-- 달력을 구성  -->
 	<script>
 			      document.addEventListener('DOMContentLoaded', function() {
 			        var calendarEl = document.getElementById('calendar');
@@ -372,20 +402,20 @@
 			        calendar.render();
 			      });
 			</script>
-	
+
 	<!-- 모달창 -->
 	<script>
 		document.getElementById("modal_opne_btn").onclick = function() {
-        document.getElementById("modal").style.display="block";
+        document.getElementById("cmodal").style.display="block";
     	}
    
   		document.getElementById("modal_close_btn").onclick = function() {
-        document.getElementById("modal").style.display="none";
+        document.getElementById("cmodal").style.display="none";
    		}   
 	</script>
 
+	<!-- 	<script src="js/app.js"></script> -->
 
-	 <script src="js/app.js"></script> 
 	<!-- 라인 차트 생성 -->
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
@@ -457,8 +487,7 @@
 			});
 		});
 	</script>
-	
-	<!-- 파이 차트 생성  -->
+
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
 			// Pie chart
@@ -487,8 +516,6 @@
 			});
 		});
 	</script>
-	
-	<!-- 바 차트 생성  -->
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
 			// Bar chart
@@ -533,8 +560,6 @@
 			});
 		});
 	</script>
-	
-	<!-- 지도 생성,마커 표시  -->
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
 			var markers = [{
@@ -602,8 +627,6 @@
 			});
 		});
 	</script>
-	
-	<!-- 날짜 및 시간 선택 추가 -->
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
 			var date = new Date(Date.now() - 5 * 24 * 60 * 60 * 1000);

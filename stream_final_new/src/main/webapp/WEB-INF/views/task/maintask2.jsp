@@ -38,7 +38,7 @@ ul {
 	min-width: 260px;
 	background: #dfdfdf;
 }
-
+/* 
 .jm-task-title {
 	overflow: hidden;
 }
@@ -46,11 +46,15 @@ ul {
 .jm-task-title>div {
 	float: left;
 }
+.jm-serction-task-title>li{
+	overflow: hidden;
+}
 
 .jm-serction-task-title div {
 	float: left;
-}
-
+}  
+*/
+/* 
 #tno {
 	width: 500px;
 }
@@ -74,7 +78,7 @@ ul {
 
 #tdate {
 	width: 100px;
-}
+} */
 </style>
 <style>
 .mini-pop {
@@ -84,31 +88,32 @@ ul {
 .mini-pop.active {
 	display: block;
 }
+
 </style>
 <script>
 	window.onload = loadedHandler;
 	function loadedHandler() {
-		$(".jm-title").children('button').hide();
-		//$(".mini-pop").hide();
-		$(".jm-title").hover(hnHandler, hdHandler);
-		$(".jm-title").click(clickHandler);
+		//$(".jm-title").children('button').hide();
+		//$(".jm-title").hover(hnHandler, hdHandler);
+		//$(".jm-title").click(clickHandler);
 		//$(".jm-title").blur(blurHandler);
-		
+
 	}
+	/*
 	function hdHandler(e){
-		/* $(".jm-title").children('button').css("visibility", "hidden"); */
 		$(".jm-title").children('button').hide();
 		
-		if($(".mini-pop").hasClass("active")){
-			$(".mini-pop").removeClass("active");
+		if($(".mini-pop").hasClass("show")){
+			$(".mini-pop").removeClass("show");
 		}
+		
 	}
 	function hnHandler(e){
 		$(this).children("button").show();
 	}
 	function clickHandler(e){
-		$(this).children(".mini-pop").addClass("active");
-	}
+		$(this).children(".mini-pop").addClass("show");
+	} */
 </script>
 </head>
 <body>
@@ -348,54 +353,23 @@ ul {
 								</div>
 								<div class="card-body">
 									<div class="jm-rwap-task">
-										<div class="jm-task-title">
-
-											<li class="nav-item dropdown"><a
-												class="nav-icon dropdown-toggle d-inline-block d-sm-none"
-												href="#" data-bs-toggle="dropdown"> <i
-													class="align-middle" data-feather="settings"></i>
-											</a> <a class="nav-link dropdown-toggle d-none d-sm-inline-block"
-												href="#" data-bs-toggle="dropdown"> <img
-													src="http://placehold.it/40X40"
-													class="avatar img-fluid rounded me-1" alt="Charles Hall" />
-													<span class="text-dark">#사용자명</span>
-											</a>
-												<div class="dropdown-menu dropdown-menu-end">
-													<a class="dropdown-item" href="pages-profile.html"><i
-														class="align-middle me-1" data-feather="user"></i> Profile</a>
-													<a class="dropdown-item" href="#"><i
-														class="align-middle me-1" data-feather="pie-chart"></i>
-														Analytics</a>
-													<div class="dropdown-divider"></div>
-													<a class="dropdown-item" href="index.html"><i
-														class="align-middle me-1" data-feather="settings"></i>
-														Settings & Privacy</a> <a class="dropdown-item" href="#"><i
-														class="align-middle me-1" data-feather="help-circle"></i>
-														Help Center</a>
-													<div class="dropdown-divider"></div>
-													<a class="dropdown-item" href="#">Log out</a>
-												</div></li>
-
-
-
-											<div class="jm-title" id="tno">
-												<span class="card-subtitle text-muted" >업무명</span>
-												<button>
-													<i> </i>
-												</button>
-												<div class="mini-pop">
-													<ul>
-														<li>오름차순</li>
-														<li>내림차순</li>
-														<li>정렬 해제</li>
-													</ul>
+										<div class="jm-task-title row">
+											<!-- dropdown -->
+											<div class="dropdown col-lg-2">
+												<div class="jm-title" id="tno">
+													<span class="card-subtitle text-muted dropdown-toggle"
+														data-bs-toggle="dropdown" >업무명</span>
+													<div class="mini-pop dropdown-menu dropdown-menu-end">
+														<ul>
+															<li class="dropdown-item">오름차순</li>
+															<li class="dropdown-item">내림차순</li>
+															<li class="dropdown-item">정렬 해제</li>
+														</ul>
+													</div>
 												</div>
 											</div>
-											<div class="jm-title" id="tstatus">
+											<div class="jm-title col-lg-2" id="tstatus">
 												<span class="card-subtitle text-muted">상태</span>
-												<button>
-													<i></i>
-												</button>
 												<div class="mini-pop">
 													<ul>
 														<li>오름차순</li>
@@ -404,11 +378,8 @@ ul {
 													</ul>
 												</div>
 											</div>
-											<div class="jm-title" id="tmember">
+											<div class="jm-title col-lg-2" id="tmember">
 												<span class="card-subtitle text-muted">담당자</span>
-												<button>
-													<i></i>
-												</button>
 												<div class="mini-pop">
 													<ul>
 														<li>오름차순</li>
@@ -417,12 +388,9 @@ ul {
 													</ul>
 												</div>
 											</div>
-											<div class="jm-title" id="tstartdate">
+											<div class="jm-title col-lg-2" id="tstartdate">
 												<span class="card-subtitle text-muted">시작일</span>
-												<button>
-													<i></i>
-												</button>
-												<div class="mini-pop" style="display: none;">
+												<div class="mini-pop">
 													<ul>
 														<li>오름차순</li>
 														<li>내림차순</li>
@@ -430,12 +398,9 @@ ul {
 													</ul>
 												</div>
 											</div>
-											<div class="jm-title" id="tenddate">
+											<div class="jm-title col-lg-auto" id="tenddate">
 												<span class="card-subtitle text-muted">마감일</span>
-												<button>
-													<i></i>
-												</button>
-												<div class="mini-pop" style="display: none;">
+												<div class="mini-pop">
 													<ul>
 														<li>오름차순</li>
 														<li>내림차순</li>
@@ -443,12 +408,12 @@ ul {
 													</ul>
 												</div>
 											</div>
-											<div class="jm-title" tdate>
+											<div class="jm-title col-lg-auto" id="tdate">
 												<span class="card-subtitle text-muted">등록일</span>
 												<button>
 													<i></i>
 												</button>
-												<div class="mini-pop" style="display: none;">
+												<div class="mini-pop">
 													<ul>
 														<li>오름차순</li>
 														<li>내림차순</li>
@@ -456,7 +421,7 @@ ul {
 													</ul>
 												</div>
 											</div>
-											<div class="jm-empty-cell">빈공간</div>
+											<div class="jm-empty-cell col-lg-auto">빈공간</div>
 										</div>
 									</div>
 									<ul id="taskContentUI">
@@ -484,6 +449,7 @@ ul {
 											</ul>
 										</li>
 									</ul>
+
 								</div>
 							</div>
 						</div>
@@ -499,77 +465,77 @@ ul {
 	<script src="js/app.js"></script>
 
 	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
-			var gradient = ctx.createLinearGradient(0, 0, 0, 225);
-			gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
-			gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
-			// Line chart
-			new Chart(document.getElementById("chartjs-dashboard-line"), {
-				type: "line",
-				data: {
-					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-					datasets: [{
-						label: "Sales ($)",
-						fill: true,
-						backgroundColor: gradient,
-						borderColor: window.theme.primary,
-						data: [
-							2115,
-							1562,
-							1584,
-							1892,
-							1587,
-							1923,
-							2566,
-							2448,
-							2805,
-							3438,
-							2917,
-							3327
-						]
-					}]
-				},
-				options: {
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					tooltips: {
-						intersect: false
-					},
-					hover: {
-						intersect: true
-					},
-					plugins: {
-						filler: {
-							propagate: false
-						}
-					},
-					scales: {
-						xAxes: [{
-							reverse: true,
-							gridLines: {
-								color: "rgba(0,0,0,0.0)"
-							}
-						}],
-						yAxes: [{
-							ticks: {
-								stepSize: 1000
-							},
-							display: true,
-							borderDash: [3, 3],
-							gridLines: {
-								color: "rgba(0,0,0,0.0)"
-							}
+		/* 	document.addEventListener("DOMContentLoaded", function() {
+				var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
+				var gradient = ctx.createLinearGradient(0, 0, 0, 225);
+				gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
+				gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
+				// Line chart
+				new Chart(document.getElementById("chartjs-dashboard-line"), {
+					type: "line",
+					data: {
+						labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+						datasets: [{
+							label: "Sales ($)",
+							fill: true,
+							backgroundColor: gradient,
+							borderColor: window.theme.primary,
+							data: [
+								2115,
+								1562,
+								1584,
+								1892,
+								1587,
+								1923,
+								2566,
+								2448,
+								2805,
+								3438,
+								2917,
+								3327
+							]
 						}]
+					},
+					options: {
+						maintainAspectRatio: false,
+						legend: {
+							display: false
+						},
+						tooltips: {
+							intersect: false
+						},
+						hover: {
+							intersect: true
+						},
+						plugins: {
+							filler: {
+								propagate: false
+							}
+						},
+						scales: {
+							xAxes: [{
+								reverse: true,
+								gridLines: {
+									color: "rgba(0,0,0,0.0)"
+								}
+							}],
+							yAxes: [{
+								ticks: {
+									stepSize: 1000
+								},
+								display: true,
+								borderDash: [3, 3],
+								gridLines: {
+									color: "rgba(0,0,0,0.0)"
+								}
+							}]
+						}
 					}
-				}
-			});
-		});
+				});
+			}); */
 	</script>
 	<script>
-		document.addEventListener("DOMContentLoaded", function() {
+		/* document.addEventListener("DOMContentLoaded", function() {
 			// Pie chart
 			new Chart(document.getElementById("chartjs-dashboard-pie"), {
 				type: "pie",
@@ -594,10 +560,10 @@ ul {
 					cutoutPercentage: 75
 				}
 			});
-		});
+		}); */
 	</script>
 	<script>
-		document.addEventListener("DOMContentLoaded", function() {
+		/* document.addEventListener("DOMContentLoaded", function() {
 			// Bar chart
 			new Chart(document.getElementById("chartjs-dashboard-bar"), {
 				type: "bar",
@@ -638,10 +604,10 @@ ul {
 					}
 				}
 			});
-		});
+		}); */
 	</script>
 	<script>
-		document.addEventListener("DOMContentLoaded", function() {
+		/* document.addEventListener("DOMContentLoaded", function() {
 			var markers = [{
 					coords: [31.230391, 121.473701],
 					name: "Shanghai"
@@ -705,10 +671,10 @@ ul {
 			window.addEventListener("resize", () => {
 				map.updateSize();
 			});
-		});
+		}); */
 	</script>
 	<script>
-		document.addEventListener("DOMContentLoaded", function() {
+		/* document.addEventListener("DOMContentLoaded", function() {
 			var date = new Date(Date.now() - 5 * 24 * 60 * 60 * 1000);
 			var defaultDate = date.getUTCFullYear() + "-" + (date.getUTCMonth() + 1) + "-" + date.getUTCDate();
 			document.getElementById("datetimepicker-dashboard").flatpickr({
@@ -717,7 +683,7 @@ ul {
 				nextArrow: "<span title=\"Next month\">&raquo;</span>",
 				defaultDate: defaultDate
 			});
-		});
+		}); */
 	</script>
 	<script>
 		

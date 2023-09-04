@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <link rel="stylesheet"
-	href="/src/main/webapp/resources/adminKit/css/app.css">
+	href="${pageContext.request.contextPath }/css/app.css">
 	
 
 <nav id="sidebar" class="sidebar js-sidebar">
