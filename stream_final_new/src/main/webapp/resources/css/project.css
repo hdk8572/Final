@@ -1,0 +1,23 @@
+.content {
+	width: 100%;
+	height: 100%;
+}
+
+.w3-container.tab.ptab {
+	padding: 0;
+	height: 100%;
+	
+}
+
+.w3-bar.tabBar {
+	/* background-color: #009b77; */
+	height: 36.31px;
+}
+
+.w3-bar-item.w3 {
+	background-color: #f5f7fb;
+}
+
+.w3-bar-item.w3:hover {
+	color: #009b77;
+}

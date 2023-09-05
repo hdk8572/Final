@@ -6,7 +6,7 @@
 	<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
 				<!-- <a class="sidebar-brand" href="index.html"> -->
-          <span class="align-brand-middle"><a class="sidebar-brand-new">AdminKit</a></span>
+          <span class="align-brand-middle"><a href="#" class="sidebar-brand-new">AdminKit</a></span>
         		<!-- </a> -->
 
 				<ul class="sidebar-nav">

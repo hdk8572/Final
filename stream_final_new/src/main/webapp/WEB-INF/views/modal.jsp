@@ -13,7 +13,7 @@
  	<div class="modal-body">
 	    
 	    <div >
-	    	<span class="modal-text">프로젝트 만들기</span>
+	    	<span class="modal-text"><strong>프로젝트 만들기</strong></span>
 	    </div>
 	    <div class="card">
 			<div class="card-header">

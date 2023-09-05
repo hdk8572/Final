@@ -24,21 +24,9 @@
 <title>로그인</title>
 
 <link href="css/app.css" rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
-<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap"
-	rel="stylesheet">
-
-<style>
-.card {
-	font-family: 'IBM Plex Sans KR', sans-serif;
-}
 </style> -->
 </head>
 
