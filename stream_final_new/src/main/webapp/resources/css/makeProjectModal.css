@@ -17,18 +17,25 @@
 .modal-content {
   background-color: #f5f7fb;
   /* margin: 15%, 30%, 15%, 20%; 15% from the top and centered */
-  float: right;
+  /* position: absolute;
+  right: 0; */
   padding: 0px;
   border: 1px solid #888;
-  width: 40%;  /* Could be more or less, depending on screen size */ 
+  /* Could be more or less, depending on screen size */
+ /*  width: 40%;  */  
   /* width: calc(100% - 65px); Subtract the width of the modal header from the full width */
   height: 100%;
   border-radius: 40px 0 0 40px;
-  
-  	animation-name: slideInRight; 
+/*   
+	animation-name: slideInRight; 
 	animation-duration: 0.5s; 
 	animation-timing-function: ease-in-out; 
 	
+	
+	animation-name: slideOutRight;
+	animation-duration: 0.5s; 
+	animation-timing-function: ease-in-out; 
+ */
 
 }
 
@@ -58,6 +65,27 @@
 	padding: 0.625rem 1.625rem;
 }
 
+/*Right*/
+.modal.right .modal-dialog {
+	position: fixed;
+	margin: auto;
+	width: 40%;
+	height: 100%;
+	-webkit-transform: translate3d(0%, 0, 0);
+	    -ms-transform: translate3d(0%, 0, 0);
+	     -o-transform: translate3d(0%, 0, 0);
+	        transform: translate3d(0%, 0, 0);
+}
+.modal.right.fade .modal-dialog {
+	right:-40%;
+	-webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+     transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+.modal.right.fade.show .modal-dialog {
+	right: 0;
+}
 
 /* The Close Button */
 .close {
@@ -66,11 +94,6 @@
   font-size: 28px;
   font-weight: bold;
   padding-right: 10px;
-
-  	animation-naZme: slideOutRight;
-  	animation-duration: 0.5s; 
-	animation-timing-function: ease-in-out; 
-
 }
 @keyframes slideOutRight {
 	from {
