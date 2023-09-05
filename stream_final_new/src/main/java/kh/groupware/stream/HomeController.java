@@ -44,6 +44,6 @@ public class HomeController {
 	
 	@GetMapping("/maintask")
 	public String maintask() {
-		return "/task/maintask";
+		return "/task/maintask2";
 	}
 }
