@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,22 +18,21 @@
 
 <link rel="canonical" href="https://demo-basic.adminkit.io/" />
 
-<title>fullcalendar 테스트</title>
-
-<link href="${pageContext.request.contextPath }/css/app.css"
-	rel="stylesheet">
+<title>fullcalendar</title>
 
 <link
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
 	rel="stylesheet">
 
-<!-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> -->
+<link href="${pageContext.request.contextPath }/css/app.css"
+	rel="stylesheet">
+
+<link href="${pageContext.request.contextPath }/css/calendar.css"
+	rel="stylesheet">
 
 <!-- fullcalendar  -->
-<!-- <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css"> -->
-<link href="${pageContext.request.contextPath }/css/claendar.css"
-	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
@@ -42,56 +40,6 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
 
-<!-- modal jquery  -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
-<style>
-
-/*more버튼*/
-.fc-daygrid-more-link.fc-more-link {
-	color: #000;
-}
-
-/* 일정추가 css */
-#cmodal {
-	display: none;
-	position: relative;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-}
-
-#cmodal h2 {
-	margin: 0;
-}
-
-#cmodal button {
-	display: inline-block;
-	width: 100px;
-	margin-left: calc(100% - 100px - 10px);
-}
-
-#cmodal .cmodal_content {
-	width: 674px;
-	margin: 100px auto;
-	padding: 20px 10px;
-	background: #fff;
-	border: 2px solid #666;
-}
-
-#cmodal .modal_layer {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.5);
-	z-index: -1;
-}
-*, :after, :before {
-	box-sizing: border-box;
-}
-</style>
 </head>
 <body>
 	<div class="wrapper">
@@ -101,7 +49,6 @@
 				<a class="sidebar-toggle js-sidebar-toggle"> <i
 					class="hamburger align-self-center"></i>
 				</a>
-
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
 						<li class="nav-item dropdown"><a
@@ -282,123 +229,139 @@
 							<div class="card">
 								<div class="card-header">
 									<div class="btns-wr">
-										<div class="project-search-area all-file-header-type-3">
+										<div class="search-area">
 											<div class="project-search">
 												<input type="text" placeholder="일정명을 입력해주세요"
 													class="js-calendar-search-input">
+												<button type="button" id="btn-modal" data-bs-toggle="modal"
+													data-bs-target="#cmodal">+일정추가</button>
 											</div>
 										</div>
 										<!-- 캘린더  -->
 										<div id="croot">
-											<button type="button" id="modal_opne_btn" data-bs-toggle="modal"  data-bs-target="#cmodal">+일정추가</button>
 											<div class="ccard-body px-4">
 												<div id="calendar"></div>
 											</div>
 										</div>
 										<!-- 모달창 열기(일정추가 클릭) -->
-										<div id="cmodal" class="modal_layer" aria-hidden="true">
-											<div class="cmodal_content">
-												<div class="create-post-header">
-													<div class="header-wrap">
-														<h4>일정 작성</h4>
-														<div class="dropdown-center">
-															<button class="btn btn-secondary dropdown-toggle"
-																type="button" data-bs-toggle="dropdown"
-																aria-expanded="false">Centered</button>
-															<ul class="dropdown-menu">
-																<li><a class="dropdown-item" href="#">Action</a></li>
-																<li><a class="dropdown-item" href="#">Action
-																		two</a></li>
-																<li><a class="dropdown-item" href="#">Action
-																		three</a></li>
-															</ul>
-														</div>
-														<div class="close-area">X</div>
-													</div>
-													<div class="cal-content">
-														<input id="postTitle" type="text"
-															data-empty-msg="제목을 입력하세요" placeholder="제목을 입력하세요">
-													</div>
+										<div id="cal-modal" class="modal-overlay" aria-hidden="true">
+											<div class="modal-window">
+												<div class="title">
+													<h4>일정 작성</h4>
+												</div>
+												<div class="close-area">X</div>
+												<div class="cal-content">
+													<input id="postTitle" type="text"
+														data-empty-msg="제목을 입력하세요" placeholder="제목을 입력하세요">
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-
 							</div>
 						</div>
 					</div>
 				</div>
 			</main>
-			<%@ include file="/WEB-INF/views/footer.jsp" %>			
+			<%@ include file="/WEB-INF/views/footer.jsp"%>
 		</div>
 	</div>
 
+	<!-- 모달창 열기 -->
+	<script>
+        const modal = document.getElementById("cal-modal")
+        const btnModal = document.getElementById("btn-modal")
+        btnModal.addEventListener("click", e => {
+            modal.style.display = "flex"
+        })
+    </script>
+	<!-- 모달창 x누르면 닫힘 -->
+	<script>
+        const closeBtn = modal.querySelector(".close-area")
+        closeBtn.addEventListener("click", e => {
+            modal.style.display = "none"
+        })
+    </script>
+	<!-- 모달 바깥 영역 클릭하면 모달창 닫힘  -->
+	<script>
+    	modal.addEventListener("click", e => {
+    		const evTarget = e.target
+    	    if(evTarget.classList.contains("modal-overlay")) {
+    	    	modal.style.display ="none"
+    	    }
+    	})
+    </script>
+
 	<!-- 달력을 구성  -->
 	<script>
-			      document.addEventListener('DOMContentLoaded', function() {
-			        var calendarEl = document.getElementById('calendar');
-			        var calendar = new FullCalendar.Calendar(calendarEl, {
-			          initialView: 'dayGridMonth',
-			        	  headerToolbar : { // 헤더에 표시할 툴 바
-			      			start : 'prev next today',
-			      			center : 'title',
-			      			end : 'dayGridMonth,dayGridWeek,dayGridDay'
-			      		},
-			      		 dateClick: function(info) {
-			                    alert('Clicked on: ' + info.dateStr); 
-			                    // change the day's background color just for fun
-			                    info.dayEl.style.backgroundColor = 'red';
-			                },
-			      		titleFormat : function(date) {
-			      			return date.date.year + '년 ' + (parseInt(date.date.month) + 1) + '월';
-			      		},
-			      		//initialDate: '2021-07-15', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
-			      		selectable : true, // 달력 일자 드래그 설정가능
-			      		droppable : true,
-			      		editable : true,
-			      		nowIndicator: true, // 현재 시간 마크
-			      		dayMaxEvents: 3,	// 일정 more 
-			    	//	locale: 'ko', // 한국어 설정 
-			      			events : [ 
-			      	            {
-			      	            	title : '풀캘린더완성도',
-			      	                start : '2023-09-12',
-			      	                end : '2023-09-20',
-			      	                color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
-			      	             },
-			      	           {
-				      	            	title : '풀캘린더완성도',
-				      	                start : '2023-09-12',
-				      	                end : '2023-09-20',
-				      	                color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
-				      	             },
-				      	           {
-					      	            	title : '풀캘린더완성도',
-					      	                start : '2023-09-12',
-					      	                end : '2023-09-20',
-					      	                color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
-					      	             },
-					      	           {
-						      	            	title : '풀캘린더완성도',
-						      	                start : '2023-09-12',
-						      	                end : '2023-09-20',
-						      	                color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
-						      	             },
-						      	           {
-							      	            	title : '풀캘린더완성도',
-							      	                start : '2023-09-12',
-							      	                end : '2023-09-20',
-							      	                color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
-							      	             },
-			    
-			      					]
-			        });
-			        calendar.render();
-			      });
-			</script>
+		document.addEventListener('DOMContentLoaded', function() {
+			var calendarEl = document.getElementById('calendar');
+			var calendar = new FullCalendar.Calendar(calendarEl, {
+				initialView : 'dayGridMonth',
+				headerToolbar : { // 헤더에 표시할 툴 바
+					start : 'prev next today',
+					center : 'title',
+					end : 'dayGridMonth,dayGridWeek,dayGridDay'
+				},
+				titleFormat : function(date) {
+					return date.date.year + '년 '
+							+ (parseInt(date.date.month) + 1) + '월';
+				},
+				//initialDate: '2021-07-15', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
+				selectable : true, // 달력 일자 드래그 설정가능
+				droppable : true,
+				editable : true,
+				nowIndicator : true, // 현재 시간 마크
+				dayMaxEvents : 3, // 일정 more 
+				//	locale: 'ko', // 한국어 설정 
+				events : [
+						{
+							title : '풀캘린더완성도',
+							start : '2023-09-12',
+							end : '2023-09-20',
+							color : '#'
+									+ Math.round(Math.random() * 0xffffff)
+											.toString(16)
+						},
+						{
+							title : '풀캘린더완성도',
+							start : '2023-09-12',
+							end : '2023-09-20',
+							color : '#'
+									+ Math.round(Math.random() * 0xffffff)
+											.toString(16)
+						},
+						{
+							title : '풀캘린더완성도',
+							start : '2023-09-12',
+							end : '2023-09-20',
+							color : '#'
+									+ Math.round(Math.random() * 0xffffff)
+											.toString(16)
+						},
+						{
+							title : '풀캘린더완성도',
+							start : '2023-09-12',
+							end : '2023-09-20',
+							color : '#'
+									+ Math.round(Math.random() * 0xffffff)
+											.toString(16)
+						},
+						{
+							title : '풀캘린더완성도',
+							start : '2023-09-12',
+							end : '2023-09-20',
+							color : '#'
+									+ Math.round(Math.random() * 0xffffff)
+											.toString(16)
+						},
 
+				]
+			});
+			calendar.render();
+		});
+	</script>
 
-	 	<script src="js/app.js"></script> 
+	<script src="js/app.js"></script>
 </body>
 </html>

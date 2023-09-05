@@ -6,7 +6,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class TestController {
-	@GetMapping("maincal")
+	@GetMapping("/pcal")
 	public ModelAndView FullCalendar(ModelAndView mv) {
 		mv.setViewName("calendar/calendar");
 		

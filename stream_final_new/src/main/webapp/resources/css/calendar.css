@@ -1,0 +1,59 @@
+/*more버튼*/
+.fc-daygrid-more-link.fc-more-link {
+	color: #000;
+}
+/* 일정추가 css */
+#cal-modal.modal-overlay {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: flex;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#cal-modal .modal-window {
+	background: #fff;
+	border-radius: 10px;
+	idth: 400px;
+	height: 500px;
+	position: relative;
+	top: -100px; /* 모달 창 위로 조정 중앙에 위치? */
+	padding: 10px; /* 내용과 모달 창의 경계 간격을 조절 */
+}
+.project-search {
+	padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    margin-bottom: 10px;
+}
+/* +일정추가 버튼 */
+#btn-modal {
+	background-color: #3b7ddd;
+	border-color: #3b7ddd;
+	border: 1px solid transparent;
+	border-radius: 0.2rem;
+	color: white;
+	padding: 0.3rem 0.85rem;
+}
+/* 모달창을 제일 앞으로 위치시킴 */
+#cal-modal {
+	z-index: 1000;
+}
+/* 캘린더 < > 버튼 css  */
+.fc-icon.fc-icon-chevron-left::before {
+	font-family: inherit;
+}
+
+.fc-icon.fc-icon-chevron-right::before {
+	font-family: inherit;
+}
+/* 캘린더 세부 일정 x버튼 */
+.fc-popover-close.fc-icon.fc-icon-x::before {
+	font-family: inherit;
+}
