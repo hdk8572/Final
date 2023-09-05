@@ -447,7 +447,7 @@
 												</div>
 											</div>
 											<div class="dropdown col-lg-auto">
-												<div class="jm-title" ed="empty">
+												<div class="jm-title" id="empty">
 													<div class="card-subtitle text-muted">
 														<span>빈공간</span>
 													</div>
