@@ -1,37 +1,90 @@
-.modal.right .modal-dialog {
-	position: fixed;
-	margin: auto;
-	width: 100%;
-	height: 100%;
-	-webkit-transform: translate3d(0%, 0, 0);
-	    -ms-transform: translate3d(0%, 0, 0);
-	     -o-transform: translate3d(0%, 0, 0);
-	        transform: translate3d(0%, 0, 0);
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
 }
 
-.modal.right .modal-content {
-	height: 100%;
-	overflow-y: auto;
-	width: 178%;
+/* Modal Content/Box */
+.modal-content {
+  background-color: #f5f7fb;
+  /* margin: 15%, 30%, 15%, 20%; 15% from the top and centered */
+  float: right;
+  padding: 0px;
+  border: 1px solid #888;
+  width: 40%;  /* Could be more or less, depending on screen size */ 
+  /* width: calc(100% - 65px); Subtract the width of the modal header from the full width */
+  height: 100%;
+  border-radius: 40px 0 0 40px;
+  
+  	animation-name: slideInRight; 
+	animation-duration: 0.5s; 
+	animation-timing-function: ease-in-out; 
+	
+
 }
 
-.modal.right .modal-body {
-	padding: 15px 15px 80px;
+@keyframes slideInRight {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(100%);
+	}
 }
 
-/*Right*/
-.modal.right.fade .modal-dialog {
-	right: 20%;
-	-webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
-	   -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
-	     -o-transition: opacity 0.3s linear, right 0.3s ease-out;
-	        transition: opacity 0.3s linear, right 0.3s ease-out;
+
+
+.modal-header {
+	height: 65px;
+    background-color: #009b77;
+    border-radius: 40px 0 0;
 }
 
-.modal.right.fade.in .modal-dialog {
-	right: 0;
+.modal-body {
+	padding: 15px 15px;
 }
 
-.addProject .modal-header {
-	background-color: #009b77;
+.modal-text {
+	display: block;
+	padding: 0.625rem 1.625rem;
+}
+
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  padding-right: 10px;
+
+  	animation-naZme: slideOutRight;
+  	animation-duration: 0.5s; 
+	animation-timing-function: ease-in-out; 
+
+}
+@keyframes slideOutRight {
+	from {
+		transform: translateX(100%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

@@ -16,7 +16,7 @@ public class PtaskController {
 	@GetMapping("/adminkit/project/ptask")
 	public String list(Model model) {
 		model.addAttribute("volist", ptaskservice.selectList());
-		return "views/ptask";
+		return "views/task/ptask";
 	}
 	
 }
