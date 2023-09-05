@@ -27,7 +27,7 @@
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <style>
-.jm-body ul, li{
+.jm-body ul, li {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -90,7 +90,6 @@
 .mini-pop.active {
 	display: block;
 }
-
 </style>
 <script>
 	window.onload = loadedHandler;
@@ -360,7 +359,7 @@
 											<div class="dropdown col-lg-4">
 												<div class="jm-title" id="tno">
 													<div class="card-subtitle text-muted dropdown-toggle"
-														data-bs-toggle="dropdown" >
+														data-bs-toggle="dropdown">
 														<span>업무명</span>
 													</div>
 													<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -375,7 +374,7 @@
 											<div class="dropdown col-lg-1">
 												<div class="jm-title" id="tno">
 													<div class="card-subtitle text-muted dropdown-toggle"
-														data-bs-toggle="dropdown" >
+														data-bs-toggle="dropdown">
 														<span>상태</span>
 													</div>
 													<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -390,7 +389,7 @@
 											<div class="dropdown col-lg-1">
 												<div class="jm-title" id="tno">
 													<div class="card-subtitle text-muted dropdown-toggle"
-														data-bs-toggle="dropdown" >
+														data-bs-toggle="dropdown">
 														<span>담당자</span>
 													</div>
 													<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -405,7 +404,7 @@
 											<div class="dropdown col-lg-1">
 												<div class="jm-title" id="tno">
 													<div class="card-subtitle text-muted dropdown-toggle"
-														data-bs-toggle="dropdown" >
+														data-bs-toggle="dropdown">
 														<span>시작일</span>
 													</div>
 													<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -420,7 +419,7 @@
 											<div class="dropdown col-lg-1">
 												<div class="jm-title" id="tno">
 													<div class="card-subtitle text-muted dropdown-toggle"
-														data-bs-toggle="dropdown" >
+														data-bs-toggle="dropdown">
 														<span>마감일</span>
 													</div>
 													<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -435,7 +434,7 @@
 											<div class="dropdown col-lg-1">
 												<div class="jm-title" id="tno">
 													<div class="card-subtitle text-muted dropdown-toggle"
-														data-bs-toggle="dropdown" >
+														data-bs-toggle="dropdown">
 														<span>등록일</span>
 													</div>
 													<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -447,8 +446,13 @@
 													</div>
 												</div>
 											</div>
-											
-											<div class="jm-empty-cell col-lg-auto text-muted">빈공간</div>
+											<div class="dropdown col-lg-auto">
+												<div class="jm-title" ed="empty">
+													<div class="card-subtitle text-muted">
+														<span>빈공간</span>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 									<ul id="taskContentUI">
