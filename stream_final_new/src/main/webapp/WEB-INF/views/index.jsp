@@ -22,8 +22,7 @@
 	<!-- Tab bar -->
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-	
-</head>
+	  </head>
 
 <body>
 	<div class="wrapper">
@@ -37,7 +36,7 @@
 				<div class="container-fluid p-0">
 					
 					<h1 class="h3 mb-3">
-					<button class="btn btn-primary" id="myBtn">프로젝트 추가+</button>
+					<button class="btn btn-primary" id="myBtn" data-bs-toggle="modal" data-bs-target="#myModal">프로젝트 추가+</button>
 					</h1>
 						
 					<%@ include file="/WEB-INF/views/modal.jsp" %>
@@ -282,7 +281,7 @@
 	});
 	</script>
 	<script>
-	// click on 라벨 추가 모달 열기
+/* 	// click on 라벨 추가 모달 열기
 	$(document).on('click', '#add-btn', function (e) {
 	  console.log("click event");
 	  $('#modal').addClass('show');
@@ -294,11 +293,11 @@
 	  console.log("click event");
 	  $('#modal').removeClass('show');
 	 
-	});
+	}); */
 	</script>
 	<script>
 	// Get the modal
-	var modal = document.getElementById("myModal");
+/* 	var modal = document.getElementById("myModal");
 
 	// Get the button that opens the modal
 	var btn = document.getElementById("myBtn");
@@ -314,7 +313,7 @@
 	// When the user clicks on <span> (x), close the modal
 	close.onclick = function() {
 	  modal.style.display = "none";
-	}
+	} */
 
 	// When the user clicks anywhere outside of the modal, close it
 /* 	window.onclick = function(event) {

@@ -27,63 +27,66 @@
 </head>
 
 <body>
-	<div class="wrapper">
-		
-		<%@ include file="/WEB-INF/views/sidebar.jsp" %>
+<div class="wrapper">
+	
+	<%@ include file="/WEB-INF/views/sidebar.jsp" %>
 
-		<div class="main">
+	<div class="main">
+	
+		<%@ include file="/WEB-INF/views/headerNavbar.jsp" %>
 		
-			<%@ include file="/WEB-INF/views/headerNavbar.jsp" %>
-			
-			<div class="w3-bar tabBar">
-			  <button class="w3-bar-item w3" onclick="openTab('Tab1')">피드</button>
-			  <button class="w3-bar-item w3" onclick="openTab('Tab2')">업무</button>
-			  <button class="w3-bar-item w3" onclick="openTab('Tab3')">캘린더</button>
-			</div>
-			
-			<!-- 피드 탭 -->
-			<div id="Tab1" class="w3-container tab ptab">
-				<main class="content">
-					<h2>피드</h2>
-					<div class="container-fluid p-0">
-					<p>추후 진행</p>	
-					
-					<!-- 내용 -->
-					
-					
-					</div>
-				</main>
-			</div>
-			
-			<!-- 업무 탭 -->
-			<div id="Tab2" class="w3-container tab ptab" style="display:none">
-				<main class="content">
-					<h2>업무</h2>
-					<div class="container-fluid p-0">
-					<p>황대경</p>	
-					
-					<!-- 내용 -->
-					
-					
-					</div>
-				</main>
-			</div>
-			
-			<!-- 캘린더 탭 -->
-			<div id="Tab3" class="w3-container tab ptab" style="display:none">
- 				<main class="content">
-					<h2>캘린더</h2>
-					<div class="container-fluid p-0">
-					<p>임지연</p>	
-					
-					
-					<!-- 내용 -->
-					
-					</div>
-				</main>
-			</div>
+		<main>
+		<div class="w3-bar tabBar">
+		  <button class="w3-bar-item w3" onclick="openTab('Tab1')">피드</button>
+		  <button class="w3-bar-item w3" onclick="openTab('Tab2')">업무</button>
+		  <button class="w3-bar-item w3" onclick="openTab('Tab3')">캘린더</button>
 		</div>
+		
+		<!-- 피드 탭 -->
+		<div id="Tab1" class="w3-container tab ptab">
+			<main class="content">
+				<h2>피드</h2>
+				<div class="container-fluid p-0">
+				<p>추후 진행</p>	
+				
+				<!-- 내용 -->
+				
+				
+				</div>
+			</main>
+		</div>
+		
+		<!-- 업무 탭 -->
+		<div id="Tab2" class="w3-container tab ptab" style="display:none">
+			<main class="content">
+				<h2>업무</h2>
+				<div class="container-fluid p-0">
+				<p>황대경</p>	
+				
+				<!-- 내용 -->
+				
+				
+				</div>
+			</main>
+		</div>
+		
+		<!-- 캘린더 탭 -->
+		<div id="Tab3" class="w3-container tab ptab" style="display:none">
+				<main class="content">
+				<h2>캘린더</h2>
+				<div class="container-fluid p-0">
+				<p>임지연</p>	
+				
+				
+				<!-- 내용 -->
+				
+				</div>
+			</main>
+		</div>
+		</main>
 	</div>
+
+</div>
 
 	<script src="js/app.js"></script>
 	<script>

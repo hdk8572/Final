@@ -3,15 +3,14 @@
 
 <!-- 모달 -->
 <!-- The Modal -->
-<div id="myModal" class="modal">
-
+<div id="myModal" class="modal right fade" aria-labelledby="myModalLabel">
+<div class="modal-dialog">
   <!-- Modal content -->
   <div class="modal-content">
   	<div class="modal-header">
-  		<span class="close">&times;</span>
+  		<span class="close" data-bs-dismiss="modal" aria-label="Close">&times;</span>
   	</div>
  	<div class="modal-body">
-	    
 	    <div >
 	    	<span class="modal-text"><strong>프로젝트 만들기</strong></span>
 	    </div>
@@ -30,6 +29,6 @@
     
     
   </div>
-  
+</div>
 </div>
 <!-- 모달 -->
