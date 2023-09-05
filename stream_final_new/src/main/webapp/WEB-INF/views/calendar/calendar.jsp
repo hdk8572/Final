@@ -283,12 +283,15 @@
 													class="js-calendar-search-input">
 											</div>
 										</div>
-										<!-- 모달창  -->
+										<!-- 캘린더  -->
 										<div id="croot">
 											<button type="button" id="modal_opne_btn">+일정추가</button>
+											<div class="ccard-body px-4">
+												<div id="calendar"></div>
+											</div>
 										</div>
-
-										<div id="cmodal">
+										<!-- 모달창 열기(일정추가 클릭) -->
+										<div id="cmodal" class="modal_layer">
 											<div class="cmodal_content">
 												<div class="create-post-header">
 													<div class="header-wrap">
@@ -305,20 +308,21 @@
 																		three</a></li>
 															</ul>
 														</div>
+														<div class="close-area">X</div>
 													</div>
+													<div class="cal-content">
+														<input id="postTitle" type="text"
+															data-empty-msg="제목을 입력하세요" placeholder="제목을 입력하세요">
+													</div>
+													<div></div>
 													<p>모달 창 입니다.</p>
 													<button type="button" id="modal_close_btn">모달 창 닫기</button>
-
 												</div>
-
-												<div class="modal_layer"></div>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="ccard-body px-4">
-									<div id="calendar"></div>
-								</div>
+
 							</div>
 						</div>
 					</div>
@@ -326,18 +330,6 @@
 			</main>
 		</div>
 	</div>
-	<!-- <div class="title-dropdown">
-		<button class="btn btn-secondary dropdown-toggle" type="button"
-			data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-		<ul class="dropdown-menu">
-			<li><button class="dropdown-item" type="button">Action</button></li>
-			<li><button class="dropdown-item" type="button">Another
-					action</button></li>
-			<li><button class="dropdown-item" type="button">Something
-					else here</button></li>
-		</ul>
-
-	</div> -->
 
 	<!-- 달력을 구성  -->
 	<script>
@@ -487,7 +479,7 @@
 			});
 		});
 	</script>
-
+	<!-- 원형 차트 생성  -->
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
 			// Pie chart
@@ -516,6 +508,7 @@
 			});
 		});
 	</script>
+	<!-- 바 차트 생성(연간 월별 데이터 시각화)  -->
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
 			// Bar chart
@@ -560,6 +553,7 @@
 			});
 		});
 	</script>
+	<!-- 지도 및 마커 생성 -->
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
 			var markers = [{
@@ -627,6 +621,7 @@
 			});
 		});
 	</script>
+	<!-- 이전/다음 월 화살표 -->
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
 			var date = new Date(Date.now() - 5 * 24 * 60 * 60 * 1000);
