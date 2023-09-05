@@ -4,12 +4,6 @@ CREATE SEQUENCE project_sequence
 START WITH 1
 INCREMENT BY 1;
 
-DROP SEQUENCE task_sequence;
-
-CREATE SEQUENCE task_sequence
-START WITH 1
-INCREMENT BY 1;
-
 INSERT INTO COMPANY (CCODE, CNAME, CPHONE, CADDRESS, CPASSWORD)
 VALUES ('AA', 'KH정보교육원', '01099998888', '서울시 강남구', '123123');
 
@@ -30,10 +24,10 @@ VALUES (project_sequence.NEXTVAL, 'kh0001@kh.com', '3번째입니다', '프로�
 
 
 INSERT INTO TASK (TNO, PNO, USERID, TMEMBER, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE)
-VALUES (task_sequence.NEXTVAL, '1', 'kh0001@kh.com', 'kh0001@kh.com', '점심 정하기', '완료', SYSDATE, TO_DATE('2023-09-10 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-30 18:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+VALUES (project_sequence.NEXTVAL, '1', 'kh0001@kh.com', 'kh0001@kh.com', '점심 정하기', '완료', SYSDATE, TO_DATE('2023-09-10 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-30 18:00:00', 'YYYY-MM-DD HH24:MI:SS'));
 
 INSERT INTO TASK (TNO, PNO, USERID, TMEMBER, TCONTENT, TSTATUS, TDATE)
-VALUES (task_sequence.NEXTVAL, '2', 'kh0001@kh.com', 'kh0001@kh.com', 'CSS 보완하기', '진행 중' , SYSDATE);
+VALUES (project_sequence.NEXTVAL, '2', 'kh0001@kh.com', 'kh0001@kh.com', 'CSS 보완하기', '진행 중' , SYSDATE);
 
 
 

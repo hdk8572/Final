@@ -29,7 +29,7 @@ public class TaskController {
 	}
 	
 	
-	@GetMapping("/project?pno=#{pno}")
+	@GetMapping("/project?pno=${pno}")
 	public String selectList(Model model) {
 		model.addAttribute("tlist", service.selectList());
 		return "/project";
