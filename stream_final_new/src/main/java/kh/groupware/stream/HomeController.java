@@ -37,10 +37,9 @@ public class HomeController {
 		return "index";
 	}
 	
-	@GetMapping("/project")
-	public String detailProject() {
-		return "/project";
-	}
+	/*
+	 * @GetMapping("/project") public String detailProject() { return "/project"; }
+	 */
 	
 	@GetMapping("/maintask")
 	public String maintask() {
