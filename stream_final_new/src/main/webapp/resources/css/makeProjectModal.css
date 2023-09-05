@@ -26,29 +26,8 @@
   /* width: calc(100% - 65px); Subtract the width of the modal header from the full width */
   height: 100%;
   border-radius: 40px 0 0 40px;
-/*   
-	animation-name: slideInRight; 
-	animation-duration: 0.5s; 
-	animation-timing-function: ease-in-out; 
-	
-	
-	animation-name: slideOutRight;
-	animation-duration: 0.5s; 
-	animation-timing-function: ease-in-out; 
- */
 
 }
-
-@keyframes slideInRight {
-	from {
-		transform: translateX(0);
-	}
-	to {
-		transform: translateX(100%);
-	}
-}
-
-
 
 .modal-header {
 	height: 65px;
@@ -89,21 +68,12 @@
 
 /* The Close Button */
 .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  padding-right: 10px;
+	color: white;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	padding-right: 10px;
 }
-@keyframes slideOutRight {
-	from {
-		transform: translateX(100%);
-	}
-	to {
-		transform: translateX(0);
-	}
-}
-
 
 .close:hover,
 .close:focus {

@@ -8,18 +8,17 @@
 	</settings>
 
 	<typeAliases>
-		<typeAlias type="kh.groupware.stream.ptask.model.vo.PtaskVo" alias="PtaskVo"/>
+		<typeAlias type="kh.groupware.stream.task.model.vo.TaskVo" alias="TaskVo"/>
 		<typeAlias type="kh.groupware.stream.member.model.vo.MemberVo" alias="MemberVo"/>
 		<typeAlias type="kh.groupware.stream.company.model.vo.CompanyVo" alias="CompanyVo"/>
 		<typeAlias type="kh.groupware.stream.project.model.vo.ProjectVo" alias="ProjectVo"/>
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="mappers/ptask-mappers.xml"/>
+		<mapper resource="mappers/task-mappers.xml"/>
 		<mapper resource="mappers/member-mapper.xml"/>
 		<mapper resource="mappers/company-mapper.xml"/>
 		<mapper resource="mappers/project-mapper.xml"/>
-		
 	</mappers>	
 	
 </configuration>

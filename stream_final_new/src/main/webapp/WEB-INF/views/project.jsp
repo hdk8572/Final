@@ -57,16 +57,31 @@
 			</main>
 		</div>
 		
-		<!-- 업무 탭 -->
+		<!-- 업무 탭 [Task]-->
 		<div id="Tab2" class="w3-container tab ptab" style="display:none">
 			<main class="content">
 				<h2>업무</h2>
 				<div class="container-fluid p-0">
-				<p>황대경</p>	
-				
-				<!-- 내용 -->
-				
-				
+				<table class="table table-hover my-0">
+					<tr>
+						<th class="d-none d-xl-table-cell">업무명</th>
+						<th class="d-none d-xl-table-cell">작성자</th>
+						<th class="d-none d-xl-table-cell">진행도</th>
+						<th class="d-none d-xl-table-cell">작성날짜</th>
+						<th class="d-none d-xl-table-cell">시작일</th>
+						<th class="d-none d-xl-table-cell">마감일</th>
+					</tr>
+					<c:forEach items="${tlist}" var="task">
+					<tr>
+						<td>${task.tcontent}</td>
+						<td>${task.tmember}</td>
+						<td><span class="badge bg-warning">${task.tstatus}</span></td>
+						<td>${task.tdate}</td>
+						<td>${task.tstartDate}</td>
+						<td>${task.tendDate}</td>
+					</tr>		
+					</c:forEach>
+				</table>
 				</div>
 			</main>
 		</div>

@@ -22,7 +22,18 @@ VALUES (project_sequence.NEXTVAL, 'kh0001@kh.com', '이건2번째야', '프로�
 INSERT INTO PROJECT (PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, PSTARTDATE, PENDDATE)
 VALUES (project_sequence.NEXTVAL, 'kh0001@kh.com', '3번째입니다', '프로젝트 해야합니다.', 'ACCESS', TO_DATE('2023-09-06', 'YYYY-MM-DD'), TO_DATE('2023-09-10', 'YYYY-MM-DD'), TO_DATE('2023-10-30', 'YYYY-MM-DD'));
 
+
+INSERT INTO TASK (TNO, PNO, USERID, TMEMBER, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE)
+VALUES (project_sequence.NEXTVAL, '1', 'kh0001@kh.com', 'kh0001@kh.com', '점심 정하기', '완료', SYSDATE, TO_DATE('2023-09-10 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-30 18:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+
+INSERT INTO TASK (TNO, PNO, USERID, TMEMBER, TCONTENT, TSTATUS, TDATE)
+VALUES (project_sequence.NEXTVAL, '2', 'kh0001@kh.com', 'kh0001@kh.com', 'CSS 보완하기', '진행 중' , SYSDATE);
+
+
+
 commit;
+
+desc project;
 
 
 

@@ -46,23 +46,11 @@
 						<div class="row">
 						<div class="col-xl-6 col-xxl-5 d-flex">
 							<div class="w-100">
-							<div class="row">
-<%-- 								<table border ="1">
-									<tr>
-										<td>프로젝트 번호</td>
-									</tr>
-									<c:forEach items="${list}" var="list">
-									<tr>
-										<td>${list.pno}</td>
-									</tr>
-									</c:forEach>
-								</table> --%>
-							</div>
 								<div class="row">
 									<c:forEach items="${list}" var="list">
 										<div class="col-sm-6">
-											<div class="card">
-												<a href="${list.pno}"> <!-- 상세 프로젝트 내용으로 이동해야합니다 -->
+											<div class="card" ${list.pno}>
+												<a href="project?pno=${list.pno}"> <!-- 상세 프로젝트 내용으로 이동해야합니다 -->
 													<div class="card-body">
 														<div class="row">
 															<div class="col mt-0">

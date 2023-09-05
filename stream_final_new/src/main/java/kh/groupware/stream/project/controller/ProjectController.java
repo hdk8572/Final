@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import kh.groupware.stream.project.model.service.ProjectService;
+import kh.groupware.stream.task.model.vo.TaskVo;
 
 @Controller
 public class ProjectController {
@@ -21,6 +22,6 @@ public class ProjectController {
 		return "/projectList";
 	}
 	
-	
+
 	
 }

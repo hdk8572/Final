@@ -1,9 +1,9 @@
-package kh.groupware.stream.ptask.model.vo;
+package kh.groupware.stream.task.model.vo;
 
 import org.springframework.stereotype.Component;
 
-@Component("PtaskVo")
-public class PtaskVo {
+
+public class TaskVo {
 
 	private String tno;
 	private String pno;
