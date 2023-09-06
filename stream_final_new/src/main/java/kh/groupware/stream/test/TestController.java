@@ -16,4 +16,8 @@ public class TestController {
 	public String maintask() {
 		return "/indexchat";
 	}
+	@GetMapping("/searchbar")
+	public String searchbar() {
+		return "/searchbar";
+	}
 }
