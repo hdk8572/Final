@@ -11,34 +11,38 @@
   		<span class="close" data-bs-dismiss="modal" aria-label="Close">&times;</span>
   	</div>
  	<div class="modal-body">
-<!-- 	    <div>
-	    	<span class="modal-text"><strong>프로젝트 만들기</strong></span>
-	    </div> -->
-	    <div class="card">
-			<div class="card-header">
-				<h5 class="card-title mb-0">프로젝트명 및 설명을 입력해주세요.</h5>
+ 		<form action="${pageContext.request.contextPath}/projectInsert" method="post">
+	    	<div class="card">
+				<div class="card-header">
+					<h5 class="card-title mb-0">프로젝트명 및 설명을 입력해주세요.</h5>
+				</div>
+				<div class="card-body">
+					<input type="hidden" name="pno">
+					<input type="hidden" name="userId">
+					<input type="hidden" name="paccess" value="ddd">
+					<input type="hidden" name="pdate" value="sysdate">
+					<input type="text" class="form-control" name="pname" placeholder="프로젝트명을 입력해주세요.">
+					<br>
+					<textarea class="form-control" rows="2" name="pcoment" placeholder="프로젝트에 관한 설명을 입력해주세요.(옵션)"></textarea>
+				</div>
 			</div>
-			<div class="card-body">
-				<input type="text" class="form-control" placeholder="제목을 입력해주세요.">
-				<br>
-				<textarea class="form-control" rows="2" placeholder="프로젝트에 관한 설명을 입력해주세요.(옵션)"></textarea>
+			<div class="card">
+				<div class="card-header">
+					<h5 class="card-title mb-0">프로젝트 진행시기</h5>
+				</div>
+				<div class="card-body">
+					<input type="date" class="form-date" name="pstartDate"> ~ <input type="date" class="form-date" name="pendDate">
+				</div>
 			</div>
-		</div>
-		<div class="card">
-			<div class="card-header">
-				<h5 class="card-title mb-0">프로젝트명을 입력해주세요.</h5>
-
+			<div align="center">
+				<button class="btn btn-primary" type="submit">추가</button>
+				<button class="btn btn-warning" type="reset">취소</button>
 			</div>
-			<div class="card-body">
-				<input type="date" class="form-date" values="${today}"> ~ <input type="date" class="form-date">
-			</div>
-		</div>
-  	</div>
+		</form>
+	</div>
+  </div>
     <div class="modal-footer">
-  		
   	</div>
-    
-    
   </div>
 </div>
 </div>

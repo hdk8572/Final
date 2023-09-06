@@ -18,6 +18,10 @@ public class ProjectVo {
 				+ ", paccess=" + paccess + ", pdate=" + pdate + ", pstartDate=" + pstartDate + ", pendDate=" + pendDate
 				+ "]";
 	}
+	
+	public ProjectVo() {
+		super();
+	}
 
 	public String getPno() {
 		return pno;

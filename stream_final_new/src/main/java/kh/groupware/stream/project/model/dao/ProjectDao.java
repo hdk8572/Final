@@ -18,6 +18,8 @@ public class ProjectDao {
 		return sqlSession.selectList("project.selectList");
 	}
 	
-	
+	public int insertList(ProjectVo vo) {
+		return sqlSession.insert("project.insertList", vo);
+	}
 	
 }

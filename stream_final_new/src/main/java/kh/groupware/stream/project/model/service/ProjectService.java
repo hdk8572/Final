@@ -19,4 +19,9 @@ public class ProjectService {
 		return dao.selectList();
 	}
 	
+	public  int insertList(ProjectVo vo) {
+		return dao.insertList(vo);
+	}
+	
+	
 }

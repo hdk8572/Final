@@ -42,49 +42,43 @@
 						
 					<%@ include file="/WEB-INF/views/modal.jsp" %>
 						
-					
 						<div class="row">
 						<div class="col-xl-6 col-xxl-5 d-flex">
 							<div class="w-100">
 								<div class="row">
 									<c:forEach items="${list}" var="vo">
 										<div class="col-sm-6">
-											<div class="card">
-												<%-- <a href="project?pno=${list.pno}"> <!-- 상세 프로젝트 내용으로 이동해야합니다 --> --%>
-												<form class="frm card select" action="${pageContext.request.contextPath }/ptask" method="post">
-												<input type="hidden" name="pno" value="${vo.pno}" data-name="pno">
-														<div class="card-body" >
-															<div class="row">
-																<div class="col mt-0">
-																	<h5 class="card-title">Project</h5>
-																</div>
-																
-																<div class="col-auto">
-																	<div class="stat text-primary">
-																		<%-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck align-middle"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg> --%>
-																		${vo.pno}
-																	</div>
-																</div>
+ 											<div class="card">
+												<form class="frm select" action="${pageContext.request.contextPath}/ptask" method="post">
+												<input type="hidden" name="pno" value="${vo.pno}">
+													<div class="card-body" >
+														<div class="row">
+															<div class="col mt-0">
+																<h5 class="card-title">Project</h5>
 															</div>
-															<h1 class="mt-1 mb-3">${vo.pname}</h1>
-															<div class="mb-0">
-																<!-- <span class="text-muted">진행 중</span> -->
-																<span class="text-muted">${vo.pstartDate}~${vo.pendDate}</span>
+															
+															<div class="col-auto">
+																<div class="stat text-primary">
+																	${vo.pno}
+																</div>
 															</div>
 														</div>
-													</form>
-												</div>
-												<!-- </a> -->
+														<h1 class="mt-1 mb-3">${vo.pname}</h1>
+														<div class="mb-0">
+															<!-- <span class="text-muted">진행 중</span> -->
+															<span class="text-muted">${vo.pstartDate}~${vo.pendDate}</span>
+														</div>
+													</div>
+												</form>
 											</div>
+										</div>
 									</c:forEach>
 								</div>
 							</div>
 						</div>
 					</div>
-					
 				</div>
 			</main>
-			
 		</div>
 	</div>
 	<script src="${pageContext.request.contextPath}/js/stream.js"></script>
