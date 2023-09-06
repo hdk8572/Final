@@ -27,7 +27,7 @@
 	
 </head>
 
-<body>
+<body style="overflow: scroll;">
 <div class="wrapper">
 	
 	<%@ include file="/WEB-INF/views/sidebar.jsp" %>
@@ -71,16 +71,14 @@
 						<th class="d-none d-xl-table-cell">시작일</th>
 						<th class="d-none d-xl-table-cell">마감일</th>
 					</tr>
-					<c:forEach items="${tlist}" var="task">
 					<tr>
-						<td>${task.tcontent}</td>
-						<td>${task.tmember}</td>
-						<td><span class="badge bg-warning">${task.tstatus}</span></td>
-						<td>${task.tdate}</td>
-						<td>${task.tstartDate}</td>
-						<td>${task.tendDate}</td>
+						<td>${tlist.tcontent}</td>
+						<td>${tlist.tmember}</td>
+						<td><span class="badge bg-warning">${tlist.tstatus}</span></td>
+						<td>${tlist.tdate}</td>
+						<td>${tlist.tstartDate}</td>
+						<td>${tlist.tendDate}</td>
 					</tr>		
-					</c:forEach>
 				</table>
 				</div>
 			</main>

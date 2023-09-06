@@ -82,5 +82,6 @@ public class ProjectVo {
 	public void setPendDate(String pendDate) {
 		this.pendDate = pendDate;
 	}
+
 	
 }

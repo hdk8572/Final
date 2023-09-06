@@ -41,7 +41,8 @@ commit;
 
 desc project;
 
-
+SELECT *
+FROM PROJECT;
 
 
 

@@ -59,13 +59,15 @@
 															
 															<div class="col-auto">
 																<div class="stat text-primary">
-																	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck align-middle"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+																	<%-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck align-middle"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg> --%>
+																	${list.pno}
 																</div>
 															</div>
 														</div>
 														<h1 class="mt-1 mb-3">${list.pname}</h1>
 														<div class="mb-0">
-															<span class="text-muted">진행 중</span>
+															<!-- <span class="text-muted">진행 중</span> -->
+															<span class="text-muted">${list.pstartDate}~${list.pendDate}</span>
 														</div>
 													</div>
 												</a>
@@ -122,48 +124,6 @@
 			});
 		});
 	});
-	</script>
-	<script>
-/* 	// click on 라벨 추가 모달 열기
-	$(document).on('click', '#add-btn', function (e) {
-	  console.log("click event");
-	  $('#modal').addClass('show');
-	 
-	});
-	 
-	// 모달 닫기
-	$(document).on('click', '#close_btn', function (e) {
-	  console.log("click event");
-	  $('#modal').removeClass('show');
-	 
-	}); */
-	</script>
-	<script>
-	// Get the modal
-/* 	var modal = document.getElementById("myModal");
-
-	// Get the button that opens the modal
-	var btn = document.getElementById("myBtn");
-
-	// Get the <span> element that closes the modal
-	var close = document.getElementsByClassName("close")[0];
-
-	// When the user clicks on the button, open the modal
-	btn.onclick = function() {
-	  modal.style.display = "block";
-	}
-
-	// When the user clicks on <span> (x), close the modal
-	close.onclick = function() {
-	  modal.style.display = "none";
-	} */
-
-	// When the user clicks anywhere outside of the modal, close it
-/* 	window.onclick = function(event) {
-	  if (event.target == modal) {
-	    modal.style.display = "none";
-	  }
-	} */
 	</script>
 </body>
 </html>
