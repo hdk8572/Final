@@ -232,7 +232,7 @@
 										<div class="search-area">
 											<div class="project-search">
 												<input type="text" placeholder="일정명을 입력해주세요"
-													class="js-calendar-search-input">
+													class="cal-search-input">
 												<button type="button" id="btn-modal" data-bs-toggle="modal"
 													data-bs-target="#cmodal">+일정추가</button>
 											</div>
@@ -246,14 +246,30 @@
 										<!-- 모달창 열기(일정추가 클릭) -->
 										<div id="cal-modal" class="modal-overlay" aria-hidden="true">
 											<div class="modal-window">
-												<div class="title">
-													<h4>일정 작성</h4>
+												<div class="create-post-header">
+													<div class="temp-wrap">
+														<h4>일정 작성</h4>
+														<div class="dropdown">
+															<a class="btn btn-secondary dropdown-toggle" href="#"
+																role="button" data-bs-toggle="dropdown"
+																aria-expanded="false"> Dropdown link </a>
+
+															<ul class="dropdown-menu">
+																<li><a class="dropdown-item" href="#">Action</a></li>
+																<li><a class="dropdown-item" href="#">Another
+																		action</a></li>
+																<li><a class="dropdown-item" href="#">Something
+																		else here</a></li>
+															</ul>
+														</div>
+													</div>
+													<div class="close-area">X</div>
 												</div>
-												<div class="close-area">X</div>
-												<div class="cal-content">
-													<input id="postTitle" type="text"
-														data-empty-msg="제목을 입력하세요" placeholder="제목을 입력하세요">
-												</div>
+													<div class="create-post-header">
+														<input id="postTitle" type="text" class="create-title-input"
+															data-empty-msg="제목을 입력하세요" placeholder="제목을 입력하세요">
+													</div>
+												<div class="cal-content"></div>
 											</div>
 										</div>
 									</div>
@@ -273,6 +289,7 @@
         const btnModal = document.getElementById("btn-modal")
         btnModal.addEventListener("click", e => {
             modal.style.display = "flex"
+            document.body.style.overflow = "hidden"; // 모달이 열릴 때 스크롤 비활성화
         })
     </script>
 	<!-- 모달창 x누르면 닫힘 -->
@@ -280,6 +297,7 @@
         const closeBtn = modal.querySelector(".close-area")
         closeBtn.addEventListener("click", e => {
             modal.style.display = "none"
+            document.body.style.overflow ="";	// 모달이 닫히면 스크롤 활성화
         })
     </script>
 	<!-- 모달 바깥 영역 클릭하면 모달창 닫힘  -->
@@ -288,6 +306,7 @@
     		const evTarget = e.target
     	    if(evTarget.classList.contains("modal-overlay")) {
     	    	modal.style.display ="none"
+    	    	document.body.style.overflow ="";	// 모달이 닫히면 스크롤 활성화
     	    }
     	})
     </script>
@@ -297,7 +316,8 @@
 		document.addEventListener('DOMContentLoaded', function() {
 			var calendarEl = document.getElementById('calendar');
 			var calendar = new FullCalendar.Calendar(calendarEl, {
-				initialView : 'dayGridMonth',
+				height: '900px', // 캘린더 칸 높이 설정(이거 안하고 more 코드 작성하면 칸 크기 달라짐)
+		        expandRows: true, // 화면에 맞게 높이 재설정
 				headerToolbar : { // 헤더에 표시할 툴 바
 					start : 'prev next today',
 					center : 'title',
@@ -312,7 +332,7 @@
 				droppable : true,
 				editable : true,
 				nowIndicator : true, // 현재 시간 마크
-				dayMaxEvents : 3, // 일정 more 
+				dayMaxEvents : true, // 일정 more 
 				//	locale: 'ko', // 한국어 설정 
 				events : [
 						{
