@@ -1,22 +1,23 @@
-package kh.groupware.stream.task.controller;
+package kh.groupware.stream.ptask.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
-import kh.groupware.stream.task.model.service.TaskService;
-import kh.groupware.stream.task.model.vo.TaskVo;
+import kh.groupware.stream.ptask.model.service.PtaskService;
+import kh.groupware.stream.ptask.model.vo.PtaskVo;
 
 @Controller
-public class TaskController {
+public class PtaskController {
 
 	@Autowired
-	private TaskService service;
+	private PtaskService service;
 	
-	@GetMapping("/project")
+	@PostMapping("/ptask")
 	public String pSelectOne(Model model, String pno) {
-		TaskVo tlist = service.selectOne(pno);
+		PtaskVo tlist = service.selectOne(pno);
 		model.addAttribute("tlist", tlist);
 		return "/project";
 	}

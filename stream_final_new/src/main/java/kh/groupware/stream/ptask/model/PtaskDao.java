@@ -1,4 +1,4 @@
-package kh.groupware.stream.task.model;
+package kh.groupware.stream.ptask.model;
 
 import java.util.List;
 
@@ -6,19 +6,19 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kh.groupware.stream.task.model.vo.TaskVo;
+import kh.groupware.stream.ptask.model.vo.PtaskVo;
 
 @Repository
-public class TaskDao {
+public class PtaskDao {
 
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<TaskVo> selectList() {
+	public List<PtaskVo> selectList() {
 		return sqlSession.selectList("task.selectList");
 	}
 	
-	public TaskVo selectOne(String pno) {
+	public PtaskVo selectOne(String pno) {
 		return sqlSession.selectOne("task.selectOne", pno);
 	}
 	

@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import kh.groupware.stream.project.model.service.ProjectService;
-import kh.groupware.stream.task.model.vo.TaskVo;
+import kh.groupware.stream.ptask.model.vo.PtaskVo;
 
 @Controller
 public class ProjectController {

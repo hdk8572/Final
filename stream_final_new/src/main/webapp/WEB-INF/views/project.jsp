@@ -17,9 +17,9 @@
 
 	<title>AdminKit Demo - Bootstrap 5 Admin Template</title>
 	
-	<link href="css/app.css" rel="stylesheet">
-	<link href="css/project.css" rel="stylesheet">
-	<link href="css/makeProjectModal.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/app.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/project.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/makeProjectModal.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 	<!-- Tab bar -->
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -102,7 +102,7 @@
 
 </div>
 
-	<script src="js/app.js"></script>
+	<script src="${pageContext.request.contextPath}/js/app.js"></script>
 	<script>
 	$(document).ready(function() {
 		  $(".sidebar-link").mouseover(function() {
