@@ -22,24 +22,13 @@
 
 <link href="${pageContext.request.contextPath }/css/app.css"
 	rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/jm.css"
+	rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <style>
-.jm-body ul, li {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-.jm-task-aside {
-	float: right;
-	direction: ltr;
-	max-width: 260px;
-	min-width: 260px;
-	background: #dfdfdf;
-}
 /* 
 .jm-task-title {
 	overflow: hidden;
@@ -82,15 +71,7 @@
 	width: 100px;
 } */
 </style>
-<style>
-.mini-pop {
-	display: none
-}
 
-.mini-pop.active {
-	display: block;
-}
-</style>
 <script>
 	window.onload = loadedHandler;
 	function loadedHandler() {
@@ -120,48 +101,6 @@
 <body>
 	<div class="wrapper">
 		<%@include file="/WEB-INF/views/task/maintast-side.jsp"%>
-		<!-- 
-		<aside class="jm-task-aside">
-			<div>
-				<ul>
-					<li>
-						<div>상태</div>
-						<div>
-							<ul>
-								<li><input type="checkbox">요청</li>
-								<li><input type="checkbox">진행</li>
-								<li><input type="checkbox">피드백</li>
-								<li><input type="checkbox">완료</li>
-								<li><input type="checkbox">보류</li>
-							</ul>
-						</div>
-					</li>
-
-					<li>
-						<div>시작일</div>
-						<ul>
-							<li><input type="radio" name="startdate">전체</li>
-							<li><input type="radio" name="startdate">오늘</li>
-							<li><input type="radio" name="startdate">이번 주</li>
-							<li><input type="radio" name="startdate">이번 달</li>
-							<li><input type="radio" name="startdate">미정</li>
-						</ul>
-					</li>
-					<li>
-						<div>마감일</div>
-						<ul>
-							<li><input type="radio" name="enddate">전체</li>
-							<li><input type="radio" name="enddate">지연</li>
-							<li><input type="radio" name="enddate">오늘</li>
-							<li><input type="radio" name="enddate">이번 주</li>
-							<li><input type="radio" name="enddate">이번 달</li>
-							<li><input type="radio" name="enddate">미정</li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-		</aside> 
-		-->
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
 				<a class="sidebar-toggle js-sidebar-toggle"> <i
@@ -356,93 +295,105 @@
 									<div class="jm-rwap-task">
 										<div class="jm-task-title row">
 											<!-- dropdown -->
-											<div class="dropdown col-lg-4">
-												<div class="jm-title" id="tno">
-													<div class="card-subtitle text-muted dropdown-toggle"
-														data-bs-toggle="dropdown">
-														<span>업무명</span>
-													</div>
-													<div class="mini-pop dropdown-menu dropdown-menu-end">
-														<ul>
-															<li class="dropdown-item">오름차순</li>
-															<li class="dropdown-item">내림차순</li>
-															<li class="dropdown-item">정렬 해제</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-											<div class="dropdown col-lg-1">
-												<div class="jm-title" id="tno">
-													<div class="card-subtitle text-muted dropdown-toggle"
-														data-bs-toggle="dropdown">
-														<span>상태</span>
-													</div>
-													<div class="mini-pop dropdown-menu dropdown-menu-end">
-														<ul>
-															<li class="dropdown-item">오름차순</li>
-															<li class="dropdown-item">내림차순</li>
-															<li class="dropdown-item">정렬 해제</li>
-														</ul>
+											<div class="col-lg-4">
+												<div class="dropdown">
+													<div class="jm-title" id="tno">
+														<div class="card-subtitle text-muted dropdown-toggle"
+															data-bs-toggle="dropdown">
+															<span>업무명</span>
+														</div>
+														<div class="mini-pop dropdown-menu dropdown-menu-end">
+															<ul>
+																<li class="dropdown-item">오름차순</li>
+																<li class="dropdown-item">내림차순</li>
+																<li class="dropdown-item">정렬 해제</li>
+															</ul>
+														</div>
 													</div>
 												</div>
 											</div>
-											<div class="dropdown col-lg-1">
-												<div class="jm-title" id="tno">
-													<div class="card-subtitle text-muted dropdown-toggle"
-														data-bs-toggle="dropdown">
-														<span>담당자</span>
-													</div>
-													<div class="mini-pop dropdown-menu dropdown-menu-end">
-														<ul>
-															<li class="dropdown-item">오름차순</li>
-															<li class="dropdown-item">내림차순</li>
-															<li class="dropdown-item">정렬 해제</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-											<div class="dropdown col-lg-1">
-												<div class="jm-title" id="tno">
-													<div class="card-subtitle text-muted dropdown-toggle"
-														data-bs-toggle="dropdown">
-														<span>시작일</span>
-													</div>
-													<div class="mini-pop dropdown-menu dropdown-menu-end">
-														<ul>
-															<li class="dropdown-item">오름차순</li>
-															<li class="dropdown-item">내림차순</li>
-															<li class="dropdown-item">정렬 해제</li>
-														</ul>
+											<div class="jm-drop col-lg-1">
+												<div class="dropdown jm-move">
+													<div class="jm-title" id="tno">
+														<div class="card-subtitle text-muted dropdown-toggle"
+															data-bs-toggle="dropdown">
+															<span>상태</span>
+														</div>
+														<div class="mini-pop dropdown-menu dropdown-menu-end">
+															<ul>
+																<li class="dropdown-item">오름차순</li>
+																<li class="dropdown-item">내림차순</li>
+																<li class="dropdown-item">정렬 해제</li>
+															</ul>
+														</div>
 													</div>
 												</div>
 											</div>
-											<div class="dropdown col-lg-1">
-												<div class="jm-title" id="tno">
-													<div class="card-subtitle text-muted dropdown-toggle"
-														data-bs-toggle="dropdown">
-														<span>마감일</span>
-													</div>
-													<div class="mini-pop dropdown-menu dropdown-menu-end">
-														<ul>
-															<li class="dropdown-item">오름차순</li>
-															<li class="dropdown-item">내림차순</li>
-															<li class="dropdown-item">정렬 해제</li>
-														</ul>
+											<div class="jm-drop col-lg-1">
+												<div class="dropdown jm-move">
+													<div class="jm-title" id="tno">
+														<div class="card-subtitle text-muted dropdown-toggle"
+															data-bs-toggle="dropdown">
+															<span>담당자</span>
+														</div>
+														<div class="mini-pop dropdown-menu dropdown-menu-end">
+															<ul>
+																<li class="dropdown-item">오름차순</li>
+																<li class="dropdown-item">내림차순</li>
+																<li class="dropdown-item">정렬 해제</li>
+															</ul>
+														</div>
 													</div>
 												</div>
 											</div>
-											<div class="dropdown col-lg-1">
-												<div class="jm-title" id="tno">
-													<div class="card-subtitle text-muted dropdown-toggle"
-														data-bs-toggle="dropdown">
-														<span>등록일</span>
+											<div class="jm-drop col-lg-1">
+												<div class="dropdown jm-move">
+													<div class="jm-title" id="tno">
+														<div class="card-subtitle text-muted dropdown-toggle"
+															data-bs-toggle="dropdown">
+															<span>시작일</span>
+														</div>
+														<div class="mini-pop dropdown-menu dropdown-menu-end">
+															<ul>
+																<li class="dropdown-item">오름차순</li>
+																<li class="dropdown-item">내림차순</li>
+																<li class="dropdown-item">정렬 해제</li>
+															</ul>
+														</div>
 													</div>
-													<div class="mini-pop dropdown-menu dropdown-menu-end">
-														<ul>
-															<li class="dropdown-item">오름차순</li>
-															<li class="dropdown-item">내림차순</li>
-															<li class="dropdown-item">정렬 해제</li>
-														</ul>
+												</div>
+											</div>
+											<div class="jm-drop  col-lg-1">
+												<div class="dropdown jm-move">
+													<div class="jm-title" id="tno">
+														<div class="card-subtitle text-muted dropdown-toggle"
+															data-bs-toggle="dropdown">
+															<span>마감일</span>
+														</div>
+														<div class="mini-pop dropdown-menu dropdown-menu-end">
+															<ul>
+																<li class="dropdown-item">오름차순</li>
+																<li class="dropdown-item">내림차순</li>
+																<li class="dropdown-item">정렬 해제</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="jm-drop  col-lg-1">
+												<div class="dropdown jm-move">
+													<div class="jm-title" id="tno">
+														<div class="card-subtitle text-muted dropdown-toggle"
+															data-bs-toggle="dropdown">
+															<span>등록일</span>
+														</div>
+														<div class="mini-pop dropdown-menu dropdown-menu-end">
+															<ul>
+																<li class="dropdown-item">오름차순</li>
+																<li class="dropdown-item">내림차순</li>
+																<li class="dropdown-item">정렬 해제</li>
+															</ul>
+														</div>
 													</div>
 												</div>
 											</div>

@@ -1,0 +1,28 @@
+.jm-body ul, li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.jm-task-aside {
+	float: right;
+	direction: ltr;
+	max-width: 260px;
+	min-width: 260px;
+	background: #dfdfdf;
+}
+
+.mini-pop {
+	display: none
+}
+
+.mini-pop.active {
+	display: block;
+}
+
+.jm-move{
+	cursor: move;	
+}
+.jm-move div{
+	draggable: true
+}
