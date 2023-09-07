@@ -4458,6 +4458,7 @@ textarea.form-control-lg {
 .card-body {
 	flex: 1 1 auto;
 	padding: 1.25rem;
+	cursor: pointer;
 }
 
 .card>a {
@@ -6870,7 +6871,7 @@ textarea.form-control-lg {
 }
 
 .rounded {
-	border-radius: .2rem !important
+	border-radius: 50% !important
 }
 
 .rounded-0 {
