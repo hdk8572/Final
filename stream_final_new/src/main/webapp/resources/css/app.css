@@ -6871,7 +6871,7 @@ textarea.form-control-lg {
 }
 
 .rounded {
-	border-radius: .2rem !important
+	border-radius: 50% !important
 }
 
 .rounded-0 {
