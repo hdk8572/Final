@@ -23,7 +23,8 @@
 .cal-search-input{
 	padding: 0.3rem 0.85rem;
 	border-radius: 0.2rem;
-	border: 1px solid #ced4da;
+	border: 1px solid #ddd;
+	width: 20%;
 }
 
 #btn-modal {	/* +일정추가 버튼 */
@@ -33,6 +34,8 @@
 	border-radius: 0.2rem;
 	color: white;
 	padding: 0.3rem 0.85rem;
+	float: right;
+	
 }
 /* 캘린더 위 header!! */
 
@@ -56,7 +59,7 @@
 	z-index: 1;	/* 모달창을 제일 앞으로 위치시킴 */
 }
 .modal-window {
-	background-color: #f5f7fb;
+	background-color: #fff;
 	border-radius: 10px;
 	idth: 400px;
 	width: 674px;
@@ -66,34 +69,38 @@
 	padding: 13px 0 0;
 	margin: 30px auto 0 auto;
 }
-.create-post-header {
+.create-header {
 	position: relative;
 	height: 30px;
-	padding: 3px 120px 3px 30px;
+	padding: 3px 120px 30px 30px;
 
 }
+.create-post-title{
+	font-weight: bold;	
+}
+.title-input {
 
-.create-title-input {
-	padding: 20px 30px 15px 0;
-	margin-left: 30px;
 }
 #postTitle {	/* 일정추가 제목 */
-	padding: 0.3rem 0.85rem;
-	border-radius: 0.2rem;
-	border: 1px solid #ced4da;
-	width: 100%;
+	padding: 20px 30px 15px 0;
+	margin-left: 30px;
+	width: 90%;
+	font-size: 18px;
+	/* input 테두리x */
+	border: none; 
+	background: transparent;
+	border-bottom: 1px solid #ced4da;
+}
+input:focus {	/* 클릭시 테두리x */
+	outline:none;
 }
 .close-area{
 	color: #999;
-	right: 20px;
+	right: 30px;
 	/* font-size: 28px; */
 	font-weight: bold;
 	padding-right: 10px;
 	position: absolute;
 	top: 0;
 }
-
-
-
-
 /* 일정추가 모달!! */
