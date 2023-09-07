@@ -246,10 +246,10 @@
 										<!-- 모달창 열기(일정추가 클릭) -->
 										<div id="cal-modal" class="modal-overlay" aria-hidden="true">
 											<div class="modal-window">
-												<div class="create-post-header">
+													<div class="create-header">
 													<div class="temp-wrap">
 														<h4>일정 작성</h4>
-														<div class="dropdown">
+									<!-- 					<div class="dropdown">
 															<a class="btn btn-secondary dropdown-toggle" href="#"
 																role="button" data-bs-toggle="dropdown"
 																aria-expanded="false"> Dropdown link </a>
@@ -261,15 +261,14 @@
 																<li><a class="dropdown-item" href="#">Something
 																		else here</a></li>
 															</ul>
-														</div>
+														</div> -->
 													</div>
-													<div class="close-area">X</div>
+														<span class="close-area" data-bs-dismiss="modal" aria-label="Close">&times;</span>
 												</div>
-													<div class="create-post-header">
-														<input id="postTitle" type="text" class="create-title-input"
-															data-empty-msg="제목을 입력하세요" placeholder="제목을 입력하세요">
-													</div>
-												<div class="cal-content"></div>
+												 <div class="title-input">
+													<input id="postTitle" type="text" class="create-title-input" data-empty-msg="제목을 입력하세요" placeholder="제목을 입력하세요">
+												</div> 
+												<div class="create-content"></div>
 											</div>
 										</div>
 									</div>

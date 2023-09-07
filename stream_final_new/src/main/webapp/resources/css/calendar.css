@@ -36,11 +36,11 @@
 }
 /* 캘린더 위 header!! */
 
-
+    
 
 
 /* 일정추가 모달!! */
-#cal-modal.modal-overlay {	/* 일정추가 css */
+.modal-overlay {	/* 일정추가 css */
 	width: 100%;
 	height: 100%;
 	position: fixed;
@@ -55,14 +55,14 @@
 	border: 1px solid rgba(255, 255, 255, 0.18);
 	z-index: 1;	/* 모달창을 제일 앞으로 위치시킴 */
 }
-#cal-modal .modal-window {
-	background: #fff;
+.modal-window {
+	background-color: #f5f7fb;
 	border-radius: 10px;
 	idth: 400px;
 	width: 674px;
-	height: 500px;
+	height: 800px;
 	position: relative;
-	top: -100px; /* 모달 창 위로 조정 중앙에 위치? */
+	
 	padding: 13px 0 0;
 	margin: 30px auto 0 auto;
 }
@@ -70,10 +70,9 @@
 	position: relative;
 	height: 30px;
 	padding: 3px 120px 3px 30px;
+
 }
-.temp-wrap {
-	display: flex;
-}
+
 .create-title-input {
 	padding: 20px 30px 15px 0;
 	margin-left: 30px;
@@ -84,4 +83,17 @@
 	border: 1px solid #ced4da;
 	width: 100%;
 }
+.close-area{
+	color: #999;
+	right: 20px;
+	/* font-size: 28px; */
+	font-weight: bold;
+	padding-right: 10px;
+	position: absolute;
+	top: 0;
+}
+
+
+
+
 /* 일정추가 모달!! */
