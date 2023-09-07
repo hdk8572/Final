@@ -10,8 +10,8 @@
 }
 
 .w3-bar.tabBar {
-	/* background-color: #009b77; */
 	height: 36.31px;
+	border-bottom: 1px solid #80808038;
 }
 
 .w3-bar-item.w3 {
@@ -20,4 +20,14 @@
 
 .w3-bar-item.w3:hover {
 	color: #009b77;
+}
+
+.btn.btn-primary.addTaskTab {
+    padding: 8px 16px;
+    float: right;
+    width: auto;
+    border: none;
+    display: block;
+    outline: 0;
+    
 }

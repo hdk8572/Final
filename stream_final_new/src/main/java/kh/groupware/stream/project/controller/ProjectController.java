@@ -27,7 +27,7 @@ public class ProjectController {
 	@PostMapping("projectInsert")
 	public String insertList(Model model, ProjectVo vo) {
 		service.insertList(vo);
-		return "redirect:projectList";
+		return "redirect:/projectlist";
 	}
 	
 	

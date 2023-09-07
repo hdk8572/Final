@@ -14,64 +14,63 @@ public class MemberVo {
 //	MPHONE             VARCHAR2(20) 
 //	MRANK              VARCHAR2(12) 
 	
-	private String userId; 
-	private String deptNo;
-	private String cCode;
+	private String userid; 
+	private String deptno;
+	private String ccode;
 	private String password;
 	private int enabled;
 	private String authority;
-	private String mName;
-	private String mPhone;
-	private String mRank;
+	private String mname;
+	private String mphone;
+	private String mrank;
 	
 	@Override
 	public String toString() {
-		return "MemberVo [userId=" + userId + ", deptNo=" + deptNo + ", cCode=" + cCode + ", password=" + password
-				+ ", enabled=" + enabled + ", authority=" + authority + ", mName=" + mName + ", mPhone=" + mPhone
-				+ ", mRank=" + mRank + "]";
+		return "MemberVo [userid=" + userid + ", deptno=" + deptno + ", ccode=" + ccode + ", password=" + password
+				+ ", enabled=" + enabled + ", authority=" + authority + ", mname=" + mname + ", mphone=" + mphone
+				+ ", mrank=" + mrank + "]";
 	}
 
 	public MemberVo() {
 		super();
 	}
 
-	public MemberVo(String userId, String deptNo, String cCode, String password, int enabled, String authority,
-			String mName, String mPhone, String mRank) {
+	public MemberVo(String userid, String deptno, String ccode, String password, int enabled, String authority,
+			String mname, String mphone, String mrank) {
 		super();
-		this.userId = userId;
-		this.deptNo = deptNo;
-		this.cCode = cCode;
+		this.userid = userid;
+		this.deptno = deptno;
+		this.ccode = ccode;
 		this.password = password;
 		this.enabled = enabled;
 		this.authority = authority;
-		this.mName = mName;
-		this.mPhone = mPhone;
-		this.mRank = mRank;
+		this.mname = mname;
+		this.mphone = mphone;
+		this.mrank = mrank;
 	}
 
-
-	public String getUserId() {
-		return userId;
+	public String getUserid() {
+		return userid;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 
-	public String getDeptNo() {
-		return deptNo;
+	public String getDeptno() {
+		return deptno;
 	}
 
-	public void setDeptNo(String deptNo) {
-		this.deptNo = deptNo;
+	public void setDeptno(String deptno) {
+		this.deptno = deptno;
 	}
 
-	public String getcCode() {
-		return cCode;
+	public String getCcode() {
+		return ccode;
 	}
 
-	public void setcCode(String cCode) {
-		this.cCode = cCode;
+	public void setCcode(String ccode) {
+		this.ccode = ccode;
 	}
 
 	public String getPassword() {
@@ -98,30 +97,30 @@ public class MemberVo {
 		this.authority = authority;
 	}
 
-	public String getmName() {
-		return mName;
+	public String getMname() {
+		return mname;
 	}
 
-	public void setmName(String mName) {
-		this.mName = mName;
+	public void setMname(String mname) {
+		this.mname = mname;
 	}
 
-	public String getmPhone() {
-		return mPhone;
+	public String getMphone() {
+		return mphone;
 	}
 
-	public void setmPhone(String mPhone) {
-		this.mPhone = mPhone;
+	public void setMphone(String mphone) {
+		this.mphone = mphone;
 	}
 
-	public String getmRank() {
-		return mRank;
+	public String getMrank() {
+		return mrank;
 	}
 
-	public void setmRank(String mRank) {
-		this.mRank = mRank;
+	public void setMrank(String mrank) {
+		this.mrank = mrank;
 	}
-	
+
 	
 	
 }
