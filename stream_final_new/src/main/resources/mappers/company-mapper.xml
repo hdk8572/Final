@@ -2,10 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="company">
 
+	<!-- 회사로그인 -->
 	<select id="selectOne" resultType="CompanyVo">
 		SELECT CCODE FROM COMPANY
 		WHERE
 		CCODE= #{ccode} AND CPASSWORD= #{cpassword}
+	</select>
+	
+	<!-- 회사회원가입 -->
+	<select id="insert" parameterType="CompanyVo">
+		INSERT INTO COMPANY VALUES ('C04', #{cname}, #{cphone}, #{caddress}, #{cpassword})
+	</select>
+	<!-- TODO!! sequence 만들어서 ccode에 넣기 -->
+	
+	<!-- 회사정보 -->
+	<select id="companyInfo" parameterType="String" resultType="CompanyVo">
+		SELECT CNAME, CPHONE, CADDRESS, DEPTNAME FROM COMPANYINFO WHERE USERID = #{ccode}
+	</select>
+	
+	<!-- 회사정보수정 -->
+	<select id="update" parameterType="CompanyVo">
+		<!-- TODO -->
 	</select>
 	
 </mapper>

@@ -54,7 +54,7 @@
 
 												<label class="form-label">Username</label> <input
 													class="form-control form-control-lg" type="email"
-													name="userId" placeholder="E-mail" required="required" />
+													name="userid" placeholder="E-mail" required="required" />
 											</div>
 											<div class="mb-3">
 												<label class="form-label">Password</label> <input
