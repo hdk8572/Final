@@ -8,8 +8,11 @@
   </select>
   
   <insert id="insertList" parameterType="ProjectVo">
-  	INSERT INTO PROJECT (PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, PSTARTDATE, PENDDATE)
-	VALUES (#{pno}, #{userId}, #{pname}, #{pcoment}, #{paccess}, #{pdate}, #{pstartDate}, #{pendDate});
+  	<!-- INSERT INTO PROJECT (PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, PSTARTDATE, PENDDATE)
+	VALUES (#{pno}, #{userId}, #{pname}, #{pcoment}, #{paccess}, systimestamp, #{pstartDate}, #{pendDate}); -->
+ 	
+	INSERT INTO PROJECT (PNO, USERID, PNAME, PCOMENT, PACCESS, PSTARTDATE, PENDDATE)
+	VALUES (project_sequence.NEXTVAL, #{userId}, #{pname}, #{pcoment}, #{paccess}, #{pstartDate}, #{pendDate})
   </insert>
   
 </mapper>

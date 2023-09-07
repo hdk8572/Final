@@ -17,10 +17,10 @@
 					<h5 class="card-title mb-0">프로젝트명 및 설명을 입력해주세요.</h5>
 				</div>
 				<div class="card-body">
-					<input type="hidden" name="pno">
-					<input type="hidden" name="userId">
+					<input type="hidden" name="pno" value="9">
+					<input type="hidden" name="userId" value="kh0001@kh.com">
 					<input type="hidden" name="paccess" value="ddd">
-					<input type="hidden" name="pdate" value="sysdate">
+					<!-- <input type="hidden" name="pdate" value=systimestamp> -->
 					<input type="text" class="form-control" name="pname" placeholder="프로젝트명을 입력해주세요.">
 					<br>
 					<textarea class="form-control" rows="2" name="pcoment" placeholder="프로젝트에 관한 설명을 입력해주세요.(옵션)"></textarea>

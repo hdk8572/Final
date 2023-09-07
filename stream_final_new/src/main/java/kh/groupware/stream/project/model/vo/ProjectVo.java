@@ -19,6 +19,31 @@ public class ProjectVo {
 				+ "]";
 	}
 	
+	public ProjectVo(String pno, String userId, String pname, String pcoment, String paccess, String pdate,
+			String pstartDate, String pendDate) {
+		super();
+		this.pno = pno;
+		this.userId = userId;
+		this.pname = pname;
+		this.pcoment = pcoment;
+		this.paccess = paccess;
+		this.pdate = pdate;
+		this.pstartDate = pstartDate;
+		this.pendDate = pendDate;
+	}
+
+	public ProjectVo(String pno, String userId, String pname, String pcoment, String paccess, String pstartDate,
+			String pendDate) {
+		super();
+		this.pno = pno;
+		this.userId = userId;
+		this.pname = pname;
+		this.pcoment = pcoment;
+		this.paccess = paccess;
+		this.pstartDate = pstartDate;
+		this.pendDate = pendDate;
+	}
+
 	public ProjectVo() {
 		super();
 	}
