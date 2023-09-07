@@ -18,7 +18,7 @@
 				</div>
 				<div class="card-body">
 					<input type="hidden" name="pno" value="9">
-					<input type="hidden" name="userId" value="kh0001@kh.com">
+					<input type="hidden" name="userId" value="kh0002@kh.com"> <!-- 로그인 세션 받아서 등록 -->
 					<input type="hidden" name="paccess" value="ddd">
 					<!-- <input type="hidden" name="pdate" value=systimestamp> -->
 					<input type="text" class="form-control" name="pname" placeholder="프로젝트명을 입력해주세요.">
