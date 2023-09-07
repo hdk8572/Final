@@ -59,7 +59,7 @@
 															
 															<div class="col-auto">
 																<div class="stat text-primary">
-																	${vo.pno}
+																	${vo.prow}
 																</div>
 															</div>
 														</div>

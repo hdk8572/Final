@@ -21,13 +21,13 @@
 	border-radius: 50px;
 	width: 93%;
 	height: 100%;
-	margin: 10px;
+	margin: 3px 10px;
 }
 
 .serimg {
 	position: absolute;
 	width: 17px;
-	top: 17px;
+	top: 11px;
 	left: 25px;
 	margin: 0;
 }

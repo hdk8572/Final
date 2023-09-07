@@ -59,8 +59,16 @@
 		
 		<!-- 업무 탭 [Task]-->
 		<div id="Tab2" class="w3-container tab ptab" style="display:none">
+			<div class="search">
+				<input class="serinput" type="text" placeholder="검색어 입력">
+				<img class="serimg"	src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+			</div>
 			<main class="content">
-				<h2>업무</h2>
+				<h2>
+					업무
+					<button class="btn btn-primary addTaskTab">업무 등록</button>
+				</h2>
+				
 				<div class="container-fluid p-0">
 				<table class="table table-hover my-0">
 					<tr>
@@ -86,6 +94,10 @@
 		
 		<!-- 캘린더 탭 -->
 		<div id="Tab3" class="w3-container tab ptab" style="display:none">
+				<div class="search">
+				 	<input class="serinput" type="text" placeholder="검색어 입력">
+					<img class="serimg"	src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+				</div>
 				<main class="content">
 				<h2>캘린더</h2>
 				<div class="container-fluid p-0">

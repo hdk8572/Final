@@ -3,13 +3,12 @@
 <mapper namespace="project">
   
   <select id="selectList" resultType="ProjectVo">
-	SELECT *
+	SELECT PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, TO_CHAR(PSTARTDATE, 'YYYY-MM-DD')PSTARTDATE, TO_CHAR(PENDDATE, 'YYYY-MM-DD')PENDDATE, ROWNUM PROW 
 	FROM PROJECT
+    <!-- WHERE USERID = '조회계정 선택' -->
   </select>
   
   <insert id="insertList" parameterType="ProjectVo">
-  	<!-- INSERT INTO PROJECT (PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, PSTARTDATE, PENDDATE)
-	VALUES (#{pno}, #{userId}, #{pname}, #{pcoment}, #{paccess}, systimestamp, #{pstartDate}, #{pendDate}); -->
  	
 	INSERT INTO PROJECT (PNO, USERID, PNAME, PCOMENT, PACCESS, PSTARTDATE, PENDDATE)
 	VALUES (project_sequence.NEXTVAL, #{userId}, #{pname}, #{pcoment}, #{paccess}, #{pstartDate}, #{pendDate})
