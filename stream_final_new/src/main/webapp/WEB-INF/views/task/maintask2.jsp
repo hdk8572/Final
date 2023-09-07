@@ -97,6 +97,9 @@
 		$(this).children(".mini-pop").addClass("show");
 	} */
 </script>
+
+<script src="${pageContext.request.contextPath }/js/maintask.js"></script>
+
 </head>
 <body>
 	<div class="wrapper">
@@ -313,8 +316,8 @@
 												</div>
 											</div>
 											<div class="jm-drop col-lg-1">
-												<div class="dropdown jm-move">
-													<div class="jm-title" id="tno">
+												<div class="dropdown jm-move" id="tstatus" draggable="true">
+													<div class="jm-title">
 														<div class="card-subtitle text-muted dropdown-toggle"
 															data-bs-toggle="dropdown">
 															<span>상태</span>
@@ -330,8 +333,8 @@
 												</div>
 											</div>
 											<div class="jm-drop col-lg-1">
-												<div class="dropdown jm-move">
-													<div class="jm-title" id="tno">
+												<div class="dropdown jm-move" id="tmember" draggable="true">
+													<div class="jm-title">
 														<div class="card-subtitle text-muted dropdown-toggle"
 															data-bs-toggle="dropdown">
 															<span>담당자</span>
@@ -347,8 +350,8 @@
 												</div>
 											</div>
 											<div class="jm-drop col-lg-1">
-												<div class="dropdown jm-move">
-													<div class="jm-title" id="tno">
+												<div class="dropdown jm-move" id="tstartdate" draggable="true">
+													<div class="jm-title" >
 														<div class="card-subtitle text-muted dropdown-toggle"
 															data-bs-toggle="dropdown">
 															<span>시작일</span>
@@ -364,8 +367,8 @@
 												</div>
 											</div>
 											<div class="jm-drop  col-lg-1">
-												<div class="dropdown jm-move">
-													<div class="jm-title" id="tno">
+												<div class="dropdown jm-move" id="tenddate" draggable="true">
+													<div class="jm-title" >
 														<div class="card-subtitle text-muted dropdown-toggle"
 															data-bs-toggle="dropdown">
 															<span>마감일</span>
@@ -381,8 +384,8 @@
 												</div>
 											</div>
 											<div class="jm-drop  col-lg-1">
-												<div class="dropdown jm-move">
-													<div class="jm-title" id="tno">
+												<div class="dropdown jm-move" id="tdate" draggable="true">
+													<div class="jm-title">
 														<div class="card-subtitle text-muted dropdown-toggle"
 															data-bs-toggle="dropdown">
 															<span>등록일</span>
@@ -424,7 +427,7 @@
 															<div class="jm-title-tmember col-lg-1">담당자</div>
 															<div class="jm-title-tstartdate col-lg-1">시작일</div>
 															<div class="jm-title-tenddate col-lg-1">마감일</div>
-															<div class="jm-empty-cell col-lg-1">등록일</div>
+															<div class="jm-empty-tdate col-lg-1">등록일</div>
 														</li>
 													</ul>
 												</div>
