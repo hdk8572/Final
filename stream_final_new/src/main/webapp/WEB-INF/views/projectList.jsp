@@ -18,6 +18,7 @@
 	<title>AdminKit Demo - Bootstrap 5 Admin Template</title>
 	
 	<link href="${pageContext.request.contextPath}/css/app.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/projectList.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/css/makeProjectModal.css" rel="stylesheet">
 	<!-- Tab bar -->
@@ -37,6 +38,7 @@
 				<div class="container-fluid p-0">
 					
 					<h1 class="h3 mb-3">
+					<span>${userId}님의 프로젝트 목록</span>
 					<button class="btn btn-primary" id="myBtn" data-bs-toggle="modal" data-bs-target="#myModal">프로젝트 추가+</button>
 					</h1>
 						
@@ -54,7 +56,9 @@
 													<div class="card-body" >
 														<div class="row">
 															<div class="col mt-0">
-																<h5 class="card-title">Project</h5>
+																<h5 class="card-title">
+																	Project
+																</h5>
 															</div>
 															
 															<div class="col-auto">

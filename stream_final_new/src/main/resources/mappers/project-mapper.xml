@@ -5,11 +5,14 @@
   <select id="selectList" resultType="ProjectVo">
 	SELECT PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, TO_CHAR(PSTARTDATE, 'YYYY-MM-DD')PSTARTDATE, TO_CHAR(PENDDATE, 'YYYY-MM-DD')PENDDATE, ROWNUM PROW 
 	FROM PROJECT
-    <!-- WHERE USERID = '조회계정 선택' -->
+    <!-- WHERE USERID = 'kh0001@kh.com' -->
+    
+    <!-- SELECT PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, TO_CHAR(PSTARTDATE, 'YYYY-MM-DD')PSTARTDATE, TO_CHAR(PENDDATE, 'YYYY-MM-DD')PENDDATE, ROWNUM PROW 
+	FROM PROJECT JOIN USERS USINIG(userid)
+    WHERE USERID = 'kh0001@kh.com' -->
   </select>
   
   <insert id="insertList" parameterType="ProjectVo">
- 	
 	INSERT INTO PROJECT (PNO, USERID, PNAME, PCOMENT, PACCESS, PSTARTDATE, PENDDATE)
 	VALUES (project_sequence.NEXTVAL, #{userId}, #{pname}, #{pcoment}, #{paccess}, #{pstartDate}, #{pendDate})
   </insert>
