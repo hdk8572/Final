@@ -10,16 +10,16 @@ function loadedHandler(){
 }
 
 function dragStart(e){
-	console.log("dragStart"+this.id);
-	console.log("dragStart"+e.target.id);
+	console.log(this.id);
+	console.log(e.target.id);
 	event.dataTransfer.setData("abc", event.target.id);
 }
 function dragging(e){
-	console.log("dragging"+this.id);
+	console.log(this.id);
 	event.dataTransfer.setData("abc", event.target.id);
 }
 function dragEnter(e){
-	console.log("드랍 가능한 공간 도착"+this.id);
+	console.log(this.id);
 	this.style.border="3px dotted red";
 }
 function allowDrop(e){
@@ -29,7 +29,7 @@ function allowDrop(e){
 function drop(e){
 	event.preventDefault();
 	var data = event.dataTransfer.getData("abc");
-	console.log("드랍"+data);
+	console.log(data);
 	console.log(event.target);
 	var jTargetElement = $(event.target);
 	console.log(jTargetElement);
