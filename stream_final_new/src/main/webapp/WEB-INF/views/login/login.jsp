@@ -168,7 +168,7 @@ input[type=radio]:nth-of-type(2):checked ~ .labels label:nth-of-type(2)
 														<div class="mb-3">
 															<label class="form-label">Password</label> <input
 																class="form-control form-control-lg" type="password"
-																name="password" placeholder="비밀번호를 입력해주세요."
+																name="cpassword" placeholder="비밀번호를 입력해주세요."
 																required="required" /> <small> <a
 																href="index.html">비밀번호 찾기</a>
 															</small>

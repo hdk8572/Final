@@ -19,8 +19,6 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-
-	
 	@GetMapping("/newmember")
 	public ModelAndView newMember(ModelAndView mv) {
 		mv.setViewName("login/newmember");
@@ -32,6 +30,7 @@ public class MemberController {
 		return mv;
 	}
 	
+	//member login
 	@PostMapping("/login.member")
 	@ResponseBody
 	public String login(Model model, MemberVo mvo) {
