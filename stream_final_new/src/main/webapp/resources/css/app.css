@@ -5998,7 +5998,7 @@ textarea.form-control-lg {
 }
 
 .me-2 {
-	margin-right: .5rem !important
+	margin-right: .5rem;
 }
 
 .me-3 {
