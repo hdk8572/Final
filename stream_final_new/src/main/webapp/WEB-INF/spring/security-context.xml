@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/security 
+						http://www.springframework.org/schema/security/spring-security.xsd
+						http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	
+	
+	<!-- 보안 미적용 -->
+	<!-- <http pattern="/**/*.js" security="none" />  -->
+	
+	<http auto-config="true" use-expressions="true">
+      
+		<intercept-url pattern="/member/accessDenied" access="permitAll" />
+		<intercept-url pattern="/member/accessDeniedView" access="permitAll" />
+		<intercept-url pattern="/member/loginForm" access="permitAll" />
+		<intercept-url pattern="/" access="permitAll" />
+		<intercept-url pattern="/encode-password" access="permitAll" />
+		<intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
+		<intercept-url pattern="/**" access="hasAnyRole('USER')" />
+		
+		
+		<form-login login-page="/member/loginForm"
+					default-target-url="/"
+					authentication-failure-url="/member/loginForm?error"
+					username-parameter="id"
+					password-parameter="password" />
+		<!-- Form-login의 항목 -->
+			<!-- Default-Target-URL: 로그인 성공할 경우, 접속할 사이트 -->
+		
+		<logout logout-url="/logout" logout-success-url="/" />
+		
+		<!-- Servlet 3.0부터 access-denied-handler 미지원 -->
+		<!-- web.xml으로 제어할 것 -->
+		<!-- <access-denied-handler ref="customAccessDeniedHandler"/> -->
+		<access-denied-handler error-page="/member/accessDenied" />
+		<csrf disabled="true" />
+	</http>
+	
+	<!-- DataSource 추후 지원 -->
+	
+	<!-- 1. HSQLDB -->
+	<!-- ClassDriver = org.hsqldb.jdbcDriver -->
+	<!-- Url = jdbc:hsqldb:hsql://localhost:9001 -->
+	
+	<!-- 2. Oracle JDBC -->
+	<!-- ClassDriver = oracle.jdbc.driver.OracleDriver -->
+	<!-- Url = jdbc:oracle:thin:@127.0.0.1:1521:orcl -->
+	
+	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<beans:property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl" />
+		<beans:property name="username" value="{사용자계정}" />
+		<beans:property name="password" value="{비밀번호}" />
+	</beans:bean>
+	
+	<!-- 사용자 세부 계정 서비스 -->
+	<beans:bean id="userDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+		<beans:property name="dataSource" ref="dataSource" />
+		<beans:property name="usersByUsernameQuery" value="select username,password,enabled from comp_users where username = ?" />
+		<beans:property name="authoritiesByUsernameQuery" value="select username,authority from comp_authorities where username = ?" />
+		<beans:property name="groupAuthoritiesByUsernameQuery" value="select g.id, g.group_name, ga.authority from comp_groups g, 
+																	  comp_group_members gm, comp_group_authorities ga where gm.username = ? 
+																	  and g.id = ga.group_id and g.id = gm.group_id" />
+	</beans:bean>
+	
+	<!-- provider -->
+	<authentication-manager>
+		<authentication-provider user-service-ref="userDetailsService">
+		<!-- <authentication-provider> -->
+			<!-- <user-service>-->
+				<!-- <user name="user" password="password" authorities="ROLE_USER" /> -->
+				<!-- xml 내에 사용자 계정 등록 -->
+				<!-- <user name="user" password="$2a$10$Gkr61IXH0YI/.Yh5T6fzteGLCLT6nOmMkID/DmFhWtPmu1WwPrDKq" authorities="ROLE_USER" /> -->
+				<!-- <user name="admin" password="password" authorities="ROLE_ADMIN" /> -->
+			<!-- </user-service> -->
+			<password-encoder ref="passwordEncoder"/>
+		</authentication-provider>
+	</authentication-manager>
+	
+	<!-- 암호화 패키지 -->
+	<beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" /> 
+
+</beans:beans>
