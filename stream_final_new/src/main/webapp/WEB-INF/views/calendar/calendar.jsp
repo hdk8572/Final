@@ -54,9 +54,9 @@
 					<div class="row">
 						<div class="card">
 							<div class="card-header">
-								<div class="project-search">
-									<input class="cal-search-input" type="text"  placeholder="일정명을 입력해주세요">
-									<button id="btn-modal" type="button"data-bs-toggle="modal" data-bs-target="#cmodal">+일정추가</button>
+								<div class="card-body">
+									<input class="form-cal-control" type="text"  placeholder="일정명을 입력해주세요">
+									<button class="btn btn-primary" id="btn-modal" type="button" data-bs-toggle="modal" data-bs-target="#cmodal">+일정추가</button>
 								</div>
 								<!-- 캘린더  -->
 								<div id="croot">

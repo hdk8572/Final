@@ -20,20 +20,12 @@
 	padding-right: 1.5rem !important;
 	margin-bottom: 10px;
 }
-.cal-search-input{
-	padding: 0.3rem 0.85rem;
-	border-radius: 0.2rem;
-	border: 1px solid #ddd;
+.form-cal-control{
 	width: 20%;
-}
-
-#btn-modal {	/* +일정추가 버튼 */
-	background-color: #3b7ddd;
-	border-color: #3b7ddd;
-	border: 1px solid transparent;
-	border-radius: 0.2rem;
-	color: white;
 	padding: 0.3rem 0.85rem;
+}
+#btn-modal {	/* +일정추가 버튼 */
+	border: 1px solid transparent;
 	float: right;
 	
 }
