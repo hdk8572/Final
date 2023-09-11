@@ -21,8 +21,11 @@
 	
 	<link href="${pageContext.request.contextPath}/css/app.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/css/projectList.css" rel="stylesheet">
+	<!-- Modal CSS -->
+	<link href="${pageContext.request.contextPath}/css/Modal.css" rel="stylesheet">
+	
+	
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/makeProjectModal.css" rel="stylesheet">
 	<!-- Tab bar -->
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>

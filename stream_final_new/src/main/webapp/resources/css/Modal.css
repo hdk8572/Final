@@ -10,23 +10,15 @@
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-
 }
 
 /* Modal Content/Box */
 .modal-content {
   background-color: #f5f7fb;
-  /* margin: 15%, 30%, 15%, 20%; 15% from the top and centered */
-  /* position: absolute;
-  right: 0; */
   padding: 0px;
   border: 1px solid #888;
-  /* Could be more or less, depending on screen size */
- /*  width: 40%;  */  
-  /* width: calc(100% - 65px); Subtract the width of the modal header from the full width */
   height: 100%;
   border-radius: 40px 0 0 40px;
-
 }
 
 .modal-header {
@@ -86,3 +78,14 @@
 .form-date {
 	width: 45%;
 }
+
+/* PtaskModal */
+.modal-content.right {
+	
+}
+
+.modal-header.ptask {
+    height: 65px;
+    background-color: #009b77;
+
+

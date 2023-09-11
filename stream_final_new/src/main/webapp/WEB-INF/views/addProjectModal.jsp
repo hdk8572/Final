@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<%-- <head>
+	<link href="${pageContext.request.contextPath}/css/Modal.css" rel="stylesheet">
+</head> --%>
+
 <!-- 모달 -->
 <!-- The Modal -->
 <div id="myModal" class="modal right fade" aria-labelledby="myModalLabel">
@@ -55,7 +59,4 @@
   </div>
 </div>
 
-<script>
-	<link href="${pageContext.request.contextPath}/css/makeProjectModal.css" rel="stylesheet">
-</script>
 <!-- 모달 -->
