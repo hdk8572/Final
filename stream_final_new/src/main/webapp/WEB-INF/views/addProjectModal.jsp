@@ -7,14 +7,14 @@
 
 <!-- 모달 -->
 <!-- The Modal -->
-<div id="myModal" class="modal right fade" aria-labelledby="myModalLabel">
+<div id="myModal" class="modal project right fade" aria-labelledby="myModalLabel">
 <div class="modal-dialog">
   <!-- Modal content -->
-  <div class="modal-content">
-  	<div class="modal-header">
+  <div class="modal-content project">
+  	<div class="modal-header project">
   		<span class="close" data-bs-dismiss="modal" aria-label="Close">&times;</span>
   	</div>
- 	<div class="modal-body">
+ 	<div class="modal-body project">
  		<form action="${pageContext.request.contextPath}/projectInsert" method="post">
 	    	<div class="card">
 				<div class="card-header">
@@ -54,7 +54,7 @@
 		</form>
 	</div>
   </div>
-    <div class="modal-footer">
+    <div class="modal-footer project">
   	</div>
   </div>
 </div>

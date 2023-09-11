@@ -16,15 +16,13 @@
 .modal-content {
   background-color: #f5f7fb;
   padding: 0px;
-  border: 1px solid #888;
+  /* border: 1px solid #888; */
   height: 100%;
-  border-radius: 40px 0 0 40px;
 }
 
 .modal-header {
 	height: 65px;
     background-color: #009b77;
-    border-radius: 40px 0 0;
 }
 
 .modal-body {
@@ -35,28 +33,6 @@
 .modal-text {
 	display: block;
 	padding: 0.625rem 1.625rem;
-}
-
-/*Right*/
-.modal.right .modal-dialog {
-	position: fixed;
-	margin: auto;
-	width: 40%;
-	height: 100%;
-	-webkit-transform: translate3d(0%, 0, 0);
-	    -ms-transform: translate3d(0%, 0, 0);
-	     -o-transform: translate3d(0%, 0, 0);
-	        transform: translate3d(0%, 0, 0);
-}
-.modal.right.fade .modal-dialog {
-	right:-40%;
-	-webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
-    -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
-    -o-transition: opacity 0.3s linear, right 0.3s ease-out;
-     transition: opacity 0.3s linear, right 0.3s ease-out;
-}
-.modal.right.fade.show .modal-dialog {
-	right: 0;
 }
 
 /* The Close Button */
@@ -75,17 +51,63 @@
   cursor: pointer;
 }
 
+/* Date */
 .form-date {
 	width: 45%;
 }
 
+/* Project */
+/* Right */
+.modal-content.project {
+  border-radius: 40px 0 0 40px;
+}
+
+.modal-header.project {
+    border-radius: 40px 0 0;
+}
+
+.modal.project.right .modal-dialog {
+	position: fixed;
+	margin: auto;
+	width: 40%;
+	height: 100%;
+	-webkit-transform: translate3d(0%, 0, 0);
+	    -ms-transform: translate3d(0%, 0, 0);
+	     -o-transform: translate3d(0%, 0, 0);
+	        transform: translate3d(0%, 0, 0);
+}
+.modal.project.right.fade .modal-dialog {
+	right:-40%;
+	-webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+     transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+.modal.project.right.fade.show .modal-dialog {
+	right: 0;
+}
+
+
 /* PtaskModal */
-.modal-content.right {
-	
+.modal-dialog.ptask {
+    position: relative;
+    z-index: 5;
+    height: 80%;
+    width: 674px;
+    margin: 30px auto 0 auto;
+    background: #fff;
+    border: 1px solid #777;
+    box-sizing: border-box;
+    box-shadow: 20px 20px 30px rgba(0,0,0,.2);
+    border-radius: 10px;
+}
+
+.modal-content {
+	border-radius: 10px;
 }
 
 .modal-header.ptask {
     height: 65px;
     background-color: #009b77;
-
+	border-radius: 10px 10px 0px 0px;
 
