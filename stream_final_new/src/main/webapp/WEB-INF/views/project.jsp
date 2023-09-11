@@ -82,7 +82,7 @@
 					<tr>
 						<td>${tlist.tcontent}</td>
 						<td>${tlist.tmember}</td>
-						<td><span class="badge bg-warning">${tlist.tstatus}</span></td>
+						<td><span class="badge bg-info">${tlist.tstatus}</span></td>
 						<td>${tlist.tdate}</td>
 						<td>${tlist.tstartDate}</td>
 						<td>${tlist.tendDate}</td>

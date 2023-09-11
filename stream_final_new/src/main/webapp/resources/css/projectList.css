@@ -1,0 +1,12 @@
+.feather.feather-more-horizontal.align-middle.me-2 {
+	float: right;
+    color: #939ba2;
+}	
+
+.feather.feather-more-horizontal.align-middle.me-2:hover {
+	color: #009b77;
+}
+
+.addProject {
+	float: right;
+}

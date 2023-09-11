@@ -41,7 +41,7 @@
 					
 					<h1 class="h3 mb-3">
 						<span>${userId}님의 프로젝트 목록</span>
-						<button class="btn btn-primary" id="myBtn" data-bs-toggle="modal" data-bs-target="#myModal">프로젝트 추가+</button>
+						<span><button class="btn btn-primary addProject" id="myBtn" data-bs-toggle="modal" data-bs-target="#myModal">프로젝트 추가+</button></span>
 					</h1>
 						
 					<%@ include file="/WEB-INF/views/modal.jsp" %>
@@ -73,6 +73,7 @@
 														<div class="mb-0">
 															<!-- <span class="text-muted">진행 중</span> -->
 															<span class="text-muted">${fn:split(vo.pstartDate, " ")[0]}~${fn:split(vo.pendDate, " ")[0]}</span>
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle me-2"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
 														</div>
 													</div>
 												</form>
