@@ -6,6 +6,14 @@
 </style>
 <!-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> -->
 <script src="${pageContext.request.contextPath}/js/jquery-3.7.0.js"></script>
+<script>
+function popupOpen(){ 
+    var popUrl = "/stream/chat";	//팝업창에 출력될 페이지 URL
+    var popOption = "left=800, top=100, width=500, height=800, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+        window.open(popUrl,"",popOption);
+    }
+
+</script>
 <%@ include file="/WEB-INF/views/searchbar.jsp" %>
 <nav class="navbar navbar-expand navbar-light navbar-bg">
 
@@ -184,7 +192,7 @@
 						<div class="position-relative">채팅</div>
 					</div>
 					<div class="list-group">
-						<a href="#" class="list-group-item">
+						<a href="javascript:popupOpen()" class="list-group-item">
 							<div class="row g-0 align-items-center">
 								<div class="col-2">
 									<img src="img/avatars/user1.jpg"
@@ -196,7 +204,8 @@
 									<div class="text-muted small mt-1">시간 전</div>
 								</div>
 							</div>
-						</a> <a href="#" class="list-group-item">
+						</a>
+						 <a href="javascript:popupOpen()" class="list-group-item">
 							<div class="row g-0 align-items-center">
 								<div class="col-2">
 									<img src="img/avatars/user1.jpg"
@@ -208,7 +217,8 @@
 									<div class="text-muted small mt-1">시간 전</div>
 								</div>
 							</div>
-						</a> <a href="#" class="list-group-item">
+						</a> 
+						<a href="javascript:popupOpen()" class="list-group-item">
 							<div class="row g-0 align-items-center">
 								<div class="col-2">
 									<img src="img/avatars/user1.jpg"
@@ -220,7 +230,8 @@
 									<div class="text-muted small mt-1">시간 전</div>
 								</div>
 							</div>
-						</a> <a href="#" class="list-group-item">
+						</a> 
+						<a href="javascript:popupOpen()" class="list-group-item">
 							<div class="row g-0 align-items-center">
 								<div class="col-2">
 									<img src="img/avatars/user1.jpg"
@@ -232,7 +243,8 @@
 									<div class="text-muted small mt-1">시간 전</div>
 								</div>
 							</div>
-						</a> <a href="#" class="list-group-item">
+						</a>
+						 <a href="javascript:popupOpen()" class="list-group-item">
 							<div class="row g-0 align-items-center">
 								<div class="col-2">
 									<img src="img/avatars/user1.jpg"
@@ -244,7 +256,8 @@
 									<div class="text-muted small mt-1">시간 전</div>
 								</div>
 							</div>
-						</a> <a href="#" class="list-group-item">
+						</a> 
+						<a href="javascript:popupOpen()" class="list-group-item">
 							<div class="row g-0 align-items-center">
 								<div class="col-2">
 									<img src="img/avatars/user1.jpg"
