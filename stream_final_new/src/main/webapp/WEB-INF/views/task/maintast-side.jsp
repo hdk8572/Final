@@ -5,10 +5,10 @@
 	href="${pageContext.request.contextPath }/css/app.css">
 
 <nav id="sidebar" class="sidebar js-sidebar">
-	<div class="sidebar-content js-simplebar">
-		<a class="sidebar-brand" href="index.html"> <span
-			class="align-middle">AdminKit</span>
-		</a>
+			<div class="sidebar-content js-simplebar">
+				<!-- <a class="sidebar-brand" href="index.html"> -->
+          <span class="align-brand-middle"><a href="projectlist" class="sidebar-brand-new">AdminKit</a></span>
+        		<!-- </a> -->
 
 		<ul class="sidebar-nav">
 			<li class="sidebar-item active"><a class="sidebar-link"

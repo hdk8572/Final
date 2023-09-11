@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mainTask">
+
+	<select id="projectNameList" resultType="MaintaskVo">
+		select pname, count(tno) cnt from project join task using(pno)
+    	group by (pno, pname) having pno=pno
+	</select>
+	<select id="taskList" resultType="MaintaskVo">
+		select tcontent, tmember, tstatus, tdate, tstartdate, tenddate from task
+    	join project using(pno, userid)
+    	where pno=pno
+	</select>
+</mapper>
