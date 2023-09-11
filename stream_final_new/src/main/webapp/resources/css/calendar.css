@@ -1,20 +1,48 @@
 /* 캘린더!! */
-.fc-daygrid-more-link.fc-more-link {	/*more버튼*/
+/* .fc-daygrid-more-link.fc-more-link {	more버튼
 	color: #000;
 }
-.fc-icon.fc-icon-chevron-left::before {	/* 캘린더 < > 버튼 css  */
+.fc-icon.fc-icon-chevron-left::before {	캘린더 < > 버튼 css 
 	font-family: inherit;
 }
 .fc-icon.fc-icon-chevron-right::before {
 	font-family: inherit;
 }
-.fc-popover-close.fc-icon.fc-icon-x::before {	/* 캘린더 세부 일정 x버튼 */
+.fc-popover-close.fc-icon.fc-icon-x::before {	캘린더 세부 일정 x버튼
 	font-family: inherit;
 }
+.fc-col-header-cell-cushion {
+	color: #333;
+}
+.fc-daygrid-day-number{
+	color: #333;	
+}
+.fc .fc-button-primary{
+	background-color: #fff;
+} */
 /* 캘린더!! */
 
 
 /* 캘린더 위 header!! */
+.w3-bar.tabBar {	/* 피드 쪽 */
+	height: 36.31px;
+	border-bottom: 1px solid #80808038;
+}
+.w3-bar {
+    width: 100%;
+    overflow: hidden;
+}
+.w3-bar-item.w3 {
+    background-color: #f5f7fb;
+}
+.w3-bar .w3-bar-item {
+    padding: 8px 16px;
+    float: left;
+    width: auto;
+    border: none;
+    display: block;
+    outline: 0;
+}
 .project-search {
 	padding-left: 1.5rem !important;
 	padding-right: 1.5rem !important;
@@ -26,8 +54,17 @@
 }
 #btn-modal {	/* +일정추가 버튼 */
 	border: 1px solid transparent;
-	float: right;
 	
+	
+}
+.btn.btn-primary.addTaskTab {
+    padding: 8px 16px;
+    float: right;
+    width: auto;
+    border: none;
+    display: block;
+    outline: 0;
+    float: right;
 }
 /* 캘린더 위 header!! */
 
