@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
  	<meta charset="utf-8">
@@ -91,9 +92,9 @@
 						<td>${tlist.tcontent}</td>
 						<td>${tlist.tmember}</td>
 						<td><span class="badge bg-info">${tlist.tstatus}</span></td>
-						<td>${tlist.tdate}</td>
-						<td>${tlist.tstartDate}</td>
-						<td>${tlist.tendDate}</td>
+						<td>${fn:split(tlist.tdate, " ")[0]}</td>
+						<td>${fn:split(tlist.tstartDate, " ")[0]}</td>
+						<td>${fn:split(tlist.tendDate, " ")[0]}</td>
 					</tr>
 					</c:forEach>		
 				</table>
@@ -122,7 +123,7 @@
 	</div>
 
 </div>
-
+	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
 	<script>
 	$(document).ready(function() {

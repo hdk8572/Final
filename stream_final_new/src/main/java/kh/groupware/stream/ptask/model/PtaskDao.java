@@ -22,4 +22,8 @@ public class PtaskDao {
 		return sqlSession.selectList("task.ProjectSelectList", pno);
 	}
 	
+	public int insertTask(PtaskVo vo) {
+		return sqlSession.insert("task.insertTask");
+	}
+	
 }

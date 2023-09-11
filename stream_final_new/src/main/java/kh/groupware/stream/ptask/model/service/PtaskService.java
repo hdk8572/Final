@@ -21,4 +21,10 @@ public class PtaskService {
 	public List<PtaskVo> selectList(String pno) {
 		return dao.projectSelectList(pno);
 	}
+	
+	public int insertTask(PtaskVo vo) {
+		return dao.insertTask(vo);
+	} 
+	
+	
 }

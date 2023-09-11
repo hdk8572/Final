@@ -13,4 +13,9 @@
 		WHERE PNO=#{PNO}
 	</select>	
 
+	<insert id="insertTask" parameterType="PtaskVo">
+		INSERT INTO PROJECT (TNO, PNO, USERID, TMEMBER, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE)
+		VALUES (project_sequence.NEXTVAL, project_sequence.NEXTVAL, #{userId}, #{tmember}, #{tcontent}, #{tstatus}, #{tdate}, #{tstartDate}, #{tendDate})
+	</insert>
+
 </mapper>

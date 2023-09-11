@@ -6,5 +6,13 @@ $(document).ready(function() {
 		//$(this).attr("method","post");
 		$(this).submit();
 	});
+	
+	$(".btn.btn-warning").click(function(){
+		$(this);
+	});
 
 });
+
+
+
+
