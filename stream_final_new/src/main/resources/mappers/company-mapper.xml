@@ -3,8 +3,8 @@
 <mapper namespace="company">
 
 	<!-- 회사로그인 -->
-	<select id="selectOne" resultType="CompanyVo">
-		SELECT CCODE FROM COMPANY
+	<select id="selectOne" resultType="string" parameterType="CompanyVo">
+		SELECT CNAME FROM COMPANY
 		WHERE
 		CCODE= #{ccode} AND CPASSWORD= #{cpassword}
 	</select>

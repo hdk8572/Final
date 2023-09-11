@@ -1,5 +1,8 @@
 package kh.groupware.stream.company.model.vo;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class CompanyVo {
 //	CCODE     NOT NULL VARCHAR2(10)  
 //	CNAME     NOT NULL VARCHAR2(50)  

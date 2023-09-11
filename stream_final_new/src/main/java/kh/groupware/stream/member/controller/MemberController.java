@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kh.groupware.stream.company.model.service.CompanyService;
+import kh.groupware.stream.company.model.vo.CompanyVo;
 import kh.groupware.stream.member.model.service.MemberService;
 import kh.groupware.stream.member.model.vo.MemberVo;
 
@@ -28,12 +30,14 @@ public class MemberController {
 		return mv;
 	}
 	
-	@PostMapping("/login")
+	//member login
+	@PostMapping("/login.member")
 	@ResponseBody
 	public String login(Model model, MemberVo mvo) {
 		return memberService.selectOne(mvo);
 
 	}
+	
 	
 	
 	//post 방식에서 return String

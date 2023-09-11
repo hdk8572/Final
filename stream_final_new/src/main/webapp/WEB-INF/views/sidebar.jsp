@@ -27,7 +27,7 @@
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-forms.html">
+						<a class="sidebar-link" href="pcal">
               <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">캘린더</span>
             </a>
 					</li>

@@ -7,7 +7,7 @@
 		FROM TASK
 	</select>
 
-	<select id="selectOne" resultType="PtaskVo">
+	<select id="ProjectSelectList" resultType="PtaskVo">
 		SELECT * 
 		FROM TASK
 		WHERE PNO=#{PNO}

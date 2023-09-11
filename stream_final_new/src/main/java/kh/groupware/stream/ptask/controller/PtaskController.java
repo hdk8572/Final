@@ -1,5 +1,7 @@
 package kh.groupware.stream.ptask.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +19,7 @@ public class PtaskController {
 	
 	@PostMapping("/ptask")
 	public String pSelectOne(Model model, String pno) {
-		PtaskVo tlist = service.selectOne(pno);
+		List<PtaskVo> tlist = service.selectList(pno);
 		model.addAttribute("tlist", tlist);
 		return "/project";
 	}

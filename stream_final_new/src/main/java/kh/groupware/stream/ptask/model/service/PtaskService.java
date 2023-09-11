@@ -18,7 +18,7 @@ public class PtaskService {
 		return dao.selectList();
 	}
 	
-	public PtaskVo selectOne(String pno) {
-		return dao.selectOne(pno);
+	public List<PtaskVo> selectList(String pno) {
+		return dao.projectSelectList(pno);
 	}
 }

@@ -14,6 +14,9 @@ INSERT INTO USERS VALUES ('skin01@gmail.com', 'A', 'C01', DEFAULT, DEFAULT, DEFA
 INSERT INTO USERS VALUES ('skin02@gmail.com', 'A', 'C01', DEFAULT, DEFAULT, DEFAULT, '이스킨', '000-0000-0000', '대리');
 INSERT INTO USERS VALUES ('oliveyoungboss@gmail.com', 'S', 'C01', DEFAULT, 1, 'RA', '김사장', '000-0000-0000', '대표');
 
+INSERT INTO USERS VALUES ('maaaaa', 'A', 'C01', 'aaaaa', 0,'RM', '사원', '000-0000-0000', '사원');
+INSERT INTO USERS VALUES ('mbbbbb', 'A', 'C01', 'bbbbb', 1,'RB', '사장', '000-0000-0000', '대표');
+INSERT INTO USERS VALUES ('mccccc', 'A', 'C01', 'ccccc', 1, 'RA', '관리자', '000-0000-0000', '관리자');
 --MEMBER INFO VIEW
 CREATE VIEW MEMBER AS
 SELECT USERID, MNAME, CNAME, DEPTNAME, MRANK, MPHONE 

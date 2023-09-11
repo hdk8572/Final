@@ -18,8 +18,8 @@ public class PtaskDao {
 		return sqlSession.selectList("task.selectList");
 	}
 	
-	public PtaskVo selectOne(String pno) {
-		return sqlSession.selectOne("task.selectOne", pno);
+	public List<PtaskVo> projectSelectList(String pno) {
+		return sqlSession.selectList("task.ProjectSelectList", pno);
 	}
 	
 }

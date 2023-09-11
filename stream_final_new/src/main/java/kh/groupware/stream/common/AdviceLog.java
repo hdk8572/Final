@@ -29,18 +29,18 @@ public class AdviceLog {
 
 	@Around("daoPointCut()")
 	public Object aroundDaoLog(ProceedingJoinPoint dpjp) throws Throwable {
-		logger.debug("▷▷▷[" + dpjp.getThis() + ":" + dpjp.getSignature().getName() + "]");
+		logger.debug("▷[" + dpjp.getThis() + ":" + dpjp.getSignature().getName() + "]");
 
 		Object[] args = dpjp.getArgs();
 		for (int i = 0; i < args.length; i++) {
-			logger.debug("▷▷▷-args[" + i + "]" + args[i] + "");
+			logger.debug("▷-args[" + i + "]" + args[i] + "");
 		}
 		Object dobj = null;
 		StopWatch stopwatch = new StopWatch();
 		stopwatch.start();
 		dobj = dpjp.proceed();
 		stopwatch.stop();
-		logger.debug("▷▷▷[Dao ▷ " + stopwatch.getTotalTimeMillis() + "ms]" + dobj);
+		logger.debug("▷[Dao ▷ " + stopwatch.getTotalTimeMillis() + "ms]" + dobj);
 		return dobj;
 	}
 
@@ -62,17 +62,17 @@ public class AdviceLog {
 	public Object aroundCtrLog(ProceedingJoinPoint cpjp) throws Throwable {
 		Object cobj = null;
 
-		logger.debug("▷[" + cpjp.getSignature().getName() + "]");
+		logger.debug("▷▷▷[" + cpjp.getThis()+":"+cpjp.getSignature().getName() + "]");
 
 		Object[] args = cpjp.getArgs();
 		for (int i = 0; i < args.length; i++) {
-			logger.debug("▷-args[" + i + "]" + args[i] + "");
+			logger.debug("▷▷▷-args[" + i + "]" + args[i] + "");
 		}
 		StopWatch stopwatch = new StopWatch();
 		stopwatch.start();
 		cobj = cpjp.proceed();
 		stopwatch.stop();
-		logger.debug("▷[Ctr ▷" + stopwatch.getTotalTimeMillis() + "ms]" + cobj);
+		logger.debug("▷▷▷[Ctr ▷" + stopwatch.getTotalTimeMillis() + "ms]" + cobj);
 		return cobj;
 	}
 }
