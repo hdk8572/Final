@@ -19,7 +19,7 @@
 	
 	<link href="${pageContext.request.contextPath}/css/app.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/css/project.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/makeProjectModal.css" rel="stylesheet">
+	
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 	<!-- Tab bar -->
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -65,9 +65,11 @@
 			</div>
 			<main class="content">
 				<h2>
-					업무
-					<button class="btn btn-primary addTaskTab">업무 등록</button>
+					<span>업무</span>
+					<button class="btn btn-primary addTaskTab" data-bs-toggle="modal" data-bs-target="#myModal">업무 등록</button>
 				</h2>
+				
+				<%@ include file="/WEB-INF/views/addPtaskModal.jsp" %>
 				
 				<div class="container-fluid p-0">
 				<table class="table table-hover my-0">
@@ -79,6 +81,7 @@
 						<th class="d-none d-xl-table-cell">시작일</th>
 						<th class="d-none d-xl-table-cell">마감일</th>
 					</tr>
+					<c:forEach items="${tlist}" var="tlist">
 					<tr>
 						<td>${tlist.tcontent}</td>
 						<td>${tlist.tmember}</td>
@@ -86,7 +89,8 @@
 						<td>${tlist.tdate}</td>
 						<td>${tlist.tstartDate}</td>
 						<td>${tlist.tendDate}</td>
-					</tr>		
+					</tr>
+					</c:forEach>		
 				</table>
 				</div>
 			</main>

@@ -54,5 +54,8 @@
   	</div>
   </div>
 </div>
-</div>
+
+<script>
+	<link href="${pageContext.request.contextPath}/css/makeProjectModal.css" rel="stylesheet">
+</script>
 <!-- 모달 -->

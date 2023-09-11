@@ -44,7 +44,7 @@
 						<span><button class="btn btn-primary addProject" id="myBtn" data-bs-toggle="modal" data-bs-target="#myModal">프로젝트 추가+</button></span>
 					</h1>
 						
-					<%@ include file="/WEB-INF/views/modal.jsp" %>
+					<%@ include file="/WEB-INF/views/addProjectModal.jsp" %>
 						
 						<div class="row">
 						<div class="col-xl-6 col-xxl-5 d-flex">
