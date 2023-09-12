@@ -19,9 +19,12 @@ public class ProjectService {
 		return dao.selectList();
 	}
 	
-	public  int insertList(ProjectVo vo) {
-		return dao.insertList(vo);
-	}
-	
-	
+    public List<ProjectVo> insertList(ProjectVo vo) {
+        int result = dao.insertList(vo);
+        if (result > 0) {
+            return dao.selectList(); // DB에 삽입 후 리스트를 다시 조회하여 반환합니다.
+        } else {
+        	return null;
+        }
+    }
 }

@@ -48,7 +48,7 @@
 
 			</div>
 			<div align="center">
-				<button class="btn btn-primary" type="submit">추가</button>
+				<button class="btn btn-primary" id="btn-submit" type="submit">추가</button>
 				<button class="btn btn-warning" type="reset">취소</button>
 			</div>
 			<div>
