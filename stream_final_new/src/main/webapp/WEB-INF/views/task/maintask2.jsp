@@ -246,22 +246,22 @@
 									<ul id="taskContentUI">
 										<li id="projectNo">
 											<div class="jm-title-button">
-											<c:forEach items="${projectList }" var="vo" >
+											<c:forEach items="${projectList }" var="project" >
 												<div class="jm-wrap-project-title">
-													<span class="jm-project-title">${vo.pname }</span> 
-													<span class="jm-project-task-count">(${vo.cnt })</span>
+													<span class="jm-project-title">${project.pname }</span> 
+													<span class="jm-project-task-count">(${project.maintaskList.size() })</span>
 													<button class="jm-project-button">바로가기</button>
 													<ul class="jm-inner-task">
 												<div class="jm-wrap-section-task-title">
 													<ul class="jm-serction-task-title">
-													<c:forEach items="${taskList }" var="vo">
+													<c:forEach items="${project.maintaskList }" var="task">
 														<li class="plusplus row">
-															<div class="jm-title-tcontent col-lg-4">${vo.tcontent}</div>
-															<div class="jm-title-tstatus col-lg-1">${vo.tstatus }</div>
-															<div class="jm-title-tmember col-lg-1">${vo.tmember }</div>
-															<div class="jm-title-tstartdate col-lg-1">${vo.tstartdate }</div>
-															<div class="jm-title-tenddate col-lg-1">${vo.tenddate }</div>
-															<div class="jm-empty-tdate col-lg-1">${vo.tdate }</div>
+															<div class="jm-title-ttitle col-lg-4">${task.ttitle	}</div>
+															<div class="jm-title-tstatus col-lg-1">${task.tstatus }</div>
+															<div class="jm-title-tmember col-lg-1">${task.tmember }</div>
+															<div class="jm-title-tstartdate col-lg-1">${task.tstartdate }</div>
+															<div class="jm-title-tenddate col-lg-1">${task.tenddate }</div>
+															<div class="jm-empty-tdate col-lg-1">${task.tdate }</div>
 														</li>
 													</c:forEach>
 													</ul>

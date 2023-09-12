@@ -15,7 +15,7 @@ public class MainServlet {
 	@GetMapping("/maintask")
 	public String maintask(Model model) {
 		model.addAttribute("projectList", service.projectNameList());
-		model.addAttribute("taskList", service.taskList());
+//		model.addAttribute("taskList", service.taskList());
 		return "/task/maintask2";
 	}
 

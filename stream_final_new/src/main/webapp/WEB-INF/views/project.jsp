@@ -81,7 +81,7 @@
 				<table class="table table-hover my-0">
 					<tr>
 						<th class="d-none d-xl-table-cell">업무명</th>
-						<th class="d-none d-xl-table-cell">작성자</th>
+						<th class="d-none d-xl-table-cell">담당자</th>
 						<th class="d-none d-xl-table-cell">진행도</th>
 						<th class="d-none d-xl-table-cell">작성날짜</th>
 						<th class="d-none d-xl-table-cell">시작일</th>
@@ -89,9 +89,18 @@
 					</tr>
 					<c:forEach items="${tlist}" var="tlist">
 					<tr>
-						<td>${tlist.tcontent}</td>
+						<td>${tlist.ttitle}</td>
 						<td>${tlist.tmember}</td>
-						<td><span class="badge bg-info">${tlist.tstatus}</span></td>
+						<%-- <td>${tlist.tstatus}</td> --%>
+						<td>
+							<select class="status setting" name="tname">
+							  <option class="status request" selected="selected">요청</option>
+							  <option class="status progress">진행</option>
+							  <option class="status feedback">피드백</option>
+							  <option class="status complete">완료</option>
+							  <option class="status remain">보류</option>
+							</select>
+						</td>
 						<td>${fn:split(tlist.tdate, " ")[0]}</td>
 						<td>${fn:split(tlist.tstartDate, " ")[0]}</td>
 						<td>${fn:split(tlist.tendDate, " ")[0]}</td>

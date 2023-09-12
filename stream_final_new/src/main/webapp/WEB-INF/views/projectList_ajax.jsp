@@ -29,8 +29,8 @@
 	<!-- Tab bar -->
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-	  </head>
-
+	
+</head>
 <body>
 	<div class="wrapper">
 		<%@ include file="/WEB-INF/views/sidebar.jsp" %>
@@ -49,13 +49,12 @@
 						
 					<%@ include file="/WEB-INF/views/addProjectModal.jsp" %>
 						
-						<div class="row">
+ 						<div class="row" id="wrap-listt">
 						<div class="col-xl-6 col-xxl-5 d-flex">
 							<div class="w-100">
-								<div class="row">
-									<c:forEach items="${list}" var="vo">
-										<div class="col-sm-6">
- 											<div class="card">
+								<div class="row" id="wrap-list">
+<%--										<div class="col-sm-6" >
+  											<div class="card">
 												<form class="frm select" action="${pageContext.request.contextPath}/ptasklist" method="get">
 												<input type="hidden" name="pno" value="${vo.pno}">
 													<div class="card-body" >
@@ -80,9 +79,8 @@
 														</div>
 													</div>
 												</form>
-											</div>
-										</div>
-									</c:forEach>
+											</div> 
+										</div>		--%>
 								</div>
 							</div>
 						</div>
@@ -91,6 +89,7 @@
 			</main>
 		</div>
 	</div>
+</body>
 	<script src="${pageContext.request.contextPath}/js/stream.js"></script>
 	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
@@ -110,3 +109,64 @@
 		    $(this).css({
 		      "background-color": "white",
 		    });
+		    $(this).find("span").css({
+		      "color": "#009b77"	
+		    });
+		    $(this).find("svg").css({
+		      "color": "#009b77"	
+	    });
+	  });
+		    loadList();
+	});
+	 
+	function loadList() {
+		$.ajax({
+			url: "projectlist.ajax",
+			type: "get",
+			data: $("#wrap-list").serialize(),
+			datatype: "json",
+			success: makeView,
+			error: function() {
+				alert("에러났습니다.");
+			}
+		});
+	}
+	
+ 	function makeView(data) {
+	    var listHtml = "";
+	        listHtml += `
+	        `;
+				for(var i=0;i<data.length;i++){
+				var ul = data[i];
+				listHtml+=`
+	        	<div class="col-sm-6" >
+		            <div class="card">
+		                <form class="frm select" action="${pageContext.request.contextPath}/ptasklist" method="get">
+ 		                    <input type="hidden" name="pno" value="\${ul.pno}">
+		                    <div class="card-body">
+		                        <div class="row">
+		                            <div class="col mt-0">
+		                                <h5 class="card-title">
+		                                    Project
+		                                </h5>
+		                            </div>
+		                            
+		                            <div class="col-auto">
+		                                <div class="stat text-primary">
+		                                    \${ul.prow}
+		                                </div>
+		                            </div>
+		                        </div>
+		                        <h1 class="mt-1 mb-3">\${ul.pname}</h1>
+		                        <div class="mb-0">
+		                            <span class="text-muted">\${ul.pstartDate}~\${ul.pendDate}</span>
+		                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle me-2"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+		                        </div>
+		                    </div>
+		                </form>
+		            </div>
+	           </div>`;
+				}
+	    $("#wrap-list").html(listHtml);
+	}
+	</script>

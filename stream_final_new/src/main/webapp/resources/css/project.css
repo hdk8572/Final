@@ -31,3 +31,8 @@
     outline: 0;
     
 }
+.status.setting {
+	border-color: transparent;
+    background-color: transparent;
+    appearance: none;
+}

@@ -18,8 +18,8 @@ public class MaintastService {
 		return dao.projectNameList();
 	}
 	
-	public List<MaintaskVo> taskList(){
-		return dao.taskList();
-	}
+	/*
+	 * public List<MaintaskVo> taskList(){ return dao.taskList(); }
+	 */
 
 }

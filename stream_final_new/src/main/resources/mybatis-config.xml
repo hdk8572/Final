@@ -13,6 +13,7 @@
 		<typeAlias type="kh.groupware.stream.company.model.vo.CompanyVo" alias="CompanyVo"/>
 		<typeAlias type="kh.groupware.stream.project.model.vo.ProjectVo" alias="ProjectVo"/>
 		<typeAlias type="kh.groupware.stream.main.model.vo.MaintaskVo" alias="MaintaskVo"/>
+		<typeAlias type="kh.groupware.stream.main.model.dto.MaintaskDto" alias="MaintaskDto"/>
 	</typeAliases>
 	
 	<mappers>
