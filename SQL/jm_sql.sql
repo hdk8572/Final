@@ -26,4 +26,3 @@ select  pname, pno, cnt, ttitle, userid, tstatus, tdate, tstartdate, tenddate
 select pname, pno, ttitle, userid, tstatus, tdate, tstartdate, tenddate
     from project join task using(pno, userid)
     ;
-select count(pno) cnt from task group by pno;
