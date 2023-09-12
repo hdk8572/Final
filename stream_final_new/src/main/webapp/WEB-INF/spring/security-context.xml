@@ -10,21 +10,24 @@
 
 
 	<!-- 보안 미적용 -->
-	<http pattern="/**/*.js" security="none" />
+	<!-- <http pattern="/**/*.js" security="none" /> -->
 
-	<!-- <http auto-config="true" use-expressions="true"> <intercept-url pattern="/member/accessDenied" 
-		access="permitAll" /> <intercept-url pattern="/member/accessDeniedView" access="permitAll" 
-		/> <intercept-url pattern="/member/loginForm" access="permitAll" /> <intercept-url 
-		pattern="/" access="permitAll" /> <intercept-url pattern="/encode-password" 
-		access="permitAll" /> <intercept-url pattern="/admin/**" access="hasRole('ADMIN')" 
-		/> <intercept-url pattern="/**" access="hasAnyRole('USER')" /> <form-login 
-		login-page="/member/loginForm" default-target-url="/" authentication-failure-url="/member/loginForm?error" 
-		username-parameter="id" password-parameter="password" /> Form-login의 항목 Default-Target-URL: 
-		로그인 성공할 경우, 접속할 사이트 <logout logout-url="/logout" logout-success-url="/" /> 
-		Servlet 3.0부터 access-denied-handler 미지원 web.xml으로 제어할 것 <access-denied-handler 
-		ref="customAccessDeniedHandler"/> <access-denied-handler error-page="/member/accessDenied" 
-		/> <csrf disabled="true" /> </http> -->
 
+
+
+	<http use-expressions="true" auto-config="true">
+	<intercept-url pattern="/admin/**" access="hasRole('RA')"/>
+	<intercept-url pattern="/member/**" access="hasRole('RM')"/>
+	<intercept-url pattern="/" access="permitAll"/>
+	<form-login login-page="/login"
+	default-target-url="/tasklist"
+	authentication-failure-url="/login"
+	username-parameter="userid" password-parameter="password"/>
+	<logout logout-url="/logout" logout-success-url="/projectlist"/>
+	<!-- login 성공시 tasklist로 이동, 로그인 실패시 알람+로그인페이지로 이동, 로그아웃 성공시 main page 이동 -->
+	<access-denied-handler error-page="/accessDenied"/>
+	</http>
+	
 	<!-- DataSource 추후 지원 -->
 
 	<!-- 1. HSQLDB -->
