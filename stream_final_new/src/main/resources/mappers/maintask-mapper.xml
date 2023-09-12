@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mainTask">
+	<resultMap type="MaintaskVo" id="maintaskVoMap">
+		<id property="pno" column="PNO"/>
+		<result property="pname" column="PNAME"/>
+		<collection property="maintaskList" ofType="MaintaskDto" column="pno">
+			<id property="tno" column="tno"/>
+			<result property="pno" column="pno"/>
+			<result property="userid" column="userid"/>
+			<result property="tmember" column="tmember"/>
+			<result property="ttitle" column="ttitle"/>
+			<result property="tcontent" column="tcontent"/>
+			<result property="tstatus" column="tstatus"/>
+			<result property="tdate" column="tdate"/>
+			<result property="tstartdate" column="tstartdate"/>
+			<result property="tenddate" column="tenddate"/>
+		</collection>
+	</resultMap>
+	
+	<select id="projectNameList" resultMap="maintaskVoMap" >
+		select pname, pno, ttitle, userid, tstatus, tdate, tstartdate, tenddate
+    		from project join task using(pno, userid)
+	</select>
+
+	
+</mapper>

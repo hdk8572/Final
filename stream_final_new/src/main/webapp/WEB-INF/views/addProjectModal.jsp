@@ -22,9 +22,9 @@
 				</div>
 				<div class="card-body">
 					<input type="hidden" name="pno" value="9">
-					<input type="hidden" name="userId" value="kh0002@kh.com"> <!-- 로그인 세션 받아서 등록 -->
-					<input type="hidden" name="paccess" value="ddd">
-					<input type="text" class="form-control title" name="pname" placeholder="프로젝트명을 입력해주세요.">
+					<input type="hidden" name="userId" value="kh0001@kh.com"> <!-- 로그인 세션 받아서 등록 -->
+					<input type="hidden" name="paccess" value="ddd"><!-- 세션에서 권한 선택 -->
+					<input type="text" class="form-control title" name="pname" placeholder="프로젝트명을 입력해주세요." required="required">
 					<br> 
 					<textarea class="form-control content" rows="5" name="pcoment" placeholder="프로젝트에 관한 설명을 입력해주세요.(옵션)"></textarea>
 						<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script> <!-- 위즈윅 -->
@@ -35,14 +35,17 @@
 					      });
 					    </script>
 				</div>
-			</div>
-			<div class="card">
 				<div class="card-header">
 					<h5 class="card-title mb-0">프로젝트 진행시기</h5>
 				</div>
 				<div class="card-body">
-					<input type="date" class="form-date" name="pstartDate"> ~ <input type="date" class="form-date" name="pendDate">
+					<input type="date" class="form-date" name="pstartDate" required="required">
+					~
+					<input type="date" class="form-date" name="pendDate" required="required">
 				</div>
+			</div>
+			<div class="card">
+
 			</div>
 			<div align="center">
 				<button class="btn btn-primary" type="submit">추가</button>

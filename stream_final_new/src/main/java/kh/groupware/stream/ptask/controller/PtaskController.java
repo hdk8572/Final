@@ -16,12 +16,28 @@ public class PtaskController {
 
 	@Autowired
 	private PtaskService service;
+
 	
-	@PostMapping("/ptask")
+	
+	/*
+	 * @GetMapping("/ptasklist") public String selectList(Model model) {
+	 * model.addAttribute("ptasklist", service.selectList()); return "/project"; }
+	 */
+
+	@GetMapping("/ptasklist")
 	public String pSelectOne(Model model, String pno) {
-		List<PtaskVo> tlist = service.selectList(pno);
+		List<PtaskVo> tlist = service.pselectList(pno);
+		model.addAttribute("pno", pno);
 		model.addAttribute("tlist", tlist);
-		return "/project";
+		return "project";
+	}
+
+	@PostMapping("/insertPtask")
+	public String insertTask(Model model, PtaskVo vo) {
+		System.out.println("asdasdasdasd :" + vo);
+		service.insertTask(vo);
+		/* return "redirect:ptasklist?pno="+vo.getPno(); */
+		return "redirect:ptasklist?pno="+vo.getPno();
 	}
 	
 }

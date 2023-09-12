@@ -73,7 +73,7 @@
 
 *, :after, :before {
 	box-sizing: border-box;
-    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-family: inherit;
 }
 
 @media ( prefers-reduced-motion :no-preference) {

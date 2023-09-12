@@ -18,8 +18,12 @@ public class PtaskDao {
 		return sqlSession.selectList("task.selectList");
 	}
 	
-	public List<PtaskVo> projectSelectList(String pno) {
-		return sqlSession.selectList("task.ProjectSelectList", pno);
+	public List<PtaskVo> pselectList(String pno) {
+		return sqlSession.selectList("task.ProjectSelectOne", pno);
+	}
+	
+	public int insertTask(PtaskVo vo) {
+		return sqlSession.insert("task.insertTask",vo);
 	}
 	
 }

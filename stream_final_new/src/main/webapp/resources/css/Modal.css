@@ -110,4 +110,21 @@
     height: 65px;
     background-color: #009b77;
 	border-radius: 10px 10px 0px 0px;
+}
 
+.form-select.mb-3.selectCategory {
+    width: 30%;
+}
+
+.form-control.manager {
+	width: 30%;
+}
+
+.feather.feather-clock.align-middle.me-2 {
+    position: relative;
+    bottom: 8px;
+}
+
+.card-header.ptaskTitle {
+	padding: 1rem 0rem;
+}

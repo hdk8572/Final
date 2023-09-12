@@ -43,63 +43,65 @@
 </head>
 <body>
 	<div class="wrapper">
-		<%@include file="/WEB-INF/views/calendar/calendar-side.jsp"%>
-		<div class="main">
-			<%@ include file="/WEB-INF/views/headerNavbar.jsp"%>
-			<main class="content">
-				<div class="container-fluid p-0">
-					<h1 class="h3 mb-3">
-						<strong>Calendar</strong>
-					</h1>
-					<div class="row">
-						<div class="card">
-							<div class="card-header">
-								<div class="card-body">
-									<input class="form-cal-control" type="text"  placeholder="일정명을 입력해주세요">
-									<button class="btn btn-primary" id="btn-modal" type="button" data-bs-toggle="modal" data-bs-target="#cmodal">+일정추가</button>
-								</div>
-								<!-- 캘린더  -->
-								<div id="croot">
-									<div class="ccard-body px-4">
-										<div id="calendar"></div>
-									</div>
-								</div>
-								<!-- 모달창 열기(+일정추가 클릭) -->
-								<div id="cal-modal" class="modal-overlay" aria-hidden="true">
-									<div class="modal-window">
-										<div class="create-header">
-											<div class="temp-wrap">
-												<h4 class="create-post-title">일정 작성</h4>
-												<!-- 					<div class="dropdown">
-															<a class="btn btn-secondary dropdown-toggle" href="#"
-																role="button" data-bs-toggle="dropdown"
-																aria-expanded="false"> Dropdown link </a>
 
-															<ul class="dropdown-menu">
-																<li><a class="dropdown-item" href="#">Action</a></li>
-																<li><a class="dropdown-item" href="#">Another
-																		action</a></li>
-																<li><a class="dropdown-item" href="#">Something
-																		else here</a></li>
-															</ul>
-														</div> -->
+		<%@include file="/WEB-INF/views/calendar/calendar-side.jsp"%>
+
+		<div class="main">
+
+			<%@ include file="/WEB-INF/views/headerNavbar.jsp"%>
+
+			<main>
+				<div class="w3-bar tabBar">
+					<button class="w3-bar-item w3" onclick="openTab('Tab1')">피드</button>
+					<button class="w3-bar-item w3" onclick="openTab('Tab2')">업무</button>
+					<button class="w3-bar-item w3" onclick="openTab('Tab3')">캘린더</button>
+				</div>
+				<div class="search">
+					<input class="serinput" type="text" placeholder="검색어 입력"> <img
+						class="serimg"
+						src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+				</div>
+
+				<main class="content">
+							<h2>
+								Calendar
+								<button class="btn btn-primary addTaskTab" id="btn-modal">+일정추가</button>
+							</h2>
+					<div class="container-fluid p-0">
+<!--					    <div class="row">
+							<div class="card"> -->
+								<div class="card-header">
+<!-- 									<div class="card-body"></div> -->
+									<!-- 캘린더  -->
+									<div id="croot">
+										<div class="ccard-body px-4">
+											<div id="calendar"></div>
+										</div>
+									</div>
+									<!-- 모달창 열기(+일정추가 클릭) -->
+									<div id="cal-modal" class="modal-overlay" aria-hidden="true">
+										<div class="modal-window">
+											<div class="create-header">
+												<div class="temp-wrap">
+													<h4 class="create-post-title">일정 작성</h4>
+												</div>
+												<span class="close-area" data-bs-dismiss="modal"
+													aria-label="Close">&times;</span>
 											</div>
-											<span class="close-area" data-bs-dismiss="modal"
-												aria-label="Close">&times;</span>
+											<div class="create-title-input">
+												<input id="postTitle" type="text" class="title-input"
+													data-empty-msg="제목을 입력하세요" placeholder="제목을 입력하세요">
+											</div>
+											<div class="create-content"></div>
 										</div>
-										<div class="create-title-input">
-											<input id="postTitle" type="text" class="title-input"
-												data-empty-msg="제목을 입력하세요" placeholder="제목을 입력하세요">
-										</div>
-										<div class="create-content"></div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-				</div>
+					<!-- 	</div>
+					</div> -->
+				</main>
+				<%@ include file="/WEB-INF/views/footer.jsp"%>
 			</main>
-			<%@ include file="/WEB-INF/views/footer.jsp"%>
 		</div>
 	</div>
 
@@ -136,7 +138,7 @@
 		document.addEventListener('DOMContentLoaded', function() {
 			var calendarEl = document.getElementById('calendar');
 			var calendar = new FullCalendar.Calendar(calendarEl, {
-				height: '900px', // 캘린더 칸 높이 설정(이거 안하고 more 코드 작성하면 칸 크기 달라짐)
+				height: '1200px', // 캘린더 칸 높이 설정(이거 안하고 more 코드 작성하면 칸 크기 달라짐)
 		        expandRows: true, // 화면에 맞게 높이 재설정
 				headerToolbar : { // 헤더에 표시할 툴 바
 					start : 'prev next today',
@@ -200,6 +202,18 @@
 			});
 			calendar.render();
 		});
+	</script>
+
+	<script>
+	/* 상단 탭바 */
+	function openTab(tabName) {
+	  var i;
+	  var x = document.getElementsByClassName("tab");
+	  for (i = 0; i < x.length; i++) {
+	    x[i].style.display = "none";  
+	  }
+	  document.getElementById(tabName).style.display = "block";  
+	}
 	</script>
 
 	<script src="js/app.js"></script>
