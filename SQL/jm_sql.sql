@@ -8,12 +8,13 @@ select pname, count(tno) cnt
     join task using(pno)
     group by (pno, pname)
     ;
-select tcontent, userid, tstatus, tdate, tstartdate, tenddate
+    
+select ttitle, userid, tstatus, tdate, tstartdate, tenddate
     from task 
     
     where pno in (select pno from project)
     ;
-select  pname, pno, cnt, tcontent, userid, tstatus, tdate, tstartdate, tenddate
+select  pname, pno, cnt, ttitle, userid, tstatus, tdate, tstartdate, tenddate
     from (select pname, pno, count(tno) cnt 
             from project 
             join task using(pno)
@@ -22,7 +23,7 @@ select  pname, pno, cnt, tcontent, userid, tstatus, tdate, tstartdate, tenddate
             where pno=pno
     ;
 
-select pname, pno, tcontent, userid, tstatus, tdate, tstartdate, tenddate
+select pname, pno, ttitle, userid, tstatus, tdate, tstartdate, tenddate
     from project join task using(pno, userid)
     ;
 select count(pno) cnt from task group by pno;
