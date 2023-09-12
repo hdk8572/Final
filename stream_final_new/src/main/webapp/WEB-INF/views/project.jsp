@@ -81,7 +81,7 @@
 				<table class="table table-hover my-0">
 					<tr>
 						<th class="d-none d-xl-table-cell">업무명</th>
-						<th class="d-none d-xl-table-cell">작성자</th>
+						<th class="d-none d-xl-table-cell">담당자</th>
 						<th class="d-none d-xl-table-cell">진행도</th>
 						<th class="d-none d-xl-table-cell">작성날짜</th>
 						<th class="d-none d-xl-table-cell">시작일</th>
@@ -89,7 +89,7 @@
 					</tr>
 					<c:forEach items="${tlist}" var="tlist">
 					<tr>
-						<td>${tlist.tcontent}</td>
+						<td>${tlist.ttitle}</td>
 						<td>${tlist.tmember}</td>
 						<td><span class="badge bg-info">${tlist.tstatus}</span></td>
 						<td>${fn:split(tlist.tdate, " ")[0]}</td>

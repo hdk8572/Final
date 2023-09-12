@@ -2,7 +2,6 @@ package kh.groupware.stream.project.model.vo;
 
 
 public class ProjectVo {
-	
 	private String pno;
 	private String userId;
 	private String pname;
@@ -12,6 +11,7 @@ public class ProjectVo {
 	private String pstartDate;
 	private String pendDate;
 	private String prow;
+	
 	
 	@Override
 	public String toString() {

@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%-- <head>
-	<link href="${pageContext.request.contextPath}/css/Modal.css" rel="stylesheet">
-</head> --%>
-
 <!-- 모달 -->
 <div id="myModal" class="modal ptask " aria-labelledby="myModalLabel">
 	<div class="modal-dialog ptask">
@@ -23,11 +19,11 @@
 						<span class="d-flex align-items-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock align-middle me-2"><circle cx="12" cy= "12 " r= "10 "></circle><polyline points= "12 6 12 12 16 14 "></polyline></svg>
 							<select class= "form-select mb-3 selectCategory ml-2 " name="tstatus">
-							  <option selected="selected">요청</option>
-							  <option>진행</option>
-							  <option>피드백</option>
-							  <option>완료</option>
-							  <option>보류</option>
+							  <option class="status request" selected="selected">요청</option>
+							  <option class="status progress">진행</option>
+							  <option class="status feedback">피드백</option>
+							  <option class="status complete">완료</option>
+							  <option class="status remain">보류</option>
 							</select>					
 						</span>
 						<span class="d-flex align-items-center">
@@ -39,9 +35,12 @@
 						<br>
 						<textarea class="form-control" rows="10" name="tcontent" placeholder="내용을 입력해주세요"></textarea>
 						<br>
-						<input type="hidden" value=sysdate>
+						<input type="hidden" name="tdate" value=sysdate>
 						<input type="hidden" name="userId" value="kh0002@kh.com">
-						<input type="date" class="form-date" name="tstartDate" required="required"> ~ <input type="date" class="form-date" name="tendDate" required="required">
+						<input type="hidden" name="pno" value="${pno}">
+						<input type="date" class="form-date" name="tstartDate" required="required">
+						~
+						<input type="date" class="form-date" name="tendDate" required="required">
 						<br>
 						<br>
 						<div align="center">

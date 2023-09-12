@@ -56,7 +56,7 @@
 									<c:forEach items="${list}" var="vo">
 										<div class="col-sm-6">
  											<div class="card">
-												<form class="frm select" action="${pageContext.request.contextPath}/ptasklist" method="post">
+												<form class="frm select" action="${pageContext.request.contextPath}/ptasklist" method="get">
 												<input type="hidden" name="pno" value="${vo.pno}">
 													<div class="card-body" >
 														<div class="row">
