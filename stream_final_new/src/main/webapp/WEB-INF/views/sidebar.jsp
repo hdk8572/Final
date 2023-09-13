@@ -52,3 +52,30 @@
 				</ul>
 		</div>
 	</nav>
+	
+	<script>
+	$(document).ready(function() {
+		  $(".sidebar-link").mouseover(function() {
+		    $(this).css({
+		      "background-color": "#009b77",
+		    });
+		    $(this).find("span").css({
+		      "color": "white"	
+		    });
+		    $(this).find("svg").css({
+		      "color": "white"	
+		    });
+		  }).mouseout(function() {
+		    $(this).css({
+		      "background-color": "white",
+		    });
+		    $(this).find("span").css({
+		      "color": "#009b77"	
+		    });
+		    $(this).find("svg").css({
+		      "color": "#009b77"	
+	    });
+	  });
+		  
+	});
+	</script>
