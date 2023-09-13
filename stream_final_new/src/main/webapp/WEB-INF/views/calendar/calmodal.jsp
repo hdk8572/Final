@@ -13,7 +13,7 @@
 					<div class="card-header ptaskTitle">
 						<h2 class="ptaskTitle"><b>일정 작성</b></h2>
 					</div>
-						<form action="${pageContext.request.contextPath}/insertPtask" method="post">					
+						<form action="${pageContext.request.contextPath}/insert" method="post">					
 						<input type="text" class="form-control title" name="ttitle" placeholder="제목을 입력하세요.">
 						<br>
 						<input type="hidden" value=sysdate>
@@ -33,12 +33,9 @@
 							<input type= "text" class= "form-control place" name="tmember" placeholder= "장소를 입력하세요.">
 						</span>
 						<br>
-										
-					
-				
 					<span>
 				
-					<textarea class="form-control content" rows="5" name="pcoment" placeholder="프로젝트에 관한 설명을 입력해주세요.(옵션)"></textarea>
+					<textarea class="form-control content" name="pcoment" placeholder="내용을 입력해주세요."></textarea>
 						<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script> <!-- 위즈윅 -->
 						<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
 						<script>

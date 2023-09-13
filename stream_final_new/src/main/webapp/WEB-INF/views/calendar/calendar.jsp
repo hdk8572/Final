@@ -90,30 +90,44 @@
 	<!-- 달력을 구성  -->
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
-		
-			var calendarEl = document.getElementById('calendar');
-			var calendar = new FullCalendar.Calendar(calendarEl, {
-				height: '900px', // 캘린더 칸 높이 설정(이거 안하고 more 코드 작성하면 칸 크기 달라짐)
-		        expandRows: true, // 화면에 맞게 높이 재설정
-				headerToolbar : { // 헤더에 표시할 툴 바
-					start : 'prev next today',
-					center : 'title',
-					end : 'dayGridMonth,dayGridWeek,dayGridDay'
-				},
-				titleFormat : function(date) {
-					return date.date.year + '년 '
-							+ (parseInt(date.date.month) + 1) + '월';
-				},
-				//initialDate: '2021-07-15', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
-				selectable : true, // 달력 일자 드래그 설정가능
-				droppable : true,
-				editable : true,
-				nowIndicator : true, // 현재 시간 마크
-				dayMaxEvents : true, // 일정 more 
-				//	locale: 'ko', // 한국어 설정 
-				events : 
+
+			const calendarEl = document.getElementById('calendar');
+			
+			// calendar date get from db 
+			$.ajax({
+				url: '${pageContext.request.contextPath}/pcalselectlist',
+				data: { date : '2023-09-12'},  // 
+				dataType : "json",
+				success: function(result){
+					console.log(result);  // result == event Data Arr
+					makeFullCalendar(result);
+				}
 			});
-			calendar.render();
+			
+			function makeFullCalendar ( eventsDataArr ){
+				var calendar = new FullCalendar.Calendar(calendarEl, {
+					height: '900px', // 캘린더 칸 높이 설정(이거 안하고 more 코드 작성하면 칸 크기 달라짐)
+			        expandRows: true, // 화면에 맞게 높이 재설정
+					headerToolbar : { // 헤더에 표시할 툴 바
+						start : 'prev next today',
+						center : 'title',
+						end : 'dayGridMonth,dayGridWeek,dayGridDay'
+					},
+					titleFormat : function(date) {
+						return date.date.year + '년 '
+								+ (parseInt(date.date.month) + 1) + '월';
+					},
+					//initialDate: '2021-07-15', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
+					selectable : true, // 달력 일자 드래그 설정가능
+					droppable : true,
+					editable : true,
+					nowIndicator : true, // 현재 시간 마크
+					dayMaxEvents : true, // 일정 more 
+					//	locale: 'ko', // 한국어 설정 
+					events : eventsDataArr
+				});
+				calendar.render();
+			}
 		});
 	</script>
 	

@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="calendar">
- 
+
+<!-- 
+	private String start;
+	private String end;
+	private String title;
+	private String color;
+ -->
+	<!-- 일정 조회 -->
+ 	<select id="selectList" resultType="CalendarVo">
+SELECT SNO, USERID, 
+to_char(SSTART, 'yyyy-mm-dd') as "START", to_char(SEND, 'yyyy-mm-dd') as END, STITLE as TITLE, Scolor as color
+,SPLACE, SMEMO
+FROM SCHEDULE
+ 	</select>
+ 	
+ 	<!-- 일정 상세조회 -->
+ 	<select id="SelectOne" resultType="CalendarVo">
+ 		SELECT SNO, USERID, SSTARTDATE as start, SENDDATE as end, SPLACE, SMEMO, STITLE as title
+ 		FROM SCHEDULE
+ 		WHERE SNO=#{SNO}
+ 	</select>
+
+ 	<!-- 일정 등록 -->
+ 	<insert id="insert" parameterType="CalendarVo">
+ 		INSERT INTO SCHEDULE (SNO, USERID, SSTARTDATE, SENDDATE, SPLACE, SMEMO, STITLE )
+ 		VALUES (schedule_sequence.NEXTVAL, #{userId}, #{start}, #{end}, #{splace}, #{smemo}, #{title})
+ 	</insert>
+ 	
+ 	<!-- 캘린더 수정 -->
+ 	<update id="update" parameterType="CalendarVo">
+ 	</update>
+ 	
+ 	<!-- 캘린더 삭제 -->
+ 	<update id="delete" parameterType="CalendarVo">
+ 		
+ 	</update>
+ 	
+ 	
 </mapper>
