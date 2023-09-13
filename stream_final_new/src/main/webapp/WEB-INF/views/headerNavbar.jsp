@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <style>
 	.a1 { display:none; }
-
+	boby{
+		margin: 0px;
+	}
 	
 </style>
 <!-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> -->
@@ -177,7 +179,7 @@ function popupOpen(){
 					</div>
 					<div class="dropdown-menu-footer">
 						<a  id="load">더보기</a>
-					</div>
+					</div> 
 				</div></li>
 			<li class="nav-item dropdown"><a
 				class="nav-icon dropdown-toggle" href="#" id="messagesDropdown"
@@ -271,7 +273,7 @@ function popupOpen(){
 							</div>
 						</a>
 					</div>
-					<div class="dropdown-menu-footer">
+	 					<div class="dropdown-menu-footer">
 						<a  class="text-muted">더보기</a>
 					</div>
 				</div></li>
@@ -286,15 +288,15 @@ function popupOpen(){
 			</a>
 				<div class="dropdown-menu dropdown-menu-end">
 					<a class="dropdown-item" href="pages-profile.html"><i
-						class="align-middle me-1" data-feather="user"></i> Profile</a> <a
+						class="align-middle me-1" data-feather="user"></i> 내 프로필</a> <!-- <a
 						class="dropdown-item" href="#"><i class="align-middle me-1"
-						data-feather="pie-chart"></i> Analytics</a>
+						data-feather="pie-chart"></i> Analytics</a> -->
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="index.html"><i
-						class="align-middle me-1" data-feather="settings"></i> Settings &
-						Privacy</a> <a class="dropdown-item" href="#"><i
+						class="align-middle me-1" data-feather="settings"></i> 환경 설정</a> 
+						<!-- <a class="dropdown-item" href="#"><i
 						class="align-middle me-1" data-feather="help-circle"></i> Help
-						Center</a>
+						Center</a> -->
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="#">Log out</a>
 				</div></li>

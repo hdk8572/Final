@@ -20,6 +20,7 @@
 	
 	<link href="${pageContext.request.contextPath}/css/app.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/css/project.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/projectheader.css" rel="stylesheet">
 	
 	<!-- Modal CSS -->
 	<link href="${pageContext.request.contextPath}/css/Modal.css" rel="stylesheet">
@@ -43,6 +44,10 @@
 		<%@ include file="/WEB-INF/views/headerNavbar.jsp" %>
 		
 		<main>
+		<div class="project-detail-header" >
+				<div class="testtt"><i id="projectColor" class="project-color color-code-1"></i></div>
+				<div class="project-header-group">프로젝트 이름</div>
+		</div>		
 		<div class="w3-bar tabBar">
 		  <button class="w3-bar-item w3" onclick="openTab('Tab1')">피드</button>
 		  <button class="w3-bar-item w3" onclick="openTab('Tab2')">업무</button>
