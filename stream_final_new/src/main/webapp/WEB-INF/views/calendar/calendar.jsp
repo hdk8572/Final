@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@page import="java.util.List"%>
+	<%@page import="kh.groupware.stream.calendar.model.vo.CalendarVo"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +20,7 @@
 
 <link rel="canonical" href="https://demo-basic.adminkit.io/" />
 
-<title>fullcalendar</title>
+<title>calendar</title>
 
 <link
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
@@ -43,6 +45,7 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
 
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 </head>
 <body>
 	<div class="wrapper">
@@ -87,6 +90,7 @@
 	<!-- 달력을 구성  -->
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
+		
 			var calendarEl = document.getElementById('calendar');
 			var calendar = new FullCalendar.Calendar(calendarEl, {
 				height: '900px', // 캘린더 칸 높이 설정(이거 안하고 more 코드 작성하면 칸 크기 달라짐)
@@ -107,49 +111,7 @@
 				nowIndicator : true, // 현재 시간 마크
 				dayMaxEvents : true, // 일정 more 
 				//	locale: 'ko', // 한국어 설정 
-				events : [
-						{
-							title : '풀캘린더완성도',
-							start : '2023-09-12',
-							end : '2023-09-20',
-							color : '#'
-									+ Math.round(Math.random() * 0xffffff)
-											.toString(16)
-						},
-						{
-							title : '풀캘린더완성도',
-							start : '2023-09-12',
-							end : '2023-09-20',
-							color : '#'
-									+ Math.round(Math.random() * 0xffffff)
-											.toString(16)
-						},
-						{
-							title : '풀캘린더완성도',
-							start : '2023-09-12',
-							end : '2023-09-20',
-							color : '#'
-									+ Math.round(Math.random() * 0xffffff)
-											.toString(16)
-						},
-						{
-							title : '풀캘린더완성도',
-							start : '2023-09-12',
-							end : '2023-09-20',
-							color : '#'
-									+ Math.round(Math.random() * 0xffffff)
-											.toString(16)
-						},
-						{
-							title : '풀캘린더완성도',
-							start : '2023-09-12',
-							end : '2023-09-20',
-							color : '#'
-									+ Math.round(Math.random() * 0xffffff)
-											.toString(16)
-						},
-
-				]
+				events : 
 			});
 			calendar.render();
 		});
