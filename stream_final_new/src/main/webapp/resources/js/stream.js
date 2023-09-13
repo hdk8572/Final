@@ -1,18 +1,19 @@
- 
+function abc (){
+	//메소드지정
+	//$(this).attr("method","post");
+	//$(this).attr("action", "${pageContext.request.contextPath}/ptasklist");
+	$(this).submit();
+	console.log(this);
+}
+
 $(document).ready(function() {
-	// a href 대신 button 없이 form 태그 클릭으로 데이터전달
-	$(".frm.select").click(function(){
-		//메소드지정
-		//$(this).attr("method","post");
-		$(this).submit();
-	});
-	
+
 	$(".btn.btn-warning").click(function(){
 		$(this);
 	});
-
+	
+	$(".col-sm-6").click(function() {
+		$(this).submit();
+	});
+	
 });
-
-
-
-

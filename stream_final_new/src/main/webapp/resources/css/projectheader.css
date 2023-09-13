@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+.color-code-1{
+	background: green;
+	border: solid green;
+}
+.project-color{
+	display: block;
+	width: 50px;
+	height: 50px;
+	border-radius: 10px;
+}
+/*  .project-color-area{
+	display: inline-block;
+	vertical-align: middle;
+	cursor: pointer;
+	size: 30px;
+}  */
+.project-detail-header{
+	position: relative;
+	min-width: 750px;
+	height: 60px;
+	padding: 15px;
+	z-index: 12;
+	display: flex;
+}
+.project-header-group{
+	top: 20px;
+	
+}
+.testtt{
+	padding: 0 20px 0 0;
+}
