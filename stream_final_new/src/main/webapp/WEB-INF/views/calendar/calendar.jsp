@@ -29,6 +29,9 @@
 
 <link href="${pageContext.request.contextPath }/css/calendar.css"
 	rel="stylesheet">
+	
+<link href="${pageContext.request.contextPath }/css/calmodal.css"
+	rel="stylesheet">
 
 <!-- fullcalendar  -->
 <link rel="stylesheet"
@@ -43,12 +46,10 @@
 </head>
 <body>
 	<div class="wrapper">
-
 		<%@include file="/WEB-INF/views/calendar/calendar-side.jsp"%>
-
 		<div class="main">
-
 			<%@ include file="/WEB-INF/views/headerNavbar.jsp"%>
+
 
 			<main>
 				<div class="w3-bar tabBar">
@@ -63,82 +64,32 @@
 				</div>
 
 				<main class="content">
-							<h2>
+ 							<h2>
 								Calendar
-								<button class="btn btn-primary addTaskTab" id="btn-modal">+일정추가</button>
+								<button class="btn btn-primary addTaskTab" data-bs-toggle="modal" data-bs-target="#myModal">+일정추가</button>
 							</h2>
+							<%@ include file="/WEB-INF/views/calendar/calmodal.jsp" %>
 					<div class="container-fluid p-0">
-<!--					    <div class="row">
-							<div class="card"> -->
 								<div class="card-header">
-<!-- 									<div class="card-body"></div> -->
 									<!-- 캘린더  -->
 									<div id="croot">
 										<div class="ccard-body px-4">
 											<div id="calendar"></div>
 										</div>
 									</div>
-									<!-- 모달창 열기(+일정추가 클릭) -->
-									<div id="cal-modal" class="modal-overlay" aria-hidden="true">
-										<div class="modal-window">
-											<div class="create-header">
-												<div class="temp-wrap">
-													<h4 class="create-post-title">일정 작성</h4>
-												</div>
-												<span class="close-area" data-bs-dismiss="modal"
-													aria-label="Close">&times;</span>
-											</div>
-											<div class="create-title-input">
-												<input id="postTitle" type="text" class="title-input"
-													data-empty-msg="제목을 입력하세요" placeholder="제목을 입력하세요">
-											</div>
-											<div class="create-content"></div>
-										</div>
-									</div>
 								</div>
 							</div>
-					<!-- 	</div>
-					</div> -->
 				</main>
 				<%@ include file="/WEB-INF/views/footer.jsp"%>
 			</main>
 		</div>
 	</div>
-
-	<!-- 모달창 열기 -->
-	<script>
-        const modal = document.getElementById("cal-modal")
-        const btnModal = document.getElementById("btn-modal")
-        btnModal.addEventListener("click", e => {
-            modal.style.display = "flex"
-            document.body.style.overflow = "hidden"; // 모달이 열릴 때 스크롤 비활성화
-        })
-    </script>
-	<!-- 모달창 x누르면 닫힘 -->
-	<script>
-        const closeBtn = modal.querySelector(".close-area")
-        closeBtn.addEventListener("click", e => {
-            modal.style.display = "none"
-            document.body.style.overflow ="";	// 모달이 닫히면 스크롤 활성화
-        })
-    </script>
-	<!-- 모달 바깥 영역 클릭하면 모달창 닫힘  -->
-	<script>
-    	modal.addEventListener("click", e => {
-    		const evTarget = e.target
-    	    if(evTarget.classList.contains("modal-overlay")) {
-    	    	modal.style.display ="none"
-    	    	document.body.style.overflow ="";	// 모달이 닫히면 스크롤 활성화
-    	    }
-    	})
-    </script>
-
 	<!-- 달력을 구성  -->
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 			var calendarEl = document.getElementById('calendar');
 			var calendar = new FullCalendar.Calendar(calendarEl, {
-				height: '1200px', // 캘린더 칸 높이 설정(이거 안하고 more 코드 작성하면 칸 크기 달라짐)
+				height: '900px', // 캘린더 칸 높이 설정(이거 안하고 more 코드 작성하면 칸 크기 달라짐)
 		        expandRows: true, // 화면에 맞게 높이 재설정
 				headerToolbar : { // 헤더에 표시할 툴 바
 					start : 'prev next today',
@@ -203,7 +154,24 @@
 			calendar.render();
 		});
 	</script>
-
+	
+	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
+	<script src="${pageContext.request.contextPath}/js/app.js"></script>
+	<!-- 일정 모달 창 그림자 효과? -->
+	<script>
+	$(document).ready(function() {
+		$(".card-body").mouseover(function() {
+			$(this).css({
+				"box-shadow":"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
+			});
+		});
+		$(".card-body").mouseout(function() {
+			$(this).css({
+				"box-shadow":""
+			});
+		});
+	});
+	</script>
 	<script>
 	/* 상단 탭바 */
 	function openTab(tabName) {
@@ -215,7 +183,5 @@
 	  document.getElementById(tabName).style.display = "block";  
 	}
 	</script>
-
-	<script src="js/app.js"></script>
 </body>
 </html>

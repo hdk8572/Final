@@ -136,20 +136,20 @@ VALUES (task_sequence.NEXTVAL, '17', 'spring@ctest.co.kr', 'spring@ctest.co.kr',
 
 
 --TABLE SCHEDULE
-INSERT INTO SCHEDULE (SNO, USERID, SUSER, SSTARTDATE, SENDDATE, SPLACE, SMEMO, STITLE)
-VALUES (schedule_sequence.NEXTVAL, 'sple@kh.co.kr', 'sple@kh.co.kr', TO_DATE('2023-09-14', 'YYYY-MM-DD'), TO_DATE('2023-09-16', 'YYYY-MM-DD'), '강남구', '일하기', '업무1');
+INSERT INTO SCHEDULE (SNO, USERID, SSTARTDATE, SENDDATE, SPLACE, SMEMO, STITLE)
+VALUES (schedule_sequence.NEXTVAL, 'sple@kh.co.kr', TO_DATE('2023-09-14', 'YYYY-MM-DD'), TO_DATE('2023-09-16', 'YYYY-MM-DD'), '강남구', '일하기', '업무1');
 
-INSERT INTO SCHEDULE (SNO, USERID, SUSER, SSTARTDATE, SENDDATE, SPLACE, SMEMO, STITLE)
-VALUES (schedule_sequence.NEXTVAL, 'sample@kh.co.kr', 'mplsam@kh.co.kr', TO_DATE('2023-09-14', 'YYYY-MM-DD'), TO_DATE('2023-09-19', 'YYYY-MM-DD'), '강남구', '업무내용', '업무2');
+INSERT INTO SCHEDULE (SNO, USERID, SSTARTDATE, SENDDATE, SPLACE, SMEMO, STITLE)
+VALUES (schedule_sequence.NEXTVAL, 'sample@kh.co.kr', TO_DATE('2023-09-14', 'YYYY-MM-DD'), TO_DATE('2023-09-19', 'YYYY-MM-DD'), '강남구', '업무내용', '업무2');
 
-INSERT INTO SCHEDULE (SNO, USERID, SUSER, SSTARTDATE, SENDDATE, SPLACE, SMEMO, STITLE)
-VALUES (schedule_sequence.NEXTVAL, 'mplsam@kh.co.kr', 'mplsam@kh.co.kr', TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-09-13', 'YYYY-MM-DD'), '역삼동', '배고파 밥줘', '밥줘');
+INSERT INTO SCHEDULE (SNO, USERID, SSTARTDATE, SENDDATE, SPLACE, SMEMO, STITLE)
+VALUES (schedule_sequence.NEXTVAL, 'mplsam@kh.co.kr', TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-09-13', 'YYYY-MM-DD'), '역삼동', '배고파 밥줘', '밥줘');
 
-INSERT INTO SCHEDULE (SNO, USERID, SUSER, SSTARTDATE, SENDDATE, SPLACE, SMEMO, STITLE)
-VALUES (schedule_sequence.NEXTVAL, 'sample@kh.co.kr', 'mplsam@kh.co.kr', TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-09-13', 'YYYY-MM-DD'), '성내동', '빛의속도로 집에가기', '퇴근');
+INSERT INTO SCHEDULE (SNO, USERID, SSTARTDATE, SENDDATE, SPLACE, SMEMO, STITLE)
+VALUES (schedule_sequence.NEXTVAL, 'sample@kh.co.kr', TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-09-13', 'YYYY-MM-DD'), '성내동', '빛의속도로 집에가기', '퇴근');
 
-INSERT INTO SCHEDULE (SNO, USERID, SUSER, SSTARTDATE, SENDDATE, SPLACE, SMEMO, STITLE)
-VALUES (schedule_sequence.NEXTVAL, 'fffll@ctest.co.kr', 'react@ctest.co.kr', TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-09-13', 'YYYY-MM-DD'), '역삼동', '당신을 위한 일이 있어', '업무1');
+INSERT INTO SCHEDULE (SNO, USERID, SSTARTDATE, SENDDATE, SPLACE, SMEMO, STITLE)
+VALUES (schedule_sequence.NEXTVAL, 'fffll@ctest.co.kr', TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-09-13', 'YYYY-MM-DD'), '역삼동', '당신을 위한 일이 있어', '업무1');
 
 
 

@@ -7,6 +7,7 @@ function loadedHandler(){
 	$(".jm-drop").on("dragover", allowDrop);
 	$(".jm-drop").on("drop", drop);
 	$(".jm-move").on("dragend", dragEnd );
+	$(".jm-box-project-title").click(titleClickHandler);
 }
 
 function dragStart(e){
@@ -41,4 +42,12 @@ function dragEnd(e){
 	console.log("드래그 종료");
 }
 
-
+titleClickHandler=(event)=>{
+const a1 = event.target;
+	$(a1).toggleClass('active');
+	if( $(a1).hasClass('active') ){
+		$(a1).next('ul').hide();
+	}else{
+		$(a1).next('ul').show();
+	}
+} 

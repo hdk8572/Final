@@ -5,7 +5,7 @@
   <select id="selectList" resultType="ProjectVo">
   	SELECT PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, PSTARTDATE, PENDDATE, ROWNUM PROW 
 	FROM PROJECT
-  	<!-- WHERE USERID = 'kh0001@kh.com' --> -->
+  	<!-- WHERE USERID = 'kh0001@kh.com' -->
   </select>
   
   <insert id="insertList" parameterType="ProjectVo">
