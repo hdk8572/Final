@@ -89,7 +89,8 @@
 			</main>
 		</div>
 	</div>
-</body>
+	
+	<!-------------------- Script ----------------------->
 	<script src="${pageContext.request.contextPath}/js/stream.js"></script>
 	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
@@ -118,10 +119,10 @@
 	  });
 		    loadList();
 	});
-	 
+	
 	function loadList() {
 		$.ajax({
-			url: "projectlist.ajax",
+			url: "${pageContext.request.contextPath}/projectlist.ajax",
 			type: "get",
 			data: $("#wrap-list").serialize(),
 			datatype: "json",
@@ -132,6 +133,10 @@
 		});
 	}
 	
+	function addProjectView(data) {
+		console.log(add);
+	}
+
  	function makeView(data) {
 	    var listHtml = "";
 	        listHtml += `
@@ -159,7 +164,7 @@
 		                        </div>
 		                        <h1 class="mt-1 mb-3">\${ul.pname}</h1>
 		                        <div class="mb-0">
-		                            <span class="text-muted">\${ul.pstartDate}~\${ul.pendDate}</span>
+		                            <span class="text-muted">\${(ul.pstartDate).slice(0,10)}~\${(ul.pendDate).slice(0,10)}</span>
 		                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle me-2"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
 		                        </div>
 		                    </div>
@@ -168,5 +173,10 @@
 	           </div>`;
 				}
 	    $("#wrap-list").html(listHtml);
+	    $(".frm.select").click(abc);
 	}
 	</script>
+
+	
+</body>
+</html>
