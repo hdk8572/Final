@@ -3,9 +3,22 @@
 <mapper namespace="project">
   
   <select id="selectList" resultType="ProjectVo">
-  	SELECT PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, PSTARTDATE, PENDDATE, ROWNUM PROW 
-	FROM PROJECT
+  	<!-- SELECT PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, PSTARTDATE, PENDDATE, ROWNUM PROW 
+	FROM PROJECT -->
   	<!-- WHERE USERID = 'kh0001@kh.com' -->
+	
+	SELECT PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, PSTARTDATE, PENDDATE, DEPTNO, DEPTNAME, MNAME, MRANK, ROWNUM PROW
+	FROM (SELECT DEPTNO, DEPTNAME, USERID, MNAME, MRANK FROM USERS JOIN DEPT USING(DEPTNO))
+	JOIN PROJECT USING(USERID)
+	
+<!-- WHERE USERID = 'kh0001@kh.com' -->
+	
+	
+<!-- 	select pno, userid, pname, pcoment, paccess, pdate, pstartdate, penddate, tstatus, ROWNUM PROW
+	from project
+	join task using(pno, userid) -->
+
+	
   </select>
   
   <insert id="insertList" parameterType="ProjectVo">

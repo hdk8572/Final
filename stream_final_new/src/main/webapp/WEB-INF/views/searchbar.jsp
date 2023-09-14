@@ -61,6 +61,23 @@
 .plus-option i:nth-child(2) {
 	color: #4F86EC;
 }
+
+.search-tab {
+	display: inline-block;
+    position: absolute;
+    right: 160px;
+    top: 212px;
+}
+
+.serimg-tab {
+	position: absolute;
+	width: 17px;
+	top: 27px;
+	left: 25px;
+	margin: 0;
+}
+
+
 </style>
 
 </head>
