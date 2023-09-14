@@ -76,7 +76,6 @@
 									<div id="croot">
 										<div class="ccard-body px-4">
 											<div id="calendar"></div>
-											<%@ include file="/WEB-INF/views/calendar/readcalmodal.jsp" %>
 										</div>
 									</div>
 								</div>
