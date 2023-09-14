@@ -46,12 +46,12 @@
 		<main>
 		<div class="project-detail-header" >
 				<div class="testtt"><i id="projectColor" class="project-color color-code-1"></i></div>
-				<div class="project-header-group">프로젝트 이름</div>
+				<div class="project-header-group"><h2 style="font-weight: bold;">프로젝트 이름</h2></div>
 		</div>		
-		<div class="w3-bar tabBar">
-		  <button class="w3-bar-item w3" onclick="openTab('Tab1')">피드</button>
-		  <button class="w3-bar-item w3" onclick="openTab('Tab2')">업무</button>
-		  <button class="w3-bar-item w3" onclick="openTab('Tab3')">캘린더</button>
+		<div class="w3-bar tabBar" style="height: 60px">
+		  <button class="w3-bar-item w3" onclick="openTab('Tab1')" style="padding: 26px 25px">피드</button>
+		  <button class="w3-bar-item w3" onclick="openTab('Tab2')" style="padding: 26px 25px">업무</button>
+		  <button class="w3-bar-item w3" onclick="openTab('Tab3')" style="padding: 26px 25px">캘린더</button>
 		</div>
 		
 		<!-- 피드 탭 -->
@@ -69,7 +69,7 @@
 		</div>
 		
 		<!-- 업무 탭 [Task]-->
-		<div id="Tab2" class="w3-container tab ptab" style="display:none">
+		<div id="Tab2" class="w3-container tab ptab" style="display:none" style="height: 60px">
 			<div class="search">
 				<input class="serinput" type="text" placeholder="검색어 입력">
 				<img class="serimg"	src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
@@ -117,7 +117,7 @@
 		</div>
 		
 		<!-- 캘린더 탭 -->
-		<div id="Tab3" class="w3-container tab ptab" style="display:none">
+		<div id="Tab3" class="w3-container tab ptab" style="display:none" style="height: 60px">
 				<div class="search">
 				 	<input class="serinput" type="text" placeholder="검색어 입력">
 					<img class="serimg"	src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
