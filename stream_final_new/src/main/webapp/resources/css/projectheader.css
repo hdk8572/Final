@@ -22,6 +22,7 @@
 	height: 60px;
 	padding: 25px 17px;
 	display: flex;
+	top: -10px;
 }
 .project-header-group{
 	position: relative;

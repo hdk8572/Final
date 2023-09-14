@@ -2,6 +2,7 @@ package kh.groupware.stream.project.model.vo;
 
 
 public class ProjectVo {
+//	projectVo
 	private String pno;
 	private String userId;
 	private String pname;
@@ -10,16 +11,22 @@ public class ProjectVo {
 	private String pdate;
 	private String pstartDate;
 	private String pendDate;
-	private String prow;
+	private String prow; // 함수 Vo에 없음 
+	
+// deptVo + usersVo	
+	private String deptno;
+	private String mname;
+	private String mrank;
+	private String deptName;
 	
 	
 	@Override
 	public String toString() {
 		return "ProjectVo [pno=" + pno + ", userId=" + userId + ", pname=" + pname + ", pcoment=" + pcoment
 				+ ", paccess=" + paccess + ", pdate=" + pdate + ", pstartDate=" + pstartDate + ", pendDate=" + pendDate
-				+ ", prow=" + prow + "]";
+				+ ", prow=" + prow + ", deptno=" + deptno + ", mname=" + mname + ", mrank=" + mrank + ", deptName="
+				+ deptName + "]";
 	}
-	
 	public ProjectVo(String pno, String userId, String pname, String pcoment, String paccess, String pdate,
 			String pstartDate, String pendDate, String prow) {
 		super();
@@ -90,6 +97,33 @@ public class ProjectVo {
 	public void setProw(String prow) {
 		this.prow = prow;
 	}
+	public String getDeptno() {
+		return deptno;
+	}
+	public void setDeptno(String deptno) {
+		this.deptno = deptno;
+	}
+	public String getMname() {
+		return mname;
+	}
+	public void setMname(String mname) {
+		this.mname = mname;
+	}
+	public String getMrank() {
+		return mrank;
+	}
+	public void setMrank(String mrank) {
+		this.mrank = mrank;
+	}
+	public String getDeptName() {
+		return deptName;
+	}
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
+	}
+
+	
+	
 	
 	
 }

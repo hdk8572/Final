@@ -36,3 +36,8 @@
     background-color: transparent;
     appearance: none;
 }
+
+.text-tab {
+	position: absolute;
+	font-size: 1.53125rem;
+}

@@ -19,12 +19,15 @@
 
 	<title>AdminKit Demo - Bootstrap 5 Admin Template</title>
 	
+	<!-- Bootstrap CSS -->
 	<link href="${pageContext.request.contextPath}/css/app.css" rel="stylesheet">
+	
+	<!-- ProjectList CSS -->
 	<link href="${pageContext.request.contextPath}/css/projectList.css" rel="stylesheet">
 	<!-- Modal CSS -->
 	<link href="${pageContext.request.contextPath}/css/Modal.css" rel="stylesheet">
 	
-	<!-- DropDown - Option -->	
+	<!-- DropDown - Option CSS -->	
 	<link href="${pageContext.request.contextPath}/css/projectList.option.css" rel="stylesheet">
 	
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -123,7 +126,7 @@
 		                        <div class="row">
 		                            <div class="col mt-0">
 		                                <h5 class="card-title">
-		                                    Project
+		                                    <span>\${ul.deptName}</span>: <span>\${ul.mname}</span><span> \${ul.mrank}</span>님
 		                                </h5>
 		                            </div>
 		                            

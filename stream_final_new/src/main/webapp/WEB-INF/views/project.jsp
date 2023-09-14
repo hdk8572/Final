@@ -70,16 +70,15 @@
 		
 		<!-- 업무 탭 [Task]-->
 		<div id="Tab2" class="w3-container tab ptab" style="display:none" style="height: 60px">
-			<div class="search">
-				<input class="serinput" type="text" placeholder="검색어 입력">
-				<img class="serimg"	src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
-			</div>
 			<main class="content">
-				<h2>
-					<span>업무</span>
+				<div>
+					<span class="text-tab">업무</span>
+					<div class="search-tab">
+						<input class="serinput" type="text" placeholder="검색어 입력">
+						<img class="serimg-tab"	src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+					</div>
 					<button class="btn btn-primary addTaskTab" data-bs-toggle="modal" data-bs-target="#myModal">업무 등록</button>
-				</h2>
-				
+				</div>
 				<%@ include file="/WEB-INF/views/addPtaskModal.jsp" %>
 				
 				<div class="container-fluid p-0">
@@ -118,12 +117,13 @@
 		
 		<!-- 캘린더 탭 -->
 		<div id="Tab3" class="w3-container tab ptab" style="display:none" style="height: 60px">
-				<div class="search">
-				 	<input class="serinput" type="text" placeholder="검색어 입력">
-					<img class="serimg"	src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
-				</div>
+				
 				<main class="content">
 				<h2>캘린더</h2>
+				<div class="search-tab">
+				 	<input class="serinput" type="text" placeholder="검색어 입력">
+					<img class="serimg-tab"	src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+				</div>
 				<div class="container-fluid p-0">
 				<p>임지연</p>	
 				
