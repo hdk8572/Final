@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@page import="java.util.List"%>
-	<%@page import="kh.groupware.stream.calendar.model.vo.CalendarVo"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,13 +69,14 @@
 								Calendar
 								<button class="btn btn-primary addTaskTab" data-bs-toggle="modal" data-bs-target="#myModal">+일정추가</button>
 							</h2>
-							<%@ include file="/WEB-INF/views/calendar/calmodal.jsp" %>
+							<%@ include file="/WEB-INF/views/calendar/addcalmodal.jsp" %>
 					<div class="container-fluid p-0">
 								<div class="card-header">
 									<!-- 캘린더  -->
 									<div id="croot">
 										<div class="ccard-body px-4">
 											<div id="calendar"></div>
+											<%@ include file="/WEB-INF/views/calendar/readcalmodal.jsp" %>
 										</div>
 									</div>
 								</div>
@@ -91,20 +90,21 @@
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 
-			const calendarEl = document.getElementById('calendar');
+			const calendarEl = document.getElementById('calendar'); //calender라는 id를 가진 요소를 찾아 calendarEl 변수에 할당한다. 이건 fullcalendar를 표시할 컨테이너이다.
 			
 			// calendar date get from db 
+			//jquery의 ajax 메소드를 사용해 서버에서 데이터를  비동기적으로 가져오는 요청을 보낸다.
 			$.ajax({
-				url: '${pageContext.request.contextPath}/pcalselectlist',
+				url: '${pageContext.request.contextPath}/pcalselectlist',	//ajax 요청의 url을 설정한다. 앞에는 jsp페이지의 컨텍스트 경로를 가져오는 표현식, 뒤에는 서버에서 데이터를 가져올 경로
 				data: { date : '2023-09-12'},  // 
 				dataType : "json",
-				success: function(result){
-					console.log(result);  // result == event Data Arr
-					makeFullCalendar(result);
+				success: function(result){	//요청이 성공적으로 완료될 때 실행할 콜백 함수를 정의
+					console.log(result);  // result == event Data Arr //서버에서 반환된 데이터를 담고 있는 매개변수이다.
+					makeFullCalendar(result);	//받은 데이터를 이용하여 makeFullCalendar 함수를 호출한다.
 				}
 			});
 			
-			function makeFullCalendar ( eventsDataArr ){
+			function makeFullCalendar ( eventsDataArr ){	//makeFullCalendar 이 함수는 ajax 요청에서 받은 이벤트 데이터 배열 eventDataArr을 인자로 받는다.
 				var calendar = new FullCalendar.Calendar(calendarEl, {
 					height: '900px', // 캘린더 칸 높이 설정(이거 안하고 more 코드 작성하면 칸 크기 달라짐)
 			        expandRows: true, // 화면에 맞게 높이 재설정
