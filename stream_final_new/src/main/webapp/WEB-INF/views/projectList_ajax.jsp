@@ -24,6 +24,8 @@
 	<!-- Modal CSS -->
 	<link href="${pageContext.request.contextPath}/css/Modal.css" rel="stylesheet">
 	
+	<!-- DropDown - Option -->	
+	<link href="${pageContext.request.contextPath}/css/projectList.option.css" rel="stylesheet">
 	
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 	<!-- Tab bar -->
@@ -107,7 +109,6 @@
 	}
 
  	function makeView(data) {
- 		console.log(data);
 	    var listHtml = "";
 	        listHtml += `
 	        `;
@@ -135,9 +136,16 @@
 		                        <h1 class="mt-1 mb-3">\${ul.pname}</h1>
 		                        <div class="mb-0">
 		                            <span class="text-muted">\${(ul.pstartDate).slice(0,10)}~\${(ul.pendDate).slice(0,10)}</span>
-		                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
-		                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-										class="feather feather-more-horizontal align-middle me-2"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+									<div class="dropdown-option">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+				                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+												class="feather feather-more-horizontal align-middle me-2 dropbtn-option"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle>
+										</svg>	
+									  <div class="dropdown-content-option">
+									    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit align-middle me-2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>수정</span></a>
+									    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg><span>삭제</span></a>
+									  </div>
+									</div>
 		                        </div>
 		                    </div>
 		                </form>

@@ -35,7 +35,6 @@
 							]
 						})
 							.then( editor => {
-					            console.log( 'Editor was initialized', editor );
 					            myEditor = editor;
 					        } )
 					        .catch( err => {
