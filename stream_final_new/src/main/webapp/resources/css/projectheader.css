@@ -27,7 +27,7 @@
 .project-header-group{
 	position: relative;
 	top: 11px ;
-	
+	padding: 0 10px;
 }
 .testtt{
 	padding: 0 20px 0 0;
