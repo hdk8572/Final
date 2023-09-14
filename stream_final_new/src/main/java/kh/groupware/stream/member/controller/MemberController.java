@@ -29,6 +29,12 @@ public class MemberController {
 		mv.setViewName("login/login");
 		return mv;
 	}
+	@GetMapping("/userpage")
+	public ModelAndView myPage(ModelAndView mv) {
+		mv.setViewName("/myPage");
+		return mv;
+	}
+	
 	
 	//member login
 	@PostMapping("/login.member")

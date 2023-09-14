@@ -1,8 +1,6 @@
 package kh.groupware.stream.member.model.vo;
 
-import org.springframework.stereotype.Component;
 
-@Component
 public class MemberVo {
 //	USERID    NOT NULL VARCHAR2(40) 
 //	DEPTNO    NOT NULL VARCHAR2(10) 
@@ -18,7 +16,7 @@ public class MemberVo {
 	private String deptno;
 	private String ccode;
 	private String password;
-	private int enabled;
+	private boolean enabled;
 	private String authority;
 	private String mname;
 	private String mphone;
@@ -35,7 +33,7 @@ public class MemberVo {
 		super();
 	}
 
-	public MemberVo(String userid, String deptno, String ccode, String password, int enabled, String authority,
+	public MemberVo(String userid, String deptno, String ccode, String password, boolean enabled, String authority,
 			String mname, String mphone, String mrank) {
 		super();
 		this.userid = userid;
@@ -81,11 +79,11 @@ public class MemberVo {
 		this.password = password;
 	}
 
-	public int getEnabled() {
+	public boolean isEnabled() {
 		return enabled;
 	}
 
-	public void setEnabled(int enabled) {
+	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
 
@@ -120,7 +118,7 @@ public class MemberVo {
 	public void setMrank(String mrank) {
 		this.mrank = mrank;
 	}
-
+	
 	
 	
 }

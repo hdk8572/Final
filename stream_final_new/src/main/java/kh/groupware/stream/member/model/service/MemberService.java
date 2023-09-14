@@ -8,15 +8,12 @@ import kh.groupware.stream.member.model.vo.MemberVo;
 
 @Service
 public class MemberService {
-	
+
 	@Autowired
 	private MemberDao memberDao;
-	
-	//login
+
 	public String selectOne(MemberVo mvo) {
-		return memberDao.selectOne(mvo);
-	}
-	
-	
+		  return memberDao.selectOne(mvo); 
+		 }
 
 }

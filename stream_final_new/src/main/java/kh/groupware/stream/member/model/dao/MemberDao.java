@@ -13,7 +13,6 @@ public class MemberDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	//login
 	public String selectOne(MemberVo mvo) {
 		return sqlSession.selectOne("member.selectOne", mvo);
 	}
