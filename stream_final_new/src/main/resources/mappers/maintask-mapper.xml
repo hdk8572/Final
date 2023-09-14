@@ -19,7 +19,7 @@
 	</resultMap>
 	
 	<select id="projectNameList" resultMap="maintaskVoMap" >
-		select pname, pno, ttitle, userid, tstatus, tdate, tstartdate, tenddate
+		select pname, pno, ttitle, userid, tstatus, tdate, tstartdate, tenddate, tno
     		from project join task using(pno, userid)
 	</select>
 

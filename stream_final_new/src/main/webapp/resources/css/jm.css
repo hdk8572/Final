@@ -13,11 +13,14 @@
 }
 
 .mini-pop {
-	display: none
+	display: none;
+	cursor:pointer;
+	
 }
 
 .mini-pop.active {
 	display: block;
+	
 }
 
 .jm-move{
@@ -25,4 +28,56 @@
 }
 .jm-move div{
 	draggable: true
+}
+span.jm-project-title{
+	font-weight: bold;
+}
+div.jm-box-project-title{
+	position:relative;
+	background: #E8E8E8;
+	z-index: 500;
+}
+.jm-box-project-title>span, button{
+	position:relative;
+	z-index: -100;
+}
+.jm-rotate{
+	position:relative;
+	z-index: -50;
+}
+.jm-rotate>polygon{
+	position:relative;
+	z-index: -5;
+}
+.jm-grey{
+	border-left: solid #D3D3D3 1px;
+	border-bottom: solid #D3D3D3 1px;
+	border-top: solid #D3D3D3 1px;
+	position: relative;
+}
+.jm-grey-nb{
+	border-left: solid #D3D3D3 1px;
+	border-right: solid #D3D3D3 1px;
+}
+div.jm-task-title{
+	border-right: solid #D3D3D3 1px;
+}
+.jm-gr{
+	border-right: solid #D3D3D3 1px;
+}
+.jm-project-task-count{
+	
+	margin-left: 5px;
+    font-size: 12px;
+    letter-spacing: -1px;
+    color: #999;
+}
+.jm-task-title{
+	text-align: center;
+}
+.jm-tp{
+	border: none;
+	color: #999;
+	background-color: transparent;
+	font-size: 13px;
 }

@@ -43,11 +43,15 @@ function dragEnd(e){
 }
 
 titleClickHandler=(event)=>{
-const a1 = event.target;
-	$(a1).toggleClass('active');
+	const a1 = event.target;
+	console.log(event.target);
+	
+	$(a1).toggleClass('active');	
 	if( $(a1).hasClass('active') ){
-		$(a1).next('ul').hide();
+		$(a1).parent().next('ul').hide();
+		$(a1).find(".jm-rotate").css("rotate","90deg");
 	}else{
-		$(a1).next('ul').show();
+		$(a1).parent().next('ul').show();
+		$(a1).find(".jm-rotate").css("rotate","0deg");
 	}
 } 

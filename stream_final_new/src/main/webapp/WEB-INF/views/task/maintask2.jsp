@@ -91,10 +91,10 @@
 									<h5 class="card-title mb-0">Empty card</h5>
 								</div>
 								<div class="card-body jm-body">
-									<div class="jm-rwap-task">
-										<div class="jm-task-title row">
+									<div class="jm-rwap-task jm-grey">
+										<div class="jm-task-title row ">
 											<!-- dropdown -->
-											<div class="col-lg-4">
+											<div class="col-lg-4 jm-grey-nb">
 												<div class="dropdown">
 													<div class="jm-title" id="tno">
 														<div class="card-subtitle text-muted dropdown-toggle"
@@ -111,7 +111,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="jm-drop col-lg-1">
+											<div class="jm-drop col-lg-1 jm-grey-nb">
 												<div class="dropdown jm-move" id="tstatus" draggable="true">
 													<div class="jm-title">
 														<div class="card-subtitle text-muted dropdown-toggle"
@@ -128,7 +128,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="jm-drop col-lg-1">
+											<div class="jm-drop col-lg-1 jm-grey-nb">
 												<div class="dropdown jm-move" id="tmember" draggable="true">
 													<div class="jm-title">
 														<div class="card-subtitle text-muted dropdown-toggle"
@@ -145,7 +145,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="jm-drop col-lg-1">
+											<div class="jm-drop col-lg-1 jm-grey-nb">
 												<div class="dropdown jm-move" id="tstartdate"
 													draggable="true">
 													<div class="jm-title">
@@ -163,7 +163,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="jm-drop  col-lg-1">
+											<div class="jm-drop  col-lg-1 jm-grey-nb">
 												<div class="dropdown jm-move" id="tenddate" draggable="true">
 													<div class="jm-title">
 														<div class="card-subtitle text-muted dropdown-toggle"
@@ -180,7 +180,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="jm-drop  col-lg-1">
+											<div class="jm-drop  col-lg-1 jm-grey-nb">
 												<div class="dropdown jm-move" id="tdate" draggable="true">
 													<div class="jm-title">
 														<div class="card-subtitle text-muted dropdown-toggle"
@@ -200,7 +200,7 @@
 											<div class="dropdown col-lg-auto">
 												<div class="jm-title" id="empty">
 													<div class="card-subtitle text-muted">
-														<span>빈공간</span>
+														
 													</div>
 												</div>
 											</div>
@@ -209,22 +209,34 @@
 									<ul id="taskContentUI">
 										<c:forEach items="${projectList }" var="project">
 											<li id="projectNo">
-												<div class="jm-box-project-title">
-													<span class="jm-project-title">${project.pname }</span> <span
-														class="jm-project-task-count">(${project.maintaskList.size() })</span>
-													<button class="jm-project-button">바로가기</button>
+												<div class="jm-grey">
+													<div class="jm-box-project-title jm-gr">
+														<span>
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+															 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+															  class="feather feather-play align-middle me-2 jm-rotate"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+														</span>
+														<span class="jm-project-title">${project.pname }</span> 
+														<span class="jm-project-task-count">(${project.maintaskList.size() })</span>
+														<button class="jm-project-button jm-tp">바로가기</button>
+													</div>
 												</div>
 												<ul class="jm-inner-task">
-													<div class="jm-wrap-section-task-title">
+													<div class="jm-wrap-section-task-title jm-gr">
 														<ul class="jm-serction-task-title">
 															<c:forEach items="${project.maintaskList }" var="task">
 																<li class="plusplus row">
-																	<div class="jm-title-ttitle col-lg-4">${task.ttitle	}</div>
-																	<div class="jm-title-tstatus col-lg-1">${task.tstatus }</div>
-																	<div class="jm-title-tmember col-lg-1">${task.tmember }</div>
-																	<div class="jm-title-tstartdate col-lg-1">${task.tstartdate }</div>
-																	<div class="jm-title-tenddate col-lg-1">${task.tenddate }</div>
-																	<div class="jm-empty-tdate col-lg-1">${task.tdate }</div>
+																	<div class="jm-title-ttitle col-lg-4 jm-grey">
+																		<span>${task.ttitle	}</span>
+																		<button>업무추가</button>
+																		<span>자세히 보기</span>
+																	</div>
+																	<div class="jm-title-tstatus col-lg-1 jm-grey">${task.tstatus }</div>
+																	<div class="jm-title-tmember col-lg-1 jm-grey">${task.tmember }</div>
+																	<div class="jm-title-tstartdate col-lg-1 jm-grey">${task.tstartdate }</div>
+																	<div class="jm-title-tenddate col-lg-1 jm-grey">${task.tenddate }</div>
+																	<div class="jm-empty-tdate col-lg-1 jm-grey jm-gr">${task.tdate }</div>
+																	<div class="jm-empty-tdate col-lg-1 jm-grey jm-gr">${task.tno }</div>
 																</li>
 															</c:forEach>
 														</ul>
