@@ -24,6 +24,8 @@
 	<!-- Modal CSS -->
 	<link href="${pageContext.request.contextPath}/css/Modal.css" rel="stylesheet">
 	
+	<!-- DropDown - Option -->	
+	<link href="${pageContext.request.contextPath}/css/projectList.option.css" rel="stylesheet">
 	
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 	<!-- Tab bar -->
@@ -53,34 +55,7 @@
 						<div class="col-xl-6 col-xxl-5 d-flex">
 							<div class="w-100">
 								<div class="row" id="wrap-list">
-<%--										<div class="col-sm-6" >
-  											<div class="card">
-												<form class="frm select" action="${pageContext.request.contextPath}/ptasklist" method="get">
-												<input type="hidden" name="pno" value="${vo.pno}">
-													<div class="card-body" >
-														<div class="row">
-															<div class="col mt-0">
-																<h5 class="card-title">
-																	Project
-																</h5>
-															</div>
-															
-															<div class="col-auto">
-																<div class="stat text-primary">
-																	${vo.prow}
-																</div>
-															</div>
-														</div>
-														<h1 class="mt-1 mb-3">${vo.pname}</h1>
-														<div class="mb-0">
-															<!-- <span class="text-muted">진행 중</span> -->
-															<span class="text-muted">${fn:split(vo.pstartDate, " ")[0]}~${fn:split(vo.pendDate, " ")[0]}</span>
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle me-2"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
-														</div>
-													</div>
-												</form>
-											</div> 
-										</div>		--%>
+									<!-- Ajax - loadList() -->
 								</div>
 							</div>
 						</div>
@@ -132,10 +107,6 @@
 			}
 		});
 	}
-	
-	function addProjectView(data) {
-		console.log(add);
-	}
 
  	function makeView(data) {
 	    var listHtml = "";
@@ -165,7 +136,16 @@
 		                        <h1 class="mt-1 mb-3">\${ul.pname}</h1>
 		                        <div class="mb-0">
 		                            <span class="text-muted">\${(ul.pstartDate).slice(0,10)}~\${(ul.pendDate).slice(0,10)}</span>
-		                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle me-2"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+									<div class="dropdown-option">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+				                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+												class="feather feather-more-horizontal align-middle me-2 dropbtn-option"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle>
+										</svg>	
+									  <div class="dropdown-content-option">
+									    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit align-middle me-2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>수정</span></a>
+									    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg><span>삭제</span></a>
+									  </div>
+									</div>
 		                        </div>
 		                    </div>
 		                </form>
@@ -173,7 +153,7 @@
 	           </div>`;
 				}
 	    $("#wrap-list").html(listHtml);
-	    $(".frm.select").click(abc);
+	    $(".frm.select").click(abc);  // stream.js -> abc();
 	}
 	</script>
 

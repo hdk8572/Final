@@ -1,12 +1,3 @@
-.feather.feather-more-horizontal.align-middle.me-2 {
-	float: right;
-    color: #939ba2;
-}	
-
-.feather.feather-more-horizontal.align-middle.me-2:hover {
-	color: #009b77;
-}
-
-.addProject {
-	float: right;
+.card-body:hover {
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }

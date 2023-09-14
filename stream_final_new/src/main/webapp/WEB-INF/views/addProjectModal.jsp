@@ -33,7 +33,20 @@
 							toolbar: [
 								'heading', 'bold', 'italic'
 							]
-						  });
+						})
+							.then( editor => {
+					            myEditor = editor;
+					        } )
+					        .catch( err => {
+					            console.error( err.stack );
+				        });
+/* 						  .then( editor => {
+				            console.log( 'Editor was initialized', editor );
+				            myEditor = editor;
+				        } )
+				        .catch( err => {
+				            console.error( err.stack );
+				        } ); */
 						</script>
 						</div>
 				<div class="card-header">
@@ -49,7 +62,7 @@
 
 			</div>
 			<div align="center">
-				<button class="btn btn-primary" id="btn-submit" type="submit">추가</button>
+				<button class="btn btn-primary" id="btn-submit" type="button">추가</button>
 				<button class="btn btn-warning" type="reset">취소</button>
 			</div>
 			<div>
@@ -63,21 +76,29 @@
   </div>
 </div>
 <script>
-
 	$("#btn-submit").click(addList);
 	
 	function addList () {
+		var data = myEditor.getData();
+		$("[name=pcoment]").val(data);
+		
+		console.log($("#addProject").serialize());  // "n1=v1&n2=v2"&pcomment=rkqdfjklfjlddfld
 		$.ajax ({
-			url: "${pageContext.request.contextPath}/projectInsert.ajax",
+			url: "${pageContext.request.contextPath}/projectInsert",
 			type: "post",
-			data: $("#addProject").serialize(),
+			//data: $("#addProject").serialize(),
+			data : $("#addProject").serialize(),
 			dateType: "json",
-			success: addProjectView,
-			error: function() {
+			success: function(result){
+				console.log(result);
+			},
+			error: function() {	
 				alert("에러났습니다.");
 			}
 		});	
 	}
+	
+
 </script>
 
 <!-- 모달 -->

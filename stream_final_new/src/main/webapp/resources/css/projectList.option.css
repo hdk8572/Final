@@ -1,0 +1,62 @@
+/* Dropdown Button */
+/* .dropbtn-option {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+} */
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown-option {
+  position: relative;
+  float:right;
+  display: inline-block;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content-option {
+  display: none;
+  position: absolute;
+  top:20px;
+  background-color: white;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 20px;
+  
+  
+}
+
+/* Links inside the dropdown */
+.dropdown-content-option a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content-option a:hover {
+	/* background-color: #ddd; */
+	text-decoration: none;
+	border-radius: 20px;
+	color: #09bb77;
+}
+
+.dropdown-content-option:hover {
+	
+}
+
+/* Show the dropdown menu on hover */
+.dropdown-option:hover .dropdown-content-option {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+/* .dropdown-option:hover .dropbtn-option {color: #009b77;} */
+
+.feather.feather-more-horizontal.align-middle.me-2 {
+	float: right;
+    color: #939ba2;
+}	

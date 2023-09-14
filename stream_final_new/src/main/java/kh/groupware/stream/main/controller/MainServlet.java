@@ -10,11 +10,11 @@ import kh.groupware.stream.main.model.service.MaintastService;
 @Controller
 public class MainServlet {
 	@Autowired
-	private MaintastService service;
+	private MaintastService MaintastService;
 	
 	@GetMapping("/maintask")
 	public String maintask(Model model) {
-		model.addAttribute("projectList", service.projectNameList());
+		model.addAttribute("projectList", MaintastService.projectNameList());
 		return "/task/maintask2";
 	}
 
