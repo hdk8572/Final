@@ -53,34 +53,7 @@
 						<div class="col-xl-6 col-xxl-5 d-flex">
 							<div class="w-100">
 								<div class="row" id="wrap-list">
-<%--										<div class="col-sm-6" >
-  											<div class="card">
-												<form class="frm select" action="${pageContext.request.contextPath}/ptasklist" method="get">
-												<input type="hidden" name="pno" value="${vo.pno}">
-													<div class="card-body" >
-														<div class="row">
-															<div class="col mt-0">
-																<h5 class="card-title">
-																	Project
-																</h5>
-															</div>
-															
-															<div class="col-auto">
-																<div class="stat text-primary">
-																	${vo.prow}
-																</div>
-															</div>
-														</div>
-														<h1 class="mt-1 mb-3">${vo.pname}</h1>
-														<div class="mb-0">
-															<!-- <span class="text-muted">진행 중</span> -->
-															<span class="text-muted">${fn:split(vo.pstartDate, " ")[0]}~${fn:split(vo.pendDate, " ")[0]}</span>
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle me-2"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
-														</div>
-													</div>
-												</form>
-											</div> 
-										</div>		--%>
+									<!-- Ajax - loadList() -->
 								</div>
 							</div>
 						</div>
@@ -132,12 +105,9 @@
 			}
 		});
 	}
-	
-	function addProjectView(data) {
-		console.log(add);
-	}
 
  	function makeView(data) {
+ 		console.log(data);
 	    var listHtml = "";
 	        listHtml += `
 	        `;
@@ -165,7 +135,9 @@
 		                        <h1 class="mt-1 mb-3">\${ul.pname}</h1>
 		                        <div class="mb-0">
 		                            <span class="text-muted">\${(ul.pstartDate).slice(0,10)}~\${(ul.pendDate).slice(0,10)}</span>
-		                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle me-2"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+		                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+		                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+										class="feather feather-more-horizontal align-middle me-2"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
 		                        </div>
 		                    </div>
 		                </form>
@@ -173,7 +145,7 @@
 	           </div>`;
 				}
 	    $("#wrap-list").html(listHtml);
-	    $(".frm.select").click(abc);
+	    $(".frm.select").click(abc);  // stream.js -> abc();
 	}
 	</script>
 
