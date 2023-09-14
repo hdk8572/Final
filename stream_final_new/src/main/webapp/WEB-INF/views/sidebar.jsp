@@ -5,14 +5,12 @@
     
 	<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
-				<!-- <a class="sidebar-brand" href="index.html"> -->
           <span class="align-brand-middle"><a href="projectlist" class="sidebar-brand-new">AdminKit</a></span>
-        		<!-- </a> -->
 
 				<ul class="sidebar-nav">
 					<li class="sidebar-item active">
-						<a class="sidebar-link" href="index.html">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">내 프로젝트</span>
+						<a class="sidebar-link" href="projectlist">
+              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle" >내 프로젝트</span>
             </a>
 					</li>
 
