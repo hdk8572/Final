@@ -21,12 +21,11 @@
 	min-width: 750px;
 	height: 60px;
 	padding: 25px 17px;
-	z-index: 12;
 	display: flex;
 }
 .project-header-group{
 	position: relative;
-	top: 11px !important;
+	top: 11px ;
 	
 }
 .testtt{
