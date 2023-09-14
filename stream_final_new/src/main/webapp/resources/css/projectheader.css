@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 .color-code-1{
-	background: green;
-	border: solid green;
+	background: #009B77;
+	border: solid #009B77;
 }
 .project-color{
 	display: block;
@@ -20,12 +20,13 @@
 	position: relative;
 	min-width: 750px;
 	height: 60px;
-	padding: 15px;
+	padding: 25px 17px;
 	z-index: 12;
 	display: flex;
 }
 .project-header-group{
-	top: 20px;
+	position: relative;
+	top: 11px !important;
 	
 }
 .testtt{

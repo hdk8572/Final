@@ -6,36 +6,39 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
 
 import kh.groupware.stream.project.model.service.ProjectService;
 import kh.groupware.stream.project.model.vo.ProjectVo;
 
 @Controller
-public class ajaxProjectController {
+public class ProjectController {
 
 	@Autowired
 	private ProjectService service;
 	
-	@RequestMapping("/projectlist")
+	@GetMapping("/projectlist")
 	public String main() {
 		return "projectList_ajax";
 	}
 	
-	@RequestMapping("/projectlist.ajax")
-	public @ResponseBody List<ProjectVo> insertList() {
+	@GetMapping("/projectlist.ajax")
+	@ResponseBody 
+	public List<ProjectVo> insertList() {
 		List<ProjectVo> list = service.selectList();
 		return list;
 	}
 
-	/*-------------------------------------------------------------------*/
-	
-	@RequestMapping("/projectInsert.ajax")
-	public @ResponseBody String insertList(Model model, ProjectVo vo) {
+	@PostMapping("/projectInsert")
+	@ResponseBody
+	public List<ProjectVo>  insertList(ProjectVo vo) {
 		List<ProjectVo> add = service.insertList(vo);
-		return "add";
+		return add;
 	}
 	 
 	
