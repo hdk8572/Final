@@ -15,5 +15,9 @@ public class MemberService {
 	public String selectOne(MemberVo mvo) {
 		  return memberDao.selectOne(mvo); 
 		 }
+	
+	public int signUp(MemberVo mvo) {
+		return memberDao.signUp(mvo);
+	}
 
 }

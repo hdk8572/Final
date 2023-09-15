@@ -53,24 +53,24 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
-									<form>
+									<form id=frmNewMember" action=${pageContext.request.contextPath}/newmember.do method="post">
 										<div class="mb-3">
 											<label class="form-label">E-mail</label> <input
 												class="form-control form-control-lg" type="email"
-												placeholder="이메일을 입력하세요">
+												placeholder="이메일을 입력하세요" name="userid">
 											<!-- 	placeholder="Readonly input" readonly -->
 
 										</div>
 										<div class="mb-3">
 											<label class="form-label">이름</label> <input
 												class="form-control form-control-lg" type="text"
-												placeholder="이름을 입력하세요">
+												placeholder="이름을 입력하세요" name="mname">
 
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Password</label> <input
 												class="form-control form-control-lg" type="password"
-												name="password" placeholder="비밀번호를 입력하세요" />
+												name="password" placeholder="비밀번호를 입력하세요">
 										</div>
 <!-- 										<div class="mb-3">
 											<label class="form-label">Repeat Password</label> <input
@@ -86,7 +86,7 @@
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Department</label> <select
-												class="form-select mb-3" name="dept">
+												class="form-select mb-3" name="deptno">
 												<option selected>부서를 선택해주세요</option>
 												<option>A</option>
 												<option>B</option>
@@ -101,9 +101,9 @@
 											</label>
 										</div>
 										<div class="text-center mt-3">
-											<a href="index.html" class="btn btn-lg btn-primary">회원 가입</a>
-											<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
+								<button type="submit" class="btn btn-lg btn-primary">로그인</button>
 										</div>
+										</form>
 								</div>
 
 							</div>

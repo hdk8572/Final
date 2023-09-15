@@ -16,4 +16,8 @@ public class MemberDao {
 	public String selectOne(MemberVo mvo) {
 		return sqlSession.selectOne("member.selectOne", mvo);
 	}
+	public int signUp(MemberVo mvo) {
+		return sqlSession.insert("member.insert", mvo);
+	
+	}
 }
