@@ -76,10 +76,12 @@
 									<div id="croot">
 										<div class="ccard-body px-4">
 											<div id="calendar"></div>
+											
 										</div>
 									</div>
 								</div>
 							</div>
+<%@ include file="/WEB-INF/views/calendar/readcalmodal.jsp" %>
 				</main>
 				<%@ include file="/WEB-INF/views/footer.jsp"%>
 			</main>
@@ -124,6 +126,14 @@
 					dayMaxEvents : true, // 일정 more 
 					//	locale: 'ko', // 한국어 설정 
 					events : eventsDataArr
+				 	,
+					eventClick: function(info) {
+						console.log(info.event.title);
+						var event = info.event;
+						$("#myModal.modal.right  [name=ttitle]").val(info.event.title);
+						$("#myModal.modal.right").show();
+						//<span><button class="btn btn-primary addProject" id="myBtn" data-bs-toggle="modal" data-bs-target="#myModal">프로젝트 추가+</button></span>
+					} 
 				});
 				calendar.render();
 			}
@@ -158,5 +168,6 @@
 	  document.getElementById(tabName).style.display = "block";  
 	}
 	</script>
+	
 </body>
 </html>
