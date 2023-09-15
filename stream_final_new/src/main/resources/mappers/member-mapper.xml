@@ -12,7 +12,7 @@
 	
 	<!-- 회원가입 -->
 	<select id="insert" parameterType="MemberVo">
-		INSERT INTO USERS VALUES (#{userid}, #{deptno}, 'C01', #{password}, DEFAULT, DEFAULT, #{mname}, #{mphone}, #{mrank})
+		INSERT INTO USERS VALUES (#{userid}, #{deptno}, #{ccode}, #{password}, 1, 'RM', #{mname}, NULL, NULL)
 	</select>
 	
 	<!-- 마이페이지 -->

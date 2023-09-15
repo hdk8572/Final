@@ -56,8 +56,15 @@
 									<form>
 										<div class="mb-3">
 											<label class="form-label">E-mail</label> <input
-												class="form-control" type="email"
-												placeholder="Readonly input" readonly>
+												class="form-control form-control-lg" type="email"
+												placeholder="이메일을 입력하세요">
+											<!-- 	placeholder="Readonly input" readonly -->
+
+										</div>
+										<div class="mb-3">
+											<label class="form-label">이름</label> <input
+												class="form-control form-control-lg" type="text"
+												placeholder="이름을 입력하세요">
 
 										</div>
 										<div class="mb-3">
@@ -65,23 +72,25 @@
 												class="form-control form-control-lg" type="password"
 												name="password" placeholder="비밀번호를 입력하세요" />
 										</div>
-										<div class="mb-3">
+<!-- 										<div class="mb-3">
 											<label class="form-label">Repeat Password</label> <input
 												class="form-control form-control-lg" type="password"
 												name="password" placeholder="" />
-										</div>
+										</div> -->
 										<div class="mb-3">
 											<label class="form-label">Company Code</label> <input
 												class="form-control form-control-lg" type="text"
-												name="ccode" placeholder="회사코드를 입력하세요" />
+												name="ccode" placeholder="회사코드를 입력하세요" /> <small> <a
+												href="index.html">비밀번호 찾기</a>
+											</small>
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Department</label> <select
-												class="form-select mb-3">
+												class="form-select mb-3" name="dept">
 												<option selected>부서를 선택해주세요</option>
-												<option>부서이름1</option>
-												<option>부서이름2</option>
-												<option>부서이름3</option>
+												<option>A</option>
+												<option>B</option>
+												<option>C</option>
 											</select>
 										</div>
 										<div>
