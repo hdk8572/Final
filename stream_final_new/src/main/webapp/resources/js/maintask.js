@@ -8,6 +8,7 @@ function loadedHandler(){
 	$(".jm-drop").on("drop", drop);
 	$(".jm-move").on("dragend", dragEnd );
 	$(".jm-box-project-title").click(titleClickHandler);
+	fullTaskCnt();
 }
 
 function dragStart(e){
@@ -55,3 +56,7 @@ titleClickHandler=(event)=>{
 		$(a1).find(".jm-rotate").css("rotate","0deg");
 	}
 } 
+
+fullTaskCnt=()=>{
+	
+}
