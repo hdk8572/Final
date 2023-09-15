@@ -26,5 +26,9 @@ public class PtaskService {
 		return dao.insertTask(vo);
 	} 
 	
+    public int deleteTask(String pno) {
+    	return dao.deleteTask(pno);
+    }
+	
 	
 }

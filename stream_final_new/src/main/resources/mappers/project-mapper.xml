@@ -7,7 +7,7 @@
 	FROM PROJECT -->
   	<!-- WHERE USERID = 'kh0001@kh.com' -->
 	
-	SELECT PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, PSTARTDATE, PENDDATE, DEPTNO, DEPTNAME, MNAME, MRANK, ROWNUM PROW
+	SELECT PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, PSTARTDATE, PENDDATE, PSTATUS, DEPTNO, DEPTNAME, MNAME, MRANK, ROWNUM PROW
 	FROM (SELECT DEPTNO, DEPTNAME, USERID, MNAME, MRANK FROM USERS JOIN DEPT USING(DEPTNO))
 	JOIN PROJECT USING(USERID)
 	
@@ -19,11 +19,16 @@
 	join task using(pno, userid) -->
 
 	
-  </select>
+	 </select>
+	 
+	 <insert id="insertList" parameterType="ProjectVo">
+		INSERT INTO PROJECT (PNO, USERID, PNAME, PCOMENT, PACCESS, PSTARTDATE, PENDDATE)
+		VALUES (project_sequence.NEXTVAL, #{userId}, #{pname}, #{pcoment}, #{paccess}, #{pstartDate}, #{pendDate})
+	 </insert>
+	 
+	 <delete id="deleteList" parameterType="ProjectVo">
+		DELETE FROM PROJECT WHERE PNO = #(pno) 
+	 </delete>
   
-  <insert id="insertList" parameterType="ProjectVo">
-	INSERT INTO PROJECT (PNO, USERID, PNAME, PCOMENT, PACCESS, PSTARTDATE, PENDDATE)
-	VALUES (project_sequence.NEXTVAL, #{userId}, #{pname}, #{pcoment}, #{paccess}, #{pstartDate}, #{pendDate})
-  </insert>
   
 </mapper>

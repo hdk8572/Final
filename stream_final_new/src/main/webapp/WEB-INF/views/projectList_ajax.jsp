@@ -47,14 +47,14 @@
 			<main class="content">
 				<div class="container-fluid p-0">
 					
-					<h1 class="h3 mb-3">
+					<h1 class="h3 mb-3" >
 						<span>${ul.mname}님의 프로젝트 목록</span>
 						<span><button class="btn btn-primary addProject" id="myBtn" data-bs-toggle="modal" data-bs-target="#myModal">프로젝트 추가+</button></span>
 					</h1>
 						
 					<%@ include file="/WEB-INF/views/addProjectModal.jsp" %>
 						
- 						<div class="row" id="wrap-listt">
+ 						<div class="row">
 						<div class="col-xl-6 col-xxl-5 d-flex">
 							<div class="w-100">
 								<div class="row" id="wrap-list">
@@ -96,6 +96,7 @@
 	    });
 	  });
 		    loadList();
+		    
 	});
 	
 	function loadList() {
@@ -120,8 +121,8 @@
 	        `
 				for(var i=0;i<data.length;i++){
 				var ul = data[i];
-				listHtml+=`
-	        	<div class="col-sm-6" >
+			listHtml+=`
+	        	<div class="col-sm-6 list-card" data-pno="\${ul.pno}" >
 		            <div class="card">
 		                <form class="frm select" action="${pageContext.request.contextPath}/ptasklist" method="get">
  		                    <input type="hidden" name="pno" value="\${ul.pno}">
@@ -140,16 +141,16 @@
 		                            </div>
 		                        </div>
 		                        <h1 class="mt-1 mb-3">\${ul.pname}</h1>
-		                        <div class="mb-0">
-		                            <span class="text-muted">\${(ul.pstartDate).slice(0,10)}~\${(ul.pendDate).slice(0,10)}</span>
-									<div class="dropdown-option">
+		                        <div class="mb-0" >
+		                            <span class="text-muted">\${ul.pstatus}</span>
+									<div class="dropdown-option" >
 										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
 				                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
 												class="feather feather-more-horizontal align-middle me-2 dropbtn-option"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle>
 										</svg>	
 									  <div class="dropdown-content-option">
 									    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit align-middle me-2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>수정</span></a>
-									    <a class="list-delete"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg><span>삭제</span></a>
+									    <a class="list-delete"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg><span>숨김</span></a>
 									  </div>
 									</div>
 		                        </div>
@@ -162,13 +163,38 @@
 	    $(".frm.select").click(abc);  // stream.js -> abc();
 	    $(".list-delete").click(listDeleteHandler);
 	}
+ 	
  	function listDeleteHandler(e) {
-		 if (e.target.tagName.toLowerCase() === "span" || e.target.tagName.toLowerCase() === "svg") {
-		    console.log(this);
+		 if (e.target.tagName.toLowerCase() === "a" || e.target.tagName.toLowerCase() === "svg") {
+			 console.log("adfsdfsdf");
+			 listDelete($(this));
 		  } else {
 		    return; // 아무 작업도 수행하지 않음
 		  }
-		}
+	}
+ 	
+ 	function listDelete($thisEle) {
+ 		console.log($thisEle.parents("[name=pno]").val());
+		$.ajax ({
+			url: "${pageContext.request.contextPath}/deleteList.ajax",
+			type: "get",
+			data: {pno: $thisEle.parents("[name=pno]").val()} ,
+			
+			dataType: "json", 
+			success: function(result) {
+				console.log(result.result);// delete
+				console.log(result.pno);// delete - pno 
+				if($thisEle.closest(".list-card").data("pno") ==result.pno){
+					$thisEle.closest(".list-card").remove();	
+				}
+			}, // listDeleteHandler
+			error: function() {
+				alert("에러났습니다.");
+			}
+		});
+ 		
+	}
+ 	
  	
 	</script>
 

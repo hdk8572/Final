@@ -42,7 +42,7 @@
 		<appender-ref ref="console" />
 	</logger>
 	<logger name="jdbc.sqltiming" additivity="false">
-		<level value="info" />
+		<level value="debug" />
 		<appender-ref ref="console" />
 	</logger>
 	<logger name="jdbc.audit" additivity="false">
@@ -54,7 +54,7 @@
 		<appender-ref ref="console" />
 	</logger>
 	<logger name="jdbc.resultsettable" additivity="false">
-		<level value="info" />
+		<level value="debug" />
 		<appender-ref ref="console" />
 	</logger>
 	<logger name="jdbc.connection" additivity="false">

@@ -18,4 +18,8 @@
 		VALUES (task_sequence.NEXTVAL, #{pno}, #{userId}, #{tmember}, #{ttitle}, #{tcontent}, #{tstatus}, #{tstartDate}, #{tendDate})
 	</insert>
 
+	<delete id="deleteTask" parameterType="PtaskVo">
+		DELETE FROM TASK WHERE PNO = #(pno)
+  	</delete>
+
 </mapper>
