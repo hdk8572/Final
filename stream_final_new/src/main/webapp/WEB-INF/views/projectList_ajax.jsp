@@ -140,17 +140,25 @@
 		                                </div>
 		                            </div>
 		                        </div>
-		                        <h1 class="mt-1 mb-3">\${ul.pname}</h1>
+		                        <h1 class="mt-1 mb-3" id="pname\${ul.pno}">\${ul.pname}</h1>
 		                        <div class="mb-0" >
-		                            <span class="text-muted">\${ul.pstatus}</span>
+		                            <span class="text-muted" id='pstatus\${ul.pno}' >\${ul.pstatus}</span>
+		                            <button class="btn btn-primary addProject" id='newBtn\${ul.pno}' style="display: none;">수정</button>&nbsp&nbsp&nbsp
 									<div class="dropdown-option" >
 										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
 				                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
 												class="feather feather-more-horizontal align-middle me-2 dropbtn-option"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle>
+											
 										</svg>	
 									  <div class="dropdown-content-option">
-									    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit align-middle me-2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span>수정</span></a>
-									    <a class="list-delete"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg><span>숨김</span></a>
+									    <a href="#" class="dropdown-btn" onClick="updateProject(\${ul.pno})">
+									    	<svg onClick="updateProject(\${ul.pno})" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit align-middle me-2 dropdown-btn"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+									    	<span class="dropdown-btn" onClick="updateProject(\${ul.pno})">수정</span>
+								    	</a>
+								    	<a href="#" class="dropdown-btn">
+									    	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2 dropdown-btn"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg>
+									    	<span class="dropdown-btn">숨김</span>
+									    </a>
 									  </div>
 									</div>
 		                        </div>
@@ -164,14 +172,19 @@
 	    $(".list-delete").click(listDeleteHandler);
 	}
  	
+ 	
+ 	
  	function listDeleteHandler(e) {
-		 if (e.target.tagName.toLowerCase() === "a" || e.target.tagName.toLowerCase() === "svg") {
-			 console.log("adfsdfsdf");
-			 listDelete($(this));
-		  } else {
-		    return; // 아무 작업도 수행하지 않음
-		  }
+ 		
 	}
+ 	
+ 	function updateProject(pno) {
+ 		var newInput = "<input type='text'/>";
+ 		var newBtn = "<button>수정<button>"
+ 		$("#pname"+pno).html(newInput);
+ 		$("#newBtn"+pno).css("display", "inline-block");
+ 	}
+ 	
  	
  	function listDelete($thisEle) {
  		console.log($thisEle.parents("[name=pno]").val());

@@ -45,13 +45,6 @@ public class ProjectController {
 		return add;
 	}
 	
-	/*
-	 * @GetMapping("/deleteList.ajax")
-	 * 
-	 * @ResponseBody public int deleteList(String pno) { return
-	 * projectService.deleteList(pno); }
-	 */
-	
 	@GetMapping("/deleteList.ajax")
 	@ResponseBody
 	public Map<String, Object> deleteList(String pno) {
@@ -62,5 +55,10 @@ public class ProjectController {
 	    return map;
 	}
 	
+	@PostMapping("/projectUpdate.ajax")
+	@ResponseBody
+	public void update(ProjectVo vo) {
+		projectService.update(vo);
+	}
 	
 }

@@ -39,4 +39,9 @@ public class ProjectService {
     	return dao.deleteList(pno);
     }
     
+    public int update(ProjectVo vo) {
+    	return dao.update(vo);
+    }
+    
+    
 }

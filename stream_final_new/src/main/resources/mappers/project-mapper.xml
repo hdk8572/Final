@@ -29,6 +29,11 @@
 	 <delete id="deleteList" parameterType="ProjectVo">
 		DELETE FROM PROJECT WHERE PNO = #(pno) 
 	 </delete>
+	 
+	 <update id="update" parameterType="ProjectVo">
+	 	UPDATE PROJECT SET PNAME=#{pname}, PSTATUS=#{pstatus}
+	 	WHERE PNO=#{PNO}
+	 </update>
   
   
 </mapper>
