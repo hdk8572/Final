@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import kh.groupware.stream.main.model.service.MaintastService;
 
 @Controller
-public class MainServlet {
+public class MainController {
 	@Autowired
 	private MaintastService MaintastService;
 	
