@@ -26,24 +26,16 @@
 
 <link href="${pageContext.request.contextPath }/css/app.css"
 	rel="stylesheet">
-
-<link href="${pageContext.request.contextPath }/css/calendar.css"
-	rel="stylesheet">
 	
 <link href="${pageContext.request.contextPath }/css/calmodal.css"
 	rel="stylesheet">
 
-<!-- fullcalendar  -->
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-<!-- //fullcalendar 언어 설정관련 script -->
-<script
-	src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
+<link href="${pageContext.request.contextPath }/css/calendar.css"
+	rel="stylesheet">
 
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<!-- fullcalendar  -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
+
 </head>
 <body>
 	<div class="wrapper">
@@ -81,12 +73,21 @@
 									</div>
 								</div>
 							</div>
-<%@ include file="/WEB-INF/views/calendar/readcalmodal.jsp" %>
+				<%@ include file="/WEB-INF/views/calendar/readcalmodal.jsp" %>
 				</main>
 				<%@ include file="/WEB-INF/views/footer.jsp"%>
 			</main>
 		</div>
 	</div>
+	
+	<!-- fullcalendar -->
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+	<!-- //fullcalendar 언어 설정관련 script -->
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
+	
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+	
 	<!-- 달력을 구성  -->
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
@@ -107,7 +108,7 @@
 			
 			function makeFullCalendar ( eventsDataArr ){	//makeFullCalendar 이 함수는 ajax 요청에서 받은 이벤트 데이터 배열 eventDataArr을 인자로 받는다.
 				var calendar = new FullCalendar.Calendar(calendarEl, {
-					height: '900px', // 캘린더 칸 높이 설정(이거 안하고 more 코드 작성하면 칸 크기 달라짐)
+					height: '900px',  // 캘린더 칸 높이 설정(이거 안하고 more 코드 작성하면 칸 크기가 중구난방임)
 			        expandRows: true, // 화면에 맞게 높이 재설정
 					headerToolbar : { // 헤더에 표시할 툴 바
 						start : 'prev next today',
@@ -124,7 +125,7 @@
 					editable : true,
 					nowIndicator : true, // 현재 시간 마크
 					dayMaxEvents : true, // 일정 more 
-					//	locale: 'ko', // 한국어 설정 
+					//locale: 'ko', // 한국어 설정 
 					events : eventsDataArr
 				 	,
 					eventClick: function(info) {
@@ -142,6 +143,7 @@
 	
 	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
+	
 	<!-- 일정 모달 창 그림자 효과? -->
 	<script>
 	$(document).ready(function() {
@@ -157,8 +159,8 @@
 		});
 	});
 	</script>
+	<!-- 상단 탭바 -->
 	<script>
-	/* 상단 탭바 */
 	function openTab(tabName) {
 	  var i;
 	  var x = document.getElementsByClassName("tab");
