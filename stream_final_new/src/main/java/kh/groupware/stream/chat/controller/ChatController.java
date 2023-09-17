@@ -17,4 +17,8 @@ public class ChatController {
 	public String chatroom2() {
 		return "/chatting/selectroom";
 	}
+	@GetMapping("/exchat")
+	public String chatroom3() {
+		return "/chatting/exselect";
+	}
 }

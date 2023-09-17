@@ -41,6 +41,13 @@
               <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">내 게시물</span>
             </a>
 					</li>
+					</li>
+					
+										<li class="sidebar-item">
+						<a class="sidebar-link" href="chattest">
+              <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">채팅</span>
+            </a>
+					</li>
 					
 										<li class="sidebar-item">
 						<a class="sidebar-link" href="#">
