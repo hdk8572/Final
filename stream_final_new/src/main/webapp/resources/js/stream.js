@@ -1,14 +1,20 @@
 function abc(e){
-//TODO
-	//메소드지정
-	//$(this).attr("method","post");
-	//$(this).attr("action", "${pageContext.request.contextPath}/ptasklist");
-	
-	if($(e.target).hasClass("dropdown-btn")) {
-		console.log("성공");
+	if($(e.target).hasClass("dropdown-btn-update")) {
+		updateProject();
+	} else if($(e.target).hasClass("dropdown-btn-delete")){
+		hideProject();	
 	} else {
 		$(this).submit();
 	}
+}
+
+function updateProject() {
+	
+}
+
+
+function hideProject() {
+	console.log("Hide");
 }
 
 $(document).ready(function() {
@@ -21,3 +27,4 @@ $(document).ready(function() {
 
 
 
+;
