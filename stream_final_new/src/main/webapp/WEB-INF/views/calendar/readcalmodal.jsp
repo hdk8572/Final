@@ -61,7 +61,7 @@
   	</div>
   </div>
 </div>
-<script>
+<!-- <script>
 	$("#btn-submit").click(addList);
 	
 	function addList () {
@@ -85,6 +85,6 @@
 	}
 	
 
-</script>
+</script> -->
 
 <!-- 모달 -->

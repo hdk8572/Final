@@ -9,4 +9,16 @@ public class ChatController {
 	public String chatroom() {
 		return "/chat";
 	}
+	@GetMapping("/chattest")
+	public String chatroom1() {
+		return "/chatting/select";
+	}
+	@GetMapping("/chattestroom")
+	public String chatroom2() {
+		return "/chatting/selectroom";
+	}
+	@GetMapping("/exchat")
+	public String chatroom3() {
+		return "/chatting/exselect";
+	}
 }
