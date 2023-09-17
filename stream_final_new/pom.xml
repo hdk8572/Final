@@ -189,13 +189,13 @@
 			<version>2.9.9</version>
 		</dependency>
 
-<!-- 		Spring Websocket
+		<!-- Spring Websocket -->
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-websocket</artifactId>
-			<version>${org.springframework-version}</version>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-websocket</artifactId>
+		    <version>5.2.2.RELEASE</version>
 		</dependency>
- -->
+
 		<!-- Spring Security -->
 		<!-- spring-security-core -->
 		<dependency>

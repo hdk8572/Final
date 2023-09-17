@@ -6,8 +6,8 @@ public class ChatVo {
 //		"USERID"	VARCHAR2(40)		NOT NULL,
 //		"CCONTENT"	VARCHAR2(300)		NOT NULL,
 //		"CDATE"	TIMESTAMP	DEFAULT SYSTIMESTAMP	NOT NULL
-	private String ccno;
-	private String chatno;
+	private String ccno;	//방번호
+	private String chatno;	
 	private String userId;
 	private String ccontent;
 	private String cdate;
