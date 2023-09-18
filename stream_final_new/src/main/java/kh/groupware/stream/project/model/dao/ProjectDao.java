@@ -22,4 +22,11 @@ public class ProjectDao {
 		return sqlSession.insert("project.insertList", vo);
 	}
 	
+	public int deleteList(String pno) {
+		return sqlSession.delete("project.deleteList", pno);
+	}
+	
+	public int update(ProjectVo vo) {
+		return sqlSession.update("project.update", vo);
+	}
 }

@@ -26,4 +26,8 @@ public class PtaskDao {
 		return sqlSession.insert("task.insertTask",vo);
 	}
 	
+	public int deleteTask(String pno) {
+		return sqlSession.delete("task.deleteTask", pno);
+	}
+	
 }

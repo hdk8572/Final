@@ -6,3 +6,7 @@
 .h3.mb-3 > span {
 	margin: 0px, 10px;
 }
+
+.frm.select {
+	position: relative;
+} 

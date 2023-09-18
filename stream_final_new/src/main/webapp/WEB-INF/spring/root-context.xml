@@ -27,7 +27,7 @@
 		<constructor-arg ref="sqlSessionFactory"/>
 	</bean>
 	
-	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="TransactionManager">
+	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
 		<constructor-arg ref="dataSource"/>
 	</bean>
 	

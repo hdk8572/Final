@@ -31,19 +31,26 @@
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-cards.html">
+						<a class="sidebar-link" href="#">
               <i class="align-middle" data-feather="grid"></i> <span class="align-middle">파일함</span>
             </a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-typography.html">
+						<a class="sidebar-link" href="#">
               <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">내 게시물</span>
+            </a>
+					</li>
+					</li>
+					
+										<li class="sidebar-item">
+						<a class="sidebar-link" href="chattest">
+              <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">채팅</span>
             </a>
 					</li>
 					
 										<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-typography.html">
+						<a class="sidebar-link" href="#">
               <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">직원 초대</span>
             </a>
 					</li>

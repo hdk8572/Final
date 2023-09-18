@@ -11,7 +11,8 @@ public class ProjectVo {
 	private String pdate;
 	private String pstartDate;
 	private String pendDate;
-	private String prow; // 함수 Vo에 없음 
+	private String prow; // 함수 Vo에 없음
+	private String pstatus;
 	
 // deptVo + usersVo	
 	private String deptno;
@@ -19,16 +20,17 @@ public class ProjectVo {
 	private String mrank;
 	private String deptName;
 	
-	
 	@Override
 	public String toString() {
 		return "ProjectVo [pno=" + pno + ", userId=" + userId + ", pname=" + pname + ", pcoment=" + pcoment
 				+ ", paccess=" + paccess + ", pdate=" + pdate + ", pstartDate=" + pstartDate + ", pendDate=" + pendDate
-				+ ", prow=" + prow + ", deptno=" + deptno + ", mname=" + mname + ", mrank=" + mrank + ", deptName="
-				+ deptName + "]";
+				+ ", prow=" + prow + ", pstatus=" + pstatus + ", deptno=" + deptno + ", mname=" + mname + ", mrank="
+				+ mrank + ", deptName=" + deptName + "]";
 	}
+
 	public ProjectVo(String pno, String userId, String pname, String pcoment, String paccess, String pdate,
-			String pstartDate, String pendDate, String prow) {
+			String pstartDate, String pendDate, String prow, String pstatus, String deptno, String mname, String mrank,
+			String deptName) {
 		super();
 		this.pno = pno;
 		this.userId = userId;
@@ -39,7 +41,13 @@ public class ProjectVo {
 		this.pstartDate = pstartDate;
 		this.pendDate = pendDate;
 		this.prow = prow;
+		this.pstatus = pstatus;
+		this.deptno = deptno;
+		this.mname = mname;
+		this.mrank = mrank;
+		this.deptName = deptName;
 	}
+
 	public ProjectVo() {
 		super();
 	}
@@ -121,9 +129,10 @@ public class ProjectVo {
 	public void setDeptName(String deptName) {
 		this.deptName = deptName;
 	}
-
-	
-	
-	
-	
+	public String getPstatus() {
+		return pstatus;
+	}
+	public void setPstatus(String pstatus) {
+		this.pstatus = pstatus;
+	}
 }

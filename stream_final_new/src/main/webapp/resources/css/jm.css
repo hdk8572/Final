@@ -37,7 +37,7 @@ div.jm-box-project-title{
 	background: #E8E8E8;
 	z-index: 500;
 }
-.jm-box-project-title>span, button{
+.jm-box-project-title>span{
 	position:relative;
 	z-index: -100;
 }
@@ -50,6 +50,7 @@ div.jm-box-project-title{
 	z-index: -5;
 }
 .jm-grey{
+	
 	border-left: solid #D3D3D3 1px;
 	border-bottom: solid #D3D3D3 1px;
 	border-top: solid #D3D3D3 1px;
@@ -80,4 +81,29 @@ div.jm-task-title{
 	color: #999;
 	background-color: transparent;
 	font-size: 13px;
+	padding: 0;
+}
+
+.jm-header{
+	color: #000;
+	font-weight: 400;
+	line-height: 1.2;
+	margin-bottom: .5rem;
+	margin-top: 0;
+	font-size: 1.75rem;
+	margin-bottom: 1rem !important;
+}
+.jm-title-ttitle>button{
+		background-color: white;
+		font-size: 13px;
+		color: #999;
+		border-radius: 10px;
+		border: black 1px solid;
+}
+.plusplus:hover{
+	background-color: #f3e9fe;
+}
+.jm-title-ttitle>button:hover{
+	color: #8000ff;
+	border: #8000ff 1px solid;
 }

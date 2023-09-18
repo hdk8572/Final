@@ -32,33 +32,6 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
-
-<script>
-	window.onload = loadedHandler;
-	function loadedHandler() {
-		//$(".jm-title").children('button').hide();
-		//$(".jm-title").hover(hnHandler, hdHandler);
-		//$(".jm-title").click(clickHandler);
-		//$(".jm-title").blur(blurHandler);
-
-	}
-	/*
-	function hdHandler(e){
-		$(".jm-title").children('button').hide();
-		
-		if($(".mini-pop").hasClass("show")){
-			$(".mini-pop").removeClass("show");
-		}
-		
-	}
-	function hnHandler(e){
-		$(this).children("button").show();
-	}
-	function clickHandler(e){
-		$(this).children(".mini-pop").addClass("show");
-	} */
-</script>
-
 <script src="${pageContext.request.contextPath }/js/maintask.js"></script>
 
 </head>
@@ -69,27 +42,28 @@
 		<div class="main">
 			<%@ include file="/WEB-INF/views/headerNavbar.jsp"%>
 			<main class="content">
-			<div>
-				<div class="card-body">
-					<div class="search">
-						<input class="serinput" type="text"
-							placeholder="업무명, 업무번호를 입력하세요."> <img class="serimg"
-							src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
-					</div>
-				</div>
-			</div>
+			
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">
-						<span>전체 업무</span>
-					</h1>
+					<div class="h3 mb-3 jm-header">
+						<div>
+							<span>전체 업무</span>
+							<span id="fullTaskCnt"></span>
+						</div>
+					</div>
+					<div>
+						<div class="card-body">
+							<div class="search">
+								<input class="serinput" type="text"
+									placeholder="업무명, 업무번호를 입력하세요."> <img class="serimg"
+									src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+							</div>
+						</div>
+					</div>
 					
 					<div class="row">
 						<div class="col-12">
 							<div class="card">
-								<div class="card-header">
-									<h5 class="card-title mb-0">Empty card</h5>
-								</div>
 								<div class="card-body jm-body">
 									<div class="jm-rwap-task jm-grey">
 										<div class="jm-task-title row ">
@@ -97,9 +71,10 @@
 											<div class="col-lg-4 jm-grey-nb">
 												<div class="dropdown">
 													<div class="jm-title" id="tno">
-														<div class="card-subtitle text-muted dropdown-toggle"
+														<div class="card-subtitle text-muted "
 															data-bs-toggle="dropdown">
 															<span>업무명</span>
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down align-middle me-2"><polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
@@ -114,9 +89,10 @@
 											<div class="jm-drop col-lg-1 jm-grey-nb">
 												<div class="dropdown jm-move" id="tstatus" draggable="true">
 													<div class="jm-title">
-														<div class="card-subtitle text-muted dropdown-toggle"
+														<div class="card-subtitle text-muted "
 															data-bs-toggle="dropdown">
 															<span>상태</span>
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down align-middle me-2"><polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
@@ -131,9 +107,10 @@
 											<div class="jm-drop col-lg-1 jm-grey-nb">
 												<div class="dropdown jm-move" id="tmember" draggable="true">
 													<div class="jm-title">
-														<div class="card-subtitle text-muted dropdown-toggle"
+														<div class="card-subtitle text-muted "
 															data-bs-toggle="dropdown">
 															<span>담당자</span>
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down align-middle me-2"><polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
@@ -149,9 +126,10 @@
 												<div class="dropdown jm-move" id="tstartdate"
 													draggable="true">
 													<div class="jm-title">
-														<div class="card-subtitle text-muted dropdown-toggle"
+														<div class="card-subtitle text-muted "
 															data-bs-toggle="dropdown">
 															<span>시작일</span>
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down align-middle me-2"><polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
@@ -166,9 +144,10 @@
 											<div class="jm-drop  col-lg-1 jm-grey-nb">
 												<div class="dropdown jm-move" id="tenddate" draggable="true">
 													<div class="jm-title">
-														<div class="card-subtitle text-muted dropdown-toggle"
+														<div class="card-subtitle text-muted "
 															data-bs-toggle="dropdown">
 															<span>마감일</span>
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down align-middle me-2"><polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
@@ -183,9 +162,28 @@
 											<div class="jm-drop  col-lg-1 jm-grey-nb">
 												<div class="dropdown jm-move" id="tdate" draggable="true">
 													<div class="jm-title">
-														<div class="card-subtitle text-muted dropdown-toggle"
+														<div class="card-subtitle text-muted "
 															data-bs-toggle="dropdown">
 															<span>등록일</span>
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down align-middle me-2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+														</div>
+														<div class="mini-pop dropdown-menu dropdown-menu-end">
+															<ul>
+																<li class="dropdown-item">오름차순</li>
+																<li class="dropdown-item">내림차순</li>
+																<li class="dropdown-item">정렬 해제</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="jm-drop  col-lg-1 jm-grey-nb">
+												<div class="dropdown jm-move" id="tdate" draggable="true">
+													<div class="jm-title">
+														<div class="card-subtitle text-muted "
+															data-bs-toggle="dropdown">
+															<span>업무번호</span>
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down align-middle me-2"><polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
