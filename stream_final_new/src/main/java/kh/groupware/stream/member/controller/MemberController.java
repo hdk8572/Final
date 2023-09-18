@@ -29,12 +29,11 @@ public class MemberController {
 		mv.setViewName("login/newmember");
 		return mv;
 	}
-	@PostMapping("/newmember.do")
+	@PostMapping("/newmember")
 	@ResponseBody
 	public int signUp(Model model, MemberVo mvo) {
-		int result=0;
 		System.out.println("[jy] MemberController: " + mvo);
-		memberService.signUp(mvo);
+		int result = memberService.signUp(mvo);
 		return result;
 	}
 
@@ -45,7 +44,7 @@ public class MemberController {
 	}
 
 	// security login
-	@GetMapping("/login.do")
+	@PostMapping("/login")
 	public void getLoginView() {
 	}
 
