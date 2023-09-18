@@ -53,7 +53,7 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
-									<form id=frmNewMember" action=${pageContext.request.contextPath}/newmember.do method="post">
+									<form id=frmNewMember" action=${pageContext.request.contextPath}/newmember method="post">
 										<div class="mb-3">
 											<label class="form-label">E-mail</label> <input
 												class="form-control form-control-lg" type="email"

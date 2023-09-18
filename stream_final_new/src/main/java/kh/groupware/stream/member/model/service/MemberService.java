@@ -11,10 +11,6 @@ public class MemberService {
 
 	@Autowired
 	private MemberDao memberDao;
-
-	public String selectOne(MemberVo mvo) {
-		  return memberDao.selectOne(mvo); 
-		 }
 	
 	public int signUp(MemberVo mvo) {
 		return memberDao.signUp(mvo);
