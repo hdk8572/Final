@@ -40,5 +40,10 @@ public class CalendarServiceImpl implements CalendarService {
 	public int delete(String sno) {
 		return calendarDao.delete(sno);
 	}
+	//참석자조회
+	@Override
+	public List<CalendarVo> attendList() {
+		return calendarDao.attendList();
+	}
 
 }

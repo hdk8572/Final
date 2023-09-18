@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -50,6 +51,14 @@ public class CalendarController {
 		CalendarVo cal = calendarService.selectOne(sno);
 		model.addAttribute("sno", sno);
 		return "calendar"; //화면에 뿌릴 것을 return해야함
+	}
+	
+	//참석자 조회
+	@RequestMapping("/pcal")
+	@ResponseBody
+	public String attendList(Model model) {
+		model.addAttribute("attendList", calendarService.attendList());
+		return "/calendar/addcalmodal";
 	}
 	
 }

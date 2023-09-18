@@ -11,4 +11,5 @@ public interface CalendarService {
 	public int insert(CalendarVo cal);
 	public int update(CalendarVo cal);
 	public int delete(String sno);
+	public List<CalendarVo> attendList();
 }

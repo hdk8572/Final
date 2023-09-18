@@ -38,5 +38,10 @@ public class CalendarDao {
 	public int delete(String sno) {
 		return sqlSession.delete("calendar.delete",sno);
 	}
+	
+	//참석자 조회
+	public List<CalendarVo> attendList() {
+		return sqlSession.selectList("calendar.attendList");
+	}
 
 }
