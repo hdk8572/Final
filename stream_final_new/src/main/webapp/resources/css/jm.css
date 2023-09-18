@@ -82,6 +82,8 @@ div.jm-task-title{
 	background-color: transparent;
 	font-size: 13px;
 	padding: 0;
+	position: relative;
+	z-index: 100;
 }
 
 .jm-header{
@@ -106,4 +108,8 @@ div.jm-task-title{
 .jm-title-ttitle>button:hover{
 	color: #8000ff;
 	border: #8000ff 1px solid;
+}
+.jm-dn{
+	display: inline;
+	position: relative;
 }
