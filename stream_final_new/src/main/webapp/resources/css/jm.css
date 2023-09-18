@@ -60,8 +60,10 @@ div.jm-box-project-title{
 	border-left: solid #D3D3D3 1px;
 	border-right: solid #D3D3D3 1px;
 }
+
 div.jm-task-title{
 	border-right: solid #D3D3D3 1px;
+	height: 50px;
 }
 .jm-gr{
 	border-right: solid #D3D3D3 1px;

@@ -73,8 +73,10 @@
 													<div class="jm-title" id="tno">
 														<div class="card-subtitle text-muted "
 															data-bs-toggle="dropdown">
-															<span>업무명</span>
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down align-middle me-2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+															<span class="jm-cen">업무명</span>
+															<span>
+																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down align-middle me-2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+															</span>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
@@ -91,7 +93,9 @@
 													<div class="jm-title">
 														<div class="card-subtitle text-muted "
 															data-bs-toggle="dropdown">
-															<span>상태</span>
+															<span class="jm-cen">상태</span>
+															<span>
+															</span>
 															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down align-middle me-2"><polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -109,7 +113,7 @@
 													<div class="jm-title">
 														<div class="card-subtitle text-muted "
 															data-bs-toggle="dropdown">
-															<span>담당자</span>
+															<span class="jm-cen">담당자</span>
 															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down align-middle me-2"><polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -128,7 +132,7 @@
 													<div class="jm-title">
 														<div class="card-subtitle text-muted "
 															data-bs-toggle="dropdown">
-															<span>시작일</span>
+															<span class="jm-cen">시작일</span>
 															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down align-middle me-2"><polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -146,7 +150,7 @@
 													<div class="jm-title">
 														<div class="card-subtitle text-muted "
 															data-bs-toggle="dropdown">
-															<span>마감일</span>
+															<span class="jm-cen">마감일</span>
 															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down align-middle me-2"><polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -164,7 +168,7 @@
 													<div class="jm-title">
 														<div class="card-subtitle text-muted "
 															data-bs-toggle="dropdown">
-															<span>등록일</span>
+															<span class="jm-cen">등록일</span>
 															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down align-middle me-2"><polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -178,11 +182,11 @@
 												</div>
 											</div>
 											<div class="jm-drop  col-lg-1 jm-grey-nb">
-												<div class="dropdown jm-move" id="tdate" draggable="true">
+												<div class="dropdown jm-move" id="tno" draggable="true">
 													<div class="jm-title">
 														<div class="card-subtitle text-muted "
 															data-bs-toggle="dropdown">
-															<span>업무번호</span>
+															<span class="jm-cen">업무번호</span>
 															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down align-middle me-2"><polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
