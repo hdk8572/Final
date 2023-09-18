@@ -216,7 +216,10 @@
 														</span>
 														<span class="jm-project-title">${project.pname }</span> 
 														<span class="jm-project-task-count">(${project.maintaskList.size() })</span>
-														<button class="jm-project-button jm-tp">바로가기</button>
+														<form class="jm-dn" action="${pageContext.request.contextPath }/ptasklist" method="get">
+															<input type="hidden" name="pno" value="${project.pno}" >
+															<button class="jm-project-button jm-tp">바로가기</button>
+														</form>
 													</div>
 												</div>
 												<ul class="jm-inner-task">
@@ -227,7 +230,9 @@
 																	<div class="jm-title-ttitle col-lg-4 jm-grey">
 																		<span>${task.ttitle	}</span>
 																		<button>업무추가</button>
-																		<span>자세히 보기</span>
+																		<form action="#">
+																			<span class="jm-tp jm-task-info">자세히 보기</span>
+																		</form>
 																	</div>
 																	<div class="jm-title-tstatus col-lg-1 jm-grey">${task.tstatus }</div>
 																	<div class="jm-title-tmember col-lg-1 jm-grey">${task.tmember }</div>

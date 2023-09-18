@@ -8,7 +8,7 @@ function loadedHandler(){
 	$(".jm-drop").on("drop", drop);
 	$(".jm-move").on("dragend", dragEnd );
 	$(".jm-box-project-title").click(titleClickHandler);
-	fullTaskCnt();
+	$(".jm-task-info").click(projectButtonClickTestHandler);
 }
 
 function dragStart(e){
@@ -57,6 +57,6 @@ titleClickHandler=(event)=>{
 	}
 } 
 
-fullTaskCnt=()=>{
-	
+projectButtonClickTestHandler=(event)=>{
+	console.log(event.target)
 }
