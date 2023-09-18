@@ -49,10 +49,11 @@
 					
 					<h1 class="h3 mb-3" >
 						<span>${ul.mname}님의 프로젝트 목록</span>
-						<span><button class="btn btn-primary addProject" id="myBtn" data-bs-toggle="modal" data-bs-target="#myModal">프로젝트 추가+</button></span>
+						<span><button class="btn btn-primary addProject" id="myBtn" data-bs-toggle="modal" data-bs-target="#addProject">프로젝트 추가+</button></span>
 					</h1>
 						
 					<%@ include file="/WEB-INF/views/addProjectModal.jsp" %>
+			    	<%@ include file="/WEB-INF/views/updateProjectModal.jsp" %>
 						
  						<div class="row">
 						<div class="col-xl-6 col-xxl-5 d-flex">
@@ -150,11 +151,12 @@
 											
 										</svg>	
 									  <div class="dropdown-content-option">
-									    <a href="#" class="dropdown-btn-update" onclick='updateProject()'>
+									    <a href="#" class="dropdown-btn-update" data-bs-toggle="modal" >
 									    	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit align-middle me-2 dropdown-btn-update"><path class="dropdown-btn-update" d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path class="dropdown-btn-update" d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
 									    	<span class="dropdown-btn-update">수정</span>
 								    	</a>
-								    	<a href="#" class="dropdown-btn-delete" onclick='hideProject()'>
+								    	
+								    	<a href="#" class="dropdown-btn-delete">
 								 	    	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2 dropdown-btn-delete"><path class="dropdown-btn-delete" d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line class="dropdown-btn-delete" x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg>
 									    	<span class="dropdown-btn-delete">숨김</span>
 									    </a>

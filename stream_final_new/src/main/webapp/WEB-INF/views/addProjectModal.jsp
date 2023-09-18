@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
 <!-- 모달 -->
 <!-- The Modal -->
-<div id="myModal" class="modal project right fade" aria-labelledby="myModalLabel">
+<div id="addProject" class="modal project right fade" aria-labelledby="myModalLabel">
 <div class="modal-dialog">
   <!-- Modal content -->
   <div class="modal-content project">
@@ -40,13 +39,6 @@
 					        .catch( err => {
 					            console.error( err.stack );
 				        });
-/* 						  .then( editor => {
-				            console.log( 'Editor was initialized', editor );
-				            myEditor = editor;
-				        } )
-				        .catch( err => {
-				            console.error( err.stack );
-				        } ); */
 						</script>
 						</div>
 				<div class="card-header">
