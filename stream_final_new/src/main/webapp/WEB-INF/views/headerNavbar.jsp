@@ -181,7 +181,12 @@ function popupOpen(){
 						<a  id="load">더보기</a>
 					</div> 
 				</div></li>
-			<li class="nav-item dropdown"><a
+				
+<%--  				<div>
+					<button class="btn btn-primary addProject" id="myBtn" data-bs-toggle="modal" data-bs-target="#myModal">채팅</button>
+				</div>	
+					<%@ include file="/WEB-INF/views/chatting/select.jsp" %> --%>
+<!-- 			<li class="nav-item dropdown"><a
 				class="nav-icon dropdown-toggle" href="#" id="messagesDropdown"
 				data-bs-toggle="dropdown">
 					<div class="position-relative">
@@ -276,7 +281,7 @@ function popupOpen(){
 	 					<div class="dropdown-menu-footer">
 						<a  class="text-muted">더보기</a>
 					</div>
-				</div></li>
+				</div></li> -->
 			<li class="nav-item dropdown"><a
 				class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
 				data-bs-toggle="dropdown"> <i class="align-middle"
