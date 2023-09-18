@@ -44,7 +44,7 @@
 					</li>
 					
 										<li class="sidebar-item">
-						<a class="sidebar-link" href="chattest">
+						<a class="sidebar-link" href="chat">
               <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">채팅</span>
             </a>
 					</li>
