@@ -2,16 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
 
-	<!-- 회원로그인 -->
-	<select id="selectOne" parameterType="MemberVo" resultType="String" >
-		
-		SELECT MNAME FROM USERS WHERE
-		USERID= #{userid} AND PASSWORD= #{password}
-
-	</select>
-	
 	<!-- 회원가입 -->
-	<select id="insert" parameterType="MemberVo">
+	<select id="signUp" parameterType="MemberVo" >
 		INSERT INTO USERS VALUES (#{userid}, #{deptno}, #{ccode}, #{password}, 1, 'RM', #{mname}, NULL, NULL)
 	</select>
 	
