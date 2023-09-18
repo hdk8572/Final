@@ -90,6 +90,7 @@
 
 /* PtaskModal */
 .modal-dialog.ptask {
+
     position: relative;
     z-index: 5;
     height: 80%;
@@ -128,3 +129,48 @@
 .card-header.ptaskTitle {
 	padding: 1rem 0rem;
 }
+
+/* updateProjectModal */
+
+.modal-dialog.updateProject {
+
+    position: relative;
+    z-index: 5;
+    height: 80%;
+    width: 674px;
+    margin: 30px auto 0 auto;
+    background: #fff;
+    border: 1px solid #777;
+    box-sizing: border-box;
+    box-shadow: 20px 20px 30px rgba(0,0,0,.2);
+    border-radius: 10px;
+}
+
+.modal-content {
+	border-radius: 10px;
+}
+
+.modal-header.updateProject {
+    height: 65px;
+    background-color: #009b77;
+	border-radius: 10px 10px 0px 0px;
+}
+
+.form-select.mb-3.selectCategory {
+    width: 30%;
+}
+
+.form-control.manager {
+	width: 30%;
+}
+
+.feather.feather-clock.align-middle.me-2 {
+    position: relative;
+    bottom: 8px;
+}
+
+.card-header.updateProjectTitle {
+	padding: 1rem 0rem;
+}
+
+

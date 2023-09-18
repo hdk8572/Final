@@ -126,12 +126,17 @@
 	        	<div class="col-sm-6 list-card" data-pno="\${ul.pno}" >
 		            <div class="card">
 		                <form class="frm select" action="${pageContext.request.contextPath}/ptasklist" method="get">
- 		                    <input type="hidden" name="pno" value="\${ul.pno}">
+ 		                    <input type="hidden" name="pno"  value="\${ul.pno}">
 		                    <div class="card-body">
 		                        <div class="row">
 		                            <div class="col mt-0">
 		                                <h5 class="card-title">
 		                                    <span>\${ul.deptName}</span>: <span>\${ul.mname}</span><span> \${ul.mrank}</span>님
+		                                    <input type="hidden" name="deptName\${ul.pno}" data-deptName="\${ul.deptName}">
+		                                    <input type="hidden" name="mname\${ul.pno}" data-mname="\${ul.mname}">
+		                                    <input type="hidden" name="mrank\${ul.pno}" data-mrank="\${ul.mrank}">
+		                                    <input type="hidden" name="pstartDate\${ul.pno}" data-pstartDate="\${ul.pstartDate}">
+		                                    <input type="hidden" name="pendDate\${ul.pno}" data-pendDate="\${ul.pendDate}">
 		                                </h5>
 		                            </div>
 		                            
@@ -141,9 +146,9 @@
 		                                </div>
 		                            </div>
 		                        </div>
-		                        <h1 class="mt-1 mb-3" id="pname\${ul.pno}">\${ul.pname}</h1>
+		                        <h1 class="mt-1 mb-3" data-pname="\${ul.pname}">\${ul.pname}</h1>
 		                        <div class="mb-0" >
-		                            <span class="text-muted" id='pstatus\${ul.pno}' >\${ul.pstatus}</span>
+		                            <span class="text-muted" data-pstatus="\${ul.pstatus}">\${ul.pstatus}</span>
 									<div class="dropdown-option" >
 										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
 				                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -151,7 +156,7 @@
 											
 										</svg>	
 									  <div class="dropdown-content-option">
-									    <a href="#" class="dropdown-btn-update" data-bs-toggle="modal" >
+									    <a href="#" class="dropdown-btn-update">
 									    	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit align-middle me-2 dropdown-btn-update"><path class="dropdown-btn-update" d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path class="dropdown-btn-update" d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
 									    	<span class="dropdown-btn-update">수정</span>
 								    	</a>
@@ -209,10 +214,6 @@
 		});
  		
 	}
- 	
- 	
- 	
- 	
 	</script>
 
 	

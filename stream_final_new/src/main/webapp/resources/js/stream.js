@@ -3,19 +3,22 @@ function abc(e){
 	console.log(targetPno); 
 	if($(e.target).hasClass("dropdown-btn-update")) {
 		updateProject(targetPno);
+		
 	} else if($(e.target).hasClass("dropdown-btn-delete")){
-		hideProject(targetPno);	
+		hideProject(targetPno);
+			
 	} else {
 		$(this).submit();
 	}
 }
 
 function updateProject(pno) {
-	//event.stopPropagation();
-	console.log("Update");
-	console.log(pno);
-	//$("#updateProjectModal").toggle();
 	$("#updateProjectModal").modal("toggle");
+
+ 		var updeptName = $('[name=deptName"+pno+"]');
+ 		
+ 		console.log(updeptName.dataset.deptName);
+	
 }
 
 
