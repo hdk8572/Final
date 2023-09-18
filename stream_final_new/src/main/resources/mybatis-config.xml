@@ -12,7 +12,6 @@
 		<typeAlias type="kh.groupware.stream.member.model.vo.MemberVo" alias="MemberVo"/>
 		<typeAlias type="kh.groupware.stream.company.model.vo.CompanyVo" alias="CompanyVo"/>
 		<typeAlias type="kh.groupware.stream.project.model.vo.ProjectVo" alias="ProjectVo"/>
-		<typeAlias type="kh.groupware.stream.main.model.vo.MaintaskVo" alias="MaintaskVo"/>
 		<typeAlias type="kh.groupware.stream.main.model.dto.MaintaskDto" alias="MaintaskDto"/>
 		<typeAlias type="kh.groupware.stream.calendar.model.vo.CalendarVo" alias="CalendarVo"/>
 	</typeAliases>

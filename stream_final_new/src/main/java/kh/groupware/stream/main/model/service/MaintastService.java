@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kh.groupware.stream.main.model.dao.MaintaskDao;
-import kh.groupware.stream.main.model.vo.MaintaskVo;
+import kh.groupware.stream.project.model.vo.ProjectVo;
 
 @Service
 public interface MaintastService {
 	
-	public List<MaintaskVo> projectNameList();
+	public List<ProjectVo> projectNameList();
 }
