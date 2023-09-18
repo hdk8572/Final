@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- sockjs -->
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.6.1/dist/sockjs.min.js"></script>
 <!-- stompjs -->
@@ -80,12 +81,12 @@
 		padding: 10px 0;
 	}
 	
-	.s_img_style {
+/* 	.s_img_style {
 		width: 50px;
 		height: 50px;
 		border-radius: 25px;
 	}
-	
+	 */
 	#s_f_list {
 		font-size: 1.2em;
 		padding: 10px 0;
@@ -95,9 +96,9 @@
 		margin-top: 5px;
 	}
 	
-	.s_dn_en {
+/* 	.s_dn_en {
 		display: inline-block;
-	}
+	} */
 	
 	#s_sub_menu_box {
 		width: 250px; 
@@ -185,7 +186,7 @@
 	    border-radius: 10px;
 	}
 	
-	#s_chat_img {
+/* 	#s_chat_img {
 	    display: flex;
 	    align-content: stretch;
 	    justify-content: center;
@@ -193,7 +194,7 @@
 	    flex-direction: row;
 	    flex-wrap: wrap;
 	    margin-top: 320px;
-	}
+	} */
 	
 	.s_room_tt {
 		font-size: 1.2em;
@@ -257,25 +258,27 @@
 				
 				<!-- 서브 메뉴 -->
 				<div id="s_sub_menu">
-	                <button id="s_emp_list" class="btn btn-primary s_chat_menu">사원목록</button>
+	                <button id="s_emp_list" class="btn btn-primary s_chat_menu">참여자목록</button>
 	                <button id="s_chat_list" class="btn btn-light s_chat_menu">채팅 리스트</button>
                 </div>
                 <!-- 사원 목록 클릭 시 띄울 내용 -->
                 <div id="s_menu_box1" class="s_menu_box s_scroll">
 	                <div class="s_emp_box">
 	                	<!-- 로그인한 사람의 프로필 사진 -->
-	                	<img class="s_img_style" src="${selectOne.emp_file_path }">
+	                	<%-- <img class="s_img_style" src="${selectOne.emp_file_path }"> --%>
 	                	<!-- 로그인한 사람의 부서명, 이름 -->
-	                	<div class="s_dn_en">${selectOne.dept_name } - ${selectOne.emp_name }</div>
+	                	<%-- <div class="s_dn_en">${selectOne.dept_name } - ${selectOne.emp_name }</div> --%>
 	                </div>
-	                <div id="s_f_list">친구 리스트</div>
+	                <div id="s_f_list">참여자 리스트</div>
+	              	<div>${list}</div>
 	                <!-- 로그인한 사람 제외한 사원 리스트만큼 반복문 실행 -->
-	                <c:forEach items="${selectEmpList }" var="i">
+	                <c:forEach items="" var="i">
 		                <div class="s_emp_box">
 		                	<!-- 사원의 프로필 사진 -->
-		                	<img class="s_img_style" src="${i.emp_file_path }">
+		                	<%-- <img class="s_img_style" src="${i.emp_file_path }"> --%>
 		                	<!-- 사원의 부서명, 이름 -->
-		                	<div class="s_dn_en">${i.dept_name } - ${i.emp_name }</div>
+		                	<%-- <div class="s_dn_en">${i.dept_name } - ${i.emp_name }</div> --%>
+		                	
 	                	</div>
 	                </c:forEach>
                 </div>
@@ -304,9 +307,7 @@
         	<!-- 채팅방 클릭 시 해당 채팅방 띄울 div -->
             <div id="s_chat_content_box">
             	<!-- 채팅방 클릭 전은 로고 띄움 -->
-            	<!-- <div id="s_chat_img">
-           			<img src="https://cdn.discordapp.com/attachments/692994434526085184/981216631432818758/2-3.png">
-           		</div> -->
+            	
             </div>
         </article>    
     </section>
@@ -333,14 +334,14 @@
         			</div>
        			</div>
 		        <div class="s_modal_menu_box s_scroll">
-                <div id="s_f_list">친구 리스트</div>
+                <div id="s_f_list">참여자 리스트</div>
                 <!-- 로그인한 사람 제외한 사원 리스트만큼 반복문 실행 -->
                 <c:forEach items="${selectEmpList }" var="i">
 	                <div class="s_emp_box">
 	                	<!-- 사원의 프로필 사진 -->
-	                	<img class="s_img_style" src="${i.emp_file_path }">
+	                	<%-- <img class="s_img_style" src="${i.emp_file_path }"> --%>
 	                	<!-- 사원의 부서명, 이름 -->
-	                	<div class="s_dn_en">${i.dept_name } - ${i.emp_name }</div>
+	                	<%-- <div class="s_dn_en">${i.dept_name } - ${i.emp_name }</div> --%>
 	                	<div class="form-check">
 	                	  <!-- 체크박스 이름은 사원의 이름으로 넣어줌 -->
 						  <input class="form-check-input" name="${i.emp_name }" type="checkbox">
@@ -357,12 +358,13 @@
 	  </div>
 	</div>
 </div>
+</div>
 </body>
 	<script src="${pageContext.request.contextPath}/js/stream.js"></script>
 	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
 <!-- 모달창 스크립트 -->
-<script>
+<%-- <script>
 	// 체크박스 선택됐을 때 대화상대선택 박스에 넣기
 	
 	// 체크박스가 변했을 때마다 함수 실행
@@ -493,7 +495,7 @@
 		}
 		
 	});
-</script>
+</script> --%>
 
 <!-- 서브메뉴 눌렀을 때 -->
 <script>

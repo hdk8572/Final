@@ -14,6 +14,7 @@
 		<typeAlias type="kh.groupware.stream.project.model.vo.ProjectVo" alias="ProjectVo"/>
 		<typeAlias type="kh.groupware.stream.main.model.dto.MaintaskDto" alias="MaintaskDto"/>
 		<typeAlias type="kh.groupware.stream.calendar.model.vo.CalendarVo" alias="CalendarVo"/>
+		<typeAlias type="kh.groupware.stream.chat.model.vo.ChatVo" alias="ChatVo"/>
 	</typeAliases>
 	
 	<mappers>
@@ -23,6 +24,7 @@
 		<mapper resource="mappers/project-mapper.xml"/>
 		<mapper resource="mappers/maintask-mapper.xml"/>
 		<mapper resource="mappers/calendar-mapper.xml"/>
+		<mapper resource="mappers/chat-mapper.xml"/>
 	</mappers>	
 	
 </configuration>
