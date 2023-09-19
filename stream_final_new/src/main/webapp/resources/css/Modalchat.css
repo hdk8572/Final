@@ -27,9 +27,16 @@
   /* border: 1px solid #888; */
   height: 100%;
 }
-
+.btn-primary{
+	width: 100px;
+	height: 40px;
+}
+.btn-secondary{
+	width: 100px;
+	height: 40px;
+}
 .modal-header {
-	height: 65px;
+	height: 40px;
     background-color: #009b77;
 }
 

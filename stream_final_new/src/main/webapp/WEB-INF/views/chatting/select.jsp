@@ -556,7 +556,7 @@ form {
                 </c:forEach>
 	        </div>
 	      </div>
-	      <div class="modal-footer">
+	      <div class="modal-footer" style="padding: 0 100px">
 	      <button type="button" class="btn btn-primary" id="s_create_room">방만들기</button>
 	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
 	        
