@@ -70,6 +70,11 @@
 	</div>
 	
 	<!-------------------- Script ----------------------->
+	<script>
+	const contextPath = "${pageContext.request.contextPath}";
+	
+	</script>
+	
 	<script src="${pageContext.request.contextPath}/js/stream.js"></script>
 	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>

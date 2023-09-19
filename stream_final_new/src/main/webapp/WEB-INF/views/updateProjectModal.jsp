@@ -4,7 +4,7 @@
   
 <!-- The Modal -->
 <div class="modal" id="updateProjectModal">
-  	<div class="modal-dialog ptask">
+  	<div class="modal-dialog updateProject">
 		<!-- Modal content -->
 		<div class="modal-content updateProject">
 			<div class="modal-header updateProject"></div>
@@ -12,10 +12,10 @@
 				<div class="card">
 					<div class="card-body updateProjectTitle">
 					<div class="card-header updateProjectTitle">
-						<h2 class="updateProjectTitle"><b>업무 작성</b></h2>
+						<h2 class="updateProjectTitle"><b>프로젝트 수정</b></h2>
 					</div>
 						<form>					
-						<input type="text" class="form-control title" name="ttitle" placeholder="제목을 입력하세요.">
+						<input type="text" class="form-control title" name="pname" placeholder="제목을 입력하세요.">
 						<br>
 						<span class="d-flex align-items-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock align-middle me-2"><circle cx="12" cy= "12 " r= "10 "></circle><polyline points= "12 6 12 12 16 14 "></polyline></svg>
@@ -36,9 +36,9 @@
 						<br>
 						<textarea class="form-control" rows="10" name="tcontent" placeholder="내용을 입력해주세요"></textarea>
 						<br>
-						<input type="hidden" name="tdate" value=sysdate>
-						<input type="hidden" name="userId" value="kh0002@kh.com">
-						<input type="hidden" name="pno" value="${pno}">
+						<input type="hidden" name="tdate">
+						<input type="hidden" name="userId">
+						<input type="hidden" name="pno">
 						<input type="date" class="form-date" name="tstartDate" required="required">
 						~
 						<input type="date" class="form-date" name="tendDate" required="required">

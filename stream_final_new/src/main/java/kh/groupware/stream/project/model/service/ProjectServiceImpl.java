@@ -26,6 +26,11 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 	
 	@Override
+	public ProjectVo selectOne(String pno) {
+		return projectDao.selectOne(pno);
+	}
+	
+	@Override
 	@Transactional
     public List<ProjectVo> insertList(ProjectVo vo) {
         int result = projectDao.insertList(vo);

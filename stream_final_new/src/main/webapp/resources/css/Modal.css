@@ -87,7 +87,7 @@
 	right: 0;
 }
 
-.card-body.addProject {
+.modal-body.updateProject {
 	cursor: auto;	
     height: 670px;
 }

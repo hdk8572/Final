@@ -14,19 +14,29 @@ function abc(e){
 
 function updateProject(pno) {
 	$("#updateProjectModal").modal("toggle");
-	 $.ajax({
-	 	url: "${}/project/selectOne"
-	 	,data: {pno:pno}
-	 	,success: function(result){
+	console.log(pno);
+	console.log(contextPath);
+	$.ajax({
+	 	url: contextPath+"/projectOne/"+pno,
+	 	type: "get",
+	 	// data: {"pno":pno},
+	 	dataType: "json",
+	 	success: function(result){
+	 		console.log(result);
+	 		console.log(result.pno);
 			$("#updateProjectModal [name=pno]").val(result.pno);
-			$("#updateProjectModal [name=pcode]").val(result.pcode);
 			$("#updateProjectModal [name=pname]").val(result.pname);
+			$("#updateProjectModal [name=pstartDate]").val(result.pstartDate);
+			$("#updateProjectModal [name=pendDate]").val(result.pendDate);
+			 
+	 	},
+	 	error: function() {
+	 		console.log("selectOne에서 오류 발생");
 	 	}
 	 });
-// 		var updeptName = $('[name=deptName]');
-// 		console.log(updeptName.dataset.deptName);
-	
 }
+
+
 
 
 function hideProject(targetPno) {
