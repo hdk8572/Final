@@ -115,3 +115,12 @@ div.jm-task-title{
 	display: inline;
 	position: relative;
 }
+.jm-flex{
+	display: flex;
+}
+.jm-input-date{
+	width: 80%
+}
+.jm-innerTaskInput{
+	display: none;
+}

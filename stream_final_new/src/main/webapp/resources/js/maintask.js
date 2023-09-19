@@ -7,8 +7,10 @@ function loadedHandler(){
 	$(".jm-drop").on("dragover", allowDrop);
 	$(".jm-drop").on("drop", drop);
 	$(".jm-move").on("dragend", dragEnd );
-	$(".jm-box-project-title").click(titleClickHandler);
-	$(".jm-task-info").click(projectButtonClickTestHandler);
+	$(".jm-box-project-title").on("click", titleClickHandler);
+	$(".jm-task-info").on("click", projectButtonClickTestHandler);
+	$(".jm-inner-task-button").on("click", innerTaskInputHandler);
+	$('html').on("click", boxOutHandler)
 }
 
 function dragStart(e){
@@ -58,5 +60,26 @@ titleClickHandler=(event)=>{
 } 
 
 projectButtonClickTestHandler=(event)=>{
-	console.log(event.target)
+	console.log(event.target);
+}
+
+innerTaskInputHandler=(event)=>{
+	console.log(event.target);
+	const a1 = event.target;
+	$(a1).closest('li').next('li').addClass('row active');
+	$(a1).closest('li').next('li').css("display","block, flex");
+}
+
+boxOutHandler=(event)=>{
+	const a1 = event.target;
+	if( $(".jm-innerTaskInput").hasClass('active') ){
+		if(	!$(a1).hasClass("jm-innerTaskInput") 
+			&& !$(a1).hasClass("jm-inner-task-button")
+			&& !$(a1).parents('li').hasClass("jm-innerTaskInput")
+			){
+			console.log("영역외");
+			console.log(a1);
+			$(".jm-innerTaskInput").removeClass('row active');
+		}
+	}
 }

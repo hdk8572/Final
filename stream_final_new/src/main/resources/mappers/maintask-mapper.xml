@@ -22,6 +22,10 @@
 		select pname, pno, ttitle, userid, tstatus, tdate, tstartdate, tenddate, tno
     		from project join task using(pno, userid)
 	</select>
-
-	
+	<!-- 
+	<insert id="innerTaskInsert">
+		insert into Task(TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP)
+		values (task_sequence.NEXTVAL, #{}, #{}, #{}, #{}, #{}, #{}, sysdate, #{}, #{}, #{}, #{} )
+	</insert>
+	 -->
 </mapper>

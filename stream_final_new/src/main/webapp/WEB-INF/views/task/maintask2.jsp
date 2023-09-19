@@ -233,18 +233,45 @@
 																<li class="plusplus row">
 																	<div class="jm-title-ttitle col-lg-4 jm-grey">
 																		<span>${task.ttitle	}</span>
-																		<button>업무추가</button>
-																		<form action="#">
-																			<span class="jm-tp jm-task-info">자세히 보기</span>
-																		</form>
+																		<button class="jm-inner-task-button" >업무추가</button>
+																		<span class="jm-tp jm-task-info">자세히 보기</span>
 																	</div>
 																	<div class="jm-title-tstatus col-lg-1 jm-grey">${task.tstatus }</div>
 																	<div class="jm-title-tmember col-lg-1 jm-grey">${task.tmember }</div>
 																	<div class="jm-title-tstartdate col-lg-1 jm-grey">${task.tstartdate }</div>
 																	<div class="jm-title-tenddate col-lg-1 jm-grey">${task.tenddate }</div>
-																	<div class="jm-empty-tdate col-lg-1 jm-grey jm-gr">${task.tdate }</div>
-																	<div class="jm-empty-tdate col-lg-1 jm-grey jm-gr">${task.tno }</div>
+																	<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">${task.tdate }</div>
+																	<div class="jm-title-tno col-lg-1 jm-grey jm-gr">${task.tno }</div>
 																</li>
+																<li class="jm-innerTaskInput jm-innerTask-el">
+																		<div class="jm-title-ttitle col-lg-4 jm-grey">
+																			<input type="text" placeholder="하위업무명을 입력하세요">
+																		</div>
+																		<div class="jm-title-tstatus col-lg-1 jm-grey">
+																			<span>
+																				<select class= "form-select mb-3 selectCategory ml-2 " name="tstatus">
+																					<option class="status request" selected="selected">요청</option>
+																				    <option class="status progress">진행</option>
+																				    <option class="status feedback">피드백</option>
+																				    <option class="status complete">완료</option>
+																				    <option class="status remain">보류</option>
+																				</select>
+																			</span>
+																		</div>
+																		<div class="jm-title-tmember col-lg-1 jm-grey">
+																			<span>담당자 드롭다운</span>
+																		</div>
+																		<div class="jm-title-tstartdate col-lg-1 jm-grey">
+																			<span>날자 드롭다운</span>
+																		</div>
+																		<div class="jm-title-tenddate col-lg-1 jm-grey">
+																			<span>날자 드롭다운</span>
+																		</div>
+																		<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">
+																			<span>sysdate</span>
+																		</div>
+																		<div class="jm-title-tno col-lg-1 jm-grey jm-gr"></div>
+																	</li>
 															</c:forEach>
 														</ul>
 													</div>

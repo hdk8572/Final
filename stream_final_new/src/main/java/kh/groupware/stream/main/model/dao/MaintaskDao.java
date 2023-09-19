@@ -18,8 +18,8 @@ public class MaintaskDao {
 		return sqlSession.selectList("mainTask.projectNameList");
 	}
 	
-	/*
-	 * public List<MaintaskVo> taskList(){ return
-	 * sqlSession.selectList("mainTask.taskList"); }
-	 */
+	public int insertTask() {
+		return 0;
+	}
+	
 }
