@@ -3,7 +3,7 @@
 
 <!-- 모달 -->
 <!-- The Modal -->
-<div id="addProject" class="modal project right fade" aria-labelledby="myModalLabel">
+<div id="addProjectModal" class="modal project right fade" aria-labelledby="myModalLabel">
 <div class="modal-dialog">
   <!-- Modal content -->
   <div class="modal-content project">
@@ -90,9 +90,11 @@
 			dateType: "json",
 			success: function(result){
 				console.log(result);
+				makeView(result);
+				$(".modal").modal("hide");
 			},
 			error: function() {	
-				alert("에러났습니다.");
+				alert("addList에서 에러났습니다.");
 			}
 		});	
 	}

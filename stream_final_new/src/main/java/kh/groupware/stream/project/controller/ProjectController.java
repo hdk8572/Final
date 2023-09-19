@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 
 import kh.groupware.stream.project.model.service.ProjectService;
+import kh.groupware.stream.project.model.service.ProjectServiceImpl;
 import kh.groupware.stream.project.model.vo.ProjectVo;
 import kh.groupware.stream.ptask.model.service.PtaskService;
 

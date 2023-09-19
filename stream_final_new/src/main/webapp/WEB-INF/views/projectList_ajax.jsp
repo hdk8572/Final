@@ -49,7 +49,7 @@
 					
 					<h1 class="h3 mb-3" >
 						<span>${ul.mname}님의 프로젝트 목록</span>
-						<span><button class="btn btn-primary addProject" id="myBtn" data-bs-toggle="modal" data-bs-target="#addProject">프로젝트 추가+</button></span>
+						<span><button class="btn btn-primary addProject" id="myBtn" data-bs-toggle="modal" data-bs-target="#addProjectModal">프로젝트 추가+</button></span>
 					</h1>
 						
 					<%@ include file="/WEB-INF/views/addProjectModal.jsp" %>
@@ -97,7 +97,6 @@
 	    });
 	  });
 		    loadList();
-		    
 	});
 	
 	function loadList() {
@@ -107,21 +106,20 @@
 			data: $("#wrap-list").serialize(),
 			datatype: "json",
 			success: makeView,
+			
 			error: function() {
-				alert("에러났습니다.");
+				alert("loadList에서 에러났습니다.");
 			}
 		});
 	}
 
  	function makeView(data) {
 	    var listHtml = "";
-	        listHtml += `
-	        
-	        
-	        
-	        `
-				for(var i=0;i<data.length;i++){
-				var ul = data[i];
+        listHtml += `
+        
+	        `;
+	    for(var i=0;i<data.length;i++){
+			var ul = data[i];
 			listHtml+=`
 	        	<div class="col-sm-6 list-card" data-pno="\${ul.pno}" >
 		            <div class="card">
@@ -153,7 +151,6 @@
 										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
 				                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
 												class="feather feather-more-horizontal align-middle me-2 dropbtn-option"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle>
-											
 										</svg>	
 									  <div class="dropdown-content-option">
 									    <a href="#" class="dropdown-btn-update">
