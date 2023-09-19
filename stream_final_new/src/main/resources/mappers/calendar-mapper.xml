@@ -24,8 +24,7 @@
 	<!-- 참석자 조회 -->
 	<select id="attendList" resultType="CalendarVo">
 		select sno, userid, attenuserid 
-		from schedule join member_schedule using (sno)
-		
+		from schedule join member_schedule using (sno)	
 	</select>
 
 	<!-- 일정 등록 -->

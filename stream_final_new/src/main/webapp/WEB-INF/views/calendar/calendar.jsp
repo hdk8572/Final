@@ -20,18 +20,17 @@
 
 <title>calendar</title>
 
-<link
-	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<!-- Tab bar -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- Modal CSS -->
+<link href="${pageContext.request.contextPath}/css/Modal.css" rel="stylesheet">
 
-<link href="${pageContext.request.contextPath }/css/app.css"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/app.css" rel="stylesheet">
 	
-<link href="${pageContext.request.contextPath }/css/calmodal.css"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/calmodal.css" rel="stylesheet">
 
-<link href="${pageContext.request.contextPath }/css/calendar.css"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/calendar.css" rel="stylesheet">
 
 <!-- fullcalendar  -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
@@ -73,7 +72,8 @@
 									</div>
 								</div>
 							</div>
-				<%@ include file="/WEB-INF/views/calendar/readcalmodal.jsp" %>
+				 <%@ include file="/WEB-INF/views/calendar/readcalmodal.jsp" %>
+				<%-- <%@ include file="/WEB-INF/views/addProjectModal.jsp" %> --%>
 				</main>
 				<%@ include file="/WEB-INF/views/footer.jsp"%>
 			</main>
@@ -141,6 +141,7 @@
 		});
 	</script>
 	
+	<script src="${pageContext.request.contextPath}/js/calendar.js"></script>
 	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
 	
@@ -160,7 +161,7 @@
 	});
 	</script>
 	<!-- 상단 탭바 -->
-	<script>
+<!-- 	<script>
 	function openTab(tabName) {
 	  var i;
 	  var x = document.getElementsByClassName("tab");
@@ -169,7 +170,9 @@
 	  }
 	  document.getElementById(tabName).style.display = "block";  
 	}
-	</script>
+	</script> -->
+	
+	
 	
 </body>
 </html>
