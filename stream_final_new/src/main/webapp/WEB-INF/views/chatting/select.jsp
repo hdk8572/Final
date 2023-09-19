@@ -24,7 +24,7 @@
 	<!-- ProjectList CSS -->
 	<link href="${pageContext.request.contextPath}/css/projectList.css" rel="stylesheet">
 	<!-- Modal CSS -->
-	<link href="${pageContext.request.contextPath}/css/Modal.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/Modalchat.css" rel="stylesheet">
 	
 	<!-- DropDown - Option CSS -->	
 	<link href="${pageContext.request.contextPath}/css/projectList.option.css" rel="stylesheet">
@@ -47,7 +47,195 @@
 	
 	#s_chat_list {
 		font-size: 1.1em;
-		border: 1px solid;
+		border: 1px solid;/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #f5f7fb;
+  padding: 0px;
+  /* border: 1px solid #888; */
+  height: 100%;
+}
+
+.modal-header {
+	height: 65px;
+    background-color: #009b77;
+}
+
+.modal-body {
+	padding: 15px 15px;
+	margin: 0 auto;
+}
+
+.modal-text {
+	display: block;
+	padding: 0.625rem 1.625rem;
+}
+
+/* The Close Button */
+.close {
+	color: white;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	padding-right: 10px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Date */
+.form-date {
+	width: 45%;
+}
+
+/* Project */
+/* Right */
+.modal-content.project {
+  border-radius: 40px 0 0 40px;
+}
+
+.modal-header.project {
+    border-radius: 40px 0 0;
+}
+
+.modal.project.right .modal-dialog {
+	position: fixed;
+	margin: auto;
+	width: 40%;
+	height: 100%;
+	-webkit-transform: translate3d(0%, 0, 0);
+	    -ms-transform: translate3d(0%, 0, 0);
+	     -o-transform: translate3d(0%, 0, 0);
+	        transform: translate3d(0%, 0, 0);
+}
+.modal.project.right.fade .modal-dialog {
+	right:-40%;
+	-webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+     transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+.modal.project.right.fade.show .modal-dialog {
+	right: 0;
+}
+
+.card-body.addProject {
+	cursor: auto;	
+    height: 670px;
+}
+
+/* PtaskModal */
+.modal-dialog.ptask {
+
+    position: relative;
+    z-index: 5;
+    height: 80%;
+    width: 674px;
+    margin: 5% auto 0 auto;
+    background: #fff;
+    border: 1px solid #777;
+    box-sizing: border-box;
+    box-shadow: 20px 20px 30px rgba(0,0,0,.2);
+    border-radius: 10px;
+}
+
+.modal-content {
+	border-radius: 10px;
+}
+
+.modal-header.ptask {
+    height: 65px;
+    background-color: #009b77;
+	border-radius: 10px 10px 0px 0px;
+}
+
+.form-select.mb-3.selectCategory {
+    width: 30%;
+}
+
+.form-control.manager {
+	width: 30%;
+}
+
+.feather.feather-clock.align-middle.me-2 {
+    position: relative;
+    bottom: 8px;
+}
+
+.card-header.ptaskTitle {
+	padding: 1rem 0rem;
+}
+
+.card-body.ptask {
+	cursor: auto;	
+    height: 670px;
+}
+
+/* updateProjectModal */
+
+.modal-dialog.updateProject {
+
+    position: relative;
+    z-index: 5;
+    height: 80%;
+    width: 674px;
+    margin: 30px auto 0 auto;
+    background: #fff;
+    border: 1px solid #777;
+    box-sizing: border-box;
+    box-shadow: 20px 20px 30px rgba(0,0,0,.2);
+    border-radius: 10px;
+}
+
+.modal-content {
+	border-radius: 10px;
+}
+
+.modal-header.updateProject {
+    height: 65px;
+    background-color: #009b77;
+	border-radius: 10px 10px 0px 0px;
+}
+
+.form-select.mb-3.selectCategory {
+    width: 30%;
+}
+
+.feather.feather-clock.align-middle.me-2 {
+    position: relative;
+    bottom: 8px;
+}
+
+.card-header.updateProjectTitle {
+	padding: 1rem 0rem;
+}
+
+.card-body.updateProjectTitle {
+	cursor: auto;	
+    height: 670px;
+}
+
+form {
+	cursor: auto;	
+}
+		
 	}
 	
 	#s_sub_menu {
@@ -62,11 +250,12 @@
 		border-radius: 10px;
 		padding: 20px;
 		overflow: auto;
+		margin: 5px 0;
 	}
 	
 	.s_modal_menu_box {
 		width: 400px;
-		height: 740px;
+		height: 500px;
 		border: 1px solid lightgray;
 		border-radius: 10px;
 		padding: 20px;
@@ -205,7 +394,7 @@
 <style>
 	/*모달창  */
 	.swal-modal {
-		background-color: white;
+		/* background-color: white; */
 		border: 3px solid white;
 	}
 	/*ok버튼  */
@@ -244,6 +433,9 @@
 	.swal-text {
 		color: black;
 	}
+	.chatimg{
+		width: 50px;
+	}
 </style>
 </head>
 <body>
@@ -268,12 +460,26 @@
 	                	<%-- <img class="s_img_style" src="${selectOne.emp_file_path }"> --%>
 	                	<!-- 로그인한 사람의 부서명, 이름 -->
 	                	<%-- <div class="s_dn_en">${selectOne.dept_name } - ${selectOne.emp_name }</div> --%>
+	                	<img class="chatimg" src="img/avatars/user1.jpg" ><h3 style="margin-top: 10px">김민성</h3>
+	                </div>
+	                <div class="s_emp_box">
+	                	<img class="chatimg" src="img/avatars/user1.jpg" ><h3 style="margin-top: 10px">김민성</h3>
+	                </div>
+	                <div class="s_emp_box">
+	                	<img class="chatimg" src="img/avatars/user1.jpg" ><h3 style="margin-top: 10px">김민성</h3>
+	                </div>
+	                <div class="s_emp_box">
+	                	<img class="chatimg" src="img/avatars/user1.jpg" ><h3 style="margin-top: 10px">김민성</h3>
+	                </div>
+	                <div class="s_emp_box">
+	                	<img class="chatimg" src="img/avatars/user1.jpg" ><h3 style="margin-top: 10px">김민성</h3>
 	                </div>
 	                <div id="s_f_list">참여자 리스트</div>
-	              	<div>${list}</div>
+	              	
 	                <!-- 로그인한 사람 제외한 사원 리스트만큼 반복문 실행 -->
 	                <c:forEach items="" var="i">
 		                <div class="s_emp_box">
+		                	
 		                	<!-- 사원의 프로필 사진 -->
 		                	<%-- <img class="s_img_style" src="${i.emp_file_path }"> --%>
 		                	<!-- 사원의 부서명, 이름 -->
@@ -316,9 +522,9 @@
     <!-- 방 만들기 Modal -->
 	<div class="modal fade" id="roomModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
-	    <div class="modal-content" style="height: 1200px;">
+	    <div class="modal-content" style="height: 900px;">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">방 만들기</h5>
+	        <!-- <h5 class="modal-title" id="exampleModalLabel">방 만들기</h5> -->
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
@@ -350,9 +556,10 @@
                 </c:forEach>
 	        </div>
 	      </div>
-	      <div class="modal-footer">
+	      <div class="modal-footer" style="padding: 0 100px">
+	      <button type="button" class="btn btn-primary" id="s_create_room">방만들기</button>
 	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-	        <button type="button" class="btn btn-primary" id="s_create_room">방만들기</button>
+	        
 	      </div>
 	    </div>
 	  </div>
@@ -361,7 +568,7 @@
 </div>
 </body>
 	<script src="${pageContext.request.contextPath}/js/stream.js"></script>
-	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
+
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
 <!-- 모달창 스크립트 -->
 <%-- <script>

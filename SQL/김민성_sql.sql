@@ -7,10 +7,12 @@
 --COMMENT ON COLUMN "CHATLIST"."CHATNAME" IS '채팅방이름'
 --COMMENT ON COLUMN "CHAT_MEMBER"."CHATNO" IS '채팅방번호';
 --COMMENT ON COLUMN "CHAT_MEMBER"."USERID" IS 'EMAIL';
+SELECT
+    *
+FROM users;
 
-SELECT chatno,mname
-FROM chat_member
-
+SELECT *
+FROM chat;
 
 SELECT  *
 FROM CHATLIST;
@@ -20,8 +22,9 @@ FROM CHAT_member;
 
 TRUNCATE table chat_member;
 
+
 INSERT INTO chat_member( CHATNO,USERID) VALUES (11,'kh0001@kh.com');
-INSERT INTO chat_member( CHATNO,USERID) VALUES (16,'kh0002@kh.com');
+INSERT INTO chat_member( CHATNO,USERID) VALUES (22,'kh0002@kh.com');
 
 INSERT INTO chatLIST( CHATNO,CHATNAME) VALUES (chat_sequence.NEXTVAL,'채팅방이름1');
 INSERT INTO chatLIST( CHATNO,CHATNAME) VALUES (chat_sequence.NEXTVAL,'채팅방이름2');

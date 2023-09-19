@@ -3,7 +3,7 @@
 
 <!-- 모달 -->
 <!-- The Modal -->
-<div id="addProject" class="modal project right fade" aria-labelledby="myModalLabel">
+<div id="addProjectModal" class="modal project right fade" aria-labelledby="myModalLabel">
 <div class="modal-dialog">
   <!-- Modal content -->
   <div class="modal-content project">
@@ -49,16 +49,6 @@
 					<input type="date" class="form-date" name="pendDate" required="required">
 					</div>
 				</div>
-					
-				
-				<div class="card-header">
-				</div>
-				<div class="card-body">
-
-				</div>
-			</div>
-			<div class="card">
-
 			</div>
 			<div align="center">
 				<button class="btn btn-primary" id="btn-submit" type="button">추가</button>
@@ -90,9 +80,11 @@
 			dateType: "json",
 			success: function(result){
 				console.log(result);
+				makeView(result);
+				$(".modal").modal("hide");
 			},
 			error: function() {	
-				alert("에러났습니다.");
+				alert("addList에서 에러났습니다.");
 			}
 		});	
 	}
