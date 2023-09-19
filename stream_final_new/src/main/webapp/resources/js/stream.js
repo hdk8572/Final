@@ -14,10 +14,17 @@ function abc(e){
 
 function updateProject(pno) {
 	$("#updateProjectModal").modal("toggle");
-
- 		var updeptName = $('[name=deptName"+pno+"]');
- 		
- 		console.log(updeptName.dataset.deptName);
+	 $.ajax({
+	 	url: "${}/project/selectOne"
+	 	,data: {pno:pno}
+	 	,success: function(result){
+			$("#updateProjectModal [name=pno]").val(result.pno);
+			$("#updateProjectModal [name=pcode]").val(result.pcode);
+			$("#updateProjectModal [name=pname]").val(result.pname);
+	 	}
+	 });
+// 		var updeptName = $('[name=deptName]');
+// 		console.log(updeptName.dataset.deptName);
 	
 }
 

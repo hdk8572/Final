@@ -8,27 +8,10 @@ import org.springframework.stereotype.Service;
 import kh.groupware.stream.ptask.model.PtaskDao;
 import kh.groupware.stream.ptask.model.vo.PtaskVo;
 
-@Service
-public class PtaskService {
+public interface PtaskService {
 
-	@Autowired
-	private PtaskDao dao;
-	
-	public List<PtaskVo> selectList() {
-		return dao.selectList();
-	}
-	
-	public List<PtaskVo> pselectList(String pno) {
-		return dao.pselectList(pno);
-	}
-	
-	public int insertTask(PtaskVo vo) {
-		return dao.insertTask(vo);
-	} 
-	
-    public int deleteTask(String pno) {
-    	return dao.deleteTask(pno);
-    }
-	
-	
+	public List<PtaskVo> selectList();
+	public List<PtaskVo> pselectList(String pno);
+	public int insertTask(PtaskVo vo);
+    public int deleteTask(String pno);
 }
