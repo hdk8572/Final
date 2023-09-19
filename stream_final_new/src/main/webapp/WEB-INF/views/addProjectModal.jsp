@@ -23,7 +23,7 @@
 							<select class= "form-select mb-3 selectCategory ml-2 " name="pstatus">
 							  <option class="status request" value="요청" selected="selected">미진행</option>
 							  <option class="status progress" value="진행">진행</option>
-							  <option class="status complete" value="완료">숨김</option>
+							  <!-- <option class="status complete" value="완료">숨김</option> -->
 							  <option class="status remain" value="보류">보류</option>
 							</select>					
 						</span>
@@ -45,6 +45,8 @@
 								toolbar: [
 									'heading', 'bold', 'italic'
 								]
+								
+							
 							})
 								.then( editor => {
 						            myEditor = editor;

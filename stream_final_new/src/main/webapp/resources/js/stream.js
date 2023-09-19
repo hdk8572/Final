@@ -26,6 +26,7 @@ function updateProject(pno) {
 	 		console.log(result.pno);
 			$("#updateProjectModal [name=pno]").val(result.pno);
 			$("#updateProjectModal [name=pname]").val(result.pname);
+			$("#updateProjectModal [name=pcoment]").val(result.pcoment);
 			$("#updateProjectModal [name=pstartDate]").val(result.pstartDate);
 			$("#updateProjectModal [name=pendDate]").val(result.pendDate);
 			 
