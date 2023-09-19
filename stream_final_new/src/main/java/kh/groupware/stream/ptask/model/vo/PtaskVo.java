@@ -16,7 +16,7 @@ public class PtaskVo {
 	@Override
 	public String toString() {
 		return "PtaskVo [tno=" + tno + ", pno=" + pno + ", userId=" + userId + ", tmember=" + tmember + ", ttitle="
-				+ ttitle + ", tcontent=" + tcontent + ", tstatus=" + tstatus + ", tdate=" + tdate + ", tstartDate="
+				+ ttitle + ", tcontent= clob, tstatus=" + tstatus + ", tdate=" + tdate + ", tstartDate="
 				+ tstartDate + ", tendDate=" + tendDate + "]";
 	}
 	
