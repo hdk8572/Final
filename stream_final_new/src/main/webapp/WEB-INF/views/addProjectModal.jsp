@@ -4,68 +4,80 @@
 <!-- 모달 -->
 <!-- The Modal -->
 <div id="addProjectModal" class="modal project right fade" aria-labelledby="myModalLabel">
-<div class="modal-dialog">
-  <!-- Modal content -->
-  <div class="modal-content project">
-  	<div class="modal-header project">
-  		<span class="close" data-bs-dismiss="modal" aria-label="Close">&times;</span>
-  	</div>
- 	<div class="modal-body project">
- 		<form id="addProject">
-	    	<div class="card">
-				<div class="card-header">
-					<h5 class="card-title mb-0">프로젝트명 및 설명을 입력해주세요.</h5>
-				</div>
-				<div class="card-body addProject">
-					<input type="hidden" name="userId" value="kh0001@kh.com"> <!-- 로그인 세션 받아서 등록 -->
-					<input type="hidden" name="paccess" value="ACCESS"><!-- 세션에서 권한 선택 -->
-					<input type="text" class="form-control title" name="pname" placeholder="프로젝트명을 입력해주세요." required="required">
-					<br> 
-					<textarea class="form-control content" rows="5" name="pcoment" placeholder="프로젝트에 관한 설명을 입력해주세요.(옵션)"></textarea>
-						<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script> <!-- 위즈윅 -->
-						<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
-						<script>
-						let editor;
+<div class="modal-dialog addProject">
+		<!-- Modal content -->
+		<div class="modal-content addProject">
+			<div class="modal-header addProject"></div>
+			<div class="modal-body addProject">
+				<div class="card">
+					<div class="card-body addProjectTitle">
+					<div class="card-header addProjectTitle">
+						<h2 class="addProjectTitle"><b>프로젝트 등록</b></h2>
+					</div>
+						<form id="addProject">					
+						<input type="text" class="form-control title" name="pname" placeholder="프로젝트명을 입력해주세요." required="required">
+						<br>
+						<span class="d-flex align-items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock align-middle me-2"><circle cx="12" cy= "12 " r= "10 "></circle><polyline points= "12 6 12 12 16 14 "></polyline></svg>
+							<input type="hidden" id="valuePstatus"> <!-- js - selectOption() -->
+							<select class= "form-select mb-3 selectCategory ml-2 " name="pstatus">
+							  <option class="status request" value="요청" selected="selected">미진행</option>
+							  <option class="status progress" value="진행">진행</option>
+							  <option class="status complete" value="완료">숨김</option>
+							  <option class="status remain" value="보류">보류</option>
+							</select>					
+						</span>
+						<span class="d-flex align-items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2">
+							  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r= "4"></circle>
+							</svg>
+							<input type= "text" class= "form-control manager ml-2" value="${ul.mname}" placeholder= "담당자" readonly>
+						</span>
+						<br>
+						<textarea class="form-control content" rows="10" name="pcoment" placeholder="프로젝트에 관한 설명을 입력해주세요"></textarea>
+							<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script> <!-- 위즈윅 -->
+							<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
+							<script>
+							let editor;
+							
+							ClassicEditor.create(document.querySelector(".form-control.content"), {	
+								language: "ko",
+								toolbar: [
+									'heading', 'bold', 'italic'
+								]
+							})
+								.then( editor => {
+						            myEditor = editor;
+						        } )
+						        .catch( err => {
+						            console.error( err.stack );
+					        });
+							</script>
+						<br>
+						<input type="hidden" name="userId" value="kh0001@kh.com"> <!-- 로그인 세션 받아서 등록 -->
+						<input type="hidden" name="paccess" value="ACCESS"><!-- 세션에서 권한 선택 -->
 						
-						ClassicEditor.create(document.querySelector(".form-control.content"), {	
-							language: "ko",
-							toolbar: [
-								'heading', 'bold', 'italic'
-							]
-						})
-							.then( editor => {
-					            myEditor = editor;
-					        } )
-					        .catch( err => {
-					            console.error( err.stack );
-				        });
-						</script>
-					<div>
-					<h5 class="card-title mb-0">프로젝트 진행시기</h5>
-					</div>
-					<div>
-					<input type="date" class="form-date" name="pstartDate" required="required">
-					~
-					<input type="date" class="form-date" name="pendDate" required="required">
+					
+						<input type="date" class="form-date" name="pstartDate" required="required">
+						~
+						<input type="date" class="form-date" name="pendDate" required="required">
+						<br>
+						<br>
+						<div align="center">
+							<button class="btn btn-primary" id="btn-submit" type="submit">추가</button>
+							<button class="btn btn-warning" type="reset">취소</button>
+						</div>
+						</form>
 					</div>
 				</div>
 			</div>
-			<div align="center">
-				<button class="btn btn-primary" id="btn-submit" type="button">추가</button>
-				<button class="btn btn-warning" type="reset">취소</button>
-			</div>
-			<div>
-			
-			</div>
-		</form>
+			<!-- <div class="modal-footer ptask"></div> -->
+		</div>
 	</div>
-  </div>
-    <div class="modal-footer project">
-  	</div>
-  </div>
 </div>
 <script>
 	$("#btn-submit").click(addList);
+    $("select[name=pstatus]").change(selectOption);
 	
 	function addList () {
 		var data = myEditor.getData();
@@ -87,6 +99,12 @@
 				alert("addList에서 에러났습니다.");
 			}
 		});	
+	}
+	
+ 	function selectOption() {
+ 	    var selectedOption = $("select[name=pstatus] option:selected").text();
+ 	    console.log(selectedOption);
+ 	    $("#valuePstatus").val(selectedOption);
 	}
 	
 

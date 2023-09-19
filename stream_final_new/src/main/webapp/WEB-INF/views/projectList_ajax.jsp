@@ -117,7 +117,7 @@
 			}
 		});
 	}
-
+	
  	function makeView(data) {
 	    var listHtml = "";
         listHtml += `
@@ -178,8 +178,10 @@
 	    $("#wrap-list").html(listHtml);
 	    $(".frm.select").click(abc);  // stream.js -> abc();
 	    $(".list-delete").click(listDeleteHandler);
+
 	}
  	
+
  	
  	function listDeleteHandler(e) {
  		

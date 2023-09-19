@@ -139,6 +139,54 @@
     height: 670px;
 }
 
+/* addProjectModal */
+
+.modal-dialog.addProject {
+
+    position: relative;
+    z-index: 5;
+    height: 80%;
+    width: 674px;
+    margin: 30px auto 0 auto;
+    background: #fff;
+    border: 1px solid #777;
+    box-sizing: border-box;
+    box-shadow: 20px 20px 30px rgba(0,0,0,.2);
+    border-radius: 10px;
+}
+
+.modal-content {
+	border-radius: 10px;
+}
+
+.modal-header.addProject {
+    height: 65px;
+    background-color: #009b77;
+	border-radius: 10px 10px 0px 0px;
+}
+
+.form-select.mb-3.selectCategory {
+    width: 30%;
+}
+
+.feather.feather-clock.align-middle.me-2 {
+    position: relative;
+    bottom: 8px;
+}
+
+.card-header.addProjectTitle {
+	padding: 1rem 0rem;
+}
+
+.card-body.addProjectTitle {
+	cursor: auto;	
+    height: 670px;
+}
+
+form {
+	cursor: auto;	
+}
+
 /* updateProjectModal */
 
 .modal-dialog.updateProject {
