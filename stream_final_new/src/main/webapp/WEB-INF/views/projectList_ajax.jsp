@@ -125,7 +125,7 @@
 		            <div class="card">
 		                <form class="frm select" action="${pageContext.request.contextPath}/ptasklist" method="get">
  		                    <input type="hidden" name="pno"  value="\${ul.pno}">
-		                    <div class="card-body">
+		                    <div class="card-body list">
 		                        <div class="row">
 		                            <div class="col mt-0">
 		                                <h5 class="card-title">

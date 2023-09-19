@@ -49,16 +49,6 @@
 					<input type="date" class="form-date" name="pendDate" required="required">
 					</div>
 				</div>
-					
-				
-				<div class="card-header">
-				</div>
-				<div class="card-body">
-
-				</div>
-			</div>
-			<div class="card">
-
 			</div>
 			<div align="center">
 				<button class="btn btn-primary" id="btn-submit" type="button">추가</button>
