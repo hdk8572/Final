@@ -16,7 +16,7 @@
 				<div class="card-header">
 					<h5 class="card-title mb-0">프로젝트명 및 설명을 입력해주세요.</h5>
 				</div>
-				<div class="card-body">
+				<div class="card-body addProject">
 					<input type="hidden" name="userId" value="kh0001@kh.com"> <!-- 로그인 세션 받아서 등록 -->
 					<input type="hidden" name="paccess" value="ACCESS"><!-- 세션에서 권한 선택 -->
 					<input type="text" class="form-control title" name="pname" placeholder="프로젝트명을 입력해주세요." required="required">
@@ -40,14 +40,21 @@
 					            console.error( err.stack );
 				        });
 						</script>
-						</div>
-				<div class="card-header">
+					<div>
 					<h5 class="card-title mb-0">프로젝트 진행시기</h5>
-				</div>
-				<div class="card-body">
+					</div>
+					<div>
 					<input type="date" class="form-date" name="pstartDate" required="required">
 					~
 					<input type="date" class="form-date" name="pendDate" required="required">
+					</div>
+				</div>
+					
+				
+				<div class="card-header">
+				</div>
+				<div class="card-body">
+
 				</div>
 			</div>
 			<div class="card">

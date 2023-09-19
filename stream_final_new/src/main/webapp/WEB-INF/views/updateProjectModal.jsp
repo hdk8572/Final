@@ -10,7 +10,7 @@
 			<div class="modal-header updateProject"></div>
 			<div class="modal-body updateProject">
 				<div class="card">
-					<div class="card-body">
+					<div class="card-body updateProjectTitle">
 					<div class="card-header updateProjectTitle">
 						<h2 class="updateProjectTitle"><b>업무 작성</b></h2>
 					</div>
@@ -52,7 +52,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="modal-footer ptask"></div>
+			<!-- <div class="modal-footer ptask"></div> -->
 		</div>
 	</div>
 </div>
