@@ -20,8 +20,8 @@
 	 </select>
 	 
 	 <insert id="insertList" parameterType="ProjectVo">
-		INSERT INTO PROJECT (PNO, USERID, PNAME, PCOMENT, PACCESS, PSTARTDATE, PENDDATE)
-		VALUES (project_sequence.NEXTVAL, #{userId}, #{pname}, #{pcoment}, #{paccess}, #{pstartDate}, #{pendDate})
+		INSERT INTO PROJECT (PNO, USERID, PNAME, PCOMENT, PACCESS, PSTARTDATE, PENDDATE, PSTATUS)
+		VALUES (project_sequence.NEXTVAL, #{userId}, #{pname}, #{pcoment}, #{paccess}, #{pstartDate}, #{pendDate}, #{pstatus})
 	 </insert>
 	 
 	 <delete id="deleteList" parameterType="ProjectVo">
@@ -29,7 +29,7 @@
 	 </delete>
 	 
 	 <update id="update" parameterType="ProjectVo">
-	 	UPDATE PROJECT SET PNAME=#{pname}, PSTATUS=#{pstatus}
+	 	UPDATE PROJECT SET PNAME=#{pname}, PCOMENT=#{pcoment}, PSTATUS=#{pstatus}
 	 	WHERE PNO=#{PNO}
 	 </update>
   

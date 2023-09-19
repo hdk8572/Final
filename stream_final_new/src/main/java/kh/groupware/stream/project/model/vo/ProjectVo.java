@@ -7,7 +7,7 @@ import kh.groupware.stream.main.model.dto.MaintaskDto;
 public class ProjectVo {
 //	projectVo
 	private String pno;
-	private String userId;
+	private String userid;
 	private String pname;
 	private String pcoment;
 	private String paccess;
@@ -28,7 +28,7 @@ public class ProjectVo {
 
 	@Override
 	public String toString() {
-		return "ProjectVo [pno=" + pno + ", userId=" + userId + ", pname=" + pname + ", pcoment=" + pcoment
+		return "ProjectVo [pno=" + pno + ", userid=" + userid + ", pname=" + pname + ", pcoment=" + pcoment
 				+ ", paccess=" + paccess + ", pdate=" + pdate + ", pstartDate=" + pstartDate + ", pendDate=" + pendDate
 				+ ", prow=" + prow + ", pstatus=" + pstatus + ", deptno=" + deptno + ", mname=" + mname + ", mrank="
 				+ mrank + ", deptName=" + deptName + ", maintaskList=" + maintaskList + "]";
@@ -39,12 +39,12 @@ public class ProjectVo {
 	}
 
 	
-	public ProjectVo(String pno, String userId, String pname, String pcoment, String paccess, String pdate,
+	public ProjectVo(String pno, String userid, String pname, String pcoment, String paccess, String pdate,
 			String pstartDate, String pendDate, String prow, String pstatus, String deptno, String mname, String mrank,
 			String deptName, List<MaintaskDto> maintaskList) {
 		super();
 		this.pno = pno;
-		this.userId = userId;
+		this.userid = userid;
 		this.pname = pname;
 		this.pcoment = pcoment;
 		this.paccess = paccess;
@@ -68,12 +68,12 @@ public class ProjectVo {
 		this.pno = pno;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getuserid() {
+		return userid;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setuserid(String userid) {
+		this.userid = userid;
 	}
 
 	public String getPname() {

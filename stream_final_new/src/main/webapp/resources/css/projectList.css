@@ -10,3 +10,7 @@
 .frm.select {
 	position: relative;
 } 
+
+.ck-editor__editable_inline {
+    min-height: 275px;
+}

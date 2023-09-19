@@ -19,12 +19,11 @@
 						<br>
 						<span class="d-flex align-items-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock align-middle me-2"><circle cx="12" cy= "12 " r= "10 "></circle><polyline points= "12 6 12 12 16 14 "></polyline></svg>
-							<select class= "form-select mb-3 selectCategory ml-2 " name="tstatus">
-							  <option class="status request" selected="selected">요청</option>
+							<select class= "form-select mb-3 selectCategory ml-2 " name="pstatus">
+							  <option class="status request" selected="selected">미진행</option>
 							  <option class="status progress">진행</option>
-							  <option class="status feedback">피드백</option>
-							  <option class="status complete">완료</option>
 							  <option class="status remain">보류</option>
+							  <option class="status hide">숨김</option>
 							</select>					
 						</span>
 						<span class="d-flex align-items-center">
@@ -34,7 +33,7 @@
 							<input type= "text" class= "form-control manager ml-2" name="tmember" placeholder= "담당자">
 						</span>
 						<br>
-						<textarea class="form-control" rows="10" name="tcontent" placeholder="내용을 입력해주세요"></textarea>
+						<textarea class="form-control" rows="10" name="pcoment" placeholder="내용을 입력해주세요"></textarea>
 						<br>
 						<input type="hidden" name="tdate">
 						<input type="hidden" name="userId">
