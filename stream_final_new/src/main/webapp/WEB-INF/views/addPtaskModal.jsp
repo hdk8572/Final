@@ -9,7 +9,7 @@
 			<div class="modal-header ptask"></div>
 			<div class="modal-body ptask">
 				<div class="card">
-					<div class="card-body">
+					<div class="card-body ptask">
 					<div class="card-header ptaskTitle">
 						<h2 class="ptaskTitle"><b>업무 작성</b></h2>
 					</div>

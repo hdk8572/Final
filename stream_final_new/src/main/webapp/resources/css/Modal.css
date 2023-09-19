@@ -87,6 +87,10 @@
 	right: 0;
 }
 
+.card-body.addProject {
+	cursor: auto;	
+    height: 670px;
+}
 
 /* PtaskModal */
 .modal-dialog.ptask {
@@ -95,7 +99,7 @@
     z-index: 5;
     height: 80%;
     width: 674px;
-    margin: 30px auto 0 auto;
+    margin: 5% auto 0 auto;
     background: #fff;
     border: 1px solid #777;
     box-sizing: border-box;
@@ -130,6 +134,11 @@
 	padding: 1rem 0rem;
 }
 
+.card-body.ptask {
+	cursor: auto;	
+    height: 670px;
+}
+
 /* updateProjectModal */
 
 .modal-dialog.updateProject {
@@ -160,10 +169,6 @@
     width: 30%;
 }
 
-.form-control.manager {
-	width: 30%;
-}
-
 .feather.feather-clock.align-middle.me-2 {
     position: relative;
     bottom: 8px;
@@ -173,4 +178,11 @@
 	padding: 1rem 0rem;
 }
 
+.card-body.updateProjectTitle {
+	cursor: auto;	
+    height: 670px;
+}
 
+form {
+	cursor: auto;	
+}
