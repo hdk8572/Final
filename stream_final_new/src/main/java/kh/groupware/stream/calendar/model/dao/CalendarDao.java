@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kh.groupware.stream.calendar.model.vo.CalendarVo;
+import kh.groupware.stream.member.model.vo.MemberSimpleVo;
 
 @Repository
 public class CalendarDao {
@@ -42,6 +43,12 @@ public class CalendarDao {
 	//참석자 조회
 	public List<CalendarVo> attendList() {
 		return sqlSession.selectList("calendar.attendList");
+	}
+	
+	
+	//참석자 조회
+	public List<MemberSimpleVo> memberProjectList(String pno) {
+		return sqlSession.selectList("calendar.memberProjectList", pno);
 	}
 
 }

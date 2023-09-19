@@ -61,4 +61,13 @@ public class CalendarController {
 		return "/calendar/addcalmodal";
 	}
 	
+	//MemberProject 조회
+	@GetMapping("/memberProjectList")
+	@ResponseBody
+	public String memberProjectList(String pno) {
+		return new Gson().toJson(calendarService.memberProjectList(pno));
+	}
+	
+	
+	
 }

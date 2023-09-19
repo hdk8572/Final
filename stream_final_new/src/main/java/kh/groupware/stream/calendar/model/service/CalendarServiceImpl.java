@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kh.groupware.stream.calendar.model.dao.CalendarDao;
 import kh.groupware.stream.calendar.model.vo.CalendarVo;
+import kh.groupware.stream.member.model.vo.MemberSimpleVo;
 
 //Impl - 인터페이스
 @Service
@@ -44,6 +45,10 @@ public class CalendarServiceImpl implements CalendarService {
 	@Override
 	public List<CalendarVo> attendList() {
 		return calendarDao.attendList();
+	}
+	@Override
+	public List<MemberSimpleVo> memberProjectList(String pno) {
+		return calendarDao.memberProjectList(pno);
 	}
 
 }

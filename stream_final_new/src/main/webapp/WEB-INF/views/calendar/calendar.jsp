@@ -28,7 +28,7 @@
 
 <link href="${pageContext.request.contextPath }/css/app.css" rel="stylesheet">
 	
-<link href="${pageContext.request.contextPath }/css/calmodal.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/calmodal.css" rel="stylesheet"> 
 
 <link href="${pageContext.request.contextPath }/css/calendar.css" rel="stylesheet">
 
@@ -58,7 +58,7 @@
 				<main class="content">
  							<h2>
 								Calendar
-								<button class="btn btn-primary addTaskTab" data-bs-toggle="modal" data-bs-target="#myModal">+일정추가</button>
+								<button class="btn btn-primary addTaskTab" data-bs-toggle="modal" data-bs-target="#myModal" onclick="getMemberProjectListHandler(this)">+일정추가</button>
 							</h2>
 							<%@ include file="/WEB-INF/views/calendar/addcalmodal.jsp" %>
 					<div class="container-fluid p-0">
@@ -83,6 +83,7 @@
 	<!-- fullcalendar -->
 	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+	
 	<!-- //fullcalendar 언어 설정관련 script -->
 	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
 	
@@ -90,6 +91,17 @@
 	
 	<!-- 달력을 구성  -->
 	<script>
+	/*  */
+function getMemberProjectListHandler(thisElement){
+		console.log("first -- modal");
+		// ajax memberProjectList 
+		// success (result)
+		
+	}
+	
+	
+	
+		/* 일정추가 클릭이벤트 ajax로 갔다 오는거 결론: 참석자 input에 list가 뜨면 됨*/
 		document.addEventListener('DOMContentLoaded', function() {
 
 			const calendarEl = document.getElementById('calendar'); //calender라는 id를 가진 요소를 찾아 calendarEl 변수에 할당한다. 이건 fullcalendar를 표시할 컨테이너이다.
@@ -131,8 +143,8 @@
 					eventClick: function(info) {
 						console.log(info.event.title);
 						var event = info.event;
-						$("#myModal.modal.right  [name=ttitle]").val(info.event.title);
-						$("#myModal.modal.right").show();
+						$("#readScheduleModal.modal.right  [name=ttitle]").val(info.event.title); /* 띄우려는 모달이랑 이름 맞춰야한다. */
+						$("#readScheduleModal").modal("toggle");
 						//<span><button class="btn btn-primary addProject" id="myBtn" data-bs-toggle="modal" data-bs-target="#myModal">프로젝트 추가+</button></span>
 					} 
 				});
@@ -140,8 +152,7 @@
 			}
 		});
 	</script>
-	
-	<script src="${pageContext.request.contextPath}/js/calendar.js"></script>
+
 	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
 	
@@ -161,7 +172,7 @@
 	});
 	</script>
 	<!-- 상단 탭바 -->
-<!-- 	<script>
+<!-- <script>
 	function openTab(tabName) {
 	  var i;
 	  var x = document.getElementsByClassName("tab");
@@ -171,8 +182,6 @@
 	  document.getElementById(tabName).style.display = "block";  
 	}
 	</script> -->
-	
-	
-	
+
 </body>
 </html>
