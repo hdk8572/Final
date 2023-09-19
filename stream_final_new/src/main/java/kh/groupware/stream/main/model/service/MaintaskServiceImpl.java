@@ -9,7 +9,7 @@ import kh.groupware.stream.main.model.dao.MaintaskDao;
 import kh.groupware.stream.project.model.vo.ProjectVo;
 
 @Service
-public class MaintastServiceImpl implements MaintastService {
+public class MaintaskServiceImpl implements MaintaskService {
 	
 	@Autowired
 	private MaintaskDao dao;

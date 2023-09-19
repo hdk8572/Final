@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import kh.groupware.stream.project.model.vo.ProjectVo;
 
 @Service
-public interface MaintastService {
+public interface MaintaskService {
 	
 	public List<ProjectVo> projectNameList();
 }
