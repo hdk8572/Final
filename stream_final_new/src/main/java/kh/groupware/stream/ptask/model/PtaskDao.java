@@ -14,9 +14,10 @@ public class PtaskDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-//	public List<PtaskVo> selectList() {
-//		return sqlSession.selectList("task.selectList");
-//	}
+	/*
+	 * public List<PtaskVo> selectList() { return
+	 * sqlSession.selectList("task.selectList"); }
+	 */
 	
 	// UI-ID-007
 	public List<PtaskVo> pselectList(String pno) {
