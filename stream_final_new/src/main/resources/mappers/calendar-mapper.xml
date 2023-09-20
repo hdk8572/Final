@@ -26,13 +26,16 @@
 		select sno, userid, attenuserid 
 		from schedule join member_schedule using (sno)	
 	</select>
+	
+	<!-- 프로젝트의 멤버들 조회  -->
+	<select id="memberProjectList"  resultType="MemberSimpleVo">
+	select userid, ( select mname from users tu where tm.userid=tu.userid ) mname from MEMBER_PROJECT tm where pno=#{pno}
+	</select>
 
 	<!-- 일정 등록 -->
 	<insert id="insert" parameterType="CalendarVo">
-		INSERT INTO SCHEDULE (SNO, USERID, SSTARTDATE, SENDDATE, SPLACE, SMEMO,
-		STITLE )
-		VALUES (schedule_sequence.NEXTVAL, #{userId}, #{start}, #{end}, #{splace},
-		#{smemo}, #{title})
+		INSERT INTO SCHEDULE (SNO, USERID, SSTARTDATE, SENDDATE, SPLACE, SMEMO, STITLE )
+		VALUES (schedule_sequence.NEXTVAL, #{userId}, #{start}, #{end}, #{splace}, #{smemo}, #{title})
 	</insert>
 
 	<!-- 캘린더 수정 -->
@@ -44,9 +47,5 @@
 
 	</update>
 
-	<!-- 프로젝트의 멤버들 조회  -->
-	<select id="memberProjectList"  resultType="MemberSimpleVo">
-	select userid, ( select mname from users tu where tm.userid=tu.userid ) mname from MEMBER_PROJECT tm where pno=#{pno}
-	</select>
 
 </mapper>
