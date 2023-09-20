@@ -19,8 +19,8 @@
 						<br>
 						<span class="d-flex align-items-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock align-middle me-2"><circle cx="12" cy= "12 " r= "10 "></circle><polyline points= "12 6 12 12 16 14 "></polyline></svg>
-							<input type="hidden" id="valuePstatus"> <!-- js - selectOption() -->
-							<select class= "form-select mb-3 selectCategory ml-2 " name="pstatus">
+							<input type="hidden" id="valuePstatus" name="pstatus"> <!-- js - selectOption() -->
+							<select class= "form-select mb-3 selectCategory ml-2 " name="addpstatus">
 							  <option class="status request" value="요청" selected="selected">미진행</option>
 							  <option class="status progress" value="진행">진행</option>
 							  <!-- <option class="status complete" value="완료">숨김</option> -->
@@ -56,7 +56,7 @@
 					        });
 							</script>
 						<br>
-						<input type="hidden" name="userId" value="kh0001@kh.com"> <!-- 로그인 세션 받아서 등록 -->
+						<input type="hidden" name="userid" value="kh0001@kh.com"> <!-- 로그인 세션 받아서 등록 -->
 						<input type="hidden" name="paccess" value="ACCESS"><!-- 세션에서 권한 선택 -->
 						
 					
@@ -79,8 +79,10 @@
 </div>
 <script>
 	$("#btn-submit").click(addList);
-    $("select[name=pstatus]").change(selectOption);
-	
+	$("#myBtn").click(selectOption);
+    $("select[name=addpstatus]").change(selectOption);
+    $("select[name=updatepstatus]").change(updateOption);
+    
 	function addList () {
 		var data = myEditor.getData();
 		$("[name=pcoment]").val(data);
@@ -104,9 +106,15 @@
 	}
 	
  	function selectOption() {
- 	    var selectedOption = $("select[name=pstatus] option:selected").text();
+ 	    var selectedOption = $("select[name=addpstatus] option:selected").text();
  	    console.log(selectedOption);
  	    $("#valuePstatus").val(selectedOption);
+	}
+ 	
+ 	function updateOption() {
+ 	    var selectedOption = $("select[name=updatepstatus] option:selected").text();
+ 	    $("#valuePstatus").val(selectedOption);
+ 	   	console.log($("#valuePstatus").val(selectedOption));
 	}
 	
 

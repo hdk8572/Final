@@ -33,24 +33,12 @@ public class ProjectController {
 		return "projectList_ajax";
 	}
 
-	/* 진행 중 */
-	
-	/*
-	 * @GetMapping("/projectOne")
-	 * 
-	 * @ResponseBody public ProjectVo selectOne(String pno) { ProjectVo vo =
-	 * projectService.selectOne(pno); return vo; }
-	 */
-	
-	
 	@GetMapping("/projectOne/{pno}")
 	@ResponseBody
 	public ProjectVo selectOne(@PathVariable("pno") String pno) {
 		ProjectVo vo = projectService.selectOne(pno);
 		return vo;
 	}
-	
-	 
 	
 	@GetMapping("/projectlist.ajax")
 	@ResponseBody 
@@ -61,7 +49,7 @@ public class ProjectController {
 
 	@PostMapping("/projectInsert")
 	@ResponseBody
-	public List<ProjectVo>  insert(ProjectVo vo) {
+	public List<ProjectVo> insert(ProjectVo vo) {
 		List<ProjectVo> add = projectService.insertList(vo);
 		return add;
 	}
@@ -76,10 +64,11 @@ public class ProjectController {
 	    return map;
 	}
 	
-	@PostMapping("/projectUpdate.ajax")
+	@GetMapping("/doUpdateProject")
 	@ResponseBody
-	public void update(ProjectVo vo) {
-		projectService.update(vo);
+	public int update(ProjectVo vo) {
+		int uvo = projectService.update(vo);
+		return uvo;
+		
 	}
-	
 }

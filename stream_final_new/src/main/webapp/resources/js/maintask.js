@@ -11,6 +11,8 @@ function loadedHandler(){
 	$(".jm-task-info").on("click", projectButtonClickTestHandler);
 	$(".jm-inner-task-button").on("click", innerTaskInputHandler);
 	$('html').on("click", boxOutHandler)
+	$(".jm-innerTask-insert-button").click(innerTaskaddList);
+	$("select[name=tstatus]").change(selectOption);
 }
 
 function dragStart(e){
@@ -63,11 +65,27 @@ projectButtonClickTestHandler=(event)=>{
 	console.log(event.target);
 }
 
+functionDateHandler=(e)=>{
+	var today = new Date();
+	
+	var year = today.getFullYear();
+	var month = ('0' + (today.getMonth() + 1)).slice(-2);
+	var day = ('0' + today.getDate()).slice(-2);
+	
+	var dateString = year + '-' + month  + '-' + day;
+	
+	console.log(dateString);
+	$(".innerTdate").html("<span>"+dateString+"</span>");
+	
+}
+
 innerTaskInputHandler=(event)=>{
 	console.log(event.target);
 	const a1 = event.target;
-	$(a1).closest('li').next('li').addClass('row active');
-	$(a1).closest('li').next('li').css("display","block, flex");
+	$(a1).closest('li').next('form').find(".jm-innerTask-el").addClass('row active');
+	$(a1).closest('li').next('form').find(".jm-innerTask-el").css("display","block, flex");
+	$(".innerTdate").text(functionDateHandler())
+	
 }
 
 boxOutHandler=(event)=>{
@@ -82,4 +100,30 @@ boxOutHandler=(event)=>{
 			$(".jm-innerTaskInput").removeClass('row active');
 		}
 	}
+}
+
+selectOption=()=>{
+	var selectedOption = $("select[name=tstatus] option:selected").text();
+ 	console.log(selectedOption);
+ 	$(".jm-select-tstatus").val(selectedOption);
+}
+
+function innerTaskaddList () {
+ const contextPath = "${pageContext.request.contextPath}";
+	console.log("ajax간다");
+	$.ajax ({
+		url: contextPath+"/innertaskinsert",
+		type: "post",
+		//data: $(".addInnerTask").serialize(),
+		data : $(".addInnerTask").serialize(),
+		dateType: "json",
+		success: function(result){
+			console.log("성공");
+			// makeView(result);
+			// $(".modal").modal("hide");
+		},
+		error: function() {	
+			alert("innerTaskaddList 에서 에러났습니다.");
+		}
+	});	
 }
