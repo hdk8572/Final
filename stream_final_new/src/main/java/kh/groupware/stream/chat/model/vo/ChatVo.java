@@ -19,10 +19,11 @@ public class ChatVo {
 	private String cdate;	//작성 날짜
 	private String chatname;//채팅방 이름
 	private String closed;
+	private String mname;
 	@Override
 	public String toString() {
 		return "ChatVo [ccno=" + ccno + ", chatno=" + chatno + ", userid=" + userid + ", ccontent=" + ccontent
-				+ ", cdate=" + cdate + ", chatname=" + chatname + ", closed=" + closed + "]";
+				+ ", cdate=" + cdate + ", chatname=" + chatname + ", closed=" + closed + ", mname=" + mname + "]";
 	}
 	public String getCcno() {
 		return ccno;
@@ -65,7 +66,13 @@ public class ChatVo {
 	}
 	public void setClosed(String closed) {
 		this.closed = closed;
-	}	
+	}
+	public String getMname() {
+		return mname;
+	}
+	public void setMname(String mname) {
+		this.mname = mname;
+	}
 	
 	
 	

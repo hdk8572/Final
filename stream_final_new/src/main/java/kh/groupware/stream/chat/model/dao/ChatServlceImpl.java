@@ -16,4 +16,6 @@ public class ChatServlceImpl implements ChatService{
 	public List<ChatVo> selectuserList(){
 		return dao.selectuserList();
 	}
+	
+
 }

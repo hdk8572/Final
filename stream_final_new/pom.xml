@@ -193,9 +193,14 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-websocket</artifactId>
-			<version>5.2.2.RELEASE</version>
+			<version>${org.springframework-version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.24</version>
+			<scope>provided</scope>
+		</dependency>
 		<!-- Spring Security -->
 		<!-- spring-security-core -->
 		<dependency>

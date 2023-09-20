@@ -20,11 +20,14 @@ FROM CHATLIST;
 SELECT  *
 FROM CHAT_member;
 
-
-
-INSERT INTO chat_member( CHATNO,USERID) VALUES (11,'kh0001@kh.com');
-INSERT INTO chat_member( CHATNO,USERID) VALUES (22,'kh0002@kh.com');
+select mname
+from chat_member
+join users using(userid);
 
 INSERT INTO chatLIST( CHATNO,CHATNAME) VALUES (chat_sequence.NEXTVAL,'채팅방이름1');
 INSERT INTO chatLIST( CHATNO,CHATNAME) VALUES (chat_sequence.NEXTVAL,'채팅방이름2');
-INSERT INTO chatLIST( CHATNO,CHATNAME) VALUES (chat_sequence.NEXTVAL,'채팅방이름8');
+
+INSERT INTO chat_member( CHATNO,USERID) VALUES (1,'kh0001@kh.com');
+INSERT INTO chat_member( CHATNO,USERID) VALUES (2,'kh0002@kh.com');
+
+commit;

@@ -207,7 +207,11 @@ VALUES (schedule_sequence.NEXTVAL, 'sample@kh.co.kr', TO_DATE('2023-09-13', 'YYY
 INSERT INTO SCHEDULE (SNO, USERID, SSTART, SEND, SPLACE, SMEMO, STITLE, SCOLOR)
 VALUES (schedule_sequence.NEXTVAL, 'fffll@ctest.co.kr', TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-09-13', 'YYYY-MM-DD'), '역삼동', '당신을 위한 일이 있어', '업무1', '#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'));
 
+INSERT INTO chatLIST( CHATNO,CHATNAME) VALUES (chat_sequence.NEXTVAL,'채팅방이름1');
+INSERT INTO chatLIST( CHATNO,CHATNAME) VALUES (chat_sequence.NEXTVAL,'채팅방이름2');
 
+INSERT INTO chat_member( CHATNO,USERID) VALUES (1,'kh0001@kh.com');
+INSERT INTO chat_member( CHATNO,USERID) VALUES (2,'kh0002@kh.com');
 
 
 COMMIT;

@@ -447,33 +447,22 @@ form {
         <article style="float: left;">
             <div id="s_sub_menu_box">
                 <button id="s_chat_btn" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#roomModal">방 만들기</button>
-				
 				<!-- 서브 메뉴 -->
 				<div id="s_sub_menu">
 	                <button id="s_emp_list" class="btn btn-primary s_chat_menu">참여자목록</button>
-	                <button id="s_chat_list" class="btn btn-light s_chat_menu">채팅 리스트</button>
+	                <button id="s_chat_list" class="btn btn-light s_chat_menu" style="width: 120px; height: 45px">채팅 리스트</button>
                 </div>
                 <!-- 사원 목록 클릭 시 띄울 내용 -->
                 <div id="s_menu_box1" class="s_menu_box s_scroll">
+                 <c:forEach items="${list}" var="i">
 	                <div class="s_emp_box">
 	                	<!-- 로그인한 사람의 프로필 사진 -->
 	                	<%-- <img class="s_img_style" src="${selectOne.emp_file_path }"> --%>
 	                	<!-- 로그인한 사람의 부서명, 이름 -->
 	                	<%-- <div class="s_dn_en">${selectOne.dept_name } - ${selectOne.emp_name }</div> --%>
-	                	<img class="chatimg" src="img/avatars/user1.jpg" ><h3 style="margin-top: 10px">김민성</h3>
+ 	                	<img class="chatimg" src="img/avatars/user1.jpg" ><h3 style="margin-top: 10px">${i.mname}</h3>
 	                </div>
-	                <div class="s_emp_box">
-	                	<img class="chatimg" src="img/avatars/user1.jpg" ><h3 style="margin-top: 10px">김민성</h3>
-	                </div>
-	                <div class="s_emp_box">
-	                	<img class="chatimg" src="img/avatars/user1.jpg" ><h3 style="margin-top: 10px">김민성</h3>
-	                </div>
-	                <div class="s_emp_box">
-	                	<img class="chatimg" src="img/avatars/user1.jpg" ><h3 style="margin-top: 10px">김민성</h3>
-	                </div>
-	                <div class="s_emp_box">
-	                	<img class="chatimg" src="img/avatars/user1.jpg" ><h3 style="margin-top: 10px">김민성</h3>
-	                </div>
+	             	</c:forEach>
 	                <div id="s_f_list">참여자 리스트</div>
 	              	
 	                <!-- 로그인한 사람 제외한 사원 리스트만큼 반복문 실행 -->
@@ -542,15 +531,16 @@ form {
 		        <div class="s_modal_menu_box s_scroll">
                 <div id="s_f_list">참여자 리스트</div>
                 <!-- 로그인한 사람 제외한 사원 리스트만큼 반복문 실행 -->
-                <c:forEach items="${selectEmpList }" var="i">
+                <c:forEach items="${list }" var="i">
 	                <div class="s_emp_box">
+	                <img class="chatimg" src="img/avatars/user1.jpg" ><h3 style="margin-top: 10px">${i.mname}</h3>
 	                	<!-- 사원의 프로필 사진 -->
 	                	<%-- <img class="s_img_style" src="${i.emp_file_path }"> --%>
 	                	<!-- 사원의 부서명, 이름 -->
 	                	<%-- <div class="s_dn_en">${i.dept_name } - ${i.emp_name }</div> --%>
 	                	<div class="form-check">
 	                	  <!-- 체크박스 이름은 사원의 이름으로 넣어줌 -->
-						  <input class="form-check-input" name="${i.emp_name }" type="checkbox">
+						  <input class="form-check-input" name="${i.mname}" type="checkbox">
 						</div>
 	                </div>
                 </c:forEach>
@@ -571,7 +561,7 @@ form {
 
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
 <!-- 모달창 스크립트 -->
-<%-- <script>
+ <script>
 	// 체크박스 선택됐을 때 대화상대선택 박스에 넣기
 	
 	// 체크박스가 변했을 때마다 함수 실행
@@ -702,7 +692,7 @@ form {
 		}
 		
 	});
-</script> --%>
+</script> 
 
 <!-- 서브메뉴 눌렀을 때 -->
 <script>

@@ -11,5 +11,5 @@ import kh.groupware.stream.chat.model.vo.ChatVo;
 public interface ChatService {
 	
 	List<ChatVo> selectuserList();
-
+	
 }

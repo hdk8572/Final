@@ -44,7 +44,7 @@
 					</li>
 					
 										<li class="sidebar-item">
-						<a class="sidebar-link" href="chat">
+						<a class="sidebar-link" href="chatlist">
               <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">채팅</span>
             </a>
 					</li>

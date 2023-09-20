@@ -17,4 +17,7 @@ public class ChatDao {
 	public List<ChatVo> selectuserList(){
 		return sqlSession.selectList("selecuserList");
 	}
+	public String selectuserOne(){
+		return sqlSession.selectOne("selecuserOne");
+	}
 }

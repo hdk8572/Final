@@ -3,7 +3,13 @@
 <mapper namespace="chat">
 	<!-- 리스트 -->
   <select id="selecuserList" parameterType="string" resultType="ChatVo">
-		SELECT chatno,userid
-		FROM chat_member
+		select mname
+		from chat_member
+		join users using(userid)
 	</select>
+<!-- 	<select id="selecuserOne" parameterType="string" resultType="ChatVo">
+		select mname
+		from chat_member
+		join users using(userid)
+	</select> -->
 </mapper>
