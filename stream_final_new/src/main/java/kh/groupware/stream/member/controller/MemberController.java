@@ -31,10 +31,10 @@ public class MemberController {
 	}
 	@PostMapping("/newmember")
 	@ResponseBody
-	public int signUp(Model model, MemberVo mvo) {
+	public String signUp(MemberVo mvo) {
 		System.out.println("[jy] MemberController: " + mvo);
-		int result = memberService.signUp(mvo);
-		return result;
+		memberService.signUp(mvo);
+		return "main";
 	}
 
 	@GetMapping("/login")

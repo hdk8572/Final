@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="department">
+
+	<!-- 부서조회 -->
+	<select id="deptList" parameterType="String" resultType="DeptVo">
+		SELECT DEPTNAME, DEPTNO FROM DEPT WHERE CCODE = #{ccode}
+	</select>
+
+</mapper>

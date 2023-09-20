@@ -36,6 +36,7 @@
 	margin-left: 20px;
 }
 </style>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
 <body>
@@ -53,7 +54,9 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
-									<form id=frmNewMember" action=${pageContext.request.contextPath}/newmember method="post">
+									<form id=frmNewMember
+										" action=${pageContext.request.contextPath}/newmember
+										method="post">
 										<div class="mb-3">
 											<label class="form-label">E-mail</label> <input
 												class="form-control form-control-lg" type="email"
@@ -72,27 +75,30 @@
 												class="form-control form-control-lg" type="password"
 												name="password" placeholder="비밀번호를 입력하세요">
 										</div>
-<!-- 										<div class="mb-3">
+										<!-- 										<div class="mb-3">
 											<label class="form-label">Repeat Password</label> <input
 												class="form-control form-control-lg" type="password"
 												name="password" placeholder="" />
 										</div> -->
-										<div class="mb-3">
-											<label class="form-label">Company Code</label> <input
-												class="form-control form-control-lg" type="text"
-												name="ccode" placeholder="회사코드를 입력하세요" /> <small> <a
-												href="index.html">비밀번호 찾기</a>
-											</small>
+
+										<div>
+											<div class="mb-3">
+												<label class="form-label">Company Code</label> <input
+													class="form-control form-control-lg" type="text"
+													name="ccode" placeholder="회사코드를 입력하세요" /> <small>
+													<a href ="#" class="ccodeToDept">부서조회</a>
+												</small>
+											</div>
+
+											<div class="mb-3">
+												<label class="form-label">Department</label> <select
+													id="deptdrop" class="form-select mb-3" name="deptno">
+													<option selected>부서를 선택해주세요</option>
+											
+												</select>
+											</div>
 										</div>
-										<div class="mb-3">
-											<label class="form-label">Department</label> <select
-												class="form-select mb-3" name="deptno">
-												<option selected>부서를 선택해주세요</option>
-												<option>A</option>
-												<option>B</option>
-												<option>C</option>
-											</select>
-										</div>
+
 										<div>
 											<label class="form-check"> <input
 												class="form-check-input" type="checkbox" value="agree"
@@ -101,9 +107,9 @@
 											</label>
 										</div>
 										<div class="text-center mt-3">
-								<button type="submit" class="btn btn-lg btn-primary">로그인</button>
+											<button type="submit" class="btn btn-lg btn-primary">로그인</button>
 										</div>
-										</form>
+									</form>
 								</div>
 
 							</div>
@@ -118,8 +124,43 @@
 		</div>
 
 	</main>
+	<script src="js/app.js">
+		
+	</script>
+	<script>
+		$(".ccodeToDept").click(btnDeptListClickHandler);
 
-	<script src="js/app.js"></script>
+		function btnDeptListClickHandler() {
+			console.log($("#frmDeptList").serialize());
+			$.ajax({
+				url : "${pageContext.request.contextPath}/deptlist",
+				type : "post",
+				data : {
+					ccode : $("[name=ccode]").val()
+				},
+				dataType : "json",
+				success : deptView,
+				error: deptError
+
+			});
+		}
+		function deptView(data){
+			console.log("성공하였습니다")
+			 var listHtml = "";
+			for (var i=0; i<data.length; i++){
+				var deptName = data[i];
+				listHtml += `<option value="\${deptName.deptno}">\${deptName.deptname}</option>`;
+			}
+			$("#deptdrop").html(listHtml);
+		}
+		function deptError(){
+			var listHtml = "";
+			listHtml += `<option selected>해당하는 부서가 없습니다</option>`;
+			$("#deptdrop").html(listHtml);
+		}
+	</script>
+
+
 
 </body>
 
