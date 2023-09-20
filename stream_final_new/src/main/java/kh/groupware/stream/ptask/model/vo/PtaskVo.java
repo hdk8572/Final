@@ -13,13 +13,24 @@ public class PtaskVo {
 	private String tstartDate;
 	private String tendDate;
 	
+	//하위 업무 추가를 위한 컬럼
+	private String bref;	//bref=tno : 원본글
+	private String brelevel;//0 : 원본 1 : 하위 업무
+	private String brestep;	//하위 업무들간의 순서
+	
+	
 	@Override
 	public String toString() {
 		return "PtaskVo [tno=" + tno + ", pno=" + pno + ", userId=" + userId + ", tmember=" + tmember + ", ttitle="
-				+ ttitle + ", tcontent= clob, tstatus=" + tstatus + ", tdate=" + tdate + ", tstartDate="
-				+ tstartDate + ", tendDate=" + tendDate + "]";
+				+ ttitle + ", tcontent=" + tcontent + ", tstatus=" + tstatus + ", tdate=" + tdate + ", tstartDate="
+				+ tstartDate + ", tendDate=" + tendDate + ", bref=" + bref + ", brelevel=" + brelevel + ", brestep="
+				+ brestep + "]";
 	}
-	
+
+	public PtaskVo() {
+		super();
+	}
+
 	public PtaskVo(String tno, String pno, String userId, String tmember, String ttitle, String tcontent,
 			String tstatus, String tdate, String tstartDate, String tendDate) {
 		super();
@@ -33,6 +44,23 @@ public class PtaskVo {
 		this.tdate = tdate;
 		this.tstartDate = tstartDate;
 		this.tendDate = tendDate;
+	}
+
+	public PtaskVo(String tno, String pno, String userId, String tmember, String ttitle, String tstatus, String tdate,
+			String tstartDate, String tendDate, String bref, String brelevel, String brestep) {
+		super();
+		this.tno = tno;
+		this.pno = pno;
+		this.userId = userId;
+		this.tmember = tmember;
+		this.ttitle = ttitle;
+		this.tstatus = tstatus;
+		this.tdate = tdate;
+		this.tstartDate = tstartDate;
+		this.tendDate = tendDate;
+		this.bref = bref;
+		this.brelevel = brelevel;
+		this.brestep = brestep;
 	}
 
 	public String getTno() {
@@ -94,6 +122,30 @@ public class PtaskVo {
 	}
 	public void setTendDate(String tendDate) {
 		this.tendDate = tendDate;
+	}
+
+	public String getBref() {
+		return bref;
+	}
+
+	public void setBref(String bref) {
+		this.bref = bref;
+	}
+
+	public String getBrelevel() {
+		return brelevel;
+	}
+
+	public void setBrelevel(String brelevel) {
+		this.brelevel = brelevel;
+	}
+
+	public String getBrestep() {
+		return brestep;
+	}
+
+	public void setBrestep(String brestep) {
+		this.brestep = brestep;
 	}
 	
 	
