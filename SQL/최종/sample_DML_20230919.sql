@@ -130,65 +130,65 @@ VALUES (project_sequence.NEXTVAL, 'spring@ctest.co.kr', '피네임', '피코멘�
 
 
 --TABLE TASK
-INSERT INTO TASK (TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP)
-VALUES (task_sequence.NEXTVAL, 1, 'kh0001@kh.com', 'kh0001@kh.com', '점심 정하기', '정말 고르기 어렵습니다', '완료', SYSDATE, TO_DATE('2023-09-10 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-30 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0);
+INSERT INTO TASK (TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
+VALUES (task_sequence.NEXTVAL, 1, 'kh0001@kh.com', 'kh0001@kh.com', '점심 정하기', '정말 고르기 어렵습니다', '완료', SYSDATE, TO_DATE('2023-09-10 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-30 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0, 0);
 
-INSERT INTO TASK (TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP)
-VALUES (task_sequence.NEXTVAL, 2, 'kh0001@kh.com', 'kh0001@kh.com', 'CSS 보완하기', '어렵네 이거...', '진행 중' , SYSDATE, TO_DATE('2023-09-12 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-29 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0);
+INSERT INTO TASK (TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
+VALUES (task_sequence.NEXTVAL, 2, 'kh0001@kh.com', 'kh0001@kh.com', 'CSS 보완하기', '어렵네 이거...', '진행 중' , SYSDATE, TO_DATE('2023-09-12 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-29 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0, 0);
 
-INSERT INTO TASK (TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP)
-VALUES (task_sequence.NEXTVAL, 2, 'kh0001@kh.com', 'kh0001@kh.com', '설계 끝내기', '귀찮네 이거...', '진행 중' , SYSDATE, TO_DATE('2023-09-12 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-29 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0);
+INSERT INTO TASK (TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
+VALUES (task_sequence.NEXTVAL, 2, 'kh0001@kh.com', 'kh0001@kh.com', '설계 끝내기', '귀찮네 이거...', '진행 중' , SYSDATE, TO_DATE('2023-09-12 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-29 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0, 0);
 
-INSERT INTO TASK (TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP)
-VALUES (task_sequence.NEXTVAL, 2, 'kh0001@kh.com', 'kh0001@kh.com', '하기싫네', '머지 이거...', '진행 중' , SYSDATE, TO_DATE('2023-09-12 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-29 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0);
+INSERT INTO TASK (TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
+VALUES (task_sequence.NEXTVAL, 2, 'kh0001@kh.com', 'kh0001@kh.com', '하기싫네', '머지 이거...', '진행 중' , SYSDATE, TO_DATE('2023-09-12 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-29 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0, 0);
 
-INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP)
-VALUES (task_sequence.NEXTVAL, '6', 'sample@kh.co.kr', 'sple@kh.co.kr', '업무1', '내용1', '진행 중', SYSDATE, TO_DATE('2023-09-14 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-09-16 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0);
+INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
+VALUES (task_sequence.NEXTVAL, '6', 'sample@kh.co.kr', 'sple@kh.co.kr', '업무1', '내용1', '진행 중', SYSDATE, TO_DATE('2023-09-14 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-09-16 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0, 0);
 
-INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP)
-VALUES (task_sequence.NEXTVAL, '6', 'sample@kh.co.kr', 'mplsam@kh.co.kr', '업무2', '업무내용', '진행 중', SYSDATE, TO_DATE('2023-09-14 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-09-19 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0);
+INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
+VALUES (task_sequence.NEXTVAL, '6', 'sample@kh.co.kr', 'mplsam@kh.co.kr', '업무2', '업무내용', '진행 중', SYSDATE, TO_DATE('2023-09-14 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-09-19 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0, 0);
 
-INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP)
-VALUES (task_sequence.NEXTVAL, '6', 'sample@kh.co.kr', 'sple@kh.co.kr', '업무3', '일해라 일', '진행 중', SYSDATE, TO_DATE('2023-09-19 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-09-20 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0);
+INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
+VALUES (task_sequence.NEXTVAL, '6', 'sample@kh.co.kr', 'sple@kh.co.kr', '업무3', '일해라 일', '진행 중', SYSDATE, TO_DATE('2023-09-19 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-09-20 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0, 0);
 
-INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP)
-VALUES (task_sequence.NEXTVAL, '7', 'sample@kh.co.kr', 'mplsam@kh.co.kr', '밥줘', '배고파 밥줘', '진행 중', SYSDATE, TO_DATE('2023-09-13 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-09-13 14:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0);
+INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
+VALUES (task_sequence.NEXTVAL, '7', 'sample@kh.co.kr', 'mplsam@kh.co.kr', '밥줘', '배고파 밥줘', '진행 중', SYSDATE, TO_DATE('2023-09-13 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-09-13 14:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0, 0);
 
-INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP)
-VALUES (task_sequence.NEXTVAL, '11', 'spam@kh.co.kr', 'mplsam@kh.co.kr', '퇴근', '빛의속도로 집에가기', '진행 중', SYSDATE, TO_DATE('2023-09-13 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-09-13 10:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0);
+INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
+VALUES (task_sequence.NEXTVAL, '11', 'spam@kh.co.kr', 'mplsam@kh.co.kr', '퇴근', '빛의속도로 집에가기', '진행 중', SYSDATE, TO_DATE('2023-09-13 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-09-13 10:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0, 0);
 
-INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP)
-VALUES (task_sequence.NEXTVAL, '11', 'spam@kh.co.kr', 'sample@kh.co.kr', '사장님 월급주세요', '왜 월급이 밀리지요?', '진행 중', SYSDATE, TO_DATE('2023-09-17 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-09-18 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0);
+INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
+VALUES (task_sequence.NEXTVAL, '11', 'spam@kh.co.kr', 'sample@kh.co.kr', '사장님 월급주세요', '왜 월급이 밀리지요?', '진행 중', SYSDATE, TO_DATE('2023-09-17 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-09-18 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0, 0);
 
-INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP)
-VALUES (task_sequence.NEXTVAL, '11', 'spam@kh.co.kr', 'mplsam@kh.co.kr', '일해라 일', '노예처럼 일을 해라', '진행 중', SYSDATE, TO_DATE('2023-09-14 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-09-29 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0);
+INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
+VALUES (task_sequence.NEXTVAL, '11', 'spam@kh.co.kr', 'mplsam@kh.co.kr', '일해라 일', '노예처럼 일을 해라', '진행 중', SYSDATE, TO_DATE('2023-09-14 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-09-29 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0, 0);
 
-INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP)
-VALUES (task_sequence.NEXTVAL, '13', 'mplsam@kh.co.kr', 'sple@kh.co.kr', '휴가를 가고싶다', '사수가 괴롭혀요', '진행 중', SYSDATE, TO_DATE('2023-09-12 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-09-22 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0);
+INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
+VALUES (task_sequence.NEXTVAL, '13', 'mplsam@kh.co.kr', 'sple@kh.co.kr', '휴가를 가고싶다', '사수가 괴롭혀요', '진행 중', SYSDATE, TO_DATE('2023-09-12 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-09-22 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0, 0);
 
-INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP)
-VALUES (task_sequence.NEXTVAL, '13', 'mplsam@kh.co.kr', 'mplsam@kh.co.kr', '업무과다', '내 몸은 하난데', '진행 중', SYSDATE, TO_DATE('2023-09-13 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-09-24 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0);
+INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
+VALUES (task_sequence.NEXTVAL, '13', 'mplsam@kh.co.kr', 'mplsam@kh.co.kr', '업무과다', '내 몸은 하난데', '진행 중', SYSDATE, TO_DATE('2023-09-13 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-09-24 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0, 0);
 
-INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP)
-VALUES (task_sequence.NEXTVAL, '13', 'fffll@ctest.co.kr', 'react@ctest.co.kr', '업무1', '당신을 위한 일이 있어.', '진행 중', SYSDATE, TO_DATE('2023-09-13 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-09-24 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0);
+INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
+VALUES (task_sequence.NEXTVAL, '13', 'fffll@ctest.co.kr', 'react@ctest.co.kr', '업무1', '당신을 위한 일이 있어.', '진행 중', SYSDATE, TO_DATE('2023-09-13 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-09-24 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0, 0);
 
-INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP)
-VALUES (task_sequence.NEXTVAL, '15', 'fffll@ctest.co.kr', 'spring@ctest.co.kr', '너 내 사원이 되라', '가족같은 분위기의 기업에서 꿈의 직장생활', '진행 중', SYSDATE, TO_DATE('2023-09-13 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-11 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0);
+INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
+VALUES (task_sequence.NEXTVAL, '15', 'fffll@ctest.co.kr', 'spring@ctest.co.kr', '너 내 사원이 되라', '가족같은 분위기의 기업에서 꿈의 직장생활', '진행 중', SYSDATE, TO_DATE('2023-09-13 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-11 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0, 0);
 
-INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP)
-VALUES (task_sequence.NEXTVAL, '15', 'fffll@ctest.co.kr', 'spring@ctest.co.kr', '너 내 노동력이 되라', '가족같은 분위기의 기업에서 꿈의 직장생활', '진행 중', SYSDATE, TO_DATE('2023-09-13 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-11 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0);
+INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
+VALUES (task_sequence.NEXTVAL, '15', 'fffll@ctest.co.kr', 'spring@ctest.co.kr', '너 내 노동력이 되라', '가족같은 분위기의 기업에서 꿈의 직장생활', '진행 중', SYSDATE, TO_DATE('2023-09-13 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-11 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0, 0);
 
-INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP)
-VALUES (task_sequence.NEXTVAL, '17', 'spring@ctest.co.kr', 'spring@ctest.co.kr', '업무1', '일이 참 많지요?', '진행 중', SYSDATE, TO_DATE('2023-09-13 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-11 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0);
+INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
+VALUES (task_sequence.NEXTVAL, '17', 'spring@ctest.co.kr', 'spring@ctest.co.kr', '업무1', '일이 참 많지요?', '진행 중', SYSDATE, TO_DATE('2023-09-13 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-11 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0, 0);
 
-INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP)
-VALUES (task_sequence.NEXTVAL, '17', 'spring@ctest.co.kr', 'spring@ctest.co.kr', '업무2', '일이 참 많지요?', '진행 중', SYSDATE, TO_DATE('2023-09-13 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-11 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0);
+INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
+VALUES (task_sequence.NEXTVAL, '17', 'spring@ctest.co.kr', 'spring@ctest.co.kr', '업무2', '일이 참 많지요?', '진행 중', SYSDATE, TO_DATE('2023-09-13 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-11 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0, 0);
 
-INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP)
-VALUES (task_sequence.NEXTVAL, '17', 'spring@ctest.co.kr', 'spring@ctest.co.kr', '업무3', '일이 정말 많지요?', '진행 중', SYSDATE, TO_DATE('2023-09-13 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-11 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0);
+INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
+VALUES (task_sequence.NEXTVAL, '17', 'spring@ctest.co.kr', 'spring@ctest.co.kr', '업무3', '일이 정말 많지요?', '진행 중', SYSDATE, TO_DATE('2023-09-13 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-11 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0, 0);
 
-INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP)
-VALUES (task_sequence.NEXTVAL, '17', 'spring@ctest.co.kr', 'spring@ctest.co.kr', '업무4', '일이 정말 많지요?', '진행 중', SYSDATE, TO_DATE('2023-09-13 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-11 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0);
+INSERT INTO TASK ( TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
+VALUES (task_sequence.NEXTVAL, '17', 'spring@ctest.co.kr', 'spring@ctest.co.kr', '업무4', '일이 정말 많지요?', '진행 중', SYSDATE, TO_DATE('2023-09-13 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-11 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), task_sequence.NEXTVAL, 0, 0);
 
 
 --TABLE SCHEDULE

@@ -55,10 +55,9 @@ public class CalendarController {
 	
 	//참석자 조회
 	@RequestMapping("/pcal")
-	@ResponseBody
-	public String attendList(Model model) {
-		model.addAttribute("attendList", calendarService.attendList());
-		return "/calendar/addcalmodal";
+	@ResponseBody //이걸 쓰면 model 못 씀
+	public String attendList() { //매개인자? 
+		return new Gson().toJson(calendarService.attendList());
 	}
 	
 	//MemberProject 조회

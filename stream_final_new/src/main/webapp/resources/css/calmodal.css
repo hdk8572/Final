@@ -1,4 +1,5 @@
 /* The Modal (background) */
+/* 모달 공통 */
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -12,12 +13,11 @@
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content/Box */
 .modal-content {
   background-color: #f5f7fb;
   padding: 0px;
-  /* border: 1px solid #888; */
   height: 100%;
+  border-radius: 10px;
 }
 
 .modal-header {
@@ -33,6 +33,11 @@
 .modal-text {
 	display: block;
 	padding: 0.625rem 1.625rem;
+}
+.modal-header.pcal {
+    height: 65px;
+    background-color: #009b77;
+	border-radius: 10px 10px 0px 0px;
 }
 
 /* The Close Button */
@@ -51,19 +56,13 @@
   cursor: pointer;
 }
 
+/* 공통 */
+
+
+
 /* Date */
 .form-date {
 	width: 45%;
-}
-
-/* Project */
-/* Right */
-.modal-content.project {
-  border-radius: 40px 0 0 40px;
-}
-
-.modal-header.project {
-    border-radius: 40px 0 0;
 }
 
 .modal.project.right .modal-dialog {
@@ -89,7 +88,7 @@
 
 
 /* PtaskModal */
-.modal-dialog.ptask {
+.modal-dialog.pcal {
     position: relative;
     z-index: 5;
     height: 80%;
@@ -102,22 +101,12 @@
     border-radius: 10px;
 }
 
-.modal-content {
-	border-radius: 10px;
-}
-
-.modal-header.ptask {
-    height: 65px;
-    background-color: #009b77;
-	border-radius: 10px 10px 0px 0px;
-}
-
 .form-select.mb-3.selectCategory {
     width: 30%;
 }
 
 .form-control.manager {
-	width: 30%;
+	width: 50%;
 }
 .form-control.place {
 	width: 30%;

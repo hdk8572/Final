@@ -23,8 +23,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 <!-- Tab bar -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<!-- Modal CSS -->
-<link href="${pageContext.request.contextPath}/css/Modal.css" rel="stylesheet">
 
 <link href="${pageContext.request.contextPath }/css/app.css" rel="stylesheet">
 	
@@ -91,17 +89,26 @@
 	
 	<!-- 달력을 구성  -->
 	<script>
-	/*  */
+	/* 일정추가 클릭이벤트 ajax로 갔다 오는거 결론: 참석자 input에 list가 뜨면 됨*/
 function getMemberProjectListHandler(thisElement){
-		console.log("first -- modal");
-		// ajax memberProjectList 
-		// success (result)
+		events : thisElement
+		,
+		$.ajax({
+			type:"get",
+			url:'${pageContext.request.contextPath}/memberProjectList',
+			success: function(result){
+				console.log(result);//"first -- modal"
+				 // 이후 모달창 열기 코드를 여기에 추가
+				 $('#myModal').modal('show');
+			},
+			error: function(result){
+				console.log("실패");
+			}
+		})
 		
 	}
-	
-	
-	
-		/* 일정추가 클릭이벤트 ajax로 갔다 오는거 결론: 참석자 input에 list가 뜨면 됨*/
+		// ajax memberProjectList 
+		// success (result)
 		document.addEventListener('DOMContentLoaded', function() {
 
 			const calendarEl = document.getElementById('calendar'); //calender라는 id를 가진 요소를 찾아 calendarEl 변수에 할당한다. 이건 fullcalendar를 표시할 컨테이너이다.
