@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kh.groupware.stream.project.model.vo.ProjectVo;
+import kh.groupware.stream.ptask.model.vo.PtaskVo;
 
 @Repository
 public class MaintaskDao {
@@ -18,8 +19,8 @@ public class MaintaskDao {
 		return sqlSession.selectList("mainTask.projectNameList");
 	}
 	
-	public int insertTask() {
-		return 0;
+	public int insertInnerTask(PtaskVo vo) {
+		return sqlSession.insert("mainTask.innerTaskInsert", vo);
 	}
 	
 }

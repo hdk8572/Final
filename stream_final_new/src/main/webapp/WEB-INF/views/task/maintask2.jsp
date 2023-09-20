@@ -244,51 +244,51 @@
 																<div class="jm-title-tno col-lg-1 jm-grey jm-gr">${task.tno }</div>
 															</li>
 															<form class="addInnerTask">
-															<li class="jm-innerTaskInput jm-innerTask-el">
-																<div class="jm-title-ttitle col-lg-4 jm-grey">
-																	<input type="text" placeholder="하위업무명을 입력하세요" name="ttitle" required="required">
-																</div>
-																<div class="jm-title-tstatus col-lg-1 jm-grey">
-																	<span>
-																		<input type="hidden" class="jm-select-tstatus">
-																		<select class= "form-select mb-3 selectCategory ml-2 " name="tstatus">
-																			<option value="요청" class="status request" selected="selected">요청</option>
-																		    <option value="진행" class="status progress">진행</option>
-																		    <option value="피드백" class="status feedback">피드백</option>
-																		    <option value="완료" class="status complete">완료</option>
-																		    <option value="보류" class="status remain">보류</option>
-																		</select>
-																	</span>
-																</div>
-																<div class="jm-title-tmember col-lg-1 jm-grey">
-																	<span>담당자 드롭다운(tmember)</span>
-																</div>
-																<div class="dropdown jm-title-tstartdate col-lg-1 jm-grey">
-																	<div data-bs-toggle="dropdown">
-																		<button class="btn btn-secondary">시작일</button>
+																<li class="jm-innerTaskInput jm-innerTask-el">
+																	<div class="jm-title-ttitle col-lg-4 jm-grey">
+																		<input type="text" placeholder="하위업무명을 입력하세요" name="ttitle" required="required">
 																	</div>
-																	<div class="mini-pop dropdown-menu dropdown-menu-end">
-																		<input type="date" name="tstartdate">
+																	<div class="jm-title-tstatus col-lg-1 jm-grey">
+																		<span>
+																			<input type="hidden" class="jm-select-tstatus">
+																			<select class= "form-select mb-3 selectCategory ml-2 " name="tstatus">
+																				<option value="요청" class="status request" selected="selected">요청</option>
+																			    <option value="진행" class="status progress">진행</option>
+																			    <option value="피드백" class="status feedback">피드백</option>
+																			    <option value="완료" class="status complete">완료</option>
+																			    <option value="보류" class="status remain">보류</option>
+																			</select>
+																		</span>
 																	</div>
-																</div>
-																<div class="dropdown jm-title-tenddate col-lg-1 jm-grey">
-																	<div data-bs-toggle="dropdown">
-																		<button class="btn btn-secondary">마감일</button>
+																	<div class="jm-title-tmember col-lg-1 jm-grey">
+																		<span>담당자 드롭다운(tmember)</span>
 																	</div>
-																	<div class="mini-pop dropdown-menu dropdown-menu-end">
-																		<input type="date" name="tenddate">
+																	<div class="dropdown jm-title-tstartdate col-lg-1 jm-grey">
+																		<div data-bs-toggle="dropdown">
+																			<button class="btn btn-secondary">시작일</button>
+																		</div>
+																		<div class="mini-pop dropdown-menu dropdown-menu-end">
+																			<input type="date" name="tstartdate">
+																		</div>
 																	</div>
-																</div>
-																<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">
-																	<div class="innerTdate"></div>
-																</div>
-																<div class="jm-title-tno col-lg-1 jm-grey jm-gr">
-																	<input type="hidden" name="tno" value="${task.tno }">
-																	<input type="hidden" name="pno" value="${project.pno}">
-																	<input type="hidden" name="userId" value="kh0001@kh.com"> <!-- 로그인 세션 받아서 등록 -->
-																	<button type="submit" class="jm-innerTask-insert-button">추가하기</button>
-																</div>
-															</li>
+																	<div class="dropdown jm-title-tenddate col-lg-1 jm-grey">
+																		<div data-bs-toggle="dropdown">
+																			<button class="btn btn-secondary">마감일</button>
+																		</div>
+																		<div class="mini-pop dropdown-menu dropdown-menu-end">
+																			<input type="date" name="tenddate">
+																		</div>
+																	</div>
+																	<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">
+																		<div class="innerTdate"></div>
+																	</div>
+																	<div class="jm-title-tno col-lg-1 jm-grey jm-gr">
+																		<input type="hidden" name="tno" value="${task.tno }">
+																		<input type="hidden" name="pno" value="${project.pno}">
+																		<input type="hidden" name="userId" value="kh0001@kh.com"> <!-- 로그인 세션 받아서 등록 -->
+																		<button type="submit" class="jm-innerTask-insert-button">추가하기</button>
+																	</div>
+																</li>
 															</form>
 														</c:forEach>
 													</ul>
@@ -306,14 +306,6 @@
 	</div>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 	<script src="js/app.js"></script>
-	<script>
-	function selectOption() {
- 	    var selectedOption = $("select[name=tstatus] option:selected").text();
- 	    console.log(selectedOption);
- 	    $(".jm-select-tstatus").val(selectedOption);
-	}
-	</script>
-	
 </body>
 
 </html>
