@@ -30,7 +30,6 @@ public class MemberController {
 		return mv;
 	}
 	@PostMapping("/newmember")
-	@ResponseBody
 	public String signUp(MemberVo mvo) {
 		System.out.println("[jy] MemberController: " + mvo);
 		memberService.signUp(mvo);
