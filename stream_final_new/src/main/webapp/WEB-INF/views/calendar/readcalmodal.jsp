@@ -5,10 +5,10 @@
 	<!-- 모달 -->
 <!-- The Modal -->
 <div id="readScheduleModal" class="modal right fade">
-<div class="modal-dialog">
+<div class="modal-dialog pcal">
   <!-- Modal content -->
-  <div class="modal-content project">
-  	<div class="modal-header project">
+  <div class="modal-content pcal">
+  	<div class="modal-header pcal">
   		<span class="close" data-bs-dismiss="modal" aria-label="Close">&times;</span>
   	</div>
  	<div class="modal-body project">
@@ -18,9 +18,9 @@
 					<h5 class="card-title mb-0">프로젝트명 및 설명을 입력해주세요.</h5>
 				</div>
 				<div class="card-body addProject">
-					<input type="hidden" name="userId" value="kh0001@kh.com"> <!-- 로그인 세션 받아서 등록 -->
+					<input type="hidden" name="userid" value="mplsam@kh.co.kr"> <!-- 로그인 세션 받아서 등록 -->
 					<input type="hidden" name="paccess" value="ACCESS"><!-- 세션에서 권한 선택 -->
-					<input type="text" class="form-control title" name="pname" placeholder="프로젝트명을 입력해주세요." required="required">
+					<!-- <input type="text" class="form-control title" name="pname" placeholder="프로젝트명을 입력해주세요." required="required"> -->
 					<br> 
 					<div>
 					<input type="date" class="form-date" name="pstartDate" required="required">
