@@ -38,3 +38,12 @@ select brestep+1 from task where tno =1;
 select brelevel+1 from task where tno = 1;
 
 
+--insert into task (TNO, PNO, USERID, TTITLE, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
+--		values (
+--			task_sequence.NEXTVAL, #{pno}, #{userid}, #{ttitle}, #{tstatus}, sysdate, #{tstartdate}, #{tenddate}, 
+--				(select bref from task where tno=#{tno}),
+--				(select brestep+1 from task where tno=#{tno}),
+--				(select brelevel+1 from task where tno=#{tno})
+--				)
+--;
+
