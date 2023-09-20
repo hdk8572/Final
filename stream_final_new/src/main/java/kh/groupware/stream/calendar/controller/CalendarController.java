@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 
 import kh.groupware.stream.calendar.model.service.CalendarService;
+import kh.groupware.stream.calendar.model.vo.CalendarParamVo;
 import kh.groupware.stream.calendar.model.vo.CalendarVo;
 
 @Controller
@@ -63,8 +64,8 @@ public class CalendarController {
 	//MemberProject 조회
 	@GetMapping("/memberProjectList")
 	@ResponseBody
-	public String memberProjectList(String pno) {
-		return new Gson().toJson(calendarService.memberProjectList(pno));
+	public String memberProjectList(CalendarParamVo param) {
+		return new Gson().toJson(calendarService.memberProjectList(param));
 	}
 	
 	

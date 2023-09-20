@@ -45,7 +45,7 @@
 	</update>
 
 	<!-- 프로젝트의 멤버들 조회  -->
-	<select id="memberProjectList" parameterType="string" resultType="MemberSimpleVo">
+	<select id="memberProjectList"  resultType="MemberSimpleVo">
 	select userid, ( select mname from users tu where tm.userid=tu.userid ) mname from MEMBER_PROJECT tm where pno=#{pno}
 	</select>
 
