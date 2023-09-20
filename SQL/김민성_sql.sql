@@ -20,7 +20,6 @@ FROM CHATLIST;
 SELECT  *
 FROM CHAT_member;
 
-TRUNCATE table chat_member;
 
 
 INSERT INTO chat_member( CHATNO,USERID) VALUES (11,'kh0001@kh.com');
