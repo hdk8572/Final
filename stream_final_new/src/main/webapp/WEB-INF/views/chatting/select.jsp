@@ -502,7 +502,7 @@ form {
         	<!-- 채팅방 클릭 시 해당 채팅방 띄울 div -->
             <div id="s_chat_content_box">
             	<!-- 채팅방 클릭 전은 로고 띄움 -->
-            	
+            	<a class="sidebar-link" href="chat"><span style="color: green;">채팅방 참여</span></a>
             </div>
         </article>    
     </section>
@@ -551,6 +551,7 @@ form {
 	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
 	        
 	      </div>
+	      
 	    </div>
 	  </div>
 	</div>
@@ -632,7 +633,7 @@ form {
 		}
 		
 		// 본인도 채팅참여자에 추가하여 배열에 push해줌
-		arr.push("${selectOne.emp_name}");
+		arr.push("${i.mname}");
 		
 		// ajax에 전달할 obj
 		var obj = {

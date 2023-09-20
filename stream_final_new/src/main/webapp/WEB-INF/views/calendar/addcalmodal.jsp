@@ -30,19 +30,9 @@
 								  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r= "4"></circle>
 								</svg>
 							</span>
-							    <input type="text" class="form-control" placeholder="Timezone" list="list-timezone" id="clist">
-							    	<datalist id="list-timezone">
-							            <option>Asia/Aden</option>
-							            <option>Asia/Aqtau</option>
-							            <option>Asia/Baghdad</option>
-							            <option>Asia/Barnaul</option>
-							            <option>Asia/Chita</option>
-							            <option>Asia/Dhaka</option>
-							            <option>Asia/Famagusta</option>
-							            <option>Asia/Hong_Kong</option>
-							            <option>Asia/Jayapura</option>
-							            <option>Asia/Kuala_Lumpur</option>
-							            <option>Asia/Jakarta</option>
+							    <input type="text" class="form-control member" placeholder="참가자" list="c-memberlist" id="clist">
+							    	<datalist  class="c-member" id="c-memberlist">
+							    		<option selected>참가자를 선택해라</option>
 							        </datalist>
 							<div class="form-userid">
 								<div class="cal-attenuserid col-lg-1" >${calendar.userid }
@@ -60,8 +50,6 @@
 						</span>
 						<br>
 					<div>
-				
-				
 					<textarea class="form-control content" name="pcoment" placeholder="내용을 입력해주세요."></textarea>
 						<!-- 시큐에디터  위즈윅 -->
 						<!-- <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>  -->
@@ -73,12 +61,12 @@
 					      });
 					    </script>
 					    <!-- ?? -->
-					        <script>
+				<!-- 	        <script>
 						        document.addEventListener('DOMContentLoaded', e => {
 						            $('#clist').autocomplete()
 						        }, false);
-						   </script>
-				</div>
+						   </script> -->
+				   </div>
 						<br>
 						<div align="center">
 							<button class="btn btn-primary" type="submit">추가</button>
@@ -93,3 +81,37 @@
 	</div>
 </div>
 <!-- 모달 -->
+<<script>
+/* 일정추가 클릭이벤트 ajax로 갔다 오는거 결론: 참석자 input에 list가 뜨면 됨*/
+// ajax memberProjectList 
+// success (result)
+	$(".c-member").click(getMemberProjectListHandler);
+	function getMemberProjectListHandler(thisElement){
+		 $('#myModal').modal('show');
+		console.log($("#").serialize());
+		$.ajax({
+			url:'${pageContext.request.contextPath}/memberProjectList',
+			type:"get",
+			data : {
+				pno : $("[name=pno]").val()
+			},
+			dataType: "json",
+			success: memberView
+			error:memberError
+		});
+	}
+	function memberView(data){
+		console.log("성공하였습니다.")
+		var listHtml = "";
+		for (var i=0; i<data.lenght; i++){
+			var mname = data[i];
+			listHtml += `<option value="\${mname.userid}">\${mname.mname}</option>`;
+		}
+		$("#clist").html(listHtml);
+	}
+	function memberError(){
+		var listHtml = "";
+		listHtml += `<option selected>해당하는 이름이 없습니다.</option>`;
+		$("#clist").html(listHtml);
+	}
+</script>

@@ -46,40 +46,40 @@ VALUES ('sql@ctest.co.kr', 'D002', 'C002', '00011', '1', 'RM', '김사원', '010
 
 --TABLE PROJECT
 INSERT INTO PROJECT ( PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, PSTARTDATE, PENDDATE, PSTATUS)
-VALUES (project_sequence.NEXTVAL, 'sample@kh.co.kr', '테스트케이스1', '테스트용입니다.', 'ACCESS', TO_DATE('2023-09-12', 'YYYY-MM-DD'), TO_DATE('2023-09-12', 'YYYY-MM-DD'), TO_DATE('2023-09-22', 'YYYY-MM-DD'), '진행중');
+VALUES (project_sequence.NEXTVAL, 'sample@kh.co.kr', '테스트케이스1', '테스트용입니다.', 'ACCESS', TO_DATE('2023-09-12', 'YYYY-MM-DD'), TO_DATE('2023-09-12', 'YYYY-MM-DD'), TO_DATE('2023-09-22', 'YYYY-MM-DD'), '미진행');
 
 INSERT INTO PROJECT ( PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, PSTARTDATE, PENDDATE, PSTATUS)
-VALUES (project_sequence.NEXTVAL, 'sample@kh.co.kr', '테스트케이스2', '테스트용입니다2.', 'ACCESS', TO_DATE('2023-09-12', 'YYYY-MM-DD'), TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-09-22', 'YYYY-MM-DD'), '진행중');
+VALUES (project_sequence.NEXTVAL, 'sample@kh.co.kr', '테스트케이스2', '테스트용입니다2.', 'ACCESS', TO_DATE('2023-09-12', 'YYYY-MM-DD'), TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-09-22', 'YYYY-MM-DD'), '미진행');
 
 INSERT INTO PROJECT ( PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, PSTARTDATE, PENDDATE, PSTATUS)
-VALUES (project_sequence.NEXTVAL, 'sple@kh.co.kr', 'USER가 늘었어요', '테스트용입니다.', 'ACCESS', TO_DATE('2023-09-14', 'YYYY-MM-DD'), TO_DATE('2023-09-14', 'YYYY-MM-DD'), TO_DATE('2023-09-22', 'YYYY-MM-DD'), '진행중');
+VALUES (project_sequence.NEXTVAL, 'sple@kh.co.kr', 'USER가 늘었어요', '테스트용입니다.', 'ACCESS', TO_DATE('2023-09-14', 'YYYY-MM-DD'), TO_DATE('2023-09-14', 'YYYY-MM-DD'), TO_DATE('2023-09-22', 'YYYY-MM-DD'), '미진행');
 
 INSERT INTO PROJECT ( PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, PSTARTDATE, PENDDATE, PSTATUS)
-VALUES (project_sequence.NEXTVAL, 'sple@kh.co.kr', '프로젝트명1', '테스트중입니다.', 'ACCESS', TO_DATE('2023-09-14', 'YYYY-MM-DD'), TO_DATE('2023-09-14', 'YYYY-MM-DD'), TO_DATE('2023-09-27', 'YYYY-MM-DD'), '진행중');
+VALUES (project_sequence.NEXTVAL, 'sple@kh.co.kr', '프로젝트명1', '테스트중입니다.', 'ACCESS', TO_DATE('2023-09-14', 'YYYY-MM-DD'), TO_DATE('2023-09-14', 'YYYY-MM-DD'), TO_DATE('2023-09-27', 'YYYY-MM-DD'), '미진행');
 
 INSERT INTO PROJECT ( PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, PSTARTDATE, PENDDATE, PSTATUS)
-VALUES (project_sequence.NEXTVAL, 'spam@kh.co.kr', 'USER가 늘었어요', '테스트용입니다.', 'ACCESS', TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-09-14', 'YYYY-MM-DD'), TO_DATE('2023-09-29', 'YYYY-MM-DD'), '진행중');
+VALUES (project_sequence.NEXTVAL, 'spam@kh.co.kr', 'USER가 늘었어요', '테스트용입니다.', 'ACCESS', TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-09-14', 'YYYY-MM-DD'), TO_DATE('2023-09-29', 'YYYY-MM-DD'), '진행');
 
 INSERT INTO PROJECT ( PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, PSTARTDATE, PENDDATE, PSTATUS)
-VALUES (project_sequence.NEXTVAL, 'spam@kh.co.kr', '프로젝트명2', '테스트중입니다.', 'ACCESS', TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-09-14', 'YYYY-MM-DD'), TO_DATE('2023-09-29', 'YYYY-MM-DD'), '미정');
+VALUES (project_sequence.NEXTVAL, 'spam@kh.co.kr', '프로젝트명2', '테스트중입니다.', 'ACCESS', TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-09-14', 'YYYY-MM-DD'), TO_DATE('2023-09-29', 'YYYY-MM-DD'), '진행');
 
 INSERT INTO PROJECT ( PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, PSTARTDATE, PENDDATE, PSTATUS)
-VALUES (project_sequence.NEXTVAL, 'mplsam@kh.co.kr', '이름', '테스트용입니다.', 'ACCESS', TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-09-14', 'YYYY-MM-DD'), TO_DATE('2023-09-29', 'YYYY-MM-DD'), '미정');
+VALUES (project_sequence.NEXTVAL, 'mplsam@kh.co.kr', '이름', '테스트용입니다.', 'ACCESS', TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-09-14', 'YYYY-MM-DD'), TO_DATE('2023-09-29', 'YYYY-MM-DD'), '진행');
 
 INSERT INTO PROJECT ( PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, PSTARTDATE, PENDDATE, PSTATUS)
-VALUES (project_sequence.NEXTVAL, 'mplsam@kh.co.kr', '이름름', '테스트용입니다.', 'ACCESS', TO_DATE('2023-09-11', 'YYYY-MM-DD'), TO_DATE('2023-09-12', 'YYYY-MM-DD'), TO_DATE('2023-09-29', 'YYYY-MM-DD'), '완료');
+VALUES (project_sequence.NEXTVAL, 'mplsam@kh.co.kr', '이름름', '테스트용입니다.', 'ACCESS', TO_DATE('2023-09-11', 'YYYY-MM-DD'), TO_DATE('2023-09-12', 'YYYY-MM-DD'), TO_DATE('2023-09-29', 'YYYY-MM-DD'), '보류');
 
 INSERT INTO PROJECT ( PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, PSTARTDATE, PENDDATE, PSTATUS)
-VALUES (project_sequence.NEXTVAL, 'fffll@ctest.co.kr', '이이름름', '테스트용입니다.', 'ACCESS', TO_DATE('2023-09-12', 'YYYY-MM-DD'), TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-10-11', 'YYYY-MM-DD'), '완료');
+VALUES (project_sequence.NEXTVAL, 'fffll@ctest.co.kr', '이이름름', '테스트용입니다.', 'ACCESS', TO_DATE('2023-09-12', 'YYYY-MM-DD'), TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-10-11', 'YYYY-MM-DD'), '보류');
 
 INSERT INTO PROJECT ( PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, PSTARTDATE, PENDDATE, PSTATUS)
-VALUES (project_sequence.NEXTVAL, 'fffll@ctest.co.kr', 'PNAME자리', 'PCOMENT자리', 'ACCESS', TO_DATE('2023-09-12', 'YYYY-MM-DD'), TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-10-11', 'YYYY-MM-DD'), '완료');
+VALUES (project_sequence.NEXTVAL, 'fffll@ctest.co.kr', 'PNAME자리', 'PCOMENT자리', 'ACCESS', TO_DATE('2023-09-12', 'YYYY-MM-DD'), TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-10-11', 'YYYY-MM-DD'), '보류');
 
 INSERT INTO PROJECT ( PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, PSTARTDATE, PENDDATE, PSTATUS)
 VALUES (project_sequence.NEXTVAL, 'react@ctest.co.kr', 'PNAME자리입니다', 'PCOMENT자리입니다', 'ACCESS', TO_DATE('2023-09-12', 'YYYY-MM-DD'), TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-10-11', 'YYYY-MM-DD'), '숨김');
 
 INSERT INTO PROJECT ( PNO, USERID, PNAME, PCOMENT, PACCESS, PDATE, PSTARTDATE, PENDDATE, PSTATUS)
-VALUES (project_sequence.NEXTVAL, 'spring@ctest.co.kr', '피네임', '피코멘트', 'ACCESS', TO_DATE('2023-09-12', 'YYYY-MM-DD'), TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-10-11', 'YYYY-MM-DD'), '진행중');
+VALUES (project_sequence.NEXTVAL, 'spring@ctest.co.kr', '피네임', '피코멘트', 'ACCESS', TO_DATE('2023-09-12', 'YYYY-MM-DD'), TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-10-11', 'YYYY-MM-DD'), '숨김');
 
 
 --TABLE TASK

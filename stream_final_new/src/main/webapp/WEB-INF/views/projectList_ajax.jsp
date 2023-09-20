@@ -57,19 +57,10 @@
 
 			<main class="content">
 				<div class="container-fluid p-0">
-<<<<<<< Updated upstream
-					
+
 					<h1 class="h3 mb-3" >
 						<span>${ul.mname}님의 프로젝트 목록</span>
 						<span><button class="btn btn-primary addProject" id="myBtn" data-bs-toggle="modal" data-bs-target="#addProjectModal">프로젝트 추가+</button></span>
-=======
-
-					<h1 class="h3 mb-3">
-						<span>${ul.mname}님의 프로젝트 목록</span> <span><button
-								class="btn btn-primary addProject" id="myBtn"
-								data-bs-toggle="modal" data-bs-target="#addProject">프로젝트
-								추가+</button></span>
->>>>>>> Stashed changes
 					</h1>
 
 					<%@ include file="/WEB-INF/views/addProjectModal.jsp"%>
@@ -122,7 +113,13 @@
 	    });
 	  });
 		    loadList();
+		    
+		    
 	});
+	
+	
+	
+	
 	
 	function loadList() {
 		$.ajax({
@@ -158,8 +155,8 @@
 		                                    <input type="hidden" name="deptName\${ul.pno}" data-deptName="\${ul.deptName}">
 		                                    <input type="hidden" name="mname\${ul.pno}" data-mname="\${ul.mname}">
 		                                    <input type="hidden" name="mrank\${ul.pno}" data-mrank="\${ul.mrank}">
-		                                    <input type="hidden" name="pstartDate\${ul.pno}" data-pstartDate="\${ul.pstartDate}">
-		                                    <input type="hidden" name="pendDate\${ul.pno}" data-pendDate="\${ul.pendDate}">
+		                                    <input type="hidden" name="pstartDate\${ul.pno}" data-pstartDate="\${ul.pstartdate}">
+		                                    <input type="hidden" name="pendDate\${ul.pno}" data-pendDate="\${ul.penddate}">
 		                                </h5>
 		                            </div>
 		                            
@@ -196,8 +193,9 @@
 	           </div>`;
 				}
 	    $("#wrap-list").html(listHtml);
-	    $(".frm.select").click(abc);  // stream.js -> abc();
+	    $(".frm.select").click(selectOption);  // stream.js -> abc();
 	    $(".list-delete").click(listDeleteHandler);
+	    $("#updateBtn").click(doUpdateProject);
 
 	}
  	

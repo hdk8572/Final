@@ -100,15 +100,20 @@
     box-shadow: 20px 20px 30px rgba(0,0,0,.2);
     border-radius: 10px;
 }
-
+/* 상세 */
 .form-select.mb-3.selectCategory {
     width: 30%;
 }
 
+
 .form-control.manager {
 	width: 50%;
 }
+
 .form-control.place {
+	width: 30%;
+}
+.form-control.member{
 	width: 30%;
 }
 
