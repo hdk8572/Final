@@ -10,10 +10,10 @@ import kh.groupware.stream.company.model.vo.CompanyVo;
 public class CompanyService {
 	
 	@Autowired
-	private CompanyDao companyDao;
+	private CompanyDao companydao;
 
 	// login
 	public String selectOne(CompanyVo cvo) {
-		return companyDao.selectOne(cvo);
+		return companydao.selectOne(cvo);
 	}
 }

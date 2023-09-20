@@ -30,4 +30,5 @@ public class CompanyContoller {
 		return companyService.selectOne(cvo);
 
 	}
+	
 }

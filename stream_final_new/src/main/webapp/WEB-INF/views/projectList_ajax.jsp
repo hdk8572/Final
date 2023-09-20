@@ -1,61 +1,81 @@
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <html>
 <head>
- 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
-	<meta name="author" content="AdminKit">
-	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description"
+	content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+<meta name="author" content="AdminKit">
+<meta name="keywords"
+	content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
+<link rel="canonical" href="https://demo-basic.adminkit.io/" />
 
-	<title>AdminKit Demo - Bootstrap 5 Admin Template</title>
-	
-	<!-- Bootstrap CSS -->
-	<link href="${pageContext.request.contextPath}/css/app.css" rel="stylesheet">
-	
-	<!-- ProjectList CSS -->
-	<link href="${pageContext.request.contextPath}/css/projectList.css" rel="stylesheet">
-	<!-- Modal CSS -->
-	<link href="${pageContext.request.contextPath}/css/Modal.css" rel="stylesheet">
-	
-	<!-- DropDown - Option CSS -->	
-	<link href="${pageContext.request.contextPath}/css/projectList.option.css" rel="stylesheet">
-	
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-	<!-- Tab bar -->
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-	
+<title>AdminKit Demo - Bootstrap 5 Admin Template</title>
+
+<!-- Bootstrap CSS -->
+<link href="${pageContext.request.contextPath}/css/app.css"
+	rel="stylesheet">
+
+<!-- ProjectList CSS -->
+<link href="${pageContext.request.contextPath}/css/projectList.css"
+	rel="stylesheet">
+<!-- Modal CSS -->
+<link href="${pageContext.request.contextPath}/css/Modal.css"
+	rel="stylesheet">
+
+<!-- DropDown - Option CSS -->
+<link
+	href="${pageContext.request.contextPath}/css/projectList.option.css"
+	rel="stylesheet">
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+	rel="stylesheet">
+<!-- Tab bar -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
 </head>
 <body>
 	<div class="wrapper">
-		<%@ include file="/WEB-INF/views/sidebar.jsp" %>
+		<%@ include file="/WEB-INF/views/sidebar.jsp"%>
 		<div class="main">
-			<%@ include file="/WEB-INF/views/headerNavbar.jsp" %>
-			
-			
-			
+			<%@ include file="/WEB-INF/views/headerNavbar.jsp"%>
+
+
+
 			<main class="content">
 				<div class="container-fluid p-0">
+<<<<<<< Updated upstream
 					
 					<h1 class="h3 mb-3" >
 						<span>${ul.mname}님의 프로젝트 목록</span>
 						<span><button class="btn btn-primary addProject" id="myBtn" data-bs-toggle="modal" data-bs-target="#addProjectModal">프로젝트 추가+</button></span>
+=======
+
+					<h1 class="h3 mb-3">
+						<span>${ul.mname}님의 프로젝트 목록</span> <span><button
+								class="btn btn-primary addProject" id="myBtn"
+								data-bs-toggle="modal" data-bs-target="#addProject">프로젝트
+								추가+</button></span>
+>>>>>>> Stashed changes
 					</h1>
-						
-					<%@ include file="/WEB-INF/views/addProjectModal.jsp" %>
-			    	<%@ include file="/WEB-INF/views/updateProjectModal.jsp" %>
-						
- 						<div class="row">
+
+					<%@ include file="/WEB-INF/views/addProjectModal.jsp"%>
+					<%@ include file="/WEB-INF/views/updateProjectModal.jsp"%>
+
+					<div class="row">
 						<div class="col-xl-6 col-xxl-5 d-flex">
 							<div class="w-100">
 								<div class="row" id="wrap-list">
@@ -68,7 +88,7 @@
 			</main>
 		</div>
 	</div>
-	
+
 	<!-------------------- Script ----------------------->
 	<script>
 	const contextPath = "${pageContext.request.contextPath}";
@@ -220,6 +240,6 @@
 	}
 	</script>
 
-	
+
 </body>
 </html>

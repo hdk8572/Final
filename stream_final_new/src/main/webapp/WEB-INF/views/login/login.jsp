@@ -111,7 +111,9 @@ input[type=radio]:nth-of-type(2):checked ~ .labels label:nth-of-type(2)
 											<div class="m-sm-4">
 
 												<div>
-													<form id="frmMemberLogin" action=${pageContext.request.contextPath}/login.do method="post">
+													<form id="frmMemberLogin"
+														action=${pageContext.request.contextPath}/login.do
+														method="post">
 														<div class="mb-3">
 
 															<label class="form-label">ID</label> <input
@@ -123,8 +125,7 @@ input[type=radio]:nth-of-type(2):checked ~ .labels label:nth-of-type(2)
 															<label class="form-label">Password</label> <input
 																class="form-control form-control-lg" type="password"
 																name="password" placeholder="비밀번호를 입력해주세요."
-																required="required" /> 
-																<small> <a
+																required="required" /> <small> <a
 																href="index.html">비밀번호 찾기</a>
 															</small>
 
@@ -143,7 +144,8 @@ input[type=radio]:nth-of-type(2):checked ~ .labels label:nth-of-type(2)
 
 														</div>
 													</form>
-													<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+													<input type="hidden" name="${_csrf.parameterName}"
+														value="${_csrf.token}" />
 												</div>
 
 											</div>
@@ -204,35 +206,35 @@ input[type=radio]:nth-of-type(2):checked ~ .labels label:nth-of-type(2)
 		</div>
 	</main>
 	<script>
-/* 		$(".btn.mlogin").click(btnLoginClickHandler);
-		$(".btn.clogin").click(btnLoginClickHandler2);
+		/* 		$(".btn.mlogin").click(btnLoginClickHandler);
+		 $(".btn.clogin").click(btnLoginClickHandler2);
 		
 		
-		function btnLoginClickHandler() {
-			console.log($("#frmMemberLogin").serialize());
+		 function btnLoginClickHandler() {
+		 console.log($("#frmMemberLogin").serialize());
 
-			$.ajax({
-				url : "${pageContext.request.contextPath}/login.member",
-				type : "post",
-				data : $("#frmMemberLogin").serialize(),
-				success : function(result) {
-					console.log(result);
-				}
-			});
-		}
+		 $.ajax({
+		 url : "${pageContext.request.contextPath}/login.member",
+		 type : "post",
+		 data : $("#frmMemberLogin").serialize(),
+		 success : function(result) {
+		 console.log(result);
+		 }
+		 });
+		 }
 		
-		function btnLoginClickHandler2() {
-			console.log($("#frmCompanyLogin").serialize());
+		 function btnLoginClickHandler2() {
+		 console.log($("#frmCompanyLogin").serialize());
 
-			$.ajax({
-				url : "${pageContext.request.contextPath}/login.company",
-				type : "post",
-				data : $("#frmCompanyLogin").serialize(),
-				success : function(result) {
-					console.log(result);
-				}
-			});
-		} */
+		 $.ajax({
+		 url : "${pageContext.request.contextPath}/login.company",
+		 type : "post",
+		 data : $("#frmCompanyLogin").serialize(),
+		 success : function(result) {
+		 console.log(result);
+		 }
+		 });
+		 } */
 	</script>
 	<script src="js/app.js"></script>
 

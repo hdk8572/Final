@@ -8,10 +8,12 @@
 	</settings>
 
 	<typeAliases>
-		<typeAlias type="kh.groupware.stream.ptask.model.vo.PtaskVo" alias="PtaskVo"/>
 		<typeAlias type="kh.groupware.stream.member.model.vo.MemberVo" alias="MemberVo"/>
 		<typeAlias type="kh.groupware.stream.member.model.vo.MemberSimpleVo" alias="MemberSimpleVo"/>
 		<typeAlias type="kh.groupware.stream.company.model.vo.CompanyVo" alias="CompanyVo"/>
+		<typeAlias type="kh.groupware.stream.dept.model.vo.DeptVo" alias="DeptVo"/>
+
+		<typeAlias type="kh.groupware.stream.ptask.model.vo.PtaskVo" alias="PtaskVo"/>
 		<typeAlias type="kh.groupware.stream.project.model.vo.ProjectVo" alias="ProjectVo"/>
 		<typeAlias type="kh.groupware.stream.main.model.dto.MaintaskDto" alias="MaintaskDto"/>
 		<typeAlias type="kh.groupware.stream.calendar.model.vo.CalendarVo" alias="CalendarVo"/>
@@ -19,9 +21,11 @@
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="mappers/ptask-mappers.xml"/>
 		<mapper resource="mappers/member-mapper.xml"/>
 		<mapper resource="mappers/company-mapper.xml"/>
+		<mapper resource="mappers/department-mapper.xml"/>
+		
+		<mapper resource="mappers/ptask-mappers.xml"/>
 		<mapper resource="mappers/project-mapper.xml"/>
 		<mapper resource="mappers/maintask-mapper.xml"/>
 		<mapper resource="mappers/calendar-mapper.xml"/>

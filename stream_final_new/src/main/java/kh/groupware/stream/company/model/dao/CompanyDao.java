@@ -17,5 +17,7 @@ public class CompanyDao {
 	public String selectOne(CompanyVo cvo) {
 		return sqlSession.selectOne("company.selectOne", cvo);
 	}
+	
+
 
 }
