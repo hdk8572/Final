@@ -14,4 +14,8 @@ public class TestController {
 	public String searchbar() {
 		return "/searchbar";
 	}
+	@GetMapping("/signuptest")
+	public String signuptest() {
+		return "/login/signuptest";
+	}
 }

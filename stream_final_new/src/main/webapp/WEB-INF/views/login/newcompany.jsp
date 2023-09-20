@@ -27,6 +27,18 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
 	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<style>
+.table {
+	width: 512px;
+}
+
+.cardcard {
+	display: none;
+}
+</style>
+
 </head>
 
 <body>
@@ -41,8 +53,8 @@
 							<p class="lead">기업 정보를 입력 후 그룹웨어 Stream을 이용해보세요!</p>
 						</div>
 
-						<div class="card">
-							<div class="card-body">
+						<div class="card cards">
+							<div class="card-body cardcard">
 								<div class="m-sm-4">
 									<form>
 										<div class="mb-3">
@@ -61,7 +73,8 @@
 												name="caddress" placeholder="" />
 										</div>
 										<div class="text-center mt-3">
-											<a href="index.html" class="btn btn-lg btn-primary">다음</a>
+											<button type="button"
+												class="btn btn-lg btn-primary nextButton">다음</button>
 											<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
 										</div>
 									</form>
@@ -69,8 +82,8 @@
 							</div>
 						</div>
 
-						<div class="card">
-							<div class="card-body">
+						<div class="card cards">
+							<div class="card-body cardcard">
 								<div class="m-sm-4">
 									<form>
 										<div class="mb-3">
@@ -128,9 +141,11 @@
 												</div>
 											</div>
 											<div class="text-center mt-3">
-												<a href="index.html" class="btn btn-lg btn-primary">이전</a>
+												<button type="button"
+													class="btn btn-lg btn-primary prevButton">이전</button>
 												<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
-												<a href="index.html" class="btn btn-lg btn-primary">다음</a>
+												<button type="button"
+													class="btn btn-lg btn-primary nextButton">다음</button>
 												<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
 											</div>
 									</form>
@@ -139,8 +154,8 @@
 						</div>
 						<br>
 
-						<div class="card">
-							<div class="card-body">
+						<div class="card cards">
+							<div class="card-body cardcard">
 								<div class="m-sm-4">
 									<form>
 										<div class="mb-3">
@@ -191,7 +206,8 @@
 												</div>
 											</div>
 											<div class="text-center mt-3">
-												<a href="index.html" class="btn btn-lg btn-primary">이전</a>
+												<button type="button"
+													class="btn btn-lg btn-primary prevButton">이전</button>
 												<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
 												<a href="index.html" class="btn btn-lg btn-primary">등록</a>
 												<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
@@ -209,6 +225,30 @@
 		</div>
 	</main>
 
+
+	<script>
+		let currentIndex = 0;
+		showCards(currentIndex);
+
+		$('.prevButton').on('click', function() {
+			currentIndex = (currentIndex - 1 + 3) % 3; // 3은 문장의 개수
+			showCards(currentIndex);
+		});
+
+		$('.nextButton').on('click', function() {
+			currentIndex = (currentIndex + 1) % 3; // 3은 문장의 개수
+			showCards(currentIndex);
+		});
+
+		function showCards(index) {
+			const cards = document.querySelectorAll('.cards .cardcard');
+			cards.forEach(function(cardcard) {
+				cardcard.style.display = 'none';
+			});
+
+			cards[index].style.display = 'block';
+		}
+	</script>
 	<script src="js/app.js"></script>
 
 </body>
