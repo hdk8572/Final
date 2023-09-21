@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kh.groupware.stream.calendar.model.dao.CalendarDao;
+import kh.groupware.stream.calendar.model.vo.CalendarParamVo;
 import kh.groupware.stream.calendar.model.vo.CalendarVo;
 import kh.groupware.stream.member.model.vo.MemberSimpleVo;
 
@@ -47,7 +48,7 @@ public class CalendarServiceImpl implements CalendarService {
 		return calendarDao.attendList();
 	}
 	@Override
-	public List<MemberSimpleVo> memberProjectList(String pno) {
+	public List<MemberSimpleVo> memberProjectList(CalendarParamVo pno) {
 		return calendarDao.memberProjectList(pno);
 	}
 

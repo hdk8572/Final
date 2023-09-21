@@ -14,10 +14,7 @@ public class PtaskServiceImpl implements PtaskService {
 	@Autowired
 	private PtaskDao dao;
 	
-	/*
-	 * @Override public List<PtaskVo> selectList() { return dao.selectList(); }
-	 */
-	
+
 	@Override
 	public List<PtaskVo> pselectList(String pno) {
 		return dao.pselectList(pno);

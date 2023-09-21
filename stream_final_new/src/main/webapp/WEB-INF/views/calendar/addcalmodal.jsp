@@ -14,10 +14,10 @@
 					<div class="card-header pcalTitle">
 						<h2 class="pcalTitle"><b>일정 작성</b></h2>
 					</div>
-						<form action="${pageContext.request.contextPath}/insert" method="post">					
+						<form action="${pageContext.request.contextPath}/insert" method="post">	
 						<input type="text" class="form-control title" name="ttitle" placeholder="제목을 입력하세요.">
 						<br>
-						<input type="hidden" value=sysdate>
+						<input type="hidden" name="pno" value="${pno_TODO }">
 						<input type="hidden" name="userid" value="mplsam@kh.co.kr"><!-- kh0002@kh.com -->
 						<input type="date" class="form-date" name="sstartDate" required="required"> ~ <input type="date" class="form-date" name="tendDate" required="required"> <!-- s -->
 						<br>
@@ -81,37 +81,42 @@
 	</div>
 </div>
 <!-- 모달 -->
-<<script>
+<script>
 /* 일정추가 클릭이벤트 ajax로 갔다 오는거 결론: 참석자 input에 list가 뜨면 됨*/
 // ajax memberProjectList 
 // success (result)
 	$(".c-member").click(getMemberProjectListHandler);
 	function getMemberProjectListHandler(thisElement){
-		 $('#myModal').modal('show');
-		console.log($("#").serialize());
+		// $('#myModal').modal('show');
+		console.log($("[name=pno]").val());
+		// TODO: 
+		const userid="mplsam@kh.co.kr";
+		const pno = 1;
 		$.ajax({
 			url:'${pageContext.request.contextPath}/memberProjectList',
 			type:"get",
 			data : {
-				pno : $("[name=pno]").val()
+				pno : pno,
+				userid : userid
 			},
 			dataType: "json",
-			success: memberView
+			success: memberView,
 			error:memberError
 		});
 	}
 	function memberView(data){
+		console.log(data)
 		console.log("성공하였습니다.")
 		var listHtml = "";
-		for (var i=0; i<data.lenght; i++){
+		for (var i=0; i<data.length; i++){
 			var mname = data[i];
 			listHtml += `<option value="\${mname.userid}">\${mname.mname}</option>`;
 		}
-		$("#clist").html(listHtml);
+		$("#c-memberlist").html(listHtml);
 	}
 	function memberError(){
 		var listHtml = "";
 		listHtml += `<option selected>해당하는 이름이 없습니다.</option>`;
-		$("#clist").html(listHtml);
+		$("#c-memberlist").html(listHtml);
 	}
 </script>

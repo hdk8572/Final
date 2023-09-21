@@ -30,28 +30,68 @@
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
 <style>
+/* body {
+	background-color: #D0E7D2; 
+	overflow: hidden;
+	display: flex;
+	justify-content: right;
+	align-items: right;
+}
+
+.full-img {
+	max-width: 50%;
+	height: 100vh;
+	text-align: right;
+	position: relative;
+}
+
+.img {
+	position: absolute;
+	max-width: 100%;
+	max-height: 100%;
+	right: 0;
+	top: 0;
+}
+} */
 body {
 	background-color: #D0E7D2;
 }
 
-.hello {
-	overflow-clip-margin: content-box;
-	overflow: clip;
-	max-width: 960px;
-	vertical-align: top;
-	margin: 0;
-	padding: 0;
-	border: 0;
-	background: rgba(0, 0, 0, 0);
+.logo-img {
+	width: 60%;
+}
+
+.full-img {
+	max-width: 60%;
+	height: auto;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.main-text{
+margin: 150px 50px 20px 100px; 
+padding: 0;
+font-size: 23px;
+}
+.btn-primary {
+font-size: 20px;
+margin: 0 0 0 100px;
 }
 </style>
 
 </head>
 
 <body>
-	<img rel="istj" href="img/photos/ISTJ.png" alt="/">
+	<div class="main-box">
+		<img class="logo-img" src="img/photos/main-logo.svg" alt="/">
+	</div>
+	
+	<div class="main-text"><a>업무도 흐름이다!</a><br><a> 국내 최고 업무 협업툴 Stream!</a></div>
+	<button class="btn btn-primary btn-lg"><a>지금 바로 시작하기!</a></button>
+	<div class="img-box main-box">
+		<img class="full-img" src="img/photos/top-slide-01.webp" alt="/">
+	</div>
 	<script src="js/app.js"></script>
-
 </body>
 
 </html>

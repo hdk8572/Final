@@ -11,8 +11,9 @@ function loadedHandler(){
 	$(".jm-task-info").on("click", projectButtonClickTestHandler);
 	$(".jm-inner-task-button").on("click", innerTaskInputHandler);
 	$('html').on("click", boxOutHandler)
-	$(".jm-innerTask-insert-button").click(innerTaskaddList);
-	$("select[name=tstatus]").change(selectOption);
+	$(".jm-innerTask-insert-button").click(innerTaskaddListHandler);
+	$(".addInnerTask").on("submit",ttileCheckHandler);
+	//$("select[name=tstatus]").change(selectOption);
 }
 
 function dragStart(e){
@@ -101,26 +102,39 @@ boxOutHandler=(event)=>{
 		}
 	}
 }
-
-selectOption=()=>{
-	var selectedOption = $("select[name=tstatus] option:selected").text();
+/*
+selectOption=(event)=>{
+	console.log(event.target);
+	var a1 = event.target.value;
+	console.log(a1);
+	var selectedOption = a1;
  	console.log(selectedOption);
  	$(".jm-select-tstatus").val(selectedOption);
 }
+*/
+ttileCheckHandler=(event)=>{
+	console.log("submit 눌렸다."+event.target);
+	var a1 = event.target;
+	console.log(a1);
+	
+}
 
-function innerTaskaddList () {
+function innerTaskaddListHandler (event) {
  const contextPath = "${pageContext.request.contextPath}";
 	console.log("ajax간다");
+	var a1 = event.target;
+	console.log($(this).closest(".addInnerTask").serialize());
+	console.log($(this).closest(".addInnerTask"));
 	$.ajax ({
 		url: contextPath+"/innertaskinsert",
 		type: "post",
 		//data: $(".addInnerTask").serialize(),
-		data : $(".addInnerTask").serialize(),
-		dateType: "json",
-		success: function(result){ 
+
+		data : $(this).closest(".addInnerTask").serialize(),
+		dataType: "json",
+		success: function(result){
 			console.log("성공");
-			// makeView(result);
-			// $(".modal").modal("hide");
+			makeView(result);
 		},
 		error: function() {	
 			alert("innerTaskaddList 에서 에러났습니다.");
