@@ -8,7 +8,7 @@
 	<select id="selectList" resultType="CalendarVo">
 		SELECT SNO, USERID,
 		to_char(SSTART, 'yyyy-mm-dd') as "START", to_char(SEND, 'yyyy-mm-dd') as END, STITLE
-		as TITLE, Scolor as color
+		as TITLE, SCOLOR as color
 		,SPLACE, SMEMO
 		FROM SCHEDULE
 	</select>
@@ -37,6 +37,17 @@
 		INSERT INTO SCHEDULE (SNO, USERID, SSTARTDATE, SENDDATE, SPLACE, SMEMO, STITLE )
 		VALUES (schedule_sequence.NEXTVAL, #{userid}, #{start}, #{end}, #{splace}, #{smemo}, #{title})
 	</insert>
+	<!-- 일정 등록 끼인 테이블 -->
+	<insert id="insertmember" parameterType="CalendarVo">
+		<selectKey keyProperty="sno" resultType="CalendarVo" order="BEFORE">
+			SELECT NEWS_SEQ.NEXTVAL FROM Member_SCHEDULE	<!-- select CAST(RANDOM()*1000000 as INTEGER) a from SYSIBM.SYSDUMMY1 -->
+		</selectKey>
+		INSERT INTO Member_SCHEDULE (SNO, ATTENUERID )
+		VALUES (#{sno},#{attenuserid})
+	</insert>
+	
+	
+	
 
 	<!-- 캘린더 수정 -->
 	<update id="update" parameterType="CalendarVo">

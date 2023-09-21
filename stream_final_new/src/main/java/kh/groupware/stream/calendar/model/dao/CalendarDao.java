@@ -1,6 +1,7 @@
 package kh.groupware.stream.calendar.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,10 @@ public class CalendarDao {
 	public int insert(CalendarVo cal) {
 		return sqlSession.insert("calendar.insert", cal);
 	}
+	//insertMember 참석자 등록
+	public int insertMember(Map<String, Object> map) {
+		return sqlSession.insert("calendar, insert");
+	}
 	
 	//캘린더 일정상세 조회
 	public CalendarVo selectOne(String sno) {
@@ -45,7 +50,6 @@ public class CalendarDao {
 	public List<CalendarVo> attendList() {
 		return sqlSession.selectList("calendar.attendList");
 	}
-	
 	
 	//참석자 조회
 	public List<MemberSimpleVo> memberProjectList(CalendarParamVo pno) {

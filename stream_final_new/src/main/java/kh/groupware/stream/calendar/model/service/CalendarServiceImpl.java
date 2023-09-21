@@ -1,9 +1,13 @@
 package kh.groupware.stream.calendar.model.service;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kh.groupware.stream.calendar.model.dao.CalendarDao;
 import kh.groupware.stream.calendar.model.vo.CalendarParamVo;
@@ -27,11 +31,36 @@ public class CalendarServiceImpl implements CalendarService {
 	public CalendarVo selectOne(String sno) {
 		return calendarDao.selectOne(sno);
 	}
-	//캘린더 등록
+	
+	
+	
+	//캘린더 등록 //insert:캘린더 정보를 db에 추가 //insertMember:참가자 정보를 db에 추가
 	@Override
+	@Transactional
 	public int insert(CalendarVo cal) {
-		return calendarDao.insert(cal);
+		try {
+		calendarDao.insert(cal);
+		for(int i=0; i<cal.getAttenuseridList().size(); i++) { //반복해서 각 참가자를 DB에 등록한다.
+			Map<String, Object> map = new HashMap<String, Object>(); //map 객체에 담는다.
+			map.put("sno", cal.getSno()); //selectKey를사용한 값
+			map.put("attenuserid",cal.getAttenuseridList().get(i));
+			calendarDao.insertMember(map);
+		}
+		return 1; //
+	}catch(Exception e){
+		e.printStackTrace();
+		return 0;
 	}
+}
+/*
+ * @Override public int insertMember(Map<String, Object> map) { // TODO
+ * Auto-generated method stub return 0; }
+ */
+
+
+	
+	
+	
 	//캘린더 수정
 	@Override
 	public int update(CalendarVo cal) {
@@ -51,5 +80,12 @@ public class CalendarServiceImpl implements CalendarService {
 	public List<MemberSimpleVo> memberProjectList(CalendarParamVo pno) {
 		return calendarDao.memberProjectList(pno);
 	}
+	//>???
+	@Override
+	public int insertMember(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 }

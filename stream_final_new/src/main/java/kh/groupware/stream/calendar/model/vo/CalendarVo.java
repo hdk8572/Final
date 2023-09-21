@@ -1,5 +1,7 @@
 package kh.groupware.stream.calendar.model.vo;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -28,7 +30,7 @@ public class CalendarVo {
 	private String color;
 	
 	/* 끼인테이블 */
-	private String attenuserid;
+	private List<String> attenuseridList; //id 1개만 가져 올 거라 String
 	
 	
 //	[{
@@ -43,7 +45,7 @@ public class CalendarVo {
 	@Override
 	public String toString() {
 		return "CalendarVo [sno=" + sno + ", userid=" + userid + ", splace=" + splace + ", smemo= CLOB, start="
-				+ start + ", end=" + end + ", title=" + title + ", color=" + color + ", attenuserid=" + attenuserid
+				+ start + ", end=" + end + ", title=" + title + ", color=" + color + ", attenuseridList=" + attenuseridList
 				+ "]";
 	}
 
@@ -111,13 +113,13 @@ public class CalendarVo {
 		this.color = color;
 	}
 
-	public String getAttenuserid() {
-		return attenuserid;
+	public List<String> getAttenuseridList() {
+		return attenuseridList;
 	}
 
-	public void setAttenuserid(String attenuserid) {
-		this.attenuserid = attenuserid;
+	public void setAttenuseridList(List<String> attenuseridList) {
+		this.attenuseridList = attenuseridList;
 	}
-	
+
 	
 }

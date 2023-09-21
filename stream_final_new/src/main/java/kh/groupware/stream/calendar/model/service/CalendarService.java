@@ -1,6 +1,7 @@
 package kh.groupware.stream.calendar.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kh.groupware.stream.calendar.model.vo.CalendarParamVo;
 import kh.groupware.stream.calendar.model.vo.CalendarVo;
@@ -15,4 +16,5 @@ public interface CalendarService {
 	public int delete(String sno);
 	public List<CalendarVo> attendList();
 	public List<MemberSimpleVo> memberProjectList(CalendarParamVo pno);
+	public int insertMember(Map<String, Object> map);
 }
