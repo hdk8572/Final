@@ -22,9 +22,9 @@ function goUpdateForm(pno) {
 	 	success: function(result){
 			$("#updateProjectModal [name=pno]").val(result.pno);
 			$("#updateProjectModal [name=pname]").val(result.pname);
-			$("#updateProjectModal [name=pcomment]").val(result.pcomment);
-			$("#updateProjectModal [name=pstartDate]").val(result.pstartDate);
-			$("#updateProjectModal [name=pendDate]").val(result.pendDate);
+			$("#updateProjectModal [name=pcontent]").val(result.pcontent);
+			$("#updateProjectModal [name=pstartdate]").val(result.pstartdate);
+			$("#updateProjectModal [name=penddate]").val(result.penddate);
 			$("#updateProjectModal [name=mname]").val(result.mname);
 			$("#updateProjectModal [id=updateStatus]").val(result.pstatus);
 	 	},

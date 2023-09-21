@@ -3,7 +3,7 @@
 <mapper namespace="project">
   
 	<select id="selectList" resultType="ProjectVo">
-		SELECT PNO, USERID, PNAME, PCOMMENT, PACCESS, PDATE, to_char(PSTARTDATE, 'yyyy-mm-dd') PSTARTDATE, to_char(PENDDATE, 'yyyy-mm-dd') PENDDATE, PSTATUS, DEPTNO, DEPTNAME, MNAME, MRANK, ROWNUM PROW
+		SELECT PNO, USERID, PNAME, PCONTENT, PACCESS, PDATE, to_char(PSTARTDATE, 'yyyy-mm-dd') PSTARTDATE, to_char(PENDDATE, 'yyyy-mm-dd') PENDDATE, PSTATUS, DEPTNO, DEPTNAME, MNAME, MRANK, ROWNUM PROW
 		FROM (SELECT DEPTNO, DEPTNAME, USERID, MNAME, MRANK FROM USERS JOIN DEPT USING(DEPTNO))
 		JOIN PROJECT USING(USERID)
 		WHERE PSTATUS IN ('미진행', '진행', '보류')
@@ -11,14 +11,14 @@
 	</select>
 	 
 	<select id="selectOne" resultType="ProjectVo">
-		SELECT PNO, USERID, PNAME, pcomment, PACCESS, PDATE, to_char(PSTARTDATE, 'yyyy-mm-dd') PSTARTDATE, to_char(PENDDATE, 'yyyy-mm-dd') PENDDATE, PSTATUS
+		SELECT PNO, USERID, PNAME, PCONTENT, PACCESS, PDATE, to_char(PSTARTDATE, 'yyyy-mm-dd') PSTARTDATE, to_char(PENDDATE, 'yyyy-mm-dd') PENDDATE, PSTATUS
 		FROM PROJECT
 		WHERE PNO = #{pno}
 	</select>
 	 
 	<insert id="insertList" parameterType="ProjectVo">
-		INSERT INTO PROJECT (PNO, USERID, PNAME, pcomment, PACCESS, PSTARTDATE, PENDDATE, PSTATUS)
-		VALUES (project_sequence.NEXTVAL, #{userid}, #{pname}, #{pcomment}, #{paccess}, #{pstartDate}, #{pendDate}, #{pstatus})
+		INSERT INTO PROJECT (PNO, USERID, PNAME, PCONTENT, PACCESS, PSTARTDATE, PENDDATE, PSTATUS)
+		VALUES (project_sequence.NEXTVAL, #{userid}, #{pname}, #{pcontent}, #{paccess}, #{pstartdate}, #{penddate}, #{pstatus})
 	</insert>
 	 
 	<delete id="deleteList" parameterType="ProjectVo">
@@ -26,7 +26,7 @@
 	</delete>
 	 
 	<update id="updateList" parameterType="ProjectVo">
-		UPDATE PROJECT SET PNAME=#{pname}, pcomment=#{pcomment}, PSTATUS=#{pstatus}, PSTARTDATE=#{pstartDate}, PENDDATE=#{pendDate}
+		UPDATE PROJECT SET PNAME=#{pname}, pcontent=#{pcontent}, PSTATUS=#{pstatus}, PSTARTDATE=#{pstartdate}, PENDDATE=#{penddate}
 		WHERE PNO=#{pno}
 	</update>
 </mapper>

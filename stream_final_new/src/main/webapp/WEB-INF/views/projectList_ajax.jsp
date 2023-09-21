@@ -158,8 +158,8 @@
 		                                    <input type="hidden" name="deptName\${ul.pno}" data-deptName="\${ul.deptName}">
 		                                    <input type="hidden" name="mname\${ul.pno}" data-mname="\${ul.mname}">
 		                                    <input type="hidden" name="mrank\${ul.pno}" data-mrank="\${ul.mrank}">
-		                                    <input type="hidden" name="pstartDate\${ul.pno}" data-pstartDate="\${ul.pstartdate}">
-		                                    <input type="hidden" name="pendDate\${ul.pno}" data-pendDate="\${ul.penddate}">
+		                                    <input type="hidden" name="pstartdate\${ul.pno}" data-pstartdate="\${ul.pstartdate}">
+		                                    <input type="hidden" name="penddate\${ul.pno}" data-penddate="\${ul.penddate}">
 		                                </h5>
 		                            </div>
 		                            

@@ -34,14 +34,14 @@
 							<input type= "text" class= "form-control manager ml-2" name="mname">
 						</span>
 						<br>
-						<textarea class="form-control" rows="10" name="pcomment" placeholder="내용을 입력해주세요"></textarea>
+						<textarea class="form-control" rows="10" name="pcontent" placeholder="내용을 입력해주세요"></textarea>
 						<br>
 						<input type="hidden" name="tdate">
 						<input type="hidden" name="userid">
 						<input type="hidden" name="pno">
-						<input type="date" id="updateDate" class="form-date" name="pstartDate" required="required">
+						<input type="date" id="updateDate" class="form-date" name="pstartdate" required="required">
 						~
-						<input type="date" id="updateDate" class="form-date" name="pendDate" required="required">
+						<input type="date" id="updateDate" class="form-date" name="penddate" required="required">
 						<br>
 						<br>
 						<div align="center">
