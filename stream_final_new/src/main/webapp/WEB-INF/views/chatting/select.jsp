@@ -8,7 +8,14 @@
 <!-- sockjs -->
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.6.1/dist/sockjs.min.js"></script>
 <!-- stompjs -->
-<script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@6.1.2/bundles/stomp.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@6.1.2/bundles/stomp.umd.min.js">
+function popupOpen(){ 
+    var popUrl = "/stream/chat";	//팝업창에 출력될 페이지 URL
+    var popOption = "left=800, top=100, width=500, height=800, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+        window.open(popUrl,"",popOption);
+    }
+
+</script>
 <meta charset="UTF-8">
 <!-- <title>채팅</title> -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -502,7 +509,7 @@ form {
         	<!-- 채팅방 클릭 시 해당 채팅방 띄울 div -->
             <div id="s_chat_content_box">
             	<!-- 채팅방 클릭 전은 로고 띄움 -->
-            	<a class="sidebar-link" href="chat"><span style="color: green;">채팅방 참여</span></a>
+            	<a class="sidebar-link" href="javascript:popupOpen()" ><span style="color: green;">채팅방 참여</span></a>
             </div>
         </article>    
     </section>
@@ -722,6 +729,7 @@ form {
 		$("#s_emp_list").css('border', '1px solid #0d6efd');
 		$("#s_chat_list").css('border', '1px solid');
 	});
+	window.resizeTo(500,500);
 </script>
 
 <!-- 채팅 리스트에서 방 눌렀을 때 -->
@@ -731,5 +739,6 @@ form {
 		var roomNo = $(this).children().val();
 		$("#s_chat_content_box").load("<%=request.getContextPath()%>/echo/selectroom?room_no=" + roomNo);
 	});
+    
 </script>
 </html>
