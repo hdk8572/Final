@@ -52,14 +52,24 @@
 					<div>
 					<textarea class="form-control content" name="pcontent" placeholder="내용을 입력해주세요."></textarea>
 						<!-- 시큐에디터  위즈윅 -->
-						<!-- <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>  -->
+						<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 						<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script> 
-						
 						<script>
-					      ClassicEditor.create(document.querySelector(".form-control.content"), {
-					    	  language: "ko"
-					      });
-					    </script>
+						let editor;
+						
+						ClassicEditor.create(document.querySelector(".form-control.content"), {	
+							language: "ko",
+							toolbar: [
+								'heading', 'bold', 'italic'
+							]
+						})
+							.then( editor => {
+					            myEditor = editor;
+					        } )
+					        .catch( err => {
+					            console.error( err.stack );
+				        });
+						</script>
 					    <!-- ?? -->
 				<!-- 	        <script>
 						        document.addEventListener('DOMContentLoaded', e => {
@@ -80,11 +90,8 @@
 		</div>
 	</div>
 </div>
-<!-- 모달 -->
+<!-- 참가자list -->
 <script>
-/* 일정추가 클릭이벤트 ajax로 갔다 오는거 결론: 참석자 input에 list가 뜨면 됨*/
-// ajax memberProjectList 
-// success (result)
 	$(".c-member").click(getMemberProjectListHandler);
 	function getMemberProjectListHandler(thisElement){
 		// $('#myModal').modal('show');

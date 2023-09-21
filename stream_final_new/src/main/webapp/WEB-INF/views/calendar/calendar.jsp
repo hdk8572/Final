@@ -128,12 +128,12 @@
 					//locale: 'ko', // 한국어 설정 
 					events : eventsDataArr
 				 	,
+				 	
 					eventClick: function(info) {
 						console.log(info.event.title);
 						var event = info.event;
 						$("#readScheduleModal.modal.right  [name=ttitle]").val(info.event.title); /* 띄우려는 모달이랑 이름 맞춰야한다. */
 						$("#readScheduleModal").modal("toggle");
-						//<span><button class="btn btn-primary addProject" id="myBtn" data-bs-toggle="modal" data-bs-target="#myModal">프로젝트 추가+</button></span>
 					} 
 				});
 				calendar.render();
