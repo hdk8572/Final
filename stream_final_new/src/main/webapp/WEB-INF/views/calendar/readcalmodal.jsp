@@ -80,7 +80,7 @@
 	
 	function addList () {
 		var data = myEditor.getData();
-		$("[name=pcoment]").val(data);
+		$("[name=pcomment]").val(data);
 		
 		console.log($("#addProject").serialize());  // "n1=v1&n2=v2"&pcomment=rkqdfjklfjlddfld
 		$.ajax ({

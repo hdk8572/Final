@@ -26,7 +26,7 @@
         var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
 
         var geocoder = new kakao.maps.services.Geocoder();
-        geocoder.addressSearch('강남',geoseach );
+        geocoder.addressSearch('역삼',geoseach );
         function geoseach(result, status){
             if(status === kakao.maps.services.Status.OK){
                 var coords = new kakao.maps.LatLng(result[0].y, result[0].x);

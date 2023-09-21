@@ -9,7 +9,7 @@ public class ProjectVo {
 	private String pno;
 	private String userid;
 	private String pname;
-	private String pcoment;
+	private String pcomment;
 	private String paccess;
 	private String pdate;
 	private String pstartDate;
@@ -28,7 +28,7 @@ public class ProjectVo {
 
 	@Override
 	public String toString() {
-		return "ProjectVo [pno=" + pno + ", userid=" + userid + ", pname=" + pname + ", pcoment=" + pcoment
+		return "ProjectVo [pno=" + pno + ", userid=" + userid + ", pname=" + pname + ", pcomment=" + pcomment
 				+ ", paccess=" + paccess + ", pdate=" + pdate + ", pstartDate=" + pstartDate + ", pendDate=" + pendDate
 				+ ", prow=" + prow + ", pstatus=" + pstatus + ", deptno=" + deptno + ", mname=" + mname + ", mrank="
 				+ mrank + ", deptName=" + deptName + ", maintaskList=" + maintaskList + "]";
@@ -39,14 +39,14 @@ public class ProjectVo {
 	}
 
 	
-	public ProjectVo(String pno, String userid, String pname, String pcoment, String paccess, String pdate,
+	public ProjectVo(String pno, String userid, String pname, String pcomment, String paccess, String pdate,
 			String pstartDate, String pendDate, String prow, String pstatus, String deptno, String mname, String mrank,
 			String deptName, List<MaintaskDto> maintaskList) {
 		super();
 		this.pno = pno;
 		this.userid = userid;
 		this.pname = pname;
-		this.pcoment = pcoment;
+		this.pcomment = pcomment;
 		this.paccess = paccess;
 		this.pdate = pdate;
 		this.pstartDate = pstartDate;
@@ -84,12 +84,12 @@ public class ProjectVo {
 		this.pname = pname;
 	}
 
-	public String getPcoment() {
-		return pcoment;
+	public String getpcomment() {
+		return pcomment;
 	}
 
-	public void setPcoment(String pcoment) {
-		this.pcoment = pcoment;
+	public void setpcomment(String pcomment) {
+		this.pcomment = pcomment;
 	}
 
 	public String getPaccess() {

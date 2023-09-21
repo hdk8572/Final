@@ -50,7 +50,7 @@
 						</span>
 						<br>
 					<div>
-					<textarea class="form-control content" name="pcoment" placeholder="내용을 입력해주세요."></textarea>
+					<textarea class="form-control content" name="pcomment" placeholder="내용을 입력해주세요."></textarea>
 						<!-- 시큐에디터  위즈윅 -->
 						<!-- <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>  -->
 						<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script> 

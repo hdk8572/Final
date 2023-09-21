@@ -34,7 +34,7 @@
 							<input type= "text" class= "form-control manager ml-2" value="${ul.mname}" placeholder= "담당자" readonly>
 						</span>
 						<br>
-						<textarea class="form-control content" rows="10" name="pcoment" placeholder="프로젝트에 관한 설명을 입력해주세요"></textarea>
+						<textarea class="form-control content" rows="10" name="pcomment" placeholder="프로젝트에 관한 설명을 입력해주세요"></textarea>
 							<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script> <!-- 위즈윅 -->
 							<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
 							<script>
@@ -80,12 +80,13 @@
 <script>
 	$("#btn-submit").click(addList);
 	$("#myBtn").click(selectOption);
+//	$(".dropdown-btn-update").click(updateOption);
     $("select[name=addpstatus]").change(selectOption);
     $("select[name=updatepstatus]").change(updateOption);
     
 	function addList () {
 		var data = myEditor.getData();
-		$("[name=pcoment]").val(data);
+		$("[name=pcomment]").val(data);
 		
 		console.log($("#addProject").serialize());  // "n1=v1&n2=v2"&pcomment=rkqdfjklfjlddfld
 		$.ajax ({
@@ -107,14 +108,13 @@
 	
  	function selectOption() {
  	    var selectedOption = $("select[name=addpstatus] option:selected").text();
- 	    console.log(selectedOption);
  	    $("#valuePstatus").val(selectedOption);
 	}
  	
  	function updateOption() {
- 	    var selectedOption = $("select[name=updatepstatus] option:selected").text();
- 	    $("#valuePstatus").val(selectedOption);
- 	   	console.log($("#valuePstatus").val(selectedOption));
+ 	    var updatedOption = $("select[name=updatepstatus] option:selected").text();
+ 	    $("#valuePstatus").val(updatedOption);
+ 	   	console.log($("#valuePstatus").val(updatedOption));
 	}
 	
 

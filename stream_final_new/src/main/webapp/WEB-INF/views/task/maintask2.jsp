@@ -243,7 +243,7 @@
 																<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">${task.tdate }</div>
 																<div class="jm-title-tno col-lg-1 jm-grey jm-gr">${task.tno }</div>
 															</li>
-															<form class="addInnerTask">
+															<form class="addInnerTask" >
 																<li class="jm-innerTaskInput jm-innerTask-el">
 																	<div class="jm-title-ttitle col-lg-4 jm-grey">
 																		<input type="text" placeholder="하위업무명을 입력하세요" name="ttitle" required="required">
@@ -306,6 +306,7 @@
 	</div>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 	<script src="js/app.js"></script>
+	
 </body>
 
 </html>
