@@ -68,11 +68,11 @@ public class ProjectVo {
 		this.pno = pno;
 	}
 
-	public String getuserid() {
+	public String getUserid() {
 		return userid;
 	}
 
-	public void setuserid(String userid) {
+	public void setUserid(String userid) {
 		this.userid = userid;
 	}
 
@@ -84,11 +84,11 @@ public class ProjectVo {
 		this.pname = pname;
 	}
 
-	public String getpcontent() {
+	public String getPcontent() {
 		return pcontent;
 	}
 
-	public void setpcontent(String pcontent) {
+	public void setPcontent(String pcontent) {
 		this.pcontent = pcontent;
 	}
 
@@ -108,19 +108,19 @@ public class ProjectVo {
 		this.pdate = pdate;
 	}
 
-	public String getPstartDate() {
+	public String getPstartdate() {
 		return pstartdate;
 	}
 
-	public void setPstartDate(String pstartdate) {
+	public void setPstartdate(String pstartdate) {
 		this.pstartdate = pstartdate;
 	}
 
-	public String getPendDate() {
+	public String getPenddate() {
 		return penddate;
 	}
 
-	public void setPendDate(String penddate) {
+	public void setPenddate(String penddate) {
 		this.penddate = penddate;
 	}
 
@@ -179,6 +179,7 @@ public class ProjectVo {
 	public void setMaintaskList(List<MaintaskDto> maintaskList) {
 		this.maintaskList = maintaskList;
 	}
+
 	
 	
 }

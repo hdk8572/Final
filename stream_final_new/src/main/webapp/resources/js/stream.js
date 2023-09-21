@@ -20,6 +20,8 @@ function goUpdateForm(pno) {
 	 	type: "get",
 	 	dataType: "json",
 	 	success: function(result){
+	 		console.log(result.pstartdate);
+	 		console.log(result.penddate);
 			$("#updateProjectModal [name=pno]").val(result.pno);
 			$("#updateProjectModal [name=pname]").val(result.pname);
 			$("#updateProjectModal [name=pcontent]").val(result.pcontent);

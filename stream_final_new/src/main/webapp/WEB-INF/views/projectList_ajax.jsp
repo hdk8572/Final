@@ -209,16 +209,6 @@
  		
 	}
  	
-
- 	
-/*  	function updateProject(pno) {
- 		var newInput = "<input type='text'/>";
- 		var newBtn = "<button>수정<button>"
- 		$("#pname"+pno).html(newInput);
- 		$("#newBtn"+pno).css("display", "inline-block");
- 	} */
- 	
- 	
  	function listDelete($thisEle) {
  		console.log($thisEle.parents("[name=pno]").val());
 		$.ajax ({
