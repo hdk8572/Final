@@ -30,7 +30,7 @@ VALUES ('C002', 'TESTCOMPANY', '031-456-7891', '경기도 남양주시', '100200
 
 -- TABLE DEPT
 INSERT INTO DEPT (DEPTNO, CCODE, DEPTNAME)
-VALUES ('A', 'AA', 'lclass');
+VALUES ('D003', 'C001', '인사부');
 
 INSERT INTO DEPT (DEPTNO, CCODE, DEPTNAME)
 VALUES ('D001', 'C001', '행정부');
@@ -46,34 +46,34 @@ VALUES ('D002', 'C002', '영업부');
 
 --TABLE USERS
 INSERT INTO USERS (USERID, DEPTNO, CCODE, PASSWORD, ENABLED, AUTHORITY, MNAME, MPHONE, MRANK)
-VALUES ('kh0001@kh.com', 'A', 'AA', 'khkhkhkh', 0, 'RC', '황대경', '01012341234', 'AAA');
+VALUES ('kh0001@kh.com', 'D001', 'C001', 'khkhkhkh', 0, 'RC', '김김김', '01012341234', '대리');
 
 INSERT INTO USERS (USERID, DEPTNO, CCODE, PASSWORD, ENABLED, AUTHORITY, MNAME, MPHONE, MRANK)
-VALUES ('kh0002@kh.com', 'A', 'AA', 'khkhkhkh', 0, 'RC', '이지영', '01012341234', 'AAA');
+VALUES ('kh0002@kh.com', 'D001', 'C001', 'khkhkhkh', 0, 'RC', '임임임', '01012341234', '부장');
 
 INSERT INTO USERS ( USERID, DEPTNO, CCODE, PASSWORD, ENABLED, AUTHORITY, MNAME, MPHONE, MRANK)
-VALUES ('sample@kh.co.kr', 'D001', 'C001', '12345', '1', 'RC', '김사장', '010-2345-6789', NULL);
+VALUES ('sample@kh.co.kr', 'D001', 'C001', '12345', '1', 'RC', '황황황', '010-2345-6789', '과장');
 
 INSERT INTO USERS ( USERID, DEPTNO, CCODE, PASSWORD, ENABLED, AUTHORITY, MNAME, MPHONE, MRANK)
-VALUES ('sple@kh.co.kr', 'D001', 'C001', '12345', '1', 'RM', '박사원', '010-2344-5667', NULL);
+VALUES ('sple@kh.co.kr', 'D001', 'C001', '12345', '1', 'RM', '황황황', '010-2344-5667', '사장');
 
 INSERT INTO USERS ( USERID, DEPTNO, CCODE, PASSWORD, ENABLED, AUTHORITY, MNAME, MPHONE, MRANK)
-VALUES ('spam@kh.co.kr', 'D002', 'C001', '11111', '1', 'RM', '이사원', '010-3456-8874', NULL);
+VALUES ('spam@kh.co.kr', 'D002', 'C001', '11111', '1', 'RM', '임임임', '010-3456-8874', '대리');
 
 INSERT INTO USERS ( USERID, DEPTNO, CCODE, PASSWORD, ENABLED, AUTHORITY, MNAME, MPHONE, MRANK)
-VALUES ('mplsam@kh.co.kr', 'D002', 'C001', '11111', '1', 'RM', '정사원', '010-4566-8877', NULL);
+VALUES ('mplsam@kh.co.kr', 'D002', 'C001', '11111', '1', 'RM', '정사원', '010-4566-8877', '과장');
 
 INSERT INTO USERS ( USERID, DEPTNO, CCODE, PASSWORD, ENABLED, AUTHORITY, MNAME, MPHONE, MRANK)
-VALUES ('fffll@ctest.co.kr', 'D001', 'C002', '00000', '1', 'RC', '나사장', '010-8552-5665', NULL);
+VALUES ('fffll@ctest.co.kr', 'D001', 'C002', '00000', '1', 'RC', '나사장', '010-8552-5665', '부장');
 
 INSERT INTO USERS ( USERID, DEPTNO, CCODE, PASSWORD, ENABLED, AUTHORITY, MNAME, MPHONE, MRANK)
-VALUES ('react@ctest.co.kr', 'D001', 'C002', '00000', '1', 'RM', '너사원', '010-6543-2100', NULL);
+VALUES ('react@ctest.co.kr', 'D001', 'C002', '00000', '1', 'RM', '김김김', '010-6543-2100', '이장');
 
 INSERT INTO USERS ( USERID, DEPTNO, CCODE, PASSWORD, ENABLED, AUTHORITY, MNAME, MPHONE, MRANK)
-VALUES ('spring@ctest.co.kr', 'D002', 'C002', '00011', '1', 'RM', '너도사원', '010-9852-1200', NULL);
+VALUES ('spring@ctest.co.kr', 'D002', 'C002', '00011', '1', 'RM', '김김김', '010-9852-1200', '촌장');
 
 INSERT INTO USERS ( USERID, DEPTNO, CCODE, PASSWORD, ENABLED, AUTHORITY, MNAME, MPHONE, MRANK)
-VALUES ('sql@ctest.co.kr', 'D002', 'C002', '00011', '1', 'RM', '김사원', '010-2589-9852', NULL);
+VALUES ('sql@ctest.co.kr', 'D002', 'C002', '00011', '1', 'RM', '김사원', '010-2589-9852', '된장');
 
 
 --TABLE PROJECT
