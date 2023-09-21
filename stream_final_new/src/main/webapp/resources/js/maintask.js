@@ -13,7 +13,7 @@ function loadedHandler(){
 	$('html').on("click", boxOutHandler)
 	$(".jm-innerTask-insert-button").click(innerTaskaddListHandler);
 	$(".addInnerTask").on("submit",ttileCheckHandler);
-	$("select[name=tstatus]").change(selectOption);
+	//$("select[name=tstatus]").change(selectOption);
 }
 
 function dragStart(e){
@@ -102,7 +102,7 @@ boxOutHandler=(event)=>{
 		}
 	}
 }
-
+/*
 selectOption=(event)=>{
 	console.log(event.target);
 	var a1 = event.target.value;
@@ -111,7 +111,7 @@ selectOption=(event)=>{
  	console.log(selectedOption);
  	$(".jm-select-tstatus").val(selectedOption);
 }
-
+*/
 ttileCheckHandler=(event)=>{
 	console.log("submit 눌렸다."+event.target);
 	var a1 = event.target;
@@ -123,11 +123,13 @@ function innerTaskaddListHandler (event) {
  const contextPath = "${pageContext.request.contextPath}";
 	console.log("ajax간다");
 	var a1 = event.target;
+	console.log($(this).closest(".addInnerTask").serialize());
+	console.log($(this).closest(".addInnerTask"));
 	$.ajax ({
 		url: contextPath+"/innertaskinsert",
 		type: "post",
 		//data: $(".addInnerTask").serialize(),
-		data : $(".addInnerTask").serialize(),
+		data : $(this).closest(".addInnerTask").serialize(),
 		dataType: "json",
 		success: function(result){
 			console.log("성공");
