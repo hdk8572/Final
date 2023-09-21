@@ -19,7 +19,7 @@
 						<br>
 						<input type="hidden" name="pno" value="${pno_TODO }">
 						<input type="hidden" name="userid" value="mplsam@kh.co.kr"><!-- kh0002@kh.com -->
-						<input type="date" class="form-date" name="sstartDate" required="required"> ~ <input type="date" class="form-date" name="tendDate" required="required"> <!-- s -->
+						<input type="date" class="form-date" name="sstartDate" required="required"> ~ <input type="date" class="form-date" name="tenddate" required="required"> <!-- s -->
 						<br>
 						<br>
 						

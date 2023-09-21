@@ -38,9 +38,9 @@
 						<input type="hidden" name="tdate" value=sysdate>
 						<input type="hidden" name="userid" value="kh0002@kh.com">
 						<input type="hidden" name="pno" value="${pno}">
-						<input type="date" class="form-date" name="tstartDate" required="required">
+						<input type="date" class="form-date" name="tstartdate" required="required">
 						~
-						<input type="date" class="form-date" name="tendDate" required="required">
+						<input type="date" class="form-date" name="tenddate" required="required">
 						<br>
 						<br>
 						<div align="center">

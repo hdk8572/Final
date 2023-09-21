@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 //TCONTENT   NOT NULL VARCHAR2(1200) 
 //TSTATUS    NOT NULL VARCHAR2(10)   
 //TDATE      NOT NULL DATE           
-//TSTARTDATE          DATE           
-//TENDDATE            DATE           
+//tstartdate          DATE           
+//tenddate            DATE           
 
 
 @Component

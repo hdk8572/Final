@@ -106,8 +106,8 @@
 							</select>
 						</td>
 						<td>${fn:split(tlist.tdate, " ")[0]}</td>
-						<td>${fn:split(tlist.tstartDate, " ")[0]}</td>
-						<td>${fn:split(tlist.tendDate, " ")[0]}</td>
+						<td>${fn:split(tlist.tstartdate, " ")[0]}</td>
+						<td>${fn:split(tlist.tenddate, " ")[0]}</td>
 					</tr>
 					</c:forEach>		
 				</table>

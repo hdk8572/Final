@@ -10,8 +10,8 @@ public class PtaskVo {
 	private String tcontent;
 	private String tstatus;
 	private String tdate;
-	private String tstartDate;
-	private String tendDate;
+	private String tstartdate;
+	private String tenddate;
 	
 	//하위 업무 추가를 위한 컬럼
 	private String bref;	//bref=tno : 원본글
@@ -22,8 +22,8 @@ public class PtaskVo {
 	@Override
 	public String toString() {
 		return "PtaskVo [tno=" + tno + ", pno=" + pno + ", userid=" + userid + ", tmember=" + tmember + ", ttitle="
-				+ ttitle + ", tcontent=" + tcontent + ", tstatus=" + tstatus + ", tdate=" + tdate + ", tstartDate="
-				+ tstartDate + ", tendDate=" + tendDate + ", bref=" + bref + ", brelevel=" + brelevel + ", brestep="
+				+ ttitle + ", tcontent=" + tcontent + ", tstatus=" + tstatus + ", tdate=" + tdate + ", tstartdate="
+				+ tstartdate + ", tenddate=" + tenddate + ", bref=" + bref + ", brelevel=" + brelevel + ", brestep="
 				+ brestep + "]";
 	}
 
@@ -32,7 +32,7 @@ public class PtaskVo {
 	}
 
 	public PtaskVo(String tno, String pno, String userid, String tmember, String ttitle, String tcontent,
-			String tstatus, String tdate, String tstartDate, String tendDate) {
+			String tstatus, String tdate, String tstartdate, String tenddate) {
 		super();
 		this.tno = tno;
 		this.pno = pno;
@@ -42,12 +42,12 @@ public class PtaskVo {
 		this.tcontent = tcontent;
 		this.tstatus = tstatus;
 		this.tdate = tdate;
-		this.tstartDate = tstartDate;
-		this.tendDate = tendDate;
+		this.tstartdate = tstartdate;
+		this.tenddate = tenddate;
 	}
 
 	public PtaskVo(String tno, String pno, String userid, String tmember, String ttitle, String tstatus, String tdate,
-			String tstartDate, String tendDate, String bref, String brelevel, String brestep) {
+			String tstartdate, String tenddate, String bref, String brelevel, String brestep) {
 		super();
 		this.tno = tno;
 		this.pno = pno;
@@ -56,8 +56,8 @@ public class PtaskVo {
 		this.ttitle = ttitle;
 		this.tstatus = tstatus;
 		this.tdate = tdate;
-		this.tstartDate = tstartDate;
-		this.tendDate = tendDate;
+		this.tstartdate = tstartdate;
+		this.tenddate = tenddate;
 		this.bref = bref;
 		this.brelevel = brelevel;
 		this.brestep = brestep;
@@ -111,17 +111,17 @@ public class PtaskVo {
 	public void setTdate(String tdate) {
 		this.tdate = tdate;
 	}
-	public String getTstartDate() {
-		return tstartDate;
+	public String getTstartdate() {
+		return tstartdate;
 	}
-	public void setTstartDate(String tstartDate) {
-		this.tstartDate = tstartDate;
+	public void setTstartdate(String tstartdate) {
+		this.tstartdate = tstartdate;
 	}
-	public String getTendDate() {
-		return tendDate;
+	public String getTenddate() {
+		return tenddate;
 	}
-	public void setTendDate(String tendDate) {
-		this.tendDate = tendDate;
+	public void setTenddate(String tenddate) {
+		this.tenddate = tenddate;
 	}
 
 	public String getBref() {
