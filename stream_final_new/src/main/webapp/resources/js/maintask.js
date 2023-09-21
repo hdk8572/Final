@@ -13,7 +13,6 @@ function loadedHandler(){
 	$('html').on("click", boxOutHandler)
 	$(".jm-innerTask-insert-button").click(innerTaskaddListHandler);
 	$(".addInnerTask").on("submit",ttileCheckHandler);
-	//$("select[name=tstatus]").change(selectOption);
 }
 
 function dragStart(e){
@@ -68,16 +67,13 @@ projectButtonClickTestHandler=(event)=>{
 
 functionDateHandler=(e)=>{
 	var today = new Date();
-	
 	var year = today.getFullYear();
 	var month = ('0' + (today.getMonth() + 1)).slice(-2);
 	var day = ('0' + today.getDate()).slice(-2);
 	
 	var dateString = year + '-' + month  + '-' + day;
-	
 	console.log(dateString);
 	$(".innerTdate").html("<span>"+dateString+"</span>");
-	
 }
 
 innerTaskInputHandler=(event)=>{
@@ -86,7 +82,6 @@ innerTaskInputHandler=(event)=>{
 	$(a1).closest('li').next('form').find(".jm-innerTask-el").addClass('row active');
 	$(a1).closest('li').next('form').find(".jm-innerTask-el").css("display","block, flex");
 	$(".innerTdate").text(functionDateHandler())
-	
 }
 
 boxOutHandler=(event)=>{
@@ -102,39 +97,33 @@ boxOutHandler=(event)=>{
 		}
 	}
 }
-/*
-selectOption=(event)=>{
-	console.log(event.target);
-	var a1 = event.target.value;
-	console.log(a1);
-	var selectedOption = a1;
- 	console.log(selectedOption);
- 	$(".jm-select-tstatus").val(selectedOption);
-}
-*/
+
 ttileCheckHandler=(event)=>{
 	console.log("submit 눌렸다."+event.target);
 	var a1 = event.target;
 	console.log(a1);
-	
 }
 
-function innerTaskaddListHandler (event) {
- const contextPath = "${pageContext.request.contextPath}";
+function innerTaskaddListHandler () {
+const pathname = "/" + window.location.pathname.split("/")[1] + "/";
+const origin = window.location.origin;
+
+const contextPath = origin + pathname;
 	console.log("ajax간다");
-	var a1 = event.target;
 	console.log($(this).closest(".addInnerTask").serialize());
 	console.log($(this).closest(".addInnerTask"));
 	$.ajax ({
-		url: contextPath+"/innertaskinsert",
+		url: contextPath+"innertaskinsert",
 		type: "post",
-		//data: $(".addInnerTask").serialize(),
-
 		data : $(this).closest(".addInnerTask").serialize(),
 		dataType: "json",
 		success: function(result){
+			if(result){
 			console.log("성공");
-			makeView(result);
+			//makeView(result);
+			}else{
+			alert("전송된 값 없음");
+			}
 		},
 		error: function() {	
 			alert("innerTaskaddList 에서 에러났습니다.");
