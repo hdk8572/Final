@@ -14,8 +14,9 @@
  	<div class="modal-body project">
  		<form id="addProject">
 	    	<div class="card">
-				<div class="card-header">
-					<h5 class="card-title mb-0">프로젝트명 및 설명을 입력해주세요.</h5>
+				<div class="card-header" >
+					<!-- <h5 class="card-title mb-0"></h5> -->
+					<input name="ttitle">
 				</div>
 				<div class="card-body addProject">
 					<input type="hidden" name="userid" value="mplsam@kh.co.kr"> <!-- 로그인 세션 받아서 등록 -->
@@ -23,44 +24,32 @@
 					<!-- <input type="text" class="form-control title" name="pname" placeholder="프로젝트명을 입력해주세요." required="required"> -->
 					<br> 
 					<div>
+
 					<input type="date" class="form-date" name="pstartdate" required="required">
 					~
 					<input type="date" class="form-date" name="penddate" required="required">
+
 					</div>
 					<br>
-					<textarea class="form-control content" rows="5" name="ttitle"></textarea> <!-- title로 바꿔 -->
-						
-						<!-- 시큐에디터 --><!-- 여기 2개 넣고 add 밑에 1개 넣어야지 add에 뜸 왜 그럴까  -->
-						<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
-						<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
-						<script>
-						let editor;
-						
-						ClassicEditor.create(document.querySelector(".form-control.content"), {	
-							language: "ko",
-							toolbar: [
-								'heading', 'bold', 'italic'
-							]
-						})
-							.then( editor => {
-					            myEditor = editor;
-					        } )
-					        .catch( err => {
-					            console.error( err.stack );
-				        });
-						</script>
-				</div>
-					
-				
-				<div class="card-header">
-				</div>
-				<div class="card-body">
-
+						<textarea class="form-control content" rows="5"  name="tcontent"></textarea> <!-- tcontent 이벤트 작성해서 얘 불러오기 -->
+					<div>
+						<ul class="c-comment">
+							<li class="c-comment-form">
+								<form id="c-commentFrm">
+									<h4>댓글쓰기 <span></span></h4>
+									<span class="cbox">
+										<input type="text" placeholder="댓글 내용을 입력해주세요" class="int" name="c-content">
+									</span>
+									<input type="submit" class="c-btn" value="등록">
+								</form>
+							</li>
+							<li id="c-comment-list"></li>
+						</ul>
+					</div>
+					<script src="public/js/practice.js"></script>
 				</div>
 			</div>
-			<div class="card">
 
-			</div>
 			<div align="center">
 				<button class="btn btn-primary" id="btn-submit" type="button">추가</button>
 				<button class="btn btn-warning" type="reset">취소</button>
@@ -75,18 +64,23 @@
   	</div>
   </div>
 </div>
-<!-- <script>
+<script>
+	const commenBtn = document.querySelector("#c-commentFrm")
+	const list = [];
+	console.log(commentBtn);
+
+</script>
+<script>
 	$("#btn-submit").click(addList);
 	
 	function addList () {
 		var data = myEditor.getData();
 		$("[name=pcontent]").val(data);
 		
-		console.log($("#addProject").serialize());  // "n1=v1&n2=v2"&pcontent=rkqdfjklfjlddfld
+		console.log($("#addProject").serialize());  // form태그 묶인 거 다 가져옴?
 		$.ajax ({
 			url: "${pageContext.request.contextPath}/projectInsert",
 			type: "post",
-			//data: $("#addProject").serialize(),
 			data : $("#addProject").serialize(),
 			dateType: "json",
 			success: function(result){
@@ -97,6 +91,6 @@
 			}
 		});	
 	}
-</script> -->
+</script>
 
 <!-- 모달 -->
