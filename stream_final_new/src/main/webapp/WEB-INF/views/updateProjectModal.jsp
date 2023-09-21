@@ -14,7 +14,7 @@
 					<div class="card-header updateProjectTitle">
 						<h2 class="updateProjectTitle"><b>프로젝트 수정</b></h2>
 					</div>
-						<form id="infoProject" action="${pageContext.request.contextPath}/projectUpdate.ajax" method="get">					
+						<form id="infoProject">					
 						<input type="text" class="form-control title" name="pname" placeholder="제목을 입력하세요.">
 						<br>
 						<span class="d-flex align-items-center">
@@ -37,7 +37,7 @@
 						<textarea class="form-control" rows="10" name="pcomment" placeholder="내용을 입력해주세요"></textarea>
 						<br>
 						<input type="hidden" name="tdate">
-						<input type="hidden" name="userId">
+						<input type="hidden" name="userid">
 						<input type="hidden" name="pno">
 						<input type="date" id="updateDate" class="form-date" name="pstartDate" required="required">
 						~
@@ -45,7 +45,7 @@
 						<br>
 						<br>
 						<div align="center">
-							<button class="btn btn-primary" id="updateBtn" type="submit">수정</button>
+							<button class="btn btn-primary" id="updateBtn" type="button">수정</button>
 							<button class="btn btn-warning" type="reset">취소</button>
 						</div>
 						</form>

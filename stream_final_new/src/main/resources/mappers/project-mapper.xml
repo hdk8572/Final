@@ -29,6 +29,4 @@
 		UPDATE PROJECT SET PNAME=#{pname}, pcomment=#{pcomment}, PSTATUS=#{pstatus}, PSTARTDATE=#{pstartDate}, PENDDATE=#{pendDate}
 		WHERE PNO=#{pno}
 	</update>
-  
-  
 </mapper>

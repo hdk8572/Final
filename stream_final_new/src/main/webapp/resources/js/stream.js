@@ -35,21 +35,18 @@ function goUpdateForm(pno) {
 }
 
 function doUpdateProject() {
-	$.ajax ({
+ 	$.ajax ({
 		url: contextPath+"/doUpdateProject",
 		type: "get",
 		data: $("#infoProject").serialize(),
-		dataType: "json",
+		//dataType: "json",
 		success: function(result) {
-			console.log(result.pname);
-		
-			$("#updateProjectModal [name=pno]").val(result.pno);
-			$("#updateProjectModal [name=pname]").val(result.pname);
-			$("#updateProjectModal [name=pcomment]").val(result.pcomment);
-			$("#updateProjectModal [name=pstartDate]").val(result.pstartDate);
-			$("#updateProjectModal [name=pendDate]").val(result.pendDate);
-			$("#updateProjectModal [name=mname]").val(result.mname);
-		
+			console.log(result);
+			if(result>0){
+				location.href=contextPath+"/projectlist";
+			} else {
+				alert("ek");
+			}		
 		},
 		error: function() {
 			console.log("doUpdateProject에서 오류 발생");

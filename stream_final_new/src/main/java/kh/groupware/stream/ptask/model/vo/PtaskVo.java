@@ -4,7 +4,7 @@ public class PtaskVo {
 
 	private String tno;
 	private String pno;
-	private String userId;
+	private String userid;
 	private String tmember;
 	private String ttitle;
 	private String tcontent;
@@ -21,7 +21,7 @@ public class PtaskVo {
 	
 	@Override
 	public String toString() {
-		return "PtaskVo [tno=" + tno + ", pno=" + pno + ", userId=" + userId + ", tmember=" + tmember + ", ttitle="
+		return "PtaskVo [tno=" + tno + ", pno=" + pno + ", userid=" + userid + ", tmember=" + tmember + ", ttitle="
 				+ ttitle + ", tcontent=" + tcontent + ", tstatus=" + tstatus + ", tdate=" + tdate + ", tstartDate="
 				+ tstartDate + ", tendDate=" + tendDate + ", bref=" + bref + ", brelevel=" + brelevel + ", brestep="
 				+ brestep + "]";
@@ -31,12 +31,12 @@ public class PtaskVo {
 		super();
 	}
 
-	public PtaskVo(String tno, String pno, String userId, String tmember, String ttitle, String tcontent,
+	public PtaskVo(String tno, String pno, String userid, String tmember, String ttitle, String tcontent,
 			String tstatus, String tdate, String tstartDate, String tendDate) {
 		super();
 		this.tno = tno;
 		this.pno = pno;
-		this.userId = userId;
+		this.userid = userid;
 		this.tmember = tmember;
 		this.ttitle = ttitle;
 		this.tcontent = tcontent;
@@ -46,12 +46,12 @@ public class PtaskVo {
 		this.tendDate = tendDate;
 	}
 
-	public PtaskVo(String tno, String pno, String userId, String tmember, String ttitle, String tstatus, String tdate,
+	public PtaskVo(String tno, String pno, String userid, String tmember, String ttitle, String tstatus, String tdate,
 			String tstartDate, String tendDate, String bref, String brelevel, String brestep) {
 		super();
 		this.tno = tno;
 		this.pno = pno;
-		this.userId = userId;
+		this.userid = userid;
 		this.tmember = tmember;
 		this.ttitle = ttitle;
 		this.tstatus = tstatus;
@@ -75,11 +75,11 @@ public class PtaskVo {
 	public void setPno(String pno) {
 		this.pno = pno;
 	}
-	public String getUserId() {
-		return userId;
+	public String getuserid() {
+		return userid;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setuserid(String userid) {
+		this.userid = userid;
 	}
 	public String getTmember() {
 		return tmember;

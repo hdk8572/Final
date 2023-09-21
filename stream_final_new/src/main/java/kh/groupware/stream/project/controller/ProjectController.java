@@ -66,11 +66,10 @@ public class ProjectController {
 	
 	
 	@GetMapping("/doUpdateProject")
-
 	@ResponseBody
-	public String update(ProjectVo vo) {
-		projectService.update(vo);
-		return "redirect:projectlist";
+	public int update(ProjectVo vo) {
+		int result = projectService.update(vo);
+		return result;
 	}
 	 
 

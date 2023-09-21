@@ -129,6 +129,9 @@
 			datatype: "json",
 			success: makeView,
 			
+			
+			
+			
 			error: function() {
 				alert("loadList에서 에러났습니다.");
 			}
@@ -196,6 +199,7 @@
 	    $(".frm.select").click(selectOption);  // stream.js -> abc();
 	    $(".list-delete").click(listDeleteHandler);
 	    $("#updateBtn").click(doUpdateProject);
+	    
 
 	}
  	

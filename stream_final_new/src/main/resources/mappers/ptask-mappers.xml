@@ -15,7 +15,7 @@
 
 	<insert id="insertTask" parameterType="PtaskVo">
 		INSERT INTO TASK (TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, TSTARTDATE, TENDDATE)
-		VALUES (task_sequence.NEXTVAL, #{pno}, #{userId}, #{tmember}, #{ttitle}, #{tcontent}, #{tstatus}, #{tstartDate}, #{tendDate})
+		VALUES (task_sequence.NEXTVAL, #{pno}, #{userid}, #{tmember}, #{ttitle}, #{tcontent}, #{tstatus}, #{tstartDate}, #{tendDate})
 	</insert>
 
 	<delete id="deleteTask" parameterType="PtaskVo">
