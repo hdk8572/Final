@@ -23,9 +23,9 @@
 					<!-- <input type="text" class="form-control title" name="pname" placeholder="프로젝트명을 입력해주세요." required="required"> -->
 					<br> 
 					<div>
-					<input type="date" class="form-date" name="pstartDate" required="required">
+					<input type="date" class="form-date" name="pstartdate" required="required">
 					~
-					<input type="date" class="form-date" name="pendDate" required="required">
+					<input type="date" class="form-date" name="penddate" required="required">
 					</div>
 					<br>
 					<textarea class="form-control content" rows="5" name="ttitle"></textarea> <!-- title로 바꿔 -->
@@ -80,9 +80,9 @@
 	
 	function addList () {
 		var data = myEditor.getData();
-		$("[name=pcomment]").val(data);
+		$("[name=pcontent]").val(data);
 		
-		console.log($("#addProject").serialize());  // "n1=v1&n2=v2"&pcomment=rkqdfjklfjlddfld
+		console.log($("#addProject").serialize());  // "n1=v1&n2=v2"&pcontent=rkqdfjklfjlddfld
 		$.ajax ({
 			url: "${pageContext.request.contextPath}/projectInsert",
 			type: "post",

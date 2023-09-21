@@ -35,7 +35,7 @@
 	<!-- 일정 등록 -->
 	<insert id="insert" parameterType="CalendarVo">
 		INSERT INTO SCHEDULE (SNO, USERID, SSTARTDATE, SENDDATE, SPLACE, SMEMO, STITLE )
-		VALUES (schedule_sequence.NEXTVAL, #{userId}, #{start}, #{end}, #{splace}, #{smemo}, #{title})
+		VALUES (schedule_sequence.NEXTVAL, #{userid}, #{start}, #{end}, #{splace}, #{smemo}, #{title})
 	</insert>
 
 	<!-- 캘린더 수정 -->

@@ -9,11 +9,11 @@ public class ProjectVo {
 	private String pno;
 	private String userid;
 	private String pname;
-	private String pcomment;
+	private String pcontent;
 	private String paccess;
 	private String pdate;
-	private String pstartDate;
-	private String pendDate;
+	private String pstartdate;
+	private String penddate;
 	private String prow; // 함수 Vo에 없음
 	private String pstatus;
 	
@@ -28,8 +28,8 @@ public class ProjectVo {
 
 	@Override
 	public String toString() {
-		return "ProjectVo [pno=" + pno + ", userid=" + userid + ", pname=" + pname + ", pcomment=" + pcomment
-				+ ", paccess=" + paccess + ", pdate=" + pdate + ", pstartDate=" + pstartDate + ", pendDate=" + pendDate
+		return "ProjectVo [pno=" + pno + ", userid=" + userid + ", pname=" + pname + ", pcontent=" + pcontent
+				+ ", paccess=" + paccess + ", pdate=" + pdate + ", pstartdate=" + pstartdate + ", penddate=" + penddate
 				+ ", prow=" + prow + ", pstatus=" + pstatus + ", deptno=" + deptno + ", mname=" + mname + ", mrank="
 				+ mrank + ", deptName=" + deptName + ", maintaskList=" + maintaskList + "]";
 	}
@@ -39,18 +39,18 @@ public class ProjectVo {
 	}
 
 	
-	public ProjectVo(String pno, String userid, String pname, String pcomment, String paccess, String pdate,
-			String pstartDate, String pendDate, String prow, String pstatus, String deptno, String mname, String mrank,
+	public ProjectVo(String pno, String userid, String pname, String pcontent, String paccess, String pdate,
+			String pstartdate, String penddate, String prow, String pstatus, String deptno, String mname, String mrank,
 			String deptName, List<MaintaskDto> maintaskList) {
 		super();
 		this.pno = pno;
 		this.userid = userid;
 		this.pname = pname;
-		this.pcomment = pcomment;
+		this.pcontent = pcontent;
 		this.paccess = paccess;
 		this.pdate = pdate;
-		this.pstartDate = pstartDate;
-		this.pendDate = pendDate;
+		this.pstartdate = pstartdate;
+		this.penddate = penddate;
 		this.prow = prow;
 		this.pstatus = pstatus;
 		this.deptno = deptno;
@@ -84,12 +84,12 @@ public class ProjectVo {
 		this.pname = pname;
 	}
 
-	public String getpcomment() {
-		return pcomment;
+	public String getpcontent() {
+		return pcontent;
 	}
 
-	public void setpcomment(String pcomment) {
-		this.pcomment = pcomment;
+	public void setpcontent(String pcontent) {
+		this.pcontent = pcontent;
 	}
 
 	public String getPaccess() {
@@ -109,19 +109,19 @@ public class ProjectVo {
 	}
 
 	public String getPstartDate() {
-		return pstartDate;
+		return pstartdate;
 	}
 
-	public void setPstartDate(String pstartDate) {
-		this.pstartDate = pstartDate;
+	public void setPstartDate(String pstartdate) {
+		this.pstartdate = pstartdate;
 	}
 
 	public String getPendDate() {
-		return pendDate;
+		return penddate;
 	}
 
-	public void setPendDate(String pendDate) {
-		this.pendDate = pendDate;
+	public void setPendDate(String penddate) {
+		this.penddate = penddate;
 	}
 
 	public String getProw() {

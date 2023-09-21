@@ -34,7 +34,7 @@
 							<input type= "text" class= "form-control manager ml-2" value="${ul.mname}" placeholder= "담당자" readonly>
 						</span>
 						<br>
-						<textarea class="form-control content" rows="10" name="pcomment" placeholder="프로젝트에 관한 설명을 입력해주세요"></textarea>
+						<textarea class="form-control content" rows="10" name="pcontent" placeholder="프로젝트에 관한 설명을 입력해주세요"></textarea>
 							<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script> <!-- 위즈윅 -->
 							<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
 							<script>
@@ -60,9 +60,9 @@
 						<input type="hidden" name="paccess" value="ACCESS"><!-- 세션에서 권한 선택 -->
 						
 					
-						<input type="date" class="form-date" name="pstartDate" required="required">
+						<input type="date" class="form-date" name="pstartdate" required="required">
 						~
-						<input type="date" class="form-date" name="pendDate" required="required">
+						<input type="date" class="form-date" name="penddate" required="required">
 						<br>
 						<br>
 						<div align="center">
@@ -86,9 +86,9 @@
     
 	function addList () {
 		var data = myEditor.getData();
-		$("[name=pcomment]").val(data);
+		$("[name=pcontent]").val(data);
 		
-		console.log($("#addProject").serialize());  // "n1=v1&n2=v2"&pcomment=rkqdfjklfjlddfld
+		console.log($("#addProject").serialize());  // "n1=v1&n2=v2"&pcontent=rkqdfjklfjlddfld
 		$.ajax ({
 			url: "${pageContext.request.contextPath}/projectInsert",
 			type: "post",

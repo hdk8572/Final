@@ -36,7 +36,7 @@
 						<textarea class="form-control" rows="10" name="tcontent" placeholder="내용을 입력해주세요"></textarea>
 						<br>
 						<input type="hidden" name="tdate" value=sysdate>
-						<input type="hidden" name="userId" value="kh0002@kh.com">
+						<input type="hidden" name="userid" value="kh0002@kh.com">
 						<input type="hidden" name="pno" value="${pno}">
 						<input type="date" class="form-date" name="tstartDate" required="required">
 						~
