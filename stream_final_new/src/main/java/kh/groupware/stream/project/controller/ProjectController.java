@@ -64,11 +64,14 @@ public class ProjectController {
 	    return map;
 	}
 	
+	
 	@GetMapping("/doUpdateProject")
+
 	@ResponseBody
-	public int update(ProjectVo vo) {
-		int uvo = projectService.update(vo);
-		return uvo;
-		
+	public String update(ProjectVo vo) {
+		projectService.update(vo);
+		return "redirect:projectlist";
 	}
+	 
+
 }

@@ -1,5 +1,5 @@
 function selectOption(e){
-	targetPno = $(this).children("[name=pno]").val();
+	targetPno = $(this).children("[name=pno]").val(); // 중요하다
 	console.log(targetPno); 
 	if($(e.target).hasClass("dropdown-btn-update")) {
 		goUpdateForm(targetPno);
@@ -15,25 +15,18 @@ function selectOption(e){
 
 function goUpdateForm(pno) {
 	$("#updateProjectModal").modal("toggle");
-	console.log(pno);
-	console.log(contextPath);
 	$.ajax({
 	 	url: contextPath+"/projectOne/"+pno,
 	 	type: "get",
 	 	dataType: "json",
 	 	success: function(result){
-	 		console.log("result :"+result);
-	 		console.log("result.pname :"+result.pname);
-	 		console.log("result.pcoment :"+result.pcoment);
-	 		console.log("result.pstartDate :"+result.pstartDate);
-	 		
 			$("#updateProjectModal [name=pno]").val(result.pno);
 			$("#updateProjectModal [name=pname]").val(result.pname);
-			$("#updateProjectModal [name=pcoment]").val(result.pcoment);
+			$("#updateProjectModal [name=pcomment]").val(result.pcomment);
 			$("#updateProjectModal [name=pstartDate]").val(result.pstartDate);
 			$("#updateProjectModal [name=pendDate]").val(result.pendDate);
 			$("#updateProjectModal [name=mname]").val(result.mname);
-			
+			$("#updateProjectModal [id=updateStatus]").val(result.pstatus);
 	 	},
 	 	error: function() {
 	 		console.log("selectOne에서 오류 발생");
@@ -52,7 +45,7 @@ function doUpdateProject() {
 		
 			$("#updateProjectModal [name=pno]").val(result.pno);
 			$("#updateProjectModal [name=pname]").val(result.pname);
-			$("#updateProjectModal [name=pcoment]").val(result.pcoment);
+			$("#updateProjectModal [name=pcomment]").val(result.pcomment);
 			$("#updateProjectModal [name=pstartDate]").val(result.pstartDate);
 			$("#updateProjectModal [name=pendDate]").val(result.pendDate);
 			$("#updateProjectModal [name=mname]").val(result.mname);
@@ -71,4 +64,6 @@ function hideProject(pno, $thisElement) {
 	// ajax	
 
 }
+
+
 

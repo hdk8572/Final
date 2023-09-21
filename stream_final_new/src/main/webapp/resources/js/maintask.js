@@ -117,7 +117,7 @@ function innerTaskaddList () {
 		//data: $(".addInnerTask").serialize(),
 		data : $(".addInnerTask").serialize(),
 		dateType: "json",
-		success: function(result){
+		success: function(result){ 
 			console.log("성공");
 			// makeView(result);
 			// $(".modal").modal("hide");
