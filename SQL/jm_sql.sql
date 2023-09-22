@@ -23,8 +23,9 @@ select  pname, pno, cnt, ttitle, userid, tstatus, tdate, tstartdate, tenddate
             where pno=pno
     ;
 
-select pname, pno, ttitle, userid, tstatus, tdate, tstartdate, tenddate
+select pname, pno, ttitle, userid, tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel
     from project join task using(pno, userid)
+    order by pno asc, brelevel asc, brestep asc
     ;
 
 --원본글, 답글 확인하기 
@@ -73,4 +74,20 @@ update task set BRESTEP = BRESTEP +1
     where BRESTEP > (SELECT BRESTEP FROM task WHERE tno = 1)
         and BREF = (select bref from task where tno = 1)
 ;
+
+select bref from task where tno = 1;
+SELECT BRESTEP FROM task WHERE tno = 1;
+SELECT count(BRESTEP) FROM task WHERE bref = 1;
+select brestep from task where tno =1 and brelevel=1;
+
+select bref, brestep from task where bref =1;
+
+select brelevel+1 from task where tno='1';
+select brestep+1 from task where tno='1';
+
 commit;
+
+
+select pname, pno, task.userid, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    		from project join task using(pno)
+    		order by pno asc, brelevel asc, brestep asc ;

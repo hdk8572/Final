@@ -79,8 +79,8 @@ functionDateHandler=(e)=>{
 innerTaskInputHandler=(event)=>{
 	console.log(event.target);
 	const a1 = event.target;
-	$(a1).closest('li').next('form').find(".jm-innerTask-el").addClass('row active');
-	$(a1).closest('li').next('form').find(".jm-innerTask-el").css("display","block, flex");
+	$(a1).closest('li').next().next().find(".jm-innerTask-el").addClass('row active');
+	$(a1).closest('li').next().next().find(".jm-innerTask-el").css("display","block, flex");
 	$(".innerTdate").text(functionDateHandler())
 }
 
@@ -120,7 +120,7 @@ const contextPath = origin + pathname;
 		success: function(result){
 			if(result){
 			console.log("성공");
-			//makeView(result);
+			location.href=contextPath+"maintask"
 			}else{
 			alert("전송된 값 없음");
 			}
@@ -128,6 +128,5 @@ const contextPath = origin + pathname;
 		error: function() {	
 			alert("innerTaskaddList 에서 에러났습니다.");
 		}
-	});	
+	});
 }
-

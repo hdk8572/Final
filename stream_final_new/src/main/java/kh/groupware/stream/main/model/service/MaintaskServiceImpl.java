@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kh.groupware.stream.main.model.dao.MaintaskDao;
 import kh.groupware.stream.project.model.dao.ProjectDao;
@@ -23,12 +24,13 @@ public class MaintaskServiceImpl implements MaintaskService {
 		return maintaskDao.projectNameList();
 	}
 	
-	
-	public List<PtaskVo> insertInnerTask(PtaskVo vo) {
-		List<PtaskVo> result = null;
+	@Transactional
+	public PtaskVo insertInnerTask(PtaskVo vo) {
+		PtaskVo result = null;
+		int update = maintaskDao.UpdateBeforeInsertInnerTask(vo);
 		int insertResult = maintaskDao.insertInnerTask(vo);
 		if(insertResult > 0) {
-			result = ptaskDao.pselectList(vo.getPno());
+			result = ptaskDao.pselectOne(vo.getPno(), vo.getTno());
 		}
         return result;
 	}

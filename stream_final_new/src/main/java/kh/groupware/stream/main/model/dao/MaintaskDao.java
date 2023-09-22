@@ -22,5 +22,8 @@ public class MaintaskDao {
 	public int insertInnerTask(PtaskVo vo) {
 		return sqlSession.insert("mainTask.innerTaskInsert", vo);
 	}
+	public int UpdateBeforeInsertInnerTask(PtaskVo vo) {
+		return sqlSession.update("mainTask.InnerTaskInsertBeforeUpdate", vo);
+	}
 	
 }

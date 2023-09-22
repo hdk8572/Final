@@ -232,7 +232,12 @@
 															<c:forEach items="${project.maintaskList }" var="task">
 															<li class="plusplus row">
 																<div class="jm-title-ttitle col-lg-4 jm-grey">
-																	<span>${task.ttitle	}</span>
+																	<span>
+																		<c:forEach begin="1" end="${task.brelevel }">
+																			&#8618;
+																		</c:forEach>
+																		${task.ttitle}
+																	</span>
 																	<button class="jm-inner-task-button" >업무추가</button>
 																	<span class="jm-tp jm-task-info">자세히 보기</span>
 																</div>
@@ -242,6 +247,8 @@
 																<div class="jm-title-tenddate col-lg-1 jm-grey">${task.tenddate }</div>
 																<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">${task.tdate }</div>
 																<div class="jm-title-tno col-lg-1 jm-grey jm-gr">${task.tno }</div>
+															</li>
+															<li class="jm-ajax-InnertaskIn">
 															</li>
 															<form class="addInnerTask" >
 																<li class="jm-innerTaskInput jm-innerTask-el">
@@ -287,7 +294,7 @@
 																		<input type="hidden" name="tcontent" value="default">
 																		<input type="hidden" name="pno" value="${project.pno}">
 																		<input type="hidden" name="userid" value="kh0001@kh.com"> <!-- 로그인 세션 받아서 등록 -->
-																		<button type="submit" class="jm-innerTask-insert-button">추가하기</button>
+																		<button type="button" class="jm-innerTask-insert-button">추가하기</button>
 																	</div>
 																</li>
 															</form>

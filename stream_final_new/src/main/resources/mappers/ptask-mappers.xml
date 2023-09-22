@@ -11,7 +11,15 @@
 		SELECT * 
 		FROM TASK
 		WHERE PNO=#{PNO}
+	</select>
+		
+	<select id="ProjectSelectOneInner" resultType="PtaskVo" parameterType="map">
+		SELECT * 
+		FROM TASK
+		WHERE PNO=#{pno} and TNO=#{tno}
 	</select>	
+	
+	
 
 	<insert id="insertTask" parameterType="PtaskVo">
 		INSERT INTO TASK (TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, tstartdate, tenddate)

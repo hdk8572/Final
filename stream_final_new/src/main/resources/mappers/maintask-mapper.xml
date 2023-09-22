@@ -4,7 +4,7 @@
 	<resultMap type="ProjectVo" id="maintaskVoMap">
 		<id property="pno" column="PNO"/>
 		<result property="pname" column="PNAME"/>
-		<collection property="maintaskList" ofType="MaintaskDto" column="pno">
+		<collection property="maintaskList" ofType="PtaskVo" column="pno">
 			<id property="tno" column="tno"/>
 			<result property="pno" column="pno"/>
 			<result property="userid" column="userid"/>
@@ -15,17 +15,19 @@
 			<result property="tdate" column="tdate"/>
 			<result property="tstartdate" column="tstartdate"/>
 			<result property="tenddate" column="tenddate"/>
+			<result property="bref" column="bref"/>
+			<result property="brestep" column="brestep"/>
+			<result property="brelevel" column="brelevel"/>
 		</collection>
 	</resultMap>
 	
 	<select id="projectNameList" resultMap="maintaskVoMap" >
-		select pname, pno, ttitle, userid, tstatus, tdate, tstartdate, tenddate, tno
-    		from project join task using(pno, userid)
+		select pname, pno, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    		from project join task using(pno)
+    		order by pno asc, bref desc, brelevel asc, brestep asc
 	</select>
 	
 	<insert id="innerTaskInsert" parameterType="PtaskVo">
-		
-
 		insert into task (TNO, PNO, USERID, tmember, TTITLE, tcontent, TSTATUS, TDATE, tstartdate, tenddate, BREF, BRESTEP, BRELEVEL)
 		values (
 			task_sequence.NEXTVAL, #{pno}, #{userid}, #{userid}, #{ttitle}, 'DEFAULT', #{tstatus}, sysdate, #{tstartdate}, #{tenddate}, 
@@ -34,5 +36,10 @@
 				(select brelevel+1 from task where tno=#{tno})
 				)
 	</insert>
+	<update id="InnerTaskInsertBeforeUpdate" parameterType="PtaskVo">
+		update task set BRESTEP = BRESTEP +1 
+   			where BRESTEP > (SELECT BRESTEP FROM task WHERE tno = 1)
+        	and BREF = (select bref from task where tno = 1)
+	</update>
 	
 </mapper>

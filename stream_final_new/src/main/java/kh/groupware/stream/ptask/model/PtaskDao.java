@@ -1,6 +1,8 @@
 package kh.groupware.stream.ptask.model;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,13 @@ public class PtaskDao {
 	// UI-ID-007
 	public List<PtaskVo> pselectList(String pno) {
 		return sqlSession.selectList("task.ProjectSelectOne", pno);
+	}
+	
+	public PtaskVo pselectOne(String pno, String tno) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("pno", pno);
+		map.put("tno", tno);
+		return sqlSession.selectOne("task.ProjectSelectOneInner", map);
 	}
 	
 	public int insertTask(PtaskVo vo) {
