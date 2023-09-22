@@ -283,6 +283,7 @@
 																		<div class="innerTdate"></div>
 																	</div>
 																	<div class="jm-title-tno col-lg-1 jm-grey jm-gr">
+																		<input type="hidden" name ="tno" value="${task.tno}">
 																		<input type="hidden" name="tcontent" value="default">
 																		<input type="hidden" name="pno" value="${project.pno}">
 																		<input type="hidden" name="userid" value="kh0001@kh.com"> <!-- 로그인 세션 받아서 등록 -->
