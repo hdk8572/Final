@@ -20,7 +20,9 @@ DROP TABLE "COMPANY";
 DROP SEQUENCE schedule_sequence;
 DROP SEQUENCE task_sequence;
 DROP SEQUENCE project_sequence;
-drop SEQUENCE chat_sequence;
+DROP SEQUENCE chat_sequence;
+DROP SEQUENCE brestep_sequence;
+
 
 
 CREATE TABLE "COMPANY" (

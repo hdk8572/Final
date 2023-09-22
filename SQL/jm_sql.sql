@@ -45,7 +45,7 @@ select brelevel+1 from task where tno = 1;
 --				(select brestep+1 from task where tno=#{tno}),
 --				(select brelevel+1 from task where tno=#{tno})
 --				)
-;
+--;
 
 select sysdate tdate from dual;
 insert into task (TNO, PNO, USERID, tmember, TTITLE, tcontent, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
@@ -56,3 +56,21 @@ insert into task (TNO, PNO, USERID, tmember, TTITLE, tcontent, TSTATUS, TDATE, T
 				(select brelevel+1 from task where tno='1')
 				)
 ;
+
+select brestep from task where pno = '1';
+
+select sysdate tdate from dual;
+insert into task (TNO, PNO, USERID, tmember, TTITLE, tcontent, TSTATUS, TDATE, TSTARTDATE, TENDDATE, BREF, BRESTEP, BRELEVEL)
+		values (
+			task_sequence.NEXTVAL, '1', 'kh0001@kh.com', 'kh0001@kh.com', 'aaabb', 'dd', '진행 중', sysdate, sysdate, sysdate, 
+				(select bref from task where tno='1'),
+				(select brestep+1 from task where tno='1'),
+				(select brelevel+1 from task where tno='1')
+				)
+;
+
+update task set BRESTEP = BRESTEP +1 
+    where BRESTEP > (SELECT BRESTEP FROM task WHERE tno = 1)
+        and BREF = (select bref from task where tno = 1)
+;
+commit;
