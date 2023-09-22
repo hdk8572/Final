@@ -45,8 +45,6 @@
 								toolbar: [
 									'heading', 'bold', 'italic'
 								]
-								
-							
 							})
 								.then( editor => {
 						            myEditor = editor;
@@ -54,6 +52,8 @@
 						        .catch( err => {
 						            console.error( err.stack );
 					        });
+							
+							
 							</script>
 						<br>
 						<input type="hidden" name="userid" value="kh0001@kh.com"> <!-- 로그인 세션 받아서 등록 -->
@@ -96,6 +96,7 @@
 			data : $("#addProject").serialize(),
 			dateType: "json",
 			success: function(result){
+				
 				console.log(result);
 				makeView(result);
 				$(".modal").modal("hide");

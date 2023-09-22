@@ -7,7 +7,7 @@
 		FROM (SELECT DEPTNO, DEPTNAME, USERID, MNAME, MRANK FROM USERS JOIN DEPT USING(DEPTNO))
 		JOIN PROJECT USING(USERID)
 		WHERE PSTATUS IN ('미진행', '진행', '보류')
-	<!-- WHERE USERID = 'kh0001@kh.com' -->
+		<!-- USERID = 'kh0001@kh.com' -->
 	</select>
 	 
 	<select id="selectOne" resultType="ProjectVo">
@@ -29,4 +29,5 @@
 		UPDATE PROJECT SET PNAME=#{pname}, pcontent=#{pcontent}, PSTATUS=#{pstatus}, PSTARTDATE=#{pstartdate}, PENDDATE=#{penddate}
 		WHERE PNO=#{pno}
 	</update>
+	
 </mapper>

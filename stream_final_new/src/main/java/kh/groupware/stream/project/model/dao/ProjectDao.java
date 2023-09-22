@@ -33,5 +33,4 @@ public class ProjectDao {
 	public int update(ProjectVo vo) {
 		return sqlSession.update("project.updateList", vo);
 	}
-	 
 }

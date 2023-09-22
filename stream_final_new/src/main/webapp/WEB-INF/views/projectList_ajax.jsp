@@ -113,13 +113,7 @@
 	    });
 	  });
 		    loadList();
-		    
-		    
 	});
-	
-	
-	
-	
 	
 	function loadList() {
 		$.ajax({
@@ -128,10 +122,6 @@
 			data: $("#wrap-list").serialize(),
 			datatype: "json",
 			success: makeView,
-			
-			
-			
-			
 			error: function() {
 				alert("loadList에서 에러났습니다.");
 			}

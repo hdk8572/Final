@@ -17,13 +17,6 @@ public class PtaskController {
 	@Autowired
 	private PtaskService service;
 
-	
-	
-	/*
-	 * @GetMapping("/ptasklist") public String selectList(Model model) {
-	 * model.addAttribute("ptasklist", service.selectList()); return "/project"; }
-	 */
-
 	@GetMapping("/ptasklist")
 	public String pSelectOne(Model model, String pno) {
 		List<PtaskVo> tlist = service.pselectList(pno);

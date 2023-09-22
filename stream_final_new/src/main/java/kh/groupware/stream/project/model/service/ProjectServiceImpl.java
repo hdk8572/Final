@@ -52,5 +52,5 @@ public class ProjectServiceImpl implements ProjectService {
     public int update(ProjectVo vo) {
     	return projectDao.update(vo);
     }
-    
+	
 }

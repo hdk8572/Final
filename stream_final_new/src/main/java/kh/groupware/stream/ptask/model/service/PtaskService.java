@@ -10,8 +10,8 @@ import kh.groupware.stream.ptask.model.vo.PtaskVo;
 
 public interface PtaskService {
 
-
 	public List<PtaskVo> pselectList(String pno);
 	public int insertTask(PtaskVo vo);
     public int deleteTask(String pno);
+    
 }

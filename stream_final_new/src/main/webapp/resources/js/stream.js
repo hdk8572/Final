@@ -6,7 +6,6 @@ function selectOption(e){
 		
 	} else if($(e.target).hasClass("dropdown-btn-delete")){
 		hideProject(targetPno, $(this));
-		
 			
 	} else {
 		$(this).submit();
@@ -41,11 +40,16 @@ function doUpdateProject() {
 		url: contextPath+"/doUpdateProject",
 		type: "get",
 		data: $("#infoProject").serialize(),
-		//dataType: "json",
 		success: function(result) {
 			console.log(result);
 			if(result>0){
-				location.href=contextPath+"/projectlist";
+				if(result.pstatus == "숨김") {
+					location.href=contextPath+"/projectlist";
+					$thisElement.closest(".col-sm-6.list-card[data-pno]").remove();
+				} else {
+					location.href=contextPath+"/projectlist";
+				}
+			
 			} else {
 				alert("ek");
 			}		
@@ -53,15 +57,15 @@ function doUpdateProject() {
 		error: function() {
 			console.log("doUpdateProject에서 오류 발생");
 		}
-	});
+	});	
 }
 
 
 function hideProject(pno, $thisElement) {
-	
-	$thisElement.closest(".col-sm-6.list-card[data-pno]").remove();
-	// ajax	
-
+    // var pstatus = $thisElement.closest(".list-card").find(".text-muted").attr("data-pstatus");
+    
+    
+    
 }
 
 
