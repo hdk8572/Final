@@ -28,16 +28,8 @@
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<link href="${pageContext.request.contextPath}/css/newcompany.css" rel="stylesheet">
 
-<style>
-.table {
-	width: 512px;
-}
-
-.cardcard {
-	display: none;
-}
-</style>
 
 </head>
 
