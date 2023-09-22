@@ -28,59 +28,7 @@
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-
-<style>
-input[type=radio] {
-	display: none;
-}
-
-.logins .loginlogin {
-	display: none;
-}
-
-input[type=radio]:nth-of-type(1):checked ~ .logins .loginlogin:nth-of-type(1)
-	{
-	display: block;
-}
-
-input[type=radio]:nth-of-type(2):checked ~ .logins .loginlogin:nth-of-type(2)
-	{
-	display: block;
-}
-
-.labels>label {
-	color: #ced4da;
-	background-color: #fff;
-	text-align: center;
-	font-size: 13px;
-	line-height: 30px;
-	/* 	border: 1px solid #ced4da; */
-	box-sizing: border-box;
-	width: 70px;
-	height: 30px;
-	border-radius: 0.25rem;
-}
-
-input[type=radio]:nth-of-type(1):checked ~ .labels label:nth-of-type(1)
-	{
-	background-color: #009b77;
-	color: #fff;
-}
-
-input[type=radio]:nth-of-type(2):checked ~ .labels label:nth-of-type(2)
-	{
-	background-color: #009b77;
-	color: #fff;
-}
-
-.loginTitle {
-	margin-bottom: 3rem;
-}
-
-.card-body {
-	border: 1px solid #ced4da;
-}
-</style>
+<link href="${pageContext.request.contextPath}/css/login.css" rel="stylesheet">
 
 </head>
 

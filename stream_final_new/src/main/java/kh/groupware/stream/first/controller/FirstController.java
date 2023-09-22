@@ -12,4 +12,10 @@ public class FirstController {
 		mv.setViewName("main");
 		return mv;
 	}
+	
+	@GetMapping("letsmodal")
+	public ModelAndView modalMain(ModelAndView mv) {
+		mv.setViewName("main-modal");
+		return mv;
+	}
 }

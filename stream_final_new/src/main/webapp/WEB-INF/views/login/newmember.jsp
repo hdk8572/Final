@@ -27,16 +27,9 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
 	rel="stylesheet">
-<style>
-.agree-label {
-	font-size: 14px;
-}
 
-.form-check-input {
-	margin-left: 20px;
-}
-</style>
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<link href="${pageContext.request.contextPath}/css/newmember.css" rel=stylesheet">
 </head>
 
 <body>
