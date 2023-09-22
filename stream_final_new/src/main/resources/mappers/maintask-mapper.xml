@@ -24,8 +24,9 @@
 	</select>
 	
 	<insert id="innerTaskInsert" parameterType="PtaskVo">
+		
 
-		insert into task (TNO, PNO, USERID, TTITLE, TSTATUS, TDATE, tstartdate, tenddate, BREF, BRESTEP, BRELEVEL)
+		insert into task (TNO, PNO, USERID, tmember, TTITLE, tcontent, TSTATUS, TDATE, tstartdate, tenddate, BREF, BRESTEP, BRELEVEL)
 		values (
 			task_sequence.NEXTVAL, #{pno}, #{userid}, #{userid}, #{ttitle}, 'DEFAULT', #{tstatus}, sysdate, #{tstartdate}, #{tenddate}, 
 				(select bref from task where tno=#{tno}),
