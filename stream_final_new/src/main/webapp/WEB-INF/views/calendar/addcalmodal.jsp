@@ -14,12 +14,12 @@
 					<div class="card-header pcalTitle">
 						<h2 class="pcalTitle"><b>일정 작성</b></h2>
 					</div>
-						<form action="${pageContext.request.contextPath}/insert" method="post">	
-						<input type="text" class="form-control title" name="ttitle" placeholder="제목을 입력하세요.">
+						<form action="${pageContext.request.contextPath}/insertpcal" method="post">	
+						<input type="text" class="form-control title" name="title" placeholder="제목을 입력하세요.">
 						<br>
 						<input type="hidden" name="pno" value="${pno_TODO }">
-						<input type="hidden" name="userid" value="mplsam@kh.co.kr"><!-- kh0002@kh.com -->
-						<input type="date" class="form-date" name="sstartDate" required="required"> ~ <input type="date" class="form-date" name="tenddate" required="required"> <!-- s -->
+					<input type="hidden" name="userid" value="mplsam@kh.co.kr"><!-- kh0002@kh.com -->
+						<input type="date" class="form-date" name="start" required="required"> ~ <input type="date" class="form-date" name="end" required="required"> <!-- s -->
 						<br>
 						<br>
 						
@@ -50,7 +50,7 @@
 						</span>
 						<br>
 					<div>
-					<textarea class="form-control content" name="pcontent" placeholder="내용을 입력해주세요."></textarea>
+					<textarea class="form-control content" name="smemo" placeholder="내용을 입력해주세요."></textarea>
 						<!-- 시큐에디터  위즈윅 -->
 						<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 						<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script> 
@@ -94,7 +94,6 @@
 <script>
 	$(".c-member").click(getMemberProjectListHandler);
 	function getMemberProjectListHandler(thisElement){
-		// $('#myModal').modal('show');
 		console.log($("[name=pno]").val());
 		// TODO: 
 		const userid="mplsam@kh.co.kr";
@@ -103,6 +102,7 @@
 			url:'${pageContext.request.contextPath}/memberProjectList',
 			type:"get",
 			data : {
+				/* pno : $("[name=pno]").val() */
 				pno : pno,
 				userid : userid
 			},

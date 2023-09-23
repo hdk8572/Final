@@ -94,6 +94,7 @@
 
 			const calendarEl = document.getElementById('calendar'); //calender라는 id를 가진 요소를 찾아 calendarEl 변수에 할당한다. 이건 fullcalendar를 표시할 컨테이너이다.
 			
+			//<달력에 표시될 일정을 가져옴>
 			// calendar date get from db 
 			//jquery의 ajax 메소드를 사용해 서버에서 데이터를  비동기적으로 가져오는 요청을 보낸다.
 			$.ajax({
@@ -128,11 +129,11 @@
 					//locale: 'ko', // 한국어 설정 
 					events : eventsDataArr
 				 	,
-				 	
+				 	/* 일정 상세정보를 띄우겠다.*/
 					eventClick: function(info) {
 						console.log(info.event.title);
 						var event = info.event;
-						$("#readScheduleModal.modal.right  [name=ttitle]").val(info.event.title); /* 띄우려는 모달이랑 이름 맞춰야한다. */
+						$("#readScheduleModal.modal  [name=title]").val(info.event.title); /*띄우려는 모달이랑 이름 맞춰야한다.*/
 						$("#readScheduleModal").modal("toggle");
 					} 
 				});
@@ -140,6 +141,13 @@
 			}
 		});
 	</script>
+	<!-- <script>
+		$(".fc-event-title").on("click", eeeeeevent)
+		eeeeeevent=(event)=>{
+			var a1 = event.target
+			console.log(a1);
+		}
+	</script> -->
 
 	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>

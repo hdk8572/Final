@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 	<!-- 모달 -->
 <!-- The Modal -->
 <div id="readScheduleModal" class="modal right fade">
@@ -14,21 +14,22 @@
  	<div class="modal-body project">
  		<form id="addProject">
 	    	<div class="card">
-				<div class="card-header" >
+				<div class="card-header">
 					<!-- <h5 class="card-title mb-0"></h5> -->
-					<input name="ttitle">
+					<%-- <c:when test="${sno!=null }">
+						<div>${sno.title }</div>
+					</c:when> --%>
+					<input readonly="readonly" name="title">
 				</div>
 				<div class="card-body addProject">
-					<input type="hidden" name="userid" value="mplsam@kh.co.kr"> <!-- 로그인 세션 받아서 등록 -->
+					<input type=`"hidden" name="userid" value="mplsam@kh.co.kr"> <!-- 로그인 세션 받아서 등록 -->
 					<input type="hidden" name="paccess" value="ACCESS"><!-- 세션에서 권한 선택 -->
 					<!-- <input type="text" class="form-control title" name="pname" placeholder="프로젝트명을 입력해주세요." required="required"> -->
 					<br> 
 					<div>
-
-					<input type="date" class="form-date" name="pstartdate" required="required">
-					~
-					<input type="date" class="form-date" name="penddate" required="required">
-
+						<input type="date" class="form-date" name="pstartdate" required="required">
+						~
+						<input type="date" class="form-date" name="penddate" required="required">
 					</div>
 					<br>
 						<textarea class="form-control content" rows="5"  name="tcontent"></textarea> <!-- tcontent 이벤트 작성해서 얘 불러오기 -->
@@ -64,25 +65,26 @@
   	</div>
   </div>
 </div>
-<script>
+<!-- <script>
 	const commenBtn = document.querySelector("#c-commentFrm")
 	const list = [];
 	console.log(commentBtn);
 
-</script>
-<script>
+</script> -->
+
+<!-- <script>
 	$("#btn-submit").click(addList);
 	
 	function addList () {
 		var data = myEditor.getData();
 		$("[name=pcontent]").val(data);
 		
-		console.log($("#addProject").serialize());  // form태그 묶인 거 다 가져옴?
+		console.log($("#addProject").serialize());  
 		$.ajax ({
 			url: "${pageContext.request.contextPath}/projectInsert",
 			type: "post",
 			data : $("#addProject").serialize(),
-			dateType: "json",
+			dataType: "json",
 			success: function(result){
 				console.log(result);
 			},
@@ -91,6 +93,6 @@
 			}
 		});	
 	}
-</script>
+</script> -->
 
 <!-- 모달 -->

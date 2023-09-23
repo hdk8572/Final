@@ -29,6 +29,14 @@ public class CalendarController {
 		return mv;
 	}
 	
+	//캘린더 등록
+	@PostMapping("/insertpcal")
+	public String insert(Model model, CalendarVo cal) {
+		System.out.println("aaaa :" + cal);
+		calendarService.insert(cal);
+		return "redirect:pcal?sno="+cal.getSno();
+	}
+	
 	//캘린더 전체 조회 //달력에 표시할 모든 일정 목록을 가져오는 역할을 한다.
 	@GetMapping("/pcalselectlist")
 	@ResponseBody
@@ -36,14 +44,6 @@ public class CalendarController {
 		List<CalendarVo> calendarList = null;
 		calendarList = calendarService.selectList();
 		return new Gson().toJson(calendarList);	//캘린터 정보를 DB에서 조회한 후 JSON 형식으로 클라이언트에게 반환하는 것이다.
-	}
-	
-	//캘린더 등록
-	@PostMapping("/insertpcal")
-	public String insert(Model model, CalendarVo cal) {
-		System.out.println("aaaa :" + cal);
-		calendarService.insert(cal);
-		return "redirect:pcal?sno="+cal.getSno();
 	}
 	
 	//캘린더 일정상세 조회

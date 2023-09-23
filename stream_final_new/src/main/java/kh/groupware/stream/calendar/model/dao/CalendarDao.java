@@ -21,29 +21,15 @@ public class CalendarDao {
 	public List<CalendarVo> selectList() {
 		return sqlSession.selectList("calendar.selectList");
 	}
-	
-	//캘린더 등록
-	public int insert(CalendarVo cal) {
-		return sqlSession.insert("calendar.insert", cal);
-	}
-	//insertMember 참석자 등록
-	public int insertMember(Map<String, Object> map) {
-		return sqlSession.insert("calendar, insert");
-	}
-	
 	//캘린더 일정상세 조회
 	public CalendarVo selectOne(String sno) {
 		return sqlSession.selectOne("calendar.selectOne",sno);
 	}
 	
-	//캘린더 수정
-	public int update(CalendarVo cal) {
-		return sqlSession.update("calendar.update", cal);
-	}
-	
-	//캘린더 삭제
-	public int delete(String sno) {
-		return sqlSession.delete("calendar.delete",sno);
+	//캘린더 등록
+	public int insert(CalendarVo cal) {
+		System.out.println("[jy]"+ cal);
+		return sqlSession.insert("calendar.insert", cal);
 	}
 	
 	//참석자 조회
@@ -55,5 +41,22 @@ public class CalendarDao {
 	public List<MemberSimpleVo> memberProjectList(CalendarParamVo pno) {
 		return sqlSession.selectList("calendar.memberProjectList", pno);
 	}
+	
+	//insertMember 참석자 등록
+	public int insertMember(Map<String, Object> map) {
+		return sqlSession.insert("calendar, insert");
+	}
+	
+	
+	//캘린더 수정
+	public int update(CalendarVo cal) {
+		return sqlSession.update("calendar.update", cal);
+	}
+	
+	//캘린더 삭제
+	public int delete(String sno) {
+		return sqlSession.delete("calendar.delete",sno);
+	}
+	
 
 }

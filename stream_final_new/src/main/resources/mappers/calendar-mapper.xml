@@ -7,7 +7,8 @@
 	<!-- 일정 조회 -->
 	<select id="selectList" resultType="CalendarVo">
 		SELECT SNO, USERID,
-		to_char(SSTART, 'yyyy-mm-dd') as "START", to_char(SEND, 'yyyy-mm-dd') as END, STITLE
+		to_char(SSTART, 'yyyy-mm-dd') as "START", to_char(SEND, 'yyyy-mm-dd')
+		as END, STITLE
 		as TITLE, SCOLOR as color
 		,SPLACE, SMEMO
 		FROM SCHEDULE
@@ -15,39 +16,47 @@
 
 	<!-- 일정 상세조회 -->
 	<select id="SelectOne" resultType="CalendarVo">
-		SELECT SNO, USERID, SSTARTDATE as start, SENDDATE as end, SPLACE, SMEMO,
-		STITLE as title
+		SELECT SNO, USERID, SSTART as start, SEND as end, SMEMO, SPLACE, STITLE as title
 		FROM SCHEDULE
 		WHERE SNO=#{SNO}
 	</select>
-	
+
 	<!-- 참석자 조회 -->
 	<select id="attendList" resultType="CalendarVo">
-		select sno, userid, attenuserid 
-		from schedule join member_schedule using (sno)	
+	 	SELECT SNO, USERID, ATTENUSERID
+		FROM SCHEDULE JOIN MEMBER_SCHEDULE USING (SNO)
 	</select>
-	
-	<!-- 프로젝트의 멤버들 조회  -->
-	<select id="memberProjectList"  resultType="MemberSimpleVo">
-		select userid, ( select mname from users tu where tm.userid=tu.userid ) mname from MEMBER_PROJECT tm where pno=#{pno}
+
+	<!-- 프로젝트의 멤버들 조회 -->
+	<select id="memberProjectList" resultType="MemberSimpleVo">
+		select userid, (
+		select mname from users tu where tm.userid=tu.userid ) mname from
+		MEMBER_PROJECT tm where pno=#{pno}
 	</select>
 
 	<!-- 일정 등록 -->
 	<insert id="insert" parameterType="CalendarVo">
-		INSERT INTO SCHEDULE (SNO, USERID, SSTARTDATE, SENDDATE, SPLACE, SMEMO, STITLE )
-		VALUES (schedule_sequence.NEXTVAL, #{userid}, #{start}, #{end}, #{splace}, #{smemo}, #{title})
+	<!-- 	<selectKey keyProperty="sno" resultType="_int"
+			order="BEFORE">
+			SELECT schedule_sequence.NEXTVAL FROM dual
+		</selectKey> -->
+		INSERT INTO SCHEDULE (SNO, USERID, SSTART, SEND, SMEMO, STITLE, SCOLOR)
+		VALUES (schedule_sequence.NEXTVAL, #{userid}, #{start},
+		#{end}, #{smemo},
+		#{title},
+		'#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'))
+
 	</insert>
+
 	<!-- 일정 등록 끼인 테이블 -->
 	<insert id="insertmember" parameterType="CalendarVo">
-		<selectKey keyProperty="sno" resultType="CalendarVo" order="BEFORE">
-			SELECT NEWS_SEQ.NEXTVAL FROM Member_SCHEDULE	<!-- select CAST(RANDOM()*1000000 as INTEGER) a from SYSIBM.SYSDUMMY1 -->
-		</selectKey>
-		INSERT INTO Member_SCHEDULE (SNO, ATTENUERID )
+		INSERT INTO
+		Member_SCHEDULE (SNO, ATTENUERID )
 		VALUES (#{sno},#{attenuserid})
 	</insert>
-	
-	
-	
+
+
+
 
 	<!-- 캘린더 수정 -->
 	<update id="update" parameterType="CalendarVo">

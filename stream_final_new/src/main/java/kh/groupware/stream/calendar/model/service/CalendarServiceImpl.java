@@ -35,28 +35,30 @@ public class CalendarServiceImpl implements CalendarService {
 	
 	
 	//캘린더 등록 //insert:캘린더 정보를 db에 추가 //insertMember:참가자 정보를 db에 추가
+	//override밑에 Transactional주석처리
 	@Override
-	@Transactional
 	public int insert(CalendarVo cal) {
-		try {
-		calendarDao.insert(cal);
-		for(int i=0; i<cal.getAttenuseridList().size(); i++) { //반복해서 각 참가자를 DB에 등록한다.
-			Map<String, Object> map = new HashMap<String, Object>(); //map 객체에 담는다.
-			map.put("sno", cal.getSno()); //selectKey를사용한 값
-			map.put("attenuserid",cal.getAttenuseridList().get(i));
-			calendarDao.insertMember(map);
-		}
-		return 1; //
-	}catch(Exception e){
-		e.printStackTrace();
+		int result = 0;
+		result += calendarDao.insert(cal);
+		System.out.println("selectKey ");
+		System.out.println(cal);
+		
+		/*
+		 * for(int i=0; i<cal.getAttenuseridList().size(); i++) { //반복해서 각 참가자를 DB에
+		 * 등록한다. Map<String, Object> map = new HashMap<String, Object>(); //map 객체에 담는다.
+		 * map.put("sno", cal.getSno()); //selectKey를사용한 값
+		 * map.put("attenuserid",cal.getAttenuseridList().get(i)); result +=
+		 * calendarDao.insertMember(map); }
+		 */
+		return result; 
+	}
+
+	//>???
+	@Override
+	public int insertMember(Map<String, Object> map) {
+		// TODO Auto-generated method stub
 		return 0;
 	}
-}
-/*
- * @Override public int insertMember(Map<String, Object> map) { // TODO
- * Auto-generated method stub return 0; }
- */
-
 
 	
 	
@@ -79,12 +81,6 @@ public class CalendarServiceImpl implements CalendarService {
 	@Override
 	public List<MemberSimpleVo> memberProjectList(CalendarParamVo pno) {
 		return calendarDao.memberProjectList(pno);
-	}
-	//>???
-	@Override
-	public int insertMember(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 
