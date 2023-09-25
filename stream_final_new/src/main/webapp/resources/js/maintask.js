@@ -13,6 +13,7 @@ function loadedHandler(){
 	$('html').on("click", boxOutHandler)
 	$(".jm-innerTask-insert-button").click(innerTaskaddListHandler);
 	$(".addInnerTask").on("submit",ttileCheckHandler);
+	InnertaskInsertButtonHideHandler;
 }
 
 function dragStart(e){
@@ -119,14 +120,49 @@ const contextPath = origin + pathname;
 		dataType: "json",
 		success: function(result){
 			if(result){
-			console.log("성공");
-			location.href=contextPath+"maintask"
+				console.log("성공");
+				location.href=contextPath+"maintask"
 			}else{
-			alert("전송된 값 없음");
+				alert("전송된 값 없음");
 			}
 		},
 		error: function() {	
 			alert("innerTaskaddList 에서 에러났습니다.");
 		}
 	});
+}
+
+function makeView(data) {
+	    var listHtml = "";
+        listHtml += `
+        
+	        `;
+	    for(var i=0;i<data.length;i++){
+			var ul = data[i];
+			listHtml+=`
+			<ul>
+	        	<li class="plusplus row">
+					<div class="jm-title-ttitle col-lg-4 jm-grey">
+						<span>
+							<c:forEach begin="1" end="${ul.brelevel }">
+								&#8618;
+							</c:forEach>
+							${ul.ttitle}
+						</span>
+						<span class="jm-tp jm-task-info">자세히 보기</span>
+					</div>
+				<div class="jm-title-tstatus col-lg-1 jm-grey">${ul.tstatus }</div>
+				<div class="jm-title-tmember col-lg-1 jm-grey">${ul.tmember }</div>
+				<div class="jm-title-tstartdate col-lg-1 jm-grey">${ul.tstartdate }</div>
+				<div class="jm-title-tenddate col-lg-1 jm-grey">${ul.tenddate }</div>
+				<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">${ul.tdate }</div>
+				<div class="jm-title-tno col-lg-1 jm-grey jm-gr">${ul.tno }</div>
+				</li>
+	        </ul>
+	    `;
+		}
+}
+
+InnertaskInsertButtonHideHandler=()=>{
+	$()
 }
