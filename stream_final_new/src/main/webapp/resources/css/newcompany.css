@@ -5,3 +5,7 @@
 .cardcard {
 	display: none;
 }
+
+* {
+	font-family: 'NanumGyuRiEuiIrGi', sans-serif;
+}

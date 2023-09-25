@@ -303,7 +303,7 @@ function popupOpen(){
 						class="align-middle me-1" data-feather="help-circle"></i> Help
 						Center</a> -->
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#">Log out</a>
+					<a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Log out</a>
 				</div></li>
 		</ul>
 	</div>
