@@ -4,7 +4,7 @@ function selectOption(e){
 	if($(e.target).hasClass("dropdown-btn-update")) {
 		goUpdateForm(targetPno);
 		
-	} else if($(e.target).hasClass("dropdown-btn-delete")){
+	} else if($(e.target).hasClass("dropdown-btn-hide")){
 		hideProject(targetPno, $(this));
 			
 	} else {
@@ -62,10 +62,20 @@ function doUpdateProject() {
 
 
 function hideProject(pno, $thisElement) {
-    // var pstatus = $thisElement.closest(".list-card").find(".text-muted").attr("data-pstatus");
-    
-    
-    
+    var pstatus = $thisElement.closest(".list-card").find(".text-muted").attr("data-pstatus"); // 엄청 중요합니다.
+    $.ajax ({
+    	url: contextPath+"/doUpdateProject.direct",
+    	type: "get",
+		data: {pno:pno, pstatus:pstatus},
+		dataType: "json",
+		success: function(result) {
+			console.log("hide 다녀왔습니다");
+			location.href=contextPath+"/projectlist";
+		},
+		error: function() {
+			console.log("doUpdateProject.direct에서 오류 발생");
+		}
+    });
 }
 
 

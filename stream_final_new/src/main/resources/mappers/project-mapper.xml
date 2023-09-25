@@ -9,6 +9,13 @@
 		WHERE PSTATUS IN ('미진행', '진행', '보류')
 		<!-- USERID = 'kh0001@kh.com' -->
 	</select>
+	
+	<select id="selectHide" resultType="ProjectVo">
+		SELECT PNO, USERID, PNAME, PCONTENT, PACCESS, PDATE, to_char(PSTARTDATE, 'yyyy-mm-dd') PSTARTDATE, to_char(PENDDATE, 'yyyy-mm-dd') PENDDATE, PSTATUS, DEPTNO, DEPTNAME, MNAME, MRANK, ROWNUM PROW
+		FROM (SELECT DEPTNO, DEPTNAME, USERID, MNAME, MRANK FROM USERS JOIN DEPT USING(DEPTNO, CCODE))
+		JOIN PROJECT USING(USERID)
+		WHERE PSTATUS IN ('숨김')
+	</select>
 	 
 	<select id="selectOne" resultType="ProjectVo">
 		SELECT PNO, USERID, PNAME, PCONTENT, PACCESS, PDATE, to_char(PSTARTDATE, 'yyyy-mm-dd') PSTARTDATE, to_char(PENDDATE, 'yyyy-mm-dd') PENDDATE, PSTATUS

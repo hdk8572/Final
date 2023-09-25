@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.groupware.stream.main.model.service.MaintaskService;
+import kh.groupware.stream.project.model.vo.ProjectVo;
 import kh.groupware.stream.ptask.model.service.PtaskService;
 import kh.groupware.stream.ptask.model.vo.PtaskVo;
 
@@ -21,13 +22,13 @@ public class MainController {
 	@GetMapping("/maintask")
 	public String maintask(Model model) {
 		model.addAttribute("projectList", MaintastService.projectNameList());
-		return "/task/maintask2";
+		return "/task/maintask";
 	}
 	
-	@ResponseBody
 	@PostMapping("/innertaskinsert")
-	public PtaskVo insert(PtaskVo vo){
-		PtaskVo add = MaintastService.insertInnerTask(vo);
-		return add;
+	@ResponseBody
+	public ProjectVo insert(PtaskVo vo){
+		ProjectVo projectTaskList = MaintastService.insertInnerTask(vo);
+		return projectTaskList;
 	}
 }

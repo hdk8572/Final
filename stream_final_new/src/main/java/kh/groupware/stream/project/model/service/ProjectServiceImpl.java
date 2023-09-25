@@ -26,6 +26,11 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 	
 	@Override
+	public List<ProjectVo> selectHide() {
+		return projectDao.selectHide();
+	}
+	
+	@Override
 	public ProjectVo selectOne(String pno) {
 		return projectDao.selectOne(pno);
 	}
