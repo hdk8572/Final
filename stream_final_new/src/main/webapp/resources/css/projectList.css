@@ -14,3 +14,12 @@
 .ck-editor__editable_inline {
     min-height: 275px;
 }
+
+.btn .hide {
+    position: relative;
+    height: 14px;
+    width: 14px;
+    color: white;
+    left: -1px;
+    top: -1.5px;
+}

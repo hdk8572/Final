@@ -88,6 +88,6 @@ select brestep+1 from task where tno='1';
 commit;
 
 
-select pname, pno, task.userid, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+select pname, pno, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
     		from project join task using(pno)
-    		order by pno asc, brelevel asc, brestep asc ;
+    		order by pno asc, bref asc, brelevel asc, brestep asc ;
