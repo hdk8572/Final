@@ -25,12 +25,12 @@ public class MaintaskServiceImpl implements MaintaskService {
 	}
 	
 	@Transactional
-	public PtaskVo insertInnerTask(PtaskVo vo) {
-		PtaskVo result = null;
+	public ProjectVo insertInnerTask(PtaskVo vo) {
+		ProjectVo result = null;
 		int update = maintaskDao.UpdateBeforeInsertInnerTask(vo);
 		int insertResult = maintaskDao.insertInnerTask(vo);
 		if(insertResult > 0) {
-			result = ptaskDao.pselectOne(vo.getPno(), vo.getTno());
+			result = maintaskDao.projectOneTaskList(vo.getPno());
 		}
         return result;
 	}

@@ -60,7 +60,7 @@
 
 												<div>
 													<form id="frmMemberLogin"
-														action=${pageContext.request.contextPath}/login.do
+														action=${pageContext.request.contextPath}/login
 														method="post">
 														<div class="mb-3">
 
