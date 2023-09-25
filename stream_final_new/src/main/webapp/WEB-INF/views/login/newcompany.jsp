@@ -29,7 +29,7 @@
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <link href="${pageContext.request.contextPath}/css/newcompany.css" rel="stylesheet">
-
+<link rel="preconnect" href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
 
 </head>
 

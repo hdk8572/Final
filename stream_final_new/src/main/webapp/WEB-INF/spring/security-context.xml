@@ -9,43 +9,51 @@
     http://www.springframework.org/schema/security/spring-security.xsd">
 
 	<http pattern="/resources/**" security="none"></http>
+	<!-- login-processing-url="/login.do" -->
 
-
-	<http auto-config="true" use-expressions="true">
+	<http auto-config="true" use-expressions="true" >
 
 		<csrf disabled="true" />
-		<intercept-url pattern="/admin/**"			access="hasRole('RA')" />
+		<intercept-url pattern="/admin/**"
+			access="hasRole('RA')" />
 		<intercept-url pattern="/user/**" access="hasRole('RM')" />
-		<intercept-url pattern="/company/**"			access="hasRole('RC')" />
+		<intercept-url pattern="/company/**"
+			access="hasRole('RC')" />
 		<intercept-url pattern="/**" access="permitAll" />
-		<form-login login-page="/login"
-			login-processing-url="/login.do" 
-			username-parameter="userid"
-			password-parameter="password" 
-			default-target-url="/main" 
-			always-use-default-target="true" />
-		<logout logout-url="/logout" logout-success-url="/main"
-			delete-cookies="JSESSIONID" />
+
+		<form-login login-page="/login" username-parameter="userid"
+			password-parameter="password" default-target-url="/main"
+			always-use-default-target="true" authentication-failure-url="/login" />
+		<logout logout-url="/logout" logout-success-url="/main" />
+
 	</http>
+	<beans:bean
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"
+		id="BCryptPasswordEncoder"></beans:bean>
+
 
 	<!-- DB에서 정보를 가져와서 비교를 위한 정보 -->
 	<jdbc-user-service data-source-ref="dataSource"
 		id="userService"
 		users-by-username-query="SELECT USERID AS USERNAME , PASSWORD, ENABLED FROM USERS WHERE USERID =?"
-		authorities-by-username-query="SELECT USERID AS USERNAME , AUTHORITY FROM USERS WHERE USER_ID =?" />
+		authorities-by-username-query="SELECT USERID AS USERNAME, AUTHORITY FROM USERS WHERE USERID =?"  />
 
 	<!-- 실질적으로 계정정보 비교 -->
 	<authentication-manager>
-		<authentication-provider>
-			<user-service>
-				<user name="admin" password="{noop}admin" authorities="RA" />
-				<user name="user" password="{noop}user" authorities="RM" />
-			</user-service>
+
+		<authentication-provider
+			user-service-ref="userService">
+			<password-encoder ref="BCryptPasswordEncoder" />
 		</authentication-provider>
+
 	</authentication-manager>
+
 
 	<!-- <security:authentication-provider user-service-ref="userService"> <security:password-encoder 
 		ref="BCryptPasswordEncoder" /> </security:authentication-provider> -->
+
+	<!-- <user name="admin" password="{noop}admin" authorities="RA" /> <user 
+		name="user" password="{noop}user" authorities="RM" /> -->
 
 
 </beans:beans>

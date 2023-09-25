@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,10 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
+
 
 	// 회원가입
 	@GetMapping("/newmember")
@@ -31,6 +36,7 @@ public class MemberController {
 	}
 	@PostMapping("/newmember")
 	public String signUp(MemberVo mvo) {
+		mvo.setPassword(bCryptPasswordEncoder.encode(mvo.getPassword()));
 		System.out.println("[jy] MemberController: " + mvo);
 		memberService.signUp(mvo);
 		return "main";
@@ -42,27 +48,11 @@ public class MemberController {
 		return mv;
 	}
 
-	// security login
-	@PostMapping("/login")
-	public void getLoginView() {
-	}
-
 	@GetMapping("/userpage")
 	public ModelAndView myPage(ModelAndView mv) {
 		mv.setViewName("/myPage");
 		return mv;
 	}
 
-	/*
-	 * //member login
-	 * 
-	 * @PostMapping("/login.member")
-	 * 
-	 * @ResponseBody public String login(Model model, MemberVo mvo) { return
-	 * memberService.selectOne(mvo); }
-	 */
-
-	// post 방식에서 return String
-	// ajax 자료형 그자체
 
 }
