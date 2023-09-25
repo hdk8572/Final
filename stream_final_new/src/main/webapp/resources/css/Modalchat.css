@@ -16,9 +16,8 @@
 .modal-dialog{
 	position:fixed;
 	width:430px;
-	left:700px;
-	top:20px;
-	bottom: 10px;
+	/* left:1150px; */
+	left: 500px;
 }
 /* Modal Content/Box */
 .modal-content {
@@ -37,7 +36,7 @@
 }
 
 .modal-body {
-	padding: 15px 15px;
+	padding: 0;
 	margin: 0 auto;
 }
 
@@ -78,9 +77,9 @@
 }
 
 .modal.project.right .modal-dialog {
-	position: fixed;
-	margin: auto;
-	width: 40%;
+	position: relative;
+	margin: 0px;
+	width: 400px;
 	height: 100%;
 	-webkit-transform: translate3d(0%, 0, 0);
 	    -ms-transform: translate3d(0%, 0, 0);
@@ -115,11 +114,11 @@
     border: 1px solid #777;
     box-sizing: border-box;
     box-shadow: 20px 20px 30px rgba(0,0,0,.2);
-    border-radius: 10px;
+   
 }
 
 .modal-content {
-	border-radius: 10px;
+	
 }
 
 .modal-header.ptask {
@@ -167,7 +166,7 @@
 }
 
 .modal-content {
-	border-radius: 10px;
+	
 }
 
 .modal-header.updateProject {

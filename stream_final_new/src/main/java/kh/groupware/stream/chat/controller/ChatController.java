@@ -22,7 +22,9 @@ public class ChatController {
 	public String selectchat(Model model) {
 		List<ChatVo> list = service.selectuserList();
 		model.addAttribute("list", list);
+		System.out.println(list);
 		return "/chatting/select";
+		
 	}
 	 @GetMapping("/chat")
 	    public String chatGET(){

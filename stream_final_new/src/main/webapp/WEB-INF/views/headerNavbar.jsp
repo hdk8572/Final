@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<head>
+	<link href="${pageContext.request.contextPath}/css/test.css" rel="stylesheet">
+	
+</head>
 <style>
 	.a1 { display:none; }
 	boby{
@@ -6,8 +10,14 @@
 	}
 	
 </style>
+
 <!-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> -->
 <script src="${pageContext.request.contextPath}/js/jquery-3.7.0.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- sockjs -->
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.6.1/dist/sockjs.min.js"></script>
+<!-- stompjs -->
+<script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@6.1.2/bundles/stomp.umd.min.js">
 <script>
 function popupOpen(){ 
     var popUrl = "/stream/chat";	//팝업창에 출력될 페이지 URL
@@ -28,7 +38,7 @@ function popupOpen(){
 			<li class="nav-item dropdown" ><a
 				class="nav-icon dropdown-toggle" href="#" id="alertsDropdown"
 				data-bs-toggle="dropdown">
-					<div class="position-relative">
+ 					<div class="position-relative">
 						<i class="align-middle" data-feather="bell"></i> <span
 							class="indicator">4</span>
 					</div>
@@ -181,8 +191,15 @@ function popupOpen(){
 						<a  id="load">더보기</a>
 					</div> 
 				</div></li>
+				<div class="container">
+        <div class="sidesheet">
+                 <%@ include file="/WEB-INF/views/chatting/NewChat.jsp" %>
+        </div>
+
+        <button class="floating-btn" onclick="toggleSidesheet()">채팅</button>
+    </div>
 				
-<%--  				<div>
+			<%--  				<div>
 					<button class="btn btn-primary addProject" id="myBtn" data-bs-toggle="modal" data-bs-target="#myModal">채팅</button>
 				</div>	
 					<%@ include file="/WEB-INF/views/chatting/select.jsp" %> --%>
@@ -320,4 +337,9 @@ function popupOpen(){
             }
       });
   });
+
+  function toggleSidesheet() {
+	    document.querySelector('.container').classList.toggle('sidesheet-open');
+	}
+
   </script>

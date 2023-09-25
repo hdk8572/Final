@@ -11889,7 +11889,7 @@ a {
 
 .wrapper {
 	align-items: stretch;
-	background: #222e3c;
+	/* background: #222e3c; */
 	display: flex;
 	width: 100%
 }

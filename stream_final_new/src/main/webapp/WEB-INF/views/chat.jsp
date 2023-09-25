@@ -86,7 +86,7 @@ boby{
 	<script >
             $(document).ready(function(){
 
-            const username = "김민성";
+            const username = [[${#authentication.principal.username}]];
 
             $("#disconn").on("click", (e) => {
                 disconnect();
