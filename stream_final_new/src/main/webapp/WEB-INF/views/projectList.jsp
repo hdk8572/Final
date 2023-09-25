@@ -59,8 +59,9 @@
 				<div class="container-fluid p-0">
 
 					<h1 class="h3 mb-3" >
-						<span>${ul.mname}님의 프로젝트 목록</span>
+						<span>${mname}님의 프로젝트 목록</span>
 						<span><button class="btn btn-primary addProject" id="myBtn" data-bs-toggle="modal" data-bs-target="#addProjectModal">프로젝트 추가+</button></span>
+						<svg id="hideBtn" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus-circle align-middle me-2 hideView"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg>
 					</h1>
 
 					<%@ include file="/WEB-INF/views/addProjectModal.jsp"%>
@@ -83,9 +84,7 @@
 	<!-------------------- Script ----------------------->
 	<script>
 	const contextPath = "${pageContext.request.contextPath}";
-	
 	</script>
-	
 	<script src="${pageContext.request.contextPath}/js/stream.js"></script>
 	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
@@ -113,17 +112,54 @@
 	    });
 	  });
 		    loadList();
+		    
 	});
+	
+	$("#hideBtn").click(listAndHide);
+	
+	const minusImg = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus-circle align-middle me-2"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg>';
+	const plusImg = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle align-middle me-2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>';
+	
+	function listAndHide() {
+	    if ($(this).css("color") === "rgb(0, 155, 119)") {
+	    	$(this).css("color", "black");
+	         $(this).html(plusImg);
+	        console.log("숨겼습니다. loadHide");
+	        loadHide();	        
+	        $(".dropdown-btn-hide").closest("a").hide();
+	    } else {
+	         $(this).html(minusImg);
+	        $(this).css("color", "#009b77");
+	        console.log("안숨겼습니다. loadList");
+	        loadList();
+	        $(".dropdown-btn-hide").closest("a").show();
+	    }
+	}
 	
 	function loadList() {
 		$.ajax({
 			url: "${pageContext.request.contextPath}/loadList",
 			type: "get",
 			data: $("#wrap-list").serialize(),
+			async : false,
 			datatype: "json",
 			success: makeView,
 			error: function() {
 				alert("loadList에서 에러났습니다.");
+			}
+		});
+	}
+	
+	function loadHide() {
+		$.ajax({
+			url: "${pageContext.request.contextPath}/loadHide",
+			type: "get",
+			data: $("#wrap-list").serialize(),
+			async : false,
+			datatype: "json",
+			success: makeView,
+			error: function() {
+				alert("loadHide에서 에러났습니다.");
 			}
 		});
 	}
@@ -173,9 +209,9 @@
 									    	<span class="dropdown-btn-update">수정</span>
 								    	</a>
 								    	
-								    	<a href="#" class="dropdown-btn-delete">
-								 	    	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2 dropdown-btn-delete"><path class="dropdown-btn-delete" d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line class="dropdown-btn-delete" x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg>
-									    	<span class="dropdown-btn-delete">숨김</span>
+								    	<a href="#" class="dropdown-btn-hide">
+								 	    	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2 dropdown-btn-hide"><path class="dropdown-btn-hide" d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line class="dropdown-btn-hide" x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg>
+									    	<span class="dropdown-btn-hide">숨김</span>
 									    </a>
 									  </div>
 									</div>
@@ -187,13 +223,8 @@
 				}
 	    $("#wrap-list").html(listHtml);
 	    $(".frm.select").click(selectOption);  // stream.js -> abc();
-	    // $(".list-delete").click(listDeleteHandler);
 	    $("#updateBtn").click(doUpdateProject);
-	    
-
 	}
- 	
-
  	
  	function listDeleteHandler(e) {
  		

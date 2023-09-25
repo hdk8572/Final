@@ -18,6 +18,10 @@ public class ProjectDao {
 		return sqlSession.selectList("project.selectList");
 	}
 	
+	public List<ProjectVo> selectHide() {
+		return sqlSession.selectList("project.selectHide");
+	}
+	
 	public ProjectVo selectOne(String pno) {
 		return sqlSession.selectOne("project.selectOne",pno);
 	}
@@ -33,4 +37,5 @@ public class ProjectDao {
 	public int update(ProjectVo vo) {
 		return sqlSession.update("project.updateList", vo);
 	}
+	
 }

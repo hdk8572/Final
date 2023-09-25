@@ -12,8 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestAttributes;
 
 import com.google.gson.Gson;
 
@@ -48,6 +50,14 @@ public class ProjectController {
 		List<ProjectVo> list = projectService.selectList();
 		return list;
 	}
+	
+	@GetMapping("/loadHide")
+	@ResponseBody 
+	public List<ProjectVo> loadHide() {
+		System.out.println("loadHide 돌았습니다");
+		List<ProjectVo> list = projectService.selectHide();
+		return list;
+	}
 
 	@PostMapping("/projectInsert")
 	@ResponseBody
@@ -72,4 +82,14 @@ public class ProjectController {
 		int result = projectService.update(vo);
 		return result;
 	}
+	
+	@GetMapping("/doUpdateProject.direct")
+	@ResponseBody
+	public int updateBtn(String pno) {
+		ProjectVo currentVo = projectService.selectOne(pno);
+		currentVo.setPstatus("숨김");
+		int result = projectService.update(currentVo);
+		return 0;
+	}
+	
 }
