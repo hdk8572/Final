@@ -48,9 +48,10 @@
 					<button class="w3-bar-item w3" onclick="openTab('Tab3')">캘린더</button>
 				</div>
 				<div class="search">
-					<input class="serinput" type="text" placeholder="검색어 입력"> <img
-						class="serimg"
-						src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+					<form action="${pageContext.request.contextPath}/pcalselectone" method="get"> <!-- ?? -->
+						<input class="serinput" type="text" placeholder="검색어 입력"> 
+						<img class="serimg" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+					</form>
 				</div>
 
 				<main class="content">
@@ -133,7 +134,8 @@
 					eventClick: function(info) {
 						console.log(info.event.title);
 						var event = info.event;
-						$("#readScheduleModal.modal  [name=title]").val(info.event.title); /*띄우려는 모달이랑 이름 맞춰야한다.*/
+						$("#readScheduleModal.modal  #title").html(info.event.title); /*띄우려는 모달이랑 이름 맞춰야한다.*/
+						$("#readScheduleModal.modal  #smemo").html(info.event.smemo);
 						$("#readScheduleModal").modal("toggle");
 					} 
 				});

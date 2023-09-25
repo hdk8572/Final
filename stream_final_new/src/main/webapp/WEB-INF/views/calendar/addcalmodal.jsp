@@ -14,7 +14,7 @@
 					<div class="card-header pcalTitle">
 						<h2 class="pcalTitle"><b>일정 작성</b></h2>
 					</div>
-						<form action="${pageContext.request.contextPath}/insertpcal" method="post">	
+						<form action="${pageContext.request.contextPath}/insertpcal" method="post">
 						<input type="text" class="form-control title" name="title" placeholder="제목을 입력하세요.">
 						<br>
 						<input type="hidden" name="pno" value="${pno_TODO }">

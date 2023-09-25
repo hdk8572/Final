@@ -1,13 +1,10 @@
 package kh.groupware.stream.calendar.model.service;
 
-import java.util.HashMap;
-import java.util.Iterator;
+
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import kh.groupware.stream.calendar.model.dao.CalendarDao;
 import kh.groupware.stream.calendar.model.vo.CalendarParamVo;
@@ -53,12 +50,7 @@ public class CalendarServiceImpl implements CalendarService {
 		return result; 
 	}
 
-	//>???
-	@Override
-	public int insertMember(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
 
 	
 	

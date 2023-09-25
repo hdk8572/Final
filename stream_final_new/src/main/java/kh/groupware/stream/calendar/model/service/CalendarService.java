@@ -16,5 +16,5 @@ public interface CalendarService {
 	public int delete(String sno);
 	public List<CalendarVo> attendList();
 	public List<MemberSimpleVo> memberProjectList(CalendarParamVo pno);
-	public int insertMember(Map<String, Object> map);
+
 }

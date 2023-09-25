@@ -11,20 +11,14 @@
   	<div class="modal-header pcal">
   		<span class="close" data-bs-dismiss="modal" aria-label="Close">&times;</span>
   	</div>
- 	<div class="modal-body project">
+ 	<div class="modal-body">
  		<form id="addProject">
 	    	<div class="card">
 				<div class="card-header">
-					<!-- <h5 class="card-title mb-0"></h5> -->
-					<%-- <c:when test="${sno!=null }">
-						<div>${sno.title }</div>
-					</c:when> --%>
-					<input readonly="readonly" name="title">
+					<div id="title"></div>
 				</div>
-				<div class="card-body addProject">
-					<input type=`"hidden" name="userid" value="mplsam@kh.co.kr"> <!-- 로그인 세션 받아서 등록 -->
-					<input type="hidden" name="paccess" value="ACCESS"><!-- 세션에서 권한 선택 -->
-					<!-- <input type="text" class="form-control title" name="pname" placeholder="프로젝트명을 입력해주세요." required="required"> -->
+				<div class="card-body">
+					<div id="userid">${calendar.userid }</div><!-- ??? -->
 					<br> 
 					<div>
 						<input type="date" class="form-date" name="pstartdate" required="required">
@@ -32,7 +26,8 @@
 						<input type="date" class="form-date" name="penddate" required="required">
 					</div>
 					<br>
-						<textarea class="form-control content" rows="5"  name="tcontent"></textarea> <!-- tcontent 이벤트 작성해서 얘 불러오기 -->
+						<!-- <textarea class="form-control content" rows="5"  name="tcontent"></textarea> -->
+						<div id="smemo"></div> <!-- ??? -->
 					<div>
 						<ul class="c-comment">
 							<li class="c-comment-form">
@@ -52,7 +47,7 @@
 			</div>
 
 			<div align="center">
-				<button class="btn btn-primary" id="btn-submit" type="button">추가</button>
+				<button class="btn btn-primary" id="btn-submit" type="button">수정</button><!-- TODO -->
 				<button class="btn btn-warning" type="reset">취소</button>
 			</div>
 			<div>

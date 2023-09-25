@@ -41,11 +41,8 @@
 			SELECT schedule_sequence.NEXTVAL FROM dual
 		</selectKey> -->
 		INSERT INTO SCHEDULE (SNO, USERID, SSTART, SEND, SMEMO, STITLE, SCOLOR)
-		VALUES (schedule_sequence.NEXTVAL, #{userid}, #{start},
-		#{end}, #{smemo},
-		#{title},
+		VALUES (schedule_sequence.NEXTVAL, #{userid}, #{start}, #{end}, #{smemo}, #{title},
 		'#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'))
-
 	</insert>
 
 	<!-- 일정 등록 끼인 테이블 -->

@@ -29,6 +29,12 @@ public class CalendarController {
 		return mv;
 	}
 	
+	@GetMapping("/pcal2")
+	public ModelAndView selectOne(ModelAndView mv) {
+		mv.setViewName("calendar/cal2");
+		return mv;
+	}
+	
 	//캘린더 등록
 	@PostMapping("/insertpcal")
 	public String insert(Model model, CalendarVo cal) {
