@@ -133,9 +133,8 @@ function innerTaskaddListHandler () {
 		}
 	});
 }
-
+const test="100";
 function makeView(project) {
-		const test=100;
 	    var listHtml = "";
 	    //if(data)
         listHtml += `
@@ -146,10 +145,10 @@ function makeView(project) {
 															 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
 															  class="feather feather-play align-middle me-2 jm-rotate"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
 														</span>
-														<span class="jm-project-title">\${project.pname }</span> 
-														<span class="jm-project-task-count">(\${project.maintaskList.length})</span>
-														<form class="jm-dn" action="\${contextPath}/ptasklist" method="get">
-															<input type="hidden" name="pno" value="\${project.pno}" >
+														<span class="jm-project-title">${project.pname }"</span> 
+														<span class="jm-project-task-count">(${project.maintaskList.length})</span>
+														<form class="jm-dn" action="${contextPath}/ptasklist" method="get">
+															<input type="hidden" name="pno" value="${project.pno}" >
 															<button class="jm-project-button jm-tp">바로가기</button>
 														</form>
 													</div>
@@ -166,7 +165,7 @@ function makeView(project) {
 listHtml += `
 															<li class="plusplus row">
 																<div class="jm-title-ttitle col-lg-4 jm-grey">
-																	<span> \${test}
+																	<span>
 			`;
 		for(var i=0; i<task.brelevel; i++) {
 listHtml +=															"&#8618;";
@@ -183,12 +182,12 @@ listHtml += `
 listHtml += `
 																	<span class="jm-tp jm-task-info">자세히 보기</span>
 																</div>
-																<div class="jm-title-tstatus col-lg-1 jm-grey">\${task.tstatus }</div>
-																<div class="jm-title-tmember col-lg-1 jm-grey">\${task.tmember }</div>
-																<div class="jm-title-tstartdate col-lg-1 jm-grey">\${task.tstartdate }</div>
-																<div class="jm-title-tenddate col-lg-1 jm-grey">\${task.tenddate }</div>
-																<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">\${task.tdate }</div>
-																<div class="jm-title-tno col-lg-1 jm-grey jm-gr">\${task.tno }</div>
+																<div class="jm-title-tstatus col-lg-1 jm-grey">${task.tstatus }</div>
+																<div class="jm-title-tmember col-lg-1 jm-grey">${task.tmember }</div>
+																<div class="jm-title-tstartdate col-lg-1 jm-grey">${task.tstartdate }</div>
+																<div class="jm-title-tenddate col-lg-1 jm-grey">${task.tenddate }</div>
+																<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">${task.tdate }</div>
+																<div class="jm-title-tno col-lg-1 jm-grey jm-gr">${task.tno }</div>
 															</li>
 															<li class="jm-ajax-InnertaskIn">
 															</li>
@@ -231,9 +230,9 @@ listHtml += `
 																		<div class="innerTdate"></div>
 																	</div>
 																	<div class="jm-title-tno col-lg-1 jm-grey jm-gr">
-																		<input type="hidden" name ="tno" value="\${task.tno}">
+																		<input type="hidden" name ="tno" value="${task.tno}">
 																		<input type="hidden" name="tcontent" value="default">
-																		<input type="hidden" name="pno" value="\${project.pno}">
+																		<input type="hidden" name="pno" value="${project.pno}">
 																		<input type="hidden" name="userid" value="kh0001@kh.com"> <!-- 로그인 세션 받아서 등록 -->
 																		<button type="button" class="jm-innerTask-insert-button">추가하기</button>
 																	</div>
