@@ -52,8 +52,6 @@
 						        .catch( err => {
 						            console.error( err.stack );
 					        });
-							
-							
 							</script>
 						<br>
 						<input type="hidden" name="userid" value="kh0001@kh.com"> <!-- 로그인 세션 받아서 등록 -->
