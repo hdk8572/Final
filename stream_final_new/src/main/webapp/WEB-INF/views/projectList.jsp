@@ -3,6 +3,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<sec:authorize access="isAuthenticated()">
+<sec:authentication property="principal" var="principal"/>
+</sec:authorize>
 
 <html>
 <head>
@@ -59,7 +63,7 @@
 				<div class="container-fluid p-0">
 
 					<h1 class="h3 mb-3" >
-						<span>${ul.mname}님의 프로젝트 목록</span>
+						<span>${principal.username}님의 프로젝트 목록</span>
 						<span><button class="btn btn-primary addProject" id="myBtn" data-bs-toggle="modal" data-bs-target="#addProjectModal">프로젝트 추가+</button></span>
 					</h1>
 

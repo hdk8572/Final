@@ -30,5 +30,6 @@ public class TestController01 {
 		model.addAttribute("username", username);
 		return "login/signuptest";
 	}
+	//사용하지않는방법
 
 }
