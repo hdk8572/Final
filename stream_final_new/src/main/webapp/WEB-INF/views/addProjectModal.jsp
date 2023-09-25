@@ -97,7 +97,7 @@
 			dateType: "json",
 			success: function(result){
 				
-				console.log(result);
+				console.log("addlist :"+result);
 				makeView(result);
 				$(".modal").modal("hide");
 			},

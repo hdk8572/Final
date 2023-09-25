@@ -31,7 +31,7 @@ public class ProjectController {
 	@GetMapping("/projectlist")
 	public String main() {
 		System.out.println("정상적으로 돌았습니다");
-		return "projectList_ajax";
+		return "projectList";
 	}
 
 	@GetMapping("/projectOne/{pno}")
@@ -41,10 +41,10 @@ public class ProjectController {
 		return vo;
 	}
 	
-	@GetMapping("/projectlist.ajax")
+	@GetMapping("/loadList")
 	@ResponseBody 
-	public List<ProjectVo> insert() {
-		System.out.println("insert 돌았습니다");
+	public List<ProjectVo> loadList() {
+		System.out.println("loadList 돌았습니다");
 		List<ProjectVo> list = projectService.selectList();
 		return list;
 	}

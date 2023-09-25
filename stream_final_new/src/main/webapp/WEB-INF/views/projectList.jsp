@@ -117,7 +117,7 @@
 	
 	function loadList() {
 		$.ajax({
-			url: "${pageContext.request.contextPath}/projectlist.ajax",
+			url: "${pageContext.request.contextPath}/loadList",
 			type: "get",
 			data: $("#wrap-list").serialize(),
 			datatype: "json",
@@ -156,7 +156,7 @@
 		                            <div class="col-auto">
 		                                <div class="stat text-primary">
 		                                    \${ul.prow}
-		                                </div>
+		                                </div>	
 		                            </div>
 		                        </div>
 		                        <h1 class="mt-1 mb-3" data-pname="\${ul.pname}">\${ul.pname}</h1>
@@ -187,7 +187,7 @@
 				}
 	    $("#wrap-list").html(listHtml);
 	    $(".frm.select").click(selectOption);  // stream.js -> abc();
-	    $(".list-delete").click(listDeleteHandler);
+	    // $(".list-delete").click(listDeleteHandler);
 	    $("#updateBtn").click(doUpdateProject);
 	    
 
@@ -199,7 +199,7 @@
  		
 	}
  	
- 	function listDelete($thisEle) {
+/*  	function listDelete($thisEle) {
  		console.log($thisEle.parents("[name=pno]").val());
 		$.ajax ({
 			url: "${pageContext.request.contextPath}/deleteList.ajax",
@@ -219,7 +219,7 @@
 			}
 		});
  		
-	}
+	} */
 	</script>
 
 
