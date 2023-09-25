@@ -1,3 +1,4 @@
+//console.log(contextPath);
 window.onload=loadedHandler;
 
 function loadedHandler(){
@@ -13,7 +14,7 @@ function loadedHandler(){
 	$('html').on("click", boxOutHandler)
 	$(".jm-innerTask-insert-button").click(innerTaskaddListHandler);
 	$(".addInnerTask").on("submit",ttileCheckHandler);
-	InnertaskInsertButtonHideHandler;
+	//InnertaskInsertButtonHideHandler;
 }
 
 function dragStart(e){
@@ -106,25 +107,26 @@ ttileCheckHandler=(event)=>{
 }
 
 function innerTaskaddListHandler () {
-const pathname = "/" + window.location.pathname.split("/")[1] + "/";
-const origin = window.location.origin;
-
-const contextPath = origin + pathname;
+//const pathname = "/" + window.location.pathname.split("/")[1] + "/";
+//const origin = window.location.origin;
+//const contextPath = origin + pathname;
 	console.log("ajax간다");
 	console.log($(this).closest(".addInnerTask").serialize());
 	console.log($(this).closest(".addInnerTask"));
 	$.ajax ({
-		url: contextPath+"innertaskinsert",
+		url: contextPath+"/innertaskinsert",
 		type: "post",
 		data : $(this).closest(".addInnerTask").serialize(),
+		
 		dataType: "json",
 		success: function(result){
-			if(result){
-				console.log("성공");
-				location.href=contextPath+"maintask"
-			}else{
-				alert("전송된 값 없음");
-			}
+				console.log("성공 ProjectVo with taskList ");
+				console.log(result);
+				makeView(result);
+				//location.href=contextPath+"maintask"
+			//}else{
+			//	alert("전송된 값 없음");
+			//}
 		},
 		error: function() {	
 			alert("innerTaskaddList 에서 에러났습니다.");
@@ -132,37 +134,119 @@ const contextPath = origin + pathname;
 	});
 }
 
-function makeView(data) {
+function makeView(project) {
+		const test=100;
 	    var listHtml = "";
+	    //if(data)
         listHtml += `
-        
-	        `;
-	    for(var i=0;i<data.length;i++){
-			var ul = data[i];
-			listHtml+=`
-			<ul>
-	        	<li class="plusplus row">
-					<div class="jm-title-ttitle col-lg-4 jm-grey">
-						<span>
-							<c:forEach begin="1" end="${ul.brelevel }">
-								&#8618;
-							</c:forEach>
-							${ul.ttitle}
-						</span>
-						<span class="jm-tp jm-task-info">자세히 보기</span>
-					</div>
-				<div class="jm-title-tstatus col-lg-1 jm-grey">${ul.tstatus }</div>
-				<div class="jm-title-tmember col-lg-1 jm-grey">${ul.tmember }</div>
-				<div class="jm-title-tstartdate col-lg-1 jm-grey">${ul.tstartdate }</div>
-				<div class="jm-title-tenddate col-lg-1 jm-grey">${ul.tenddate }</div>
-				<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">${ul.tdate }</div>
-				<div class="jm-title-tno col-lg-1 jm-grey jm-gr">${ul.tno }</div>
-				</li>
-	        </ul>
-	    `;
+												<div class="jm-grey">
+													<div class="jm-box-project-title jm-gr">
+														<span>
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+															 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+															  class="feather feather-play align-middle me-2 jm-rotate"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+														</span>
+														<span class="jm-project-title">\${project.pname }</span> 
+														<span class="jm-project-task-count">(\${project.maintaskList.length})</span>
+														<form class="jm-dn" action="\${contextPath}/ptasklist" method="get">
+															<input type="hidden" name="pno" value="\${project.pno}" >
+															<button class="jm-project-button jm-tp">바로가기</button>
+														</form>
+													</div>
+												</div>
+												<ul class="jm-inner-task">
+													<div class="jm-wrap-section-task-title jm-gr">
+														<ul class="jm-serction-task-title">
+			`;
+	//project.maintaskList.map(function(task){
+	for (var idx = 0; idx < project.maintaskList.length; idx++) {
+
+		const task = project.maintaskList[idx];
+		console.log(task);
+listHtml += `
+															<li class="plusplus row">
+																<div class="jm-title-ttitle col-lg-4 jm-grey">
+																	<span> \${test}
+			`;
+		for(var i=0; i<task.brelevel; i++) {
+listHtml +=															"&#8618;";
 		}
+listHtml +=															task.ttitle;
+listHtml += `
+																	</span>
+			`;
+		if(task.brelevel == 0) {
+listHtml += `
+																	<button class="jm-inner-task-button" >업무추가</button>
+			`; 
+		}
+listHtml += `
+																	<span class="jm-tp jm-task-info">자세히 보기</span>
+																</div>
+																<div class="jm-title-tstatus col-lg-1 jm-grey">\${task.tstatus }</div>
+																<div class="jm-title-tmember col-lg-1 jm-grey">\${task.tmember }</div>
+																<div class="jm-title-tstartdate col-lg-1 jm-grey">\${task.tstartdate }</div>
+																<div class="jm-title-tenddate col-lg-1 jm-grey">\${task.tenddate }</div>
+																<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">\${task.tdate }</div>
+																<div class="jm-title-tno col-lg-1 jm-grey jm-gr">\${task.tno }</div>
+															</li>
+															<li class="jm-ajax-InnertaskIn">
+															</li>
+															<form class="addInnerTask" >
+																<li class="jm-innerTaskInput jm-innerTask-el">
+																	<div class="jm-title-ttitle col-lg-4 jm-grey">
+																		<input type="text" placeholder="하위업무명을 입력하세요" name="ttitle" required="required">
+																	</div>
+																	<div class="jm-title-tstatus col-lg-1 jm-grey">
+																		<span>
+																			<select class= "form-select mb-3 selectCategory ml-2 " name="tstatus">
+																				<option value="요청" class="status request" selected="selected">요청</option>
+																			    <option value="진행" class="status progress">진행</option>
+																			    <option value="피드백" class="status feedback">피드백</option>
+																			    <option value="완료" class="status complete">완료</option>
+																			    <option value="보류" class="status remain">보류</option>
+																			</select>
+																		</span>
+																	</div>
+																	<div class="jm-title-tmember col-lg-1 jm-grey">
+																		<span>담당자 드롭다운(tmember)</span>
+																	</div>
+																	<div class="dropdown jm-title-tstartdate col-lg-1 jm-grey">
+																		<div data-bs-toggle="dropdown">
+																			<button class="btn btn-secondary">시작일</button>
+																		</div>
+																		<div class="mini-pop dropdown-menu dropdown-menu-end">
+																			<input type="date" name="tstartdate">
+																		</div>
+																	</div>
+																	<div class="dropdown jm-title-tenddate col-lg-1 jm-grey">
+																		<div data-bs-toggle="dropdown">
+																			<button class="btn btn-secondary">마감일</button>
+																		</div>
+																		<div class="mini-pop dropdown-menu dropdown-menu-end">
+																			<input type="date" name="tenddate">
+																		</div>
+																	</div>
+																	<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">
+																		<div class="innerTdate"></div>
+																	</div>
+																	<div class="jm-title-tno col-lg-1 jm-grey jm-gr">
+																		<input type="hidden" name ="tno" value="\${task.tno}">
+																		<input type="hidden" name="tcontent" value="default">
+																		<input type="hidden" name="pno" value="\${project.pno}">
+																		<input type="hidden" name="userid" value="kh0001@kh.com"> <!-- 로그인 세션 받아서 등록 -->
+																		<button type="button" class="jm-innerTask-insert-button">추가하기</button>
+																	</div>
+	        `;
+		// });  // map
+		} // for 
+listHtml += `
+													</ul>
+												</div>
+											</ul>
+`;
+        
+		var id = "#projectNo_"+ project.pno;
+		$(id).html(listHtml);
 }
 
-InnertaskInsertButtonHideHandler=()=>{
-	$()
-}
