@@ -13,19 +13,6 @@
 
 <!-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> -->
 <script src="${pageContext.request.contextPath}/js/jquery-3.7.0.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- sockjs -->
-<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.6.1/dist/sockjs.min.js"></script>
-<!-- stompjs -->
-<script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@6.1.2/bundles/stomp.umd.min.js">
-<script>
-function popupOpen(){ 
-    var popUrl = "/stream/chat";	//팝업창에 출력될 페이지 URL
-    var popOption = "left=800, top=100, width=500, height=800, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
-        window.open(popUrl,"",popOption);
-    }
-
-</script>
 <%@ include file="/WEB-INF/views/searchbar.jsp" %>
 <nav class="navbar navbar-expand navbar-light navbar-bg">
 
@@ -191,14 +178,11 @@ function popupOpen(){
 						<a  id="load">더보기</a>
 					</div> 
 				</div></li>
-				<div class="container">
-        <div class="sidesheet">
-                 <%@ include file="/WEB-INF/views/chatting/NewChat.jsp" %>
-        </div>
-
-        <button class="floating-btn" onclick="toggleSidesheet()">채팅</button>
-    </div>
-				
+<!-- 			<div class="container">
+				<div class="sidesheet"></div>
+				<button class="floating-btn" onclick="toggleSidesheet()">채팅</button>
+			</div>
+ -->
 			<%--  				<div>
 					<button class="btn btn-primary addProject" id="myBtn" data-bs-toggle="modal" data-bs-target="#myModal">채팅</button>
 				</div>	

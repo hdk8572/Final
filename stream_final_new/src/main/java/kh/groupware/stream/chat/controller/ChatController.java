@@ -33,6 +33,13 @@ public class ChatController {
 	        
 	        return "chat";
 	    }
+	 @GetMapping("/chat1")
+	    public String chatGETTest(){
+
+	        log.info("@ChatController, chat GET()");
+	        
+	        return "chat1";
+	    }
 
 	/*
 	 * @GetMapping("/chattestroom") public void chat(Model model) {

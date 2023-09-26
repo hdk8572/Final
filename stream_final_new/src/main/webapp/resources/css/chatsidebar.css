@@ -25,7 +25,7 @@
 
 .sidesheet {
     position: fixed;
-    right: -400px;
+    
     top: 66px !important;
     bottom: 0;
     width: 400px;
@@ -34,7 +34,7 @@
     overflow-y: auto; /* Agregado para que el sidesheet tenga su propio scroll */
     max-height: 100vh; /* Asegura que el sidesheet no exceda la altura de la ventana */
     background-color: white;
-    z-index: 2;
+    z-index: 600 !important;
 }
 
 .sidesheet-open .sidesheet {
