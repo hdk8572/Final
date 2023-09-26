@@ -34,6 +34,7 @@
 </head>
 
 <body>
+	<%@ include file="/WEB-INF/views/message.jsp"%>
 	<!-- 모달박스 -->
 	<div id="main-modal">
 		<div class="modalbox">
@@ -63,7 +64,6 @@
 		<img class="full-img" src="img/photos/top-slide-01.webp" alt="/">
 	</div>
 	<script src="js/app.js"></script>
-	<script src="js/message.js"></script>
 
 	<!-- 모달script -->
 	<script>

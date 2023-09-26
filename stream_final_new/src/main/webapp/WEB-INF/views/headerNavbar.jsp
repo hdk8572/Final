@@ -199,10 +199,10 @@ function popupOpen(){
         <button class="floating-btn" onclick="toggleSidesheet()">채팅</button>
     </div>
 				
-			<%--  				<div>
+			 				<div>
 					<button class="btn btn-primary addProject" id="myBtn" data-bs-toggle="modal" data-bs-target="#myModal">채팅</button>
 				</div>	
-					<%@ include file="/WEB-INF/views/chatting/select.jsp" %> --%>
+					<%@ include file="/WEB-INF/views/chatting/select.jsp" %>
 <!-- 			<li class="nav-item dropdown"><a
 				class="nav-icon dropdown-toggle" href="#" id="messagesDropdown"
 				data-bs-toggle="dropdown">

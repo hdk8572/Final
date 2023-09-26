@@ -40,7 +40,7 @@
 </head>
 
 <body>
-
+	<%@ include file="/WEB-INF/views/message.jsp"%>
 	<main class="d-flex w-100">
 		<div class="container d-flex flex-column">
 			<div class="row vh-100">
@@ -126,7 +126,6 @@
 
 	</main>
 	<script src="js/app.js"></script>
-	<script src="js/message.js"></script>
 		
 	
 	<script>
