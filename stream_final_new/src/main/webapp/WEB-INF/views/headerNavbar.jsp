@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<<<<<<< HEAD
+
 <head>
 	<link href="${pageContext.request.contextPath}/css/test.css" rel="stylesheet">
 	
@@ -97,7 +97,7 @@
 						<a id="load">더보기</a>
 					</div>
 				</div></li>
-<<<<<<< HEAD
+
 <!-- 			<div class="container">
 				<div class="sidesheet"></div>
 				<button class="floating-btn" onclick="toggleSidesheet()">채팅</button>
@@ -212,13 +212,13 @@
 					src="img/avatars/user1.jpg" class="avatar img-fluid rounded me-1"
 					alt="Charles Hall" border-radius: 50% !important/> <span class="text-dark">사용자</span>
 			</a>
-=======
+
 			<li class="nav-item dropdown">
 				<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown"> <i class="align-middle" data-feather="settings"></i></a>
 				<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown"> <img src="img/avatars/user1.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall" border-radius: 50% !important/>
 					<span class="text-dark">사용자</span>
 				</a>
->>>>>>> 56225563cc96b7f557b6ffeaf068c3c34258d008
+
 				<div class="dropdown-menu dropdown-menu-end">
 					<a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> 내 프로필</a>
 					<div class="dropdown-divider"></div>
