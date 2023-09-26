@@ -9,7 +9,7 @@
 		<div class="modal-content updateProject">
 			<div class="modal-header updateProject"></div>
 			<div class="modal-body updateProject">
-				<div class="card">
+				<div class="wrap-card">
 					<div class="card-body updateProjectTitle">
 					<div class="card-header updateProjectTitle">
 						<h2 class="updateProjectTitle"><b>프로젝트 수정</b></h2>
@@ -34,7 +34,7 @@
 							<input type= "text" class= "form-control manager ml-2" name="mname">
 						</span>
 						<br>
-						<textarea class="form-control" rows="10" name="pcontent" placeholder="내용을 입력해주세요"></textarea>
+						<textarea class="form-control" id="summernote" rows="10" name="pcontent" placeholder="내용을 입력해주세요"></textarea>
 						<br>
 						<input type="hidden" name="tdate">
 						<input type="hidden" name="userid">

@@ -37,7 +37,7 @@ public class ProjectServiceImpl implements ProjectService {
 	
 	@Override
 	@Transactional
-    public List<ProjectVo> insertList(ProjectVo vo, String userid) {
+    public List<ProjectVo> insertList(ProjectVo vo) {
         int result = projectDao.insertList(vo);
         if (result > 0) {
             return projectDao.selectList(); // DB에 삽입 후 리스트를 다시 조회하여 반환합니다.

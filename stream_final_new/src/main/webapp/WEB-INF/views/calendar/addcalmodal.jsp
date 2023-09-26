@@ -3,7 +3,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 모달 -->
-<div id="myModal" class="modal ptask " aria-labelledby="myModalLabel">
+<div id="myModal" class="modal">
 	<div class="modal-dialog pcal">
 		<!-- Modal content -->
 		<div class="modal-content pcal">
@@ -15,23 +15,22 @@
 						<h2 class="pcalTitle"><b>일정 작성</b></h2>
 					</div>
 						<form action="${pageContext.request.contextPath}/insertpcal" method="post">
-						<input type="text" class="form-control title" name="title" placeholder="제목을 입력하세요.">
-						<br>
-						<input type="hidden" name="pno" value="${pno_TODO }">
-					<input type="hidden" name="userid" value="mplsam@kh.co.kr"><!-- kh0002@kh.com -->
-						<input type="date" class="form-date" name="start" required="required"> ~ <input type="date" class="form-date" name="end" required="required"> <!-- s -->
-						<br>
-						<br>
-						
-<!-- ATTENUSERID -->
+							<input type="text" class="form-control title" name="title" placeholder="제목을 입력하세요.">
+								<br>
+							<input type="hidden" name="pno" value="${pno_TODO }">
+							<input type="hidden" name="userid" value="mplsam@kh.co.kr"><!-- kh0002@kh.com -->
+							<input type="date" class="form-date" name="start" required="required"> ~ <input type="date" class="form-date" name="end" required="required"> <!-- s -->
+								<br>
+								<br>
+						<!-- ATTENUSERID -->
 						 <div class="d-flex align-items-center" ><!-- form group -->
 							<span>
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2">
 								  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r= "4"></circle>
 								</svg>
 							</span>
-							    <input type="text" class="form-control member" placeholder="참가자" list="c-memberlist" id="clist">
-							    	<datalist  class="c-member" id="c-memberlist">
+							    <input type="text" class="form-control member" placeholder="참가자" list="cmemberlist" id="clist">
+							    	<datalist  class="cmember" id="cmemberlist">
 							    		<option selected>참가자를 선택해라</option>
 							        </datalist>
 							<div class="form-userid">
@@ -92,7 +91,7 @@
 </div>
 <!-- 참가자list -->
 <script>
-	$(".c-member").click(getMemberProjectListHandler);
+	$(".cmember").click(getMemberProjectListHandler);
 	function getMemberProjectListHandler(thisElement){
 		console.log($("[name=pno]").val());
 		// TODO: 
@@ -119,11 +118,11 @@
 			var mname = data[i];
 			listHtml += `<option value="\${mname.userid}">\${mname.mname}</option>`;
 		}
-		$("#c-memberlist").html(listHtml);
+		$("#cmemberlist").html(listHtml);
 	}
 	function memberError(){
 		var listHtml = "";
 		listHtml += `<option selected>해당하는 이름이 없습니다.</option>`;
-		$("#c-memberlist").html(listHtml);
+		$("#cmemberlist").html(listHtml);
 	}
 </script>

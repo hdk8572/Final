@@ -9,7 +9,7 @@
 		<div class="modal-content addProject">
 			<div class="modal-header addProject"></div>
 			<div class="modal-body addProject">
-				<div class="card">
+				<div class="wrap-card">
 					<div class="card-body addProjectTitle">
 					<div class="card-header addProjectTitle">
 						<h2 class="addProjectTitle"><b>프로젝트 등록</b></h2>
@@ -34,25 +34,7 @@
 							<input type= "text" class= "form-control manager ml-2" value="${ul.mname}" placeholder= "담당자" readonly>
 						</span>
 						<br>
-						<textarea class="form-control content" rows="10" name="pcontent" placeholder="프로젝트에 관한 설명을 입력해주세요"></textarea>
-<!-- 							<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script> 위즈윅
-							<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
-							<script>
-							let editor;
-							
-							ClassicEditor.create(document.querySelector(".form-control.content"), {	
-								language: "ko",
-								toolbar: [
-									'heading', 'bold', 'italic'
-								]
-							})
-								.then( editor => {
-						            myEditor = editor;
-						        } )
-						        .catch( err => {
-						            console.error( err.stack );
-					        });
-							</script> -->
+						<textarea class="form-control content" id="summernote" rows="10" name="pcontent" placeholder="프로젝트에 관한 설명을 입력해주세요"></textarea>
 						<br>
 						<input type="hidden" name="userid" value="kh0001@kh.com"> <!-- 로그인 세션 받아서 등록 -->
 						<input type="hidden" name="paccess" value="ACCESS"><!-- 세션에서 권한 선택 -->
@@ -82,18 +64,16 @@
     $("select[name=updatepstatus]").change(updateOption);
     
 	function addList () {
-		var data = myEditor.getData();
-		$("[name=pcontent]").val(data);
+//		var data = myEditor.getData();
+//		$("[name=pcontent]").val(data);
 		
 		console.log($("#addProject").serialize());  // "n1=v1&n2=v2"&pcontent=rkqdfjklfjlddfld
 		$.ajax ({
 			url: "${pageContext.request.contextPath}/projectInsert",
 			type: "post",
-			//data: $("#addProject").serialize(),
 			data : $("#addProject").serialize(),
 			dateType: "json",
 			success: function(result){
-				
 				console.log("addlist :"+result);
 				makeView(result);
 				$(".modal").modal("hide");
@@ -116,6 +96,9 @@
 	}
 	
 
+ 	
+ 	
 </script>
+
 
 <!-- 모달 -->

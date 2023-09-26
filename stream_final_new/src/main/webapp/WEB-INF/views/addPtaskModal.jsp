@@ -8,7 +8,7 @@
 		<div class="modal-content ptask">
 			<div class="modal-header ptask"></div>
 			<div class="modal-body ptask">
-				<div class="card">
+				<div class="wrap-card">
 					<div class="card-body ptask">
 					<div class="card-header ptaskTitle">
 						<h2 class="ptaskTitle"><b>업무 작성</b></h2>
@@ -33,7 +33,7 @@
 							<input type= "text" class= "form-control manager ml-2" name="tmember" placeholder= "담당자">
 						</span>
 						<br>
-						<textarea class="form-control" rows="10" name="tcontent" placeholder="내용을 입력해주세요"></textarea>
+						<textarea class="form-control" id="summernote" rows="10" name="tcontent" placeholder="내용을 입력해주세요"></textarea>
 						<br>
 						<input type="hidden" name="tdate" value=sysdate>
 						<input type="hidden" name="userid" value="kh0002@kh.com">
