@@ -13,7 +13,7 @@ public class CompanyDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	//login
+	// 로그인시 부서조회
 	public String selectOne(CompanyVo cvo) {
 		return sqlSession.selectOne("company.selectOne", cvo);
 	}

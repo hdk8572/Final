@@ -16,13 +16,13 @@
 		<csrf disabled="true" />
 		<intercept-url pattern="/admin/**"
 			access="hasRole('RA')" />
-		<intercept-url pattern="/user/**" access="hasRole('RM')" />
+		<intercept-url pattern="/member/**" access="hasRole('RM')" />
 		<intercept-url pattern="/company/**"
 			access="hasRole('RC')" />
 		<intercept-url pattern="/**" access="permitAll" />
 
 		<form-login login-page="/login" username-parameter="userid"
-			password-parameter="password" default-target-url="/main"
+			password-parameter="password" default-target-url="/projectlist"
 			always-use-default-target="true" authentication-failure-url="/login" />
 		<logout logout-url="/logout" logout-success-url="/main" />
 

@@ -11,10 +11,10 @@ import kh.groupware.stream.dept.model.vo.DeptVo;
 @Repository
 public class DeptDao {
 
-	//부서조회
 	@Autowired
 	private SqlSession sqlSession;
 	
+	//회사코드로 부서찾기
 	public List<DeptVo> deptList(String ccode) {
 		return sqlSession.selectList("department.deptList", ccode);
 	}

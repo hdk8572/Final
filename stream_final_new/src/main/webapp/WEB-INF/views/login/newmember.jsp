@@ -28,11 +28,19 @@
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
 	rel="stylesheet">
 
+
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-<link href="${pageContext.request.contextPath}/css/newmember.css" rel=stylesheet">
+
+
+<link href="${pageContext.request.contextPath}/css/newmember.css"
+	rel=stylesheet">
+
+	<!-- 알림띄우다 실패함 -->
+
 </head>
 
 <body>
+
 	<main class="d-flex w-100">
 		<div class="container d-flex flex-column">
 			<div class="row vh-100">
@@ -47,7 +55,8 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
-									<form id="frmNewMember" action=${pageContext.request.contextPath}/newmember
+									<form id="frmNewMember"
+										action=${pageContext.request.contextPath}/newmember
 										method="post">
 										<div class="mb-3">
 											<label class="form-label">E-mail</label> <input
@@ -78,7 +87,7 @@
 												<label class="form-label">Company Code</label> <input
 													class="form-control form-control-lg" type="text"
 													name="ccode" placeholder="회사코드를 입력하세요" /> <small>
-													<a href ="#" class="ccodeToDept">부서조회</a>
+													<a href="#" class="ccodeToDept">부서조회</a>
 												</small>
 											</div>
 
@@ -86,7 +95,7 @@
 												<label class="form-label">Department</label> <select
 													id="deptdrop" class="form-select mb-3" name="deptno">
 													<option selected>부서를 선택해주세요</option>
-											
+
 												</select>
 											</div>
 										</div>
@@ -99,7 +108,7 @@
 											</label>
 										</div>
 										<div class="text-center mt-3">
-											<button type="submit" class="btn btn-lg btn-primary">로그인</button>
+											<button type="submit" class="btn btn-lg btn-primary">회원가입</button>
 										</div>
 									</form>
 								</div>
@@ -116,9 +125,10 @@
 		</div>
 
 	</main>
-	<script src="js/app.js">
+	<script src="js/app.js"></script>
+	<script src="js/message.js"></script>
 		
-	</script>
+	
 	<script>
 		$(".ccodeToDept").click(btnDeptListClickHandler);
 
@@ -132,20 +142,20 @@
 				},
 				dataType : "json",
 				success : deptView,
-				error: deptError
+				error : deptError
 
 			});
 		}
-		function deptView(data){
+		function deptView(data) {
 			console.log("성공하였습니다")
-			 var listHtml = "";
-			for (var i=0; i<data.length; i++){
+			var listHtml = "";
+			for (var i = 0; i < data.length; i++) {
 				var deptName = data[i];
 				listHtml += `<option value="\${deptName.deptno}">\${deptName.deptname}</option>`;
 			}
 			$("#deptdrop").html(listHtml);
 		}
-		function deptError(){
+		function deptError() {
 			var listHtml = "";
 			listHtml += `<option selected>해당하는 부서가 없습니다</option>`;
 			$("#deptdrop").html(listHtml);

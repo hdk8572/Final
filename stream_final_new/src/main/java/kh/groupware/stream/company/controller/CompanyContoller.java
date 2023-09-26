@@ -23,12 +23,5 @@ public class CompanyContoller {
 		return mv;
 	}
 	
-	//company login
-	@PostMapping("/login.company")
-	@ResponseBody
-	public String login(Model model, CompanyVo cvo) {
-		return companyService.selectOne(cvo);
-
-	}
 	
 }

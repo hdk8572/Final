@@ -4,7 +4,7 @@
 
 	<!-- 회원가입 -->
 	<select id="signUp" parameterType="MemberVo" >
-		INSERT INTO USERS VALUES (#{userid}, #{deptno}, #{ccode}, #{password}, 1, 'RM', #{mname}, NULL, NULL)
+		UPDATE USERS SET DEPTNO = #{deptno}, PASSWORD = #{password}, MNAME = #{mname} WHERE USERID = #{userid} 
 	</select>
 	
 	<!-- 마이페이지 -->

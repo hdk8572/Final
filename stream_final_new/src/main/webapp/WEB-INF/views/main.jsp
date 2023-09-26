@@ -28,7 +28,8 @@
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-<link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/main.css"
+	rel="stylesheet">
 
 </head>
 
@@ -62,6 +63,7 @@
 		<img class="full-img" src="img/photos/top-slide-01.webp" alt="/">
 	</div>
 	<script src="js/app.js"></script>
+	<script src="js/message.js"></script>
 
 	<!-- 모달script -->
 	<script>
@@ -91,7 +93,7 @@
 					.setStyle({
 						position : 'fixed',
 						display : 'block flex',
-						background: 'rgba(255, 255, 255, 0.7)',
+						background : 'rgba(255, 255, 255, 0.7)',
 						boxShadow : '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
 
 						// 시꺼먼 레이어 보다 한칸 위에 보이기

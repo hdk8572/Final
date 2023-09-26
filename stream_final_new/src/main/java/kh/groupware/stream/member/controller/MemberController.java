@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.groupware.stream.company.model.service.CompanyService;
 import kh.groupware.stream.company.model.vo.CompanyVo;
 import kh.groupware.stream.member.model.service.MemberService;
+import kh.groupware.stream.member.model.service.MemberServiceImpl;
 import kh.groupware.stream.member.model.vo.MemberVo;
 
 @Controller
@@ -28,26 +30,34 @@ public class MemberController {
 	BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
-	// 회원가입
+	// 회원가입이동창
 	@GetMapping("/newmember")
 	public ModelAndView newMember(ModelAndView mv) {
 		mv.setViewName("login/newmember");
 		return mv;
 	}
+	//회원가입(update)
 	@PostMapping("/newmember")
-	public String signUp(MemberVo mvo) {
+	public String signUp(MemberVo mvo, RedirectAttributes ra) {
 		mvo.setPassword(bCryptPasswordEncoder.encode(mvo.getPassword()));
 		System.out.println("[jy] MemberController: " + mvo);
-		memberService.signUp(mvo);
-		return "main";
+		int result = memberService.signUp(mvo);
+		if (result == 0) {
+			ra.addFlashAttribute("msg", "실패했습니다.");
+			return "redirect:/newmember";
+		} else 
+			ra.addFlashAttribute("msg", "성공했습니다.");
+		return "redirect:/main";
 	}
-
+	
+	//로그인이동창
 	@GetMapping("/login")
 	public ModelAndView login(ModelAndView mv) {
 		mv.setViewName("/login/login");
 		return mv;
 	}
 
+	//마이페이지
 	@GetMapping("/userpage")
 	public ModelAndView myPage(ModelAndView mv) {
 		mv.setViewName("/myPage");

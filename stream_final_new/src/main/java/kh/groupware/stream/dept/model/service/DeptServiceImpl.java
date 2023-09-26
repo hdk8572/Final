@@ -14,6 +14,7 @@ public class DeptServiceImpl implements DeptService {
 	@Autowired
 	private DeptDao deptdao;
 	
+	//회사코드로 부서찾기
 	public List<DeptVo> deptList(String ccode){
 		return deptdao.deptList(ccode);
 	}

@@ -19,6 +19,7 @@ public class DeptController {
 	@Autowired
 	private DeptService DeptService;
 	
+	//회사코드로 부서찾기
 	@PostMapping("/deptlist")
 	@ResponseBody
 	public List<DeptVo> deptList( String ccode) {

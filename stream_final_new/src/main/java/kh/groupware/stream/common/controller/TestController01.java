@@ -22,14 +22,13 @@ public class TestController01 {
 		return mv;
 
 	}
-	@GetMapping("/test02")
-	public String getUserName(Model model) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String username= auth.getName();
-		
-		model.addAttribute("username", username);
-		return "login/signuptest";
-	}
-	//사용하지않는방법
-
 }
+	/*
+	 * @GetMapping("/test02") public String getUserName(Model model) {
+	 * Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	 * String username= auth.getName();
+	 * 
+	 * model.addAttribute("username", username); return "login/signuptest"; }
+	 * //사용하지않는방법
+	 */
+
