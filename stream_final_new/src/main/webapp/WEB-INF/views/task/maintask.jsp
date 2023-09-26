@@ -306,8 +306,7 @@
 																		<div class="jm-title-tmember col-lg-1 jm-grey">
 																			<span>담당자 드롭다운(tmember)</span>
 																		</div>
-																		<div
-																			class="dropdown jm-title-tstartdate col-lg-1 jm-grey">
+																		<div class="dropdown jm-title-tstartdate col-lg-1 jm-grey">
 																			<div data-bs-toggle="dropdown">
 																				<button class="btn btn-secondary">시작일</button>
 																			</div>

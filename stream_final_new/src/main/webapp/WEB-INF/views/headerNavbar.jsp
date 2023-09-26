@@ -193,7 +193,7 @@ function popupOpen(){
 				</div></li>
 				<div class="container">
         <div class="sidesheet">
-                 <%@ include file="/WEB-INF/views/chatting/NewChat.jsp" %>
+                 <%-- <%@ include file="/WEB-INF/views/chatting/NewChat.jsp" %> --%>
         </div>
 
         <button class="floating-btn" onclick="toggleSidesheet()">채팅</button>
