@@ -35,7 +35,7 @@
 						</span>
 						<br>
 						<textarea class="form-control content" rows="10" name="pcontent" placeholder="프로젝트에 관한 설명을 입력해주세요"></textarea>
-							<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script> <!-- 위즈윅 -->
+<!-- 							<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script> 위즈윅
 							<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
 							<script>
 							let editor;
@@ -52,7 +52,7 @@
 						        .catch( err => {
 						            console.error( err.stack );
 					        });
-							</script>
+							</script> -->
 						<br>
 						<input type="hidden" name="userid" value="kh0001@kh.com"> <!-- 로그인 세션 받아서 등록 -->
 						<input type="hidden" name="paccess" value="ACCESS"><!-- 세션에서 권한 선택 -->
@@ -78,7 +78,6 @@
 <script>
 	$("#btn-submit").click(addList);
 	$("#myBtn").click(selectOption);
-//	$(".dropdown-btn-update").click(updateOption);
     $("select[name=addpstatus]").change(selectOption);
     $("select[name=updatepstatus]").change(updateOption);
     

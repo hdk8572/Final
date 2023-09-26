@@ -9,7 +9,7 @@ public interface ProjectService {
 	public List<ProjectVo> selectList();
 	public List<ProjectVo> selectHide();
 	public ProjectVo selectOne(String pno);
-    public List<ProjectVo> insertList(ProjectVo vo);
+    public List<ProjectVo> insertList(ProjectVo vo, String userid);
     public int deleteList(String pno);
     public int update(ProjectVo vo);
 }

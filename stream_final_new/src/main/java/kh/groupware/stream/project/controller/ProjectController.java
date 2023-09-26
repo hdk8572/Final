@@ -1,6 +1,7 @@
 
 package kh.groupware.stream.project.controller;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,8 +62,8 @@ public class ProjectController {
 
 	@PostMapping("/projectInsert")
 	@ResponseBody
-	public List<ProjectVo> insert(ProjectVo vo) {
-		List<ProjectVo> add = projectService.insertList(vo);
+	public List<ProjectVo> insert(ProjectVo vo, Principal principal) {
+		List<ProjectVo> add = projectService.insertList(vo, principal.getName());
 		return add;
 	}
 	

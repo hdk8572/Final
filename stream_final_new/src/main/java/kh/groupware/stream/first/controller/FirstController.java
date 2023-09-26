@@ -18,4 +18,8 @@ public class FirstController {
 		mv.setViewName("main-modal");
 		return mv;
 	}
+	@GetMapping("/link")
+	public String link() {
+		return "link";
+	}
 }

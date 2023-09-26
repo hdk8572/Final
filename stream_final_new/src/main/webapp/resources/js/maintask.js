@@ -14,7 +14,6 @@ function loadedHandler(){
 	$('html').on("click", boxOutHandler)
 	$(".jm-innerTask-insert-button").click(innerTaskaddListHandler);
 	$(".addInnerTask").on("submit",ttileCheckHandler);
-	//InnertaskInsertButtonHideHandler;
 }
 
 function dragStart(e){

@@ -22,7 +22,7 @@
 		<intercept-url pattern="/**" access="permitAll" />
 
 		<form-login login-page="/login" username-parameter="userid"
-			password-parameter="password" default-target-url="/projectlist"
+			password-parameter="password" default-target-url="/link"
 			always-use-default-target="true" authentication-failure-url="/login" />
 		<logout logout-url="/logout" logout-success-url="/main" />
 

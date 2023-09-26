@@ -73,7 +73,11 @@ boby{
 	<script >
             $(document).ready(function(){
 
+<<<<<<< HEAD
             const username = '사용자';
+=======
+            const username = "asd";
+>>>>>>> 56225563cc96b7f557b6ffeaf068c3c34258d008
 
             $("#disconn").on("click", (e) => {
                 disconnect();

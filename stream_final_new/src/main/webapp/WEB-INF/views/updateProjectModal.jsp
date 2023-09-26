@@ -52,7 +52,6 @@
 					</div>
 				</div>
 			</div>
-			<!-- <div class="modal-footer ptask"></div> -->
 		</div>
 	</div>
 </div>
@@ -65,5 +64,4 @@
  	    console.log(updatedOption);
  	    $("#updateStatus").val(updatedOption);
 	}
-
 </script>

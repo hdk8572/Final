@@ -43,10 +43,10 @@ public class MemberController {
 		System.out.println("[jy] MemberController: " + mvo);
 		int result = memberService.signUp(mvo);
 		if (result == 0) {
-			ra.addFlashAttribute("msg", "실패했습니다.");
+			ra.addFlashAttribute("msg", "회원가입에 실패하였습니다. 다시 시도해주세요!");
 			return "redirect:/newmember";
 		} else 
-			ra.addFlashAttribute("msg", "성공했습니다.");
+			ra.addFlashAttribute("msg", "회원가입에 성공했습니다. 로그인해주세요!");
 		return "redirect:/main";
 	}
 	
