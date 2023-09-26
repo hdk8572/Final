@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import kh.groupware.stream.chat.model.dao.ChatService;
 import kh.groupware.stream.chat.model.vo.ChatVo;
+import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -29,14 +30,13 @@ public class ChatController {
 	 @GetMapping("/chat")
 	    public String chatGET(){
 
-	        log.info("@ChatController, chat GET()");
+	        System.out.println("@ChatController, chat GET()");
 	        
 	        return "chat";
 	    }
 	 @GetMapping("/chat1")
 	    public String chatGETTest(){
-
-	        log.info("@ChatController, chat GET()");
+		 System.out.println("@ChatController, chat GET()");
 	        
 	        return "chat1";
 	    }

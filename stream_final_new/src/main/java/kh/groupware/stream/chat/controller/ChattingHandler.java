@@ -15,18 +15,19 @@ public class ChattingHandler extends TextWebSocketHandler{
 	private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-		
-		log.info("#ChattingHandler, afterConnectionEstablished");
+		System.out.println("#ChattingHandler, afterConnectionEstablished");
+		/* log.info("#ChattingHandler, afterConnectionEstablished"); */
 		sessionList.add(session);
-		
-		log.info(session.getPrincipal().getName() + "님이 입장하셨습니다.");
+		System.out.println(session.getPrincipal().getName() + "님이 입장하셨습니다.");
+		/* log.info(session.getPrincipal().getName() + "님이 입장하셨습니다."); */
 	}
 	
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-		
-		log.info("#ChattingHandler, handleMessage");
-		log.info(session.getId() + ": " + message);
+		System.out.println("#ChattingHandler, handleMessage");
+		/* log.info("#ChattingHandler, handleMessage"); */
+		System.out.println(session.getId() + ": " + message);
+		/* log.info(session.getId() + ": " + message); */
 		
 		for(WebSocketSession s : sessionList) {
 			s.sendMessage(new TextMessage(session.getPrincipal().getName() + ":" + message.getPayload()));
@@ -35,11 +36,11 @@ public class ChattingHandler extends TextWebSocketHandler{
 	
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-		
-		log.info("#ChattingHandler, afterConnectionClosed");
+		System.out.println("#ChattingHandler, afterConnectionClosed");
+		/* log.info("#ChattingHandler, afterConnectionClosed"); */
 
 		sessionList.remove(session);
-		
-		log.info(session.getPrincipal().getName() + "님이 퇴장하셨습니다.");
+		System.out.println(session.getPrincipal().getName() + "님이 퇴장하셨습니다.");
+		/* log.info(session.getPrincipal().getName() + "님이 퇴장하셨습니다."); */
 	}
 }
