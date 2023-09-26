@@ -42,7 +42,7 @@
 						<i id="projectColor" class="project-color color-code-1"></i>
 					</div>
 					<div class="project-header-group">
-						<h2 style="font-weight: bold;">프로젝트 이름</h2>
+						<h2 style="font-weight: bold;position: relative;top: -13px;left: -12px;">프로젝트 이름</h2>
 					</div>
 				</div>
 				<div class="w3-bar tabBar" style="height: 60px">

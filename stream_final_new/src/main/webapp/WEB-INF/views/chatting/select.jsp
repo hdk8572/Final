@@ -553,20 +553,6 @@ form {
 </div>
 </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- sockjs -->
-<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.6.1/dist/sockjs.min.js"></script>
-<!-- stompjs -->
-<script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@6.1.2/bundles/stomp.umd.min.js"></script>
-<script>
-function popupOpen(){ 
-    var popUrl = "/stream/chat";	//팝업창에 출력될 페이지 URL
-    var popOption = "left=800, top=100, width=500, height=800, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
-        window.open(popUrl,"",popOption);
-    }
-
-</script>
-	<script src="${pageContext.request.contextPath}/js/stream.js"></script>
 
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
 <!-- 모달창 스크립트 -->
