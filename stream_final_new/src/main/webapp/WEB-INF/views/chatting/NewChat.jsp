@@ -477,6 +477,7 @@ form {
             </div>
         </article>  
 
+
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
 <!-- 모달창 스크립트 -->
  <script>
@@ -650,6 +651,6 @@ form {
 		$("#s_chat_content_box").load("<%=request.getContextPath()%>/echo/selectroom?room_no=" + roomNo);
 	});
     
-</script>
+</script> --%>
 </body>
 </html>

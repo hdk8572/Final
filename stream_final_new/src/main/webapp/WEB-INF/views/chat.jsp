@@ -41,21 +41,6 @@ boby{
 	height: 65px;
 }
 </style>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js">
-/* function jstalktheme_testfunc()
-{
-	var otxtmsg = document.getElementById("jstalktheme_testmsg");
-	
-	var d = new Date();
-	var ampm = (d.getHours()>12 ?  "PM" : "AM");
-	var h = (d.getHours()>12 ? d.getHours()-12 : d.getHours());
-	var m = d.getMinutes();
-
-	test_type ^= 0x01;
-	jstalktheme_addmsg(test_type, "아무개", ampm+" "+h+":"+m, otxtmsg.value.replace("\n","<br />\n"));
-} */
-
-</script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -82,11 +67,17 @@ boby{
 			</div>
 		</div>
 	</footer>
-
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js">
+</script>
 	<script >
             $(document).ready(function(){
 
+<<<<<<< HEAD
+            const username = '사용자';
+=======
             const username = "asd";
+>>>>>>> 56225563cc96b7f557b6ffeaf068c3c34258d008
 
             $("#disconn").on("click", (e) => {
                 disconnect();
