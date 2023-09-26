@@ -437,7 +437,7 @@ form {
 	<div class="wrapper">
 		<%@ include file="/WEB-INF/views/sidebar.jsp" %>
 		<div class="main">
-			<%@ include file="/WEB-INF/views/headerNavbar.jsp" %>
+			<%@ include file="/WEB-INF/views/headernavbar.jsp" %>
 	<section>
         <article style="float: left;">
             <div id="s_sub_menu_box">

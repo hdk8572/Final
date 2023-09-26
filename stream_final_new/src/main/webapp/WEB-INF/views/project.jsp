@@ -36,7 +36,7 @@
 
 		<%@ include file="/WEB-INF/views/sidebar.jsp"%>
 		<div class="main">
-			<%@ include file="/WEB-INF/views/headerNavbar.jsp"%>
+			<%@ include file="/WEB-INF/views/headernavbar.jsp"%>
 
 			<main>
 				<div class="project-detail-header">

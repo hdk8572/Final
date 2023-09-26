@@ -37,7 +37,7 @@
 	<div class="wrapper">
 		<%@include file="/WEB-INF/views/calendar/calendar-side.jsp"%>
 		<div class="main">
-			<%@ include file="/WEB-INF/views/headerNavbar.jsp"%>
+			<%@ include file="/WEB-INF/views/headernavbar.jsp"%>
 
 
 			<main>
