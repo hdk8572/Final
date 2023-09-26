@@ -8,6 +8,8 @@
 
 <link rel="shortcut icon" href="img/icons/icon-48x48.png" /> <!-- 로고 결정 요망 -->
 
+<!-- 부트스트랩 -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <title>Stream - Final Project</title>
 
 <link href="${pageContext.request.contextPath }/css/streamapp.css" rel="stylesheet">
@@ -15,8 +17,8 @@
 
 <!-- 폰트 -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-<!-- 부트스트랩 -->
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
+
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
