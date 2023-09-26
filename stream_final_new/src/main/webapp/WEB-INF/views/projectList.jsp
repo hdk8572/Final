@@ -31,8 +31,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"	rel="stylesheet">
 <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
 
+<!-- JQuery -->
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
+<!-- SummerNote CDN -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
 </head>
 <body>
@@ -73,6 +77,7 @@
 <script src="${pageContext.request.contextPath}/js/stream.js"></script>
 <script src="${pageContext.request.contextPath}/js/modal.js"></script>
 <script src="${pageContext.request.contextPath}/js/app.js"></script>
+<script src="${pageContext.request.contextPath}/js/summernote-lite.js"></script>
 <script>
 	/* ajax 용 - contextPath 변수 지정 */
 	const contextPath = "${pageContext.request.contextPath}";
@@ -83,18 +88,35 @@
 </script>
 <script>
 	$(document).ready(function (){
-		loadList();				// 화면 리스트 호출 - loadList 컨트롤러
+		loadList();									// 화면 리스트 호출 - loadList 컨트롤러
+		
+		$("#summernote").summernote({				//  위즈윅 - summerNote		
+		     placeholder: '프로젝트 설명을 입력해주세요.',
+		     tabsize: 2,
+		     height: 120,
+		     toolbar: [
+		       ['style', ['style']],
+		       ['font', ['bold', 'underline', 'clear']],
+		       ['color', ['color']],
+		       ['para', ['ul', 'ol', 'paragraph']],
+		       ['table', ['table']],
+		       ['insert', ['link', 'picture', 'video']],
+		       ['view', ['fullscreen', 'codeview', 'help']]
+		     ]
+		});
 	}); 
 		
 	$("#hideBtn").click(listAndHide);
 	
 	function listAndHide() {
 	    if ($(this).css("color") === "rgb(0, 155, 119)") {
+	    	$(this).css("color", "black");
 	         $(this).html(plusImg);
 	        loadHide();	        
 	        $(".dropdown-btn-hide").closest("a").hide();
 	    } else {
 	         $(this).html(minusImg);
+	        $(this).css("color", "#009b77");
 	        loadList();
 	        $(".dropdown-btn-hide").closest("a").show();
 	    }
@@ -112,6 +134,7 @@
 				alert("loadHide에서 에러났습니다.");
 			}
 		});
+		console.log("loadHide 실행");
 	}
 	
 	function loadList() {
@@ -126,6 +149,7 @@
 				alert("loadList에서 에러났습니다.");
 			}
 		});
+		console.log("loadList 실행");
 	}
 	
 	function makeView(data) {
@@ -189,6 +213,7 @@
 	    $(".frm.select").click(selectOption);  // stream.js -> abc();
 	    $("#updateBtn").click(doUpdateProject);
 	}
+	
 /*  	function listDelete($thisEle) {
  		console.log($thisEle.parents("[name=pno]").val());
 		$.ajax ({
@@ -211,4 +236,5 @@
  		
 	} */
 	</script>
+
 </html>

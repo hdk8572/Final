@@ -28,6 +28,7 @@
 .modal-body {
 	padding: 15px 15px;
 	margin: 0 auto;
+	height: 94%;
 }
 
 .modal-text {
@@ -89,7 +90,8 @@
 
 .modal-body.updateProject {
 	cursor: auto;	
-    height: 670px;
+    /* height: 670px; */
+    height: 94%;
 }
 
 /* PtaskModal */
@@ -112,7 +114,7 @@
 }
 
 .modal-header.ptask {
-    height: 65px;
+    height: 6%;
     background-color: #009b77;
 	border-radius: 10px 10px 0px 0px;
 }
@@ -130,13 +132,27 @@
     bottom: 8px;
 }
 
+.wrap-card {
+    word-wrap: break-word;
+    background-clip: border-box;
+    background-color: #fff;
+    border: 0 solid transparent;
+    border-radius: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    position: relative;
+    height: 100%;
+}
+
 .card-header.ptaskTitle {
 	padding: 1rem 0rem;
 }
 
 .card-body.ptask {
 	cursor: auto;	
-    height: 670px;
+    /* height: 670px; */
+    height: 100%;
 }
 
 /* addProjectModal */
@@ -176,15 +192,12 @@
 
 .card-header.addProjectTitle {
 	padding: 1rem 0rem;
+	/* height: 5%; */
 }
 
 .card-body.addProjectTitle {
 	cursor: auto;	
     height: 670px;
-}
-
-form {
-	cursor: auto;	
 }
 
 /* updateProjectModal */
@@ -233,4 +246,5 @@ form {
 
 form {
 	cursor: auto;	
+	height: 93%;
 }
