@@ -203,15 +203,6 @@
 						<a  class="text-muted">더보기</a>
 					</div>
 				</div></li> -->
-			<li class="nav-item dropdown"><a
-				class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
-				data-bs-toggle="dropdown"> <i class="align-middle"
-					data-feather="settings"></i>
-			</a> <a class="nav-link dropdown-toggle d-none d-sm-inline-block"
-				href="#" data-bs-toggle="dropdown"> <img
-					src="img/avatars/user1.jpg" class="avatar img-fluid rounded me-1"
-					alt="Charles Hall" border-radius: 50% !important/> <span class="text-dark">사용자</span>
-			</a>
 
 			<li class="nav-item dropdown">
 				<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown"> <i class="align-middle" data-feather="settings"></i></a>
