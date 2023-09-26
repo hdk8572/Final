@@ -1,16 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<head>
-	<link href="${pageContext.request.contextPath}/css/test.css" rel="stylesheet">
-	
-</head>
-<style>
-	.a1 { display:none; }
-	boby{
-		margin: 0px;
-	}
-	
-</style>
 
 <!-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> -->
 <script src="${pageContext.request.contextPath}/js/jquery-3.7.0.js"></script>
