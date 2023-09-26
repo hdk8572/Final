@@ -13,7 +13,10 @@
 
 	<title>Stream - Final Project</title>
 	
-	<link href="${pageContext.request.contextPath}/css/app.css" rel="stylesheet">
+	<!-- Tab bar -->
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	
+	<link href="${pageContext.request.contextPath}/css/streamapp.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/css/project.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/css/projectheader.css" rel="stylesheet">
 	
@@ -23,8 +26,7 @@
 	<!-- fonts -->
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 	
-	<!-- Tab bar -->
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 	
 </head>
@@ -42,7 +44,7 @@
 						<i id="projectColor" class="project-color color-code-1"></i>
 					</div>
 					<div class="project-header-group">
-						<h2 style="font-weight: bold;position: relative;top: -13px;left: -12px;">프로젝트 이름</h2>
+						<h2 style="font-weight: bold;position: relative;left: -12px;">프로젝트 이름</h2>
 					</div>
 				</div>
 				<div class="w3-bar tabBar" style="height: 60px">

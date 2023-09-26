@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/app.css">
+	href="${pageContext.request.contextPath }/css/streamapp.css">
 
 <nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">

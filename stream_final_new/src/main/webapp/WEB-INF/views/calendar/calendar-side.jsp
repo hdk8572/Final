@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/app.css">
+	href="${pageContext.request.contextPath }/css/streamapp.css">
 
 <style>
 li::marker {

@@ -14,7 +14,7 @@
 	<title>AdminKit Demo - Bootstrap 5 Admin Template</title>
 	
 	<!-- Bootstrap CSS -->
-	<link href="${pageContext.request.contextPath}/css/app.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/streamapp.css" rel="stylesheet">
 	
 	<!-- ProjectList CSS -->
 	<link href="${pageContext.request.contextPath}/css/projectList.css" rel="stylesheet">

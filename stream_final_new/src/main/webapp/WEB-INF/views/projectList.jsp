@@ -12,24 +12,25 @@
 <meta name="author" content="Stream">
 
 <link rel="shortcut icon" href="img/icons/icon-48x48.png" /> <!-- 로고 결정 요망 -->
-<!-- <link rel="canonical" href="https://demo-basic.adminkit.io/" /> -->
+
+<!-- Tab bar -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <title>Stream - Final Project</title>
 
 <!-- Bootstrap CSS -->
-<link href="${pageContext.request.contextPath}/css/app.css"	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/streamapp.css"	rel="stylesheet">
 
-<!-- ProjectList CSS -->
-<link href="${pageContext.request.contextPath}/css/projectList.css" rel="stylesheet">
 <!-- Modal CSS -->
 <link href="${pageContext.request.contextPath}/css/Modal.css"	rel="stylesheet">
 
+<!-- ProjectList CSS -->
+<link href="${pageContext.request.contextPath}/css/projectList.css" rel="stylesheet">
 <!-- DropDown - Option CSS -->
 <link href="${pageContext.request.contextPath}/css/projectList.option.css"	rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"	rel="stylesheet">
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
 
-<!-- Tab bar -->
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
 

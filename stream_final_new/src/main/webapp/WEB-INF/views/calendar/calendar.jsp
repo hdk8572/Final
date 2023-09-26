@@ -24,7 +24,7 @@
 <!-- Tab bar -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<link href="${pageContext.request.contextPath }/css/app.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/streamapp.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/css/calmodal.css" rel="stylesheet"> 
 <link href="${pageContext.request.contextPath }/css/calendar.css" rel="stylesheet">
 

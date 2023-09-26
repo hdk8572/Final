@@ -21,7 +21,7 @@
 <title>AdminKit Demo - Bootstrap 5 Admin Template</title>
 
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-<link href="css/app.css" rel="stylesheet">
+<link href="css/streamapp.css" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
 	rel="stylesheet">

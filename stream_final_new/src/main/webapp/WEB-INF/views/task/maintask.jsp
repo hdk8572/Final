@@ -10,7 +10,7 @@
 
 <title>Stream - Final Project</title>
 
-<link href="${pageContext.request.contextPath }/css/app.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/streamapp.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/css/maintask.css" rel="stylesheet">
 
 <!-- 폰트 -->
