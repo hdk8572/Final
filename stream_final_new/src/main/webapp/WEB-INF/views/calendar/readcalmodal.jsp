@@ -26,8 +26,8 @@
 						<input type="date" class="form-date" name="penddate" required="required">
 					</div>
 					<br>
-						<!-- <textarea class="form-control content" rows="5"  name="tcontent"></textarea> -->
-						<div id="smemo"></div> <!-- ??? -->
+						<%-- <textarea class="form-control content" rows="5"  name="tcontent">${calendar.smemo }</textarea> --%> <!-- ??? -->
+						<div id="smemo"><p>${calendar.smemo }</p></div>
 					<div>
 						<ul class="c-comment">
 							<li class="c-comment-form">
