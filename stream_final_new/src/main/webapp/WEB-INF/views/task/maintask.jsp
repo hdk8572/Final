@@ -1,40 +1,24 @@
-<!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description"
-	content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
-<meta name="author" content="AdminKit">
-<meta name="keywords"
-	content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+<meta name="author" content="Stream">
 
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+<link rel="shortcut icon" href="img/icons/icon-48x48.png" /> <!-- 로고 결정 요망 -->
 
-<link rel="canonical" href="https://demo-basic.adminkit.io/" />
+<title>Stream - Final Project</title>
 
-<title>업무 보기 페이지</title>
+<link href="${pageContext.request.contextPath }/css/app.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/maintask.css" rel="stylesheet">
 
-<link href="${pageContext.request.contextPath }/css/app.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath }/css/maintask.css"
-	rel="stylesheet">
-
-<link
-	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
-	rel="stylesheet">
+<!-- 폰트 -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<!-- 부트스트랩 -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<script>
-	const contextPath = "${pageContext.request.contextPath }";
-</script>
-<script src="${pageContext.request.contextPath }/js/maintask.js"></script>
 
 </head>
 <body>
@@ -54,11 +38,6 @@
 					</div>
 					<div>
 						<div class="card-body">
-							<div class="search">
-								<input class="serinput" type="text"
-									placeholder="업무명, 업무번호를 입력하세요."> <img class="serimg"
-									src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
-							</div>
 						</div>
 					</div>
 
@@ -354,9 +333,14 @@
 			</main>
 		</div>
 	</div>
+	
 	<%@include file="/WEB-INF/views/footer.jsp"%>
-	<script src="js/app.js"></script>
+	
+	<script src="${pageContext.request.contextPath}/js/app.js"></script>
+	<script src="${pageContext.request.contextPath}/js/maintask.js"></script>
 
 </body>
-
+<script>
+	const contextPath = "${pageContext.request.contextPath }"; /* ajax 용 - contextPath 변수 지정 */
+</script>
 </html>

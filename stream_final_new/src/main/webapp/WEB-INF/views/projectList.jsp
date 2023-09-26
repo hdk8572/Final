@@ -1,68 +1,53 @@
-<!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <sec:authorize access="isAuthenticated()">
-<sec:authentication property="principal" var="principal"/>
+	<sec:authentication property="principal" var="principal"/>
 </sec:authorize>
-
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description"
-	content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
-<meta name="author" content="AdminKit">
-<meta name="keywords"
-	content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+<meta name="author" content="Stream">
 
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+<link rel="shortcut icon" href="img/icons/icon-48x48.png" /> <!-- 로고 결정 요망 -->
+<!-- <link rel="canonical" href="https://demo-basic.adminkit.io/" /> -->
 
-<link rel="canonical" href="https://demo-basic.adminkit.io/" />
-
-<title>AdminKit Demo - Bootstrap 5 Admin Template</title>
+<title>Stream - Final Project</title>
 
 <!-- Bootstrap CSS -->
-<link href="${pageContext.request.contextPath}/css/app.css"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/app.css"	rel="stylesheet">
 
 <!-- ProjectList CSS -->
-<link href="${pageContext.request.contextPath}/css/projectList.css"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/projectList.css" rel="stylesheet">
 <!-- Modal CSS -->
-<link href="${pageContext.request.contextPath}/css/Modal.css"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/Modal.css"	rel="stylesheet">
 
 <!-- DropDown - Option CSS -->
-<link
-	href="${pageContext.request.contextPath}/css/projectList.option.css"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/projectList.option.css"	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"	rel="stylesheet">
 
-<link
-	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
-	rel="stylesheet">
 <!-- Tab bar -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
 
 </head>
 <body>
 	<div class="wrapper">
 
-
+		<%@ include file="/WEB-INF/views/sidebar.jsp"%>
+			<div class="main">
+			<%@ include file="/WEB-INF/views/headerNavbar.jsp"%>
 
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3" >
-						<span>${principal.username}님의 프로젝트 목록</span>
-						<span><button class="btn btn-primary addProject" id="myBtn" data-bs-toggle="modal" data-bs-target="#addProjectModal">프로젝트 추가+</button></span>
-						<svg id="hideBtn" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus-circle align-middle me-2 hideView"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+					<h1 class="h3 mb-3">
+						<span>${principal.username}님의 프로젝트 목록</span> 
+						<span><button class="btn btn-primary addProject" id="myBtn"	data-bs-toggle="modal" data-bs-target="#addProjectModal">프로젝트 추가+</button></span>
+						<svg id="hideBtn" xmlns="http://www.w3.org/2000/svg" width="24"	height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus-circle align-middle me-2 hideView"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg>
 					</h1>
 
 					<%@ include file="/WEB-INF/views/addProjectModal.jsp"%>
@@ -81,74 +66,37 @@
 			</main>
 		</div>
 	</div>
+</body>
 
-	<!-------------------- Script ----------------------->
-	<script>
+<!-------------------- Script ----------------------->
+<script src="${pageContext.request.contextPath}/js/stream.js"></script>
+<script src="${pageContext.request.contextPath}/js/modal.js"></script>
+<script src="${pageContext.request.contextPath}/js/app.js"></script>
+<script>
+	/* ajax 용 - contextPath 변수 지정 */
 	const contextPath = "${pageContext.request.contextPath}";
-	</script>
-	<script src="${pageContext.request.contextPath}/js/stream.js"></script>
-	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
-	<script src="${pageContext.request.contextPath}/js/app.js"></script>
-	<script>
-	$(document).ready(function() {
-		  $(".sidebar-link").mouseover(function() {
-		    $(this).css({
-		      "background-color": "#009b77",
-		    });
-		    $(this).find("span").css({
-		      "color": "white"	
-		    });
-		    $(this).find("svg").css({
-		      "color": "white"	
-		    });
-		  }).mouseout(function() {
-		    $(this).css({
-		      "background-color": "white",
-		    });
-		    $(this).find("span").css({
-		      "color": "#009b77"	
-		    });
-		    $(this).find("svg").css({
-		      "color": "#009b77"	
-	    });
-	  });
-		    loadList();
-		    
-	});
 	
-	$("#hideBtn").click(listAndHide);
-	
+	/* listAndHide 버튼 이미지 */
 	const minusImg = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus-circle align-middle me-2"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg>';
 	const plusImg = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle align-middle me-2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>';
+</script>
+<script>
+	$(document).ready(function (){
+		loadList();				// 화면 리스트 호출 - loadList 컨트롤러
+	}); 
+		
+	$("#hideBtn").click(listAndHide);
 	
 	function listAndHide() {
 	    if ($(this).css("color") === "rgb(0, 155, 119)") {
-	    	$(this).css("color", "black");
 	         $(this).html(plusImg);
-	        console.log("숨겼습니다. loadHide");
 	        loadHide();	        
 	        $(".dropdown-btn-hide").closest("a").hide();
 	    } else {
 	         $(this).html(minusImg);
-	        $(this).css("color", "#009b77");
-	        console.log("안숨겼습니다. loadList");
 	        loadList();
 	        $(".dropdown-btn-hide").closest("a").show();
 	    }
-	}
-	
-	function loadList() {
-		$.ajax({
-			url: "${pageContext.request.contextPath}/loadList",
-			type: "get",
-			data: $("#wrap-list").serialize(),
-			async : false,
-			datatype: "json",
-			success: makeView,
-			error: function() {
-				alert("loadList에서 에러났습니다.");
-			}
-		});
 	}
 	
 	function loadHide() {
@@ -165,10 +113,24 @@
 		});
 	}
 	
- 	function makeView(data) {
+	function loadList() {
+		$.ajax({
+			url: "${pageContext.request.contextPath}/loadList",
+			type: "get",
+			data: $("#wrap-list").serialize(),
+			async : false,
+			datatype: "json",
+			success: makeView,
+			error: function() {
+				alert("loadList에서 에러났습니다.");
+			}
+		});
+	}
+	
+	function makeView(data) {
 	    var listHtml = "";
-        listHtml += `
-        
+	    listHtml += `
+	    
 	        `;
 	    for(var i=0;i<data.length;i++){
 			var ul = data[i];
@@ -176,7 +138,7 @@
 	        	<div class="col-sm-6 list-card" data-pno="\${ul.pno}" >
 		            <div class="card">
 		                <form class="frm select" action="${pageContext.request.contextPath}/ptasklist" method="get">
- 		                    <input type="hidden" name="pno"  value="\${ul.pno}">
+		                    <input type="hidden" name="pno"  value="\${ul.pno}">
 		                    <div class="card-body list">
 		                        <div class="row">
 		                            <div class="col mt-0">
@@ -226,11 +188,6 @@
 	    $(".frm.select").click(selectOption);  // stream.js -> abc();
 	    $("#updateBtn").click(doUpdateProject);
 	}
- 	
- 	function listDeleteHandler(e) {
- 		
-	}
- 	
 /*  	function listDelete($thisEle) {
  		console.log($thisEle.parents("[name=pno]").val());
 		$.ajax ({
@@ -253,7 +210,4 @@
  		
 	} */
 	</script>
-
-
-</body>
 </html>

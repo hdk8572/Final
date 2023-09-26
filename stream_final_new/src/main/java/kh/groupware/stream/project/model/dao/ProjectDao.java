@@ -14,8 +14,8 @@ public class ProjectDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<ProjectVo> selectList(String userid) {
-		return sqlSession.selectList("project.selectList", userid);
+	public List<ProjectVo> selectList() {
+		return sqlSession.selectList("project.selectList");
 	}
 	
 	public List<ProjectVo> selectHide() {

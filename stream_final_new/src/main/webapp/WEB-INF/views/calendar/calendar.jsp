@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> <!-- 참 -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,23 +14,30 @@
 	content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link rel="shortcut icon" href="adminKit/img/icons/icon-48x48.png" />
+<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 <link rel="canonical" href="https://demo-basic.adminkit.io/" />
 
 <title>calendar</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
 <!-- Tab bar -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <link href="${pageContext.request.contextPath }/css/app.css" rel="stylesheet">
-	
 <link href="${pageContext.request.contextPath }/css/calmodal.css" rel="stylesheet"> 
-
 <link href="${pageContext.request.contextPath }/css/calendar.css" rel="stylesheet">
 
 <!-- fullcalendar  -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+<!-- //fullcalendar 언어 설정관련 script -->
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
+
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
 </head>
 <body>
@@ -47,12 +53,12 @@
 					<button class="w3-bar-item w3" onclick="openTab('Tab2')">업무</button>
 					<button class="w3-bar-item w3" onclick="openTab('Tab3')">캘린더</button>
 				</div>
-				<div class="search">
+<%-- 				<div class="search">
 					<form action="${pageContext.request.contextPath}/pcalselectone" method="get"> <!-- ?? -->
 						<input class="serinput" type="text" placeholder="검색어 입력"> 
 						<img class="serimg" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
 					</form>
-				</div>
+				</div> --%>
 
 				<main class="content">
  							<h2>
@@ -79,14 +85,8 @@
 		</div>
 	</div>
 	
-	<!-- fullcalendar -->
-	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-	
-	<!-- //fullcalendar 언어 설정관련 script -->
-	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
-	
-	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
+	<script src="${pageContext.request.contextPath}/js/app.js"></script>
 	
 	<!-- 달력을 구성  -->
 	<script>
@@ -151,24 +151,9 @@
 		}
 	</script> -->
 
-	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
-	<script src="${pageContext.request.contextPath}/js/app.js"></script>
+
 	
 	<!-- 일정 모달 창 그림자 효과? -->
-	<script>
-	$(document).ready(function() {
-		$(".card-body").mouseover(function() {
-			$(this).css({
-				"box-shadow":"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
-			});
-		});
-		$(".card-body").mouseout(function() {
-			$(this).css({
-				"box-shadow":""
-			});
-		});
-	});
-	</script>
 	<!-- 상단 탭바 -->
 <!-- <script>
 	function openTab(tabName) {
@@ -180,6 +165,5 @@
 	  document.getElementById(tabName).style.display = "block";  
 	}
 	</script> -->
-
 </body>
 </html>

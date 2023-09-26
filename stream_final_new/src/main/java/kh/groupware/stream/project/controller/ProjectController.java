@@ -46,9 +46,9 @@ public class ProjectController {
 	
 	@GetMapping("/loadList")
 	@ResponseBody 
-	public List<ProjectVo> loadList(Principal principal) {
+	public List<ProjectVo> loadList() {
 		System.out.println("loadList 돌았습니다");
-		List<ProjectVo> list = projectService.selectList(principal.getName());
+		List<ProjectVo> list = projectService.selectList();
 		return list;
 	}
 	

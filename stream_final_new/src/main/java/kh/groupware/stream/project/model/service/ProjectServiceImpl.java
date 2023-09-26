@@ -21,8 +21,8 @@ public class ProjectServiceImpl implements ProjectService {
 	private PtaskDao ptaskdao;
 	
 	@Override
-	public List<ProjectVo> selectList(String userid) {
-		return projectDao.selectList(userid);
+	public List<ProjectVo> selectList() {
+		return projectDao.selectList();
 	}
 	
 	@Override
@@ -40,7 +40,7 @@ public class ProjectServiceImpl implements ProjectService {
     public List<ProjectVo> insertList(ProjectVo vo, String userid) {
         int result = projectDao.insertList(vo);
         if (result > 0) {
-            return projectDao.selectList(userid); // DB에 삽입 후 리스트를 다시 조회하여 반환합니다.
+            return projectDao.selectList(); // DB에 삽입 후 리스트를 다시 조회하여 반환합니다.
         } else {
         	return null;
         }

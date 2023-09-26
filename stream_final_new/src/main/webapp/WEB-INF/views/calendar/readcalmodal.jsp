@@ -42,7 +42,6 @@
 							<li id="c-comment-list"></li>
 						</ul>
 					</div>
-					<script src="public/js/practice.js"></script>
 				</div>
 			</div>
 
