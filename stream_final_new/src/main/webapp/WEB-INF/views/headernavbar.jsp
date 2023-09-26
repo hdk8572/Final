@@ -87,11 +87,11 @@
 					</div>
 				</div></li>
 
-<!-- 			<div class="container">
+			<div class="container">
 				<div class="sidesheet"></div>
-				<button class="floating-btn" onclick="toggleSidesheet()">채팅</button>
+				<button id="popup">채팅</button>
 			</div>
- -->
+
 			<%--  				<div>
 					<button class="btn btn-primary addProject" id="myBtn" data-bs-toggle="modal" data-bs-target="#myModal">채팅</button>
 				</div>	
@@ -212,3 +212,20 @@
 		</ul>
 	</div>
 </nav>
+<script type="text/javascript">
+       function testAlert() {
+         alert("자식창에서 호출 했습니다.");
+       }
+     
+         window.onload = function () {
+            var popupButton = document.getElementById("popup");
+            popupButton.onclick = function () {
+               var jsPopup = window.open("chatlist", null, "width=450, height=450, resizable=no, scrollbars=no");
+            
+            //jsPopup.changeData();
+            
+            var text1 = jsPopup.document.getElementById("text1");
+            text1.value = "헤헤헤~";
+            };
+         };
+      </script>
