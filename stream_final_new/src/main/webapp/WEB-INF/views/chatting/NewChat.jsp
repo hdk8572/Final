@@ -476,7 +476,6 @@ form {
                 </div>
             </div>
         </article>  
-        <script src="${pageContext.request.contextPath}/js/stream.js"></script>
 
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
 <!-- 모달창 스크립트 -->
