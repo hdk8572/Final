@@ -15,8 +15,8 @@ public class MaintaskDao {
 	@Autowired
 	private SqlSession sqlSession;
 
-	public List<ProjectVo> projectNameList(){
-		return sqlSession.selectList("mainTask.projectNameList");
+	public List<ProjectVo> projectNameList(String userid){
+		return sqlSession.selectList("mainTask.projectNameList", userid);
 	}
 	public ProjectVo projectOneTaskList(String pno){
 		return sqlSession.selectOne("mainTask.projectOneTaskList", pno);

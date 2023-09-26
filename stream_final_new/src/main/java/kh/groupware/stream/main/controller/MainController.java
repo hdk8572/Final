@@ -1,6 +1,8 @@
 package kh.groupware.stream.main.controller;
 
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,8 +22,10 @@ public class MainController {
 	private PtaskService PtastService;
 	
 	@GetMapping("/maintask")
-	public String maintask(Model model) {
-		model.addAttribute("projectList", MaintastService.projectNameList());
+	public String maintask(Model model, Principal principal) {
+		String userid = principal.getName();
+		model.addAttribute("projectList", MaintastService.projectNameList(userid));
+		System.out.println(userid);
 		return "/task/maintask";
 	}
 	
