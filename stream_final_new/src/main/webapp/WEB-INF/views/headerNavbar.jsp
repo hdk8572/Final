@@ -14,9 +14,6 @@
 
 <!-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> -->
 <script src="${pageContext.request.contextPath}/js/jquery-3.7.0.js"></script>
-<%@ include file="/WEB-INF/views/searchbar.jsp" %>
-=======
->>>>>>> 56225563cc96b7f557b6ffeaf068c3c34258d008
 <nav class="navbar navbar-expand navbar-light navbar-bg">
 	<a class="sidebar-toggle js-sidebar-toggle"> <i
 		class="hamburger align-self-center"></i>
