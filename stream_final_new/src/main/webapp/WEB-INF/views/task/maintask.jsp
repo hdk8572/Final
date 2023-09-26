@@ -20,6 +20,11 @@
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
+<!-- USER -->
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal"/>
+</sec:authorize>
 </head>
 <body>
 	<div class="wrapper">

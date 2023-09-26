@@ -20,8 +20,8 @@ public class MaintaskServiceImpl implements MaintaskService {
 	@Autowired
 	private PtaskDao ptaskDao;
 	
-	public List<ProjectVo> projectNameList(){
-		return maintaskDao.projectNameList();
+	public List<ProjectVo> projectNameList(String userid){
+		return maintaskDao.projectNameList(userid);
 	}
 	
 	@Transactional

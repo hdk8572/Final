@@ -4,6 +4,7 @@
 	<resultMap type="ProjectVo" id="maintaskVoMap">
 		<id property="pno" column="PNO"/>
 		<result property="pname" column="PNAME"/>
+		<result property="userid" column="USERID"/>
 		<collection property="maintaskList" ofType="PtaskVo" column="pno">
 			<id property="tno" column="tno"/>
 			<result property="pno" column="pno"/>
@@ -21,10 +22,12 @@
 		</collection>
 	</resultMap>
 	
-	<select id="projectNameList" resultMap="maintaskVoMap" >
+	<select id="projectNameList" resultMap="maintaskVoMap" parameterType="string">
 		select pname, pno, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
-    		from project join task using(pno)
+    		from project join task using(pno, userid)
+    		where userid = #{userid}
     		order by pno asc, bref desc, brelevel asc, brestep asc
+    		
 	</select>
 	
 	<select id="projectOneTaskList" resultMap="maintaskVoMap" parameterType="string">

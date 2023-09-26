@@ -9,6 +9,6 @@ import kh.groupware.stream.ptask.model.vo.PtaskVo;
 
 public interface MaintaskService {
 	
-	public List<ProjectVo> projectNameList();
+	public List<ProjectVo> projectNameList(String userid);
 	public ProjectVo insertInnerTask(PtaskVo vo);
 }
