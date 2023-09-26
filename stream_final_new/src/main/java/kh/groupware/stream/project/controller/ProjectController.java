@@ -1,6 +1,7 @@
 
 package kh.groupware.stream.project.controller;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,9 +46,9 @@ public class ProjectController {
 	
 	@GetMapping("/loadList")
 	@ResponseBody 
-	public List<ProjectVo> loadList() {
+	public List<ProjectVo> loadList(Principal principal) {
 		System.out.println("loadList 돌았습니다");
-		List<ProjectVo> list = projectService.selectList();
+		List<ProjectVo> list = projectService.selectList(principal.getName());
 		return list;
 	}
 	
@@ -61,8 +62,8 @@ public class ProjectController {
 
 	@PostMapping("/projectInsert")
 	@ResponseBody
-	public List<ProjectVo> insert(ProjectVo vo) {
-		List<ProjectVo> add = projectService.insertList(vo);
+	public List<ProjectVo> insert(ProjectVo vo, Principal principal) {
+		List<ProjectVo> add = projectService.insertList(vo, principal.getName());
 		return add;
 	}
 	

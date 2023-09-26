@@ -1,15 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<head>
-	<link href="${pageContext.request.contextPath}/css/test.css" rel="stylesheet">
-	
-</head>
-<style>
-	.a1 { display:none; }
-	boby{
-		margin: 0px;
-	}
-	
-</style>
+
 
 <!-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> -->
 <script src="${pageContext.request.contextPath}/js/jquery-3.7.0.js"></script>
@@ -17,7 +7,7 @@
 <!-- sockjs -->
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.6.1/dist/sockjs.min.js"></script>
 <!-- stompjs -->
-<script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@6.1.2/bundles/stomp.umd.min.js">
+<script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@6.1.2/bundles/stomp.umd.min.js"></script>
 <script>
 function popupOpen(){ 
     var popUrl = "/stream/chat";	//팝업창에 출력될 페이지 URL

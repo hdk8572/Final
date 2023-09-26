@@ -53,9 +53,6 @@
 </head>
 <body>
 	<div class="wrapper">
-		<%@ include file="/WEB-INF/views/sidebar.jsp"%>
-		<div class="main">
-			<%@ include file="/WEB-INF/views/headerNavbar.jsp"%>
 
 
 
