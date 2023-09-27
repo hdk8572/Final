@@ -10,6 +10,7 @@
 
 <!-- 부트스트랩 -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <title>Stream - Final Project</title>
 
 <link href="${pageContext.request.contextPath }/css/streamapp.css" rel="stylesheet">
