@@ -91,3 +91,32 @@ commit;
 select pname, pno, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
     		from project join task using(pno)
     		order by pno asc, bref asc, brelevel asc, brestep asc ;
+
+select pname, pno, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    		from (select * from project where pno='8') join task using(pno)
+    		order by brelevel asc, brestep asc	;
+            
+            
+select ccode, userid, pname, pno, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    from (select userid, pname, pno, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    		from project join task using(pno, userid))
+    join users using(userid)
+    order by pno asc, bref asc, brelevel asc, brestep asc;
+    		
+select pname, pno, userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    		from project right join task using(pno, userid)
+    		where tmember ='sple@kh.co.kr'
+    		order by pno asc, bref desc, brelevel asc, brestep asc
+;
+select * from project where pno=13;
+select pname, pno, userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    		from (select * from project where pno=13) right join task using(pno, userid)
+            where tmember = 'sple@kh.co.kr'
+    		order by brelevel asc, brestep asc
+;
+            
+select pname, pno, userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    		from (select * from task where tmember='sple@kh.co.kr' )
+            left join(select * from project where pno=13) using(pno, userid)
+    		order by brelevel asc, brestep asc
+;

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.groupware.stream.main.model.service.MaintaskService;
 import kh.groupware.stream.project.model.vo.ProjectVo;
-import kh.groupware.stream.ptask.model.service.PtaskService;
 import kh.groupware.stream.ptask.model.vo.PtaskVo;
 
 @Controller

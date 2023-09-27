@@ -78,10 +78,18 @@ functionDateHandler=(e)=>{
 }
 
 innerTaskInputHandler=(event)=>{
-	console.log(event.target);
 	const a1 = event.target;
-	$(a1).closest('li').next().next().find(".jm-innerTask-el").addClass('row active');
-	$(a1).closest('li').next().next().find(".jm-innerTask-el").css("display","block, flex");
+	console.log($(a1).closest('li').next().next());
+	var a2 = $(a1).closest('li').next().next()[0].id;
+	console.log(a2);
+	console.log("==========================");
+	var a3 = '#'+a2;
+	console.log(a3);
+	console.log($(a1).closest('li').siblings(a3));
+	//$(a1).closest('li').next().next().find(".jm-innerTaskInput").addClass('row active');
+	//$(a1).closest('li').next().next().find(".jm-innerTaskInput").css("display","block, flex");
+	$(a1).closest('li').siblings(a3).find(".jm-innerTaskInput").addClass('row active');
+	$(a1).closest('li').siblings(a3).find(".jm-innerTaskInput").css("display","block, flex");
 	$(".innerTdate").text(functionDateHandler())
 }
 
@@ -116,7 +124,6 @@ function innerTaskaddListHandler () {
 		url: contextPath+"/innertaskinsert",
 		type: "post",
 		data : $(this).closest(".addInnerTask").serialize(),
-		
 		dataType: "json",
 		success: function(result){
 				console.log("성공 ProjectVo with taskList ");
@@ -127,8 +134,8 @@ function innerTaskaddListHandler () {
 			//	alert("전송된 값 없음");
 			//}
 		},
-		error: function() {	
-			alert("innerTaskaddList 에서 에러났습니다.");
+		error:function(request, status, error){
+			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		}
 	});
 }
@@ -162,7 +169,7 @@ function makeView(project) {
 		const task = project.maintaskList[idx];
 		console.log(task);
 listHtml += `
-															<li class="plusplus row">
+															<li class="plusplus row" id="taskNo_${task.tno}">
 																<div class="jm-title-ttitle col-lg-4 jm-grey">
 																	<span>
 			`;
@@ -190,7 +197,7 @@ listHtml += `
 															</li>
 															<li class="jm-ajax-InnertaskIn">
 															</li>
-															<form class="addInnerTask" >
+															<form class="addInnerTask" id="taskInputNo_${task.tno}">
 																<li class="jm-innerTaskInput jm-innerTask-el">
 																	<div class="jm-title-ttitle col-lg-4 jm-grey">
 																		<input type="text" placeholder="하위업무명을 입력하세요" name="ttitle" required="required">

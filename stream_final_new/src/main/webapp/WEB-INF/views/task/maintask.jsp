@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!-- USER -->
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal"/>
+</sec:authorize>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,16 +27,9 @@
 
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-
-<!-- USER -->
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal" var="principal"/>
-</sec:authorize>
 </head>
 <body>
 	<div class="wrapper">
-		<%-- <%@include file="/WEB-INF/views/task/maintast-side.jsp"%> --%>
 		<%@ include file="/WEB-INF/views/sidebar.jsp"%>
 		<div class="main">
 			<%@ include file="/WEB-INF/views/headernavbar.jsp"%>
@@ -251,7 +249,7 @@
 													<div class="jm-wrap-section-task-title jm-gr">
 														<div class="jm-serction-task-title">
 															<c:forEach items="${project.maintaskList }" var="task">
-																<li class="plusplus row">
+																<li class="plusplus row" id="taskNo_${task.tno}">
 																	<div class="jm-title-ttitle col-lg-4 jm-grey">
 																		<span> <c:forEach begin="1"
 																				end="${task.brelevel }">
@@ -271,7 +269,7 @@
 																	<div class="jm-title-tno col-lg-1 jm-grey jm-gr">${task.tno }</div>
 																</li>
 																<li class="jm-ajax-InnertaskIn"></li>
-																<form class="addInnerTask">
+																<form class="addInnerTask" id="taskInputNo_${task.tno}">
 																	<li class="jm-innerTaskInput jm-innerTask-el">
 																		<div class="jm-title-ttitle col-lg-4 jm-grey">
 																			<input type="text" placeholder="하위업무명을 입력하세요"
@@ -316,13 +314,11 @@
 																		<div class="jm-title-tno col-lg-1 jm-grey jm-gr">
 																			<input type="hidden" name="tno" value="${task.tno}">
 																			<input type="hidden" name="tcontent" value="default">
-																			<input type="hidden" name="pno"
-																				value="${project.pno}">
+																			<input type="hidden" name="pno" value="${project.pno}">
+																			<input type="hidden" name="tmember" value="${principal.username}">
 																			<!-- 로그인 세션 받아서 등록 -->
-																			<input type="hidden" name="userid"
-																				value="kh0001@kh.com">
-																			<button type="button"
-																				class="jm-innerTask-insert-button">추가하기</button>
+																			<input type="hidden" name="userid" value="${principal.username}">
+																			<button type="button" class="jm-innerTask-insert-button">추가하기</button>
 																		</div>
 																	</li>
 																</form>
