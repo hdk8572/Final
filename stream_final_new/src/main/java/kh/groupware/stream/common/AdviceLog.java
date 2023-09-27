@@ -19,7 +19,7 @@ public class AdviceLog {
 	}
 	// .. 왜들어가는지 여쭤보기
 
-	@Pointcut("execution(public * kh.groupware.stream..*Service.*(..))")
+	@Pointcut("execution(public * kh.groupware.stream..*ServiceImpl.*(..))")
 	public void servicePointCut() {
 	}
 

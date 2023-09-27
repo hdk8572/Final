@@ -25,7 +25,7 @@
 	<select id="projectNameList" resultMap="maintaskVoMap" parameterType="string">
 		select pname, pno, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
     		from project join task using(pno, userid)
-    		where userid = #{userid}
+    		where tmember = #{userid}
     		order by pno asc, bref desc, brelevel asc, brestep asc
     		
 	</select>

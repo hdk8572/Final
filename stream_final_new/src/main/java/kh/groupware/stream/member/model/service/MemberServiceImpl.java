@@ -17,5 +17,11 @@ public class MemberServiceImpl implements MemberService {
 	public int signUp(MemberVo mvo) {
 		return memberDao.signUp(mvo);
 	}
+	
+	//id존재여부 체크
+	@Override
+	public int idCheck(String userid) {
+		return memberDao.idCheck(userid);
+	}
 
 }

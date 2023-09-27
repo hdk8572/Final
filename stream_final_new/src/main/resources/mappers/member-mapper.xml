@@ -17,4 +17,9 @@
 		UPDATE USERS SET DEPTNO= #{deptno}, MPHONE = #{mphone}, MRANK = #{mrank} WHERE USERID = #{userid}
 	</select>
 	
+	<!-- 아이디체크 -->
+	<select id="idCheck" parameterType="String"  resultType="_int">
+		SELECT COUNT(USERID) FROM USERS WHERE USERID=#{userid}
+	</select>
+	
 </mapper>

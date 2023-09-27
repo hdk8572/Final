@@ -25,10 +25,9 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
-	
+
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
-
 
 	// 회원가입이동창
 	@GetMapping("/newmember")
@@ -36,33 +35,51 @@ public class MemberController {
 		mv.setViewName("login/newmember");
 		return mv;
 	}
-	//회원가입(update)
+
+	// 회원가입(update)
 	@PostMapping("/newmember")
 	public String signUp(MemberVo mvo, RedirectAttributes ra) {
-		mvo.setPassword(bCryptPasswordEncoder.encode(mvo.getPassword()));
-		System.out.println("[jy] MemberController: " + mvo);
-		int result = memberService.signUp(mvo);
-		if (result == 0) {
-			ra.addFlashAttribute("msg", "회원가입에 실패하였습니다. 다시 시도해주세요!");
+		int idCheck = 0;
+		String result = null;
+
+		idCheck = memberService.idCheck(mvo.getUserid());
+		System.out.println("[jy] idCheck:" + idCheck);
+
+		if (idCheck == 0) {
+			ra.addFlashAttribute("msg","존재하지 않는 정보입니다. 링크를 전달받은 이메일 주소를 입력해주세요.");
 			return "redirect:/newmember";
-		} else 
-			ra.addFlashAttribute("msg", "회원가입에 성공했습니다. 로그인해주세요!");
-		return "redirect:/main";
+
+		} else {
+
+			mvo.setPassword(bCryptPasswordEncoder.encode(mvo.getPassword()));
+			System.out.println("[jy] MemberController: " + mvo);
+
+			int result1 = memberService.signUp(mvo);
+
+			if (result1 == 0) {
+				ra.addFlashAttribute("msg", "회원가입에 실패하였습니다. 다시 시도해주세요!");
+				System.out.println("[jy] result1:" + result1);
+				return "redirect:/newmember";
+
+			} else
+				ra.addFlashAttribute("msg", "회원가입에 성공했습니다. 로그인해주세요!");
+			System.out.println("[jy] result1:" + result1);
+			return "redirect:/main";
+		}
 	}
-	
-	//로그인이동창
+
+	// 로그인이동창
 	@GetMapping("/login")
 	public ModelAndView login(ModelAndView mv) {
 		mv.setViewName("/login/login");
 		return mv;
 	}
 
-	//마이페이지
+	// 마이페이지
 	@GetMapping("/userpage")
 	public ModelAndView myPage(ModelAndView mv) {
 		mv.setViewName("/myPage");
 		return mv;
 	}
-
 
 }
