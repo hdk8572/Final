@@ -10,31 +10,43 @@
 
 	<http pattern="/resources/**" security="none"></http>
 	<!-- login-processing-url="/login.do" -->
-
-	<http auto-config="true" use-expressions="true" >
+	<!-- <intercept-url pattern="/login" access="!isAuthenticated()"/> <intercept-url 
+		pattern="/**" access="isAuthenticated()"/> -->
+	<!-- <intercept-url pattern="/newmember" access="isAnonymous()" /> -->
+		
+	<http auto-config="true" use-expressions="true">
 
 		<csrf disabled="true" />
-		<intercept-url pattern="/admin/**"	access="hasRole('RA')" />
-		<intercept-url pattern="/member/**" access="hasRole('RM')" />
-		<intercept-url pattern="/company/**" access="hasRole('RC')" />
+		<intercept-url pattern="/admin/**"
+			access="hasRole('ROLE_A')" />
+		<intercept-url pattern="/member/**"
+			access="hasRole('ROLE_M')" />
+		<intercept-url pattern="/company/**"
+			access="hasRole('ROLE_C')" />
+
 		<intercept-url pattern="/**" access="permitAll" />
+
 
 		<form-login login-page="/login" username-parameter="userid"
 			password-parameter="password" default-target-url="/link"
-			always-use-default-target="true" authentication-failure-url="/login" />
+			authentication-success-handler-ref="loginSuccessHandler"
+			authentication-failure-url="/login" />
 		<logout logout-url="/logout" logout-success-url="/main" />
 
 	</http>
+
 	<beans:bean
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"
 		id="BCryptPasswordEncoder"></beans:bean>
-
+	<beans:bean
+		class="kh.groupware.stream.common.controller.LoginSuccessHandler"
+		id="loginSuccessHandler" />
 
 	<!-- DB에서 정보를 가져와서 비교를 위한 정보 -->
 	<jdbc-user-service data-source-ref="dataSource"
 		id="userService"
 		users-by-username-query="SELECT USERID AS USERNAME , PASSWORD, ENABLED FROM USERS WHERE USERID =?"
-		authorities-by-username-query="SELECT USERID AS USERNAME, AUTHORITY FROM USERS WHERE USERID =?"  />
+		authorities-by-username-query="SELECT USERID AS USERNAME, AUTHORITY FROM USERS WHERE USERID =?" />
 
 	<!-- 실질적으로 계정정보 비교 -->
 	<authentication-manager>

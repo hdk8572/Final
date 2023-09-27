@@ -43,27 +43,23 @@ public class MemberController {
 		String result = null;
 
 		idCheck = memberService.idCheck(mvo.getUserid());
-		System.out.println("[jy] idCheck:" + idCheck);
 
 		if (idCheck == 0) {
-			ra.addFlashAttribute("msg","존재하지 않는 정보입니다. 링크를 전달받은 이메일 주소를 입력해주세요.");
+			ra.addFlashAttribute("msg", "존재하지 않는 정보입니다. 링크를 전달받은 이메일 주소를 입력해주세요.");
 			return "redirect:/newmember";
 
 		} else {
 
 			mvo.setPassword(bCryptPasswordEncoder.encode(mvo.getPassword()));
-			System.out.println("[jy] MemberController: " + mvo);
 
 			int result1 = memberService.signUp(mvo);
 
 			if (result1 == 0) {
 				ra.addFlashAttribute("msg", "회원가입에 실패하였습니다. 다시 시도해주세요!");
-				System.out.println("[jy] result1:" + result1);
 				return "redirect:/newmember";
 
 			} else
 				ra.addFlashAttribute("msg", "회원가입에 성공했습니다. 로그인해주세요!");
-			System.out.println("[jy] result1:" + result1);
 			return "redirect:/main";
 		}
 	}
