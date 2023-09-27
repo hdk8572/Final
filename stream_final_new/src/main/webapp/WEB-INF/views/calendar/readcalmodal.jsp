@@ -16,22 +16,22 @@
 	    	<div class="card">
 				<div class="card-header">
 					<!-- 작성자 -->
-					<div id="userid">${calendar.userid }</div>
+					<div id="userid"></div> <!-- 여기에 뭐 적으면x -->
 				</div>
 				<div class="card-body">
 					<!-- 제목 -->
 					<div id="title"></div>
 					<br> 
 					<div>
-						<input type="date" class="form-date" name="pstartdate" required="required">
+						<input type="date" class="form-date" name="start" required="required">
 						~
-						<input type="date" class="form-date" name="penddate" required="required">
+						<input type="date" class="form-date" name="end" required="required">
 					</div>
 					<br>
 						<!-- 지도 -->
 						<!-- 참석자  -->
 						<!-- 내용 -->
-						<div id="smemo"><p>${calendar.smemo }</p></div>
+						<div id="smemo"></div>
 					<div>
 					<br>
 						<!-- 댓글 -->

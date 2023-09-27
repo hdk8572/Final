@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,12 +25,6 @@ public class CalendarController {
 	@GetMapping("/pcal")
 	public ModelAndView selectList(ModelAndView mv) {
 		mv.setViewName("calendar/calendar");
-		return mv;
-	}
-	
-	@GetMapping("/pcal2")
-	public ModelAndView selectOne(ModelAndView mv) {
-		mv.setViewName("calendar/cal2");
 		return mv;
 	}
 	
@@ -60,20 +53,22 @@ public class CalendarController {
 		return "calendar"; //화면에 뿌릴 것을 return해야함
 	}
 	
-	//참석자 조회
-	@RequestMapping("/pcal")
-	@ResponseBody //이걸 쓰면 model 못 씀
-	public String attendList() { //매개인자? 
-		return new Gson().toJson(calendarService.attendList());
-	}
-	
-	//MemberProject 조회
+	//작성자도 포함
+	//참석자 후보 조회 -  MemberProject 조회
 	@GetMapping("/memberProjectList")
 	@ResponseBody
 	public String memberProjectList(CalendarParamVo param) {
+		// List<MemberSimpleVo>
 		return new Gson().toJson(calendarService.memberProjectList(param));
 	}
 	
+	/*
+	 * //참석자 조회
+	 * @RequestMapping("/pcal")
+	 * @ResponseBody //이걸 쓰면 model 못 씀 public String attendList() { //매개인자? return
+	 * new Gson().toJson(calendarService.attendList()); }
+	 */
+
 	
 	
 }
