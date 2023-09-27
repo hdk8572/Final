@@ -22,4 +22,8 @@ public class FirstController {
 	public String link() {
 		return "link";
 	}
+	@GetMapping("/company/main")
+	public String cmain() {
+		return "company/main";
+	}
 }
