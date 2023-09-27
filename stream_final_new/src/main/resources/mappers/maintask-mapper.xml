@@ -23,18 +23,24 @@
 	</resultMap>
 	
 	<select id="projectNameList" resultMap="maintaskVoMap" parameterType="string">
-		select pname, pno, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
-    		from project join task using(pno, userid)
-    		where tmember = #{userid}
+		select pname, pno, userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    		from project right join task using(pno, userid)
+    		where tmember = #{userid} or userid = #{userid}
     		order by pno asc, bref desc, brelevel asc, brestep asc
-    		
 	</select>
+	
 	
 	<select id="projectOneTaskList" resultMap="maintaskVoMap" parameterType="string">
 		select pname, pno, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
-    		from (select * from project where pno=#{pno}) join task using(pno)
+    		from (select pname, pno from project where pno=#{pno}) 
+    		join 
+    		(select tno, pno, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel
+    			from task) 
+    		using(pno)
     		order by brelevel asc, brestep asc	
 	</select>
+	
+	
 	
 	<insert id="innerTaskInsert" parameterType="PtaskVo">
 		insert into task (TNO, PNO, USERID, tmember, TTITLE, tcontent, TSTATUS, TDATE, tstartdate, tenddate, BREF, BRESTEP, BRELEVEL)

@@ -9,7 +9,9 @@
 <body>
 
 <div><a href="${pageContext.request.contextPath}/projectlist">프로젝트리스트</div>
-
+<div>
+	<a href="${pageContext.request.contextPath}/maintask"><span>프로젝트 전체보기</span></a>
+</div>
 
 </body>
 </html>

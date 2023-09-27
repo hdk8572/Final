@@ -24,9 +24,9 @@
         };
         // 지도 생성
         var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-
+        var searchPlace = '강남'
         var geocoder = new kakao.maps.services.Geocoder();
-        geocoder.addressSearch('역삼',geoseach );
+        geocoder.addressSearch(searchPlace,geoseach );
         function geoseach(result, status){
             if(status === kakao.maps.services.Status.OK){
                 var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
@@ -41,6 +41,11 @@
                 map.setCenter(coords);
             }
         }
+    </script>
+    <script>
+        var a1 = 'taskNo_62'
+        var a2 = "'#"+a1+"'";
+        console.log(a2);
     </script>
     
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=200d239f8c4b9f3e0d914ec332ddfe21&libraries=services,clusterer,drawing"></script>
