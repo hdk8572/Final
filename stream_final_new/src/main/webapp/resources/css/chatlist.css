@@ -1,0 +1,415 @@
+@charset "UTF-8";
+
+	#s_chat_btn {
+		width: 240px;
+	}
+	
+	#s_emp_list {
+		font-size: 1.1em;
+		width: 120px;
+		height: 45px;
+		border: 1px solid;
+	}
+	.chatfont{
+		text-align: center;
+		top: 10px;
+		font-size: 1.2em;
+		position: relative;
+		font-weight: bold;
+	}
+	#s_chat_list {
+		width: 120px;
+		height: 45px;
+		font-size: 1.1em;
+		border: 1px solid;/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #f5f7fb;
+  padding: 0px;
+  /* border: 1px solid #888; */
+  height: 100%;
+}
+
+.modal-header {
+	height: 65px;
+    background-color: #009b77;
+}
+
+.modal-body {
+	padding: 15px 15px;
+	margin: 0 auto;
+}
+
+.modal-text {
+	display: block;
+	padding: 0.625rem 1.625rem;
+}
+
+/* The Close Button */
+.close {
+	color: white;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	padding-right: 10px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Date */
+.form-date {
+	width: 45%;
+}
+
+/* Project */
+/* Right */
+.modal-content.project {
+  border-radius: 40px 0 0 40px;
+}
+
+.modal-header.project {
+    border-radius: 40px 0 0;
+}
+
+.modal.project.right .modal-dialog {
+	position: fixed;
+	margin: auto;
+	width: 40%;
+	height: 100%;
+	-webkit-transform: translate3d(0%, 0, 0);
+	    -ms-transform: translate3d(0%, 0, 0);
+	     -o-transform: translate3d(0%, 0, 0);
+	        transform: translate3d(0%, 0, 0);
+}
+.modal.project.right.fade .modal-dialog {
+	right:-40%;
+	-webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+     transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+.modal.project.right.fade.show .modal-dialog {
+	right: 0;
+}
+
+.card-body.addProject {
+	cursor: auto;	
+    height: 670px;
+}
+
+/* PtaskModal */
+.modal-dialog.ptask {
+
+    position: relative;
+    z-index: 5;
+    height: 80%;
+    width: 674px;
+    margin: 5% auto 0 auto;
+    background: #fff;
+    border: 1px solid #777;
+    box-sizing: border-box;
+    box-shadow: 20px 20px 30px rgba(0,0,0,.2);
+    border-radius: 10px;
+}
+
+.modal-content {
+	border-radius: 10px;
+}
+
+.modal-header.ptask {
+    height: 65px;
+    background-color: #009b77;
+	border-radius: 10px 10px 0px 0px;
+}
+
+.form-select.mb-3.selectCategory {
+    width: 30%;
+}
+
+.form-control.manager {
+	width: 30%;
+}
+
+.feather.feather-clock.align-middle.me-2 {
+    position: relative;
+    bottom: 8px;
+}
+
+.card-header.ptaskTitle {
+	padding: 1rem 0rem;
+}
+
+.card-body.ptask {
+	cursor: auto;	
+    height: 670px;
+}
+
+/* updateProjectModal */
+
+.modal-dialog.updateProject {
+
+    position: relative;
+    z-index: 5;
+    height: 80%;
+    width: 674px;
+    margin: 30px auto 0 auto;
+    background: #fff;
+    border: 1px solid #777;
+    box-sizing: border-box;
+    box-shadow: 20px 20px 30px rgba(0,0,0,.2);
+    border-radius: 10px;
+}
+
+.modal-content {
+	border-radius: 10px;
+}
+
+.modal-header.updateProject {
+    height: 65px;
+    background-color: #009b77;
+	border-radius: 10px 10px 0px 0px;
+}
+
+.form-select.mb-3.selectCategory {
+    width: 30%;
+}
+
+.feather.feather-clock.align-middle.me-2 {
+    position: relative;
+    bottom: 8px;
+}
+
+.card-header.updateProjectTitle {
+	padding: 1rem 0rem;
+}
+
+.card-body.updateProjectTitle {
+	cursor: auto;	
+    height: 670px;
+}
+
+form {
+	cursor: auto;	
+}
+		
+	}
+	
+	#s_sub_menu {
+		display: flex;
+		margin-top: 5px;
+	}
+	
+	.s_menu_box {
+		width: 414px;
+		height: 850px;
+		border: 1px solid lightgray;
+		border-radius: 10px;
+		padding: 20px;
+		overflow: auto;
+		margin: 5px 0;
+	}
+	
+	.s_modal_menu_box {
+		width: 100%;
+		height: 500px;
+		border: 1px solid lightgray;
+		border-radius: 10px;
+		padding: 20px;
+		overflow: auto;
+	}
+	.primary{
+		position: relative;
+		top: 15px;
+	}
+	.s_emp_box {
+		display: flex;
+		align-items: center;
+		justify-content: space-evenly;
+		border-bottom: 1px solid lightgray;
+		padding: 10px 0;
+	}
+	
+/* 	.s_img_style {
+		width: 50px;
+		height: 50px;
+		border-radius: 25px;
+	}
+	 */
+	#s_f_list {
+		font-size: 1.2em;
+		padding: 10px 0;
+		font-weight: bold;
+		color: #0d6efd;
+		text-align: center;
+		margin-top: 5px;
+	}
+	
+/* 	.s_dn_en {
+		display: inline-block;
+	} */
+	
+	#s_sub_menu_box {
+		width: 250px; 
+		height: 1000px; 
+		margin-top: 25px;
+		margin-left: 10px;
+	}
+	
+	#s_menu_box2 {
+		display: none;
+	}
+	
+	.s_chat_box {
+		margin-bottom: 20px;
+		border-bottom: 1px solid lightgray;
+		padding-bottom: 20px;
+		cursor: pointer;
+	}
+	
+	.modal-body {
+		margin: 0 auto;
+	}
+	
+	#s_select_part {
+	    text-align: center;
+	    height: 100px;
+	    overflow: auto;
+	    border: 1px solid lightgray;
+	    border-radius: 10px;
+	    padding: 20px;
+	    margin-bottom: 30px;
+	    width: 100%;
+	}
+	
+	.s_select_part_tt {
+		font-size: 1.2em;
+	    font-weight: bold;
+	    text-align: center;
+    	margin-bottom: 10px;
+	}
+	
+	.s_invite_p {
+		border: 1px solid;
+	    width: 90px;
+	    padding: 0 10px;
+	    border-radius: 10px;
+	    display: inline-block;
+	    margin: 5px;
+	}
+	
+	.btn-close {
+		font-size: .7em;
+		margin-left: 3px;
+	}
+	
+	#s_select_part_cnt {
+		margin-left: 5px;
+	    color: gray;
+	}
+	
+	#s_chat_content_box {
+		border: 1px solid lightgray;
+		height: 1012px;
+		width: 1050px;
+		margin-top: 20px;
+		margin-left: 10px;
+		border-radius: 10px;
+		padding: 20px;
+	}
+	/* 스크롤바 디자인 */
+	.s_scroll::-webkit-scrollbar {
+    	width: 10px;  /* 스크롤바의 너비 */
+    	height: 10px;  /* 스크롤바의 너비 */
+	}
+	
+	.s_scroll::-webkit-scrollbar-thumb {
+	    height: 30%; /* 스크롤바의 길이 */
+	    background: #34343482; /* 스크롤바의 색상 */
+	    
+	    border-radius: 10px;
+	}
+	
+	.s_scroll::-webkit-scrollbar-track{
+	    background: #4747471a;  /*스크롤바 뒷 배경 색상*/
+	    border-radius: 10px;
+	}
+	
+/* 	#s_chat_img {
+	    display: flex;
+	    align-content: stretch;
+	    justify-content: center;
+	    align-items: center;
+	    flex-direction: row;
+	    flex-wrap: wrap;
+	    margin-top: 320px;
+	} */
+	
+	.s_room_tt {
+		font-size: 1.2em;
+	    font-weight: bold;
+	}
+</style>
+<!-- SweetAlert -->
+<style>
+	/*모달창  */
+	.swal-modal {
+		/* background-color: white; */
+		border: 3px solid white;
+	}
+	/*ok버튼  */
+	.swal-button--danger {
+		background-color: #0583F2;
+		color: white;
+	}
+	/*cancel버튼  */
+	.swal-button--cancel {
+		background-color: red;
+		color: white;
+	}
+	/*ok버튼  */
+	.swal-button--confirm {
+		background-color: #0583F2;
+		color: white;
+	}
+	/*아이콘 테두리  */
+	.swal-icon--info {
+		border-color: #0583F2;
+	}
+	/*아이콘 i 윗부분  */
+	.swal-icon--info:after {
+		background-color: #0583F2;
+	}
+	/*아이콘 i 아랫부분  */
+	.swal-icon--info:before {
+		background-color: #0583F2;
+	}
+	/*타이틀  */
+	.swal-title {
+		font-size: 20px;
+		color: black;
+	}
+	/*텍스트  */
+	.swal-text {
+		color: black;
+	}
+	.chatimg{
+		width: 50px;
+	}

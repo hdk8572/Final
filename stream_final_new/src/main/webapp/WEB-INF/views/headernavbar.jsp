@@ -213,19 +213,13 @@
 	</div>
 </nav>
 <script type="text/javascript">
-       function testAlert() {
-         alert("자식창에서 호출 했습니다.");
-       }
-     
-         window.onload = function () {
+    
+ 	      window.onload = function () {
             var popupButton = document.getElementById("popup");
             popupButton.onclick = function () {
-               var jsPopup = window.open("chatlist", null, "width=450, height=450, resizable=no, scrollbars=no");
+               var jsPopup = window.open("chatlist", null, "width=450, height=1000, resizable=no, scrollbars=no,toolbars=no, menubar=no");
             
-            //jsPopup.changeData();
             
-            var text1 = jsPopup.document.getElementById("text1");
-            text1.value = "헤헤헤~";
             };
          };
       </script>
