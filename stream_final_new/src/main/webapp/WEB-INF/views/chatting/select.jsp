@@ -11,504 +11,93 @@
 	<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
 	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
 
-	<title>AdminKit Demo - Bootstrap 5 Admin Template</title>
+	<title>Stream - Final Project</title>
 	
 	<!-- Bootstrap CSS -->
 	<link href="${pageContext.request.contextPath}/css/streamapp.css" rel="stylesheet">
-	
 	<!-- ProjectList CSS -->
+	<link href="${pageContext.request.contextPath}/css/chatlist.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/css/projectList.css" rel="stylesheet">
 	<!-- Modal CSS -->
 	<link href="${pageContext.request.contextPath}/css/Modalchat.css" rel="stylesheet">
 	
 	<!-- DropDown - Option CSS -->	
 	<link href="${pageContext.request.contextPath}/css/projectList.option.css" rel="stylesheet">
-	
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 	<!-- Tab bar -->
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-<style>
-	#s_chat_btn {
-		width: 240px;
-	}
-	
-	#s_emp_list {
-		font-size: 1.1em;
-		width: 120px;
-		height: 45px;
-		border: 1px solid;
-	}
-	
-	#s_chat_list {
-		font-size: 1.1em;
-		border: 1px solid;/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
 
-/* Modal Content/Box */
-.modal-content {
-  background-color: #f5f7fb;
-  padding: 0px;
-  /* border: 1px solid #888; */
-  height: 100%;
-}
-
-.modal-header {
-	height: 65px;
-    background-color: #009b77;
-}
-
-.modal-body {
-	padding: 15px 15px;
-	margin: 0 auto;
-}
-
-.modal-text {
-	display: block;
-	padding: 0.625rem 1.625rem;
-}
-
-/* The Close Button */
-.close {
-	color: white;
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
-	padding-right: 10px;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* Date */
-.form-date {
-	width: 45%;
-}
-
-/* Project */
-/* Right */
-.modal-content.project {
-  border-radius: 40px 0 0 40px;
-}
-
-.modal-header.project {
-    border-radius: 40px 0 0;
-}
-
-.modal.project.right .modal-dialog {
-	position: fixed;
-	margin: auto;
-	width: 40%;
-	height: 100%;
-	-webkit-transform: translate3d(0%, 0, 0);
-	    -ms-transform: translate3d(0%, 0, 0);
-	     -o-transform: translate3d(0%, 0, 0);
-	        transform: translate3d(0%, 0, 0);
-}
-.modal.project.right.fade .modal-dialog {
-	right:-40%;
-	-webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
-    -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
-    -o-transition: opacity 0.3s linear, right 0.3s ease-out;
-     transition: opacity 0.3s linear, right 0.3s ease-out;
-}
-.modal.project.right.fade.show .modal-dialog {
-	right: 0;
-}
-
-.card-body.addProject {
-	cursor: auto;	
-    height: 670px;
-}
-
-/* PtaskModal */
-.modal-dialog.ptask {
-
-    position: relative;
-    z-index: 5;
-    height: 80%;
-    width: 674px;
-    margin: 5% auto 0 auto;
-    background: #fff;
-    border: 1px solid #777;
-    box-sizing: border-box;
-    box-shadow: 20px 20px 30px rgba(0,0,0,.2);
-    border-radius: 10px;
-}
-
-.modal-content {
-	border-radius: 10px;
-}
-
-.modal-header.ptask {
-    height: 65px;
-    background-color: #009b77;
-	border-radius: 10px 10px 0px 0px;
-}
-
-.form-select.mb-3.selectCategory {
-    width: 30%;
-}
-
-.form-control.manager {
-	width: 30%;
-}
-
-.feather.feather-clock.align-middle.me-2 {
-    position: relative;
-    bottom: 8px;
-}
-
-.card-header.ptaskTitle {
-	padding: 1rem 0rem;
-}
-
-.card-body.ptask {
-	cursor: auto;	
-    height: 670px;
-}
-
-/* updateProjectModal */
-
-.modal-dialog.updateProject {
-
-    position: relative;
-    z-index: 5;
-    height: 80%;
-    width: 674px;
-    margin: 30px auto 0 auto;
-    background: #fff;
-    border: 1px solid #777;
-    box-sizing: border-box;
-    box-shadow: 20px 20px 30px rgba(0,0,0,.2);
-    border-radius: 10px;
-}
-
-.modal-content {
-	border-radius: 10px;
-}
-
-.modal-header.updateProject {
-    height: 65px;
-    background-color: #009b77;
-	border-radius: 10px 10px 0px 0px;
-}
-
-.form-select.mb-3.selectCategory {
-    width: 30%;
-}
-
-.feather.feather-clock.align-middle.me-2 {
-    position: relative;
-    bottom: 8px;
-}
-
-.card-header.updateProjectTitle {
-	padding: 1rem 0rem;
-}
-
-.card-body.updateProjectTitle {
-	cursor: auto;	
-    height: 670px;
-}
-
-form {
-	cursor: auto;	
-}
-		
-	}
-	
-	#s_sub_menu {
-		display: flex;
-		margin-top: 5px;
-	}
-	
-	.s_menu_box {
-		width: 242px;
-		height: 910px;
-		border: 1px solid lightgray;
-		border-radius: 10px;
-		padding: 20px;
-		overflow: auto;
-		margin: 5px 0;
-	}
-	
-	.s_modal_menu_box {
-		width: 400px;
-		height: 500px;
-		border: 1px solid lightgray;
-		border-radius: 10px;
-		padding: 20px;
-		overflow: auto;
-	}
-	
-	.s_emp_box {
-		display: flex;
-		align-items: center;
-		justify-content: space-evenly;
-		border-bottom: 1px solid lightgray;
-		padding: 10px 0;
-	}
-	
-/* 	.s_img_style {
-		width: 50px;
-		height: 50px;
-		border-radius: 25px;
-	}
-	 */
-	#s_f_list {
-		font-size: 1.2em;
-		padding: 10px 0;
-		font-weight: bold;
-		color: #0d6efd;
-		text-align: center;
-		margin-top: 5px;
-	}
-	
-/* 	.s_dn_en {
-		display: inline-block;
-	} */
-	
-	#s_sub_menu_box {
-		width: 250px; 
-		height: 1000px; 
-		margin-top: 25px;
-		margin-left: 10px;
-	}
-	
-	#s_menu_box2 {
-		display: none;
-	}
-	
-	.s_chat_box {
-		margin-bottom: 20px;
-		border-bottom: 1px solid lightgray;
-		padding-bottom: 20px;
-		cursor: pointer;
-	}
-	
-	.modal-body {
-		margin: 0 auto;
-	}
-	
-	#s_select_part {
-	    text-align: center;
-	    height: 100px;
-	    overflow: auto;
-	    border: 1px solid lightgray;
-	    border-radius: 10px;
-	    padding: 20px;
-	    margin-bottom: 30px;
-	    width: 400px;
-	}
-	
-	.s_select_part_tt {
-		font-size: 1.2em;
-	    font-weight: bold;
-	    text-align: center;
-    	margin-bottom: 10px;
-	}
-	
-	.s_invite_p {
-		border: 1px solid;
-	    width: 90px;
-	    padding: 0 10px;
-	    border-radius: 10px;
-	    display: inline-block;
-	    margin: 5px;
-	}
-	
-	.btn-close {
-		font-size: .7em;
-		margin-left: 3px;
-	}
-	
-	#s_select_part_cnt {
-		margin-left: 5px;
-	    color: gray;
-	}
-	
-	#s_chat_content_box {
-		border: 1px solid lightgray;
-		height: 1012px;
-		width: 1050px;
-		margin-top: 20px;
-		margin-left: 10px;
-		border-radius: 10px;
-		padding: 20px;
-	}
-	/* 스크롤바 디자인 */
-	.s_scroll::-webkit-scrollbar {
-    	width: 10px;  /* 스크롤바의 너비 */
-    	height: 10px;  /* 스크롤바의 너비 */
-	}
-	
-	.s_scroll::-webkit-scrollbar-thumb {
-	    height: 30%; /* 스크롤바의 길이 */
-	    background: #34343482; /* 스크롤바의 색상 */
-	    
-	    border-radius: 10px;
-	}
-	
-	.s_scroll::-webkit-scrollbar-track{
-	    background: #4747471a;  /*스크롤바 뒷 배경 색상*/
-	    border-radius: 10px;
-	}
-	
-/* 	#s_chat_img {
-	    display: flex;
-	    align-content: stretch;
-	    justify-content: center;
-	    align-items: center;
-	    flex-direction: row;
-	    flex-wrap: wrap;
-	    margin-top: 320px;
-	} */
-	
-	.s_room_tt {
-		font-size: 1.2em;
-	    font-weight: bold;
-	}
-</style>
-<!-- SweetAlert -->
-<style>
-	/*모달창  */
-	.swal-modal {
-		/* background-color: white; */
-		border: 3px solid white;
-	}
-	/*ok버튼  */
-	.swal-button--danger {
-		background-color: #0583F2;
-		color: white;
-	}
-	/*cancel버튼  */
-	.swal-button--cancel {
-		background-color: red;
-		color: white;
-	}
-	/*ok버튼  */
-	.swal-button--confirm {
-		background-color: #0583F2;
-		color: white;
-	}
-	/*아이콘 테두리  */
-	.swal-icon--info {
-		border-color: #0583F2;
-	}
-	/*아이콘 i 윗부분  */
-	.swal-icon--info:after {
-		background-color: #0583F2;
-	}
-	/*아이콘 i 아랫부분  */
-	.swal-icon--info:before {
-		background-color: #0583F2;
-	}
-	/*타이틀  */
-	.swal-title {
-		font-size: 20px;
-		color: black;
-	}
-	/*텍스트  */
-	.swal-text {
-		color: black;
-	}
-	.chatimg{
-		width: 50px;
-	}
-</style>
 </head>
 <body>
-	<div class="wrapper">
-		<%@ include file="/WEB-INF/views/sidebar.jsp" %>
-		<div class="main">
-			<%@ include file="/WEB-INF/views/headernavbar.jsp" %>
 	<section>
         <article style="float: left;">
             <div id="s_sub_menu_box">
-                <button id="s_chat_btn" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#roomModal">방 만들기</button>
+				
 				<!-- 서브 메뉴 -->
 				<div id="s_sub_menu">
-	                <button id="s_emp_list" class="btn btn-primary s_chat_menu">참여자목록</button>
-	                <button id="s_chat_list" class="btn btn-light s_chat_menu" style="width: 120px; height: 45px">채팅 리스트</button>
+	                <button id="s_emp_list" class="btn btn-primary s_chat_menu">채팅 리스트</button>
+	                <button id="s_chat_list" class="btn btn-light s_chat_menu" >새 채팅</button>
                 </div>
                 <!-- 사원 목록 클릭 시 띄울 내용 -->
                 <div id="s_menu_box1" class="s_menu_box s_scroll">
-                 <c:forEach items="${list}" var="i">
-	                <div class="s_emp_box">
-	                	<!-- 로그인한 사람의 프로필 사진 -->
-	                	<%-- <img class="s_img_style" src="${selectOne.emp_file_path }"> --%>
-	                	<!-- 로그인한 사람의 부서명, 이름 -->
-	                	<%-- <div class="s_dn_en">${selectOne.dept_name } - ${selectOne.emp_name }</div> --%>
- 	                	<img class="chatimg" src="img/avatars/user1.jpg" ><h3 style="margin-top: 10px">${i.mname}</h3>
-	                </div>
-	             	</c:forEach>
-	                <div id="s_f_list">참여자 리스트</div>
-	              	
-	                <!-- 로그인한 사람 제외한 사원 리스트만큼 반복문 실행 -->
-	                <c:forEach items="" var="i">
-		                <div class="s_emp_box">
-		                	
-		                	<!-- 사원의 프로필 사진 -->
-		                	<%-- <img class="s_img_style" src="${i.emp_file_path }"> --%>
-		                	<!-- 사원의 부서명, 이름 -->
-		                	<%-- <div class="s_dn_en">${i.dept_name } - ${i.emp_name }</div> --%>
-		                	
-	                	</div>
-	                </c:forEach>
+					<div class="s_emp_box">
+						방제목
+					</div>
+					<div class="s_emp_box">
+						방제목1
+					</div>
                 </div>
                 <!-- 채팅 리스트 클릭 시 띄울 내용 -->
-                <div id="s_menu_box2" class="s_menu_box s_scroll">
-                	<!-- 채팅방 리스트만큼 반복문 실행 -->
-                	<c:forEach items="${selectRoom }" var="i">
-	                	<div class="s_chat_box">
-	                		<!-- 채팅방 상세조회 시 넘길 방 번호 hidden으로 주기 -->
-	                		<input type="hidden" id="${i.room_no }" value="${i.room_no }">
-	                		<!-- 방 제목 표기 -->
-		                	<div class="s_room_tt">${i.room_title }</div>
-		                	<!-- 해당 방 마지막 대화 표기 -->
-		                	<c:if test="${empty i.ch_content}">
-		                		<div>대화를 시작해주세요.</div>
-		                	</c:if>
-		                	<c:if test="${not empty i.ch_content }">
-		                		<div>${i.ch_content }</div>
-		                	</c:if>
-	                	</div>
-                	</c:forEach>
-                </div>
-            </div>
+				<div id="s_menu_box2" class="s_menu_box s_scroll">
+					<div class="modal-body">
+						<div>
+							<div class="s_select_part_tt">방 제목</div>
+							<input type="text" class="form-control"
+								style="margin-bottom: 30px;" id="s_room_title" name="room_title"
+								placeholder="방 제목을 입력해주세요." required>
+						</div>
+						<div>
+							<!-- 친구 리스트에서 체크하는 사람 이름 추가될 div박스 -->
+							<div class="s_select_part_tt">
+								대화상대 선택<span id="s_select_part_cnt"></span>
+							</div>
+							<div id="s_select_part" class="s_scroll">
+								<div style="margin-top: 17px;" id="s_invite_list">초대할 친구를
+									선택해주세요.</div>
+							</div>
+						</div>
+						<div class="s_modal_menu_box s_scroll">
+							<div id="s_f_list">친구 리스트</div>
+							<!-- 로그인한 사람 제외한 사원 리스트만큼 반복문 실행 -->
+							<c:forEach items="${selectEmpList }" var="i">
+								<div class="s_emp_box">
+									<!-- 사원의 프로필 사진 -->
+									<img class="s_img_style" src="${i.emp_file_path }">
+									<!-- 사원의 부서명, 이름 -->
+									<div class="s_dn_en">${i.dept_name }- ${i.emp_name }</div>
+									<div class="form-check">
+										<!-- 체크박스 이름은 사원의 이름으로 넣어줌 -->
+										<input class="form-check-input" name="${i.emp_name }"
+											type="checkbox">
+									</div>
+								</div>
+							</c:forEach>
+						</div>
+					</div>
+	        		<button type="button" class="primary">방만들기</button>
+				</div>
+			</div>
         </article>  
-        <article style="float: left;">
-        	<!-- 채팅방 클릭 시 해당 채팅방 띄울 div -->
-            <div id="s_chat_content_box">
-            	<!-- 채팅방 클릭 전은 로고 띄움 -->
-            	<a class="sidebar-link" href="javascript:popupOpen()" ><span style="color: green;">채팅방 참여</span></a>
-            </div>
-        </article>    
     </section>
     
     
     <!-- 방 만들기 Modal -->
 	<div class="modal fade" id="roomModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
-	    <div class="modal-content" style="height: 900px;">
+	    <div class="modal-content" style="height: 1200px;">
 	      <div class="modal-header">
-	        <!-- <h5 class="modal-title" id="exampleModalLabel">방 만들기</h5> -->
+	        <h5 class="modal-title" id="exampleModalLabel">방 만들기</h5>
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
@@ -524,39 +113,34 @@ form {
         			</div>
        			</div>
 		        <div class="s_modal_menu_box s_scroll">
-                <div id="s_f_list">참여자 리스트</div>
+                <div id="s_f_list">친구 리스트</div>
                 <!-- 로그인한 사람 제외한 사원 리스트만큼 반복문 실행 -->
-                <c:forEach items="${list }" var="i">
+                <c:forEach items="${selectEmpList }" var="i">
 	                <div class="s_emp_box">
-	                <img class="chatimg" src="img/avatars/user1.jpg" ><h3 style="margin-top: 10px">${i.mname}</h3>
 	                	<!-- 사원의 프로필 사진 -->
-	                	<%-- <img class="s_img_style" src="${i.emp_file_path }"> --%>
+	                	<img class="s_img_style" src="${i.emp_file_path }">
 	                	<!-- 사원의 부서명, 이름 -->
-	                	<%-- <div class="s_dn_en">${i.dept_name } - ${i.emp_name }</div> --%>
+	                	<div class="s_dn_en">${i.dept_name } - ${i.emp_name }</div>
 	                	<div class="form-check">
 	                	  <!-- 체크박스 이름은 사원의 이름으로 넣어줌 -->
-						  <input class="form-check-input" name="${i.mname}" type="checkbox">
+						  <input class="form-check-input" name="${i.emp_name }" type="checkbox">
 						</div>
 	                </div>
                 </c:forEach>
 	        </div>
 	      </div>
-	      <div class="modal-footer" style="padding: 0 100px">
-	      <button type="button" class="btn btn-primary" id="s_create_room">방만들기</button>
+	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-	        
+	        <button type="button" class="btn btn-primary" id="s_create_room">방만들기</button>
 	      </div>
-	      
 	    </div>
 	  </div>
 	</div>
-</div>
-</div>
-</body>
 
+</body>
+	
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
-<!-- 모달창 스크립트 -->
- <script>
+	<script>
 	// 체크박스 선택됐을 때 대화상대선택 박스에 넣기
 	
 	// 체크박스가 변했을 때마다 함수 실행
@@ -627,7 +211,7 @@ form {
 		}
 		
 		// 본인도 채팅참여자에 추가하여 배열에 push해줌
-		arr.push("${i.mname}");
+		arr.push("${selectOne.emp_name}");
 		
 		// ajax에 전달할 obj
 		var obj = {
@@ -687,7 +271,7 @@ form {
 		}
 		
 	});
-</script> 
+</script>
 
 <!-- 서브메뉴 눌렀을 때 -->
 <script>
@@ -716,7 +300,6 @@ form {
 		$("#s_emp_list").css('border', '1px solid #0d6efd');
 		$("#s_chat_list").css('border', '1px solid');
 	});
-	window.resizeTo(500,500);
 </script>
 
 <!-- 채팅 리스트에서 방 눌렀을 때 -->
@@ -726,6 +309,5 @@ form {
 		var roomNo = $(this).children().val();
 		$("#s_chat_content_box").load("<%=request.getContextPath()%>/echo/selectroom?room_no=" + roomNo);
 	});
-    
 </script>
 </html>
