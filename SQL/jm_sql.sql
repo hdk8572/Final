@@ -114,9 +114,43 @@ select pname, pno, userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate
             where tmember = 'sple@kh.co.kr'
     		order by brelevel asc, brestep asc
 ;
-            
+
 select pname, pno, userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
-    		from (select * from task where tmember='sple@kh.co.kr' )
-            left join(select * from project where pno=13) using(pno, userid)
-    		order by brelevel asc, brestep asc
+    		from project right join task using(pno, userid)
+    		where tmember = 'sple@kh.co.kr' or userid = 'sple@kh.co.kr'
+    		order by pno asc, bref desc, brelevel asc, brestep asc
 ;
+
+
+
+
+select pname, pno,  tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    from (select * from project where pno=13) 
+    join (select * from task where userid='sple@kh.co.kr' or tmember='sple@kh.co.kr') using (pno)
+;
+select pname, pno,  tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    from (select * from project where pno=13) 
+    join (select * from task) using (pno)
+;
+
+
+select pname, pno, userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    		from project  join task using(pno, userid)
+    		where tmember = 'sple@kh.co.kr' or userid ='sple@kh.co.kr'
+    		order by pno asc, bref desc, brelevel asc, brestep asc
+;
+
+
+		select pname, pno, userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    		from (select * from project where pno='13') right join task using (pno, userid)
+    		where tmember = 'sple@kh.co.kr' or userid = 'sple@kh.co.kr' 
+    		order by pno asc, bref desc, brelevel asc, brestep asc
+            ;
+
+		select pname, pno, userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    		from project right join task using (pno)
+    		where tmember = 'sple@kh.co.kr' or userid = 'sple@kh.co.kr' 
+    		order by pno asc, bref desc, brelevel asc, brestep asc
+            ;
+select *     		from project;
+select *     		from task;
