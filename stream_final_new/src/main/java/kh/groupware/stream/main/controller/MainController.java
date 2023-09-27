@@ -18,21 +18,21 @@ import kh.groupware.stream.ptask.model.vo.PtaskVo;
 @Controller
 public class MainController {
 	@Autowired
-	private MaintaskService MaintastService;
-	private PtaskService PtastService;
+	private MaintaskService maintastService;
+//	@Autowired
+//	private PtaskService ptastService;
 	
 	@GetMapping("/maintask")
 	public String maintask(Model model, Principal principal) {
 		String userid = principal.getName();
-		model.addAttribute("projectList", MaintastService.projectNameList(userid));
-		System.out.println(userid);
-		return "/task/maintask";
+		model.addAttribute("projectList", maintastService.projectNameList(userid));
+		return "task/maintask";
 	}
 	
 	@PostMapping("/innertaskinsert")
 	@ResponseBody
 	public ProjectVo insert(PtaskVo vo){
-		ProjectVo projectTaskList = MaintastService.insertInnerTask(vo);
+		ProjectVo projectTaskList = maintastService.insertInnerTask(vo);
 		return projectTaskList;
 	}
 }
