@@ -15,28 +15,16 @@
 <meta name="keywords"
 	content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
-
-<link rel="canonical"
-	href="https://demo-basic.adminkit.io/pages-sign-up.html" />
-
 <title>회원 가입</title>
 
 <link href="css/streamapp.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/newmember.css"
+	rel=stylesheet">
 <link
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
 	rel="stylesheet">
 
-
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-
-
-<link href="${pageContext.request.contextPath}/css/newmember.css"
-	rel=stylesheet">
-
-	<!-- 알림띄우다 실패함 -->
-
 </head>
 
 <body>
@@ -51,36 +39,38 @@
 							<h1 class="h2">회원 가입</h1>
 							<p class="lead">추가 정보입력으로 Stream 비즈니스 계정을 만들어보세요!</p>
 						</div>
-
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
+									<!--회원가입 form/ name= 회원가입 id= checkAll -->
 									<form id="frmNewMember"
-										action=${pageContext.request.contextPath}/newmember
-										method="post">
+										action="${pageContext.request.contextPath}/newmember"
+										name="Account" method="post" onsubmit="return checkAll();">
 										<div class="mb-3">
-											<label class="form-label">E-mail</label> <input
+											<label class="form-label">아이디</label> <input
 												class="form-control form-control-lg" type="email"
-												placeholder="이메일을 입력하세요" name="userid">
-											<!-- 	placeholder="Readonly input" readonly -->
-
+												id="userid" placeholder="이메일을 입력하세요" name="userid"
+												value="${userid}" required>
 										</div>
 										<div class="mb-3">
 											<label class="form-label">이름</label> <input
 												class="form-control form-control-lg" type="text"
-												placeholder="이름을 입력하세요" name="mname">
+												id="username" placeholder="이름을 입력하세요" name="mname"
+												value="${username}" required>
 
 										</div>
 										<div class="mb-3">
-											<label class="form-label">Password</label> <input
+											<label class="form-label">비밀번호</label> <input
 												class="form-control form-control-lg" type="password"
-												name="password" placeholder="비밀번호를 입력하세요">
+												id="userpwd" name="password" value="${userpwd}"
+												placeholder="비밀번호를 입력하세요" required>
 										</div>
-										<!-- 										<div class="mb-3">
-											<label class="form-label">Repeat Password</label> <input
+										<div class="mb-3">
+											<label class="form-label">비밀번호재확인</label> <input
 												class="form-control form-control-lg" type="password"
-												name="password" placeholder="" />
-										</div> -->
+												name="pwdcheck" id="pwdcheck" value="${pwdcheck}"
+												placeholder="비밀번호 한번 더 입력하세요" required />
+										</div>
 
 										<div>
 											<div class="mb-3">
@@ -88,13 +78,15 @@
 													class="form-control form-control-lg" type="text"
 													name="ccode" placeholder="회사코드를 입력하세요" /> <small>
 													<a href="#" class="ccodeToDept">부서조회</a>
+
 												</small>
 											</div>
 
 											<div class="mb-3">
 												<label class="form-label">Department</label> <select
-													id="deptdrop" class="form-select mb-3" name="deptno">
-													<option selected>부서를 선택해주세요</option>
+													id="deptdrop" class="form-select mb-3" name="deptno"
+													value="${deptdrop}">
+													<option selected>해당하는 부서가 없습니다</option>
 
 												</select>
 											</div>
@@ -126,8 +118,82 @@
 
 	</main>
 	<script src="js/app.js"></script>
-		
+
+	<script>
+		// 회원가입 항목체크
+		function checkAll() {
+			if (!checkUserid(Account.userid.value)) {
+				return false;
+			} else if (!checkUserpwd(Account.userpwd.value,
+					Account.pwdcheck.value)) {
+				return false;
+			} else if (!checkUsername(Account.username.value)) {
+				return false;
+			} else if (!checkDept(Account.deptdrop.value)) {
+				return false;
+			}
+			return true;
+		}
+
+		//빈칸 누락 확인
+		function checkBlank(value, dataName) {
+			if (value == "") {
+				alert(dataName + " 입력해주세요!");
+				return false
+			}
+			return true;
+		}
+
+		//아이디 확인
+		function checkUserid(userid) {
+			if (!checkBlank(userid, "아이디를"))
+				return false;
+			var idToCheck = /^[A-Za-z0-9_]+@[A-Za-z0-9]+[.]{1}[A-Za-z]{1,3}$/;
+			if (!idToCheck.test(userid)) {
+				alert("아이디는 이메일 형식으로 입력해주세요!");
+				Account.userid.value = "";
+				Account.userid.focus();
+				return false;
+
+			}
+			return true;
+		}
+
+		//비밀번호, 비밀번호 재입력 확인
+		function checkUserpwd(userpwd, pwdcheck) {
+			if (userpwd != pwdcheck) {
+				alert("비밀번호가 일치하지 않습니다.");
+				Account.pwdcheck.value = "";
+				return false;
+			}
+			return true;
+		}
+
+		//이름 확인
+		function checkUsername(username) {
+			if (!checkBlank(username, "이름을")) {
+				return false;
+			}
+			var nameToCheck = /^[가-힣]{2,5}$/;
+			if (!nameToCheck.test(username)) {
+				alert("이름 형식이 옳지 않습니다.");
+				return false;
+			}
+			return true;
+
+		}
+
+		function checkDept(deptdrop) {
 	
+			if (deptdrop == "해당하는 부서가 없습니다"){
+				alert("부서를 선택해주세요.")
+				return false;
+			}
+			return true;
+		}
+	</script>
+
+
 	<script>
 		$(".ccodeToDept").click(btnDeptListClickHandler);
 

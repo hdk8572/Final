@@ -20,4 +20,7 @@ public class MemberDao {
 		return sqlSession.update("member.signUp", mvo);
 	
 	}
+	public int idCheck(String userid) {
+		return sqlSession.selectOne("member.idCheck", userid);
+	}
 }
