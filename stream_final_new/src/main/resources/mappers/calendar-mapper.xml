@@ -21,25 +21,25 @@
 		WHERE SNO=#{SNO}
 	</select>
 
-	<!-- 참석자 조회 -->
+<!-- //참석자 조회
 	<select id="attendList" resultType="CalendarVo">
 	 	SELECT SNO, USERID, ATTENUSERID
 		FROM SCHEDULE JOIN MEMBER_SCHEDULE USING (SNO)
-	</select>
+	</select> -->
 
-	<!-- 프로젝트의 멤버들 조회 -->
+	<!-- 프로젝트의 멤버들 조회 pno를 가지고 이동한다. -->
 	<select id="memberProjectList" resultType="MemberSimpleVo">
-		select userid, (
-		select mname from users tu where tm.userid=tu.userid ) mname from
-		MEMBER_PROJECT tm where pno=#{pno}
+		select userid, (select mname from users tu where tm.userid=tu.userid ) mname 
+		from MEMBER_PROJECT tm 
+		where pno=#{pno}
 	</select>
 
 	<!-- 일정 등록 -->
 	<insert id="insert" parameterType="CalendarVo">
-	<!-- 	<selectKey keyProperty="sno" resultType="_int"
+<!-- 		<selectKey keyProperty="sno" resultType="_int"
 			order="BEFORE">
 			SELECT schedule_sequence.NEXTVAL FROM dual
-		</selectKey> -->
+		 </selectKey> -->
 		INSERT INTO SCHEDULE (SNO, USERID, SSTART, SEND, SMEMO, STITLE, SCOLOR)
 		VALUES (schedule_sequence.NEXTVAL, #{userid}, #{start}, #{end}, #{smemo}, #{title},
 		'#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'))
@@ -48,7 +48,7 @@
 	<!-- 일정 등록 끼인 테이블 -->
 	<insert id="insertmember" parameterType="CalendarVo">
 		INSERT INTO
-		Member_SCHEDULE (SNO, ATTENUERID )
+		Member_SCHEDULE (SNO, ATTENUERID)
 		VALUES (#{sno},#{attenuserid})
 	</insert>
 
@@ -60,9 +60,9 @@
 	</update>
 
 	<!-- 캘린더 삭제 -->
-	<update id="delete" parameterType="CalendarVo">
+	<delete id="delete" parameterType="CalendarVo">
 
-	</update>
+	</delete>
 
 
 </mapper>

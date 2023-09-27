@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal"/>
+</sec:authorize>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="author" content="Stream">
 
-
 <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
-
 
 <title>Stream - Final Project</title>
 
@@ -33,6 +35,12 @@
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
+<script>
+let logined_userid="${principal.username}"; /* 로그인! */
+</script>
+<script>
+let calendar_pno="${CalendarParamVo.pno}"; /* 프로젝트 번호! */
+</script>
 </head>
 <body>
 	<div class="wrapper">
@@ -128,6 +136,7 @@
 					eventClick: function(info) {
 						console.log(info.event.title);
 						var event = info.event;
+						//작성자!!!!임 (다른사람도 적은 일정들)
 						$("#readScheduleModal.modal  #title").html(info.event.title); //띄우려는 모달이랑 이름 맞춰야한다.
 						$("#readScheduleModal.modal  #userid").html(info.event.extendedProps.userid); //extendedProps -> api에서 가져옴, 값을 띄우는 걸 도와줌
 						$("#readScheduleModal.modal  #smemo").html(info.event.extendedProps.smemo);
@@ -146,19 +155,5 @@
 		}
 	</script> -->
 
-
-	
-	<!-- 일정 모달 창 그림자 효과? -->
-	<!-- 상단 탭바 -->
-<!-- <script>
-	function openTab(tabName) {
-	  var i;
-	  var x = document.getElementsByClassName("tab");
-	  for (i = 0; i < x.length; i++) {
-	    x[i].style.display = "none";  
-	  }
-	  document.getElementById(tabName).style.display = "block";  
-	}
-	</script> -->
 </body>
 </html>

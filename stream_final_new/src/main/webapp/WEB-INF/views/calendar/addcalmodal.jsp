@@ -1,6 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 모달 -->
 <div id="myModal" class="modal">
@@ -17,24 +15,23 @@
 						<form action="${pageContext.request.contextPath}/insertpcal" method="post">
 							<input type="text" class="form-control title" name="title" placeholder="제목을 입력하세요.">
 								<br>
-							<input type="hidden" name="pno" value="${pno_TODO }">
-							<input type="hidden" name="userid" value="mplsam@kh.co.kr"><!-- kh0002@kh.com -->
 							<input type="date" class="form-date" name="start" required="required"> ~ <input type="date" class="form-date" name="end" required="required"> <!-- s -->
 								<br>
 								<br>
-						<!-- ATTENUSERID -->
-						 <div class="d-flex align-items-center" ><!-- form group -->
+						<!-- 작성자&참석자 -->
+						 <div class="d-flex align-items-center" >
 							<span>
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2">
-								  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r= "4"></circle>
-								</svg>
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r= "4"></circle></svg>
 							</span>
+								<!-- 작성자 -->
+								<input type="text" name="userid" value="${principal.username }" readonly>
+								<!-- 참가자 -->
 							    <input type="text" class="form-control member" placeholder="참가자" list="cmemberlist" id="clist">
 							    	<datalist  class="cmember" id="cmemberlist">
 							    		<option selected>참가자를 선택해라</option>
 							        </datalist>
 							<div class="form-userid">
-								<div class="cal-attenuserid col-lg-1" >${calendar.userid }
+								<div class="cal-attenuserid col-lg-1" >
 									<!-- 사용자목록을 반복 -->
 									<c:forEach items="${attendList }" var="caluser">
 										<span>${caluser.userid }</span>
@@ -95,8 +92,8 @@
 	function getMemberProjectListHandler(thisElement){
 		console.log($("[name=pno]").val());
 		// TODO: 
-		const userid="mplsam@kh.co.kr";
-		const pno = 1;
+		const pno = calendar_pno;
+		const userid = logined_userid;
 		$.ajax({
 			url:'${pageContext.request.contextPath}/memberProjectList',
 			type:"get",
