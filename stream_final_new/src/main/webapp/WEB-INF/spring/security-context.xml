@@ -23,7 +23,6 @@
 			access="hasRole('ROLE_M')" />
 		<intercept-url pattern="/company/**"
 			access="hasRole('ROLE_C')" />
-
 		<intercept-url pattern="/**" access="permitAll" />
 
 

@@ -26,4 +26,8 @@ public class FirstController {
 	public String cmain() {
 		return "company/main";
 	}
+	@GetMapping("/admin/main")
+	public String amain() {
+		return "admin/main";
+	}
 }
