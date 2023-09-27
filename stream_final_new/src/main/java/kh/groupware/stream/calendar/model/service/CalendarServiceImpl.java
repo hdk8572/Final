@@ -30,7 +30,6 @@ public class CalendarServiceImpl implements CalendarService {
 	}
 	
 	
-	
 	//캘린더 등록 //insert:캘린더 정보를 db에 추가 //insertMember:참가자 정보를 db에 추가
 	//override밑에 Transactional주석처리
 	@Override
@@ -51,9 +50,10 @@ public class CalendarServiceImpl implements CalendarService {
 	}
 
 
-
-	
-	
+	@Override
+	public List<MemberSimpleVo> memberProjectList(CalendarParamVo pno) {
+		return calendarDao.memberProjectList(pno);
+	}
 	
 	//캘린더 수정
 	@Override
@@ -66,10 +66,6 @@ public class CalendarServiceImpl implements CalendarService {
 		return calendarDao.delete(sno);
 	}
 
-	@Override
-	public List<MemberSimpleVo> memberProjectList(CalendarParamVo pno) {
-		return calendarDao.memberProjectList(pno);
-	}
 
 
 }

@@ -79,7 +79,6 @@ let calendar_pno="${CalendarParamVo.pno}"; /* 프로젝트 번호! */
 								</div>
 							</div>
 				 <%@ include file="/WEB-INF/views/calendar/readcalmodal.jsp" %>
-				<%-- <%@ include file="/WEB-INF/views/addProjectModal.jsp" %> --%>
 				</main>
 				<%@ include file="/WEB-INF/views/footer.jsp"%>
 			</main>

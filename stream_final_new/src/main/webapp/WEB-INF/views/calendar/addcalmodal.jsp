@@ -23,18 +23,26 @@
 							<span>
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r= "4"></circle></svg>
 							</span>
+								<!-- //참가자
+									<input type="text" class="form-control member" placeholder="참가자" list="cmemberlist" id="clist">
+								    	<datalist  class="cmember" id="cmemberlist">
+								    		<option selected>참가자를 선택해라</option>
+								        </datalist>
+							    --> <!-- memberProjectList  mplsam@kh.co.kr-->
+							        
 								<!-- 작성자 -->
-								<input type="text" name="userid" value="${principal.username }" readonly>
-								<!-- 참가자 -->
-							    <input type="text" class="form-control member" placeholder="참가자" list="cmemberlist" id="clist">
-							    	<datalist  class="cmember" id="cmemberlist">
-							    		<option selected>참가자를 선택해라</option>
-							        </datalist>
-							<div class="form-userid">
-								<div class="cal-attenuserid col-lg-1" >
-									<!-- 사용자목록을 반복 -->
-									<c:forEach items="${attendList }" var="caluser">
-										<span>${caluser.userid }</span>
+							<input type="text" name="userid" value="${principal.username }" readonly>
+							<div class="form-userid" >
+								<!-- 참가자 반복 -->
+								<input type="text" class="calmember" placeholder="참가자" list="calmemberlist">
+							<%-- 	<c:forEach items="${calendar }" var="userid">
+									<div id="calmemberlist">${caluser.userid }</div>
+								</c:forEach> --%>
+								<div>
+									<c:forEach items="${calendar }" var="userid">
+										<div class="callist">
+											<h4>${calendar.userid }</h4>
+										</div>
 									</c:forEach>
 								</div>
 							</div>
@@ -88,7 +96,7 @@
 </div>
 <!-- 참가자list -->
 <script>
-	$(".cmember").click(getMemberProjectListHandler);
+	$(".calmember").click(getMemberProjectListHandler);
 	function getMemberProjectListHandler(thisElement){
 		console.log($("[name=pno]").val());
 		// TODO: 
@@ -106,6 +114,12 @@
 			success: memberView,
 			error:memberError
 		});
+		
+	 $(".calmember-list li").click(function() {
+	      var selectedValue = $(this).text();
+	      $(".calmember").val(selectedValue);
+	      $(".calmember-list").hide();
+	   });
 	}
 	function memberView(data){
 		console.log(data)
@@ -115,11 +129,11 @@
 			var mname = data[i];
 			listHtml += `<option value="\${mname.userid}">\${mname.mname}</option>`;
 		}
-		$("#cmemberlist").html(listHtml);
+		$("#calmemberlist").html(listHtml);
 	}
 	function memberError(){
 		var listHtml = "";
 		listHtml += `<option selected>해당하는 이름이 없습니다.</option>`;
-		$("#cmemberlist").html(listHtml);
+		$("#calmemberlist").html(listHtml);
 	}
 </script>

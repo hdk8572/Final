@@ -58,16 +58,8 @@ public class CalendarController {
 	@GetMapping("/memberProjectList")
 	@ResponseBody
 	public String memberProjectList(CalendarParamVo param) {
-		// List<MemberSimpleVo>
 		return new Gson().toJson(calendarService.memberProjectList(param));
-	}
-	
-	/*
-	 * //참석자 조회
-	 * @RequestMapping("/pcal")
-	 * @ResponseBody //이걸 쓰면 model 못 씀 public String attendList() { //매개인자? return
-	 * new Gson().toJson(calendarService.attendList()); }
-	 */
+	}//짧게 쓰는 방법임
 
 	
 	

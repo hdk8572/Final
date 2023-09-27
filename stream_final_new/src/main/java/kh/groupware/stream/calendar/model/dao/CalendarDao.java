@@ -32,14 +32,9 @@ public class CalendarDao {
 		return sqlSession.insert("calendar.insert", cal);
 	}
 	
-	/*
-	 * //참석자 조회 
-	 * public List<CalendarVo> attendList() { 
-	 * return sqlSession.selectList("calendar.attendList"); }
-	 */
-	
-	//참석자 조회
+	//참석자 list	//CalendarParamVo - userid,pno
 	public List<MemberSimpleVo> memberProjectList(CalendarParamVo pno) {
+		System.out.println("[j22]"+ pno);
 		return sqlSession.selectList("calendar.memberProjectList", pno);
 	}
 	
