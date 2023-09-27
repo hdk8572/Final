@@ -29,6 +29,10 @@
 	<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 	
+	<!-- SummerNote CDN -->
+	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+	
 </head>
 
 <body>
@@ -125,6 +129,7 @@
 </body>
 	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
+	<script src="${pageContext.request.contextPath}/js/summernote-lite.js"></script>
 	<script>
 	/* 상단 탭바 위치 이동*/
 	function openTab(tabName) {
@@ -135,5 +140,24 @@
 	  }
 	  document.getElementById(tabName).style.display = "block";  
 	}
+	
+	$(document).ready(function (){
+		$("#summernote").summernote({				//  위즈윅 - summerNote		
+		     placeholder: '프로젝트 설명을 입력해주세요.',
+		     tabsize: 2,
+		     height: 120,
+		     toolbar: [
+		       ['style', ['style']],
+		       ['font', ['bold', 'underline', 'clear']],
+		       ['color', ['color']],
+		       ['para', ['ul', 'ol', 'paragraph']],
+		       ['table', ['table']],
+		       ['insert', ['link', 'picture', 'video']],
+		       ['view', ['fullscreen', 'codeview', 'help']]
+		     ]
+		});
+	}); 
+	
 	</script>
+	
 </html>

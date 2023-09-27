@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +20,7 @@
 <link href="${pageContext.request.contextPath }/css/streamapp.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/css/calmodal.css" rel="stylesheet"> 
 <link href="${pageContext.request.contextPath }/css/fullcalendar.css" rel="stylesheet">
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
 
 <!-- fullcalendar  -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
@@ -37,9 +38,8 @@
 	<div class="wrapper">
 		<%@include file="/WEB-INF/views/calendar/calendar-side.jsp"%>
 		<div class="main">
-			<%@ include file="/WEB-INF/views/headernavbar.jsp"%>
-
-
+		<%@ include file="/WEB-INF/views/headernavbar.jsp"%> 
+	
 			<main>
 				<div class="w3-bar tabBar">
 					<button class="w3-bar-item w3" onclick="openTab('Tab1')">피드</button>
@@ -121,14 +121,16 @@
 					nowIndicator : true, // 현재 시간 마크
 					dayMaxEvents : true, // 일정 more 
 					//locale: 'ko', // 한국어 설정 
+					
 					events : eventsDataArr
 				 	,
 				 	/* 일정 상세정보를 띄우겠다.*/
 					eventClick: function(info) {
 						console.log(info.event.title);
 						var event = info.event;
-						$("#readScheduleModal.modal  #title").html(info.event.title); /*띄우려는 모달이랑 이름 맞춰야한다.*/
-						$("#readScheduleModal.modal  #smemo").html(info.event.smemo);
+						$("#readScheduleModal.modal  #title").html(info.event.title); //띄우려는 모달이랑 이름 맞춰야한다.
+						$("#readScheduleModal.modal  #userid").html(info.event.extendedProps.userid); //extendedProps -> api에서 가져옴, 값을 띄우는 걸 도와줌
+						$("#readScheduleModal.modal  #smemo").html(info.event.extendedProps.smemo);
 						$("#readScheduleModal").modal("toggle");
 					} 
 				});

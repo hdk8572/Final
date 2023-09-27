@@ -15,10 +15,12 @@
  		<form id="addProject">
 	    	<div class="card">
 				<div class="card-header">
-					<div id="title"></div>
+					<!-- 작성자 -->
+					<div id="userid">${calendar.userid }</div>
 				</div>
 				<div class="card-body">
-					<div id="userid">${calendar.userid }</div><!-- ??? -->
+					<!-- 제목 -->
+					<div id="title"></div>
 					<br> 
 					<div>
 						<input type="date" class="form-date" name="pstartdate" required="required">
@@ -26,9 +28,13 @@
 						<input type="date" class="form-date" name="penddate" required="required">
 					</div>
 					<br>
-						<!-- <textarea class="form-control content" rows="5"  name="tcontent"></textarea> -->
-						<div id="smemo"></div> <!-- ??? -->
+						<!-- 지도 -->
+						<!-- 참석자  -->
+						<!-- 내용 -->
+						<div id="smemo"><p>${calendar.smemo }</p></div>
 					<div>
+					<br>
+						<!-- 댓글 -->
 						<ul class="c-comment">
 							<li class="c-comment-form">
 								<form id="c-commentFrm">
@@ -59,34 +65,6 @@
   	</div>
   </div>
 </div>
-<!-- <script>
-	const commenBtn = document.querySelector("#c-commentFrm")
-	const list = [];
-	console.log(commentBtn);
 
-</script> -->
-
-<!-- <script>
-	$("#btn-submit").click(addList);
-	
-	function addList () {
-		var data = myEditor.getData();
-		$("[name=pcontent]").val(data);
-		
-		console.log($("#addProject").serialize());  
-		$.ajax ({
-			url: "${pageContext.request.contextPath}/projectInsert",
-			type: "post",
-			data : $("#addProject").serialize(),
-			dataType: "json",
-			success: function(result){
-				console.log(result);
-			},
-			error: function() {	
-				alert("에러났습니다.");
-			}
-		});	
-	}
-</script> -->
 
 <!-- 모달 -->

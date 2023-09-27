@@ -62,8 +62,8 @@ public class ProjectController {
 
 	@PostMapping("/projectInsert")
 	@ResponseBody
-	public List<ProjectVo> insert(ProjectVo vo, Principal principal) {
-		List<ProjectVo> add = projectService.insertList(vo, principal.getName());
+	public List<ProjectVo> insert(ProjectVo vo) {
+		List<ProjectVo> add = projectService.insertList(vo);
 		return add;
 	}
 	
