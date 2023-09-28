@@ -20,15 +20,20 @@ public class CalendarServiceImpl implements CalendarService {
 	
 	//캘린더 조회
 	@Override
-	public List<CalendarVo> selectList() {
-		return calendarDao.selectList();
+	public List<CalendarVo> selectList(String pno) {
+		return calendarDao.selectList(pno);
 	}
-	//캘린더 일정 상세조회
+	//캘린더 일정 상세 조회
 	@Override
 	public CalendarVo selectOne(String sno) {
 		return calendarDao.selectOne(sno);
 	}
 	
+	//참석자 list
+	@Override
+	public List<MemberSimpleVo> memberProjectList(CalendarParamVo pno) {
+		return calendarDao.memberProjectList(pno);
+	}
 	
 	//캘린더 등록 //insert:캘린더 정보를 db에 추가 //insertMember:참가자 정보를 db에 추가
 	//override밑에 Transactional주석처리
@@ -49,12 +54,6 @@ public class CalendarServiceImpl implements CalendarService {
 		return result; 
 	}
 
-
-	@Override
-	public List<MemberSimpleVo> memberProjectList(CalendarParamVo pno) {
-		return calendarDao.memberProjectList(pno);
-	}
-	
 	//캘린더 수정
 	@Override
 	public int update(CalendarVo cal) {

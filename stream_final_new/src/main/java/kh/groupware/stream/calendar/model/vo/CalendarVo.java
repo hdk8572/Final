@@ -9,6 +9,7 @@ public class CalendarVo {
 	/*
 	"SNO"	VARCHAR2(10)		NOT NULL,
 	"USERID"	VARCHAR2(40)		NOT NULL,
+	"PNO"		VARCHAR2(20) 		NOT NULL,
 	"SSTARTDATE"	VARCHAR2(20)		NOT NULL,
 	"SENDDATE"	VARCHAR2(20)		NOT NULL,
 	"SPLACE"	VARCHAR2(50)		NULL,
@@ -19,6 +20,7 @@ public class CalendarVo {
 	*/
 	private String sno;
 	private String userid;
+	private String pno;
 	private String splace;
 	private String smemo;
 //	private String sstartDate;
@@ -31,8 +33,6 @@ public class CalendarVo {
 	
 	/* 끼인테이블 */
 	private List<String> attenuseridList; //id 1개만 가져 올 거라 String
-	
-	
 //	[{
 //	title : '풀캘린더완성도',
 //	start : '2023-09-12',
@@ -44,9 +44,9 @@ public class CalendarVo {
 
 	@Override
 	public String toString() {
-		return "CalendarVo [sno=" + sno + ", userid=" + userid + ", splace=" + splace + ", smemo= CLOB, start="
-				+ start + ", end=" + end + ", title=" + title + ", color=" + color + ", attenuseridList=" + attenuseridList
-				+ "]";
+		return "CalendarVo [sno=" + sno + ", userid=" + userid + ", pno=" + pno + ", splace=" + splace + ", smemo="
+				+ smemo + ", start=" + start + ", end=" + end + ", title=" + title + ", color=" + color
+				+ ", attenuseridList=" + attenuseridList + "]";
 	}
 
 	public String getSno() {
@@ -63,6 +63,14 @@ public class CalendarVo {
 
 	public void setUserid(String userid) {
 		this.userid = userid;
+	}
+
+	public String getPno() {
+		return pno;
+	}
+
+	public void setPno(String pno) {
+		this.pno = pno;
 	}
 
 	public String getSplace() {
@@ -120,6 +128,6 @@ public class CalendarVo {
 	public void setAttenuseridList(List<String> attenuseridList) {
 		this.attenuseridList = attenuseridList;
 	}
-
+	
 	
 }

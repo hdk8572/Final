@@ -39,7 +39,7 @@
 let logined_userid="${principal.username}"; /* 로그인! */
 </script>
 <script>
-let calendar_pno="${CalendarParamVo.pno}"; /* 프로젝트 번호! */
+let calendar_pno="${pno}"; /* 프로젝트 번호! */
 </script>
 </head>
 <body>
@@ -99,7 +99,7 @@ let calendar_pno="${CalendarParamVo.pno}"; /* 프로젝트 번호! */
 			// calendar date get from db 
 			//jquery의 ajax 메소드를 사용해 서버에서 데이터를  비동기적으로 가져오는 요청을 보낸다.
 			$.ajax({
-				url: '${pageContext.request.contextPath}/pcalselectlist',	//ajax 요청의 url을 설정한다. 앞에는 jsp페이지의 컨텍스트 경로를 가져오는 표현식, 뒤에는 서버에서 데이터를 가져올 경로
+				url: '${pageContext.request.contextPath}/pcalselectlist/'+calendar_pno,	
 				data: { date : '2023-09-12'},  // 
 				dataType : "json",
 				success: function(result){	//요청이 성공적으로 완료될 때 실행할 콜백 함수를 정의

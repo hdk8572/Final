@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,30 +23,24 @@ public class CalendarController {
 	@Autowired 
 	private CalendarService calendarService;
 	
-	@GetMapping("/pcal")
-	public ModelAndView selectList(ModelAndView mv) {
+	@GetMapping({"/pcal", "/pcal/{pno}"})
+	public ModelAndView selectList(ModelAndView mv, @PathVariable(name = "pno", required = false) String pno) {
+		mv.addObject("pno", pno);
 		mv.setViewName("calendar/calendar");
 		return mv;
 	}
 	
-	//캘린더 등록
-	@PostMapping("/insertpcal")
-	public String insert(Model model, CalendarVo cal) {
-		System.out.println("aaaa :" + cal);
-		calendarService.insert(cal);
-		return "redirect:pcal?sno="+cal.getSno();
-	}
 	
 	//캘린더 전체 조회 //달력에 표시할 모든 일정 목록을 가져오는 역할을 한다.
-	@GetMapping("/pcalselectlist")
+	@GetMapping({"/pcalselectlist", "/pcalselectlist/{pno}"}) //1번처럼 들어올 수도 있고 2번처럼 들어올 수도 있다. //{}중괄호를 치고 여러가지를 적는 것임
 	@ResponseBody
-	public String calSelectList() {
+	public String calSelectList(@PathVariable(name = "pno", required = false) String pno) { //String pno->pno값을 들고올 수도 있는데(null값이 있을 수도 있음) 안 들고올 수도 있으니깐 앞에 저렇게 적어줌.required = false->꼭 pno가 있지 않을 수도 있어 
 		List<CalendarVo> calendarList = null;
-		calendarList = calendarService.selectList();
+		calendarList = calendarService.selectList(pno);
 		return new Gson().toJson(calendarList);	//캘린터 정보를 DB에서 조회한 후 JSON 형식으로 클라이언트에게 반환하는 것이다.
 	}
 	
-	//캘린더 일정상세 조회
+	//캘린더 일정 상세 조회
 	@GetMapping("/pcalselectone")
 	public String calSelectOne(Model model, String sno) { 
 		CalendarVo cal = calendarService.selectOne(sno);
@@ -61,6 +56,13 @@ public class CalendarController {
 		return new Gson().toJson(calendarService.memberProjectList(param));
 	}//짧게 쓰는 방법임
 
+	//캘린더 등록
+	@PostMapping("/insertpcal")
+	public String insert(Model model, CalendarVo cal) {
+		System.out.println("aaaa :" + cal);
+		calendarService.insert(cal);
+		return "redirect:pcal?sno="+cal.getSno();
+	}
 	
 	
 }

@@ -23,28 +23,13 @@
 							<span>
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r= "4"></circle></svg>
 							</span>
-								<!-- //참가자
-									<input type="text" class="form-control member" placeholder="참가자" list="cmemberlist" id="clist">
-								    	<datalist  class="cmember" id="cmemberlist">
-								    		<option selected>참가자를 선택해라</option>
-								        </datalist>
-							    --> <!-- memberProjectList  mplsam@kh.co.kr-->
-							        
 								<!-- 작성자 -->
 							<input type="text" name="userid" value="${principal.username }" readonly>
 							<div class="form-userid" >
 								<!-- 참가자 반복 -->
 								<input type="text" class="calmember" placeholder="참가자" list="calmemberlist">
-							<%-- 	<c:forEach items="${calendar }" var="userid">
-									<div id="calmemberlist">${caluser.userid }</div>
-								</c:forEach> --%>
-								<div>
-									<c:forEach items="${calendar }" var="userid">
-										<div class="callist">
-											<h4>${calendar.userid }</h4>
-										</div>
-									</c:forEach>
-								</div>
+								<select id="calmemberlist"> <!-- 아래에서 script짜서 calmemberlist에다가 추가해야함 --> <!-- 일단 한 명만 추가해서 insert까지 하기  --> 
+								</select>
 							</div>
 						</div>
 						<br>
@@ -58,28 +43,7 @@
 						<!-- 시큐에디터  위즈윅 -->
 						<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 						<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script> 
-						<script>
-						let editor;
-						
-						ClassicEditor.create(document.querySelector(".form-control.content"), {	
-							language: "ko",
-							toolbar: [
-								'heading', 'bold', 'italic'
-							]
-						})
-							.then( editor => {
-					            myEditor = editor;
-					        } )
-					        .catch( err => {
-					            console.error( err.stack );
-				        });
-						</script>
-					    <!-- ?? -->
-				<!-- 	        <script>
-						        document.addEventListener('DOMContentLoaded', e => {
-						            $('#clist').autocomplete()
-						        }, false);
-						   </script> -->
+					
 				   </div>
 						<br>
 						<div align="center">
@@ -96,19 +60,15 @@
 </div>
 <!-- 참가자list -->
 <script>
-	$(".calmember").click(getMemberProjectListHandler);
 	function getMemberProjectListHandler(thisElement){
-		console.log($("[name=pno]").val());
-		// TODO: 
-		const pno = calendar_pno;
-		const userid = logined_userid;
+		console.log("calendar_pno: "+calendar_pno);
+		console.log("logined_userid: "+logined_userid);
 		$.ajax({
 			url:'${pageContext.request.contextPath}/memberProjectList',
 			type:"get",
 			data : {
-				/* pno : $("[name=pno]").val() */
-				pno : pno,
-				userid : userid
+				pno : calendar_pno,
+				userid : logined_userid
 			},
 			dataType: "json",
 			success: memberView,
@@ -127,7 +87,7 @@
 		var listHtml = "";
 		for (var i=0; i<data.length; i++){
 			var mname = data[i];
-			listHtml += `<option value="\${mname.userid}">\${mname.mname}</option>`;
+			listHtml += `<option value="\${mname.userid}">\${mname.mname}</option>`; //data를 뿌리고 그걸 option에다가 넣어줌 //value=userid
 		}
 		$("#calmemberlist").html(listHtml);
 	}

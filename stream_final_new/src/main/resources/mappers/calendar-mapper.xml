@@ -2,16 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="calendar">
 
-	<!-- private String start; private String end; private String title; private 
-		String color; -->
 	<!-- 일정 조회 -->
-	<select id="selectList" resultType="CalendarVo">
+	<!-- 동적 SQL문 where을 건 이유(if랑 세트) =pno를 안 들고 진입하는 경우도 있기 때문에(이걸 걸면 안에 where을 적을 필요가 없다.) --> <!-- 다른 방법으로 trim도 있다. -->
+	<select id="selectList" resultType="CalendarVo" parameterType="string">
 		SELECT SNO, USERID,
 		to_char(SSTART, 'yyyy-mm-dd') as "START", to_char(SEND, 'yyyy-mm-dd')
 		as END, STITLE
 		as TITLE, SCOLOR as color
 		,SPLACE, SMEMO
+        , PNO
 		FROM SCHEDULE
+		<where>
+			<if test="pno != null">
+	          pno=#{pno}
+			</if>
+		</where>
 	</select>
 
 	<!-- 일정 상세조회 -->
@@ -20,15 +25,15 @@
 		FROM SCHEDULE
 		WHERE SNO=#{SNO}
 	</select>
-
-	<!-- 프로젝트의 멤버들 조회 pno를 가지고 이동한다. -->
+	
+	<!-- 프로젝트의 멤버들 조회 --> 
+	<!-- 안에 ()는 id랑 name을 나타내려고 -->
 	<select id="memberProjectList" resultType="MemberSimpleVo">
 		select userid, (select mname from users tu where tm.userid=tu.userid ) mname 
 		from MEMBER_PROJECT tm 
+		
 		where pno=#{pno}
 	</select>
-	
-	
 	
 
 	<!-- 일정 등록 -->
