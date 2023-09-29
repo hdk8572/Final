@@ -13,6 +13,7 @@
 						<h2 class="pcalTitle"><b>일정 작성</b></h2>
 					</div>
 						<form action="${pageContext.request.contextPath}/insertpcal" method="post">
+							<input type="hidden" name="pno" value="${pno}">
 							<input type="text" class="form-control title" name="title" placeholder="제목을 입력하세요.">
 								<br>
 							<input type="date" class="form-date" name="start" required="required"> ~ <input type="date" class="form-date" name="end" required="required"> <!-- s -->
@@ -43,7 +44,28 @@
 						<!-- 시큐에디터  위즈윅 -->
 						<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 						<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script> 
-					
+						<script>
+						let editor;
+						
+						ClassicEditor.create(document.querySelector(".form-control.content"), {	
+							language: "ko",
+							toolbar: [
+								'heading', 'bold', 'italic'
+							]
+						})
+							.then( editor => {
+					            myEditor = editor;
+					        } )
+					        .catch( err => {
+					            console.error( err.stack );
+				        });
+						</script>
+					    <!-- ?? -->
+				<!-- 	        <script>
+						        document.addEventListener('DOMContentLoaded', e => {
+						            $('#clist').autocomplete()
+						        }, false);
+						   </script> -->
 				   </div>
 						<br>
 						<div align="center">
@@ -75,7 +97,7 @@
 			error:memberError
 		});
 		
-	 $(".calmember-list li").click(function() {
+	 $(".calmember-list li").click(function() { //TODO
 	      var selectedValue = $(this).text();
 	      $(".calmember").val(selectedValue);
 	      $(".calmember-list").hide();
@@ -97,3 +119,4 @@
 		$("#calmemberlist").html(listHtml);
 	}
 </script>
+

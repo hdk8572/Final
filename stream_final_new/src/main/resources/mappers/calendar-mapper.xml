@@ -31,7 +31,6 @@
 	<select id="memberProjectList" resultType="MemberSimpleVo">
 		select userid, (select mname from users tu where tm.userid=tu.userid ) mname 
 		from MEMBER_PROJECT tm 
-		
 		where pno=#{pno}
 	</select>
 	
@@ -44,8 +43,8 @@
 			SELECT schedule_sequence.NEXTVAL FROM dual
 		</selectKey> 
 	-->
-		INSERT INTO SCHEDULE (SNO, USERID, SSTART, SEND, SMEMO, STITLE, SCOLOR)
-		VALUES (schedule_sequence.NEXTVAL, #{userid}, #{start}, #{end}, #{smemo}, #{title},
+		INSERT INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SCOLOR)
+		VALUES (schedule_sequence.NEXTVAL, #{userid}, #{pno}, #{start}, #{end}, #{smemo}, #{title},
 		'#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'))
 	</insert>
 

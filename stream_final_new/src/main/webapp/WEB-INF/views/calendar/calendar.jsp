@@ -24,12 +24,11 @@
 <link href="${pageContext.request.contextPath }/css/fullcalendar.css" rel="stylesheet">
 <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
 
-<!-- fullcalendar  -->
+<!-- fullcalendar css -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-
-<!-- //fullcalendar 언어 설정관련 script -->
+<!-- fullcalendar 언어 설정관련 script -->
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
 
 <!-- JQuery -->
@@ -100,7 +99,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 			//jquery의 ajax 메소드를 사용해 서버에서 데이터를  비동기적으로 가져오는 요청을 보낸다.
 			$.ajax({
 				url: '${pageContext.request.contextPath}/pcalselectlist/'+calendar_pno,	
-				data: { date : '2023-09-12'},  // 
+				data: { date : '2023-09-12'},  
 				dataType : "json",
 				success: function(result){	//요청이 성공적으로 완료될 때 실행할 콜백 함수를 정의
 					console.log(result);  // result == event Data Arr //서버에서 반환된 데이터를 담고 있는 매개변수이다.
@@ -146,13 +145,6 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 			}
 		});
 	</script>
-	<!-- <script>
-		$(".fc-event-title").on("click", eeeeeevent)
-		eeeeeevent=(event)=>{
-			var a1 = event.target
-			console.log(a1);
-		}
-	</script> -->
 
 </body>
 </html>

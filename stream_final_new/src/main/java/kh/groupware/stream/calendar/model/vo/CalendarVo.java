@@ -41,11 +41,32 @@ public class CalendarVo {
 //			+ Math.round(Math.random() * 0xffffff)
 //					.toString(16)
 //},]
+	
+	
+	public CalendarVo() {
+		super();
+	}
+	
+	public CalendarVo(String sno, String userid, String pno, String splace, String smemo, String start, String end,
+		String title, String color, List<String> attenuseridList) {
+	super();
+	this.sno = sno;
+	this.userid = userid;
+	this.pno = pno;
+	this.splace = splace;
+	this.smemo = smemo;
+	this.start = start;
+	this.end = end;
+	this.title = title;
+	this.color = color;
+	this.attenuseridList = attenuseridList;
+	}
 
+	//smemo = CLOB 
 	@Override
 	public String toString() {
-		return "CalendarVo [sno=" + sno + ", userid=" + userid + ", pno=" + pno + ", splace=" + splace + ", smemo="
-				+ smemo + ", start=" + start + ", end=" + end + ", title=" + title + ", color=" + color
+		return "CalendarVo [sno=" + sno + ", userid=" + userid + ", pno=" + pno + ", splace=" + splace + ", smemo= CLOB , "
+				+ "start=" + start + ", end=" + end + ", title=" + title + ", color=" + color
 				+ ", attenuseridList=" + attenuseridList + "]";
 	}
 
