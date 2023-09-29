@@ -119,7 +119,6 @@ function innerTaskaddListHandler () {
 //const contextPath = origin + pathname;
 	console.log("ajax간다");
 	console.log($(this).closest(".addInnerTask").serialize());
-	console.log($(this).closest(".addInnerTask"));
 	$.ajax ({
 		url: contextPath+"/innertaskinsert",
 		type: "post",
@@ -134,8 +133,10 @@ function innerTaskaddListHandler () {
 			//	alert("전송된 값 없음");
 			//}
 		},
-		error:function(request, status, error){
+		error:function(request, status, error, data){
 			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			console.log(arguments);
+			console.log(data)
 		}
 	});
 }
@@ -239,7 +240,7 @@ listHtml += `
 																		<input type="hidden" name ="tno" value="${task.tno}">
 																		<input type="hidden" name="tcontent" value="default">
 																		<input type="hidden" name="pno" value="${project.pno}">
-																		<input type="hidden" name="userid" value="kh0001@kh.com"> <!-- 로그인 세션 받아서 등록 -->
+																		<input type="hidden" name="userid" value="${principal.username}"> <!-- 로그인 세션 받아서 등록 -->
 																		<button type="button" class="jm-innerTask-insert-button">추가하기</button>
 																	</div>
 	        `;
@@ -253,5 +254,6 @@ listHtml += `
         
 		var id = "#projectNo_"+ project.pno;
 		$(id).html(listHtml);
+		console.log(id);
 }
 

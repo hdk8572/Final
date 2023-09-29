@@ -28,75 +28,44 @@ public class MaintaskDto {
 	private Date tstartdate;
 	private Date tenddate;
 	
-	
-	
+	//하위 업무 추가를 위한 컬럼
+	private String bref;	//bref=tno : 원본글
+	private String brelevel;//0 : 원본 1 : 하위 업무
+	private String brestep;	//하위 업무들간의 순서
 	
 	@Override
 	public String toString() {
 		return "MaintaskDto [tno=" + tno + ", pno=" + pno + ", userid=" + userid + ", tmember=" + tmember + ", ttitle="
 				+ ttitle + ", tcontent=" + tcontent + ", tstatus=" + tstatus + ", tdate=" + tdate + ", tstartdate="
-				+ tstartdate + ", tenddate=" + tenddate + "]";
+				+ tstartdate + ", tenddate=" + tenddate + ", bref=" + bref + ", brelevel=" + brelevel + ", brestep="
+				+ brestep + "]";
 	}
-	public String getTno() {
-		return tno;
+	
+
+	public MaintaskDto() {
+		super();
 	}
-	public void setTno(String tno) {
+
+
+	public MaintaskDto(String tno, String pno, String userid, String tmember, String ttitle, String tcontent,
+			String tstatus, Date tdate, Date tstartdate, Date tenddate, String bref, String brelevel, String brestep) {
+		super();
 		this.tno = tno;
-	}
-	public String getPno() {
-		return pno;
-	}
-	public void setPno(String pno) {
 		this.pno = pno;
-	}
-	public String getUserid() {
-		return userid;
-	}
-	public void setUserid(String userid) {
 		this.userid = userid;
-	}
-	public String getTmember() {
-		return tmember;
-	}
-	public void setTmember(String tmember) {
 		this.tmember = tmember;
-	}
-	public String getTcontent() {
-		return tcontent;
-	}
-	public void setTcontent(String tcontent) {
-		this.tcontent = tcontent;
-	}
-	public String getTstatus() {
-		return tstatus;
-	}
-	public void setTstatus(String tstatus) {
-		this.tstatus = tstatus;
-	}
-	public Date getTdate() {
-		return tdate;
-	}
-	public void setTdate(Date tdate) {
-		this.tdate = tdate;
-	}
-	public Date getTstartdate() {
-		return tstartdate;
-	}
-	public void setTstartdate(Date tstartdate) {
-		this.tstartdate = tstartdate;
-	}
-	public Date getTenddate() {
-		return tenddate;
-	}
-	public void setTenddate(Date tenddate) {
-		this.tenddate = tenddate;
-	}
-	public String getTtitle() {
-		return ttitle;
-	}
-	public void setTtitle(String ttitle) {
 		this.ttitle = ttitle;
+		this.tcontent = tcontent;
+		this.tstatus = tstatus;
+		this.tdate = tdate;
+		this.tstartdate = tstartdate;
+		this.tenddate = tenddate;
+		this.bref = bref;
+		this.brelevel = brelevel;
+		this.brestep = brestep;
 	}
+	
+	
 	
 	
 	
