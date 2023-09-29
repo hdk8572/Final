@@ -5,26 +5,28 @@
 <html lang="en">
 
 <head>
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description"
 	content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
-<meta name="author" content="AdminKit">
-<meta name="keywords"
-	content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
 <title>회원 가입</title>
 
+<!-- Bootstrap Css -->
 <link href="css/streamapp.css" rel="stylesheet">
+<!-- Newmember Css -->
 <link href="${pageContext.request.contextPath}/css/newmember.css"
 	rel=stylesheet">
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
 <link
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
 	rel="stylesheet">
 
-<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
 <body>
@@ -117,6 +119,7 @@
 		</div>
 
 	</main>
+<!-------------------- Script ----------------------->
 	<script src="js/app.js"></script>
 
 	<script>
@@ -148,7 +151,7 @@
 		function checkUserid(userid) {
 			if (!checkBlank(userid, "아이디를"))
 				return false;
-			var idToCheck = /^[A-Za-z0-9_]+@[A-Za-z0-9]+[.]{1}[A-Za-z]{1,3}$/;
+			var idToCheck = /^[A-Za-z0-9_]+@[A-Za-z0-9]+\.[A-Za-z]{2,4}(\.[A-Za-z]{2})?$/;
 			if (!idToCheck.test(userid)) {
 				alert("아이디는 이메일 형식으로 입력해주세요!");
 				Account.userid.value = "";

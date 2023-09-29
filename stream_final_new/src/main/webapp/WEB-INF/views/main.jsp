@@ -11,24 +11,20 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description"
 	content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
-<meta name="author" content="AdminKit">
-<meta name="keywords"
-	content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
-
-<link rel="canonical"
-	href="https://demo-basic.adminkit.io/pages-sign-in.html" />
 
 <title>로그인</title>
 
+<!-- Bootstrap Css -->
 <link href="css/streamapp.css" rel="stylesheet">
+<!-- Main Css -->
+<link href="${pageContext.request.contextPath}/css/main.css"
+	rel="stylesheet">
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
 <link
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
-	rel="stylesheet">
-<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-<link href="${pageContext.request.contextPath}/css/main.css"
 	rel="stylesheet">
 
 </head>
@@ -38,14 +34,16 @@
 	<!-- 모달박스 -->
 	<div id="main-modal">
 		<div class="modalbox">
-			<div class="mmbox">
+			<div class="mmbox" id="mmnewcompany">
 				<p>처음오셨나요?</p>
 				<p class="mmcompany">회사 등록</p>
 			</div>
-			<div class="mmbox">
+
+			<div class="mmbox" id="mmlogin">
 				<p>이미 이용중이시라면!</p>
 				<p class="mmlogin">로그인</p>
 			</div>
+
 		</div>
 		<a class="modal_close_btn">X</a>
 	</div>
@@ -65,6 +63,7 @@
 	</div>
 	<script src="js/app.js"></script>
 
+	<!-------------------- Script ----------------------->
 	<!-- 모달script -->
 	<script>
 		function modal(id) {
@@ -121,6 +120,23 @@
 					// 모달창 띄우기
 					modal('main-modal');
 				});
+	</script>
+
+	<script>
+		document
+				.getElementById("mmnewcompany")
+				.addEventListener(
+						"click",
+						function() {
+							window.location.href = "${pageContext.request.contextPath}/newcompany";
+						});
+		document
+				.getElementById("mmlogin")
+				.addEventListener(
+						"click",
+						function() {
+							window.location.href = "${pageContext.request.contextPath}/login";
+						});
 	</script>
 	<!-- 모달스크립트끝 -->
 </body>

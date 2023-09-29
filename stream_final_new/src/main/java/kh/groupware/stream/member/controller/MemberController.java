@@ -71,11 +71,10 @@ public class MemberController {
 		return mv;
 	}
 
-	// 마이페이지
-	@GetMapping("/userpage")
-	public ModelAndView myPage(ModelAndView mv) {
-		mv.setViewName("/myPage");
-		return mv;
+	// 마이페이지 임시
+	@GetMapping("/mypage")
+	public String myPage() {
+		return "member/mypage";
 	}
 
 }
