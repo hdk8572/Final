@@ -25,7 +25,7 @@ public class CalendarServiceImpl implements CalendarService {
 	}
 	//캘린더 일정 상세 조회
 	@Override
-	public CalendarVo selectOne(String sno) {
+	public CalendarVo selectOne(String sno) { 
 		return calendarDao.selectOne(sno);
 	}
 	

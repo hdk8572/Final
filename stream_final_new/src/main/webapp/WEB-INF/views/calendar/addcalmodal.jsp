@@ -28,8 +28,8 @@
 							<input type="text" name="userid" value="${principal.username }" readonly>
 							<div class="form-userid" >
 								<!-- 참가자 반복 -->
-								<input type="text" class="calmember" placeholder="참가자" list="calmemberlist">
-								<select id="calmemberlist"> <!-- 아래에서 script짜서 calmemberlist에다가 추가해야함 --> <!-- 일단 한 명만 추가해서 insert까지 하기  --> 
+								<input type="text" class="calmember" id="calmemberinput" placeholder="참가자" list="calmemberlist">
+								<select id="calmemberlist"> <!-- 일단 한 명만 추가해서 insert까지 하기  --> 
 								</select>
 							</div>
 						</div>
@@ -80,7 +80,15 @@
 		</div>
 	</div>
 </div>
-<!-- 참가자list -->
+<!-- 참가자들을 input에 추가한다. -->
+<script>
+	document.getElementById("calmemberlist").addEventListener("change", function() {
+	    var selectedValue = this.options[this.selectedIndex].text;
+	    document.getElementById("calmemberinput").value = selectedValue;
+	});
+</script>
+
+<!-- 참가자 list select option  -->
 <script>
 	function getMemberProjectListHandler(thisElement){
 		console.log("calendar_pno: "+calendar_pno);
@@ -97,11 +105,12 @@
 			error:memberError
 		});
 		
-	 $(".calmember-list li").click(function() { //TODO
-	      var selectedValue = $(this).text();
-	      $(".calmember").val(selectedValue);
-	      $(".calmember-list").hide();
-	   });
+		//TODO 쓸모없는 코드임,,,?
+		$(".calmember-list li").click(function() { 
+		      var selectedValue = $(this).text();
+		      $(".calmember").val(selectedValue);
+		      $(".calmember-list").hide();
+		 });
 	}
 	function memberView(data){
 		console.log(data)
@@ -119,4 +128,5 @@
 		$("#calmemberlist").html(listHtml);
 	}
 </script>
+
 

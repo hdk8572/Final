@@ -26,7 +26,7 @@ public class CalendarDao {
 		return sqlSession.selectOne("calendar.selectOne",sno);
 	}
 	
-	//참석자 list	//CalendarParamVo - userid,pno
+	//참석자 list
 	public List<MemberSimpleVo> memberProjectList(CalendarParamVo pno) {
 		System.out.println("[j22]"+ pno);
 		return sqlSession.selectList("calendar.memberProjectList", pno);
@@ -40,7 +40,7 @@ public class CalendarDao {
 	
 	//참석자 등록 
 	public int insertMember(Map<String, Object> map) {
-		return sqlSession.insert("calendar, insert");
+		return sqlSession.insert("calendar. insert");
 	}
 	
 	//캘린더 수정
