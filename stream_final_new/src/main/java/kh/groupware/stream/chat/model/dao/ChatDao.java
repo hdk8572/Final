@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kh.groupware.stream.chat.model.vo.ChatRoomVo;
 import kh.groupware.stream.chat.model.vo.ChatVo;
 
 @Repository
@@ -19,5 +20,12 @@ public class ChatDao {
 	}
 	public String selectuserOne(){
 		return sqlSession.selectOne("selecuserOne");
+	}
+	
+	
+	
+	
+	public List<ChatRoomVo> findAllRooms(){
+		return sqlSession.selectList(null);
 	}
 }

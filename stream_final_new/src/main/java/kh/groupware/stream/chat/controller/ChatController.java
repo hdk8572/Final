@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import kh.groupware.stream.chat.model.dao.ChatService;
+
+import kh.groupware.stream.chat.model.service.ChatService;
 import kh.groupware.stream.chat.model.vo.ChatVo;
 import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;

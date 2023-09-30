@@ -1,4 +1,4 @@
-package kh.groupware.stream.chat.model.dao;
+package kh.groupware.stream.chat.model.service;
 
 import java.util.List;
 

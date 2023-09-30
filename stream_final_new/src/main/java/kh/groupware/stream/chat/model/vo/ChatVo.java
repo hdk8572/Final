@@ -2,7 +2,6 @@ package kh.groupware.stream.chat.model.vo;
 
 import org.springframework.stereotype.Component;
 
-@Component
 public class ChatVo {
 //	--COMMENT ON COLUMN "CHAT"."CCNO" IS '대화순번';
 //	--COMMENT ON COLUMN "CHAT"."CHATNO" IS '채팅방번호';
@@ -15,11 +14,11 @@ public class ChatVo {
 	private String ccno;	//채팅 순서
 	private String chatno;	//채팅방 번호
 	private String userid;	//유저 아이디
-	private String ccontent;	//대화 내용
+	private String ccontent;	//대화 내용 message
 	private String cdate;	//작성 날짜
-	private String chatname;//채팅방 이름
+	private String chatname;//채팅방 이름 roomid
 	private String closed;
-	private String mname;
+	private String mname;//name
 	@Override
 	public String toString() {
 		return "ChatVo [ccno=" + ccno + ", chatno=" + chatno + ", userid=" + userid + ", ccontent=" + ccontent
