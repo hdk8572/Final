@@ -40,7 +40,8 @@ public class CalendarDao {
 	
 	//참석자 등록 
 	public int insertMember(Map<String, Object> map) {
-		return sqlSession.insert("calendar. insert");
+		System.out.println("[j33]"+ map);
+		return sqlSession.insert("calendar. insertmember");
 	}
 	
 	//캘린더 수정
