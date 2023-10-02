@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 
 import kh.groupware.stream.chat.model.dao.ChatDao;
 import kh.groupware.stream.chat.model.vo.ChatMessageVo;
+import kh.groupware.stream.chat.model.vo.ChatRoomVo;
 import lombok.RequiredArgsConstructor;
 
 
@@ -22,13 +23,13 @@ public class StompChatController {
     //"/pub/chat/enter"
     @MessageMapping(value = "/chat/enter")
     public void enter(ChatMessageVo message){
-        message.setCcontent(message.getCwriter() + "님이 채팅방에 참여하였습니다.");
-        template.convertAndSend("/sub/chat/room/" + message.getChatname(), message);
+        message.setMessage(message.getWriter() + "님이 채팅방에 참여하였습니다.");
+        template.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
     }
 
     @MessageMapping(value = "/chat/message")
     public void message(ChatMessageVo message){
-    	
-        template.convertAndSend("/sub/chat/room/" + message.getChatname(), message);
+    	chatDao.MessageInsert(message);
+        template.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
     }
 }

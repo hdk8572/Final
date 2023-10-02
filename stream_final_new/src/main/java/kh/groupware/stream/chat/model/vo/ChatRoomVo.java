@@ -8,48 +8,47 @@ import org.springframework.web.socket.WebSocketSession;
 
 @Component
 public class ChatRoomVo {
-	private String chatname;
-	private String mname;
-	private String cwriter;	//작성자
+	private String roomId;
+	private String roomName;
+	private String writer;	//작성자
 	private List<WebSocketSession> sessions = new ArrayList<>();
 	
-	public static ChatRoomVo create(String mname, String cwriter) {
+	public static ChatRoomVo create(String roomName, String writer) {
 		ChatRoomVo room = new ChatRoomVo();
-		room.chatname = UUID.randomUUID().toString();
-		room.mname = mname;
-		room.cwriter = cwriter;
+		room.roomId = UUID.randomUUID().toString();
+		room.roomName = roomName;
+		room.writer = writer;
 		return room;
 	}
 
 	@Override
 	public String toString() {
-		return "ChatRoomVo [chatname=" + chatname + ", mname=" + mname + ", cwriter=" + cwriter + ", sessions="
-				+ sessions + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
+		return "ChatRoomVo [roomId=" + roomId + ", roomName=" + roomName + ", writer=" + writer + ", sessions="
+				+ sessions + "]";
 	}
 
-	public String getChatname() {
-		return chatname;
+	public String getRoomId() {
+		return roomId;
 	}
 
-	public void setChatname(String chatname) {
-		this.chatname = chatname;
+	public void setRoomId(String roomId) {
+		this.roomId = roomId;
 	}
 
-	public String getMname() {
-		return mname;
+	public String getRoomName() {
+		return roomName;
 	}
 
-	public void setMname(String mname) {
-		this.mname = mname;
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
 	}
 
-	public String getCwriter() {
-		return cwriter;
+	public String getWriter() {
+		return writer;
 	}
 
-	public void setCwriter(String cwriter) {
-		this.cwriter = cwriter;
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 
 	public List<WebSocketSession> getSessions() {
@@ -59,5 +58,10 @@ public class ChatRoomVo {
 	public void setSessions(List<WebSocketSession> sessions) {
 		this.sessions = sessions;
 	}
+
+	
+
+
+	
 	
 }

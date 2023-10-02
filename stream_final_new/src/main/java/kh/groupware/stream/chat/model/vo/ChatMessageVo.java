@@ -4,39 +4,40 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ChatMessageVo {
-	private String chatname;
-	private String cwriter;
-	private String ccontent;
-	private String cdate;
+	private String roomId;
+	private String writer;
+	private String message;
+	private String cDate;
 	@Override
 	public String toString() {
-		return "ChatMessageVo [chatname=" + chatname + ", cwriter=" + cwriter + ", ccontent=" + ccontent + ", cdate="
-				+ cdate + "]";
+		return "ChatMessageVo [roomId=" + roomId + ", writer=" + writer + ", message=" + message + ", cDate=" + cDate
+				+ "]";
 	}
-	public String getChatname() {
-		return chatname;
+	public String getRoomId() {
+		return roomId;
 	}
-	public void setChatname(String chatname) {
-		this.chatname = chatname;
+	public void setRoomId(String roomId) {
+		this.roomId = roomId;
 	}
-	public String getCwriter() {
-		return cwriter;
+	public String getWriter() {
+		return writer;
 	}
-	public void setCwriter(String cwriter) {
-		this.cwriter = cwriter;
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
-	public String getCcontent() {
-		return ccontent;
+	public String getMessage() {
+		return message;
 	}
-	public void setCcontent(String ccontent) {
-		this.ccontent = ccontent;
+	public void setMessage(String message) {
+		this.message = message;
 	}
-	public String getCdate() {
-		return cdate;
+	public String getcDate() {
+		return cDate;
 	}
-	public void setCdate(String cdate) {
-		this.cdate = cdate;
+	public void setcDate(String cDate) {
+		this.cDate = cDate;
 	}
+
 	
 	
 }

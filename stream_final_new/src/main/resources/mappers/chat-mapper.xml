@@ -1,15 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="chat">
-	<!-- 리스트 -->
-  <select id="selecuserList" parameterType="string" resultType="ChatVo">
-		select mname
-		from chat_member
-		join users using(userid)
+	<resultMap type="ChatRoomVo" id="chatRoomMap">
+		<id property="roomId" column="roomid"/>
+		<result property="roomName" column="roomname"/>
+		<result property="writer" column="writer"/>
+	</resultMap>
+	<resultMap type="ChatMessageVo" id="chatMessageMap">
+		<id property="roomId" column="roomid"/>
+		<result property="writer" column="writer"/>
+		<result property="message" column="message"/>
+		<result property="cDate" column="cdate"/>
+	</resultMap>
+	
+
+	<insert id="chatInsert" parameterType="chatRoomVo">
+		INSERT INTO CHATROOM (ROOMID,WRITER,ROOMNAME) VALUES (#{roomId},#{writer},#{roomName})
+	</insert>
+	
+	<select id="findAllRooms" resultMap="chatRoomMap">
+		SELECT * FROM CHATROOM
 	</select>
-<!-- 	<select id="selecuserOne" parameterType="string" resultType="ChatVo">
-		select mname
-		from chat_member
-		join users using(userid)
-	</select> -->
+	
+	<select id="findRoomById" resultMap="chatRoomMap">
+		SELECT * FROM CHATROOM WHERE ROOMID=#{roomId}
+	</select>
+	
+	<insert id="messageInsert" parameterType="chatMessageVo">
+		INSERT INTO CHATMESSAGE (WRITER,MESSAGE,ROOMID,cDate) VALUES (#{writer},#{message},#{roomId},SYSTIMESTAMP)
+	</insert>
+	
+	<select id="viewChat" resultMap="chatMessageMap">
+		SELECT * FROM CHATMESSAGE WHERE ROOMID = #{roomId} ORDER BY CDATE ASC
+	</select>
+
 </mapper>
