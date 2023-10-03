@@ -216,7 +216,7 @@
  	      window.onload = function () {
             var popupButton = document.getElementById("popup");
             popupButton.onclick = function () {
-               var jsPopup = window.open("chatlist", null, "width=450, height=1000, resizable=no, scrollbars=no,toolbars=no, menubar=no");
+               var jsPopup = window.open("room", null, "width=600, height=700, resizable=no, scrollbars=no,toolbars=no, menubar=no");
             
             
             };

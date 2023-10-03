@@ -22,18 +22,18 @@
 		.container h1{
 			text-align: left;
 			padding: 5px 5px 5px 15px;
-			color: #FFBB00;
-			border-left: 3px solid #FFBB00;
+			color: #009b77;
+			border-left: 3px solid #009b77;
 			margin-bottom: 20px;
 		}
 		.chating{
-			background-color: #000;
+			background-color: #F6F6F6;
 			width: 500px;
 			height: 500px;
 			overflow: auto;
 		}
 		.chating .me{
-			color: #F6F6F6;
+			color: #000;
 			text-align: right;
 		}
 		.chating .others{

@@ -21,8 +21,8 @@
 		.container h1{
 			text-align: left;
 			padding: 5px 5px 5px 15px;
-			color: #FFBB00;
-			border-left: 3px solid #FFBB00;
+			color: #009b77;
+			border-left: 3px solid #009b77;
 			margin-bottom: 20px;
 		}
 		.roomContainer{
@@ -35,15 +35,15 @@
 			border: none;
 		}
 		.roomList th{
-			border: 1px solid #FFBB00;
+			border: 1px solid #009b77;
 			background-color: #fff;
-			color: #FFBB00;
+			color: #009b77;
 		}
 		.roomList td{
-			border: 1px solid #FFBB00;
+			border: 1px solid #009b77;
 			background-color: #fff;
 			text-align: left;
-			color: #FFBB00;
+			color: #009b77;
 		}
 		.roomList .num{
 			width: 75px;
@@ -57,10 +57,10 @@
 			text-align: center;
 		}
 		button{
-			background-color: #FFBB00;
+			background-color: #009b77;
 			font-size: 14px;
-			color: #000;
-			border: 1px solid #000;
+			color: white;
+			border: 1px solid #009b77;
 			border-radius: 5px;
 			padding: 3px;
 			margin: 3px;
