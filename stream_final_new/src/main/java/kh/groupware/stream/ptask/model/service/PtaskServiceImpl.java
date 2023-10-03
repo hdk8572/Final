@@ -30,4 +30,9 @@ public class PtaskServiceImpl implements PtaskService {
     	return dao.deleteTask(pno);
     }
 	
+	@Override
+	public PtaskVo selectOneInner(String pno, String tno) {
+		return dao.ptasklist(pno, tno);
+	}
+	
 }

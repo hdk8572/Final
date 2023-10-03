@@ -26,7 +26,7 @@ public class PtaskDao {
 		return sqlSession.selectList("task.ProjectSelectOne", pno);
 	}
 	
-	public PtaskVo pselectOne(String pno, String tno) {
+	public PtaskVo ptasklist(String pno, String tno) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("pno", pno);
 		map.put("tno", tno);
