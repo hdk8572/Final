@@ -33,11 +33,13 @@
 			overflow: auto;
 		}
 		.chating .me{
+			padding: 0 0 10px;
+			font-weight: bold;
 			color: #000;
-			text-align: right;
+			text-align: right; 
 		}
 		.chating .others{
-			color: #FFE400;
+			color: #009b77;
 			text-align: left;
 		}
 		input{
@@ -55,7 +57,7 @@
 		<input type="hidden" id="sessionId" value="">
 		<input type="hidden" id="roomNumber" value="${roomNumber}">
 		
-		<div id="chating" class="chating">
+		<div id="chating" class="chating" style="padding: 10px">
 		</div>
 		
 		<div id="yourName">
@@ -104,9 +106,9 @@
 					}
 				}else if(d.type == "message"){
 					if(d.sessionId == $("#sessionId").val()){
-						$("#chating").append("<p class='me'>나 :" + d.msg + "</p>");	
+						$("#chating").append("<div class='me'>나 :" + d.msg + "</div>");	
 					}else{
-						$("#chating").append("<p class='others'>" + d.userName + " :" + d.msg + "</p>");
+						$("#chating").append("<div class='others'>" + d.userName + " :" + d.msg + "</div>");
 					}
 						
 				}else{

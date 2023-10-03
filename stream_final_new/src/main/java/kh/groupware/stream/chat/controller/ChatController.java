@@ -24,11 +24,11 @@ public class ChatController {
 	@Autowired
 	private ChatService service;
 
-//	@GetMapping("/chatlist")
-//	public String selectchat(Model model) {
-//		return "/chatting/select";
-//		
-//	}
+	@GetMapping("/chatlist")
+	public String selectchat(Model model) {
+		return "/chatting/chattest";
+		
+	}
 //	 @GetMapping("/chat")
 //	    public String chatGET(){
 //
