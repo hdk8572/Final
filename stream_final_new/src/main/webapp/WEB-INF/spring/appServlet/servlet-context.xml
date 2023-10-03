@@ -28,9 +28,4 @@
 	<context:component-scan base-package="kh.groupware.stream" />
 	
 	<aop:aspectj-autoproxy/>
-	<websocket:handlers>
-	<websocket:mapping handler="chattingHandler" path="/chatting"/>
-	<websocket:sockjs></websocket:sockjs>
-	</websocket:handlers>
-	<beans:bean id="chattingHandler" class="kh.groupware.stream.chat.controller.ChattingHandler"/>
 </beans:beans>

@@ -89,8 +89,8 @@
 									<th class="d-none d-xl-table-cell">마감일</th>
 								</tr>
 								<c:forEach items="${tlist}" var="tlist">
-									<tr>
-										<td>${tlist.ttitle}</td>
+									<tr class="listOne">
+										<td>${tlist.ttitle}<button type="button" class="detail-project">상세내용</button></td>
 										<td>${tlist.tmember}</td>
 										<%-- <td>${tlist.tstatus}</td> --%>
 										<td><select class="status setting" name="tname">
@@ -103,8 +103,12 @@
 										<td>${fn:split(tlist.tdate, " ")[0]}</td>
 										<td>${fn:split(tlist.tstartdate, " ")[0]}</td>
 										<td>${fn:split(tlist.tenddate, " ")[0]}</td>
+										<input type="hidden" name="tno" value="${tlist.tno}">
 									</tr>
 								</c:forEach>
+								
+								<%@ include file="/WEB-INF/views/detailprojectmodal.jsp"%>
+								
 							</table>
 						</div>
 					</main>
@@ -131,6 +135,10 @@
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
 	<script src="${pageContext.request.contextPath}/js/summernote-lite.js"></script>
 	<script>
+	
+	/* ajax 용 - contextPath 변수 지정 */
+	const contextPath = "${pageContext.request.contextPath}";
+	
 	/* 상단 탭바 위치 이동*/
 	function openTab(tabName) {
 	  var i;
@@ -156,7 +164,45 @@
 		       ['view', ['fullscreen', 'codeview', 'help']]
 		     ]
 		});
+		$(this).find(".detail-project").click(detailProject);
+		
 	}); 
+	
+	</script>
+	<script>
+	$(".listOne").mouseover(function() {
+		$(this).find(".detail-project").css("visibility", "visible");
+	});
+	$(".listOne").mouseout(function() {
+		$(this).find(".detail-project").css("visibility", "hidden");
+	});
+	</script>
+	<script>
+	function detailProject() {
+		targetTno = $(this).closest("tr").find("input[name=tno]").val();
+		$("#detailProjectModal").modal("toggle");
+		console.log(targetTno);
+		
+		$.ajax({
+		 	url: "${pageContext.request.contextPath}/ptaskselectOne",
+		 	type: "get",
+		 	dataType: "json",
+		 	success: function(result){
+		 		console.log("asd");
+		 		/* console.log(result.penddate);
+				$("#updateProjectModal [name=pno]").val(result.pno);
+				$("#updateProjectModal [name=pname]").val(result.pname);
+				$("#updateProjectModal [name=pcontent]").val(result.pcontent);
+				$("#updateProjectModal [name=pstartdate]").val(result.pstartdate);
+				$("#updateProjectModal [name=penddate]").val(result.penddate);
+				$("#updateProjectModal [name=mname]").val(result.mname);
+				$("#updateProjectModal [id=updateStatus]").val(result.pstatus); */
+		 	},
+		 	error: function() {
+		 		console.log("detailProject에서 오류 발생");
+		 	}
+		});
+	}
 	
 	</script>
 	

@@ -46,3 +46,22 @@
 	position: absolute;
 	font-size: 1.53125rem;
 }
+
+.listOne:hover {
+	transform: scale(1.01);
+	overflow: hidden;
+}
+
+.detail-project {
+	visibility: hidden;
+    margin: 0 0 0 auto;
+    color: #aea8ca;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    text-decoration: underline;
+    text-underline-position: under;
+    border: transparent;
+    background: transparent;	
+    float: right;
+}
