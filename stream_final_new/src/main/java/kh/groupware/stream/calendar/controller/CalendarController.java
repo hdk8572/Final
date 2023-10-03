@@ -1,6 +1,10 @@
 package kh.groupware.stream.calendar.controller;
 
+import java.security.Principal;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 
@@ -24,7 +29,24 @@ public class CalendarController {
 	private CalendarService calendarService;
 	
 	@GetMapping({"/pcal", "/pcal/{pno}"})
-	public ModelAndView selectList(ModelAndView mv, @PathVariable(name = "pno", required = false) String pno) {
+	public ModelAndView selectList(ModelAndView mv, @PathVariable(name = "pno", required = false) String pno
+			, Principal principal
+			, RedirectAttributes rttr
+			) {
+		
+		if(pno != null) {
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("pno", pno);
+			map.put("userid", principal.getName());
+			// 해당 프로젝트에 참여여부 확인
+			int result = calendarService.isAttendedProject(map);
+			if(result < 1) {
+				// 해당 프로젝트에 참여하고 있지 않은 회원으로 프로젝트 리스트 화면으로 이동하게 함.
+				rttr.addFlashAttribute("alertmsg", "소속된 프로젝트를 선택하세요.");
+				mv.setViewName("redirect:/projectlist");
+				return mv;
+			}
+		}
 		mv.addObject("pno", pno);
 		mv.setViewName("calendar/calendar");
 		return mv;
@@ -32,7 +54,7 @@ public class CalendarController {
 	
 	
 	//캘린더 전체 조회 //달력에 표시할 모든 일정 목록을 가져오는 역할을 한다.
-	@GetMapping({"/pcalselectlist", "/pcalselectlist/{pno}"}) //1번처럼 들어올 수도 있고 2번처럼 들어올 수도 있다. //{}중괄호를 치고 여러가지를 적는 것임
+	@GetMapping({"/pcalselectlist", "/pcalselectlist/{pno}"}) //1번처럼 들어올 수도 있고 2번처럼 들어올 수도 있다. //{}중괄호를 치고 번호를 적는 것임
 	@ResponseBody
 	public String calSelectList(@PathVariable(name = "pno", required = false) String pno) { //String pno->pno값을 들고올 수도 있는데(null값이 있을 수도 있음) 안 들고올 수도 있으니깐 앞에 저렇게 적어줌.required = false->꼭 pno가 있지 않을 수도 있어 
 		List<CalendarVo> calendarList = null;
@@ -56,9 +78,11 @@ public class CalendarController {
 		return new Gson().toJson(calendarService.memberProjectList(param));
 	}//짧게 쓰는 방법임
 
+	
 	//캘린더 등록
 	@PostMapping("/insertpcal")
 	public String insert(Model model, CalendarVo cal) {
+		cal.setAttenuseridList(Arrays.asList(cal.getAttentuseridArr()));
 		System.out.println("aaaa :" + cal);
 		calendarService.insert(cal);
 		return "redirect:pcal?sno="+cal.getSno();

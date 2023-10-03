@@ -27,6 +27,9 @@
 								<!-- 작성자 -->
 							<input type="text" name="userid" value="${principal.username }" readonly>
 							<div class="form-userid" >
+							<input type="text" name="attentuseridArr" value="mplsam@kh.co.kr">
+							<input type="text" name="attentuseridArr" value="kh0001@kh.com">
+							<input type="text" name="attentuseridArr" value="kh0002@kh.com">
 								<!-- 참가자 반복 -->
 								<input type="text" class="calmember" id="calmemberinput" placeholder="참가자" list="calmemberlist">
 								<select id="calmemberlist"> <!-- 일단 한 명만 추가해서 insert까지 하기  --> 
@@ -60,12 +63,6 @@
 					            console.error( err.stack );
 				        });
 						</script>
-					    <!-- ?? -->
-				<!-- 	        <script>
-						        document.addEventListener('DOMContentLoaded', e => {
-						            $('#clist').autocomplete()
-						        }, false);
-						   </script> -->
 				   </div>
 						<br>
 						<div align="center">

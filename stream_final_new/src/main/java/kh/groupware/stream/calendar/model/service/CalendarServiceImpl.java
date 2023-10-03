@@ -2,6 +2,7 @@ package kh.groupware.stream.calendar.model.service;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -63,6 +64,12 @@ public class CalendarServiceImpl implements CalendarService {
 	@Override
 	public int delete(String sno) {
 		return calendarDao.delete(sno);
+	}
+	
+	// 프로젝트에 참여중인 회원인지 확인함.
+	@Override
+	public int isAttendedProject(Map<String, String> map) {
+		return calendarDao.isAttendedProject(map);
 	}
 
 

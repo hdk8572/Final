@@ -1,5 +1,6 @@
 package kh.groupware.stream.calendar.model.vo;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -19,20 +20,23 @@ public class CalendarVo {
 	"ATTENUSERID"	VARCHAR2(40)		NOT NULL
 	*/
 	private String sno;
-	private String userid;
+	private String userid;  // 작성자  //insert - login, select - 다른id(참가자)
 	private String pno;
-	private String splace;
-	private String smemo;
+	private String splace;  // 장소
+	private String smemo;   // ckeditor
 //	private String sstartDate;
 //	private String sendDate;
 //	private String stitle;
 	private String start;
 	private String end;
-	private String title;
+	private String title;  //제목
 	private String color;
 	
-	/* 끼인테이블 */
-	private List<String> attenuseridList; //id 1개만 가져 올 거라 String
+	private String[] attentuseridArr;  // view에서 같은 name에 여러개 값이 있을때 배열에 실림
+	
+	// 끼인테이블(참가자는 여기에 들어가 있음) 
+	private List<String> attenuseridList; 
+	
 //	[{
 //	title : '풀캘린더완성도',
 //	start : '2023-09-12',
@@ -41,7 +45,6 @@ public class CalendarVo {
 //			+ Math.round(Math.random() * 0xffffff)
 //					.toString(16)
 //},]
-	
 	
 	public CalendarVo() {
 		super();
@@ -65,9 +68,18 @@ public class CalendarVo {
 	//smemo = CLOB 
 	@Override
 	public String toString() {
-		return "CalendarVo [sno=" + sno + ", userid=" + userid + ", pno=" + pno + ", splace=" + splace + ", smemo= CLOB , "
-				+ "start=" + start + ", end=" + end + ", title=" + title + ", color=" + color
-				+ ", attenuseridList=" + attenuseridList + "]";
+		return "CalendarVo [sno=" + sno + ", userid=" + userid + ", pno=" + pno + ", splace=" + splace + ", smemo=CLOB"
+			   + ", start=" + start + ", end=" + end + ", title=" + title + ", color=" + color
+				+ ", attentuseridArr=" + Arrays.toString(attentuseridArr) + ", attenuseridList=" + attenuseridList
+				+ "]";
+	}
+	
+	public String[] getAttentuseridArr() {
+		return attentuseridArr;
+	}
+
+	public void setAttentuseridArr(String[] attentuseridArr) {
+		this.attentuseridArr = attentuseridArr;
 	}
 
 	public String getSno() {
@@ -149,6 +161,5 @@ public class CalendarVo {
 	public void setAttenuseridList(List<String> attenuseridList) {
 		this.attenuseridList = attenuseridList;
 	}
-	
 	
 }
