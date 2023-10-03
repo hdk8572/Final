@@ -1,158 +1,150 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
-<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
-<style>
-boby{
-	margin: 0;
-	padding: 0;
-}
-.col-6{
-	background-color: #009b77;
-} 
-.col-61{
-	position: relative;
-	height: 50px;
-	padding: 0 0px 5px 20px;
-	height: 30px;
-}
-.chatheader{
-	background-color: #009b77;
-	height: 60px;
-	font-size: 24px;
-	line-height: 60px;
-}
-#msg,#button-send{
-	float: left;
-}
-#msg{
-	margin: 10px 0 10px 10px;
-	width: 85%;
-	height: 60px;
-	border-radius: 8px;
-}
-#button-send{
-	margin: 10px 0;
-	height: 65px;
-}
-</style>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body style="margin: 0; min-height: 100% ;background-color:rgb(221, 231, 245, 0.2) ">
 
-	<div class="container">
-		<div class="chatheader">
-			<label><span style="color: white; margin: 20px">채팅방</span></label>
+<meta charset="UTF-8">
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+	<title>Chating</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		.container{
+			width: 500px;
+			margin: 0 auto;
+			padding: 25px
+		}
+		.container h1{
+			text-align: left;
+			padding: 5px 5px 5px 15px;
+			color: #FFBB00;
+			border-left: 3px solid #FFBB00;
+			margin-bottom: 20px;
+		}
+		.chating{
+			background-color: #000;
+			width: 500px;
+			height: 500px;
+			overflow: auto;
+		}
+		.chating .me{
+			color: #F6F6F6;
+			text-align: right;
+		}
+		.chating .others{
+			color: #FFE400;
+			text-align: left;
+		}
+		input{
+			width: 330px;
+			height: 25px;
+		}
+		#yourMsg{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="container" class="container">
+		<h1>${roomName}의 채팅방</h1>
+		<input type="hidden" id="sessionId" value="">
+		<input type="hidden" id="roomNumber" value="${roomNumber}">
+		
+		<div id="chating" class="chating">
 		</div>
-		<div  class="scroller" style="overflow: scroll; height: 650px ;overflow-x: hidden">
-			<div>
-				<div id="msgArea" class="col"></div>
-				<div class="col-6"></div>
-			</div>
+		
+		<div id="yourName">
+			<table class="inputTable">
+				<tr>
+					<th>사용자명</th>
+					<th><input type="text" name="userName" id="userName"></th>
+					<th><button onclick="chatName()" id="startBtn">이름 등록</button></th>
+				</tr>
+			</table>
+		</div>
+		<div id="yourMsg">
+			<table class="inputTable">
+				<tr>
+					<th>메시지</th>
+					<th><input id="chatting" placeholder="보내실 메시지를 입력하세요."></th>
+					<th><button onclick="send()" id="sendBtn">보내기</button></th>
+				</tr>
+			</table>
 		</div>
 	</div>
-	<footer>
-		<div class="input-group mb-3" >
-			<input type="text" id="msg" class="form-control"
-				aria-label="Recipient's username" aria-describedby="button-addon2" >
-			<div class="input-group-append">
-				<button class="btn btn-outline-secondary" type="button"
-					id="button-send">전송</button>
-			</div>
-		</div>
-	</footer>
-</body>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js">
-</script>
-	<script >
-            $(document).ready(function(){
+	
+	<script>
+	var ws;
 
-<<<<<<< HEAD
-            const username = '사용자';
-=======
-            const username = "asd";
->>>>>>> 56225563cc96b7f557b6ffeaf068c3c34258d008
+	function wsOpen(){
+		//웹소켓 전송시 현재 방의 번호를 넘겨서 보낸다.
+		ws = new WebSocket("ws://localhost:8090/stream/chatting/"+$("#roomNumber").val());
+		wsEvt();
+	}
+		
+	function wsEvt() {
+		ws.onopen = function(data){
+			
+		}
+		
+		ws.onmessage = function(data) {
+			//메시지를 받으면 동작
+			var msg = data.data;
+			if(msg != null && msg.trim() != ''){
+				var d = JSON.parse(msg);
+				if(d.type == "getId"){
+					var si = d.sessionId != null ? d.sessionId : "";
+					if(si != ''){
+						$("#sessionId").val(si); 
+					}
+				}else if(d.type == "message"){
+					if(d.sessionId == $("#sessionId").val()){
+						$("#chating").append("<p class='me'>나 :" + d.msg + "</p>");	
+					}else{
+						$("#chating").append("<p class='others'>" + d.userName + " :" + d.msg + "</p>");
+					}
+						
+				}else{
+					console.warn("unknown type!")
+				}
+			}
+		}
 
-            $("#disconn").on("click", (e) => {
-                disconnect();
-            })
-            
-            $("#button-send").on("click", (e) => {
-                send();
-            });
+		document.addEventListener("keypress", function(e){
+			if(e.keyCode == 13){ //enter press
+				send();
+			}
+		});
+	}
 
-            const websocket = new WebSocket("ws://localhost:8090/stream/ws/chat");
+	function chatName(){
+		var userName = $("#userName").val();
+		if(userName == null || userName.trim() == ""){
+			alert("사용자 이름을 입력해주세요.");
+			$("#userName").focus();
+		}else{
+			wsOpen();
+			$("#yourName").hide();
+			$("#yourMsg").show();
+		}
+	}
 
-            websocket.onmessage = onMessage;
-            websocket.onopen = onOpen;
-            websocket.onclose = onClose;
-
-            function send(){
-
-                let msg = document.getElementById("msg");
-
-                console.log(username + ":" + msg.value);
-                websocket.send(username + ":" + msg.value);
-                msg.value = '';
-            }
-            
-            //채팅창에서 나갔을 때
-            function onClose(evt) {
-                var str = username + ": 님이 방을 나가셨습니다.";
-                websocket.send(str);
-            }
-            
-            //채팅창에 들어왔을 때
-            function onOpen(evt) {
-                var str = username + ": 님이 입장하셨습니다.";
-                websocket.send(str);
-            }
-
-            function onMessage(msg) {
-                var data = msg.data;
-                var sessionId = null;
-                //데이터를 보낸 사람
-                var message = null;
-                var arr = data.split(":");
-
-                for(var i=0; i<arr.length; i++){
-                    console.log('arr[' + i + ']: ' + arr[i]);
-                }
-
-                var cur_session = username;
-
-                //현재 세션에 로그인 한 사람
-                console.log("cur_session : " + cur_session);
-                sessionId = arr[0];
-                message = arr[1];
-
-                console.log("sessionID : " + sessionId);
-                console.log("cur_session : " + cur_session);
-
-                //로그인 한 클라이언트와 타 클라이언트를 분류하기 위함
-                if(sessionId == cur_session){
-                    var str = "<div class='col-61'>";
-                    str += "<div class='alert alert-secondary'>";
-                    str += "<b>" + sessionId + " : " + message + "</b>";
-                    str += "</div></div>";
-                    $("#msgArea").append(str);
-                }
-                else{
-                    var str = "<div class='col-61'>";
-                    str += "<div class='alert alert-warning'>";
-                    str += "<b>" + sessionId + " : " + message + "</b>";
-                    str += "</div></div>";
-                    $("#msgArea").append(str);
-                }
-            }
-            })
-           
+	function send() {
+		var option ={
+			type: "message",
+			roomNumber: $("#roomNumber").val(),
+			sessionId : $("#sessionId").val(),
+			userName : $("#userName").val(),
+			msg : $("#chatting").val()
+		}
+		ws.send(JSON.stringify(option))
+		$('#chatting').val("");
+	}
 </script>
 </body>
 </html>

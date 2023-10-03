@@ -194,12 +194,20 @@
 		    <artifactId>stomp-websocket</artifactId>
 		    <version>2.3.3-1</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
+		<!-- chat room -->
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-websocket</artifactId>
-		    <version>5.3.29</version>
-		</dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>${org.springframework-version}</version>
+			</dependency>
+			
+			<!-- Simple JSON -->
+			<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+			</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-messaging -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
