@@ -1,11 +1,15 @@
+.input-email {
+	width: 400px;
+}
+
 .table {
 	width: 512px;
 }
 
-.cardcard {
+.ccard {
 	display: none;
 }
 
-* {
-	font-family: 'NanumGyuRiEuiIrGi', sans-serif;
+.delete-text {
+	cursor: pointer;
 }
