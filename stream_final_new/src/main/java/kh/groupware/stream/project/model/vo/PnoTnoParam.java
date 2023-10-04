@@ -10,5 +10,4 @@ import lombok.ToString;
 public class PnoTnoParam {
 	private String pno;
 	private String tno;
-	private String aaa;
 }

@@ -7,9 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kh.groupware.stream.main.model.dao.MaintaskDao;
-import kh.groupware.stream.project.model.dao.ProjectDao;
 import kh.groupware.stream.project.model.vo.ProjectVo;
-import kh.groupware.stream.ptask.model.PtaskDao;
 import kh.groupware.stream.ptask.model.vo.PtaskVo;
 
 @Service
@@ -17,8 +15,6 @@ public class MaintaskServiceImpl implements MaintaskService {
 	
 	@Autowired
 	private MaintaskDao maintaskDao;
-	@Autowired
-	private PtaskDao ptaskDao;
 	
 	public List<ProjectVo> projectNameList(String userid){
 		return maintaskDao.projectNameList(userid);
