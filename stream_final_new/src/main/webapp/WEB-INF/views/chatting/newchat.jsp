@@ -438,7 +438,7 @@ form {
 	                	<%-- <img class="s_img_style" src="${selectOne.emp_file_path }"> --%>
 	                	<!-- 로그인한 사람의 부서명, 이름 -->
 	                	<%-- <div class="s_dn_en">${selectOne.dept_name } - ${selectOne.emp_name }</div> --%>
- 	                	<img class="chatimg" src="img/avatars/user1.jpg" ><h3 style="margin-top: 10px">${i.mname}</h3>
+ 	                	<img class="chatimg" src="${pageContext.request.contextPath}/img/avatars/user1.jpg" ><h3 style="margin-top: 10px">${i.mname}</h3>
 	                </div>
 	             	</c:forEach>
 	                <div id="s_f_list">참여자 리스트</div>

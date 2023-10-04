@@ -28,7 +28,7 @@
 							<a href="#" class="list-group-item">
 								<div class="row g-0 align-items-center">
 									<div class="col-2">
-										<img src="img/avatars/user1.jpg"
+										<img src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 											class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
 									</div>
 									<div class="col-10 ps-2">
@@ -43,7 +43,7 @@
 							<a href="#" class="list-group-item">
 								<div class="row g-0 align-items-center">
 									<div class="col-2">
-										<img src="img/avatars/user1.jpg"
+										<img src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 											class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
 									</div>
 									<div class="col-10 ps-2">
@@ -58,7 +58,7 @@
 							<a href="#" class="list-group-item">
 								<div class="row g-0 align-items-center">
 									<div class="col-2">
-										<img src="img/avatars/user1.jpg"
+										<img src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 											class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
 									</div>
 									<div class="col-10 ps-2">
@@ -73,7 +73,7 @@
 							<a href="#" class="list-group-item">
 								<div class="row g-0 align-items-center">
 									<div class="col-2">
-										<img src="img/avatars/user1.jpg"
+										<img src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 											class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
 									</div>
 									<div class="col-10 ps-2">
@@ -115,7 +115,7 @@
 						<a href="javascript:popupOpen()" class="list-group-item">
 							<div class="row g-0 align-items-center">
 								<div class="col-2">
-									<img src="img/avatars/user1.jpg"
+									<img src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 										class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
 								</div>
 								<div class="col-10 ps-2">
@@ -128,7 +128,7 @@
 						 <a href="javascript:popupOpen()" class="list-group-item">
 							<div class="row g-0 align-items-center">
 								<div class="col-2">
-									<img src="img/avatars/user1.jpg"
+									<img src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 										class="avatar img-fluid rounded-circle" alt="William Harris">
 								</div>
 								<div class="col-10 ps-2">
@@ -141,7 +141,7 @@
 						<a href="javascript:popupOpen()" class="list-group-item">
 							<div class="row g-0 align-items-center">
 								<div class="col-2">
-									<img src="img/avatars/user1.jpg"
+									<img src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 										class="avatar img-fluid rounded-circle" alt="Christina Mason">
 								</div>
 								<div class="col-10 ps-2">
@@ -154,7 +154,7 @@
 						<a href="javascript:popupOpen()" class="list-group-item">
 							<div class="row g-0 align-items-center">
 								<div class="col-2">
-									<img src="img/avatars/user1.jpg"
+									<img src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 										class="avatar img-fluid rounded-circle" alt="Sharon Lessman">
 								</div>
 								<div class="col-10 ps-2">
@@ -167,7 +167,7 @@
 						 <a href="javascript:popupOpen()" class="list-group-item">
 							<div class="row g-0 align-items-center">
 								<div class="col-2">
-									<img src="img/avatars/user1.jpg"
+									<img src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 										class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
 								</div>
 								<div class="col-10 ps-2">
@@ -180,7 +180,7 @@
 						<a href="javascript:popupOpen()" class="list-group-item">
 							<div class="row g-0 align-items-center">
 								<div class="col-2">
-									<img src="img/avatars/user1.jpg"
+									<img src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 										class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
 								</div>
 								<div class="col-10 ps-2">
@@ -198,7 +198,7 @@
 
 			<li class="nav-item dropdown">
 				<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown"> <i class="align-middle" data-feather="settings"></i></a>
-				<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown"> <img src="img/avatars/user1.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall" border-radius: 50% !important/>
+				<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown"> <img src="${pageContext.request.contextPath}/img/avatars/user1.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall" border-radius: 50% !important/>
 					<span class="text-dark">사용자</span>
 				</a>
 

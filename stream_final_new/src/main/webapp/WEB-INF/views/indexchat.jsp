@@ -74,7 +74,7 @@
 
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
-												<img src="img/avatars/user1.jpg"
+												<img src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 													class="avatar img-fluid rounded-circle"
 													alt="Vanessa Tucker">
 											</div>
@@ -87,7 +87,7 @@
 									</a> <a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
-												<img src="img/avatars/user1.jpg"
+												<img src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 													class="avatar img-fluid rounded-circle"
 													alt="Vanessa Tucker">
 											</div>
@@ -100,7 +100,7 @@
 									</a> <a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
-												<img src="img/avatars/user1.jpg"
+												<img src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 													class="avatar img-fluid rounded-circle"
 													alt="Vanessa Tucker">
 											</div>
@@ -113,7 +113,7 @@
 									</a> <a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
-												<img src="img/avatars/user1.jpg"
+												<img src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 													class="avatar img-fluid rounded-circle"
 													alt="Vanessa Tucker">
 											</div>
@@ -146,7 +146,7 @@
 									<a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
-												<img src="img/avatars/user1.jpg"
+												<img src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 													class="avatar img-fluid rounded-circle"
 													alt="Vanessa Tucker">
 											</div>
@@ -159,7 +159,7 @@
 									</a> <a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
-												<img src="img/avatars/user1.jpg"
+												<img src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 													class="avatar img-fluid rounded-circle"
 													alt="William Harris">
 											</div>
@@ -172,7 +172,7 @@
 									</a> <a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
-												<img src="img/avatars/user1.jpg"
+												<img src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 													class="avatar img-fluid rounded-circle"
 													alt="Christina Mason">
 											</div>
@@ -185,7 +185,7 @@
 									</a> <a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
-												<img src="img/avatars/user1.jpg"
+												<img src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 													class="avatar img-fluid rounded-circle"
 													alt="Sharon Lessman">
 											</div>
@@ -198,7 +198,7 @@
 									</a> <a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
-												<img src="img/avatars/user1.jpg"
+												<img src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 													class="avatar img-fluid rounded-circle"
 													alt="Vanessa Tucker">
 											</div>
@@ -211,7 +211,7 @@
 									</a> <a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
-												<img src="img/avatars/user1.jpg"
+												<img src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 													class="avatar img-fluid rounded-circle"
 													alt="Vanessa Tucker">
 											</div>
@@ -233,7 +233,7 @@
 								data-feather="settings"></i>
 						</a> <a class="nav-link dropdown-toggle d-none d-sm-inline-block"
 							href="#" data-bs-toggle="dropdown"> <img
-								src="img/avatars/avatar.jpg"
+								src="${pageContext.request.contextPath}/img/avatars/avatar.jpg"
 								class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span
 								class="text-dark">Charles Hall</span>
 						</a>

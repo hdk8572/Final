@@ -32,7 +32,7 @@
 							</svg>
 							<input type= "text" class= "form-control manager ml-2" value="${ul.mname}" placeholder= "담당자" readonly>
 						</div>
-						<textarea class="form-control content" id="summernote" rows="10" name="pcontent" placeholder="프로젝트에 관한 설명을 입력해주세요"></textarea>
+						<textarea class="form-control input" id="summernote" rows="10" name="pcontent" placeholder="프로젝트에 관한 설명을 입력해주세요"></textarea>
 						<input type="hidden" name="userid" value="kh0001@kh.com"> <!-- 로그인 세션 받아서 등록 -->
 						<input type="hidden" name="paccess" value="ACCESS"><!-- 세션에서 권한 선택 -->
 						

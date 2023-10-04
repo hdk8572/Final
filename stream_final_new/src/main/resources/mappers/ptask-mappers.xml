@@ -8,13 +8,21 @@
 	</select>
 
 	<select id="ProjectSelectOne" resultType="PtaskVo">
-		SELECT * 
+		SELECT tno,  pno, userid, tmember, ttitle, tcontent, tstatus
+			, to_char(tdate, 'yyyy-mm-dd') tdate
+			, to_char(tstartdate, 'yyyy-mm-dd') tstartdate
+			, to_char(tenddate, 'yyyy-mm-dd') tenddate
+			, bref, brelevel, brestep
 		FROM TASK
 		WHERE PNO=#{PNO}
 	</select>
 		
 	<select id="ProjectSelectOneInner" resultType="PtaskVo" parameterType="map">
-		SELECT * 
+		SELECT tno,  pno, userid, tmember, ttitle, tcontent, tstatus
+			, to_char(tdate, 'yyyy-mm-dd') tdate
+			, to_char(tstartdate, 'yyyy-mm-dd') tstartdate
+			, to_char(tenddate, 'yyyy-mm-dd') tenddate
+			, bref, brelevel, brestep 
 		FROM TASK
 		WHERE PNO=#{pno} and TNO=#{tno}
 	</select>	

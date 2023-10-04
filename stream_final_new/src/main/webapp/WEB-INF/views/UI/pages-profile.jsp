@@ -217,7 +217,7 @@
 									<a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
-												<img src="img/avatars/avatar-5.jpg" class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
+												<img src="${pageContext.request.contextPath}/img/avatars/avatar-5.jpg" class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
 											</div>
 											<div class="col-10 ps-2">
 												<div class="text-dark">Vanessa Tucker</div>
@@ -229,7 +229,7 @@
 									<a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
-												<img src="img/avatars/avatar-2.jpg" class="avatar img-fluid rounded-circle" alt="William Harris">
+												<img src="${pageContext.request.contextPath}/img/avatars/avatar-2.jpg" class="avatar img-fluid rounded-circle" alt="William Harris">
 											</div>
 											<div class="col-10 ps-2">
 												<div class="text-dark">William Harris</div>
@@ -241,7 +241,7 @@
 									<a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
-												<img src="img/avatars/avatar-4.jpg" class="avatar img-fluid rounded-circle" alt="Christina Mason">
+												<img src="${pageContext.request.contextPath}/img/avatars/avatar-4.jpg" class="avatar img-fluid rounded-circle" alt="Christina Mason">
 											</div>
 											<div class="col-10 ps-2">
 												<div class="text-dark">Christina Mason</div>
@@ -253,7 +253,7 @@
 									<a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
-												<img src="img/avatars/avatar-3.jpg" class="avatar img-fluid rounded-circle" alt="Sharon Lessman">
+												<img src="${pageContext.request.contextPath}/img/avatars/avatar-3.jpg" class="avatar img-fluid rounded-circle" alt="Sharon Lessman">
 											</div>
 											<div class="col-10 ps-2">
 												<div class="text-dark">Sharon Lessman</div>
@@ -274,7 +274,7 @@
               </a>
 
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark">Charles Hall</span>
+                <img src="${pageContext.request.contextPath}/img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark">Charles Hall</span>
               </a>
 							<div class="dropdown-menu dropdown-menu-end">
 								<a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
@@ -306,7 +306,7 @@
 									<h5 class="card-title mb-0">Profile Details</h5>
 								</div>
 								<div class="card-body text-center">
-									<img src="img/avatars/avatar-4.jpg" alt="Christina Mason" class="img-fluid rounded-circle mb-2" width="128" height="128" />
+									<img src="${pageContext.request.contextPath}/img/avatars/avatar-4.jpg" alt="Christina Mason" class="img-fluid rounded-circle mb-2" width="128" height="128" />
 									<h5 class="card-title mb-0">Christina Mason</h5>
 									<div class="text-muted mb-2">Lead Developer</div>
 
@@ -361,7 +361,7 @@
 								<div class="card-body h-100">
 
 									<div class="d-flex align-items-start">
-										<img src="img/avatars/avatar-5.jpg" width="36" height="36" class="rounded-circle me-2" alt="Vanessa Tucker">
+										<img src="${pageContext.request.contextPath}/img/avatars/avatar-5.jpg" width="36" height="36" class="rounded-circle me-2" alt="Vanessa Tucker">
 										<div class="flex-grow-1">
 											<small class="float-end text-navy">5m ago</small>
 											<strong>Vanessa Tucker</strong> started following <strong>Christina Mason</strong><br />
@@ -372,7 +372,7 @@
 
 									<hr />
 									<div class="d-flex align-items-start">
-										<img src="img/avatars/avatar.jpg" width="36" height="36" class="rounded-circle me-2" alt="Charles Hall">
+										<img src="${pageContext.request.contextPath}/img/avatars/avatar.jpg" width="36" height="36" class="rounded-circle me-2" alt="Charles Hall">
 										<div class="flex-grow-1">
 											<small class="float-end text-navy">30m ago</small>
 											<strong>Charles Hall</strong> posted something on <strong>Christina Mason</strong>'s timeline<br />
@@ -389,7 +389,7 @@
 
 									<hr />
 									<div class="d-flex align-items-start">
-										<img src="img/avatars/avatar-4.jpg" width="36" height="36" class="rounded-circle me-2" alt="Christina Mason">
+										<img src="${pageContext.request.contextPath}/img/avatars/avatar-4.jpg" width="36" height="36" class="rounded-circle me-2" alt="Christina Mason">
 										<div class="flex-grow-1">
 											<small class="float-end text-navy">1h ago</small>
 											<strong>Christina Mason</strong> posted a new blog<br />
@@ -400,7 +400,7 @@
 
 									<hr />
 									<div class="d-flex align-items-start">
-										<img src="img/avatars/avatar-2.jpg" width="36" height="36" class="rounded-circle me-2" alt="William Harris">
+										<img src="${pageContext.request.contextPath}/img/avatars/avatar-2.jpg" width="36" height="36" class="rounded-circle me-2" alt="William Harris">
 										<div class="flex-grow-1">
 											<small class="float-end text-navy">3h ago</small>
 											<strong>William Harris</strong> posted two photos on <strong>Christina Mason</strong>'s timeline<br />
@@ -421,7 +421,7 @@
 
 									<hr />
 									<div class="d-flex align-items-start">
-										<img src="img/avatars/avatar-2.jpg" width="36" height="36" class="rounded-circle me-2" alt="William Harris">
+										<img src="${pageContext.request.contextPath}/img/avatars/avatar-2.jpg" width="36" height="36" class="rounded-circle me-2" alt="William Harris">
 										<div class="flex-grow-1">
 											<small class="float-end text-navy">1d ago</small>
 											<strong>William Harris</strong> started following <strong>Christina Mason</strong><br />
@@ -429,7 +429,7 @@
 
 											<div class="d-flex align-items-start mt-1">
 												<a class="pe-3" href="#">
-                <img src="img/avatars/avatar-4.jpg" width="36" height="36" class="rounded-circle me-2" alt="Christina Mason">
+                <img src="${pageContext.request.contextPath}/img/avatars/avatar-4.jpg" width="36" height="36" class="rounded-circle me-2" alt="Christina Mason">
               </a>
 												<div class="flex-grow-1">
 													<div class="border text-sm text-muted p-2 mt-1">
@@ -442,7 +442,7 @@
 
 									<hr />
 									<div class="d-flex align-items-start">
-										<img src="img/avatars/avatar-4.jpg" width="36" height="36" class="rounded-circle me-2" alt="Christina Mason">
+										<img src="${pageContext.request.contextPath}/img/avatars/avatar-4.jpg" width="36" height="36" class="rounded-circle me-2" alt="Christina Mason">
 										<div class="flex-grow-1">
 											<small class="float-end text-navy">1d ago</small>
 											<strong>Christina Mason</strong> posted a new blog<br />
@@ -452,7 +452,7 @@
 
 									<hr />
 									<div class="d-flex align-items-start">
-										<img src="img/avatars/avatar.jpg" width="36" height="36" class="rounded-circle me-2" alt="Charles Hall">
+										<img src="${pageContext.request.contextPath}/img/avatars/avatar.jpg" width="36" height="36" class="rounded-circle me-2" alt="Charles Hall">
 										<div class="flex-grow-1">
 											<small class="float-end text-navy">1d ago</small>
 											<strong>Charles Hall</strong> started following <strong>Christina Mason</strong><br />

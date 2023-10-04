@@ -31,7 +31,7 @@
 							</svg>
 							<input type= "text" class= "form-control manager ml-2" name="tmember" placeholder= "담당자">
 						</div>
-						<textarea class="form-control" id="summernote" rows="10" name="tcontent" placeholder="내용을 입력해주세요"></textarea>
+						<textarea class="form-control input" id="summernote" rows="10" name="tcontent" placeholder="내용을 입력해주세요"></textarea>
 						<input type="hidden" name="tdate" value=sysdate>
 						<input type="hidden" name="userid" value="kh0002@kh.com">
 						<input type="hidden" name="pno" value="${pno}">
