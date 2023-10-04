@@ -104,6 +104,7 @@
 										<td>${fn:split(tlist.tstartdate, " ")[0]}</td>
 										<td>${fn:split(tlist.tenddate, " ")[0]}</td>
 										<input type="hidden" name="tno" value="${tlist.tno}">
+										<input type="hidden" name="pno" value="${tlist.pno}">
 									</tr>
 								</c:forEach>
 								
@@ -180,16 +181,20 @@
 	<script>
 	function detailProject() {
 		targetTno = $(this).closest("tr").find("input[name=tno]").val();
+		targetPno = $(this).closest("tr").find("input[name=pno]").val();
 		$("#detailProjectModal").modal("toggle");
 		console.log(targetTno);
+		console.log(targetPno);
 		
 		$.ajax({
 		 	url: "${pageContext.request.contextPath}/ptaskselectOne",
 		 	type: "get",
 		 	dataType: "json",
+		 	data: {tno: targetTno, pno: targetPno},
 		 	success: function(result){
-		 		console.log("asd");
-		 		/* console.log(result.penddate);
+		 		console.log(result);
+		 		console.log(result.tno);
+		 		/*
 				$("#updateProjectModal [name=pno]").val(result.pno);
 				$("#updateProjectModal [name=pname]").val(result.pname);
 				$("#updateProjectModal [name=pcontent]").val(result.pcontent);
@@ -203,7 +208,5 @@
 		 	}
 		});
 	}
-	
 	</script>
-	
 </html>

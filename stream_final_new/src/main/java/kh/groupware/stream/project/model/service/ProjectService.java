@@ -10,6 +10,6 @@ public interface ProjectService {
 	public List<ProjectVo> selectHide();
 	public ProjectVo selectOne(String pno);
     public List<ProjectVo> insertList(ProjectVo vo);
-    public int deleteList(String pno);
+    public int delete(String pno);
     public int update(ProjectVo vo);
 }

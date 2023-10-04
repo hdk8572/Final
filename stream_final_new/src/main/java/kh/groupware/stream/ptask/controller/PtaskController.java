@@ -6,9 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import kh.groupware.stream.project.model.vo.PnoTnoParam;
 import kh.groupware.stream.ptask.model.service.PtaskService;
 import kh.groupware.stream.ptask.model.vo.PtaskVo;
 
@@ -34,11 +35,20 @@ public class PtaskController {
 		return "redirect:ptasklist?pno="+vo.getPno();
 	}
 	
+	// 아래는 진짜 암기하자
+	/* @GetMapping("/ptaskselectOne")
+	@ResponseBody
+	public Map<String, Object> selectOne(String pno, String tno) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pno", pno);
+		map.put("tno", tno);
+		return map;
+	} */
+	 
 	
-	@GetMapping("/ptaskselectOne")
-	public PtaskVo selectOne(String pno, String tno) {
-		PtaskVo pvo = ptaskService.selectOneInner(pno, tno);
-		return pvo;
+	@GetMapping("/ptaskselectOne") 
+	@ResponseBody
+	public PtaskVo selectOne( PnoTnoParam pnoTnoParam) {
+		return ptaskService.selectOneInner(pnoTnoParam);
 	}
-	
 }

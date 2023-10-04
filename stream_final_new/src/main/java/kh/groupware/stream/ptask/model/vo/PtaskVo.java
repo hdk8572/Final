@@ -1,5 +1,8 @@
 package kh.groupware.stream.ptask.model.vo;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class PtaskVo {
 
 	private String tno;

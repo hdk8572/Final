@@ -1,8 +1,11 @@
 package kh.groupware.stream.project.model.vo;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import kh.groupware.stream.main.model.dto.MaintaskDto;
 
+@Component
 public class ProjectVo {
 //	projectVo
 	private String pno;
@@ -33,9 +36,12 @@ public class ProjectVo {
 				+ mrank + ", deptName=" + deptName + ", maintaskList=" + maintaskList + "]";
 	}
 
+
+
 	public ProjectVo() {
 		super();
 	}
+
 
 
 	public ProjectVo(String pno, String userid, String pname, String pcontent, String paccess, String pdate,
@@ -58,6 +64,8 @@ public class ProjectVo {
 		this.deptName = deptName;
 		this.maintaskList = maintaskList;
 	}
+
+
 
 	public String getPno() {
 		return pno;
