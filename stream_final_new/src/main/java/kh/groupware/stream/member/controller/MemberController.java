@@ -1,5 +1,7 @@
 package kh.groupware.stream.member.controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -19,6 +21,7 @@ import kh.groupware.stream.company.model.vo.CompanyVo;
 import kh.groupware.stream.member.model.service.MemberService;
 import kh.groupware.stream.member.model.service.MemberServiceImpl;
 import kh.groupware.stream.member.model.vo.MemberVo;
+import kh.groupware.stream.member.model.vo.MyPageVo;
 
 @Controller
 public class MemberController {
@@ -45,7 +48,7 @@ public class MemberController {
 		idCheck = memberService.idCheck(mvo.getUserid());
 
 		if (idCheck == 0) {
-			ra.addFlashAttribute("msg", "존재하지 않는 정보입니다. 링크를 전달받은 이메일 주소를 입력해주세요.");
+			ra.addFlashAttribute("alertmsg", "존재하지 않는 정보입니다. 링크를 전달받은 이메일 주소를 입력해주세요.");
 			return "redirect:/newmember";
 
 		} else {
@@ -55,11 +58,11 @@ public class MemberController {
 			int result1 = memberService.signUp(mvo);
 
 			if (result1 == 0) {
-				ra.addFlashAttribute("msg", "회원가입에 실패하였습니다. 다시 시도해주세요!");
+				ra.addFlashAttribute("alertmsg", "회원가입에 실패하였습니다. 다시 시도해주세요!");
 				return "redirect:/newmember";
 
 			} else
-				ra.addFlashAttribute("msg", "회원가입에 성공했습니다. 로그인해주세요!");
+				ra.addFlashAttribute("alertmsg", "회원가입에 성공했습니다. 로그인해주세요!");
 			return "redirect:/main";
 		}
 	}
@@ -75,6 +78,12 @@ public class MemberController {
 	@GetMapping("/mypage")
 	public String myPage() {
 		return "member/mypage";
+	}
+	
+	@GetMapping("/showmypage")
+	public MyPageVo showMyPage(String userid) {
+		MyPageVo mvo = memberService.showMyPage(userid);
+		return mvo;
 	}
 
 }

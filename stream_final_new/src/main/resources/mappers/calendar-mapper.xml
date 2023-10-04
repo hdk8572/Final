@@ -2,16 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="calendar">
 
+	<resultMap type="CalendarVo" id="CalendarMembersMap">
+		<id property="sno" column="sno"/>
+		<result property="userid" column="USERID"/>
+		<result property="start" column="SSTART"/>
+		<result property="end" column="SEND"/>
+		<result property="title" column="STITLE"/>
+		<result property="color" column="SCOLOR"/>
+		<result property="smemo" column="SMEMO"/>
+		<result property="pno" column="PNO"/>
+		<collection property="attenuseridList" javaType="list" ofType="string" column="ATTENUSERID"/>
+	</resultMap>
+	
 	<!-- 일정 조회 -->
 	<!-- 동적 SQL문 where을 건 이유(if랑 세트) =pno를 안 들고 진입하는 경우도 있기 때문에(이걸 걸면 안에 where을 적을 필요가 없다.) --> <!-- 다른 방법으로 trim도 있다. -->
-	<select id="selectList" resultType="CalendarVo" parameterType="string">
-		SELECT SNO, USERID,
-		to_char(SSTART, 'yyyy-mm-dd') as "START", to_char(SEND, 'yyyy-mm-dd')
-		as END, STITLE
-		as TITLE, SCOLOR as color
-		,SPLACE, SMEMO
-        , PNO
-		FROM SCHEDULE
+	<select id="selectList" resultMap="CalendarMembersMap" parameterType="string">
+		SELECT SNO, USERID,	to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, 'yyyy-mm-dd') SEND, STITLE, SCOLOR, SPLACE, SMEMO, PNO, ATTENUSERID
+		FROM SCHEDULE tbs left outer join member_schedule tbms using(sno)
 		<where>
 			<if test="pno != null">
 	          pno=#{pno}
@@ -20,38 +27,49 @@
 	</select>
 
 	<!-- 일정 상세조회 -->
-	<select id="SelectOne" resultType="CalendarVo">
-		SELECT SNO, USERID, SSTART as start, SEND as end, SMEMO, SPLACE, STITLE as title
-		FROM SCHEDULE
-		WHERE SNO=#{SNO}
+	<select id="selectOne" resultMap="CalendarMembersMap" parameterType="string">
+		SELECT  SNO, USERID, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, 'yyyy-mm-dd') SEND, STITLE, SCOLOR, SPLACE, SMEMO, PNO, ATTENUSERID
+		from ( select * from schedule WHERE sno = #{sno} ) tbs join member_schedule tbms using(sno)
 	</select>
 	
 	<!-- 프로젝트의 멤버들 조회 --> 
-	<!-- 안에 ()는 id랑 name을 나타내려고 -->
 	<select id="memberProjectList" resultType="MemberSimpleVo">
 		select userid, (select mname from users tu where tm.userid=tu.userid ) mname 
-		from MEMBER_PROJECT tm 
-		
+		from MEMBER_PROJECT tm 		
 		where pno=1
 	</select>
 	
 
-	<!-- 일정 등록 -->
-	<insert id="insert" parameterType="CalendarVo">	
-	<!-- 	<selectKey keyProperty="sno" resultType="_int"
+	<!-- 일정 등록 과 끼인테이블 등록 selectKey사용 -->
+	<!-- 	
+	<insert id="insert" parameterType="CalendarVo">
+		<selectKey keyProperty="sno" resultType="_int"
 			order="BEFORE">
 			SELECT schedule_sequence.NEXTVAL FROM dual
-		</selectKey>  -->
+		</selectKey> 
+		
 		INSERT INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SCOLOR)
 		VALUES (schedule_sequence.NEXTVAL, #{userid}, #{pno}, #{start}, #{end}, #{smemo}, #{title},
 		'#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'))
 	</insert>
-
-	<!-- 일정 등록? 끼인 테이블 TODO attenuserid라는 건 없음-->
+	
 	<insert id="insertmember" parameterType="CalendarVo">
 		INSERT INTO
 		Member_SCHEDULE (SNO, ATTENUERID)
 		VALUES (#{sno},#{attenuserid})
+	</insert>
+	-->
+
+	<!-- 일정 등록 + 끼인 테이블 attenuserid 등록-->
+	<insert id="insert" parameterType="CalendarVo">
+		INSERT All
+		INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SCOLOR)
+				VALUES (schedule_sequence.NEXTVAL, #{userid}, #{pno}, #{start}, #{end}, #{smemo}, #{title},'#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'))
+		<foreach collection="attenuseridList" item="attenduserid">
+		INTO Member_SCHEDULE (SNO, ATTENUERID)
+			VALUES (schedule_sequence.NEXTVAL, #{attenuserid})
+		</foreach>		
+		SELECT * FROM dual
 	</insert>
 
 
@@ -63,5 +81,10 @@
 	<delete id="delete" parameterType="CalendarVo">
 	</delete>
 
-
+	
+	<!-- 프로젝트에 참여중인 회원인지 확인 -->
+	<select id="isAttendedProject" resultType="_int" parameterType="map">
+	select count(*) cnt from member_project where pno=#{pno} and userid=#{userid}
+	</select>
+	
 </mapper>

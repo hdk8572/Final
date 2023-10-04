@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import kh.groupware.stream.member.model.dao.MemberDao;
 import kh.groupware.stream.member.model.vo.MemberVo;
+import kh.groupware.stream.member.model.vo.MyPageVo;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -22,6 +23,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int idCheck(String userid) {
 		return memberDao.idCheck(userid);
+	}
+	
+	@Override
+	public MyPageVo showMyPage(String userid) {
+		return memberDao.showMyPage(userid); 
+		
 	}
 
 }

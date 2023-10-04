@@ -13,5 +13,6 @@ public interface PtaskService {
 	public List<PtaskVo> pselectList(String pno);
 	public int insertTask(PtaskVo vo);
     public int deleteTask(String pno);
+    public PtaskVo selectOneInner(String pno, String tno);
     
 }

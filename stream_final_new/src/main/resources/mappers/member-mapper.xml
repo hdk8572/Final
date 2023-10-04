@@ -3,23 +3,44 @@
 <mapper namespace="member">
 
 	<!-- 회원가입 -->
-	<select id="signUp" parameterType="MemberVo" >
-		UPDATE USERS SET DEPTNO = #{deptno}, PASSWORD = #{password}, MNAME = #{mname} WHERE USERID = #{userid} 
+	<select id="signUp" parameterType="MemberVo">
+		UPDATE USERS SET
+		DEPTNO =
+		#{deptno}, PASSWORD = #{password}, MNAME = #{mname} WHERE
+		USERID =
+		#{userid}
 	</select>
-	
+
 	<!-- 마이페이지 -->
 	<select id="myPage" parameterType="String" resultType="MemberVo">
-		SELECT MNAME, CNAME, DEPTNAME, USERID, MPHONE, MRANK FROM MEMBER WHERE USERID = #{userid}
+		SELECT
+		MNAME, CNAME, DEPTNAME, USERID, MPHONE, MRANK FROM MEMBER WHERE USERID
+		= #{userid}
 	</select>
-	
+
 	<!-- 마이페이지 수정 -->
 	<select id="update" parameterType="MemberVo">
-		UPDATE USERS SET DEPTNO= #{deptno}, MPHONE = #{mphone}, MRANK = #{mrank} WHERE USERID = #{userid}
+		UPDATE USERS SET DEPTNO=
+		#{deptno}, MPHONE = #{mphone}, MRANK = #{mrank} WHERE USERID =
+		#{userid}
 	</select>
-	
+
 	<!-- 아이디체크 -->
-	<select id="idCheck" parameterType="String"  resultType="_int">
-		SELECT COUNT(USERID) FROM USERS WHERE USERID=#{userid}
+	<select id="idCheck" parameterType="String" resultType="_int">
+		SELECT
+		COUNT(USERID) FROM USERS WHERE USERID=#{userid}
 	</select>
-	
+
+	<select id="showMyPage" parameterType="String"
+		resultType="MyPageVo">
+		SELECT U.MNAME, U.MRANK, U.MPHONE, (SELECT C.CNAME FROM COMPANY C
+		WHERE U.CCODE = C.CCODE) CNAME, D.DEPTNAME FROM (SELECT * FROM USERS
+		WHERE USERID = #{userid}) U INNER JOIN DEPT D ON U.DEPTNO = D.DEPTNO
+		AND U.CCODE = D.CCODE
+	</select>
+	<!-- SELECT U.USERID, U.MNAME, (SELECT C.CNAME FROM COMPANY C WHERE U.CCODE 
+		= C.CCODE) CNAME, D.DEPTNAME FROM (SELECT * FROM USERS WHERE USERID = 'sple@kh.co.kr') 
+		U INNER JOIN DEPT D ON U.DEPTNO = D.DEPTNO AND U.CCODE = D.CCODE; -->
+
+
 </mapper>

@@ -44,6 +44,10 @@ body {
 	top: 10px;
 	right: 10px;
 }
+.modal_close_btn{
+	cursor: pointer;
+	color: #f5f7fb;
+}
 
 .modalbox {
 	width: 100%;

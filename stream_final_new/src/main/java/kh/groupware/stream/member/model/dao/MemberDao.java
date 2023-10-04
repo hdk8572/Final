@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kh.groupware.stream.member.model.vo.MemberVo;
+import kh.groupware.stream.member.model.vo.MyPageVo;
 
 
 @Repository("memberDao")
@@ -22,5 +23,8 @@ public class MemberDao {
 	}
 	public int idCheck(String userid) {
 		return sqlSession.selectOne("member.idCheck", userid);
+	}
+	public MyPageVo showMyPage(String userid) {
+		return sqlSession.selectOne("member.showMyPage", userid);
 	}
 }

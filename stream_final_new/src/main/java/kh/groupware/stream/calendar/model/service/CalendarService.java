@@ -12,6 +12,7 @@ public interface CalendarService {
 	public List<CalendarVo> selectList(String pno);
 	public CalendarVo selectOne(String sno);
 	public List<MemberSimpleVo> memberProjectList(CalendarParamVo pno);
+	public int isAttendedProject(Map<String, String> map);
 	public int insert(CalendarVo cal);
 	public int update(CalendarVo cal);
 	public int delete(String sno);

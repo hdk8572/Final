@@ -35,6 +35,10 @@
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
+<!-- SummerNote CDN -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
 <script>
 let logined_userid="${principal.username}"; /* 로그인! */
 </script>
@@ -85,6 +89,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 		</div>
 	</div>
 	
+	<script src="${pageContext.request.contextPath}/js/message.js"></script>
 	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
 	
@@ -136,6 +141,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 						console.log(info.event.title);
 						var event = info.event;
 						//작성자!!!!임 (다른사람도 적은 일정들)
+						console.log(info.event.extendedProps.sno);
 						$("#readScheduleModal.modal  #title").html(info.event.title); //띄우려는 모달이랑 이름 맞춰야한다.
 						$("#readScheduleModal.modal  #userid").html(info.event.extendedProps.userid); //extendedProps -> api에서 가져옴, 값을 띄우는 걸 도와줌
 						$("#readScheduleModal.modal  #smemo").html(info.event.extendedProps.smemo);
