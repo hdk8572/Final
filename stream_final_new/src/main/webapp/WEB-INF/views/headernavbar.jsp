@@ -1,89 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
-
-<!-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> -->
-<script src="${pageContext.request.contextPath}/js/jquery-3.7.0.js"></script>
-
-<head>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec"	uri="http://www.springframework.org/security/tags"%>
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal" />
 </sec:authorize>
-
-<style>
-.btn-primary {
-	font-size: 20px;
-	margin: 0 0 0 100px;
-}
-
-/*모달 CSS*/
-#mypage-modal {
-	display: none;
-	width: 350px;
-	height: 400px;
-	background-color: #f5f7fb;
-	border: 1px solid black;
-	border-radius: 10px;
-	position: relative;
-}
-
-#mypage-modal .modal_close_btn {
-	position: absolute;
-}
-
-.modal_close_btn {
-	color: white;
-	cursor: pointer;
-	top: 10px;
-	right: 10px;
-}
-
-.modalbox {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center; /* 세로 중앙 정렬 */
-	align-items: center; /* 가로 중앙 정렬 */
-}
-
-.modal-header {
-	height: 65px;
-	width: 100%;
-	background-color: #009b77;
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-	padding-top: 10px;
-	display: flex;
-	justify-content: flex-end;
-	position: relative;
-}
-
-.mp-table {
-	width: 80%;
-	height: 70%;
-	border-collapse: collapse;
-	align-items: middle;
-	overflow: auto;
-	margin-top: 65px;
-	margin-bottom: 65px;
-}
-
-.mp-button {
-	align-items: middle;
-	text-align: center; /* 가로 가운데 정렬 */
-	vertical-align: middle;
-	margin: 20px 0 0 0;
-}
-
-.mp-content {
-	color: grey;
-}
-</style>
-</head>
 
 <nav class="navbar navbar-expand navbar-light navbar-bg">
 	<a class="sidebar-toggle js-sidebar-toggle"> <i
@@ -295,11 +216,10 @@
 	</div>
 </nav>
 
-<div class="wrapper">
 		<!-- 모달박스 -->
 		<div id="mypage-modal">
 			<div class="modalbox">
-				<div class="modal-header"></div>
+				<div class="mpmodal-header"></div>
 
 				<table class="mp-table">
 					<tr>
@@ -358,10 +278,7 @@
 						<td colspan="2" class="mp-button"><button
 								class="btn btn-primary btn-sm mp-button">정보수정</button></td>
 					</tr>
-
 				</table>
-
-
 			</div>
 			<a class="modal_close_btn">X</a>
 		</div>

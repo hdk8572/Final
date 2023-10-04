@@ -74,11 +74,11 @@ public class MemberController {
 		return mv;
 	}
 
-	// 마이페이지 임시
-	@GetMapping("/mypage")
-	public String myPage() {
-		return "member/mypage";
-	}
+	/*
+	 * // 마이페이지 임시
+	 * 
+	 * @GetMapping("/mypage") public String myPage() { return "member/mypage"; }
+	 */
 	
 	@GetMapping("/showmypage")
 	@ResponseBody
