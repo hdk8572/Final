@@ -119,10 +119,14 @@ function innerTaskaddListHandler () {
 //const contextPath = origin + pathname;
 	console.log("ajax간다");
 	console.log($(this).closest(".addInnerTask").serialize());
+	//???
+	var d1 = $(this).closest(".addInnerTask").serialize();
+	console.log(d1);
 	$.ajax ({
 		url: contextPath+"/innertaskinsert",
 		type: "post",
-		data : $(this).closest(".addInnerTask").serialize(),
+//		data : $(this).closest(".addInnerTask").serialize(),
+		data : d1,
 		dataType: "json",
 		success: function(result){
 				console.log("성공 ProjectVo with taskList ");
@@ -199,6 +203,7 @@ listHtml += `
 															<li class="jm-ajax-InnertaskIn">
 															</li>
 															<form class="addInnerTask" id="taskInputNo_${task.tno}">
+															<ul>
 																<li class="jm-innerTaskInput jm-innerTask-el">
 																	<div class="jm-title-ttitle col-lg-4 jm-grey">
 																		<input type="text" placeholder="하위업무명을 입력하세요" name="ttitle" required="required">

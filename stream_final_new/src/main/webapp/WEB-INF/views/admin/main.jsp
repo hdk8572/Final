@@ -7,6 +7,6 @@
 <title>관리자페이지</title>
 </head>
 <body>
-hello admin!
+	<h1>hello admin!</h1>
 </body>
 </html>
