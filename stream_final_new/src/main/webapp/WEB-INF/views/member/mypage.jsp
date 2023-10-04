@@ -82,10 +82,6 @@
 	position: relative;
 }
 
-p {
-	margin: 7px;
-}
-
 .mp-table {
 	width: 80%;
 	height: 70%;
