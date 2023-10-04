@@ -276,7 +276,7 @@
 					</tr>
 					<tr>
 						<td colspan="2" class="mp-button"><button
-								class="btn mpbtn-primary btn-sm mp-button">정보수정</button></td>
+								class="btn mpbtn-primary btn-primary btn-sm mp-button">정보수정</button></td>
 					</tr>
 				</table>
 			</div>
