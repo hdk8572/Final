@@ -31,7 +31,7 @@
 	
 	<!-- SummerNote CDN -->
 	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+	
 	
 </head>
 
@@ -134,9 +134,11 @@
 </body>
 	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
-	<script src="${pageContext.request.contextPath}/js/summernote-lite.js"></script>
+	<!-- SummerNote CDN -->
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
 	<script>
-	
+
 	/* ajax 용 - contextPath 변수 지정 */
 	const contextPath = "${pageContext.request.contextPath}";
 	
@@ -161,12 +163,11 @@
 		       ['color', ['color']],
 		       ['para', ['ul', 'ol', 'paragraph']],
 		       ['table', ['table']],
-		       ['insert', ['link', 'picture', 'video']],
+		       ['insert' /* ['link', 'picture', 'video'] */],
 		       ['view', ['fullscreen', 'codeview', 'help']]
 		     ]
 		});
 		$(this).find(".detailProject").click(detailProject);
-		
 	}); 
 	
 	</script>
@@ -190,14 +191,12 @@
 		 	dataType: "json",
 		 	data: {tno: targetTno, pno: targetPno},
 		 	success: function(result){
-		 		console.log(result);
-		 		console.log(result.ttitle);
 		 		$(".wrap-card .tcontent").html(result.tcontent);
 		 		$(".wrap-card .ttitle").html(result.ttitle);
 		 		$(".wrap-card .tstatus").html(result.tstatus);
 		 		$(".wrap-card .userid").html(result.userid);
-		 		
-		 		$(".detail-project").find("[name=ttitle]").val("666");
+		 		$(".wrap-card .tstartdate").val(result.tstartdate);
+		 		$(".wrap-card .tenddate").val(result.tenddate);
 		 	},
 		 	error: function() {
 		 		console.log("detailProject에서 오류 발생");

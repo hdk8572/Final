@@ -94,8 +94,17 @@
     height: 94%;
 }
 
+.form-control.input{
+	margin-bottom: 1.5rem;
+    border: 1px solid #ced4da;
+    width: 100%;
+}
+
 .form-control {
-	margin-bottom: 1.5rem;	
+	margin-bottom: 1.5rem;
+    border: transparent;
+    border-bottom: 1px solid #ced4da;
+    border-radius: 0px;	
 }
 
 /* PtaskModal */

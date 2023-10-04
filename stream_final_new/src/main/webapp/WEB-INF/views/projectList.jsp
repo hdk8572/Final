@@ -36,7 +36,7 @@
 
 <!-- SummerNote CDN -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
 
 </head>
 <body>
@@ -78,7 +78,7 @@
 <script src="${pageContext.request.contextPath}/js/stream.js"></script>
 <script src="${pageContext.request.contextPath}/js/modal.js"></script>
 <script src="${pageContext.request.contextPath}/js/app.js"></script>
-<script src="${pageContext.request.contextPath}/js/summernote-lite.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <script>
 	/* ajax 용 - contextPath 변수 지정 */
 	const contextPath = "${pageContext.request.contextPath}";
@@ -101,10 +101,25 @@
 		       ['color', ['color']],
 		       ['para', ['ul', 'ol', 'paragraph']],
 		       ['table', ['table']],
-		       ['insert', ['link', 'picture', 'video']],
+		       ['insert' /* ['link', 'picture', 'video'] */],
 		       ['view', ['fullscreen', 'codeview', 'help']]
 		     ]
 		});
+		$("#summernote-update").summernote({				//  위즈윅 - summerNote		
+		     placeholder: '프로젝트 설명을 입력해주세요.',
+		     tabsize: 2,
+		     height: 120,
+		     toolbar: [
+		       ['style', ['style']],
+		       ['font', ['bold', 'underline', 'clear']],
+		       ['color', ['color']],
+		       ['para', ['ul', 'ol', 'paragraph']],
+		       ['table', ['table']],
+		       ['insert' /* ['link', 'picture', 'video'] */],
+		       ['view', ['fullscreen', 'codeview', 'help']]
+		     ]
+		});
+		
 	}); 
 		
 	$("#hideBtn").click(listAndHide);

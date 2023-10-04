@@ -1,4 +1,3 @@
-/* The Modal (background) */
 /* 모달 공통 */
 .modal {
   display: none; /* Hidden by default */
@@ -16,7 +15,6 @@
 .modal-content {
   background-color: #f5f7fb;
   padding: 0px;
-  height: 100%;
   border-radius: 10px;
 }
 
@@ -28,6 +26,7 @@
 .modal-body {
 	padding: 15px 15px;
 	margin: 0 auto;
+	height: 94%;
 }
 
 .modal-text {
@@ -39,55 +38,22 @@
     background-color: #009b77;
 	border-radius: 10px 10px 0px 0px;
 }
-
-/* The Close Button */
-.close {
-	color: white;
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
-	padding-right: 10px;
+.card.pcal{
+	word-wrap: break-word;
+    background-clip: border-box;
+    background-color: #fff;
+    border: 0 solid transparent;
+    border-radius: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    position: relative;
+    height: 100%;
 }
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* 공통 */
-
-
-
-/* Date */
-.form-date {
-	width: 45%;
-}
-
-.modal.project.right .modal-dialog {
-	position: fixed;
-	margin: auto;
-	width: 40%;
+.card-body.pcal{
+	cursor: auto;
 	height: 100%;
-	-webkit-transform: translate3d(0%, 0, 0);
-	    -ms-transform: translate3d(0%, 0, 0);
-	     -o-transform: translate3d(0%, 0, 0);
-	        transform: translate3d(0%, 0, 0);
 }
-.modal.project.right.fade .modal-dialog {
-	right:-40%;
-	-webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
-    -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
-    -o-transition: opacity 0.3s linear, right 0.3s ease-out;
-     transition: opacity 0.3s linear, right 0.3s ease-out;
-}
-.modal.project.right.fade.show .modal-dialog {
-	right: 0;
-}
-
-
-/* PtaskModal */
 .modal-dialog.pcal {
     position: relative;
     z-index: 5;
@@ -100,11 +66,53 @@
     box-shadow: 20px 20px 30px rgba(0,0,0,.2);
     border-radius: 10px;
 }
-/* 상세 */
+.form-date {
+    width: 45%;
+}
+/* 모달 공통 */
+
+
+/* 모달 간격 조정 */
+#form-content{
+	margin-bottom: 1.5rem;
+}
+.stitle {
+	margin-bottom: 1.5rem;
+}
+#smemo{
+	margin-bottom: 1.5rem;
+}
+/* 모달 간격 조정 */
+
+
+
+/*addmodal 작성*/
+.form-control.userid {
+	width: 30%;
+}
+
+
+/* readcalmodal 상세 */
+
+/* The Close Button */
+.read-close {
+	color: white;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	padding-right: 10px;
+}
+
+.read-close:hover,
+.read-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .form-select.mb-3.selectCategory {
     width: 30%;
 }
-
 
 .form-control.manager {
 	width: 50%;
@@ -122,4 +130,12 @@
 
 .card-header.ptaskTitle {
 	padding: 1rem 0rem;
+}
+
+.stitle{
+	border-bottom: 1px solid #80808038;
+	padding-bottom: 10px;
+}
+.form-control.comment {
+	width: 70%;
 }

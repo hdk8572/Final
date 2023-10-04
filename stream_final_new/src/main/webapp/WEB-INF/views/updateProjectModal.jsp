@@ -32,7 +32,7 @@
 							</svg>
 							<input type= "text" class= "form-control manager ml-2" name="mname">
 						</div>
-						<textarea class="form-control" id="summernote" rows="10" name="pcontent" placeholder="내용을 입력해주세요"></textarea>
+						<textarea class="form-control input" id="summernote-update" rows="10" name="pcontent" placeholder="내용을 입력해주세요"></textarea>
 						<input type="hidden" name="tdate">
 						<input type="hidden" name="userid">
 						<input type="hidden" name="pno">
