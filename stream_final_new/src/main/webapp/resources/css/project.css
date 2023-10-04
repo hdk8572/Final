@@ -52,7 +52,7 @@
 	overflow: hidden;
 }
 
-.detail-project {
+.detailProject {
 	visibility: hidden;
     margin: 0 0 0 auto;
     color: #aea8ca;
@@ -64,4 +64,29 @@
     border: transparent;
     background: transparent;	
     float: right;
+}
+
+.detail-project {
+	height: 0;
+}
+
+.detail-ptask {
+	height: 0;
+}
+
+.form-control:disabled, .form-control[readonly] {
+	background-color: white;
+}
+
+.form-control.detail-content.tcontent {
+    height: 300px;
+}
+
+.form-control.detail-content.tcontent > p {
+	margin: 0;
+}
+
+.form-control.manager.ml-2.tstatus {
+    width: 30%;
+    margin-bottom: 1rem;
 }
