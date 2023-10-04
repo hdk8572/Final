@@ -28,4 +28,23 @@
 	<context:component-scan base-package="kh.groupware.stream" />
 	
 	<aop:aspectj-autoproxy/>
+	
+	<!-- 회원가입 메일 인증 gmail -->
+<!-- 	<beans:bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	<beans:property name="host" value="smtp.gmail.com"/>
+	<beans:property name="port" value="587"/>
+	<beans:property name="username" value="orinogcode@gmail.com"/>
+	<beans:property name="password" value="ppuz ujak vojs ovrk"/>
+	<beans:property name="defaultEncoding" value="utf-8"/>
+	<beans:property name="javaMailProperties">
+	<beans:props>
+	<beans:prop key="mail.transport.protocol">smtp</beans:prop>
+	<beans:prop key="mail.smtp.auth">true</beans:prop>
+	<beans:prop key="mail.smtp.port">587</beans:prop>
+	<beans:prop key="mail.debug">true</beans:prop>
+	<beans:prop key="mail.smtp.ssl.trust">smtp.gmail.com</beans:prop>
+	
+	</beans:props>
+	</beans:property>
+	</beans:bean> -->
 </beans:beans>

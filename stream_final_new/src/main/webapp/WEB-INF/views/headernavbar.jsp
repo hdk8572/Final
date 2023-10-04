@@ -218,7 +218,7 @@
 
 		<!-- 모달박스 -->
 		<div id="mypage-modal">
-			<div class="modalbox">
+			<div class="mpmodalbox">
 				<div class="mpmodal-header"></div>
 
 				<table class="mp-table">
@@ -276,11 +276,11 @@
 					</tr>
 					<tr>
 						<td colspan="2" class="mp-button"><button
-								class="btn btn-primary btn-sm mp-button">정보수정</button></td>
+								class="btn mpbtn-primary btn-sm mp-button">정보수정</button></td>
 					</tr>
 				</table>
 			</div>
-			<a class="modal_close_btn">X</a>
+			<a class="mpmodal_close_btn">X</a>
 		</div>
 
 
@@ -315,7 +315,7 @@
 		document.body.append(bg);
 
 		// 닫기 버튼 처리, 시꺼먼 레이어와 모달 div 지우기
-		modal.querySelector('.modal_close_btn').addEventListener('click',
+		modal.querySelector('.mpmodal_close_btn').addEventListener('click',
 				function() {
 					bg.remove();
 					modal.style.display = 'none';
