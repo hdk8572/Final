@@ -11,10 +11,6 @@ CREATE SEQUENCE schedule_sequence
 START WITH 1
 INCREMENT BY 1;
 
-CREATE SEQUENCE chat_sequence
-START WITH 1
-INCREMENT BY 1;
-
 CREATE SEQUENCE brestep_sequence
 START WITH 1
 INCREMENT BY 1;
@@ -56,10 +52,10 @@ INSERT INTO USERS (USERID, DEPTNO, CCODE, PASSWORD, ENABLED, AUTHORITY, MNAME, M
 VALUES ('admin@stream.com', 'D000', 'C000', '12345', 1, 'ROLE_A', 'admin', '010-1234-5678', '관리자');
 
 INSERT INTO USERS (USERID, DEPTNO, CCODE, PASSWORD, ENABLED, AUTHORITY, MNAME, MPHONE, MRANK)
-VALUES ('kh0001@kh.com', 'D001', 'C001', 'khkhkhkh', 0, 'ROLE_C', '김김김', '01012341234', '대리');
+VALUES ('kh0001@kh.com', 'D001', 'C001', 'khkhkhkh', 1, 'ROLE_C', '김김김', '01012341234', '대리');
 
 INSERT INTO USERS (USERID, DEPTNO, CCODE, PASSWORD, ENABLED, AUTHORITY, MNAME, MPHONE, MRANK)
-VALUES ('kh0002@kh.com', 'D001', 'C001', 'khkhkhkh', 0, 'ROLE_C', '임임임', '01012341234', '부장');
+VALUES ('kh0002@kh.com', 'D001', 'C001', 'khkhkhkh', 1, 'ROLE_C', '임임임', '01012341234', '부장');
 
 INSERT INTO USERS ( USERID, DEPTNO, CCODE, PASSWORD, ENABLED, AUTHORITY, MNAME, MPHONE, MRANK)
 VALUES ('sample@kh.co.kr', 'D001', 'C001', '12345', '1', 'ROLE_C', '황황황', '010-2345-6789', '과장');
@@ -225,12 +221,6 @@ VALUES (schedule_sequence.NEXTVAL, 'sample@kh.co.kr', '2', TO_DATE('2023-09-13',
 
 INSERT INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SPLACE, SMEMO, STITLE, SCOLOR)
 VALUES (schedule_sequence.NEXTVAL, 'fffll@ctest.co.kr', '2', TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-09-13', 'YYYY-MM-DD'), '역삼동', '당신을 위한 일이 있어', '업무1', '#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'));
-
-INSERT INTO chatLIST( CHATNO,CHATNAME) VALUES (chat_sequence.NEXTVAL,'채팅방이름1');
-INSERT INTO chatLIST( CHATNO,CHATNAME) VALUES (chat_sequence.NEXTVAL,'채팅방이름2');
-
-INSERT INTO chat_member( CHATNO,USERID) VALUES (1,'kh0001@kh.com');
-INSERT INTO chat_member( CHATNO,USERID) VALUES (2,'kh0002@kh.com');
 
 INSERT INTO MEMBER_PROJECT ( PNO, USERID)
 VALUES ('1', 'kh0001@kh.com');

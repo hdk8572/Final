@@ -6,15 +6,16 @@ DROP TABLE "FILES";             --끼인테이블
 DROP TABLE "MEMBER_PROJECT";    --끼인테이블      
 DROP TABLE "MEMBER_SCHEDULE";   --끼인테이블
 DROP TABLE "COMMUTE";           --ref USERS, WORKSTATE
-DROP TABLE "WORKSTATE";         
+DROP TABLE "WORKSTATE";     
+DROP TABLE "CHATMESSAGE";
+DROP TABLE "CHATROOM";
 DROP TABLE "SCHEDULE";          --ref USERS             
 DROP TABLE "TASK";              --ref PROJECT, USERS
 DROP TABLE "PROJECT";           --ref USERS
 DROP TABLE "USERS";             --ref DEPT
 DROP TABLE "DEPT";              --ref COMPANY
 DROP TABLE "COMPANY";
-DROP TABLE "CHATROOM";
-DROP TABLE "CHATMESSAGE";
+
 
 
 DROP SEQUENCE schedule_sequence;
