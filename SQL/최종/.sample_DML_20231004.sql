@@ -214,13 +214,23 @@ INSERT INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SPLACE, SMEMO, STITLE, SCO
 VALUES (schedule_sequence.NEXTVAL, 'sample@kh.co.kr', '1', TO_DATE('2023-09-14', 'YYYY-MM-DD'), TO_DATE('2023-09-19', 'YYYY-MM-DD'), '강남구', '업무내용', '업무2', '#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'));
 
 INSERT INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SPLACE, SMEMO, STITLE, SCOLOR)
-VALUES (schedule_sequence.NEXTVAL, 'mplsam@kh.co.kr', '1', TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-09-13', 'YYYY-MM-DD'), '역삼동', '배고파 밥줘', '밥줘', '#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'));
+VALUES (schedule_sequence.NEXTVAL, 'mplsam@kh.co.kr', '1', TO_DATE('2023-10-10', 'YYYY-MM-DD'), TO_DATE('2023-10-12', 'YYYY-MM-DD'), '역삼동', '배고파 밥줘', '밥 주삼요', '#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'));
 
 INSERT INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SPLACE, SMEMO, STITLE, SCOLOR)
-VALUES (schedule_sequence.NEXTVAL, 'sample@kh.co.kr', '2', TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-09-13', 'YYYY-MM-DD'), '성내동', '빛의속도로 집에가기', '퇴근', '#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'));
+VALUES (schedule_sequence.NEXTVAL, 'fffll@ctest.co.kr', '1', TO_DATE('2023-10-04', 'YYYY-MM-DD'), TO_DATE('2023-10-10', 'YYYY-MM-DD'), '삼성동', '서진식당 갑시다.', '점메추', '#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'));
 
 INSERT INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SPLACE, SMEMO, STITLE, SCOLOR)
-VALUES (schedule_sequence.NEXTVAL, 'fffll@ctest.co.kr', '2', TO_DATE('2023-09-13', 'YYYY-MM-DD'), TO_DATE('2023-09-13', 'YYYY-MM-DD'), '역삼동', '당신을 위한 일이 있어', '업무1', '#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'));
+VALUES (schedule_sequence.NEXTVAL, 'sample@kh.co.kr', '1', TO_DATE('2023-10-10', 'YYYY-MM-DD'), TO_DATE('2023-10-12', 'YYYY-MM-DD'), '논현동', '뱅뱅뱅뱅', '빙글뱅글', '#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'));
+
+INSERT INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SPLACE, SMEMO, STITLE, SCOLOR)
+VALUES (schedule_sequence.NEXTVAL, 'sample@kh.co.kr', '6', TO_DATE('2023-10-18', 'YYYY-MM-DD'), TO_DATE('2023-10-20', 'YYYY-MM-DD'), '은평구', '청보리차', '물은 이거지', '#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'));
+
+INSERT INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SPLACE, SMEMO, STITLE, SCOLOR)
+VALUES (schedule_sequence.NEXTVAL, 'mplsam@kh.co.kr', '6', TO_DATE('2023-10-20', 'YYYY-MM-DD'), TO_DATE('2023-10-20', 'YYYY-MM-DD'), '관악구', '보세요', '듄', '#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'));
+
+INSERT INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SPLACE, SMEMO, STITLE, SCOLOR)
+VALUES (schedule_sequence.NEXTVAL, 'sple@kh.co.kr', '6', TO_DATE('2023-10-23', 'YYYY-MM-DD'), TO_DATE('2023-10-24', 'YYYY-MM-DD'), '송파구', '왕 맛있다.', '김치찌개', '#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'));
+
 
 INSERT INTO MEMBER_PROJECT ( PNO, USERID)
 VALUES ('1', 'kh0001@kh.com');
