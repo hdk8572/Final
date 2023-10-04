@@ -1,5 +1,8 @@
 package kh.groupware.stream.ptask.model.vo;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class PtaskVo {
 
 	private String tno;
@@ -18,13 +21,17 @@ public class PtaskVo {
 	private String brelevel;//0 : 원본 1 : 하위 업무
 	private String brestep;	//하위 업무들간의 순서
 	
+	//admin 통계용
+	private String tcnt;
 	
+	
+
 	@Override
 	public String toString() {
 		return "PtaskVo [tno=" + tno + ", pno=" + pno + ", userid=" + userid + ", tmember=" + tmember + ", ttitle="
 				+ ttitle + ", tcontent=" + tcontent + ", tstatus=" + tstatus + ", tdate=" + tdate + ", tstartdate="
 				+ tstartdate + ", tenddate=" + tenddate + ", bref=" + bref + ", brelevel=" + brelevel + ", brestep="
-				+ brestep + "]";
+				+ brestep + ", tcnt=" + tcnt + "]";
 	}
 
 	public PtaskVo() {
@@ -146,6 +153,14 @@ public class PtaskVo {
 
 	public void setBrestep(String brestep) {
 		this.brestep = brestep;
+	}
+
+	public String getTcnt() {
+		return tcnt;
+	}
+
+	public void setTcnt(String tcnt) {
+		this.tcnt = tcnt;
 	}
 	
 	

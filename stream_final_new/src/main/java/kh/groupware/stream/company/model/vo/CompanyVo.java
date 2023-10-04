@@ -16,10 +16,14 @@ public class CompanyVo {
 	private String caddress;
 	private String cpassword;
 	
+	//admin 통계용
+	private String ccnt;
+	
+	
 	@Override
 	public String toString() {
 		return "CompanyVo [ccode=" + ccode + ", cname=" + cname + ", cphone=" + cphone + ", caddress=" + caddress
-				+ ", cpassword=" + cpassword + "]";
+				+ ", cpassword=" + cpassword + ", ccnt=" + ccnt + "]";
 	}
 
 	public CompanyVo() {
@@ -73,6 +77,14 @@ public class CompanyVo {
 
 	public void setCpassword(String cpassword) {
 		this.cpassword = cpassword;
+	}
+
+	public String getCcnt() {
+		return ccnt;
+	}
+
+	public void setCcnt(String ccnt) {
+		this.ccnt = ccnt;
 	}
 	
 }

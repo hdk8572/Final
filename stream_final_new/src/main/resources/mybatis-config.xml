@@ -19,6 +19,7 @@
 		<typeAlias type="kh.groupware.stream.calendar.model.vo.CalendarVo" alias="CalendarVo"/>
 		<typeAlias type="kh.groupware.stream.chat.model.vo.ChatMessageVo" alias="ChatMessageVo"/>
 		<typeAlias type="kh.groupware.stream.chat.model.vo.ChatRoomVo" alias="ChatRoomVo"/>
+		<typeAlias type="kh.groupware.stream.admin.vo.AdminVo" alias="AdminVo"/>
 	</typeAliases>
 	
 	<mappers>
@@ -31,6 +32,7 @@
 		<mapper resource="mappers/maintask-mapper.xml"/>
 		<mapper resource="mappers/calendar-mapper.xml"/>
 		<mapper resource="mappers/chat-mapper.xml"/>
+		<mapper resource="mappers/admin-mapper.xml"/>
 	</mappers>	
 	
 </configuration>

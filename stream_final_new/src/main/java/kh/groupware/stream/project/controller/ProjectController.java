@@ -61,7 +61,7 @@ public class ProjectController {
 	@GetMapping("/deleteList.ajax")
 	@ResponseBody
 	public Map<String, Object> delete(String pno) {
-	    int deletedLists = projectService.deleteList(pno);
+	    int deletedLists = projectService.delete(pno);
 	    Map<String, Object> map = new HashMap<String, Object>();
 	    map.put("result", deletedLists);
 	    map.put("pno", pno);

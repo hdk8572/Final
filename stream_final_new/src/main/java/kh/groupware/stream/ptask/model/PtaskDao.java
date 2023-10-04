@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kh.groupware.stream.project.model.vo.PnoTnoParam;
 import kh.groupware.stream.ptask.model.vo.PtaskVo;
 
 @Repository
@@ -26,11 +27,8 @@ public class PtaskDao {
 		return sqlSession.selectList("task.ProjectSelectOne", pno);
 	}
 	
-	public PtaskVo ptasklist(String pno, String tno) {
-		Map<String, Object> map = new HashMap<>();
-		map.put("pno", pno);
-		map.put("tno", tno);
-		return sqlSession.selectOne("task.ProjectSelectOneInner", map);
+	public PtaskVo selectOneInner(PnoTnoParam pnoTnoParam) {
+		return sqlSession.selectOne("task.ProjectSelectOneInner", pnoTnoParam);
 	}
 	
 	public int insertTask(PtaskVo vo) {

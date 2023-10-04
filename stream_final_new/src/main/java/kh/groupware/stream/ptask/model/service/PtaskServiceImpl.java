@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kh.groupware.stream.project.model.vo.PnoTnoParam;
 import kh.groupware.stream.ptask.model.PtaskDao;
 import kh.groupware.stream.ptask.model.vo.PtaskVo;
 
@@ -31,8 +32,8 @@ public class PtaskServiceImpl implements PtaskService {
     }
 	
 	@Override
-	public PtaskVo selectOneInner(String pno, String tno) {
-		return dao.ptasklist(pno, tno);
+	public PtaskVo selectOneInner(PnoTnoParam pnoTnoParam) {
+		return dao.selectOneInner(pnoTnoParam);
 	}
 	
 }

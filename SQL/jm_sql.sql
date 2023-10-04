@@ -154,3 +154,33 @@ select pname, pno, userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate
             ;
 select *     		from project;
 select *     		from task;
+
+
+
+select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    		from project p right join (select * from task t where pno='13') t using (pno)
+    		where tmember = 'sple@kh.co.kr' or t.userid='sple@kh.co.kr' 
+    		order by bref desc, brelevel asc, brestep asc
+            ;
+            
+            
+            
+--===============================================================================
+
+select count(ccode) ccnt from company;
+select count(pno) pcnt from project;
+select count(tno) tcnt from task;
+
+select count(ccode), count(pno), count(tno)
+    from company c
+    join users using (ccode)
+    join project using (userid)
+    join task using (pno)
+;
+
+select distinct(ccode) ccnt
+    from company c
+    join users u using (ccode)
+    join project p using (userid)
+    join task t using (pno)
+;

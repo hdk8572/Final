@@ -296,7 +296,6 @@
             };
          };
       </script>
-      
       <script>
 	function modal(id) {
 		var zIndex = 9999;
