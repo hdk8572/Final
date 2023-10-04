@@ -18,14 +18,17 @@
 <!-- Bootstrap Css -->
 <link href="css/streamapp.css" rel="stylesheet">
 <!-- Newcompany Css-->
-<link href="${pageContext.request.contextPath}/css/newcompany.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/newcompany.css"
+	rel="stylesheet">
 <!-- Jqeury -->
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
 <link
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
 	rel="stylesheet">
-<link rel="preconnect" href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
+<link rel="preconnect"
+	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
+	rel="stylesheet">
 
 </head>
 
@@ -40,180 +43,123 @@
 							<h1 class="h2">기업 가입</h1>
 							<p class="lead">기업 정보를 입력 후 그룹웨어 Stream을 이용해보세요!</p>
 						</div>
-
-						<div class="card cards">
-							<div class="card-body cardcard">
-								<div class="m-sm-4">
-									<form>
-										<div class="mb-3">
-											<label class="form-label">회사 명</label> <input
-												class="form-control form-control-lg" type="text"
-												name="cname" placeholder="" />
-										</div>
-										<div class="mb-3">
-											<label class="form-label">회사 전화번호</label> <input
-												class="form-control form-control-lg" type="text"
-												name="cphone" placeholder="" />
-										</div>
-										<div class="mb-3">
-											<label class="form-label">회사 주소</label> <input
-												class="form-control form-control-lg" type="text"
-												name="caddress" placeholder="" />
-										</div>
-										<div class="text-center mt-3">
-											<button type="button"
-												class="btn btn-lg btn-primary nextButton">다음</button>
-											<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
-										</div>
-									</form>
+						<form>
+							<div class="card cards">
+								<div class="m-sm-4 ccard">
+									<div class="mb-3">
+										<label class="form-label">회사 명</label> <input
+											class="form-control form-control-lg" type="text" name="cname"
+											placeholder="" />
+									</div>
+									<div class="mb-3">
+										<label class="form-label">회사 전화번호</label> <input
+											class="form-control form-control-lg" type="text"
+											name="cphone" placeholder="" />
+									</div>
+									<div class="mb-3">
+										<label class="form-label">회사 주소</label> <input
+											class="form-control form-control-lg" type="text"
+											name="caddress" placeholder="" />
+									</div>
+									<div class="text-center mt-3">
+										<button type="button"
+											class="btn btn-lg btn-primary nextButton">다음</button>
+										<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
+									</div>
 								</div>
 							</div>
-						</div>
 
-						<div class="card cards">
-							<div class="card-body cardcard">
-								<div class="m-sm-4">
-									<form>
-										<div class="mb-3">
+							<div class="card cards">
+								<div class="m-sm-4 ccard">
+									<div class="mb-3">
+										<label class="form-label">부서명 입력</label>
+										<table>
+											<td><input class="form-control form-control-lg"
+												type="text" id="input-dept" name="cdept"
+												placeholder="ex) 영업부 " /></td>
+											<td><button onclick="addDeptTable()"
+													class="btn btn-lg btn-primary">추가</button></td>
+										</table>
+									</div>
+									<div class="row">
+										<div class="col-12 col-lg-8 col-xxl-9 d-flex">
+											<div class="card flex-fill">
 
+												<table class="table table-hover my-0" id="addDept">
+													<thead>
+														<tr>
+															<th>no</th>
+															<th class="d-xl-table-cell">부서 이름</th>
+															<th class="d-xl-table-cell">삭제</th>
+														</tr>
+													</thead>
+													<tbody>
 
-											<label class="form-label">부서명 입력</label>
-											<table>
-												<td><input class="form-control form-control-lg"
-													type="text" name="dept" placeholder="ex) 영업부 " /></td>
-												<td><a href="index.html" class="btn btn-lg btn-primary">추가</a>
-												</td>
-											</table>
-
+													</tbody>
+												</table>
+											</div>
 										</div>
-										<div class="row">
-											<div class="col-12 col-lg-8 col-xxl-9 d-flex">
-												<div class="card flex-fill">
-
-													<table class="table table-hover my-0">
-														<thead>
-															<tr>
-																<th>no</th>
-																<th class="d-none d-xl-table-cell">부서 코드</th>
-																<th class="d-none d-xl-table-cell">부서 이름</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<td>01</td>
-																<td class="d-none d-xl-table-cell">D001</td>
-																<td class="d-none d-xl-table-cell">부서이름1</td>
-															</tr>
-															<tr>
-																<td>02</td>
-																<td class="d-none d-xl-table-cell">D002</td>
-																<td class="d-none d-xl-table-cell">부서이름2</td>
-															</tr>
-															<tr>
-																<td>03</td>
-																<td class="d-none d-xl-table-cell">D003</td>
-																<td class="d-none d-xl-table-cell">부서이름3</td>
-															</tr>
-															<tr>
-																<td>04</td>
-																<td class="d-none d-xl-table-cell">D004</td>
-																<td class="d-none d-xl-table-cell">부서이름4</td>
-															</tr>
-															<tr>
-																<td>05</td>
-																<td class="d-none d-xl-table-cell">D005</td>
-																<td class="d-none d-xl-table-cell">부서이름5</td>
-															</tr>
-														</tbody>
-													</table>
-												</div>
-											</div>
-											<div class="text-center mt-3">
-												<button type="button"
-													class="btn btn-lg btn-primary prevButton">이전</button>
-												<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
-												<button type="button"
-													class="btn btn-lg btn-primary nextButton">다음</button>
-												<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
-											</div>
-									</form>
+									</div>
+									<div class="text-center mt-3">
+										<button type="button"
+											class="btn btn-lg btn-primary prevButton">이전</button>
+										<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
+										<button type="button"
+											class="btn btn-lg btn-primary nextButton">다음</button>
+										<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
+									</div>
 								</div>
 							</div>
-						</div>
-						<br>
 
-						<div class="card cards">
-							<div class="card-body cardcard">
-								<div class="m-sm-4">
-									<form>
-										<div class="mb-3">
-											<label class="form-label">이메일 전송</label> <input
-												class="form-control form-control-lg" type="text" name="dept"
-												placeholder="ex) 이메일을 입력해주세요 " />
+							<div class="card cards">
+								<div class="m-sm-4 ccard">
+									<div class="mb-3">
+										<label class="form-label">이메일 입력</label>
+										<table>
+											<td><input
+												class="form-control form-control-lg input-email" type="text"
+												id="input-email" name="ncemail"
+												placeholder="ex) 이메일을 입력하세요. " /></td>
+											<td><button onclick="addEmailTable()"
+													class="btn btn-lg btn-primary">추가</button></td>
+										</table>
+									</div>
+									<div class="row">
+										<div class="col-12 col-lg-8 col-xxl-9 d-flex">
+											<div class="card flex-fill">
+												<table class="table table-hover my-0" id="addEmail">
+													<thead>
+														<tr>
+															<th>no</th>
+															<th class=" d-xl-table-cell">e-mail</th>
+															<th class=" d-xl-table-cell">삭제</th>
+														</tr>
+													</thead>
+													<tbody>
+
+													</tbody>
+												</table>
+											</div>
 										</div>
-										<div class="row">
-											<div class="col-12 col-lg-8 col-xxl-9 d-flex">
-												<div class="card flex-fill">
-
-													<table class="table table-hover my-0">
-														<thead>
-															<tr>
-																<th>no</th>
-																<th class="d-none d-xl-table-cell">e-mail</th>
-																<th></th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<td>01</td>
-																<td class="d-none d-xl-table-cell">e-mail1@gamil.com</td>
-																<td>삭제</td>
-															</tr>
-															<tr>
-																<td>02</td>
-																<td class="d-none d-xl-table-cell">e-mail2@gamil.com</td>
-																<td>삭제</td>
-															</tr>
-															<tr>
-																<td>03</td>
-																<td class="d-none d-xl-table-cell">e-mail3@gamil.com</td>
-																<td>삭제</td>
-															</tr>
-															<tr>
-																<td>04</td>
-																<td class="d-none d-xl-table-cell">e-mail4@gamil.com</td>
-																<td>삭제</td>
-															</tr>
-															<tr>
-																<td>05</td>
-																<td class="d-none d-xl-table-cell">e-mail5@gamil.com</td>
-																<td>삭제</td>
-															</tr>
-														</tbody>
-													</table>
-												</div>
-											</div>
-											<div class="text-center mt-3">
-												<button type="button"
-													class="btn btn-lg btn-primary prevButton">이전</button>
-												<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
-												<a href="index.html" class="btn btn-lg btn-primary">등록</a>
-												<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
-											</div>
-									</form>
-								</div>
-							</div>
+									</div>
+						</form>
+						<div class="text-center mt-3">
+							<button type="button" class="btn btn-lg btn-primary prevButton">이전</button>
+							<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
+							<a href="index.html" class="btn btn-lg btn-primary">등록</a>
+							<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
 						</div>
-
-
 
 					</div>
 				</div>
 			</div>
 		</div>
+		</div>
+		</div>
+
 	</main>
 
-<!-------------------- Script ----------------------->
+	<!-------------------- Script ----------------------->
 	<script>
 		let currentIndex = 0;
 		showCards(currentIndex);
@@ -229,12 +175,82 @@
 		});
 
 		function showCards(index) {
-			const cards = document.querySelectorAll('.cards .cardcard');
+			const cards = document.querySelectorAll('.cards .ccard');
 			cards.forEach(function(cardcard) {
 				cardcard.style.display = 'none';
 			});
 
 			cards[index].style.display = 'block';
+		}
+	</script>
+	<!-- dept script -->
+	<script>
+		var dRowCount = 0;
+
+		function addDeptTable() {
+			var table = document.getElementById("addDept");
+			var row = table.insertRow(-1);
+
+			var inputDept = document.getElementById("input-dept");
+			var value = inputDept.value;
+
+			var cell1 = row.insertCell(0)
+			cell1.innerHTML = dRowCount + 1;
+
+			var cell2 = row.insertCell(1);
+			cell2.innerHTML = value;
+
+			var cell3 = row.insertCell(2);
+			cell3.innerHTML = "삭제";
+			cell3.classList.add("delete-text");
+
+			cell3.onclick = function() {
+				removeRow(row);
+			};
+
+			inputDept.value = "";
+			dRowCount++
+
+		}
+		function removeRow(row) {
+			var table = document.getElementById("addDept");
+			table.deleteRow(row.rowIndex);
+			dRowCount--;
+		}
+	</script>
+	<!-- email script -->
+	<script>
+		var eRowCount = 0;
+
+		function addEmailTable() {
+			var table = document.getElementById("addEmail");
+			var row = table.insertRow(-1);
+
+			var inputEmail = document.getElementById("input-email");
+			var value = inputEmail.value;
+
+			var cell1 = row.insertCell(0)
+			cell1.innerHTML = eRowCount + 1;
+
+			var cell2 = row.insertCell(1);
+			cell2.innerHTML = value;
+
+			var cell3 = row.insertCell(2);
+			cell3.innerHTML = "삭제";
+			cell3.classList.add("delete-text");
+
+			cell3.onclick = function() {
+				removeRow(row);
+			};
+
+			inputEmail.value = "";
+			eRowCount++
+
+		}
+		function removeRow(row) {
+			var table = document.getElementById("addEmail");
+			table.deleteRow(row.rowIndex);
+			eRowCount--;
 		}
 	</script>
 	<script src="js/app.js"></script>
