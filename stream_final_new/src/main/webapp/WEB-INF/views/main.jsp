@@ -61,9 +61,10 @@
 	<div class="img-box main-box">
 		<img class="full-img" src="img/photos/top-slide-01.webp" alt="/">
 	</div>
-	<script src="js/app.js"></script>
+
 
 	<!-------------------- Script ----------------------->
+	<script src="js/app.js"></script>
 	<!-- 모달script -->
 	<script>
 		function modal(id) {
