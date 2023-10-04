@@ -94,6 +94,19 @@
     height: 94%;
 }
 
+.form-control.input{
+	margin-bottom: 1.5rem;
+    border: 1px solid #ced4da;
+    width: 100%;
+}
+
+.form-control {
+	margin-bottom: 1.5rem;
+    border: transparent;
+    border-bottom: 1px solid #ced4da;
+    border-radius: 0px;	
+}
+
 /* PtaskModal */
 .modal-dialog.ptask {
 
@@ -247,4 +260,20 @@
 form {
 	cursor: auto;	
 	height: 93%;
+}
+
+/* detailptaskmodal */
+.card-body.detailPtaskTitle {
+	cursor: auto;	
+}
+
+.blankValue {
+	margin: 0.3rem;
+}
+
+.d-flex.align-items-center > svg {
+	height: 18px;
+	width: 18px;
+    position: relative;
+    top: -9px;
 }

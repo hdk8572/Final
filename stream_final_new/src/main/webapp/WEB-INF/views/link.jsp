@@ -12,6 +12,7 @@
 <div>
 	<a href="${pageContext.request.contextPath}/maintask"><span>프로젝트 전체보기</span></a>
 </div>
+<div><a href="${pageContext.request.contextPath}/pcal">캘린더</div>
 
 </body>
 </html>

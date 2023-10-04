@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -48,7 +49,7 @@ public class PtaskController {
 	
 	@GetMapping("/ptaskselectOne") 
 	@ResponseBody
-	public PtaskVo selectOne( PnoTnoParam pnoTnoParam) {
+	public PtaskVo selectOne(PnoTnoParam pnoTnoParam) {
 		return ptaskService.selectOneInner(pnoTnoParam);
 	}
 }

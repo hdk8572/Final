@@ -8,6 +8,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<%@ include file="/WEB-INF/views/setvariable.jsp"%>
+
 <meta charset="utf-8">
 <meta name="author" content="Stream">
 
@@ -29,6 +32,7 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 </head>
 <body>
+
 	<div class="wrapper">
 		<%@ include file="/WEB-INF/views/sidebar.jsp"%>
 		<div class="main">
@@ -246,8 +250,8 @@
 													</div>
 												</div>
 												<ul class="jm-inner-task">
-													<div class="jm-wrap-section-task-title jm-gr">
-														<div class="jm-serction-task-title">
+													<li class="jm-wrap-section-task-title jm-gr">
+														<ul class="jm-serction-task-title">
 															<c:forEach items="${project.maintaskList }" var="task">
 																<li class="plusplus row" id="taskNo_${task.tno}">
 																	<div class="jm-title-ttitle col-lg-4 jm-grey">
@@ -257,7 +261,7 @@
 																		</c:forEach> ${task.ttitle}
 																		</span>
 																		<c:if test="${task.brelevel == 0 }">
-																			<button class="jm-inner-task-button">업무추가</button>
+																			<button class="jm-inner-task-button" onclick="innerTaskInputHandler(this);">업무추가</button>
 																		</c:if>
 																		<span class="jm-tp jm-task-info">자세히 보기</span>
 																	</div>
@@ -268,63 +272,64 @@
 																	<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">${task.tdate }</div>
 																	<div class="jm-title-tno col-lg-1 jm-grey jm-gr">${task.tno }</div>
 																</li>
-																<li class="jm-ajax-InnertaskIn"></li>
-																<form class="addInnerTask" id="taskInputNo_${task.tno}">
-																	<li class="jm-innerTaskInput jm-innerTask-el">
-																		<div class="jm-title-ttitle col-lg-4 jm-grey">
-																			<input type="text" placeholder="하위업무명을 입력하세요"
-																				name="ttitle" required="required">
-																		</div>
-																		<div class="jm-title-tstatus col-lg-1 jm-grey">
-																			<span> <select
-																				class="form-select mb-3 selectCategory ml-2 "
-																				name="tstatus">
-																					<option value="요청" class="status request"
-																						selected="selected">요청</option>
-																					<option value="진행" class="status progress">진행</option>
-																					<option value="피드백" class="status feedback">피드백</option>
-																					<option value="완료" class="status complete">완료</option>
-																					<option value="보류" class="status remain">보류</option>
-																			</select>
-																			</span>
-																		</div>
-																		<div class="jm-title-tmember col-lg-1 jm-grey">
-																			<span>담당자 드롭다운(tmember)</span>
-																		</div>
-																		<div class="dropdown jm-title-tstartdate col-lg-1 jm-grey">
-																			<div data-bs-toggle="dropdown">
-																				<button class="btn btn-secondary">시작일</button>
+																<li class="jm-ajax-InnertaskIn">
+																	<form class="addInnerTask" id="taskInputNo_${task.tno}">
+																		<div class="jm-innerTaskInput jm-innerTask-el">
+																			<div class="jm-title-ttitle col-lg-4 jm-grey">
+																				<input type="text" placeholder="하위업무명을 입력하세요"
+																					name="ttitle" required="required">
 																			</div>
-																			<div class="mini-pop dropdown-menu dropdown-menu-end">
-																				<input type="date" name="tstartdate">
+																			<div class="jm-title-tstatus col-lg-1 jm-grey">
+																				<span> <select
+																					class="form-select mb-3 selectCategory ml-2 "
+																					name="tstatus">
+																						<option value="요청" class="status request"
+																							selected="selected">요청</option>
+																						<option value="진행" class="status progress">진행</option>
+																						<option value="피드백" class="status feedback">피드백</option>
+																						<option value="완료" class="status complete">완료</option>
+																						<option value="보류" class="status remain">보류</option>
+																				</select>
+																				</span>
+																			</div>
+																			<div class="jm-title-tmember col-lg-1 jm-grey">
+																				<span>담당자 드롭다운(tmember)</span>
+																			</div>
+																			<div class="dropdown jm-title-tstartdate col-lg-1 jm-grey">
+																				<div data-bs-toggle="dropdown">
+																					<button class="btn btn-secondary">시작일</button>
+																				</div>
+																				<div class="mini-pop dropdown-menu dropdown-menu-end">
+																					<input type="date" name="tstartdate">
+																				</div>
+																			</div>
+																			<div
+																				class="dropdown jm-title-tenddate col-lg-1 jm-grey">
+																				<div data-bs-toggle="dropdown">
+																					<button class="btn btn-secondary">마감일</button>
+																				</div>
+																				<div class="mini-pop dropdown-menu dropdown-menu-end">
+																					<input type="date" name="tenddate">
+																				</div>
+																			</div>
+																			<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">
+																				<div class="innerTdate"></div>
+																			</div>
+																			<div class="jm-title-tno col-lg-1 jm-grey jm-gr">
+																				<input type="hidden" name="tno" value="${task.tno}">
+																				<input type="hidden" name="tcontent" value="default">
+																				<input type="hidden" name="pno" value="${project.pno}">
+																				<input type="hidden" name="tmember" value="${principal.username}">
+																				<!-- 로그인 세션 받아서 등록 -->
+																				<input type="hidden" name="userid" value="${principal.username}">
+																				<button type="button" onclick="innerTaskaddListHandler(this);">추가하기</button>
 																			</div>
 																		</div>
-																		<div
-																			class="dropdown jm-title-tenddate col-lg-1 jm-grey">
-																			<div data-bs-toggle="dropdown">
-																				<button class="btn btn-secondary">마감일</button>
-																			</div>
-																			<div class="mini-pop dropdown-menu dropdown-menu-end">
-																				<input type="date" name="tenddate">
-																			</div>
-																		</div>
-																		<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">
-																			<div class="innerTdate"></div>
-																		</div>
-																		<div class="jm-title-tno col-lg-1 jm-grey jm-gr">
-																			<input type="hidden" name="tno" value="${task.tno}">
-																			<input type="hidden" name="tcontent" value="default">
-																			<input type="hidden" name="pno" value="${project.pno}">
-																			<input type="hidden" name="tmember" value="${principal.username}">
-																			<!-- 로그인 세션 받아서 등록 -->
-																			<input type="hidden" name="userid" value="${principal.username}">
-																			<button type="button" class="jm-innerTask-insert-button">추가하기</button>
-																		</div>
-																	</li>
-																</form>
+																	</form>
+																</li>
 															</c:forEach>
-														</div>
-													</div>
+														</ul>
+													</li>
 												</ul>
 											</li>
 										</c:forEach>
@@ -344,7 +349,5 @@
 	<script src="${pageContext.request.contextPath}/js/maintask.js"></script>
 
 </body>
-<script>
-	const contextPath = "${pageContext.request.contextPath }"; /* ajax 용 - contextPath 변수 지정 */
-</script>
+
 </html>

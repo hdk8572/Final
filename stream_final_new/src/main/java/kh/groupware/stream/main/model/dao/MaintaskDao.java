@@ -18,8 +18,8 @@ public class MaintaskDao {
 	public List<ProjectVo> projectNameList(String userid){
 		return sqlSession.selectList("mainTask.projectNameList", userid);
 	}
-	public ProjectVo projectOneTaskList(String pno){
-		return sqlSession.selectOne("mainTask.projectOneTaskList", pno);
+	public ProjectVo projectOneTaskList(PtaskVo vo){
+		return sqlSession.selectOne("mainTask.projectOneTaskList", vo);
 	}
 	
 	public int insertInnerTask(PtaskVo vo) {

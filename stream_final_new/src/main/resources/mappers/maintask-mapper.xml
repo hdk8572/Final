@@ -26,7 +26,7 @@
 		select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
     		from project p right join task t using (pno)
     		where tmember = #{userid} or t.userid =#{userid}
-    		order by pno asc, bref desc, brelevel asc, brestep asc
+    		order by pno asc, bref desc, brelevel asc, brestep asc, tno desc
 	</select>
 	
 	
@@ -34,7 +34,7 @@
 		select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
     		from project p right join (select * from task t where pno=#{pno}) t using (pno)
     		where tmember = #{userid} or t.userid=#{userid} 
-    		order by bref desc, brelevel asc, brestep asc
+    		order by bref desc, brelevel asc, brestep asc, tno desc
 	</select>
 	<!-- 
 	select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel

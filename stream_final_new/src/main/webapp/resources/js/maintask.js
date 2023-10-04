@@ -10,9 +10,9 @@ function loadedHandler(){
 	$(".jm-move").on("dragend", dragEnd );
 	$(".jm-box-project-title").on("click", titleClickHandler);
 	$(".jm-task-info").on("click", projectButtonClickTestHandler);
-	$(".jm-inner-task-button").on("click", innerTaskInputHandler);
+	//$(".jm-inner-task-button").on("click", innerTaskInputHandler);
 	$('html').on("click", boxOutHandler)
-	$(".jm-innerTask-insert-button").click(innerTaskaddListHandler);
+	//$(".jm-innerTask-insert-button").click(innerTaskaddListHandler);
 	$(".addInnerTask").on("submit",ttileCheckHandler);
 }
 
@@ -77,19 +77,23 @@ functionDateHandler=(e)=>{
 	$(".innerTdate").html("<span>"+dateString+"</span>");
 }
 
-innerTaskInputHandler=(event)=>{
-	const a1 = event.target;
-	console.log($(a1).closest('li').next().next());
-	var a2 = $(a1).closest('li').next().next()[0].id;
-	console.log(a2);
+afterInsertInputHandler=(event)=>{
+	console.log(event.target);
+}
+
+innerTaskInputHandler=(thisElement)=>{
+	const a1 = thisElement;	//button
+	console.log(this);   // window  
+	console.log(thisElement);  
+	console.log(a1);
+	console.log($(a1).closest('li').next());
+	var a2 = $(a1).closest('li').next().children('form')[0].id;	
+	console.log(a2);	//taskInputNo_{tno}
 	console.log("==========================");
-	var a3 = '#'+a2;
+	var a3 = '#'+a2;	//#taskInputNo_{tno}	
 	console.log(a3);
-	console.log($(a1).closest('li').siblings(a3));
-	//$(a1).closest('li').next().next().find(".jm-innerTaskInput").addClass('row active');
-	//$(a1).closest('li').next().next().find(".jm-innerTaskInput").css("display","block, flex");
-	$(a1).closest('li').siblings(a3).find(".jm-innerTaskInput").addClass('row active');
-	$(a1).closest('li').siblings(a3).find(".jm-innerTaskInput").css("display","block, flex");
+	$(a3).find(".jm-innerTaskInput").addClass('row active');
+	$(a3).find(".jm-innerTaskInput").css("display","block, flex");
 	$(".innerTdate").text(functionDateHandler())
 }
 
@@ -98,7 +102,7 @@ boxOutHandler=(event)=>{
 	if( $(".jm-innerTaskInput").hasClass('active') ){
 		if(	!$(a1).hasClass("jm-innerTaskInput") 
 			&& !$(a1).hasClass("jm-inner-task-button")
-			&& !$(a1).parents('li').hasClass("jm-innerTaskInput")
+			&& !$(a1).parents('div').hasClass("jm-innerTaskInput")
 			){
 			console.log("영역외");
 			console.log(a1);
@@ -113,14 +117,16 @@ ttileCheckHandler=(event)=>{
 	console.log(a1);
 }
 
-function innerTaskaddListHandler () {
+function innerTaskaddListHandler (data) {
 //const pathname = "/" + window.location.pathname.split("/")[1] + "/";
 //const origin = window.location.origin;
 //const contextPath = origin + pathname;
 	console.log("ajax간다");
 	console.log($(this).closest(".addInnerTask").serialize());
+	console.log(event.target);
+	var a1 = event.target;
 	//???
-	var d1 = $(this).closest(".addInnerTask").serialize();
+	var d1 = $(a1).closest(".addInnerTask").serialize();
 	console.log(d1);
 	$.ajax ({
 		url: contextPath+"/innertaskinsert",
@@ -165,7 +171,7 @@ function makeView(project) {
 													</div>
 												</div>
 												<ul class="jm-inner-task">
-													<div class="jm-wrap-section-task-title jm-gr">
+													<li class="jm-wrap-section-task-title jm-gr">
 														<ul class="jm-serction-task-title">
 			`;
 	//project.maintaskList.map(function(task){
@@ -187,7 +193,7 @@ listHtml += `
 			`;
 		if(task.brelevel == 0) {
 listHtml += `
-																	<button class="jm-inner-task-button" >업무추가</button>
+																	<button class="jm-inner-task-button" onclick="innerTaskInputHandler(this)">업무추가</button>
 			`; 
 		}
 listHtml += `
@@ -201,60 +207,61 @@ listHtml += `
 																<div class="jm-title-tno col-lg-1 jm-grey jm-gr">${task.tno }</div>
 															</li>
 															<li class="jm-ajax-InnertaskIn">
+																<form class="addInnerTask" id="taskInputNo_${task.tno}">
+																	<div class="jm-innerTaskInput jm-innerTask-el">
+																		<div class="jm-title-ttitle col-lg-4 jm-grey">
+																			<input type="text" placeholder="하위업무명을 입력하세요" name="ttitle" required="required">
+																		</div>
+																		<div class="jm-title-tstatus col-lg-1 jm-grey">
+																			<span>
+																				<select class= "form-select mb-3 selectCategory ml-2 " name="tstatus">
+																					<option value="요청" class="status request" selected="selected">요청</option>
+																				    <option value="진행" class="status progress">진행</option>
+																				    <option value="피드백" class="status feedback">피드백</option>
+																				    <option value="완료" class="status complete">완료</option>
+																				    <option value="보류" class="status remain">보류</option>
+																				</select>
+																			</span>
+																		</div>
+																		<div class="jm-title-tmember col-lg-1 jm-grey">
+																			<span>담당자 드롭다운(tmember)</span>
+																		</div>
+																		<div class="dropdown jm-title-tstartdate col-lg-1 jm-grey">
+																			<div data-bs-toggle="dropdown">
+																				<button class="btn btn-secondary">시작일</button>
+																			</div>
+																			<div class="mini-pop dropdown-menu dropdown-menu-end">
+																				<input type="date" name="tstartdate">
+																			</div>
+																		</div>
+																		<div class="dropdown jm-title-tenddate col-lg-1 jm-grey">
+																			<div data-bs-toggle="dropdown">
+																				<button class="btn btn-secondary">마감일</button>
+																			</div>
+																			<div class="mini-pop dropdown-menu dropdown-menu-end">
+																				<input type="date" name="tenddate">
+																			</div>
+																		</div>
+																		<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">
+																			<div class="innerTdate"></div>
+																		</div>
+																		<div class="jm-title-tno col-lg-1 jm-grey jm-gr">
+																			<input type="hidden" name ="tno" value="${task.tno}">
+																			<input type="hidden" name="tcontent" value="default">
+																			<input type="hidden" name="pno" value="${project.pno}">
+																			<input type="hidden" name="userid" value="${principal_username}"> <!-- 로그인 세션 받아서 등록 -->
+																			<button type="button" onclick="innerTaskaddListHandler()">추가하기</button>
+																		</div>
+																	</div>
+																</form>
 															</li>
-															<form class="addInnerTask" id="taskInputNo_${task.tno}">
-															<ul>
-																<li class="jm-innerTaskInput jm-innerTask-el">
-																	<div class="jm-title-ttitle col-lg-4 jm-grey">
-																		<input type="text" placeholder="하위업무명을 입력하세요" name="ttitle" required="required">
-																	</div>
-																	<div class="jm-title-tstatus col-lg-1 jm-grey">
-																		<span>
-																			<select class= "form-select mb-3 selectCategory ml-2 " name="tstatus">
-																				<option value="요청" class="status request" selected="selected">요청</option>
-																			    <option value="진행" class="status progress">진행</option>
-																			    <option value="피드백" class="status feedback">피드백</option>
-																			    <option value="완료" class="status complete">완료</option>
-																			    <option value="보류" class="status remain">보류</option>
-																			</select>
-																		</span>
-																	</div>
-																	<div class="jm-title-tmember col-lg-1 jm-grey">
-																		<span>담당자 드롭다운(tmember)</span>
-																	</div>
-																	<div class="dropdown jm-title-tstartdate col-lg-1 jm-grey">
-																		<div data-bs-toggle="dropdown">
-																			<button class="btn btn-secondary">시작일</button>
-																		</div>
-																		<div class="mini-pop dropdown-menu dropdown-menu-end">
-																			<input type="date" name="tstartdate">
-																		</div>
-																	</div>
-																	<div class="dropdown jm-title-tenddate col-lg-1 jm-grey">
-																		<div data-bs-toggle="dropdown">
-																			<button class="btn btn-secondary">마감일</button>
-																		</div>
-																		<div class="mini-pop dropdown-menu dropdown-menu-end">
-																			<input type="date" name="tenddate">
-																		</div>
-																	</div>
-																	<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">
-																		<div class="innerTdate"></div>
-																	</div>
-																	<div class="jm-title-tno col-lg-1 jm-grey jm-gr">
-																		<input type="hidden" name ="tno" value="${task.tno}">
-																		<input type="hidden" name="tcontent" value="default">
-																		<input type="hidden" name="pno" value="${project.pno}">
-																		<input type="hidden" name="userid" value="${principal.username}"> <!-- 로그인 세션 받아서 등록 -->
-																		<button type="button" class="jm-innerTask-insert-button">추가하기</button>
-																	</div>
 	        `;
 		// });  // map
 		} // for 
 listHtml += `
-													</ul>
-												</div>
-											</ul>
+														</ul>
+													</li>
+												</ul>
 `;
         
 		var id = "#projectNo_"+ project.pno;

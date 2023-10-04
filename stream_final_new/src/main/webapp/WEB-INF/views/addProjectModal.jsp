@@ -16,8 +16,7 @@
 					</div>
 						<form id="addProject">					
 						<input type="text" class="form-control title" name="pname" placeholder="프로젝트명을 입력해주세요." required="required">
-						<br>
-						<span class="d-flex align-items-center">
+						<div class="d-flex align-items-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock align-middle me-2"><circle cx="12" cy= "12 " r= "10 "></circle><polyline points= "12 6 12 12 16 14 "></polyline></svg>
 							<input type="hidden" id="valuePstatus" name="pstatus"> <!-- js - selectOption() -->
 							<select class= "form-select mb-3 selectCategory ml-2 " name="addpstatus">
@@ -26,25 +25,22 @@
 							  <!-- <option class="status complete" value="완료">숨김</option> -->
 							  <option class="status remain" value="보류">보류</option>
 							</select>					
-						</span>
-						<span class="d-flex align-items-center">
+						</div>
+						<div class="d-flex align-items-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2">
 							  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r= "4"></circle>
 							</svg>
 							<input type= "text" class= "form-control manager ml-2" value="${ul.mname}" placeholder= "담당자" readonly>
-						</span>
-						<br>
-						<textarea class="form-control content" id="summernote" rows="10" name="pcontent" placeholder="프로젝트에 관한 설명을 입력해주세요"></textarea>
-						<br>
+						</div>
+						<textarea class="form-control input" id="summernote" rows="10" name="pcontent" placeholder="프로젝트에 관한 설명을 입력해주세요"></textarea>
 						<input type="hidden" name="userid" value="kh0001@kh.com"> <!-- 로그인 세션 받아서 등록 -->
 						<input type="hidden" name="paccess" value="ACCESS"><!-- 세션에서 권한 선택 -->
 						
-					
-						<input type="date" class="form-date" name="pstartdate" required="required">
-						~
-						<input type="date" class="form-date" name="penddate" required="required">
-						<br>
-						<br>
+						<div class="form-control">
+							<input type="date" class="form-date" name="pstartdate" required="required">
+							~
+							<input type="date" class="form-date" name="penddate" required="required">
+						</div>
 						<div align="center">
 							<button class="btn btn-primary" id="btn-submit" type="submit">추가</button>
 							<button class="btn btn-warning" type="reset">취소</button>

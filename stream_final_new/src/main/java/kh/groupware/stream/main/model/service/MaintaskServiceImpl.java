@@ -26,7 +26,7 @@ public class MaintaskServiceImpl implements MaintaskService {
 		int update = maintaskDao.UpdateBeforeInsertInnerTask(vo);
 		int insertResult = maintaskDao.insertInnerTask(vo);
 		if(insertResult > 0) {
-			result = maintaskDao.projectOneTaskList(vo.getPno());
+			result = maintaskDao.projectOneTaskList(vo);
 		}
         return result;
 	}

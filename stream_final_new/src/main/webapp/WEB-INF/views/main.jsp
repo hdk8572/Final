@@ -30,7 +30,7 @@
 </head>
 
 <body>
-	<%@ include file="/WEB-INF/views/message.jsp"%>
+	<%@ include file="/WEB-INF/views/alertmsg.jsp"%>
 	<!-- 모달박스 -->
 	<div id="main-modal">
 		<div class="modalbox">
