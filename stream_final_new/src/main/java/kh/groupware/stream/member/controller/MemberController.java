@@ -81,9 +81,10 @@ public class MemberController {
 	}
 	
 	@GetMapping("/showmypage")
+	@ResponseBody
 	public MyPageVo showMyPage(String userid) {
-		MyPageVo mvo = memberService.showMyPage(userid);
-		return mvo;
+		MyPageVo showMyPage = memberService.showMyPage(userid);
+		return showMyPage;
 	}
 
 }

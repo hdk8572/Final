@@ -124,7 +124,7 @@ p {
 								class="feather feather-briefcase align-middle me-2">
 							<rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
 							<path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg><span>회사명</span></td>
-						<td class="mp-content">회사명이들어갑니다</td>
+						<td class="mp-content" data-field="cname"></td>
 					</tr>
 					<tr>
 						<td class="mp-item"><svg xmlns="http://www.w3.org/2000/svg"
@@ -135,7 +135,7 @@ p {
 							<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
 							<line x1="8" y1="21" x2="16" y2="21"></line>
 							<line x1="12" y1="17" x2="12" y2="21"></line></svg><span>부서명</span></td>
-						<td class="mp-content">부서명이들어갑니다</td>
+						<td class="mp-content" data-field="deptname"></td>
 					</tr>
 					<tr>
 						<td class="mp-item"><svg xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +145,7 @@ p {
 								class="feather feather-award align-middle me-2">
 							<circle cx="12" cy="8" r="7"></circle>
 							<polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg><span>직급명</span></td>
-						<td class="mp-content">직급명이들어갑니다</td>
+						<td class="mp-content" data-field="mrank"></td>
 					</tr>
 					<tr>
 						<td class="mp-item"><svg xmlns="http://www.w3.org/2000/svg"
@@ -155,7 +155,7 @@ p {
 								class="feather feather-user align-middle me-2">
 							<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
 							<circle cx="12" cy="7" r="4"></circle></svg><span>이름</span></td>
-						<td class="mp-content">이름이들어갑니다</td>
+						<td class="mp-content" data-field="mname"></td>
 					</tr>
 					<tr>
 						<td class="mp-item"><svg xmlns="http://www.w3.org/2000/svg"
@@ -166,7 +166,7 @@ p {
 							<path
 									d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><span>전화번호</span>
 						</td>
-						<td class="mp-content">전화번호가들어갑니다</td>
+						<td class="mp-content" data-field="mphone"></td>
 					</tr>
 					<tr>
 						<td colspan="2" class="mp-button"><button
@@ -262,13 +262,18 @@ p {
 					},
 					dataType: 'json',
 					success : function(data) {
-						console.log(data);
+						 console.log(data);
 						var mname=data.mname;
 						var cname=data.cname;
 						var mrank=data.mrank;
 						var mphone=data.mphone;
 						var deptname=data.deptname;
 						
+			            $('.mp-content[data-field="mname"]').text(data.mname);
+			            $('.mp-content[data-field="cname"]').text(data.cname);
+			            $('.mp-content[data-field="mrank"]').text(data.mrank);
+			            $('.mp-content[data-field="mphone"]').text(data.mphone);
+			            $('.mp-content[data-field="deptname"]').text(data.deptname);
 						
 						modal('mypage-modal');
 					},
