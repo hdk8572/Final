@@ -32,10 +32,16 @@
 	
 	<select id="projectOneTaskList" resultMap="maintaskVoMap" parameterType="string">
 		select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    		from project p right join (select * from task t where pno=#{pno}) t using (pno)
+    		where tmember = #{userid} or t.userid=#{userid} 
+    		order by bref desc, brelevel asc, brestep asc
+	</select>
+	<!-- 
+	select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
     		from project p right join task t using (pno)
     		where tmember = #{userid} or t.userid =#{userid} and pno=#{pno}
     		order by pno asc, bref desc, brelevel asc, brestep asc
-	</select>
+    		 -->
 	<!-- select pname, pno, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
     		from (select pname, pno from project where pno=#{pno}) 
     		join 
@@ -43,6 +49,7 @@
     			from task where ) 
     		using(pno)
     		order by brelevel asc, brestep asc	 -->
+    
 	
 	
 	
