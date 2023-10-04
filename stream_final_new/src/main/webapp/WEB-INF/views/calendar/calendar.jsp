@@ -19,7 +19,9 @@
 <!-- Tab bar -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<link href="${pageContext.request.contextPath }/css/streamapp.css" rel="stylesheet">
+<!-- Bootstrap CSS -->
+<link href="${pageContext.request.contextPath}/css/streamapp.css" rel="stylesheet">
+
 <link href="${pageContext.request.contextPath }/css/calmodal.css" rel="stylesheet"> 
 <link href="${pageContext.request.contextPath }/css/fullcalendar.css" rel="stylesheet">
 <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
@@ -37,7 +39,7 @@
 
 <!-- SummerNote CDN -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
 
 <script>
 let logined_userid="${principal.username}"; /* 로그인! */
@@ -47,11 +49,12 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 </script>
 </head>
 <body>
+	<%@ include file="/WEB-INF/views/alertmsg.jsp"%>
 	<div class="wrapper">
 		<%@include file="/WEB-INF/views/calendar/calendar-side.jsp"%>
-		<div class="main">
-		<%@ include file="/WEB-INF/views/headernavbar.jsp"%> 
-	
+			<div class="main">
+				<%@ include file="/WEB-INF/views/headernavbar.jsp"%> 
+
 			<main>
 				<div class="w3-bar tabBar">
 					<button class="w3-bar-item w3" onclick="openTab('Tab1')">피드</button>
@@ -59,29 +62,28 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 					<button class="w3-bar-item w3" onclick="openTab('Tab3')">캘린더</button>
 				</div>
 <%-- 				<div class="search">
-					<form action="${pageContext.request.contextPath}/pcalselectone" method="get"> <!-- ?? -->
-						<input class="serinput" type="text" placeholder="검색어 입력"> 
-						<img class="serimg" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
-					</form>
-				</div> --%>
+						<form action="${pageContext.request.contextPath}/pcalselectone" method="get"> <!-- ?? -->
+							<input class="serinput" type="text" placeholder="검색어 입력"> 
+							<img class="serimg" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+						</form>
+					</div> --%>
 
 				<main class="content">
- 							<h2>
-								Calendar
-								<button class="btn btn-primary addTaskTab" data-bs-toggle="modal" data-bs-target="#myModal" onclick="getMemberProjectListHandler(this)">+일정추가</button>
-							</h2>
+ 						<h2>
+							Calendar
+							<button class="btn btn-primary addcal" data-bs-toggle="modal" data-bs-target="#myModal" onclick="getMemberProjectListHandler(this)">+일정추가</button>
+						</h2>
 							<%@ include file="/WEB-INF/views/calendar/addcalmodal.jsp" %>
 					<div class="container-fluid p-0">
-								<div class="card-header">
-									<!-- 캘린더  -->
-									<div id="croot">
-										<div class="ccard-body px-4">
-											<div id="calendar"></div>
-											
-										</div>
+							<div class="card-header">
+								<!-- 캘린더  -->
+								<div id="croot">
+									<div class="ccard-body px-4">
+										<div id="calendar"></div>
 									</div>
 								</div>
 							</div>
+						</div>
 				 <%@ include file="/WEB-INF/views/calendar/readcalmodal.jsp" %>
 				</main>
 				<%@ include file="/WEB-INF/views/footer.jsp"%>
@@ -89,9 +91,9 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 		</div>
 	</div>
 	
-	<script src="${pageContext.request.contextPath}/js/message.js"></script>
 	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 	
 	<!-- 달력을 구성  -->
 	<script>
@@ -152,6 +154,8 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 			}
 		});
 	</script>
+	
+
 
 </body>
 </html>

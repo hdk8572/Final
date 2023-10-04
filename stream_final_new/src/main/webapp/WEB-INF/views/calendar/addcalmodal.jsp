@@ -7,68 +7,48 @@
 		<div class="modal-content pcal">
 			<div class="modal-header pcal"></div>
 			<div class="modal-body pcal">
-				<div class="card">
-					<div class="card-body">
+				<div class="card pcal">
+					<div class="card-body pcal">
 					<div class="card-header pcalTitle">
 						<h2 class="pcalTitle"><b>일정 작성</b></h2>
 					</div>
-						<form action="${pageContext.request.contextPath}/insertpcal" method="post">
+						<form class="addcalmodal-frm" action="${pageContext.request.contextPath}/insertpcal" method="post">
 							<input type="hidden" name="pno" value="${pno}">
-							<input type="text" class="form-control title" name="title" placeholder="제목을 입력하세요.">
-								<br>
-							<input type="date" class="form-date" name="start" required="required"> ~ <input type="date" class="form-date" name="end" required="required"> <!-- s -->
-								<br>
-								<br>
-						<!-- 작성자&참석자 -->
-						 <div class="d-flex align-items-center" >
-							<span>
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r= "4"></circle></svg>
-							</span>
+							<input type="text" class="form-control title" name="title" id="form-content" placeholder="제목을 입력하세요.">
+							
+							<!-- 날짜 -->
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar align-middle me-2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+								<input type="date" class="form-date" id="form-content" name="start" required="required"> ~ <input type="date" class="form-date" name="end" required="required"> <!-- s -->
+							
+							 <!-- 작성자&참석자 -->
+							 <div class="d-flex align-items-center" id="form-content">
+								<div>
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r= "4"></circle></svg>
+								</div>
 								<!-- 작성자 -->
-							<input type="text" name="userid" value="${principal.username }" readonly>
-							<div class="form-userid" >
-							<input type="text" name="attentuseridArr" value="mplsam@kh.co.kr">
-							<input type="text" name="attentuseridArr" value="kh0001@kh.com">
-							<input type="text" name="attentuseridArr" value="kh0002@kh.com">
-								<!-- 참가자 반복 -->
-								<input type="text" class="calmember" id="calmemberinput" placeholder="참가자" list="calmemberlist">
-								<select id="calmemberlist"> <!-- 일단 한 명만 추가해서 insert까지 하기  --> 
-								</select>
+									<input class="form-control userid" type="text" name="userid" value="${principal.username }" readonly>
+								<div class="form-userid" id="form-content" >
+									<input type="text" name="attentuseridArr" value="mplsam@kh.co.kr">
+									<input type="text" name="attentuseridArr" value="kh0001@kh.com">
+									<input type="text" name="attentuseridArr" value="kh0002@kh.com"> 
+									<!-- 참가자 반복 -->
+									<input type="text" id="calmemberinput" placeholder="참가자" list="calmemberlist">
+									<select id="calmemberlist"> <!-- 일단 한 명만 추가해서 insert까지 하기  --> 
+									</select>
+								</div>
 							</div>
-						</div>
-						<br>
-						<span class="d-flex align-items-center">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin align-middle me-2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-							<input type= "text" class= "form-control place" name="tmember" placeholder= "장소를 입력하세요.">
-						</span>
-						<br>
-					<div>
-					<textarea class="form-control content" name="smemo" placeholder="내용을 입력해주세요."></textarea>
-						<!-- 시큐에디터  위즈윅 -->
-						<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
-						<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script> 
-						<script>
-						let editor;
 						
-						ClassicEditor.create(document.querySelector(".form-control.content"), {	
-							language: "ko",
-							toolbar: [
-								'heading', 'bold', 'italic'
-							]
-						})
-							.then( editor => {
-					            myEditor = editor;
-					        } )
-					        .catch( err => {
-					            console.error( err.stack );
-				        });
-						</script>
-				   </div>
-						<br>
-						<div align="center">
-							<button class="btn btn-primary" type="submit">추가</button>
-							<button class="btn btn-warning" type="reset">취소</button>
-						</div>
+							<div class="d-flex align-items-center" id="form-content">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin align-middle me-2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+								<input type= "text" class= "form-control place" name="tmember" placeholder= "장소를 입력하세요.">
+							</div>
+							<div id="form-content">
+								<textarea class="form-control detail-content" id="csummernote" rows="5" name="smemo" placeholder="프로젝트에 관한 설명을 입력해주세요"></textarea>
+						    </div>
+							<div align="center">
+								<button type="submit" class="btn btn-primary" >추가</button>
+								<button  type="reset" class="btn btn-warning">취소</button>
+							</div>
 						</form>
 					</div>
 				</div>  <!-- end of card -->
@@ -125,5 +105,24 @@
 		$("#calmemberlist").html(listHtml);
 	}
 </script>
+
+	<script>
+		$(document).ready(function (){
+			$("#csummernote").summernote({				//  위즈윅 - summerNote		
+			     placeholder: '프로젝트 설명을 입력해주세요.',
+			     tabsize: 2,
+			     height: 120,
+			     toolbar: [
+			       ['style', ['style']],
+			       ['font', ['bold', 'underline', 'clear']],
+			       ['color', ['color']],
+			       ['para', ['ul', 'ol', 'paragraph']],
+			       ['table', ['table']],
+			       ['insert', ['link', 'picture', 'video']],
+			       ['view', ['fullscreen', 'codeview', 'help']]
+			     ]
+			});
+		});
+	</script>
 
 
