@@ -90,7 +90,7 @@
 								</tr>
 								<c:forEach items="${tlist}" var="tlist">
 									<tr class="listOne">
-										<td>${tlist.ttitle}<button type="button" class="detail-project">상세내용</button></td>
+										<td>${tlist.ttitle}<button type="button" class="detailProject">상세내용</button></td>
 										<td>${tlist.tmember}</td>
 										<%-- <td>${tlist.tstatus}</td> --%>
 										<td><select class="status setting" name="tname">
@@ -108,7 +108,7 @@
 									</tr>
 								</c:forEach>
 								
-								<%@ include file="/WEB-INF/views/detailprojectmodal.jsp"%>
+								<%@ include file="/WEB-INF/views/detailptaskmodal.jsp"%>
 								
 							</table>
 						</div>
@@ -165,17 +165,17 @@
 		       ['view', ['fullscreen', 'codeview', 'help']]
 		     ]
 		});
-		$(this).find(".detail-project").click(detailProject);
+		$(this).find(".detailProject").click(detailProject);
 		
 	}); 
 	
 	</script>
 	<script>
 	$(".listOne").mouseover(function() {
-		$(this).find(".detail-project").css("visibility", "visible");
+		$(this).find(".detailProject").css("visibility", "visible");
 	});
 	$(".listOne").mouseout(function() {
-		$(this).find(".detail-project").css("visibility", "hidden");
+		$(this).find(".detailProject").css("visibility", "hidden");
 	});
 	</script>
 	<script>
@@ -183,8 +183,6 @@
 		targetTno = $(this).closest("tr").find("input[name=tno]").val();
 		targetPno = $(this).closest("tr").find("input[name=pno]").val();
 		$("#detailProjectModal").modal("toggle");
-		console.log(targetTno);
-		console.log(targetPno);
 		
 		$.ajax({
 		 	url: "${pageContext.request.contextPath}/ptaskselectOne",
@@ -193,15 +191,13 @@
 		 	data: {tno: targetTno, pno: targetPno},
 		 	success: function(result){
 		 		console.log(result);
-		 		console.log(result.tno);
-		 		/*
-				$("#updateProjectModal [name=pno]").val(result.pno);
-				$("#updateProjectModal [name=pname]").val(result.pname);
-				$("#updateProjectModal [name=pcontent]").val(result.pcontent);
-				$("#updateProjectModal [name=pstartdate]").val(result.pstartdate);
-				$("#updateProjectModal [name=penddate]").val(result.penddate);
-				$("#updateProjectModal [name=mname]").val(result.mname);
-				$("#updateProjectModal [id=updateStatus]").val(result.pstatus); */
+		 		console.log(result.ttitle);
+		 		$(".wrap-card .tcontent").html(result.tcontent);
+		 		$(".wrap-card .ttitle").html(result.ttitle);
+		 		$(".wrap-card .tstatus").html(result.tstatus);
+		 		$(".wrap-card .userid").html(result.userid);
+		 		
+		 		$(".detail-project").find("[name=ttitle]").val("666");
 		 	},
 		 	error: function() {
 		 		console.log("detailProject에서 오류 발생");
