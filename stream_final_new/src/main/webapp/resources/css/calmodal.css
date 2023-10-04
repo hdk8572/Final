@@ -69,8 +69,6 @@
 .form-date {
     width: 45%;
 }
-/* 모달 공통 */
-
 
 /* 모달 간격 조정 */
 #form-content{
@@ -84,58 +82,14 @@
 }
 /* 모달 간격 조정 */
 
+/* 모달 공통 */
 
 
-/*addmodal 작성*/
+
+
+
 .form-control.userid {
 	width: 30%;
 }
 
 
-/* readcalmodal 상세 */
-
-/* The Close Button */
-.read-close {
-	color: white;
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
-	padding-right: 10px;
-}
-
-.read-close:hover,
-.read-close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.form-select.mb-3.selectCategory {
-    width: 30%;
-}
-
-.form-control.manager {
-	width: 50%;
-}
-
-.form-control.place {
-	width: 30%;
-}
-
-
-.feather.feather-clock.align-middle.me-2 {
-    position: relative;
-    bottom: 8px;
-}
-
-.card-header.ptaskTitle {
-	padding: 1rem 0rem;
-}
-
-.stitle{
-	border-bottom: 1px solid #80808038;
-	padding-bottom: 10px;
-}
-.form-control.comment {
-	width: 70%;
-}

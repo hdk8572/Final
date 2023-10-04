@@ -22,6 +22,8 @@
 <!-- Bootstrap CSS -->
 <link href="${pageContext.request.contextPath}/css/streamapp.css" rel="stylesheet">
 
+<!-- CSS -->
+<link href="${pageContext.request.contextPath }/css/calreadmodal.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/css/calmodal.css" rel="stylesheet"> 
 <link href="${pageContext.request.contextPath }/css/fullcalendar.css" rel="stylesheet">
 <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">

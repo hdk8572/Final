@@ -2,24 +2,23 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-	<!-- 모달 -->
-<!-- The Modal -->
+<!-- 모달 -->
 <div id="readScheduleModal" class="modal right fade">
 <div class="modal-dialog pcal">
   <!-- Modal content -->
   <div class="modal-content pcal">
   	<div class="modal-header pcal">
-  		<div>
-  			<button>
-  				<svg viewBox="0 0 24 24" focusable="false" height="24" width="24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></svg>
- 	 		</button>
- 	 		<div class="dropdown-menu dropdown-menu-end show" data-bs-popper="none">
-				<a class="dropdown-item" href="pages-profile.html"> 수정</a>
-				<a class="dropdown-item" href="#"> 삭제</a>
-			</div>
+  		<div class="read-dropdown-grop">
+  			<div class="btn-dropdown-toggle" data-bs-toggle="dropdown">
+  				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical me-2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+  			</div>
+				<ul class="dropdown-menu">
+					<li><a class="dropdown-item" href="#"> 수정</a></li>
+					<li><a class="dropdown-item" href="#"> 삭제</a></li>
+				</ul>
   		</div>
   		<!-- TODO -->
-  		<!-- <span class="read-close" data-bs-dismiss="modal" aria-label="Close">&times;</span> --> 
+  		<span class="read-close" data-bs-dismiss="modal" aria-label="Close">&times;</span>
   	</div>
  	<div class="modal-body">
  		<form id="addProject">
@@ -58,14 +57,6 @@
 				</div>
 			</div>
 		</div>
-
-			<div align="center">
-				<button class="btn btn-primary" id="btn-submit" type="button">수정</button><!-- TODO -->
-				<button class="btn btn-warning" type="reset">취소</button>
-			</div>
-			<div>
-			
-			</div>
 		</form>
 	</div>
   </div>
