@@ -32,45 +32,24 @@
 									<div class= "form-control manager ml-2 userid"></div>
 								</div>
 								<div class="form-control detail-content input tcontent"></div>
+								<input type="hidden" name="pno">
+								<input type="hidden" name="tno">
 							</form>
 							<form>
-								<div class="wrap-comment">
-									<div class="commentList">
-										<ul>
-											<li>
+								<div class="wrap-reply">
+									<div>
+										<ul class="replyList">
+									<!-- 	<li>
 												<div>
 													<p>첫번째 댓글 작성자</p>
 													<p>첫번째 댓글</p>
 												</div>
-											</li>
-											<li>
-												<div>
-													<p>두번째 댓글 작성자</p>
-													<p>두번째 댓글</p>
-												</div>
-											</li>
-											<li>
-												<div>
-													<p>세번째 댓글 작성자</p>
-													<p>세번째 댓글</p>
-												</div>
-											</li>
-											<li>
-												<div>
-													<p>세번째 댓글 작성자</p>
-													<p>세번째 댓글</p>
-												</div>
-											</li>
-											<li>
-												<div>
-													<p>세번째 댓글 작성자</p>
-													<p>세번째 댓글</p>
-												</div>
-											</li>
+											</li> 		-->
 										</ul>	
 									</div>
-									<div class="Comment-input">
-									<div class="form-control inputComment" contenteditable="true" placeholder="줄바꿈 Shift + Enter / 입력 Enter 입니다."></div>
+									<div class="reply-input">
+										<div class="form-control inputComment" contenteditable="true" placeholder="줄바꿈 Shift + Enter / 입력 Enter 입니다.">
+										</div>
 									</div>
 								</div>
 							</form>
@@ -81,6 +60,43 @@
 		</div>
 	</div>
 </div>
+<script>
+
+function replyLoadList() {
+	console.log("replyLoadList 호출");
+	console.log(targetTno);
+	$.ajax({
+		url: "${pageContext.request.contextPath}/replylista",
+		type: "get",
+		data: {tno:targetTno},
+		async : false,
+		datatype: "json",
+		success: makeReplyList,
+		error: function() {
+			alert("replyLoadList에서 에러났습니다.");
+		}
+	});
+	console.log("replyLoadList 실행");
+}
+
+function makeReplyList(data) {
+	var replyHtml = "";
+	for(var i=0; i<data.length; i++) {
+		var rl = data[i];
+		replyHtml+=`
+		<li>
+			<div>
+				<p>첫번째 댓글 작성자</p>
+				<p>첫번째 댓글</p>
+			</div>
+		</li>
+		`;
+	}
+	$(".replyList").html(replyHtml);
+}
+
+
+</script>
 <script>
 
 

@@ -315,4 +315,16 @@ VALUES (replyrno_sequence.nextval, 1, 'kh0001@kh.com', '테스트내용2', sysda
 INSERT INTO REPLY(RNO, TNO, USERID, RCONTENT, RDATE)
 VALUES (replyrno_sequence.nextval, 1, 'kh0001@kh.com', '테스트내용3', sysdate);
 
+INSERT INTO REPLY(RNO, TNO, USERID, RCONTENT, RDATE)
+VALUES (replyrno_sequence.nextval, 9, 'kh0001@kh.com', '테스트내용1', sysdate);
+
+INSERT INTO REPLY(RNO, TNO, USERID, RCONTENT, RDATE)
+VALUES (replyrno_sequence.nextval, 9, 'kh0001@kh.com', '테스트내용2', sysdate);
+
+INSERT INTO REPLY(RNO, TNO, USERID, RCONTENT, RDATE)
+VALUES (replyrno_sequence.nextval, 9, 'kh0001@kh.com', '테스트내용3', sysdate);
+
+INSERT INTO REPLY(RNO, TNO, USERID, RCONTENT, RDATE)
+VALUES (replyrno_sequence.nextval, 9, 'kh0001@kh.com', '테스트내용4', sysdate);
+
 COMMIT;
