@@ -14,24 +14,27 @@ function selectOption(e){
 
 function goUpdateForm(pno) {
 	$("#updateProjectModal").modal("toggle");
+	console.log($("#updateProjectModal").find('input [name=userid]').val());
+	
 	$.ajax({
-	 	url: contextPath+"/projectOne/"+pno,
+	 	url: contextPath+"/projectOne",
 	 	type: "get",
+	 	data: {pno:pno, userid:useridJs},
 	 	dataType: "json",
 	 	success: function(result){
-	 		console.log(result.pstartdate);
-	 		console.log(result.penddate);
+	 		console.log(result.userid);
 			$("#updateProjectModal [name=pno]").val(result.pno);
 			$("#updateProjectModal [name=pname]").val(result.pname);
 			$("#updateProjectModal [name=pcontent]").val(result.pcontent);
 			$("#updateProjectModal [name=pstartdate]").val(result.pstartdate);
 			$("#updateProjectModal [name=penddate]").val(result.penddate);
-			$("#updateProjectModal [name=mname]").val(result.mname);
+			$("#updateProjectModal [name=mname]").text(result.mname);
 			$("#updateProjectModal [id=updateStatus]").val(result.pstatus);
 	 	},
-	 	error: function() {
-	 		console.log("selectOne에서 오류 발생");
-	 	}
+	 	error:function(){
+			console.log("goUpdateForm에서 에러 발생");
+		}
+	 	
 	 });
 }
 
@@ -60,8 +63,25 @@ function doUpdateProject() {
 	});	
 }
 
-
 function hideProject(pno, $thisElement) {
+    var pstatus = $thisElement.closest(".list-card").find(".text-muted").attr("data-pstatus"); // 엄청 중요합니다.
+    $.ajax ({
+    	url: contextPath+"/doUpdateProject",
+    	type: "get",
+		data: {pno:pno, pstatus:pstatus},
+		dataType: "json",
+		success: function(result) {
+			console.log("hide 다녀왔습니다");
+			location.href=contextPath+"/projectlist";
+		},
+		error: function() {
+			console.log("doUpdateProject.direct에서 오류 발생");
+		}
+    });
+}
+
+
+/* function hideProject(pno, $thisElement) {
     var pstatus = $thisElement.closest(".list-card").find(".text-muted").attr("data-pstatus"); // 엄청 중요합니다.
     $.ajax ({
     	url: contextPath+"/doUpdateProject.direct",
@@ -76,7 +96,7 @@ function hideProject(pno, $thisElement) {
 			console.log("doUpdateProject.direct에서 오류 발생");
 		}
     });
-}
+} */ 
 
 
 
