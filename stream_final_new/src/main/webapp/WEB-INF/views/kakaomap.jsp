@@ -44,6 +44,7 @@
 </head>
 <body>
 	<div class="map_wrap">
+		<!-- 지도 크기 -->
 		<div id="map"
 			style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
 		<div class="hAddr">
