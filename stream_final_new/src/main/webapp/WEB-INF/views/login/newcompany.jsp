@@ -43,7 +43,8 @@
 							<h1 class="h2">기업 가입</h1>
 							<p class="lead">기업 정보를 입력 후 그룹웨어 Stream을 이용해보세요!</p>
 						</div>
-						<form>
+						<form action="${pageContext.request.contextPath}/newcompany"
+							method="post">
 							<div class="card cards">
 								<div class="m-sm-4 ccard">
 									<div class="mb-3">
@@ -142,14 +143,15 @@
 											</div>
 										</div>
 									</div>
-						</form>
-						<div class="text-center mt-3">
-							<button type="button" class="btn btn-lg btn-primary prevButton">이전</button>
-							<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
-							<a href="index.html" class="btn btn-lg btn-primary">등록</a>
-							<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
-						</div>
 
+									<div class="text-center mt-3">
+										<button type="button"
+											class="btn btn-lg btn-primary prevButton">이전</button>
+										<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
+										<button type="submit" class="btn btn-lg btn-primary">등록</button>
+										<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
+									</div>
+						</form>
 					</div>
 				</div>
 			</div>

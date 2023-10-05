@@ -6,5 +6,13 @@
 	<select id="deptList" parameterType="String" resultType="DeptVo">
 		SELECT DEPTNAME, DEPTNO FROM DEPT WHERE CCODE = #{ccode}
 	</select>
+	
+	<!-- 회사회원가입 2: DEPT insert -->
+	<insert id="newDept" parameterType="map">
+	INSERT ALL INTO DEPT (DEPTNO, CCODE, DEPTNAME) VALUES 
+	<foreach collection="deptList" item="DeptVo">
+	('D' || TO_CHAR(DEPT_SEQUENCE.NEXTVAL), #{ccode}, #{deptname})
+	</foreach>
+	</insert>
 
 </mapper>
