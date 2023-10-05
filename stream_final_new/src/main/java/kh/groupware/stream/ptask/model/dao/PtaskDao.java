@@ -1,4 +1,4 @@
-package kh.groupware.stream.ptask.model;
+package kh.groupware.stream.ptask.model.dao;
 
 import java.util.HashMap;
 import java.util.List;

@@ -7,28 +7,33 @@
 		UPDATE USERS SET
 		DEPTNO =
 		#{deptno}, PASSWORD = #{password}, MNAME = #{mname} WHERE
-		USERID =
-		#{userid}
+		USERID = #{userid}
 	</select>
+	
+	<!-- 회사 회원가입 -->
+	<insert id="newCompany" parameterType="MemberVo">
+		
+	</insert>
 
 	<!-- 마이페이지 -->
 	<select id="myPage" parameterType="String" resultType="MemberVo">
 		SELECT
-		MNAME, CNAME, DEPTNAME, USERID, MPHONE, MRANK FROM MEMBER WHERE USERID
-		= #{userid}
+		MNAME, CNAME, DEPTNAME, USERID, MPHONE, MRANK FROM MEMBER
+		WHERE USERID = #{userid}
 	</select>
 
 	<!-- 마이페이지 수정 -->
 	<select id="update" parameterType="MemberVo">
 		UPDATE USERS SET DEPTNO=
-		#{deptno}, MPHONE = #{mphone}, MRANK = #{mrank} WHERE USERID =
-		#{userid}
+		#{deptno}, MPHONE = #{mphone}, MRANK = #{mrank}
+		WHERE USERID = #{userid}
 	</select>
 
 	<!-- 아이디체크 -->
 	<select id="idCheck" parameterType="String" resultType="_int">
 		SELECT
-		COUNT(USERID) FROM USERS WHERE USERID=#{userid}
+		COUNT(USERID) FROM USERS
+		WHERE USERID=#{userid}
 	</select>
 
 	<select id="showMyPage" parameterType="String"

@@ -2,18 +2,30 @@
 window.onload=loadedHandler;
 
 function loadedHandler(){
+	//div 드래그
 	$(".jm-move").on("dragstart", dragStart);
 	$(".jm-move").on("drag", dragging);
 	$(".jm-drop").on("dragenter", dragEnter);
 	$(".jm-drop").on("dragover", allowDrop);
 	$(".jm-drop").on("drop", drop);
 	$(".jm-move").on("dragend", dragEnd );
+	
+	//업무리스드 열고 닫기
 	$(".jm-box-project-title").on("click", titleClickHandler);
-	$(".jm-task-info").on("click", projectButtonClickTestHandler);
-	//$(".jm-inner-task-button").on("click", innerTaskInputHandler);
-	$('html').on("click", boxOutHandler)
-	//$(".jm-innerTask-insert-button").click(innerTaskaddListHandler);
+	
+	//자세히 보기 클릭 이벤트
+	//$(".jm-task-info").on("click", taskDetailButtonClickTestHandler);
+	
+	//업무 추가 버튼 from submit 이벤트
 	$(".addInnerTask").on("submit",ttileCheckHandler);
+	//ajax 원클릭 변경. 현재 미사용
+	//$(".jm-inner-task-button").on("click", innerTaskInputHandler);
+	//$(".jm-innerTask-insert-button").click(innerTaskaddListHandler);
+	
+	//업무추가 메뉴 닫기 이벤트
+	$('html').on("click", boxOutHandler);
+	
+	
 }
 
 function dragStart(e){
@@ -62,8 +74,34 @@ titleClickHandler=(event)=>{
 	}
 } 
 
-projectButtonClickTestHandler=(event)=>{
-	console.log(event.target);
+taskDetailButtonClickTestHandler=(thisButton)=>{
+	var a1 = thisButton
+	console.log(a1);
+	var b1 = $(a1).closest('li')[0].id;
+	console.log(b1);
+	var targetTno = $(a1).next().find("input[name=tno]").val();
+	var targetPno = $(a1).next().find("input[name=pno]").val();
+	console.log(targetTno);
+	console.log(targetPno);
+	$("#detailProjectModal").modal("toggle");
+	
+	$.ajax({
+		 	url: contextPath+"/ptaskselectOne",
+		 	type: "get",
+		 	dataType: "json",
+		 	data: {tno: targetTno, pno: targetPno},
+		 	success: function(result){
+		 		$(".wrap-card .tcontent").html(result.tcontent);
+		 		$(".wrap-card .ttitle").html(result.ttitle);
+		 		$(".wrap-card .tstatus").html(result.tstatus);
+		 		$(".wrap-card .userid").html(result.userid);
+		 		$(".wrap-card .tstartdate").val(result.tstartdate);
+		 		$(".wrap-card .tenddate").val(result.tenddate);
+		 	},
+		 	error: function() {
+		 		console.log("detailProject에서 오류 발생");
+		 	}
+		});
 }
 
 functionDateHandler=(e)=>{
@@ -166,7 +204,7 @@ function makeView(project) {
 														<span class="jm-project-task-count">(${project.maintaskList.length})</span>
 														<form class="jm-dn" action="${contextPath}/ptasklist" method="get">
 															<input type="hidden" name="pno" value="${project.pno}" >
-															<button class="jm-project-button jm-tp">바로가기</button>
+															<button class="jm-tp">바로가기</button>
 														</form>
 													</div>
 												</div>
@@ -197,7 +235,11 @@ listHtml += `
 			`; 
 		}
 listHtml += `
-																	<span class="jm-tp jm-task-info">자세히 보기</span>
+																	<button class="jm-tp jm-task-info" onclick="taskDetailButtonClickTestHandler(this);">자세히 보기</button>
+																	<div class="jm-hidden">
+																			<input type="hidden" name="pno" value="${project.pno}">
+																			<input type="hidden" name="tno" value="${task.tno }">
+																	</div>
 																</div>
 																<div class="jm-title-tstatus col-lg-1 jm-grey">${task.tstatus }</div>
 																<div class="jm-title-tmember col-lg-1 jm-grey">${task.tmember }</div>
@@ -208,7 +250,7 @@ listHtml += `
 															</li>
 															<li class="jm-ajax-InnertaskIn">
 																<form class="addInnerTask" id="taskInputNo_${task.tno}">
-																	<div class="jm-innerTaskInput jm-innerTask-el">
+																	<div class="jm-innerTaskInput jm-hidden">
 																		<div class="jm-title-ttitle col-lg-4 jm-grey">
 																			<input type="text" placeholder="하위업무명을 입력하세요" name="ttitle" required="required">
 																		</div>
@@ -268,4 +310,5 @@ listHtml += `
 		$(id).html(listHtml);
 		console.log(id);
 }
+
 

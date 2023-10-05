@@ -36,6 +36,12 @@ public class CalendarServiceImpl implements CalendarService {
 		return calendarDao.memberProjectList(pno);
 	}
 	
+	// 프로젝트에 참여중인 회원인지 확인함.
+	@Override
+	public int isAttendedProject(Map<String, String> map) {
+		return calendarDao.isAttendedProject(map);
+	}
+	
 	//캘린더 등록 //insert:캘린더 정보를 db에 추가 //insertMember:참가자 정보를 db에 추가
 	//override밑에 Transactional주석처리
 	@Override
@@ -66,11 +72,6 @@ public class CalendarServiceImpl implements CalendarService {
 		return calendarDao.delete(sno);
 	}
 	
-	// 프로젝트에 참여중인 회원인지 확인함.
-	@Override
-	public int isAttendedProject(Map<String, String> map) {
-		return calendarDao.isAttendedProject(map);
-	}
 
 
 

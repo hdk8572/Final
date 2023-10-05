@@ -2,23 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="company">
 
-	
 	<!-- 회사회원가입 -->
-	<select id="insert" parameterType="CompanyVo">
-		INSERT INTO COMPANY VALUES ('C04', #{cname}, #{cphone}, #{caddress}, #{cpassword})
-	</select>
+	<!-- <select id="insert" parameterType="CompanyVo"> INSERT INTO COMPANY 
+		VALUES ('C04', #{cname}, #{cphone}, #{caddress}, #{cpassword}) </select> -->
 	<!-- TODO!! sequence 만들어서 ccode에 넣기 -->
-	
-	<!-- 회사정보 -->
-	<select id="companyInfo" parameterType="String" resultType="CompanyVo">
-		SELECT CNAME, CPHONE, CADDRESS, DEPTNAME FROM COMPANYINFO WHERE USERID = #{ccode}
-	</select>
-	
-	<!-- 회사정보수정 -->
-	<select id="update" parameterType="CompanyVo">
-		<!-- TODO -->
-	</select>
-	
 
-	
+	<!-- 회사정보 -->
+	<select id="companyInfo" parameterType="String"
+		resultType="CompanyVo">
+		SELECT CNAME, CPHONE, CADDRESS, DEPTNAME FROM COMPANYINFO
+		WHERE USERID = #{ccode}
+	</select>
+
+	<!-- 회사정보수정 --><!-- TODO -->
+	<select id="update" parameterType="CompanyVo">
+	</select>
+
+	<!-- 회사회원가입 1: COMPANY insert -->
+	<insert id="newCompany" parameterType="kh.groupware.stream.company.model.vo.CompanyInsertParam">
+		<selectKey order="BEFORE" keyProperty="ccode"
+			keyColumn="ccode" resultType="string">
+			SELECT 'C' || TO_CHAR(COMPANY_SEQUENCE.NEXTVAL, 'FM000') ccode FROM DUAL
+		</selectKey>
+		INSERT INTO COMPANY (CCODE, CNAME, CPHONE, CADDRESS, CPASSWORD) VALUES
+		(#{ccode}, #{cname}, #{cphone}, #{caddress}, 12345)
+	</insert>
+	<!-- TODO! 12345 암호화해서 넣어야함 -->
+
+
 </mapper>

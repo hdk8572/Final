@@ -6,5 +6,15 @@
 	<select id="deptList" parameterType="String" resultType="DeptVo">
 		SELECT DEPTNAME, DEPTNO FROM DEPT WHERE CCODE = #{ccode}
 	</select>
+	
+	<!-- 회사회원가입 2: DEPT insert -->
+   <insert id="newDept"  parameterType="kh.groupware.stream.company.model.vo.CompanyInsertParam" >
+   		INSERT ALL 
+      	INTO DEPT (DEPTNO, CCODE, DEPTNAME) VALUES   (#{defaultDeptCode}, #{ccode}, #{defaultDeptName})
+      <foreach collection="deptArr" item="deptname" index="idx">
+      	INTO DEPT (DEPTNO, CCODE, DEPTNAME) VALUES   ( REPLACE('D'||TO_CHAR(TO_NUMBER(SUBSTR(DEPTNO, 2)) + #{idx} +1, '000'),' ','') , #{ccode}, #{deptname})
+      </foreach>
+ 		 SELECT NVL(MAX(DEPTNO), 'D000') DEPTNO FROM DEPT WHERE CCODE= #{ccode}
+   </insert>
 
 </mapper>

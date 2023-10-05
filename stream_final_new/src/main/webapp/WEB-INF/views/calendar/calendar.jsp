@@ -55,8 +55,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 	<div class="wrapper">
 		<%@include file="/WEB-INF/views/calendar/calendar-side.jsp"%>
 			<div class="main">
-				<%@ include file="/WEB-INF/views/headernavbar.jsp"%> 
-
+				<%@ include file="/WEB-INF/views/headernavbar.jsp"%>
 			<main>
 				<div class="w3-bar tabBar">
 					<button class="w3-bar-item w3" onclick="openTab('Tab1')">피드</button>
@@ -70,13 +69,14 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 						</form>
 					</div> --%>
 
-				<main class="content">
+				<main class="content" id="content-calendar">
+					<div class="content-cal">
  						<h2>
 							Calendar
 							<button class="btn btn-primary addcal" data-bs-toggle="modal" data-bs-target="#myModal" onclick="getMemberProjectListHandler(this)">+일정추가</button>
 						</h2>
 							<%@ include file="/WEB-INF/views/calendar/addcalmodal.jsp" %>
-					<div class="container-fluid p-0">
+						<div class="container-fluid p-0">
 							<div class="card-header">
 								<!-- 캘린더  -->
 								<div id="croot">
@@ -86,7 +86,8 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 								</div>
 							</div>
 						</div>
-				 <%@ include file="/WEB-INF/views/calendar/readcalmodal.jsp" %>
+				 	 <%@ include file="/WEB-INF/views/calendar/readcalmodal.jsp" %>
+					 </div>
 				</main>
 				<%@ include file="/WEB-INF/views/footer.jsp"%>
 			</main>
@@ -146,9 +147,20 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 						var event = info.event;
 						//작성자!!!!임 (다른사람도 적은 일정들)
 						console.log(info.event.extendedProps.sno);
+						
+						// 지연 TODO 
+						var htmlval = '';
+						for(var i=0; i<info.event.extendedProps.attenduseridList.length; i++){
+							htmlval += '<div>'+info.event.extendedProps.attenduseridList[i]+'</div>';
+						}
+						$("#readScheduleModal.modal  #attenduseridList").html(htmlval);
+						
+						
 						$("#readScheduleModal.modal  #title").html(info.event.title); //띄우려는 모달이랑 이름 맞춰야한다.
 						$("#readScheduleModal.modal  #userid").html(info.event.extendedProps.userid); //extendedProps -> api에서 가져옴, 값을 띄우는 걸 도와줌
 						$("#readScheduleModal.modal  #smemo").html(info.event.extendedProps.smemo);
+						/* $("#readScheduleModal.modal  #start").html(info.event.extendedProps.start);//TODO
+						$("#readScheduleModal.modal  #end").html(info.event.extendedProps.end);//TODO */
 						$("#readScheduleModal").modal("toggle");
 					} 
 				});

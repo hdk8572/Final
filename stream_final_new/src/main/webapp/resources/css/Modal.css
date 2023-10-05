@@ -2,7 +2,7 @@
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 1000; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -156,6 +156,7 @@
     min-width: 0;
     position: relative;
     height: 100%;
+    overflow-x: scroll;
 }
 
 .card-header.ptaskTitle {
@@ -276,4 +277,20 @@ form {
 	width: 18px;
     position: relative;
     top: -9px;
+}
+
+.form-control.inputComment {
+	/* border: 1px solid #ced4da;
+	width: 100%; */
+    width: 100%;
+    padding: 11px 75px 11px 20px;
+    min-height: 44px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #555;
+    word-break: break-word;
+    white-space: pre-wrap;
+    cursor: text;
 }

@@ -17,7 +17,7 @@ public class CalendarVo {
 	"SMEMO"	VARCHAR2(100)		NULL,
 	"STITLE"	VARCHAR2(100)		NOT NULL
 	
-	"ATTENUSERID"	VARCHAR2(40)		NOT NULL
+	"ATTENDUSERID"	VARCHAR2(40)		NOT NULL
 	*/
 	private String sno;
 	private String userid;  // 작성자  //insert - login, select - 다른id(참가자)
@@ -32,10 +32,10 @@ public class CalendarVo {
 	private String title;  //제목
 	private String color;
 	
-	private String[] attentuseridArr;  // view에서 같은 name에 여러개 값이 있을때 배열에 실림
+	private String[] attenduseridArr;  // view에서 같은 name에 여러개 값이 있을때 배열에 실림
 	
 	// 끼인테이블(참가자는 여기에 들어가 있음) 
-	private List<String> attenuseridList; 
+	private List<String> attenduseridList; 
 	
 //	[{
 //	title : '풀캘린더완성도',
@@ -51,7 +51,7 @@ public class CalendarVo {
 	}
 	
 	public CalendarVo(String sno, String userid, String pno, String splace, String smemo, String start, String end,
-		String title, String color, List<String> attenuseridList) {
+		String title, String color, List<String> attenduseridList) {
 	super();
 	this.sno = sno;
 	this.userid = userid;
@@ -62,7 +62,7 @@ public class CalendarVo {
 	this.end = end;
 	this.title = title;
 	this.color = color;
-	this.attenuseridList = attenuseridList;
+	this.attenduseridList = attenduseridList;
 	}
 
 	//smemo = CLOB 
@@ -70,16 +70,8 @@ public class CalendarVo {
 	public String toString() {
 		return "CalendarVo [sno=" + sno + ", userid=" + userid + ", pno=" + pno + ", splace=" + splace + ", smemo=CLOB"
 			   + ", start=" + start + ", end=" + end + ", title=" + title + ", color=" + color
-				+ ", attentuseridArr=" + Arrays.toString(attentuseridArr) + ", attenuseridList=" + attenuseridList
+				+ ", attentuseridArr=" + Arrays.toString(attenduseridArr) + ", attenduseridList=" + attenduseridList
 				+ "]";
-	}
-	
-	public String[] getAttentuseridArr() {
-		return attentuseridArr;
-	}
-
-	public void setAttentuseridArr(String[] attentuseridArr) {
-		this.attentuseridArr = attentuseridArr;
 	}
 
 	public String getSno() {
@@ -153,13 +145,23 @@ public class CalendarVo {
 	public void setColor(String color) {
 		this.color = color;
 	}
-
-	public List<String> getAttenuseridList() {
-		return attenuseridList;
+	
+	//AttenduseridArr 참가자
+	public String[] getAttenduseridArr() {
+		return attenduseridArr;
 	}
 
-	public void setAttenuseridList(List<String> attenuseridList) {
-		this.attenuseridList = attenuseridList;
+	public void setAttenduseridArr(String[] attenduseridArr) {
+		this.attenduseridArr = attenduseridArr;
 	}
+
+	public List<String> getAttenduseridList() {
+		return attenduseridList;
+	}
+
+	public void setAttenduseridList(List<String> attenduseridList) {
+		this.attenduseridList = attenduseridList;
+	}
+	
 	
 }

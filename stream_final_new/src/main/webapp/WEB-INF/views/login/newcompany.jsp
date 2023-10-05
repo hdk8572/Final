@@ -43,7 +43,8 @@
 							<h1 class="h2">기업 가입</h1>
 							<p class="lead">기업 정보를 입력 후 그룹웨어 Stream을 이용해보세요!</p>
 						</div>
-						<form>
+						<form action="${pageContext.request.contextPath}/newcompany"
+							method="post">
 							<div class="card cards">
 								<div class="m-sm-4 ccard">
 									<div class="mb-3">
@@ -64,7 +65,6 @@
 									<div class="text-center mt-3">
 										<button type="button"
 											class="btn btn-lg btn-primary nextButton">다음</button>
-										<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
 									</div>
 								</div>
 							</div>
@@ -72,13 +72,18 @@
 							<div class="card cards">
 								<div class="m-sm-4 ccard">
 									<div class="mb-3">
-										<label class="form-label">부서명 입력</label>
+										<label class="form-label">부서명 입력</label> <input type="hidden"
+											value="D000" name="defaultDeptCode" placeholder="기본부서" />
+										</td> <input type="hidden" value="DefaulDept"
+											name="defaultDeptName" placeholder="기본부서" />
+										</td>
 										<table>
 											<td><input class="form-control form-control-lg"
-												type="text" id="input-dept" name="cdept"
-												placeholder="ex) 영업부 " /></td>
-											<td><button onclick="addDeptTable()"
-													class="btn btn-lg btn-primary">추가</button></td>
+												type="text" id="input-dept" placeholder="ex) 영업부 " /></td>
+											<td>
+												<button type="button" onclick="addDeptTable()"
+													class="btn btn-lg btn-primary">추가</button>
+											</td>
 										</table>
 									</div>
 									<div class="row">
@@ -103,10 +108,8 @@
 									<div class="text-center mt-3">
 										<button type="button"
 											class="btn btn-lg btn-primary prevButton">이전</button>
-										<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
 										<button type="button"
 											class="btn btn-lg btn-primary nextButton">다음</button>
-										<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
 									</div>
 								</div>
 							</div>
@@ -120,7 +123,7 @@
 												class="form-control form-control-lg input-email" type="text"
 												id="input-email" name="ncemail"
 												placeholder="ex) 이메일을 입력하세요. " /></td>
-											<td><button onclick="addEmailTable()"
+											<td><button type="button" onclick="addEmailTable()"
 													class="btn btn-lg btn-primary">추가</button></td>
 										</table>
 									</div>
@@ -142,20 +145,18 @@
 											</div>
 										</div>
 									</div>
-						</form>
-						<div class="text-center mt-3">
-							<button type="button" class="btn btn-lg btn-primary prevButton">이전</button>
-							<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
-							<a href="index.html" class="btn btn-lg btn-primary">등록</a>
-							<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
-						</div>
 
+									<div class="text-center mt-3">
+										<button type="button"
+											class="btn btn-lg btn-primary prevButton">이전</button>
+										<button type="submit" class="btn btn-lg btn-primary">등록</button>
+									</div>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
-		</div>
-		</div>
+
 
 	</main>
 
@@ -183,7 +184,8 @@
 			cards[index].style.display = 'block';
 		}
 	</script>
-	<!-- dept script -->
+
+<!-- Dept Script -->
 	<script>
 		var dRowCount = 0;
 
@@ -192,7 +194,8 @@
 			var row = table.insertRow(-1);
 
 			var inputDept = document.getElementById("input-dept");
-			var value = inputDept.value;
+			var value = '<input type="hidden" name="deptArr" value="'+inputDept.value+'"/>';
+			value += inputDept.value;
 
 			var cell1 = row.insertCell(0)
 			cell1.innerHTML = dRowCount + 1;
@@ -205,20 +208,21 @@
 			cell3.classList.add("delete-text");
 
 			cell3.onclick = function() {
-				removeRow(row);
+				removeDRow(row);
 			};
 
 			inputDept.value = "";
 			dRowCount++
 
 		}
-		function removeRow(row) {
+		function removeDRow(row) {
 			var table = document.getElementById("addDept");
 			table.deleteRow(row.rowIndex);
 			dRowCount--;
 		}
 	</script>
-	<!-- email script -->
+
+<!-- Email Script -->
 	<script>
 		var eRowCount = 0;
 
@@ -227,7 +231,8 @@
 			var row = table.insertRow(-1);
 
 			var inputEmail = document.getElementById("input-email");
-			var value = inputEmail.value;
+			var value = '<input type="hidden" name="emailArr" value="'+inputEmail.value+'"/>';
+			value += inputEmail.value;
 
 			var cell1 = row.insertCell(0)
 			cell1.innerHTML = eRowCount + 1;
@@ -240,21 +245,23 @@
 			cell3.classList.add("delete-text");
 
 			cell3.onclick = function() {
-				removeRow(row);
+				removeERow(row);
 			};
 
 			inputEmail.value = "";
 			eRowCount++
 
 		}
-		function removeRow(row) {
+		function removeERow(row) {
 			var table = document.getElementById("addEmail");
 			table.deleteRow(row.rowIndex);
 			eRowCount--;
 		}
 	</script>
-	<script src="js/app.js"></script>
 
+
+
+	<script src="js/app.js"></script>
 </body>
 
 </html>

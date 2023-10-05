@@ -12,10 +12,10 @@ import kh.groupware.stream.dept.model.vo.DeptVo;
 public class DeptServiceImpl implements DeptService {
 	
 	@Autowired
-	private DeptDao deptdao;
+	private DeptDao deptDao;
 	
 	//회사코드로 부서찾기
 	public List<DeptVo> deptList(String ccode){
-		return deptdao.deptList(ccode);
+		return deptDao.deptList(ccode);
 	}
 }

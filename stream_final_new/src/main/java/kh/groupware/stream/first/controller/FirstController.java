@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class FirstController {
 
-	@GetMapping("/main")
+	@GetMapping({"/main","/"})
 	public ModelAndView main(ModelAndView mv) {
 		mv.setViewName("main");
 		return mv;

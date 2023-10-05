@@ -16,11 +16,14 @@ START WITH 1
 INCREMENT BY 1;
 
 CREATE SEQUENCE company_sequence
-START WITH 4
+START WITH 1
 INCREMENT BY 1;
--- 나중에 시작 1로 바꿔야함
 
 CREATE SEQUENCE dept_sequence
+START WITH 1
+INCREMENT BY 1;
+
+CREATE SEQUENCE replyrno_sequence
 START WITH 1
 INCREMENT BY 1;
 
@@ -259,5 +262,14 @@ VALUES ('6', 'mplsam@kh.co.kr');
 INSERT INTO MEMBER_PROJECT ( PNO, USERID)
 VALUES ('6', 'sple@kh.co.kr');
 
+-- Table Reply
+INSERT INTO REPLY(RNO, TNO, USERID, RCONTENT, RDATE)
+VALUES (replyrno_sequence.nextval, 1, 'kh0001@kh.com', '테스트내용1', sysdate);
+
+INSERT INTO REPLY(RNO, TNO, USERID, RCONTENT, RDATE)
+VALUES (replyrno_sequence.nextval, 1, 'kh0001@kh.com', '테스트내용2', sysdate);
+
+INSERT INTO REPLY(RNO, TNO, USERID, RCONTENT, RDATE)
+VALUES (replyrno_sequence.nextval, 1, 'kh0001@kh.com', '테스트내용3', sysdate);
 
 COMMIT;
