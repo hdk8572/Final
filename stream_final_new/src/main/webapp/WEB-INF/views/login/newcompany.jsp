@@ -16,7 +16,7 @@
 <title>기업 가입</title>
 
 <!-- Bootstrap Css -->
-<link href="css/streamapp.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/streamapp.css" rel="stylesheet">
 <!-- Newcompany Css-->
 <link href="${pageContext.request.contextPath}/css/newcompany.css"
 	rel="stylesheet">
