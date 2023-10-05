@@ -16,7 +16,7 @@ public class ReplyDao {
 	private SqlSession sqlSession;
 	
 	public List<ReplyVo> selectList(String tno) {
-		return sqlSession.selectList("reply.selectList", ) 
+		return sqlSession.selectList("reply.selectList");
 	}
 	
 }

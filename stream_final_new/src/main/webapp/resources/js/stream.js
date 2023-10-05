@@ -63,12 +63,13 @@ function doUpdateProject() {
 	});	
 }
 
-function hideProject(pno, $thisElement) {
-    var pstatus = $thisElement.closest(".list-card").find(".text-muted").attr("data-pstatus"); // 엄청 중요합니다.
+function hideProject($thisElement) {
+    //var pstatus = $thisElement.closest(".list-card").find(".text-muted").attr("data-pstatus");// 엄청 중요합니다.
+    var pno = $thisElement;
     $.ajax ({
-    	url: contextPath+"/doUpdateProject",
+    	url: contextPath+"/doUpdateProject.direct",
     	type: "get",
-		data: {pno:pno, pstatus:pstatus},
+    	data: {pno:pno, userid:useridJs},
 		dataType: "json",
 		success: function(result) {
 			console.log("hide 다녀왔습니다");
@@ -78,8 +79,7 @@ function hideProject(pno, $thisElement) {
 			console.log("doUpdateProject.direct에서 오류 발생");
 		}
     });
-}
-
+} 
 
 /* function hideProject(pno, $thisElement) {
     var pstatus = $thisElement.closest(".list-card").find(".text-muted").attr("data-pstatus"); // 엄청 중요합니다.
@@ -96,7 +96,6 @@ function hideProject(pno, $thisElement) {
 			console.log("doUpdateProject.direct에서 오류 발생");
 		}
     });
-} */ 
-
+} */
 
 
