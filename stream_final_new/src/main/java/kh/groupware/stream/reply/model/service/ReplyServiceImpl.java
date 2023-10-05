@@ -19,5 +19,10 @@ public class ReplyServiceImpl implements ReplyService {
 		return replyDao.selectList(tno);
 	}
 	
+	@Override
+	public int insertReply(String tno) {
+		return replyDao.insert(tno);
+	}
+	
 	
 }

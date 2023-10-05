@@ -83,4 +83,3 @@ function hideProject($thisElement) {
 
 
 
-

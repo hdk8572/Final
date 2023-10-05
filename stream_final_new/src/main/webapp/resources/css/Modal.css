@@ -279,18 +279,6 @@ form {
     top: -9px;
 }
 
-.form-control.inputComment {
-	/* border: 1px solid #ced4da;
-	width: 100%; */
-    width: 100%;
-    padding: 11px 75px 11px 20px;
-    min-height: 44px;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-    color: #555;
-    word-break: break-word;
-    white-space: pre-wrap;
-    cursor: text;
+.flex-grow-1 > p {
+	margin: 0;
 }

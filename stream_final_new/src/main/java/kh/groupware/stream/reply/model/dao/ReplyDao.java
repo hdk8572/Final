@@ -18,4 +18,9 @@ public class ReplyDao {
 		return sqlSession.selectList("reply.selectList", tno);
 	}
 	
+	public int insert(String tno) {
+		return sqlSession.insert("reply.insertReply", tno);
+	}
 }
+
+
