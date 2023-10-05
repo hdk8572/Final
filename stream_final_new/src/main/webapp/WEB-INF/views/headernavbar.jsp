@@ -298,7 +298,7 @@
 		var popupButton = document.getElementById("popup");
 		popupButton.onclick = function() {
 			var jsPopup = window
-					.open("room", null,
+					.open("rooms", null,
 							"width=600, height=700, resizable=no, scrollbars=no,toolbars=no, menubar=no");
 
 		};

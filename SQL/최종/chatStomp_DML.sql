@@ -4,9 +4,6 @@ FROM chatroom;
 SELECT *
 FROM chatmessage;
 
-SELECT *
-FROM chatwriter;
-
 --DML 기본 추가
 INSERT INTO chatwriter (WRITER) VALUES ('김민성');
 INSERT INTO chatwriter (WRITER) VALUES ('황대경');

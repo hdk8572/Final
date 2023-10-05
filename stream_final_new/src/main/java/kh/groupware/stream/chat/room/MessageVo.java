@@ -1,23 +1,18 @@
-package kh.groupware.stream.chat.model.vo;
+package kh.groupware.stream.chat.room;
 
-import org.springframework.stereotype.Component;
-
-@Component
-public class ChatMessageVo {
-	private String roomId;
+public class MessageVo {
+	private int roomId;
 	private String userId;
 	private String message;
 	private String cDate;
-	private String mName;
 	@Override
 	public String toString() {
-		return "ChatMessageVo [roomId=" + roomId + ", userId=" + userId + ", message=" + message + ", cDate=" + cDate
-				+ ", mName=" + mName + "]";
+		return "MessageVo [roomId=" + roomId + ", userId=" + userId + ", message=" + message + ", cDate=" + cDate + "]";
 	}
-	public String getRoomId() {
+	public int getRoomId() {
 		return roomId;
 	}
-	public void setRoomId(String roomId) {
+	public void setRoomId(int roomId) {
 		this.roomId = roomId;
 	}
 	public String getUserId() {
@@ -38,13 +33,6 @@ public class ChatMessageVo {
 	public void setcDate(String cDate) {
 		this.cDate = cDate;
 	}
-	public String getmName() {
-		return mName;
-	}
-	public void setmName(String mName) {
-		this.mName = mName;
-	}
-	
 
 	
 	

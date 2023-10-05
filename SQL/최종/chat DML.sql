@@ -1,0 +1,88 @@
+DROP TABLE "CHATMESSAGE";
+DROP TABLE "CHATROOM";
+CREATE TABLE "CHATROOM"(
+    "ROOMID" VARCHAR2(50) NOT NULL,
+    "ROOMNAME"	VARCHAR2(50)	NOT NULL,
+    "USERID"	VARCHAR2(40)	NOT NULL
+);
+COMMENT ON COLUMN "CHATROOM"."ROOMID" IS '채팅방번호';
+COMMENT ON COLUMN "CHATROOM"."ROOMNAME" IS '채팅방이름';
+COMMENT ON COLUMN "CHATROOM"."USERID" IS 'ID';
+
+CREATE TABLE "CHATMESSAGE" (
+	"ROOMID"	VARCHAR2(50)	NOT NULL,
+	"USERID"	VARCHAR2(40)	NOT NULL,
+	"MESSAGE"	VARCHAR2(300)	NOT NULL,
+	"CDATE"	TIMESTAMP	DEFAULT SYSTIMESTAMP NOT NULL
+);
+COMMENT ON COLUMN "CHATMESSAGE"."USERID" IS 'ID';
+COMMENT ON COLUMN "CHATMESSAGE"."MESSAGE" IS '내용';
+COMMENT ON COLUMN "CHATMESSAGE"."CDATE" IS '작성 시간';
+COMMENT ON COLUMN "CHATMESSAGE"."ROOMID" IS '채팅방번호';
+ALTER TABLE "CHATROOM" ADD CONSTRAINT "PK_CHATROOM" PRIMARY KEY (
+	"ROOMID"
+);
+
+ALTER TABLE "CHATMESSAGE" ADD CONSTRAINT "FK_CHATROOM_TO_CHATMESSAGE_1" FOREIGN KEY (
+	"ROOMID"
+)
+REFERENCES "CHATROOM" (
+	"ROOMID"
+);
+
+ALTER TABLE "CHATMESSAGE" ADD CONSTRAINT "FK_USERS_TO_CHATMESSAGE_1" FOREIGN KEY (
+	"USERID"
+)
+REFERENCES "USERS" (
+	"USERID"
+);
+select mname
+from users;
+
+select mname,roomname
+from chatroom
+join users USING(userid);
+
+select * 
+from chatmessage;
+select mname from chatmessage join users using(userid);
+select * 
+from chatroom;
+INSERT INTO chatmessage (ROOMID,ROOMNAME,"select mname from chatmessage join users using(userid)") VALUES ('fd1fe888-5dd2-48a0-91b5-16b448c8cb5f','임임임roomname','나사장');
+SELECT roomid,roomname,mname
+FROM CHATROOM 
+join users USING(userid)
+WHERE ROOMID='2';
+
+SELECT * FROM CHATROOM where userid='sple@kh.co.kr';
+SELECT ROOMID,ROOMNAME,MNAME,USERID FROM CHATROOM JOIN USERS USING(USERID) WHERE ROOMID='2';
+select ROOMID,MNAME,MESSAGE,CDATE from CHATMESSAGE join users USING(userId) WHERE userid = 'sample@kh.co.kr' ORDER BY CDATE ASC;
+select *
+from users;
+
+select roomid,roomname,users.mname
+from chatroom
+join users USING(userid);
+
+select roomid,mname,message,cdate
+from chatmessage
+join users USING(userid)
+ORDER BY CDATE ASC
+;
+
+select ROOMID,MNAME,MESSAGE,CDATE from CHATMESSAGE join users USING(userId) WHERE ROOMID = '2' ORDER BY CDATE ASC;
+SELECT ROOMID,ROOMNAME,MNAME,userid FROM CHATROOM JOIN USERS USING(USERID) WHERE ROOMID='2';
+SELECT * FROM CHATROOM where userid='sample@kh.co.kr';
+
+DROP SEQUENCE chat_sequence;
+create SEQUENCE chat_sequence
+start with 1
+INCREMENT by 1;
+
+
+--INSERT INTO CHATROOM (ROOMID,ROOMNAME,USERID) VALUES (#{roomId},#{USERID},#{roomName})
+INSERT INTO CHATROOM (ROOMID,ROOMNAME,USERID) VALUES (chat_sequence.NEXTVAL,'roomname확인','sample@kh.co.kr');
+INSERT INTO CHATROOM (ROOMID,ROOMNAME,USERID) VALUES (chat_sequence.NEXTVAL,'roomname확인2','sample@kh.co.kr');
+DELETE FROM CHATROOM;
+
+commit;

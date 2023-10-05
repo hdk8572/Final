@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+ <sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal"/>
+</sec:authorize>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,26 +22,26 @@
             </ul>
         </div>
     </div>
+    <%-- ${principal.username} --%>
     <form action="/stream/room" method="post">
         <input type="text" name="roomName" class="form-control" placeholder="Room Name">
-        <input type="text" name="writer" class="form-control" placeholder="Writer Name">
+        <input type="text" name="userId" class="form-control" placeholder="userId Name">
         <button class="btn btn-secondary">개설하기</button>
     </form>
      <script>
         $(document).ready(function(){
             var roomName1 = "${roomName1}";
 
-            if(roomName1 != null)
-                alert(roomName1 + "방이 개설되었습니다.");
+            
 
             $(".btn-create").on("click", function (e){
                 e.preventDefault();
 
                 var roomName = $("input[roomName='roomName']").val();
-                var writer = $("input[roomName='writer']").val(); 
+                var userId = $("input[roomName='userId']").val(); 
 
-                if(name == "" || writer == "") 
-                    alert("Please write both the room name and writer name.");
+                if(name == "" || userId == "") 
+                    alert("Please write both the room name and userId name.");
                 else
                     $("form").submit();
             });

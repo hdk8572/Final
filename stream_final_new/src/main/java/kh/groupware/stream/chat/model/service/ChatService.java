@@ -13,9 +13,9 @@ import kh.groupware.stream.chat.model.vo.ChatVo;
 public interface ChatService {
 	
 
-	List<ChatMessageVo> ViewChat(String id);
+	List<ChatMessageVo> ViewChat(String userId);
 	int MessageInsert(ChatMessageVo vo);
-	List<ChatRoomVo> findAllRooms();
-	int AddChatRoom(String roomName,String writer);
+	List<ChatRoomVo> findAllRooms(String userId);
+	int AddChatRoom(String roomName,String userId);
 	ChatRoomVo findRoomById(String id);
 }

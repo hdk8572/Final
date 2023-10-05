@@ -4,34 +4,52 @@
 	<resultMap type="ChatRoomVo" id="chatRoomMap">
 		<id property="roomId" column="roomid"/>
 		<result property="roomName" column="roomname"/>
-		<result property="writer" column="writer"/>
+		<result property="userId" column="userid"/>
+		<result property="mName" column="mname"/>
 	</resultMap>
 	<resultMap type="ChatMessageVo" id="chatMessageMap">
 		<id property="roomId" column="roomid"/>
-		<result property="writer" column="writer"/>
+		<result property="userId" column="userid"/>
 		<result property="message" column="message"/>
 		<result property="cDate" column="cdate"/>
+		<result property="mName" column="mname"/>
 	</resultMap>
 	
-
-	<insert id="chatInsert" parameterType="chatRoomVo">
-		INSERT INTO CHATROOM (ROOMID,WRITER,ROOMNAME) VALUES (#{roomId},#{writer},#{roomName})
+	<!-- 채팅방 만들기 -->
+	<insert id="chatInsert" parameterType="ChatRoomVo">
+		INSERT INTO CHATROOM (ROOMID,USERID,ROOMNAME) VALUES (#{roomId},#{userId},#{roomName})
 	</insert>
+<!-- 	<insert id="chatInsert" parameterType="RoomVo">
+	 INSERT INTO CHATROOM (ROOMID,ROOMNAME,USERID) VALUES (chat_sequence.NEXTVAL,#{roomId},#{usreId});
+	</insert> -->	
 	
+	<!-- 만든 채팅방 전체 리스트 조회 -->
 	<select id="findAllRooms" resultMap="chatRoomMap">
-		SELECT * FROM CHATROOM
+		SELECT * FROM CHATROOM <!-- WHERE USERID=#{userId} 세션 확인후 주석 풀기-->
 	</select>
 	
+	
+	
+	
+	
+	<!-- 해당 채팅방 진입 selectone (추가!!) 채팅방 진입하면 -->
 	<select id="findRoomById" resultMap="chatRoomMap">
-		SELECT * FROM CHATROOM WHERE ROOMID=#{roomId}
+		SELECT ROOMID,ROOMNAME,MNAME,USERID FROM CHATROOM JOIN USERS USING(USERID) WHERE ROOMID=#{roomId}
 	</select>
 	
-	<insert id="messageInsert" parameterType="chatMessageVo">
-		INSERT INTO CHATMESSAGE (WRITER,MESSAGE,ROOMID,cDate) VALUES (#{writer},#{message},#{roomId},SYSTIMESTAMP)
+	<!-- 메세지 입력시 db저장 -->
+	<insert id="messageInsert" parameterType="ChatMessageVo">
+		INSERT INTO CHATMESSAGE (USERID,MESSAGE,ROOMID,cDate) VALUES (#{userId},#{message},#{roomId},SYSTIMESTAMP)
 	</insert>
 	
-	<select id="viewChat" resultMap="chatMessageMap">
+	<!-- 해당 채팅방에서의 대화 내용 보기 -->
+<!-- 	<select id="viewChat" resultMap="chatMessageMap">
 		SELECT * FROM CHATMESSAGE WHERE ROOMID = #{roomId} ORDER BY CDATE ASC
+	</select> -->
+	
+	<!-- 대화 내역 보기 -->
+	<select id="viewChat" resultMap="chatMessageMap">
+		select ROOMID,MNAME,MESSAGE,CDATE from CHATMESSAGE join users USING(userId) WHERE ROOMID = #{roomId} ORDER BY CDATE ASC
 	</select>
-
+	
 </mapper>

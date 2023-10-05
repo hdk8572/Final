@@ -11,13 +11,13 @@
 		<result column="SCOLOR" property="color" />
 		<result column="SMEMO" property="smemo" />
 		<result column="PNO" property="pno" />
-		<collection column="ATTENUSERID" property="attenduseridList" javaType="list" ofType="string" />
+		<collection column="ATTENDUSERID" property="attenduseridList" javaType="list" ofType="string" />
 	</resultMap>
 	
 	<!-- 일정 조회 -->
 	<!-- 동적 SQL문 where을 건 이유(if랑 세트) =pno를 안 들고 진입하는 경우도 있기 때문에(이걸 걸면 안에 where을 적을 필요가 없다.) --> <!-- 다른 방법으로 trim도 있다. -->
 	<select id="selectList" resultMap="CalendarMembersMap" parameterType="string">
-		SELECT SNO, USERID,	to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, 'yyyy-mm-dd') SEND, STITLE, SCOLOR, SPLACE, SMEMO, PNO, ATTENUSERID
+		SELECT SNO, USERID,	to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, 'yyyy-mm-dd') SEND, STITLE, SCOLOR, SPLACE, SMEMO, PNO, ATTENDUSERID
 		FROM SCHEDULE tbs left outer join member_schedule tbms using(sno)
 		<where>
 			<if test="pno != null">
@@ -28,7 +28,7 @@
 
 	<!-- 일정 상세조회 -->
 	<select id="selectOne" resultMap="CalendarMembersMap" parameterType="string">
-		SELECT  SNO, USERID, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, 'yyyy-mm-dd') SEND, STITLE, SCOLOR, SPLACE, SMEMO, PNO, ATTENUSERID
+		SELECT  SNO, USERID, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, 'yyyy-mm-dd') SEND, STITLE, SCOLOR, SPLACE, SMEMO, PNO, ATTENDUSERID
 		from ( select * from schedule WHERE sno = #{sno} ) tbs join member_schedule tbms using(sno)
 	</select>
 	
@@ -66,7 +66,7 @@
 		INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SCOLOR)
 				VALUES (schedule_sequence.NEXTVAL, #{userid}, #{pno}, #{start}, #{end}, #{smemo}, #{title},'#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'))
 		<foreach collection="attenduseridList" item="attenduserid">
-		INTO Member_SCHEDULE (SNO, ATTENUSERID)
+		INTO Member_SCHEDULE (SNO, ATTENDUSERID)
 			VALUES (schedule_sequence.NEXTVAL, #{attenduserid})
 		</foreach>		
 		SELECT * FROM dual

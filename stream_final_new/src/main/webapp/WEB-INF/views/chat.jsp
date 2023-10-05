@@ -55,7 +55,7 @@
 	<div id="container" class="container">
 		<h1>${roomName}의 채팅방</h1>
 		<input type="hidden" id="sessionId" value="">
-		<input type="hidden" id="roomNumber" value="${roomNumber}">
+		<input type="hidden" id="roomId" value="${roomId}">
 		
 		<div id="chating" class="chating" style="padding: 10px">
 		</div>
@@ -85,7 +85,7 @@
 
 	function wsOpen(){
 		//웹소켓 전송시 현재 방의 번호를 넘겨서 보낸다.
-		ws = new WebSocket("ws://localhost:8090/stream/chatting/"+$("#roomNumber").val());
+		ws = new WebSocket("ws://localhost:8090/stream/chatting/"+$("#roomId").val());
 		wsEvt();
 	}
 		
@@ -139,7 +139,7 @@
 	function send() {
 		var option ={
 			type: "message",
-			roomNumber: $("#roomNumber").val(),
+			roomId: $("#roomId").val(),
 			sessionId : $("#sessionId").val(),
 			userName : $("#userName").val(),
 			msg : $("#chatting").val()
