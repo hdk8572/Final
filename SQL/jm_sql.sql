@@ -184,3 +184,25 @@ select distinct(ccode) ccnt
     join project p using (userid)
     join task t using (pno)
 ;
+--같은 회사 인원
+select userid from users
+    where ccode = 'C001';
+    
+--같은 회사, 같은 부서 인원
+select userid from users
+    where ccode = 'C001' and deptno = 'D001'
+    ;
+    
+select userid from member_project
+    where pno = '13'
+    ;
+select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+	from project p right join task t using (pno)
+	where tmember = 'sple@kh.co.kr' or t.userid ='sple@kh.co.kr'
+	order by pno asc, bref desc, brelevel asc, brestep asc, tno desc
+;
+
+select pno, userid, username 
+    from member_project mp
+    join users u using (userid)
+    where pno=13;

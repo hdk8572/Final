@@ -262,6 +262,49 @@ VALUES ('6', 'mplsam@kh.co.kr');
 INSERT INTO MEMBER_PROJECT ( PNO, USERID)
 VALUES ('6', 'sple@kh.co.kr');
 
+INSERT INTO "MEMBER_PROJECT" (PNO, USERID) 
+VALUES ('13', 'kh0002@kh.com');
+
+INSERT INTO "MEMBER_PROJECT" (PNO, USERID) 
+VALUES ('13', 'sple@kh.co.kr');
+
+INSERT INTO "MEMBER_PROJECT" (PNO, USERID) 
+VALUES ('13', 'sample@kh.co.kr');
+
+INSERT INTO "MEMBER_PROJECT" (PNO, USERID) 
+VALUES ('2', 'kh0001@kh.com');
+
+INSERT INTO "MEMBER_PROJECT" (PNO, USERID) 
+VALUES ('2', 'kh0002@kh.com');
+
+INSERT INTO "MEMBER_PROJECT" (PNO, USERID)
+VALUES ('2', 'sample@kh.co.kr');
+
+INSERT INTO "MEMBER_PROJECT" (PNO, USERID) 
+VALUES ('2', 'sple@kh.co.kr');
+
+INSERT INTO "MEMBER_PROJECT" (PNO, USERID) 
+VALUES ('8', 'kh0001@kh.com');
+
+INSERT INTO "MEMBER_PROJECT" (PNO, USERID)
+VALUES ('8', 'sample@kh.co.kr');
+
+INSERT INTO "MEMBER_PROJECT" (PNO, USERID) 
+VALUES ('8', 'sple@kh.co.kr');
+
+INSERT INTO "MEMBER_PROJECT" (PNO, USERID)
+VALUES ('9', 'kh0001@kh.com');
+
+INSERT INTO "MEMBER_PROJECT" (PNO, USERID) 
+VALUES ('9', 'kh0002@kh.com');
+
+INSERT INTO "MEMBER_PROJECT" (PNO, USERID)
+VALUES ('9', 'sample@kh.co.kr');
+
+INSERT INTO "MEMBER_PROJECT" (PNO, USERID) 
+VALUES ('9', 'sple@kh.co.kr');
+
+
 -- Table Reply
 INSERT INTO REPLY(RNO, TNO, USERID, RCONTENT, RDATE)
 VALUES (replyrno_sequence.nextval, 1, 'kh0001@kh.com', '테스트내용1', sysdate);

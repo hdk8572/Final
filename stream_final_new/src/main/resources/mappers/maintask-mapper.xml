@@ -22,6 +22,7 @@
 		</collection>
 	</resultMap>
 	
+	<!-- 프로젝트, 업무 뿌리기 -->
 	<select id="projectNameList" resultMap="maintaskVoMap" parameterType="string">
 		select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
     		from project p right join task t using (pno)
@@ -29,30 +30,23 @@
     		order by pno asc, bref desc, brelevel asc, brestep asc, tno desc
 	</select>
 	
-	
+	<!-- 프로젝트 기준 화면 뿌리기 -->
 	<select id="projectOneTaskList" resultMap="maintaskVoMap" parameterType="string">
 		select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
     		from project p right join (select * from task t where pno=#{pno}) t using (pno)
     		where tmember = #{userid} or t.userid=#{userid} 
     		order by bref desc, brelevel asc, brestep asc, tno desc
 	</select>
-	<!-- 
-	select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
-    		from project p right join task t using (pno)
-    		where tmember = #{userid} or t.userid =#{userid} and pno=#{pno}
-    		order by pno asc, bref desc, brelevel asc, brestep asc
-    		 -->
-	<!-- select pname, pno, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
-    		from (select pname, pno from project where pno=#{pno}) 
-    		join 
-    		(select tno, pno, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel
-    			from task where ) 
-    		using(pno)
-    		order by brelevel asc, brestep asc	 -->
+	
+	<select id="memberProjectselectOne">
+		select pno, userid, mname
+			from users using(userid)
+			where pno=#{pno}
+	</select>
     
 	
 	
-	
+	<!-- 하위업무 추가 -->
 	<insert id="innerTaskInsert" parameterType="PtaskVo">
 		insert into task (TNO, PNO, USERID, tmember, TTITLE, tcontent, TSTATUS, TDATE, tstartdate, tenddate, BREF, BRESTEP, BRELEVEL)
 		values (
@@ -62,6 +56,7 @@
 				(select brelevel+1 from task where tno=#{tno})
 				)
 	</insert>
+	<!-- 하위업무 추가 전 step 처리 -->
 	<update id="InnerTaskInsertBeforeUpdate" parameterType="PtaskVo">
 		update task set BRESTEP = BRESTEP +1 
    			where BRESTEP > (SELECT BRESTEP FROM task WHERE tno = #{tno})
