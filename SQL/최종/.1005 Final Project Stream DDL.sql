@@ -23,7 +23,8 @@ DROP SEQUENCE task_sequence;
 DROP SEQUENCE project_sequence;
 DROP SEQUENCE brestep_sequence;
 DROP SEQUENCE replyrno_sequence;
-
+DROP SEQUENCE company_sequence;
+DROP SEQUENCE dept_sequence;
 
 CREATE TABLE "COMPANY" (
 	"CCODE"	VARCHAR2(10)		NOT NULL,
