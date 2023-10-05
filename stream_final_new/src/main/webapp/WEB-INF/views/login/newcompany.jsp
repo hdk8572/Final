@@ -208,14 +208,14 @@
 			cell3.classList.add("delete-text");
 
 			cell3.onclick = function() {
-				removeRow(row);
+				removeDRow(row);
 			};
 
 			inputDept.value = "";
 			dRowCount++
 
 		}
-		function removeRow(row) {
+		function removeDRow(row) {
 			var table = document.getElementById("addDept");
 			table.deleteRow(row.rowIndex);
 			dRowCount--;
@@ -245,14 +245,14 @@
 			cell3.classList.add("delete-text");
 
 			cell3.onclick = function() {
-				removeRow(row);
+				removeERow(row);
 			};
 
 			inputEmail.value = "";
 			eRowCount++
 
 		}
-		function removeRow(row) {
+		function removeERow(row) {
 			var table = document.getElementById("addEmail");
 			table.deleteRow(row.rowIndex);
 			eRowCount--;

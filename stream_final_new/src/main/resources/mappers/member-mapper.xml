@@ -9,6 +9,11 @@
 		#{deptno}, PASSWORD = #{password}, MNAME = #{mname} WHERE
 		USERID = #{userid}
 	</select>
+	
+	<!-- 회사 회원가입 -->
+	<insert id="newCompany" parameterType="MemberVo">
+		
+	</insert>
 
 	<!-- 마이페이지 -->
 	<select id="myPage" parameterType="String" resultType="MemberVo">
