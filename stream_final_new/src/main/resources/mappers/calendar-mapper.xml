@@ -4,14 +4,14 @@
 
 	<resultMap type="CalendarVo" id="CalendarMembersMap">
 		<id property="sno" column="sno"/>
-		<result property="userid" column="USERID"/>
-		<result property="start" column="SSTART"/>
-		<result property="end" column="SEND"/>
-		<result property="title" column="STITLE"/>
-		<result property="color" column="SCOLOR"/>
-		<result property="smemo" column="SMEMO"/>
-		<result property="pno" column="PNO"/>
-		<collection property="attenuseridList" javaType="list" ofType="string" column="ATTENUSERID"/>
+		<result column="USERID" property="userid" />
+		<result column="SSTART" property="start" />
+		<result column="SEND" property="end" />
+		<result column="STITLE" property="title" />
+		<result column="SCOLOR" property="color" />
+		<result column="SMEMO" property="smemo" />
+		<result column="PNO" property="pno" />
+		<collection column="ATTENUSERID" property="attenuseridList" javaType="list" ofType="string" />
 	</resultMap>
 	
 	<!-- 일정 조회 -->
