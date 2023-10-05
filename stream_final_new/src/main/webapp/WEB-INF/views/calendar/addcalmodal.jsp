@@ -28,9 +28,9 @@
 								<!-- 작성자 -->
 									<input class="form-control userid" type="text" name="userid" value="${principal.username }" readonly>
 								<div class="form-userid" id="form-content" >
-									<input type="text" name="attentuseridArr" value="mplsam@kh.co.kr">
-									<input type="text" name="attentuseridArr" value="kh0001@kh.com">
-									<input type="text" name="attentuseridArr" value="kh0002@kh.com"> 
+									<input type="text" name="attenduseridArr" value="mplsam@kh.co.kr">
+									<input type="text" name="attenduseridArr" value="kh0001@kh.com">
+									<input type="text" name="attenduseridArr" value="kh0002@kh.com"> 
 									<!-- 참가자 반복 -->
 									<input type="text" id="calmemberinput" placeholder="참가자" list="calmemberlist">
 									<select id="calmemberlist"> <!-- 일단 한 명만 추가해서 insert까지 하기  --> 
