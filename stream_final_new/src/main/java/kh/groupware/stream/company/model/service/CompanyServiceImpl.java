@@ -10,7 +10,12 @@ import kh.groupware.stream.company.model.vo.CompanyVo;
 public class CompanyServiceImpl implements CompanyService {
 	
 	@Autowired
-	private CompanyDao companydao;
+	private CompanyDao companyDao;
 
-
+	//회사 회원가입 (5단계중 1)
+	@Override
+	public int newCompany (CompanyVo cvo) {
+		return companyDao.newCompany(cvo);
+		
+	}
 }

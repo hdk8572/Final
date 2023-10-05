@@ -23,5 +23,11 @@ public class CompanyContoller {
 		return mv;
 	}
 	
+	@PostMapping("/newcompany")
+	public ModelAndView newcompany(ModelAndView mv) {
+		mv.setViewName("login/newcompany");
+		return mv;
+	}
+	
 	
 }

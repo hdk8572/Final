@@ -4,9 +4,9 @@
 
 	
 	<!-- 회사회원가입 -->
-	<select id="insert" parameterType="CompanyVo">
+<!-- 	<select id="insert" parameterType="CompanyVo">
 		INSERT INTO COMPANY VALUES ('C04', #{cname}, #{cphone}, #{caddress}, #{cpassword})
-	</select>
+	</select> -->
 	<!-- TODO!! sequence 만들어서 ccode에 넣기 -->
 	
 	<!-- 회사정보 -->
@@ -18,6 +18,10 @@
 	<select id="update" parameterType="CompanyVo">
 		<!-- TODO -->
 	</select>
+	
+	<insert id="newCompany" parameterType="CompanyVo">
+		INSERT INTO COMPANY VALUES ('C04', #{cname}, #{cphone}, #{caddress}, #{cpassword})
+	</insert>
 	
 
 	

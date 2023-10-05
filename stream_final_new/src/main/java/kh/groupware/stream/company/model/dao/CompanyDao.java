@@ -18,6 +18,11 @@ public class CompanyDao {
 		return sqlSession.selectOne("company.selectOne", cvo);
 	}
 	
+	//회사 회원가입 (5단계중 1)
+	public int newCompany(CompanyVo cvo) {
+		return sqlSession.insert("company.newCompany", cvo);
+	}
+	
 
 
 }
