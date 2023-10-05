@@ -82,7 +82,7 @@ public class CalendarController {
 	//캘린더 등록
 	@PostMapping("/insertpcal")
 	public String insert(Model model, CalendarVo cal) {
-		cal.setAttenuseridList(Arrays.asList(cal.getAttentuseridArr()));
+		cal.setAttenduseridList(Arrays.asList(cal.getAttenduseridArr()));
 		System.out.println("aaaa :" + cal);
 		calendarService.insert(cal);
 		return "redirect:pcal?sno="+cal.getSno();

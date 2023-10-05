@@ -40,6 +40,7 @@
 				
 						<!-- 지도 -->
 						<!-- 참석자  -->
+						<div id="attenduseridList"></div>
 						<!-- 내용 -->
 						<div id="smemo"></div>
 					<div>
