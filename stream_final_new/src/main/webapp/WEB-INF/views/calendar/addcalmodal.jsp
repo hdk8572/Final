@@ -27,10 +27,10 @@
 								</div>
 								<!-- 작성자 -->
 									<input class="form-control userid" type="text" name="userid" value="${principal.username }" readonly>
-								<div class="form-userid" id="form-content" >
-									<input type="text" name="attentuseridArr" value="mplsam@kh.co.kr">
+								<div class="form-userid"  >
+									<!-- <input type="text" name="attentuseridArr" value="mplsam@kh.co.kr">
 									<input type="text" name="attentuseridArr" value="kh0001@kh.com">
-									<input type="text" name="attentuseridArr" value="kh0002@kh.com"> 
+									<input type="text" name="attentuseridArr" value="kh0002@kh.com">  -->
 									<!-- 참가자 반복 -->
 									<input type="text" id="calmemberinput" placeholder="참가자" list="calmemberlist">
 									<select id="calmemberlist"> <!-- 일단 한 명만 추가해서 insert까지 하기  --> 
@@ -105,10 +105,11 @@
 		$("#calmemberlist").html(listHtml);
 	}
 </script>
-
+	
+	<!-- 위즈윅 - summerNote	 -->
 	<script>
 		$(document).ready(function (){
-			$("#csummernote").summernote({				//  위즈윅 - summerNote		
+			$("#csummernote").summernote({					
 			     placeholder: '프로젝트 설명을 입력해주세요.',
 			     tabsize: 2,
 			     height: 120,

@@ -150,6 +150,8 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 						$("#readScheduleModal.modal  #title").html(info.event.title); //띄우려는 모달이랑 이름 맞춰야한다.
 						$("#readScheduleModal.modal  #userid").html(info.event.extendedProps.userid); //extendedProps -> api에서 가져옴, 값을 띄우는 걸 도와줌
 						$("#readScheduleModal.modal  #smemo").html(info.event.extendedProps.smemo);
+						$("#readScheduleModal.modal  #start").html(info.event.extendedProps.start);//TODO
+						$("#readScheduleModal.modal  #end").html(info.event.extendedProps.end);//TODO
 						$("#readScheduleModal").modal("toggle");
 					} 
 				});
