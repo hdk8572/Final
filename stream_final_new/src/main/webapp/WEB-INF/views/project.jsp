@@ -80,6 +80,7 @@
 
 						<div class="container-fluid p-0">
 							<table class="table table-hover my-0">
+								<tbody>
 								<tr>
 									<th class="d-none d-xl-table-cell">업무명</th>
 									<th class="d-none d-xl-table-cell">담당자</th>
@@ -107,11 +108,10 @@
 										<input type="hidden" name="pno" value="${tlist.pno}">
 									</tr>
 								</c:forEach>
-								
-								<%@ include file="/WEB-INF/views/detailptaskmodal.jsp"%>
-								
+								</tbody>
 							</table>
-						</div>
+							<%@ include file="/WEB-INF/views/detailptaskmodal.jsp"%>
+						</div>	
 					</main>
 				</div>
 
