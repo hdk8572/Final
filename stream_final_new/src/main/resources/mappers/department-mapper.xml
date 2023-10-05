@@ -8,11 +8,13 @@
 	</select>
 	
 	<!-- 회사회원가입 2: DEPT insert -->
-	<insert id="newDept" parameterType="map">
-	INSERT ALL INTO DEPT (DEPTNO, CCODE, DEPTNAME) VALUES 
-	<foreach collection="deptList" item="DeptVo">
-	('D' || TO_CHAR(DEPT_SEQUENCE.NEXTVAL), #{ccode}, #{deptname})
-	</foreach>
-	</insert>
+   <insert id="newDept"  parameterType="kh.groupware.stream.company.model.vo.CompanyInsertParam" >
+   		INSERT ALL 
+      	INTO DEPT (DEPTNO, CCODE, DEPTNAME) VALUES   (#{defaultDeptCode}, #{ccode}, #{defaultDeptName})
+      <foreach collection="deptArr" item="deptname" index="idx">
+      	INTO DEPT (DEPTNO, CCODE, DEPTNAME) VALUES   ( REPLACE('D'||TO_CHAR(TO_NUMBER(SUBSTR(DEPTNO, 2)) + #{idx} +1, '00'),' ','') , #{ccode}, #{deptname})
+      </foreach>
+ 		 SELECT NVL(MAX(DEPTNO), 'D00') DEPTNO FROM DEPT WHERE CCODE= #{ccode}
+   </insert>
 
 </mapper>

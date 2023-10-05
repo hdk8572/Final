@@ -73,13 +73,18 @@
 							<div class="card cards">
 								<div class="m-sm-4 ccard">
 									<div class="mb-3">
-										<label class="form-label">부서명 입력</label>
+										<label class="form-label">부서명 입력</label> <input type="hidden"
+											value="D00" name="defaultDeptCode" placeholder="기본부서" />
+										</td> <input type="hidden" value="DefaulDept"
+											name="defaultDeptName" placeholder="기본부서" />
+										</td>
 										<table>
 											<td><input class="form-control form-control-lg"
-												type="text" id="input-dept" name="cdept"
-												placeholder="ex) 영업부 " /></td>
-											<td><button onclick="addDeptTable()"
-													class="btn btn-lg btn-primary">추가</button></td>
+												type="text" id="input-dept" placeholder="ex) 영업부 " /></td>
+											<td>
+												<button type="button" onclick="addDeptTable()"
+													class="btn btn-lg btn-primary">추가</button>
+											</td>
 										</table>
 									</div>
 									<div class="row">
@@ -121,7 +126,7 @@
 												class="form-control form-control-lg input-email" type="text"
 												id="input-email" name="ncemail"
 												placeholder="ex) 이메일을 입력하세요. " /></td>
-											<td><button onclick="addEmailTable()"
+											<td><button type="button" id="addEmailBtn"
 													class="btn btn-lg btn-primary">추가</button></td>
 										</table>
 									</div>
@@ -156,8 +161,7 @@
 				</div>
 			</div>
 		</div>
-		</div>
-		</div>
+
 
 	</main>
 
@@ -185,7 +189,7 @@
 			cards[index].style.display = 'block';
 		}
 	</script>
-	<!-- dept script -->
+
 	<script>
 		var dRowCount = 0;
 
@@ -194,7 +198,8 @@
 			var row = table.insertRow(-1);
 
 			var inputDept = document.getElementById("input-dept");
-			var value = inputDept.value;
+			var value = '<input type="hidden" name="deptArr" value="'+inputDept.value+'"/>';
+			value += inputDept.value;
 
 			var cell1 = row.insertCell(0)
 			cell1.innerHTML = dRowCount + 1;
@@ -220,43 +225,11 @@
 			dRowCount--;
 		}
 	</script>
-	<!-- email script -->
-	<script>
-		var eRowCount = 0;
 
-		function addEmailTable() {
-			var table = document.getElementById("addEmail");
-			var row = table.insertRow(-1);
 
-			var inputEmail = document.getElementById("input-email");
-			var value = inputEmail.value;
 
-			var cell1 = row.insertCell(0)
-			cell1.innerHTML = eRowCount + 1;
 
-			var cell2 = row.insertCell(1);
-			cell2.innerHTML = value;
-
-			var cell3 = row.insertCell(2);
-			cell3.innerHTML = "삭제";
-			cell3.classList.add("delete-text");
-
-			cell3.onclick = function() {
-				removeRow(row);
-			};
-
-			inputEmail.value = "";
-			eRowCount++
-
-		}
-		function removeRow(row) {
-			var table = document.getElementById("addEmail");
-			table.deleteRow(row.rowIndex);
-			eRowCount--;
-		}
-	</script>
-	<script src="js/app.js"></script>
-
+	 <script src="js/app.js"></script>
 </body>
 
 </html>

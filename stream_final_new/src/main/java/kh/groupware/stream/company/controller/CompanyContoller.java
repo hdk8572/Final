@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kh.groupware.stream.company.model.service.CompanyService;
+import kh.groupware.stream.company.model.vo.CompanyInsertParam;
 import kh.groupware.stream.company.model.vo.CompanyVo;
 import kh.groupware.stream.dept.model.vo.DeptVo;
 
@@ -31,16 +32,16 @@ public class CompanyContoller {
 	}
 	
 	@PostMapping("/newcompany")
-	public String newCompany(CompanyVo cvo) {
+	public String newCompany(CompanyInsertParam cvo) {
 		int result = companyService.newCompany(cvo);
 		return "main";
 	}
 	
-	@RequestMapping(value="/newdept", method = RequestMethod.POST)
-	public String newDept(@RequestBody List<DeptVo> deptList) {
-		int result = companyService.newDept(deptList);
-		return "main";
-	}
+	/*
+	 * @RequestMapping(value="/newdept", method = RequestMethod.POST) public String
+	 * newDept(@RequestBody List<DeptVo> deptList) { int result =
+	 * companyService.newDept(deptList); return "main"; }
+	 */
 	
 	
 }
