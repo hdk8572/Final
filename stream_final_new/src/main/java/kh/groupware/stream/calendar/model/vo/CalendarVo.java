@@ -145,7 +145,8 @@ public class CalendarVo {
 	public void setColor(String color) {
 		this.color = color;
 	}
-
+	
+	//AttenduseridArr 참가자
 	public String[] getAttenduseridArr() {
 		return attenduseridArr;
 	}
