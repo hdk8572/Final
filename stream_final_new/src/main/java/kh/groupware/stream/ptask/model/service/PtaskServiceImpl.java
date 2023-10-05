@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kh.groupware.stream.project.model.vo.PnoTnoParam;
-import kh.groupware.stream.ptask.model.PtaskDao;
+import kh.groupware.stream.ptask.model.dao.PtaskDao;
 import kh.groupware.stream.ptask.model.vo.PtaskVo;
 
 @Service

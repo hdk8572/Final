@@ -7,7 +7,7 @@
 		FROM (SELECT DEPTNO, DEPTNAME, USERID, MNAME, MRANK FROM USERS JOIN DEPT USING(DEPTNO, CCODE))
 		JOIN PROJECT USING(USERID)
 		WHERE PSTATUS IN ('미진행', '진행', '보류')
-		<!-- USERID = #(username) -->
+		AND USERID = #{userid}
 	</select>
 	
 	<select id="selectHide" resultType="ProjectVo">
@@ -15,13 +15,14 @@
 		FROM (SELECT DEPTNO, DEPTNAME, USERID, MNAME, MRANK FROM USERS JOIN DEPT USING(DEPTNO, CCODE))
 		JOIN PROJECT USING(USERID)
 		WHERE PSTATUS IN ('숨김')
-		<!-- USERID = #(username) -->
+		AND USERID = #{userid}
 	</select>
 	 
 	<select id="selectOne" resultType="ProjectVo">
 		SELECT PNO, USERID, PNAME, PCONTENT, PACCESS, PDATE, to_char(PSTARTDATE, 'yyyy-mm-dd') PSTARTDATE, to_char(PENDDATE, 'yyyy-mm-dd') PENDDATE, PSTATUS
 		FROM PROJECT
 		WHERE PNO = #{pno}
+		AND USERID = #{userid}
 	</select>
 	 
 	<insert id="insertList" parameterType="ProjectVo">

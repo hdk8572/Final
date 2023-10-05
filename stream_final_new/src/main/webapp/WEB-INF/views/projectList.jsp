@@ -51,7 +51,8 @@
 				<div class="container-fluid p-0">
 
 					<h1 class="h3 mb-3">
-						<span>${principal.username}님의 프로젝트 목록</span> 
+						<span>${principal.username}님의 프로젝트 목록</span>
+						 
 						<span><button class="btn btn-primary addProject" id="myBtn"	data-bs-toggle="modal" data-bs-target="#addProjectModal">프로젝트 추가+</button></span>
 						<svg id="hideBtn" xmlns="http://www.w3.org/2000/svg" width="24"	height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus-circle align-middle me-2 hideView"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg>
 					</h1>
@@ -82,6 +83,9 @@
 <script>
 	/* ajax 용 - contextPath 변수 지정 */
 	const contextPath = "${pageContext.request.contextPath}";
+	
+	/* ajax 용 - principal.username */
+	const useridJs = "${principal.username}";
 	
 	/* listAndHide 버튼 이미지 */
 	const minusImg = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus-circle align-middle me-2"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg>';

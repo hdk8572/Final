@@ -1,11 +1,13 @@
 package kh.groupware.stream.project.model.dao;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kh.groupware.stream.project.model.vo.PnoPrincipalParam;
 import kh.groupware.stream.project.model.vo.ProjectVo;
 
 @Repository
@@ -14,16 +16,22 @@ public class ProjectDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<ProjectVo> selectList() {
-		return sqlSession.selectList("project.selectList");
+	
+	public List<ProjectVo> selectList(String userid) {
+		return sqlSession.selectList("project.selectList", userid);
 	}
 	
-	public List<ProjectVo> selectHide() {
-		return sqlSession.selectList("project.selectHide");
+	public List<ProjectVo> selectHide(String userid) {
+		return sqlSession.selectList("project.selectHide", userid);
 	}
 	
-	public ProjectVo selectOne(String pno) {
-		return sqlSession.selectOne("project.selectOne",pno);
+	/*
+	 * public ProjectVo selectOne(ProjectVo vo) { return
+	 * sqlSession.selectOne("project.selectOne", vo); }
+	 */
+
+	public ProjectVo selectOne(PnoPrincipalParam pnoPrincipalParam) {
+		return sqlSession.selectOne("project.selectOne", pnoPrincipalParam);
 	}
 	
 	public int insertList(ProjectVo vo) {
