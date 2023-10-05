@@ -97,12 +97,11 @@ div.jm-task-title{
 	font-size: 1.75rem;
 	margin-bottom: 1rem !important;
 }
-.jm-title-ttitle>button{
-		background-color: white;
+.jm-title-ttitle>.jm-inner-task-button{
+		background-color: transparent;
 		font-size: 13px;
 		color: #999;
-		border-radius: 10px;
-		border: black 1px solid;
+		border: none;
 }
 .plusplus:hover{
 	background-color: #f3e9fe;
@@ -121,6 +120,7 @@ div.jm-task-title{
 .jm-input-date{
 	width: 80%
 }
-.jm-innerTaskInput{
+
+.jm-hidden{
 	display: none;
 }

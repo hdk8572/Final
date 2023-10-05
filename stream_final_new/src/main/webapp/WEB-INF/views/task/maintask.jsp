@@ -24,6 +24,7 @@
 <link href="${pageContext.request.contextPath }/css/streamapp.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/css/maintask.css" rel="stylesheet">
 
+<link href="${pageContext.request.contextPath}/css/Modal.css" rel="stylesheet">
 <!-- 폰트 -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
@@ -245,7 +246,7 @@
 															action="${pageContext.request.contextPath }/ptasklist"
 															method="get">
 															<input type="hidden" name="pno" value="${project.pno}">
-															<button class="jm-project-button jm-tp">바로가기</button>
+															<button class="jm-tp">바로가기</button>
 														</form>
 													</div>
 												</div>
@@ -253,7 +254,7 @@
 													<li class="jm-wrap-section-task-title jm-gr">
 														<ul class="jm-serction-task-title">
 															<c:forEach items="${project.maintaskList }" var="task">
-																<li class="plusplus row" id="taskNo_${task.tno}">
+																<li class="plusplus row jm-task-line" id="taskNo_${task.tno}">
 																	<div class="jm-title-ttitle col-lg-4 jm-grey">
 																		<span> <c:forEach begin="1"
 																				end="${task.brelevel }">
@@ -263,7 +264,11 @@
 																		<c:if test="${task.brelevel == 0 }">
 																			<button class="jm-inner-task-button" onclick="innerTaskInputHandler(this);">업무추가</button>
 																		</c:if>
-																		<span class="jm-tp jm-task-info">자세히 보기</span>
+																		<button class="jm-tp jm-task-info" onclick="taskDetailButtonClickTestHandler(this);">자세히 보기</button>
+																		<div class="jm-hidden">
+																			<input type="hidden" name="pno" value="${project.pno}">
+																			<input type="hidden" name="tno" value="${task.tno }">
+																		</div>
 																	</div>
 																	<div class="jm-title-tstatus col-lg-1 jm-grey">${task.tstatus }</div>
 																	<div class="jm-title-tmember col-lg-1 jm-grey">${task.tmember }</div>
@@ -274,7 +279,7 @@
 																</li>
 																<li class="jm-ajax-InnertaskIn">
 																	<form class="addInnerTask" id="taskInputNo_${task.tno}">
-																		<div class="jm-innerTaskInput jm-innerTask-el">
+																		<div class="jm-innerTaskInput jm-hidden">
 																			<div class="jm-title-ttitle col-lg-4 jm-grey">
 																				<input type="text" placeholder="하위업무명을 입력하세요"
 																					name="ttitle" required="required">
@@ -339,6 +344,7 @@
 						</div>
 					</div>
 				</div>
+				<%@ include file="/WEB-INF/views/detailptaskmodal.jsp"%>
 			</main>
 		</div>
 	</div>
