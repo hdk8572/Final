@@ -19,10 +19,11 @@
 		<!-- TODO -->
 	</select>
 	
+	<!-- COMPANY insert -->
 	<insert id="newCompany" parameterType="CompanyVo">
-		INSERT INTO COMPANY VALUES ('C04', #{cname}, #{cphone}, #{caddress}, #{cpassword})
+		 INSERT INTO COMPANY (CCODE, CNAME, CPHONE, CADDRESS, CPASSWORD) VALUES ('C' || TO_CHAR(COMPANY_SEQUENCE.NEXTVAL, 'FM00'), '안녕', 12345);
 	</insert>
-	
+	<!-- TODO! 추후에 DML밀고 FM000으로 변경해야함, 12345 암호화해서 넣어야함 -->
 
 	
 </mapper>
