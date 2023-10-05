@@ -65,7 +65,6 @@
 									<div class="text-center mt-3">
 										<button type="button"
 											class="btn btn-lg btn-primary nextButton">다음</button>
-										<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
 									</div>
 								</div>
 							</div>
@@ -74,7 +73,7 @@
 								<div class="m-sm-4 ccard">
 									<div class="mb-3">
 										<label class="form-label">부서명 입력</label> <input type="hidden"
-											value="D00" name="defaultDeptCode" placeholder="기본부서" />
+											value="D000" name="defaultDeptCode" placeholder="기본부서" />
 										</td> <input type="hidden" value="DefaulDept"
 											name="defaultDeptName" placeholder="기본부서" />
 										</td>
@@ -109,10 +108,8 @@
 									<div class="text-center mt-3">
 										<button type="button"
 											class="btn btn-lg btn-primary prevButton">이전</button>
-										<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
 										<button type="button"
 											class="btn btn-lg btn-primary nextButton">다음</button>
-										<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
 									</div>
 								</div>
 							</div>
@@ -126,7 +123,7 @@
 												class="form-control form-control-lg input-email" type="text"
 												id="input-email" name="ncemail"
 												placeholder="ex) 이메일을 입력하세요. " /></td>
-											<td><button type="button" id="addEmailBtn"
+											<td><button type="button" onclick="addEmailTable()"
 													class="btn btn-lg btn-primary">추가</button></td>
 										</table>
 									</div>
@@ -152,9 +149,7 @@
 									<div class="text-center mt-3">
 										<button type="button"
 											class="btn btn-lg btn-primary prevButton">이전</button>
-										<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
 										<button type="submit" class="btn btn-lg btn-primary">등록</button>
-										<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
 									</div>
 						</form>
 					</div>
@@ -190,6 +185,7 @@
 		}
 	</script>
 
+<!-- Dept Script -->
 	<script>
 		var dRowCount = 0;
 
@@ -226,10 +222,46 @@
 		}
 	</script>
 
+<!-- Email Script -->
+	<script>
+		var eRowCount = 0;
+
+		function addEmailTable() {
+			var table = document.getElementById("addEmail");
+			var row = table.insertRow(-1);
+
+			var inputEmail = document.getElementById("input-email");
+			var value = '<input type="hidden" name="emailArr" value="'+inputEmail.value+'"/>';
+			value += inputEmail.value;
+
+			var cell1 = row.insertCell(0)
+			cell1.innerHTML = eRowCount + 1;
+
+			var cell2 = row.insertCell(1);
+			cell2.innerHTML = value;
+
+			var cell3 = row.insertCell(2);
+			cell3.innerHTML = "삭제";
+			cell3.classList.add("delete-text");
+
+			cell3.onclick = function() {
+				removeRow(row);
+			};
+
+			inputEmail.value = "";
+			eRowCount++
+
+		}
+		function removeRow(row) {
+			var table = document.getElementById("addEmail");
+			table.deleteRow(row.rowIndex);
+			eRowCount--;
+		}
+	</script>
 
 
 
-	 <script src="js/app.js"></script>
+	<script src="js/app.js"></script>
 </body>
 
 </html>

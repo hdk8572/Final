@@ -22,12 +22,12 @@
 	<insert id="newCompany" parameterType="kh.groupware.stream.company.model.vo.CompanyInsertParam">
 		<selectKey order="BEFORE" keyProperty="ccode"
 			keyColumn="ccode" resultType="string">
-			SELECT 'C' || TO_CHAR(COMPANY_SEQUENCE.NEXTVAL, 'FM00') ccode FROM DUAL
+			SELECT 'C' || TO_CHAR(COMPANY_SEQUENCE.NEXTVAL, 'FM000') ccode FROM DUAL
 		</selectKey>
 		INSERT INTO COMPANY (CCODE, CNAME, CPHONE, CADDRESS, CPASSWORD) VALUES
 		(#{ccode}, #{cname}, #{cphone}, #{caddress}, 12345)
 	</insert>
-	<!-- TODO! 추후에 DML밀고 FM000으로 변경해야함, 12345 암호화해서 넣어야함 -->
+	<!-- TODO! 12345 암호화해서 넣어야함 -->
 
 
 </mapper>

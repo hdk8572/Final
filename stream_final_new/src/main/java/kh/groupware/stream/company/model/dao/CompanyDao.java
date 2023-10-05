@@ -16,7 +16,6 @@ public class CompanyDao {
 	private SqlSession sqlSession;
 
 	// 회사회원가입 1: COMPANY insert
-
 	public int newCompany(CompanyInsertParam cvo) {
 		System.out.println("before:" + cvo);
 		int result = sqlSession.insert("company.newCompany", cvo);
