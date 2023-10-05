@@ -79,14 +79,14 @@ taskDetailButtonClickTestHandler=(thisButton)=>{
 	console.log(a1);
 	var b1 = $(a1).closest('li')[0].id;
 	console.log(b1);
-	var tno = $(a1).next().find("input[name=tno]").val();
-	var pno = $(a1).next().find("input[name=pno]").val();
-	console.log(tno);
-	console.log(pno);
+	var targetTno = $(a1).next().find("input[name=tno]").val();
+	var targetPno = $(a1).next().find("input[name=pno]").val();
+	console.log(targetTno);
+	console.log(targetPno);
 	$("#detailProjectModal").modal("toggle");
 	
 	$.ajax({
-		 	url: "${pageContext.request.contextPath}/ptaskselectOne",
+		 	url: contextPath+"/ptaskselectOne",
 		 	type: "get",
 		 	dataType: "json",
 		 	data: {tno: targetTno, pno: targetPno},
@@ -235,7 +235,7 @@ listHtml += `
 			`; 
 		}
 listHtml += `
-																	<button class="jm-tp jm-task-info">자세히 보기</button>
+																	<button class="jm-tp jm-task-info" onclick="taskDetailButtonClickTestHandler(this);">자세히 보기</button>
 																	<div class="jm-hidden">
 																			<input type="hidden" name="pno" value="${project.pno}">
 																			<input type="hidden" name="tno" value="${task.tno }">
