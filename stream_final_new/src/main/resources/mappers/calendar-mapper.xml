@@ -11,7 +11,7 @@
 		<result column="SCOLOR" property="color" />
 		<result column="SMEMO" property="smemo" />
 		<result column="PNO" property="pno" />
-		<collection column="ATTENUSERID" property="attenuseridList" javaType="list" ofType="string" />
+		<collection column="ATTENUSERID" property="attenduseridList" javaType="list" ofType="string" />
 	</resultMap>
 	
 	<!-- 일정 조회 -->
@@ -56,18 +56,18 @@
 	<insert id="insertmember" parameterType="CalendarVo">
 		INSERT INTO
 		Member_SCHEDULE (SNO, ATTENUERID)
-		VALUES (#{sno},#{attenuserid})
+		VALUES (#{sno},#{attenduserid})
 	</insert>
 	-->
 
-	<!-- 일정 등록 + 끼인 테이블 attenuserid 등록-->
+	<!-- 일정 등록 + 끼인 테이블 attenduserid 등록-->
 	<insert id="insert" parameterType="CalendarVo">
 		INSERT All
 		INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SCOLOR)
 				VALUES (schedule_sequence.NEXTVAL, #{userid}, #{pno}, #{start}, #{end}, #{smemo}, #{title},'#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'))
-		<foreach collection="attenuseridList" item="attenduserid">
-		INTO Member_SCHEDULE (SNO, ATTENUERID)
-			VALUES (schedule_sequence.NEXTVAL, #{attenuserid})
+		<foreach collection="attenduseridList" item="attenduserid">
+		INTO Member_SCHEDULE (SNO, ATTENUSERID)
+			VALUES (schedule_sequence.NEXTVAL, #{attenduserid})
 		</foreach>		
 		SELECT * FROM dual
 	</insert>

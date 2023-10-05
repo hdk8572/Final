@@ -147,11 +147,20 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 						var event = info.event;
 						//작성자!!!!임 (다른사람도 적은 일정들)
 						console.log(info.event.extendedProps.sno);
+						
+						// 지연 TODO 
+						var htmlval = '';
+						for(var i=0; i<info.event.extendedProps.attenduseridList.length; i++){
+							htmlval += '<div>'+info.event.extendedProps.attenduseridList[i]+'</div>';
+						}
+						$("#readScheduleModal.modal  #attenduseridList").html(htmlval);
+						
+						
 						$("#readScheduleModal.modal  #title").html(info.event.title); //띄우려는 모달이랑 이름 맞춰야한다.
 						$("#readScheduleModal.modal  #userid").html(info.event.extendedProps.userid); //extendedProps -> api에서 가져옴, 값을 띄우는 걸 도와줌
 						$("#readScheduleModal.modal  #smemo").html(info.event.extendedProps.smemo);
-						$("#readScheduleModal.modal  #start").html(info.event.extendedProps.start);//TODO
-						$("#readScheduleModal.modal  #end").html(info.event.extendedProps.end);//TODO
+						/* $("#readScheduleModal.modal  #start").html(info.event.extendedProps.start);//TODO
+						$("#readScheduleModal.modal  #end").html(info.event.extendedProps.end);//TODO */
 						$("#readScheduleModal").modal("toggle");
 					} 
 				});

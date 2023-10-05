@@ -27,10 +27,10 @@
 								</div>
 								<!-- 작성자 -->
 									<input class="form-control userid" type="text" name="userid" value="${principal.username }" readonly>
-								<div class="form-userid"  >
-									<!-- <input type="text" name="attentuseridArr" value="mplsam@kh.co.kr">
-									<input type="text" name="attentuseridArr" value="kh0001@kh.com">
-									<input type="text" name="attentuseridArr" value="kh0002@kh.com">  -->
+								<div class="form-userid" id="form-content" >
+									<input type="text" name="attenduseridArr" value="mplsam@kh.co.kr">
+									<input type="text" name="attenduseridArr" value="kh0001@kh.com">
+									<input type="text" name="attenduseridArr" value="kh0002@kh.com"> 
 									<!-- 참가자 반복 -->
 									<input type="text" id="calmemberinput" placeholder="참가자" list="calmemberlist">
 									<select id="calmemberlist"> <!-- 일단 한 명만 추가해서 insert까지 하기  --> 
@@ -41,7 +41,7 @@
 							<div class="d-flex align-items-center" id="form-content">
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin align-middle me-2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
 								<input type= "text" class= "form-control place" name="tmember" placeholder= "장소를 입력하세요.">
-								<%@ include file="/WEB-INF/views/kakaomap.jsp"%>
+								
 							</div>
 							<div id="form-content">
 								<textarea class="form-control detail-content" id="csummernote" rows="5" name="smemo" placeholder="프로젝트에 관한 설명을 입력해주세요"></textarea>
