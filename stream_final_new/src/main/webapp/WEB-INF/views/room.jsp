@@ -101,7 +101,7 @@
 	}
 
 	function goRoom(number, name){
-		location.href="/stream/moveChatting?roomName="+name+"&"+"roomNumber="+number;
+		location.href="/stream/moveChatting?roomName="+name+"&"+"roomId="+number;
 	}
 
 	function createChatingRoom(res){
@@ -109,11 +109,11 @@
 			var tag = "<tr><th class='num'>순서</th><th class='room'>방 이름</th><th class='go'></th></tr>";
 			res.forEach(function(d, idx){
 				var rn = d.roomName.trim();
-				var roomNumber = d.roomNumber;
+				var roomId = d.roomId;
 				tag += "<tr>"+
 							"<td class='num'>"+(idx+1)+"</td>"+
 							"<td class='room'>"+ rn +"</td>"+
-							"<td class='go'><button type='button' onclick='goRoom(\""+roomNumber+"\", \""+rn+"\")'>참여</button></td>" +
+							"<td class='go'><button type='button' onclick='goRoom(\""+roomId+"\", \""+rn+"\")'>참여</button></td>" +
 						"</tr>";	
 			});
 			$("#roomList").empty().append(tag);
@@ -152,5 +152,20 @@
 			</table>
 		</div>
 	</div>
+	<!-- /////// -->
+<%-- 	<div class="container">
+        <div>
+            <ul>
+                <c:forEach var="room" items="${list}">
+    				<li><a href="<c:url value='/room'><c:param name='roomId' value='${room.roomId}'/></c:url>">${room.roomName}</a></li>
+				</c:forEach>
+            </ul>
+        </div>
+    </div>
+    <form action="/stream/createRoom" method="post">
+        <input type="text" name="roomName" class="form-control" placeholder="Room Name">
+        <button class="btn btn-secondary">개설하기</button>
+    </form>
+     <script> --%>
 </body>
 </html>

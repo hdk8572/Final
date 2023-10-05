@@ -23,13 +23,13 @@ public class ChatDao {
 	 */
 	
 	
-	public int AddChatRoom(String roomName,String writer) {
-		ChatRoomVo room = ChatRoomVo.create(roomName, writer);
+	public int AddChatRoom(String roomName,String userId) {
+		ChatRoomVo room = ChatRoomVo.create(roomName, userId);
 		return sqlSession.insert("chat.chatInsert",room);
 	}
 	
-	public List<ChatRoomVo> findAllRooms(){
-		return sqlSession.selectList("chat.findAllRooms");
+	public List<ChatRoomVo> findAllRooms(String userId){
+		return sqlSession.selectList("chat.findAllRooms",userId);
 	}
 	public int MessageInsert(ChatMessageVo vo) {
 		return sqlSession.insert("chat.messageInsert",vo);

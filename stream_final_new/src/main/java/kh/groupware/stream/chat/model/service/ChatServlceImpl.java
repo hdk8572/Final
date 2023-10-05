@@ -17,23 +17,23 @@ public class ChatServlceImpl implements ChatService{
 	private ChatDao dao;
 	
 	@Override
-	public List<ChatMessageVo> ViewChat(String id){
-		return dao.ViewChat(id);
+	public List<ChatMessageVo> ViewChat(String userId){
+		return dao.ViewChat(userId);
 	}
 	@Override
 	public int MessageInsert(ChatMessageVo vo) {
 		return dao.MessageInsert(vo);
 	}
 	@Override
-	public List<ChatRoomVo> findAllRooms(){
-		return dao.findAllRooms();
+	public List<ChatRoomVo> findAllRooms(String userId){
+		return dao.findAllRooms(userId);
 	}
 	@Override
-	public int AddChatRoom(String roomName,String writer) {
-		return dao.AddChatRoom(roomName, writer);
+	public int AddChatRoom(String roomName,String userId) {
+		return dao.AddChatRoom(roomName, userId);
 	}
 	@Override
-	public ChatRoomVo findRoomById(String id) {
-		return dao.findRoomById(id);
+	public ChatRoomVo findRoomById(String userId) {
+		return dao.findRoomById(userId);
 	}
 }

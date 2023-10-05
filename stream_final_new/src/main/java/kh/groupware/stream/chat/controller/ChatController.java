@@ -2,6 +2,7 @@ package kh.groupware.stream.chat.controller;
 
 
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,39 +30,46 @@ public class ChatController {
 		return "/chatting/chattest";
 		
 	}
-//	 @GetMapping("/chat")
-//	    public String chatGET(){
-//
-//	        System.out.println("@ChatController, chat GET()");
-//	        
-//	        return "chat";
-//	    }
-//	 @GetMapping("/chat1")
-//	    public String chatGETTest(){
-//		 System.out.println("@ChatController, chat GET()");
-//	        
-//	        return "chat1";
-//	    }	 
-//	  @GetMapping(value = "/rooms")
-//	    public ModelAndView rooms(ModelAndView mv) throws Exception{        
-//		  log.info("# All Chat Rooms");
-//	        mv.addObject("list", service.findAllRooms());
-//	        mv.setViewName("chatting/rooms");
-//	        return mv;
-//	    }
-//	    @PostMapping(value = "/room")
-//	    public String create(@RequestParam String roomName,@RequestParam String writer, RedirectAttributes rttr){
-//	    	log.info("# Create Chat Room, roomName: " + roomName + ", writer: " + writer);
-//	    	service.AddChatRoom(roomName, writer);
-//	        rttr.addFlashAttribute("roomName1", roomName);
-//	        return "redirect:/rooms";
-//	    }
-//	    @GetMapping("/room")
-//	    public ModelAndView getRoom(String roomId, Model model,ModelAndView mv){
-//	    	 log.info("# get Chat Room, roomID : " + roomId);
-//	        model.addAttribute("room", service.findRoomById(roomId));
-//	        mv.setViewName("chatting/room");
-//	        model.addAttribute("viewChat", service.ViewChat(roomId));
-//	        return mv;
-//	    }
+	 @GetMapping("/chat")
+	    public String chatGET(){
+
+	        System.out.println("@ChatController, chat GET()");
+	        
+	        return "chat";
+	    }
+	 @GetMapping("/chat1")
+	    public String chatGETTest(){
+		 System.out.println("@ChatController, chat GET()");
+	        
+	        return "chat1";
+	    }	 
+	
+	
+	
+	
+	
+	  @GetMapping(value = "/rooms")
+	    public ModelAndView rooms(ModelAndView mv,Principal principal) throws Exception{        
+		  log.info("# All Chat Rooms");
+		  	String userId = principal.getName();
+		  	mv.setViewName("chatting/rooms");
+			mv.addObject("list", service.findAllRooms(userId));
+	        return mv;
+	    }
+    @GetMapping("/room")
+    public ModelAndView getRoom(String roomId, Model model,ModelAndView mv){
+    	 log.info("# get Chat Room, roomID : " + roomId);
+    	model.addAttribute("room", service.findRoomById(roomId)); 
+    	mv.setViewName("chatting/room");
+        model.addAttribute("viewChat", service.ViewChat(roomId));
+        return mv;
+    }
+	    @PostMapping(value = "/room")
+	    public String create(@RequestParam String roomName,@RequestParam String userId, RedirectAttributes rttr){
+//	    	log.info("# Create Chat Room, roomName: " + roomName + ", userId: " + userId);
+	    	service.AddChatRoom(roomName, userId);
+	        rttr.addFlashAttribute("roomName1", roomName);
+	        return "redirect:/rooms";
+	    }
+
 }

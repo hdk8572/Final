@@ -10,21 +10,22 @@ import org.springframework.web.socket.WebSocketSession;
 public class ChatRoomVo {
 	private String roomId;
 	private String roomName;
-	private String writer;	//작성자
+	private String userId;	//작성자
+	private String mName;
 	private List<WebSocketSession> sessions = new ArrayList<>();
 	
-	public static ChatRoomVo create(String roomName, String writer) {
+	public static ChatRoomVo create(String roomName, String userId) {
 		ChatRoomVo room = new ChatRoomVo();
 		room.roomId = UUID.randomUUID().toString();
 		room.roomName = roomName;
-		room.writer = writer;
+		room.userId = userId;
 		return room;
 	}
 
 	@Override
 	public String toString() {
-		return "ChatRoomVo [roomId=" + roomId + ", roomName=" + roomName + ", writer=" + writer + ", sessions="
-				+ sessions + "]";
+		return "ChatRoomVo [roomId=" + roomId + ", roomName=" + roomName + ", userId=" + userId + ", mName=" + mName
+				+ ", sessions=" + sessions + "]";
 	}
 
 	public String getRoomId() {
@@ -43,12 +44,20 @@ public class ChatRoomVo {
 		this.roomName = roomName;
 	}
 
-	public String getWriter() {
-		return writer;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getmName() {
+		return mName;
+	}
+
+	public void setmName(String mName) {
+		this.mName = mName;
 	}
 
 	public List<WebSocketSession> getSessions() {
@@ -58,6 +67,9 @@ public class ChatRoomVo {
 	public void setSessions(List<WebSocketSession> sessions) {
 		this.sessions = sessions;
 	}
+
+	
+
 
 	
 

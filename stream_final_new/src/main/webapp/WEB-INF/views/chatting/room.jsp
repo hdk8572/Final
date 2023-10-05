@@ -20,7 +20,7 @@
 				<c:if test="${!empty viewChat}">
 					<c:forEach items="${viewChat}" var="item">
 						<div class='alert alert-secondary'>
-							<b> ${item.writer}: ${item.message} </b>
+							<b> ${item.mName}: ${item.message} </b>
 						</div>
 					</c:forEach>
 				</c:if>
@@ -37,12 +37,12 @@
 	<script>
 		$(document).ready(function() {
 
-			var roomName = "${room.roomName}";
+			var userId = "${room.userId}";
 			var roomId = "${room.roomId}";
-			var username = "${room.writer}"; //세션으로 받음
-
-			console.log(roomName + ", " + roomId + ", " + username);
-
+			var username = "${room.userId}"; 
+			var name = "${room.mName}";
+			
+			console.log(userId + ", " + roomId + ", " + username);			
 			var sockJs = new SockJS("/stream/stomp/chat");
 			var stomp = Stomp.over(sockJs);
 
@@ -51,18 +51,18 @@
 
 				stomp.subscribe("/sub/chat/room/" + roomId, function(chat) {
 					var content = JSON.parse(chat.body);
-
-					var writer = content.writer;
+					var userId = content.userId;
+					var userId = content.userId;
 					var message = content.message;
 					var str = '';
-					if (writer === username) {
+					if (userId === username) {
 						str = "<div class='alert alert-secondary'>";
-						str += "<b>" + writer + " : " + message + "</b>";
+						str += "<b>" + name + " : " + message + "</b>";
 						str += "</div>";
 						$("#msgArea").append(str);
 					} else {
 						str += "<div class='alert alert-warning'>";
-						str += "<b>" + writer + " : " + message + "</b>";
+						str += "<b>" + name + " : " + message + "</b>";
 						str += "</div>";
 						$("#msgArea").append(str);
 					}
@@ -71,11 +71,11 @@
 				$("#button-send").on("click", function(e) {
 					var msg = document.getElementById("msg");
 
-					console.log(username + ":" + msg.value);
+					
 					stomp.send('/pub/chat/message', {}, JSON.stringify({
 						roomId : roomId,
 						message : msg.value,
-						writer : username
+						userId : username
 					}));
 					msg.value = '';
 				});
@@ -86,7 +86,7 @@
 						stomp.send('/pub/chat/message', {}, JSON.stringify({
 							roomId : roomId,
 							message : msg.value,
-							writer : username
+							userId : username
 						}));
 						msg.value = '';
 					}
@@ -98,7 +98,7 @@
 
 				stomp.send('/pub/chat/enter', {}, JSON.stringify({
 					roomId : roomId,
-					writer : username
+					userId : username
 				}));
 			});
 		});
