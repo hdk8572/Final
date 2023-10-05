@@ -64,8 +64,8 @@
 	</insert>
 	<update id="InnerTaskInsertBeforeUpdate" parameterType="PtaskVo">
 		update task set BRESTEP = BRESTEP +1 
-   			where BRESTEP > (SELECT BRESTEP FROM task WHERE tno = 1)
-        	and BREF = (select bref from task where tno = 1)
+   			where BRESTEP > (SELECT BRESTEP FROM task WHERE tno = #{tno})
+        	and BREF = (select bref from task where tno = #{tno})
 	</update>
 	
 </mapper>
