@@ -20,15 +20,18 @@ public class ReplyController {
 	@Autowired
 	private ReplyService replyService;
 	
-	@GetMapping ("/replylista")
+	@GetMapping ("/replyList")
 	@ResponseBody
 	private List<ReplyVo> selectList(String tno) {
 		List<ReplyVo> vo = replyService.selectList(tno);
 		return vo; 
 	}
 
-	
-	
+	@PostMapping ("/insertReply")
+	@ResponseBody
+	public void insertReply(ReplyVo vo) {
+	    replyService.insertReply(vo);
+	}
 /*	
 	@PostMapping ("/insertReply")
 	@ResponseBody

@@ -8,9 +8,9 @@
 		WHERE TNO = #{tno}
 	</select>
 	
-	<insert id="insertReply" parameterType="String">
+	<insert id="insertReply" parameterType="ReplyVo">
 		INSERT INTO REPLY(RNO, TNO, USERID, RCONTENT, RDATE)
-		VALUES (replyrno_sequence.nextval, #{tno}, #{userid}, #{rcontent}, sysdate);
+		VALUES (replyrno_sequence.nextval, #{tno}, #{userid}, #{rcontent}, systimestamp)
 	</insert>
 	
 </mapper>

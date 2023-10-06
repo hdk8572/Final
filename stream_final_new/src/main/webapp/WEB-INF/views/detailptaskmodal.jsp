@@ -36,15 +36,16 @@
 								<input type="hidden" name="tno">
 							</form>
 							<div>
-								<div class="wrap-reply">
+								<form class="wrap-reply">
 									<div class="replyList">
 <!--  -->
 									</div>
 									<div class="reply-input">
 										<input type="text" class="form-control input" name="rcontent" placeholder="Input">
 										<input type="hidden" name="tno">
+										<input type="hidden" name="userid" value="${principal.username}">
 									</div>
-								</div>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -56,10 +57,9 @@
 <script>
 
 function replyLoadList() {
-	console.log("replyLoadList 호출");
 	console.log(targetTno);
 	$.ajax({
-		url: "${pageContext.request.contextPath}/replylista",
+		url: "${pageContext.request.contextPath}/replyList",
 		type: "get",
 		data: {tno:targetTno},
 		async : false,
@@ -127,7 +127,7 @@ function makeReplyList(data) {
 		$.ajax ({
 			url: "${pageContext.request.contextPath}/insertReply",
 			type: "post",
-			data: {tno:targetTno},
+			data: $(".wrap-reply").serialize(),
 			dataType: "json",
 			success: makeReply,
 			error: function() {

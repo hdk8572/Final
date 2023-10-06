@@ -31,7 +31,7 @@
 	</insert>
 	 
 	<delete id="deleteList" parameterType="ProjectVo">
-		DELETE FROM PROJECT WHERE PNO = #(pno) 
+		DELETE FROM PROJECT WHERE PNO = #{pno} 
 	</delete>
 	 
 	<update id="updateList" parameterType="ProjectVo">

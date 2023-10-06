@@ -20,8 +20,8 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 	
 	@Override
-	public int insertReply(String tno) {
-		return replyDao.insert(tno);
+	public int insertReply(ReplyVo vo) {
+		return replyDao.insert(vo);
 	}
 	
 	

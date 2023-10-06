@@ -2,8 +2,6 @@ package kh.groupware.stream.reply.model.vo;
 
 import org.springframework.stereotype.Component;
 
-import lombok.Data;
-
 @Component
 public class ReplyVo {
 
@@ -27,7 +25,7 @@ public class ReplyVo {
 		this.rcontent = rcontent;
 		this.rdate = rdate;
 	}
-
+	
 	public ReplyVo() {
 		super();
 	}

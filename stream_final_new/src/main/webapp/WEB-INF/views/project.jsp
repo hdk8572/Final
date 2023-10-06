@@ -196,6 +196,7 @@
 		 	data: {tno: targetTno, pno: targetPno},
 		 	async : false,
 		 	success: function(result){
+		 		console.log(result);
 		 		$(".wrap-card .tcontent").html(result.tcontent);
 		 		$(".wrap-card .ttitle").html(result.ttitle);
 		 		$(".wrap-card .tstatus").html(result.tstatus);
