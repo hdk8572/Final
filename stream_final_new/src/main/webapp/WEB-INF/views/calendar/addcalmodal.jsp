@@ -17,9 +17,10 @@
 							<input type="text" class="form-control title" name="title" id="form-content" placeholder="제목을 입력하세요.">
 							
 							<!-- 날짜 -->
+								<div class="form-content">
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar align-middle me-2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-								<input type="date" class="form-date" id="form-content" name="start" required="required"> ~ <input type="date" class="form-date" name="end" required="required"> <!-- s -->
-							
+								<input type="date" class="form-date" id="start" name="start" required="required"> ~ <input type="date" class="form-date" id="end" name="end" required="required"> <!-- s -->
+								</div>
 							 <!-- 작성자&참석자 -->
 							 <div class="d-flex align-items-center" id="form-content">
 								<div>
@@ -83,13 +84,6 @@
 			success: memberView,
 			error:memberError
 		});
-		
-		//TODO 쓸모없는 코드임,,,?
-		$(".calmember-list li").click(function() { 
-		      var selectedValue = $(this).text();
-		      $(".calmember").val(selectedValue);
-		      $(".calmember-list").hide();
-		 });
 	}
 	function memberView(data){
 		console.log(data)
@@ -105,6 +99,31 @@
 		var listHtml = "";
 		listHtml += `<option selected>해당하는 이름이 없습니다.</option>`;
 		$("#calmemberlist").html(listHtml);
+	}
+</script>
+
+<script>
+	//id='start','end'
+	var startDateInput = document.getElementById('start');
+	var endDateInput = document.getElementById('end');
+	
+	startDateInput.addEventListener('change', function() {
+		compareDates();
+	});
+	
+	endDateInput.addEventListener('change', function() {
+		compareDates();
+	});
+	
+	function compareDates() {
+		var startDate = new Date(startDateInput.value);
+		var endDate = new Date(endDateInput.value);
+		
+		if(endDate < startDate) {
+			alert("입력한 종료일이 시작일보다 이전입니다. 올바른 날짜를 선택해 주세요.");
+			
+			endDateInput.value = ''; //종료일 입력필드 초기화
+		}
 	}
 </script>
 	
