@@ -155,33 +155,27 @@ function getProjectMemberList(thisElement){
 				userid : principal_username
 			},
 			dataType: "json",
-			//success: showProjectMemberView,
 			success: (data)=>{
-				console.log(data)
-				console.log("성공하였습니다.")
-				var listHtml = "";
-				for (var i=0; i<data.length; i++){
-					var mname = data[i];
-					listHtml += `<option value="${mname.userid}">${mname.mname}</option>`; 
-				}
-				$(htmlTarget).html(listHtml);
-				
+				console.log(data);
+				console.log("성공하였습니다.");
+				showProjectMemberView(data, htmlTarget)
 			},
+			
 			error:function(request, status, error, data){
 			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 			}
 		});
 	}
-function showProjectMemberView(data){
+function showProjectMemberView(data, htmlTarget){
 		console.log(data)
 		console.log("성공하였습니다.")
 		console.log(data[0]);
 		var listHtml = "";
 		for (var i=0; i<data.length; i++){
 			var mname = data[i];
-			listHtml += `<option value="\${mname.userid}">\${mname.mname}</option>`; //data를 뿌리고 그걸 option에다가 넣어줌 //value=userid
+			listHtml += `<option value="${mname.userid}">${mname.mname}</option>`; //data를 뿌리고 그걸 option에다가 넣어줌 //value=userid
 		}
-		$().html(listHtml);
+		$(htmlTarget).html(listHtml);
 }
 
 boxOutHandler=(event)=>{
