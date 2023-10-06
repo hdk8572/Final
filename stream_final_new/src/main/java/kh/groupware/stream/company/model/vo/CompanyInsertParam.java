@@ -25,7 +25,7 @@ public class CompanyInsertParam {
 	public String toString() {
 		return "CompanyInsertParam [ccode=" + ccode + ", cname=" + cname + ", cphone=" + cphone + ", caddress="
 				+ caddress + ", cpassword=" + cpassword + ", defaultDeptCode=" + defaultDeptCode + ", defaultDeptName="
-				+ defaultDeptName + ", deptArr=" + Arrays.toString(deptArr) + ", ncemailArr="
+				+ defaultDeptName + ", deptArr=" + Arrays.toString(deptArr) + ", emailArr="
 				+ Arrays.toString(emailArr) + ", idx=" + idx + "]";
 	}
 
@@ -34,7 +34,7 @@ public class CompanyInsertParam {
 	}
 
 	public CompanyInsertParam(String ccode, String cname, String cphone, String caddress, String cpassword,
-			String defaultDeptCode, String defaultDeptName, String[] deptArr, String[] ncemailArr, String idx) {
+			String defaultDeptCode, String defaultDeptName, String[] deptArr, String[] emailArr, String idx) {
 		super();
 		this.ccode = ccode;
 		this.cname = cname;
@@ -44,7 +44,7 @@ public class CompanyInsertParam {
 		this.defaultDeptCode = defaultDeptCode;
 		this.defaultDeptName = defaultDeptName;
 		this.deptArr = deptArr;
-		this.emailArr = ncemailArr;
+		this.emailArr = emailArr;
 		this.idx = idx;
 	}
 
@@ -112,12 +112,12 @@ public class CompanyInsertParam {
 		this.deptArr = deptArr;
 	}
 
-	public String[] getNcemailArr() {
+	public String[] getemailArr() {
 		return emailArr;
 	}
 
-	public void setNcemailArr(String[] ncemailArr) {
-		this.emailArr = ncemailArr;
+	public void setemailArr(String[] emailArr) {
+		this.emailArr = emailArr;
 	}
 
 	public String getIdx() {
