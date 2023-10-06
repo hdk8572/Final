@@ -16,7 +16,7 @@ START WITH 1
 INCREMENT BY 1;
 
 CREATE SEQUENCE company_sequence
-START WITH 1
+START WITH 4
 INCREMENT BY 1;
 
 CREATE SEQUENCE dept_sequence
@@ -307,12 +307,24 @@ VALUES ('9', 'sple@kh.co.kr');
 
 -- Table Reply
 INSERT INTO REPLY(RNO, TNO, USERID, RCONTENT, RDATE)
-VALUES (replyrno_sequence.nextval, 1, 'kh0001@kh.com', '테스트내용1', sysdate);
+VALUES (replyrno_sequence.nextval, 1, 'sple@kh.co.kr', '테스트내용1', sysdate);
 
 INSERT INTO REPLY(RNO, TNO, USERID, RCONTENT, RDATE)
-VALUES (replyrno_sequence.nextval, 1, 'kh0001@kh.com', '테스트내용2', sysdate);
+VALUES (replyrno_sequence.nextval, 1, 'sple@kh.co.kr', '테스트내용2', sysdate);
 
 INSERT INTO REPLY(RNO, TNO, USERID, RCONTENT, RDATE)
-VALUES (replyrno_sequence.nextval, 1, 'kh0001@kh.com', '테스트내용3', sysdate);
+VALUES (replyrno_sequence.nextval, 1, 'sple@kh.co.kr', '테스트내용3', sysdate);
+
+INSERT INTO REPLY(RNO, TNO, USERID, RCONTENT, RDATE)
+VALUES (replyrno_sequence.nextval, 9, 'sple@kh.co.kr', '테스트내용1', sysdate);
+
+INSERT INTO REPLY(RNO, TNO, USERID, RCONTENT, RDATE)
+VALUES (replyrno_sequence.nextval, 9, 'sple@kh.co.kr', '테스트내용2', sysdate);
+
+INSERT INTO REPLY(RNO, TNO, USERID, RCONTENT, RDATE)
+VALUES (replyrno_sequence.nextval, 9, 'sple@kh.co.kr', '테스트내용3', sysdate);
+
+INSERT INTO REPLY(RNO, TNO, USERID, RCONTENT, RDATE)
+VALUES (replyrno_sequence.nextval, 9, 'sple@kh.co.kr', '테스트내용4', sysdate);
 
 COMMIT;

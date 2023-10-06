@@ -17,7 +17,7 @@ public class CompanyInsertParam {
 	private String defaultDeptName;
 	
 	private String[] deptArr; //dept 값 받음
-	private String[] ncemailArr; //email 값 받음
+	private String[] emailArr; //email 값 받음
 	
 	private String idx;
 
@@ -26,7 +26,7 @@ public class CompanyInsertParam {
 		return "CompanyInsertParam [ccode=" + ccode + ", cname=" + cname + ", cphone=" + cphone + ", caddress="
 				+ caddress + ", cpassword=" + cpassword + ", defaultDeptCode=" + defaultDeptCode + ", defaultDeptName="
 				+ defaultDeptName + ", deptArr=" + Arrays.toString(deptArr) + ", ncemailArr="
-				+ Arrays.toString(ncemailArr) + ", idx=" + idx + "]";
+				+ Arrays.toString(emailArr) + ", idx=" + idx + "]";
 	}
 
 	public CompanyInsertParam() {
@@ -44,7 +44,7 @@ public class CompanyInsertParam {
 		this.defaultDeptCode = defaultDeptCode;
 		this.defaultDeptName = defaultDeptName;
 		this.deptArr = deptArr;
-		this.ncemailArr = ncemailArr;
+		this.emailArr = ncemailArr;
 		this.idx = idx;
 	}
 
@@ -113,11 +113,11 @@ public class CompanyInsertParam {
 	}
 
 	public String[] getNcemailArr() {
-		return ncemailArr;
+		return emailArr;
 	}
 
 	public void setNcemailArr(String[] ncemailArr) {
-		this.ncemailArr = ncemailArr;
+		this.emailArr = ncemailArr;
 	}
 
 	public String getIdx() {

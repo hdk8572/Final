@@ -127,6 +127,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 						center : 'title',
 						end : 'dayGridMonth,dayGridWeek,dayGridDay'
 					},
+					
 					titleFormat : function(date) {
 						return date.date.year + '년 '
 								+ (parseInt(date.date.month) + 1) + '월';
@@ -141,6 +142,17 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 					
 					events : eventsDataArr
 				 	,
+				 	//공휴일
+				 	googleCalendarApiKey : "AIzaSyDcnW6WejpTOCffshGDDb4neIrXVUA1EAE"
+				          , eventSources : [
+				              {
+				                  googleCalendarId : "ko.south_korea#holiday@group.v.calendar.google.com"
+				                  , className : "koHolidays"
+				                  , color : "#FF0000"
+				                  , textColor : "#FFFFFF"
+				              }
+					],
+					
 				 	/* 일정 상세정보를 띄우겠다.*/
 					eventClick: function(info) {
 						console.log(info.event.title);
@@ -158,9 +170,9 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 						
 						$("#readScheduleModal.modal  #title").html(info.event.title); //띄우려는 모달이랑 이름 맞춰야한다.
 						$("#readScheduleModal.modal  #userid").html(info.event.extendedProps.userid); //extendedProps -> api에서 가져옴, 값을 띄우는 걸 도와줌
+						$("#readScheduleModal.modal  #start").html(info.event.extendedProps.start);
+						$("#readScheduleModal.modal  #end").html(info.event.extendedProps.end);
 						$("#readScheduleModal.modal  #smemo").html(info.event.extendedProps.smemo);
-						/* $("#readScheduleModal.modal  #start").html(info.event.extendedProps.start);//TODO
-						$("#readScheduleModal.modal  #end").html(info.event.extendedProps.end);//TODO */
 						$("#readScheduleModal").modal("toggle");
 					} 
 				});

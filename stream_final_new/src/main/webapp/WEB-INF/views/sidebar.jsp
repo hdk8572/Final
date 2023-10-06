@@ -4,12 +4,12 @@
 
 <nav id="sidebar" class="sidebar js-sidebar">
 	<div class="sidebar-content js-simplebar">
-		<span class="align-brand-middle"><a href="projectlist"
+		<span class="align-brand-middle"><a href="${pageContext.request.contextPath}/projectlist"
 			class="sidebar-brand-new">AdminKit</a></span>
 
 		<ul class="sidebar-nav">
 			<li class="sidebar-item active">
-				<a class="sidebar-link"	href="projectlist"> 
+				<a class="sidebar-link"	href="${pageContext.request.contextPath}/projectlist"> 
 					<i class="align-middle"	data-feather="sliders"></i> 
 					<span class="align-middle">내 프로젝트</span>
 				</a>
@@ -18,14 +18,14 @@
 			<li class="sidebar-header">모아보기</li>
 
 			<li class="sidebar-item">
-				<a class="sidebar-link" href="maintask">
+				<a class="sidebar-link" href="${pageContext.request.contextPath}/maintask">
 					<i class="align-middle" data-feather="square"></i>
 					<span class="align-middle">전체업무</span>
 				</a>
 			</li>
 
 			<li class="sidebar-item">
-				<a class="sidebar-link" href="pcal">
+				<a class="sidebar-link" href="${pageContext.request.contextPath}/pcal">
 					<i class="align-middle" data-feather="check-square"></i>
 					<span class="align-middle">캘린더</span>
 				</a>

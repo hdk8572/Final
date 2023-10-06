@@ -16,7 +16,7 @@
 <title>회원 가입</title>
 
 <!-- Bootstrap Css -->
-<link href="css/streamapp.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/streamapp.css" rel="stylesheet">
 <!-- Newmember Css -->
 <link href="${pageContext.request.contextPath}/css/newmember.css"
 	rel=stylesheet">

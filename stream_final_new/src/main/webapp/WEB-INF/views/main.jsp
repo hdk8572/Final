@@ -16,7 +16,7 @@
 <title>로그인</title>
 
 <!-- Bootstrap Css -->
-<link href="css/streamapp.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/streamapp.css" rel="stylesheet">
 <!-- Main Css -->
 <link href="${pageContext.request.contextPath}/css/main.css"
 	rel="stylesheet">

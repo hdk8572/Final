@@ -6,27 +6,8 @@
 	<select id="signUp" parameterType="MemberVo">
 		UPDATE USERS SET
 		DEPTNO =
-		#{deptno}, PASSWORD = #{password}, MNAME = #{mname} WHERE
+		#{deptno}, PASSWORD = #{password}, MNAME = #{mname}, ENABLED= 1 WHERE
 		USERID = #{userid}
-	</select>
-	
-	<!-- 회사 회원가입 -->
-	<insert id="newCompany" parameterType="MemberVo">
-		
-	</insert>
-
-	<!-- 마이페이지 -->
-	<select id="myPage" parameterType="String" resultType="MemberVo">
-		SELECT
-		MNAME, CNAME, DEPTNAME, USERID, MPHONE, MRANK FROM MEMBER
-		WHERE USERID = #{userid}
-	</select>
-
-	<!-- 마이페이지 수정 -->
-	<select id="update" parameterType="MemberVo">
-		UPDATE USERS SET DEPTNO=
-		#{deptno}, MPHONE = #{mphone}, MRANK = #{mrank}
-		WHERE USERID = #{userid}
 	</select>
 
 	<!-- 아이디체크 -->
@@ -43,6 +24,21 @@
 		WHERE USERID = #{userid}) U INNER JOIN DEPT D ON U.DEPTNO = D.DEPTNO
 		AND U.CCODE = D.CCODE
 	</select>
+	
+	<!-- 회사회원가입 3: USERS insert -->
+	<insert id="newUsers" parameterType="kh.groupware.stream.company.model.vo.CompanyInsertParam">
+		INSERT ALL INTO USERS (USERID, DEPTNO, CCODE, PASSWORD, ENABLED, AUTHORITY)
+		VALUES
+		<foreach collection="emailArr" item="userid">
+		 (#{userid}, 'D000', #{ccode}, default, 0, 'ROLE_M')
+		 </foreach> 
+	</insert>
+	
+	<!-- 회사회원가입 4: USERS Company Id insert -->
+	<insert id="newComapnyId" parameterType="kh.groupware.stream.company.model.vo.CompanyInsertParam">
+	 	INSERT INTO USERS (USERID, DEPTNO, CCODE, PASSWORD, ENABLED, AUTHORITY)
+	 	VALUES (#{ccode}||'@stream.com', 'D000', #{ccode}, default, 1, 'ROLE_C')
+	</insert>
 	<!-- SELECT U.USERID, U.MNAME, (SELECT C.CNAME FROM COMPANY C WHERE U.CCODE 
 		= C.CCODE) CNAME, D.DEPTNAME FROM (SELECT * FROM USERS WHERE USERID = 'sple@kh.co.kr') 
 		U INNER JOIN DEPT D ON U.DEPTNO = D.DEPTNO AND U.CCODE = D.CCODE; -->

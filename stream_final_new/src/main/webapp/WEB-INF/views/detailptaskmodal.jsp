@@ -32,48 +32,20 @@
 									<div class= "form-control manager ml-2 userid"></div>
 								</div>
 								<div class="form-control detail-content input tcontent"></div>
+								<input type="hidden" name="pno">
+								<input type="hidden" name="tno">
 							</form>
-							<form>
-								<div class="wrap-comment">
-									<div class="commentList">
-										<ul>
-											<li>
-												<div>
-													<p>첫번째 댓글 작성자</p>
-													<p>첫번째 댓글</p>
-												</div>
-											</li>
-											<li>
-												<div>
-													<p>두번째 댓글 작성자</p>
-													<p>두번째 댓글</p>
-												</div>
-											</li>
-											<li>
-												<div>
-													<p>세번째 댓글 작성자</p>
-													<p>세번째 댓글</p>
-												</div>
-											</li>
-											<li>
-												<div>
-													<p>세번째 댓글 작성자</p>
-													<p>세번째 댓글</p>
-												</div>
-											</li>
-											<li>
-												<div>
-													<p>세번째 댓글 작성자</p>
-													<p>세번째 댓글</p>
-												</div>
-											</li>
-										</ul>	
+							<div>
+								<div class="wrap-reply">
+									<div class="replyList">
+<!--  -->
 									</div>
-									<div class="Comment-input">
-									<div class="form-control inputComment" contenteditable="true" placeholder="줄바꿈 Shift + Enter / 입력 Enter 입니다."></div>
+									<div class="reply-input">
+										<input type="text" class="form-control input" name="rcontent" placeholder="Input">
+										<input type="hidden" name="tno">
 									</div>
 								</div>
-							</form>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -83,6 +55,90 @@
 </div>
 <script>
 
+function replyLoadList() {
+	console.log("replyLoadList 호출");
+	console.log(targetTno);
+	$.ajax({
+		url: "${pageContext.request.contextPath}/replylista",
+		type: "get",
+		data: {tno:targetTno},
+		async : false,
+		dataType: "json",
+		success: makeReplyList,
+		error: function() {
+			alert("replyLoadList에서 에러났습니다.");
+		}
+	});
+	console.log("replyLoadList 실행");
+}
+
+function makeReplyList(data) {
+	var replyHtml = "";
+	for(var i=0; i<data.length; i++) {
+		var rl = data[i];
+		replyHtml+=`
+		<div class="d-flex align-items-start">
+			<img src="img/avatars/avatar-5.jpg" width="36" height="36" class="rounded-circle me-2" alt="Vanessa Tucker">
+			<div class="flex-grow-1">
+				<small class="float-end text-navy">5m ago</small>
+				<strong>\${rl.userid}</strong><br>
+				<p>\${rl.rcontent}</p>
+				<small class="text-muted">Today 7:51 pm</small><br>
+			</div>
+		</div>
+		`;
+	}
+	$(".replyList").html(replyHtml);
+}
+
+/* function makeReplyList(data) {
+	var replyHtml = "";
+	for(var i=0; i<data.length; i++) {
+		var rl = data[i];
+		replyHtml+=`
+		<li>
+			<div>
+				<p>\${rl.userid}</p>
+				<p>\${rl.rcontent}</p>
+			</div>
+		</li>
+		`;
+	}
+	$(".replyList").html(replyHtml);
+} */
+
+
+</script>
+<script>
+	
+	$(".form-control.input").keydown(function(event) {
+		if(event.keyCode == 13) {
+			event.preventDefault();
+			console.log("Enter 입력됨");
+			insertReply();			
+		} else {
+			null;
+		}
+	});
+	
+	function insertReply() {
+		console.log("댓글 추가");
+		console.log(targetTno);
+		$.ajax ({
+			url: "${pageContext.request.contextPath}/insertReply",
+			type: "post",
+			data: {tno:targetTno},
+			dataType: "json",
+			success: makeReply,
+			error: function() {
+				alert("insertReply에서 에러났습니다.");
+			}
+		});
+	}
+	
+	function makeReply(data) {
+		console.log(data);	
+	}
 
 </script>
 

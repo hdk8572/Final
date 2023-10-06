@@ -142,6 +142,9 @@
 	/* ajax 용 - contextPath 변수 지정 */
 	const contextPath = "${pageContext.request.contextPath}";
 	
+	/* ajax 용 - principal.username */
+	const useridJs = "${principal.username}";
+	
 	/* 상단 탭바 위치 이동*/
 	function openTab(tabName) {
 	  var i;
@@ -183,6 +186,7 @@
 	function detailProject() {
 		targetTno = $(this).closest("tr").find("input[name=tno]").val();
 		targetPno = $(this).closest("tr").find("input[name=pno]").val();
+		targetRno = $(this).closest("tr").find("input[name=rno]").val();
 		$("#detailProjectModal").modal("toggle");
 		
 		$.ajax({
@@ -190,6 +194,7 @@
 		 	type: "get",
 		 	dataType: "json",
 		 	data: {tno: targetTno, pno: targetPno},
+		 	async : false,
 		 	success: function(result){
 		 		$(".wrap-card .tcontent").html(result.tcontent);
 		 		$(".wrap-card .ttitle").html(result.ttitle);
@@ -197,11 +202,15 @@
 		 		$(".wrap-card .userid").html(result.userid);
 		 		$(".wrap-card .tstartdate").val(result.tstartdate);
 		 		$(".wrap-card .tenddate").val(result.tenddate);
+		 		$(".wrap-card [name=tno]").val(result.tno);
+		 		$(".wrap-card [name=pno]").val(result.pno);
+		 		replyLoadList();
 		 	},
 		 	error: function() {
 		 		console.log("detailProject에서 오류 발생");
 		 	}
 		});
+		
 	}
 	</script>
 </html>
