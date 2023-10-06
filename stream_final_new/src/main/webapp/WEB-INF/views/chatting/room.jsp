@@ -52,7 +52,6 @@
 				stomp.subscribe("/sub/chat/room/" + roomId, function(chat) {
 					var content = JSON.parse(chat.body);
 					var userId = content.userId;
-					var userId = content.userId;
 					var message = content.message;
 					var str = '';
 					if (userId === username) {

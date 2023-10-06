@@ -18,4 +18,6 @@ public interface ChatService {
 	List<ChatRoomVo> findAllRooms(String userId);
 	int AddChatRoom(String roomName,String userId);
 	ChatRoomVo findRoomById(String id);
+	List<ChatRoomVo> ViewMember();
+	
 }

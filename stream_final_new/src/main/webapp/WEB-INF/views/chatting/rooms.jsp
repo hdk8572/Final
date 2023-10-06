@@ -24,8 +24,13 @@
     </div>
     <%-- ${principal.username} --%>
     <form action="/stream/room" method="post">
+    	<div>
+    		<c:forEach var="viewMemmber" items="${viewMemmber}">
+    				<li><a href="">${viewMemmber.mName}</a></li>
+				</c:forEach>
+    	</div>
         <input type="text" name="roomName" class="form-control" placeholder="Room Name">
-        <input type="text" name="userId" class="form-control" placeholder="userId Name">
+        <!-- <input type="text" name="userId" class="form-control" placeholder="userId Name"> -->
         <button class="btn btn-secondary">개설하기</button>
     </form>
      <script>

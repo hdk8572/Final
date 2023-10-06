@@ -36,4 +36,8 @@ public class ChatServlceImpl implements ChatService{
 	public ChatRoomVo findRoomById(String userId) {
 		return dao.findRoomById(userId);
 	}
+	@Override
+	public List<ChatRoomVo> ViewMember() {
+		return dao.ViewMember();
+	}
 }

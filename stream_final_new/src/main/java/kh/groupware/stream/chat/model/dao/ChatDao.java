@@ -39,5 +39,8 @@ public class ChatDao {
 	}
 	 public ChatRoomVo findRoomById(String id) {
 	        return sqlSession.selectOne("chat.findRoomById", id);
-	    }
+	  }
+	public List<ChatRoomVo> ViewMember(){
+			return sqlSession.selectList("chat.viewMember");
+	}
 }
