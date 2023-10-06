@@ -21,9 +21,14 @@
 			<result property="brestep" column="brestep"/>
 			<result property="brelevel" column="brelevel"/>
 		</collection>
+		<collection property="memberProjectList" ofType="MemberSimpleVo" column="mname">
+			<id property="userid" column="userid"/>
+			<result property="manme" column="manme"/>
+		</collection>
 	</resultMap>
+	<!-- 프로젝트, 업무 뿌리기 -->
 	<!-- 
-	프로젝트, 업무 뿌리기
+	
 	<select id="projectNameList" resultMap="maintaskVoMap" parameterType="string">
 		select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
     		from project p right join task t using (pno)
@@ -33,8 +38,8 @@
 	 -->
 	 
 	<select id="projectNameList" resultMap="maintaskVoMap"  parameterType="string">
-		select pname, pno, u.userid, projectwriter, taskwriter, mname, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
-    		from	(select pname, pno, p.userid projectwriter, t.userid taskwriter , tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+		select pname, pno, userid, projectwriter userid, taskwriter userid, mname, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    		from (select pname, pno, p.userid projectwriter, t.userid taskwriter , tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
    						from project p 
     					right join task t using (pno)
     					join member_project mp using(pno)
@@ -45,18 +50,30 @@
 	</select>
 	
 	<!-- 프로젝트 기준 화면 뿌리기 -->
+	<!-- 
 	<select id="projectOneTaskList" resultMap="maintaskVoMap" parameterType="string">
 		select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
     		from project p right join (select * from task t where pno=#{pno}) t using (pno)
     		where tmember = #{userid} or t.userid=#{userid} 
     		order by bref desc, brelevel asc, brestep asc, tno desc
 	</select>
-	
+	 -->
+	 <select id="projectOneTaskList" resultMap="maintaskVoMap" parameterType="string">
+	 	select pname, pno, userid, projectwriter, taskwriter, mname, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    		from (select pname, pno, p.userid projectwriter, t.userid taskwriter , tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+   						from project p 
+    					right join (select * from task t where pno=#{pno}) t using (pno)
+    					join member_project mp using(pno)
+    					where tmember = 'sple@kh.co.kr' or t.userid ='sple@kh.co.kr'
+    					group by (pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel)
+    					order by to_number(pno) desc, bref desc, brelevel asc, brestep asc, tno desc) ff
+    		join users u on (u.userid= ff.taskwriter)
+	 </select>
 	<!-- 하위업무 추가 -->
 	<insert id="innerTaskInsert" parameterType="PtaskVo">
 		insert into task (TNO, PNO, USERID, tmember, TTITLE, tcontent, TSTATUS, TDATE, tstartdate, tenddate, BREF, BRESTEP, BRELEVEL)
 		values (
-			task_sequence.NEXTVAL, #{pno}, #{userid}, #{userid}, #{ttitle}, 'DEFAULT', #{tstatus}, sysdate, #{tstartdate}, #{tenddate}, 
+			task_sequence.NEXTVAL, #{pno}, #{userid}, #{tmember}, #{ttitle}, 'DEFAULT', #{tstatus}, sysdate, #{tstartdate}, #{tenddate}, 
 				(select bref from task where tno=#{tno}),
 				(select brestep+1 from task where tno=#{tno}),
 				(select brelevel+1 from task where tno=#{tno})

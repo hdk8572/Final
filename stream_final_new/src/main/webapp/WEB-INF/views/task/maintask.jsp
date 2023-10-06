@@ -298,9 +298,9 @@
 																				</span>
 																			</div>
 																			<div class="jm-title-tmember col-lg-1 jm-grey">
-																				<select>
-																				<c:forEach items="${projectList }" var="projectNameList">
-																					<option>${projectNameList.mname} </option>
+																				<select name="tmember"><!-- TMEMBERLIST -->
+																				<c:forEach items="${project.memberProjectList }" var="member">
+																					<option value="${member.userid}">${member.mname} </option>
 																				</c:forEach>
 																				</select>
 																			</div>
@@ -328,7 +328,6 @@
 																				<input type="hidden" name="tno" value="${task.tno}">
 																				<input type="hidden" name="tcontent" value="default">
 																				<input type="hidden" name="pno" value="${project.pno}">
-																				<input type="hidden" name="tmember" value="${principal.username}">
 																				<!-- 로그인 세션 받아서 등록 -->
 																				<input type="hidden" name="userid" value="${principal.username}">
 																				<button type="button" onclick="innerTaskaddListHandler(this);">추가하기</button>

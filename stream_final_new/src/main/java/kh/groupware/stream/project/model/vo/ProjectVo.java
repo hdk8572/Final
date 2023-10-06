@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import kh.groupware.stream.main.model.dto.MaintaskDto;
+import kh.groupware.stream.member.model.vo.MemberSimpleVo;
 
 @Component
 public class ProjectVo {
@@ -27,13 +28,19 @@ public class ProjectVo {
 
 //taskVo
 	private List<MaintaskDto> maintaskList;
+// commonVo ( id, 이름 )
+	private List<MemberSimpleVo> memberProjectList;
+
+	
+
 
 	@Override
 	public String toString() {
 		return "ProjectVo [pno=" + pno + ", userid=" + userid + ", pname=" + pname + ", pcontent=" + pcontent
 				+ ", paccess=" + paccess + ", pdate=" + pdate + ", pstartdate=" + pstartdate + ", penddate=" + penddate
 				+ ", prow=" + prow + ", pstatus=" + pstatus + ", deptno=" + deptno + ", mname=" + mname + ", mrank="
-				+ mrank + ", deptName=" + deptName + ", maintaskList=" + maintaskList + "]";
+				+ mrank + ", deptName=" + deptName + ", maintaskList=" + maintaskList + ", memberProjectList="
+				+ memberProjectList + "]";
 	}
 
 
@@ -44,9 +51,12 @@ public class ProjectVo {
 
 
 
+	
+
+
 	public ProjectVo(String pno, String userid, String pname, String pcontent, String paccess, String pdate,
 			String pstartdate, String penddate, String prow, String pstatus, String deptno, String mname, String mrank,
-			String deptName, List<MaintaskDto> maintaskList) {
+			String deptName, List<MaintaskDto> maintaskList, List<MemberSimpleVo> memberProjectList) {
 		super();
 		this.pno = pno;
 		this.userid = userid;
@@ -63,6 +73,7 @@ public class ProjectVo {
 		this.mrank = mrank;
 		this.deptName = deptName;
 		this.maintaskList = maintaskList;
+		this.memberProjectList = memberProjectList;
 	}
 
 
@@ -185,6 +196,18 @@ public class ProjectVo {
 
 	public void setMaintaskList(List<MaintaskDto> maintaskList) {
 		this.maintaskList = maintaskList;
+	}
+
+
+
+	public List<MemberSimpleVo> getMemberProjectList() {
+		return memberProjectList;
+	}
+
+
+
+	public void setMemberProjectList(List<MemberSimpleVo> memberProjectList) {
+		this.memberProjectList = memberProjectList;
 	}
 
 

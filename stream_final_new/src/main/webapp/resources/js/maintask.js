@@ -190,6 +190,8 @@ function innerTaskaddListHandler (data) {
 }
 const test="100";
 function makeView(project) {
+console.log(project);
+console.log(project.mname);
 	    var listHtml = "";
 	    //if(data)
         listHtml += `
@@ -266,7 +268,18 @@ listHtml += `
 																			</span>
 																		</div>
 																		<div class="jm-title-tmember col-lg-1 jm-grey">
-																			<span>담당자 드롭다운(tmember)</span>
+																			<select name="tmember">
+`;
+//select-option >> Tmember
+for(var i=0; i<project.memberProjectList.length; i++){
+console.log(project.memberProjectList);
+var member = projectList.mname[i];
+listHtml += `								
+																					<option value="${member.userid}">${member.mname} </option>
+`
+}
+listHtml +=`
+																			</select>
 																		</div>
 																		<div class="dropdown jm-title-tstartdate col-lg-1 jm-grey">
 																			<div data-bs-toggle="dropdown">
