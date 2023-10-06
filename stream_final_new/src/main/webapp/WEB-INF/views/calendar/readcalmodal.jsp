@@ -23,6 +23,7 @@
  	<div class="modal-body">
  		<form id="addProject">
 	    	<div class="card">
+	    		<div id="sno" ></div>
 				<div class="card-header">
 					<!-- 작성자 -->
 					<div id="userid"></div> <!-- 여기에 뭐 적으면x -->
@@ -42,7 +43,10 @@
 						<!-- 참석자  -->
 						<div id="attenduseridList"></div>
 						<!-- 지도 -->
-						<div id="splace"></div>
+						<div>
+							<div id="splace"></div>
+							<%@ include file="/WEB-INF/views/kakaomap.jsp"%>
+						</div>
 						<!-- 내용 -->
 						<div id="smemo"></div>
 						

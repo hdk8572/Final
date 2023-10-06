@@ -62,6 +62,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 					<button class="w3-bar-item w3" onclick="openTab('Tab2')">업무</button>
 					<button class="w3-bar-item w3" onclick="openTab('Tab3')">캘린더</button>
 				</div>
+
 <%-- 				<div class="search">
 						<form action="${pageContext.request.contextPath}/pcalselectone" method="get"> <!-- ?? -->
 							<input class="serinput" type="text" placeholder="검색어 입력"> 

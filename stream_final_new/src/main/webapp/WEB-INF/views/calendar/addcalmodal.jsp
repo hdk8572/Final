@@ -13,6 +13,7 @@
 						<h2 class="pcalTitle"><b>일정 작성</b></h2>
 					</div>
 						<form class="addcalmodal-frm" action="${pageContext.request.contextPath}/insertpcal" method="post">
+							<!-- url 때문에 pno필요함 -->
 							<input type="hidden" name="pno" value="${pno}">
 							<input type="text" class="form-control title" name="title" id="form-content" placeholder="제목을 입력하세요.">
 							
@@ -45,7 +46,7 @@
 									<input type= "text" class= "form-control place" id="address" name="splace" placeholder= "장소를 입력하세요.">
 									<button type="button" id="cal-searchBtn">검색</button>
 								</div>
-									<%@ include file="/WEB-INF/views/kakaomap.jsp"%>
+								<%@ include file="/WEB-INF/views/kakaomap.jsp"%>
 							</div>
 							<div id="form-content">
 								<textarea class="form-control detail-content" id="csummernote" rows="5" name="smemo" placeholder="프로젝트에 관한 설명을 입력해주세요"></textarea>
