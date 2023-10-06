@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 
-	<div id="map" style="width: 100%; height: 350px;"></div>
-
+	<div id="map"></div>
 
 
 	<script type="text/javascript"
