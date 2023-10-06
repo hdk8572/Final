@@ -84,7 +84,7 @@
 	
 	<!-- 하위업무 추가시 담당자 리스트용. -->
 	<select id="memberProjectselectOne" resultType="MemberSimpleVo">
-		select pno, userid, mname
+		select userid, mname
 			from member_project 
 			join users using(userid)
 			where pno=#{pno}

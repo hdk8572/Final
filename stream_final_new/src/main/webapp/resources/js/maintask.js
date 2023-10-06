@@ -133,6 +133,55 @@ innerTaskInputHandler=(thisElement)=>{
 	$(a3).find(".jm-innerTaskInput").addClass('row active');
 	$(a3).find(".jm-innerTaskInput").css("display","block, flex");
 	$(".innerTdate").text(functionDateHandler())
+	getProjectMemberList(thisElement);
+}
+
+function getProjectMemberList(thisElement){
+	var a1 = thisElement;
+	console.log(a1);
+	var a2 = $(a1).closest('li').next().find('select[name=tmember]')[0].id;
+	console.log(a2);
+	var a3 = '#'+a2;
+	console.log(a3);
+	var a4 = $(a1).next().next().find('input[name=pno]').val();
+	console.log(a4);
+	var htmlTarget = $(a1).closest('li').next().find('select[name=tmember]')[0];
+	console.log(htmlTarget);
+		$.ajax({
+			url:contextPath+"/showprojectmemberlist",
+			type:"get",
+			data : {
+				pno : a4,
+				userid : principal_username
+			},
+			dataType: "json",
+			//success: showProjectMemberView,
+			success: (data)=>{
+				console.log(data)
+				console.log("성공하였습니다.")
+				var listHtml = "";
+				for (var i=0; i<data.length; i++){
+					var mname = data[i];
+					listHtml += `<option value="${mname.userid}">${mname.mname}</option>`; 
+				}
+				$(htmlTarget).html(listHtml);
+				
+			},
+			error:function(request, status, error, data){
+			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			}
+		});
+	}
+function showProjectMemberView(data){
+		console.log(data)
+		console.log("성공하였습니다.")
+		console.log(data[0]);
+		var listHtml = "";
+		for (var i=0; i<data.length; i++){
+			var mname = data[i];
+			listHtml += `<option value="\${mname.userid}">\${mname.mname}</option>`; //data를 뿌리고 그걸 option에다가 넣어줌 //value=userid
+		}
+		$().html(listHtml);
 }
 
 boxOutHandler=(event)=>{
@@ -202,7 +251,7 @@ console.log(project.mname);
 															 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
 															  class="feather feather-play align-middle me-2 jm-rotate"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
 														</span>
-														<span class="jm-project-title">${project.pname }"</span> 
+														<span class="jm-project-title">${project.pname }</span> 
 														<span class="jm-project-task-count">(${project.maintaskList.length})</span>
 														<form class="jm-dn" action="${contextPath}/ptasklist" method="get">
 															<input type="hidden" name="pno" value="${project.pno}" >
@@ -268,17 +317,8 @@ listHtml += `
 																			</span>
 																		</div>
 																		<div class="jm-title-tmember col-lg-1 jm-grey">
-																			<select name="tmember">
-`;
-//select-option >> Tmember
-for(var i=0; i<project.memberProjectList.length; i++){
-console.log(project.memberProjectList);
-var member = projectList.mname[i];
-listHtml += `								
-																					<option value="${member.userid}">${member.mname} </option>
-`
-}
-listHtml +=`
+																			<select name="tmember" id="tmember_select_pno_${project.pno }">
+
 																			</select>
 																		</div>
 																		<div class="dropdown jm-title-tstartdate col-lg-1 jm-grey">
