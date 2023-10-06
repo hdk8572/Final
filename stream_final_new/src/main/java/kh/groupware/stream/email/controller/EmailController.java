@@ -25,24 +25,4 @@ public class EmailController {
 		return "emailsend";
 	}
 	
-	@PostMapping("/send")
-	public ModelAndView send(EmailVo vo, ModelAndView mv) {
-		mv.setViewName("/projectlist");
-		System.out.println("[jy] EmailVo: " + vo);
-		final MimeMessagePreparator preparator = new MimeMessagePreparator() {
-			
-			@Override
-			public void prepare(MimeMessage mimeMessage) throws Exception {
-				final MimeMessageHelper helper = 
-						new MimeMessageHelper(mimeMessage, true, "UTF-8");
-				helper.setFrom(vo.getFrom());
-				helper.setTo(vo.getTo());
-				helper.setSubject(vo.getSubject());
-				helper.setText(vo.getText(), true);
-				
-			}
-		};
-		mailSender.send(preparator);
-		return mv;
-	}
 }
