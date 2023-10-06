@@ -199,10 +199,43 @@ select userid from member_project
 select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
 	from project p right join task t using (pno)
 	where tmember = 'sple@kh.co.kr' or t.userid ='sple@kh.co.kr'
-	order by pno asc, bref desc, brelevel asc, brestep asc, tno desc
+	order by to_number(pno) desc, bref desc, brelevel asc, brestep asc, tno desc
 ;
-
-select pno, userid, username 
+select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+	from project p right join task t using (pno)
+	order by to_number(pno) desc, bref desc, brelevel asc, brestep asc, tno desc
+;
+select pno, userid, mname 
     from member_project mp
     join users u using (userid)
     where pno=13;
+    
+select distinct * from
+(select pname, pno, p.userid pid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    from project p 
+    right join task t using (pno)
+    join member_project using(pno)
+    where tmember = 'sple@kh.co.kr' or t.userid ='sple@kh.co.kr'
+    order by to_number(pno) desc, bref desc, brelevel asc, brestep asc, tno desc)
+;
+select pname, pno, p.userid pid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    from project p 
+    right join task t using (pno)
+    join member_project using(pno)
+    where tmember = 'sple@kh.co.kr' or t.userid ='sple@kh.co.kr'
+    group by (pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel)
+    order by to_number(pno) desc, bref desc, brelevel asc, brestep asc, tno desc
+    ;
+    
+select pname, pno, u.userid, projectwriter, taskwriter, mname, tmember, ttitle, tstatus, tdate, tstartdate, tenddate
+        , tno, bref, brestep, brelevel
+    from
+(select pname, pno, p.userid projectwriter, t.userid taskwriter , tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    from project p 
+    right join task t using (pno)
+    join member_project using(pno)
+    where tmember = 'sple@kh.co.kr' or t.userid ='sple@kh.co.kr'
+    group by (pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel)
+    order by to_number(pno) desc, bref desc, brelevel asc, brestep asc, tno desc) ff
+    join users u on (u.userid= ff.taskwriter)
+;

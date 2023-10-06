@@ -28,4 +28,7 @@ public class MaintaskDao {
 	public int UpdateBeforeInsertInnerTask(PtaskVo vo) {
 		return sqlSession.update("mainTask.InnerTaskInsertBeforeUpdate", vo);
 	}
+	public List<ProjectVo> memberProjectNameList(String pno){
+		return sqlSession.selectList("mainTask.memberProjectselectOne", pno);
+	}
 }

@@ -33,6 +33,7 @@ public class MainController {
 	public ProjectVo insert(PtaskVo vo){
 		ProjectVo projectTaskList = maintastService.insertInnerTask(vo);
 		return projectTaskList;
-	}	 
+	}
+	
 	
 }

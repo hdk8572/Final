@@ -298,7 +298,11 @@
 																				</span>
 																			</div>
 																			<div class="jm-title-tmember col-lg-1 jm-grey">
-																				<span>담당자 드롭다운(tmember)</span>
+																				<select>
+																				<c:forEach items="${projectList }" var="projectNameList">
+																					<option>${projectNameList.mname} </option>
+																				</c:forEach>
+																				</select>
 																			</div>
 																			<div class="dropdown jm-title-tstartdate col-lg-1 jm-grey">
 																				<div data-bs-toggle="dropdown">
