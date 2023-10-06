@@ -50,7 +50,7 @@ public class CompanyContoller {
 
 				mailHelper.setTo(email); // for문으로 아이디 받음
 				mailHelper.setSubject("업무협업툴 Stream으로 여러분을 초대합니다!"); // Stream으로 여러분을 초대합니다!
-				mailHelper.setText("다음 Url에 접속하셔서 " + "회원가입을 진행해주세요!" + "회사코드: " + cvo.getCcode() + "http://127.0.0.1:8090/stream/newmember");
+				mailHelper.setText("다음 Url에 접속하셔서 " + "회원가입을 진행해주세요!" + "※회원가입시 본 이메일을 전송받은 이메일을 입력해주셔야합니다※" + "회사코드: " + cvo.getCcode() + "http://127.0.0.1:8090/stream/newmember");
 
 				mailSender.send(mail);
 			}
