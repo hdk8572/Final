@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kh.groupware.stream.main.model.dao.MaintaskDao;
+import kh.groupware.stream.member.model.vo.MemberSimpleVo;
 import kh.groupware.stream.project.model.vo.ProjectVo;
 import kh.groupware.stream.ptask.model.vo.PtaskVo;
 
@@ -31,8 +32,8 @@ public class MaintaskServiceImpl implements MaintaskService {
         return result;
 	}
 	
-	public List<ProjectVo> memberProjectNameList(String pno){
-		return maintaskDao.memberProjectNameList(pno);
+	public List<MemberSimpleVo> projectMemberList(String pno){
+		return maintaskDao.projectMemberList(pno);
 	}
 
 }

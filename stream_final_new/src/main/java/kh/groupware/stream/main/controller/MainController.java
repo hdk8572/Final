@@ -2,6 +2,7 @@ package kh.groupware.stream.main.controller;
 
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.groupware.stream.main.model.service.MaintaskService;
+import kh.groupware.stream.member.model.vo.MemberSimpleVo;
 import kh.groupware.stream.project.model.vo.ProjectVo;
 import kh.groupware.stream.ptask.model.vo.PtaskVo;
 
@@ -35,5 +37,11 @@ public class MainController {
 		return projectTaskList;
 	}
 	
+	@GetMapping("/showprojectmemberlist")
+	@ResponseBody
+	public List<MemberSimpleVo> memberlist(String pno) {
+		List<MemberSimpleVo> projectMemberList = maintastService.projectMemberList(pno);
+		return projectMemberList;
+	}
 	
 }
