@@ -28,6 +28,14 @@ public class CompanyDao {
 	public int newDept(CompanyInsertParam cvo) {
 		return sqlSession.insert("department.newDept", cvo);
 	}
+	//회사회원가입 3: USERS insert
+	public int newUsers (CompanyInsertParam cvo) {
+		return sqlSession.insert("member.newUsers", cvo);
+	}
+	//회사회원가입 4: USERS Company Id insert
+	public int newCompanyId (CompanyInsertParam cvo) {
+		return sqlSession.insert("member.newCompanyId", cvo);
+	}
 
 	/*
 	 * // 로그인시 부서조회 public String selectOne(CompanyVo cvo) { return

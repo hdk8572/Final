@@ -21,17 +21,42 @@ public class CompanyServiceImpl implements CompanyService {
 	private MemberDao memberDao;
 
 	//회사회원가입 1: COMPANY insert
+	//회사회원가입 2: DEPT insert
+	//회사회원가입 3: USERS insert
+	//회사회원가입 4: USERS Company Id insert
 	@Override
 	@Transactional
 	public int newCompany (CompanyInsertParam cvo) {
 		int result = 0;
 		result = companyDao.newCompany(cvo);
 		result = companyDao.newDept(cvo);
+		result = companyDao.newUsers(cvo);
+		result = companyDao.newCompanyId(cvo);
 		return result;
 	}
-	//회사회원가입 2: DEPT insert
-	@Override
-	public int newDept (CompanyInsertParam cvo) {
-		return companyDao.newDept(cvo);
-	}
+
+	
+	
+	
+	
+	/*
+	 * //회사회원가입 2: DEPT insert
+	 * 
+	 * @Override public int newDept (CompanyInsertParam cvo) { return
+	 * companyDao.newDept(cvo); }
+	 */
+	//회사회원가입 3: USERS insert
+//	@Override
+//	public int newUsers (CompanyInsertParam cvo) {
+//		int result = 0;
+//		result = companyDao.newUsers(cvo);
+//		return result;
+//	}
+//	//회사회원가입 4: USERS Company Id insert
+//	@Override
+//	public int newCompanyId (CompanyInsertParam cvo) {
+//		int result = 0;
+//		result = companyDao.newCompanyId(cvo);
+//		return result;
+//	}
 }
