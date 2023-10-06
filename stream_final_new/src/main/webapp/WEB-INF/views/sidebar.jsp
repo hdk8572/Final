@@ -32,27 +32,27 @@
 			</li>
 
 			<li class="sidebar-item">
-				<a class="sidebar-link" href="#">
+				<a class="sidebar-link" href="${pageContext.request.contextPath}/#">
 					<i class="align-middle" data-feather="grid"></i> 
 					<span class="align-middle">파일함</span>
 				</a>
 			</li>
 
 			<li class="sidebar-item">
-				<a class="sidebar-link" href="#">
+				<a class="sidebar-link" href="${pageContext.request.contextPath}/#">
 					<i class="align-middle" data-feather="align-left"></i>
 					<span class="align-middle">내 게시물</span></a>
 			</li>
 
 			<li class="sidebar-item">
-				<a class="sidebar-link" href="chatlist">
+				<a class="sidebar-link" href="${pageContext.request.contextPath}/chatlist">
 					<i class="align-middle" data-feather="align-left"></i>
 					<span class="align-middle">채팅</span>
 				</a>
 			</li>
 
 			<li class="sidebar-item">
-				<a class="sidebar-link" href="#"> <i
+				<a class="sidebar-link" href="${pageContext.request.contextPath}/#"> <i
 					class="align-middle" data-feather="align-left"></i>
 					<span class="align-middle">직원 초대</span>
 				</a>

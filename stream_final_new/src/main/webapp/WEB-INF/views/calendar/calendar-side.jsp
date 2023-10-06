@@ -14,23 +14,23 @@ color: #939ba2;
 .sidebar-menu{
     padding: 0.625rem 1.625rem;
 }
-
-
 </style>
 
 <nav id="sidebar" class="sidebar js-sidebar">
 	<div class="sidebar-content js-simplebar">
-		<span class="align-brand-middle"><a href="projectlist"
-			class="sidebar-brand-new">AdminKit</a></span>
+		<span class="align-brand-middle"><a href="${pageContext.request.contextPath}/projectlist"
+			class="sidebar-brand-new">AdminKit</a>
+		</span>
 
 		<ul class="sidebar-nav">
-			<li class="sidebar-item active"><a class="sidebar-link"
-				href="projectlist"> <i class="align-middle"
-					data-feather="sliders"></i> <span class="align-middle">내
-						프로젝트</span>
-			</a></li>
+			<li class="sidebar-item active">
+				<a class="sidebar-link" href="${pageContext.request.contextPath}/projectlist"> 
+					<i class="align-middle" data-feather="sliders"></i> 
+					<span class="align-middle">내 프로젝트</span>
+				</a>
+			</li>
 
-			<li class="sidebar-header">모아보기</li>
+		<li class="sidebar-header">모아보기</li>
 
 
 

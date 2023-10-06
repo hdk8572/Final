@@ -36,8 +36,7 @@
 						<!-- <input type="date" class="form-date" id="start" name="start" required="required">
 						~
 						<input type="date" class="form-date" id="end" name="end" required="required"> -->
-						<div id="start"></div>
-						<div id="end"></div>
+						<div id="start"></div>~<div id="end"></div>
 					</div>
 				
 						<!-- 지도 -->
