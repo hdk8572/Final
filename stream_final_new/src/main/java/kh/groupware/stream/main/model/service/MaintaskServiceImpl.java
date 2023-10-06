@@ -30,5 +30,9 @@ public class MaintaskServiceImpl implements MaintaskService {
 		}
         return result;
 	}
+	
+	public List<ProjectVo> memberProjectNameList(String pno){
+		return maintaskDao.memberProjectNameList(pno);
+	}
 
 }

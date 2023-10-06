@@ -5,6 +5,7 @@
 		<id property="pno" column="PNO"/>
 		<result property="pname" column="PNAME"/>
 		<result property="userid" column="USERID"/>
+		<result property="mname" column="mname"/>
 		<collection property="maintaskList" ofType="PtaskVo" column="pno">
 			<id property="tno" column="tno"/>
 			<result property="pno" column="pno"/>
@@ -21,13 +22,26 @@
 			<result property="brelevel" column="brelevel"/>
 		</collection>
 	</resultMap>
-	
-	<!-- 프로젝트, 업무 뿌리기 -->
+	<!-- 
+	프로젝트, 업무 뿌리기
 	<select id="projectNameList" resultMap="maintaskVoMap" parameterType="string">
 		select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
     		from project p right join task t using (pno)
     		where tmember = #{userid} or t.userid =#{userid}
     		order by pno asc, bref desc, brelevel asc, brestep asc, tno desc
+	</select>
+	 -->
+	 
+	<select id="projectNameList" resultMap="maintaskVoMap"  parameterType="string">
+		select pname, pno, u.userid, projectwriter, taskwriter, mname, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    		from	(select pname, pno, p.userid projectwriter, t.userid taskwriter , tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+   						from project p 
+    					right join task t using (pno)
+    					join member_project mp using(pno)
+    					where tmember = 'sple@kh.co.kr' or t.userid ='sple@kh.co.kr'
+    					group by (pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel)
+    					order by to_number(pno) desc, bref desc, brelevel asc, brestep asc, tno desc) ff
+    		join users u on (u.userid= ff.taskwriter)
 	</select>
 	
 	<!-- 프로젝트 기준 화면 뿌리기 -->
@@ -37,14 +51,6 @@
     		where tmember = #{userid} or t.userid=#{userid} 
     		order by bref desc, brelevel asc, brestep asc, tno desc
 	</select>
-	
-	<select id="memberProjectselectOne">
-		select pno, userid, mname
-			from users using(userid)
-			where pno=#{pno}
-	</select>
-    
-	
 	
 	<!-- 하위업무 추가 -->
 	<insert id="innerTaskInsert" parameterType="PtaskVo">
@@ -62,5 +68,13 @@
    			where BRESTEP > (SELECT BRESTEP FROM task WHERE tno = #{tno})
         	and BREF = (select bref from task where tno = #{tno})
 	</update>
+	
+	<!-- 하위업무 추가시 담당자 리스트용. -->
+	<select id="memberProjectselectOne" resultType="ProjectVo">
+		select pno, userid, mname
+			from member_project 
+			join users using(userid)
+			where pno=#{pno}
+	</select>
 	
 </mapper>
