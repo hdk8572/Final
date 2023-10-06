@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -86,6 +87,27 @@ public class CalendarController {
 		System.out.println("aaaa :" + cal);
 		calendarService.insert(cal);
 		return "redirect:pcal?sno="+cal.getSno();
+	}
+	
+	//캘린더 수정
+	@GetMapping("/updatepcal")
+	@ResponseBody
+	public HashMap<String, Object> update(CalendarVo cal) {
+		int update = calendarService.update(cal);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		return map;
+	}
+	
+	//캘린더 삭제
+	@PostMapping("/deletepcal")
+	@ResponseBody
+	public HashMap<String, Object> delete(
+			@RequestParam(name="sno", required = false) String sno) {
+		
+		int delete = calendarService.delete(sno);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		return map;
 	}
 	
 	

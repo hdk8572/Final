@@ -107,7 +107,6 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 			
 			//<달력에 표시될 일정을 가져옴>
 			// calendar date get from db 
-			//jquery의 ajax 메소드를 사용해 서버에서 데이터를  비동기적으로 가져오는 요청을 보낸다.
 			$.ajax({
 				url: '${pageContext.request.contextPath}/pcalselectlist/'+calendar_pno,	
 				data: { date : '2023-09-12'},  
@@ -160,13 +159,14 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 						//작성자!!!!임 (다른사람도 적은 일정들)
 						console.log(info.event.extendedProps.sno);
 						
-						// 지연 TODO 
+						//참가자 list
 						var htmlval = '';
 						for(var i=0; i<info.event.extendedProps.attenduseridList.length; i++){
 							htmlval += '<div>'+info.event.extendedProps.attenduseridList[i]+'</div>';
 						}
 						$("#readScheduleModal.modal  #attenduseridList").html(htmlval);
 						
+						//TODO 찍어봐라
 						console.log("info.event.id!!!!!!!");
 						console.log(info.event.id);
 						
