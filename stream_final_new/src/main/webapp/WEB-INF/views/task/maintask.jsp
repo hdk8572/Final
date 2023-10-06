@@ -56,6 +56,7 @@
 						<div class="col-12">
 							<div class="card">
 								<div class="card-body jm-body">
+								<!-- 반복문 안쓴곳 -->
 									<div class="jm-rwap-task jm-grey">
 										<div class="jm-task-title row ">
 											<!-- dropdown -->
@@ -298,10 +299,9 @@
 																				</span>
 																			</div>
 																			<div class="jm-title-tmember col-lg-1 jm-grey">
+																				<input type="text" >
 																				<select name="tmember"><!-- TMEMBERLIST -->
-																				<c:forEach items="${project.memberProjectList }" var="member">
-																					<option value="${member.userid}">${member.mname} </option>
-																				</c:forEach>
+																				
 																				</select>
 																			</div>
 																			<div class="dropdown jm-title-tstartdate col-lg-1 jm-grey">
@@ -356,6 +356,38 @@
 	
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
 	<script src="${pageContext.request.contextPath}/js/maintask.js"></script>
+	<script>
+	function getMemberProjectListHandler(thisElement){
+		console.log("calendar_pno: "+calendar_pno);
+		console.log("logined_userid: "+logined_userid);
+		$.ajax({
+			url:'${pageContext.request.contextPath}/memberProjectList',
+			type:"get",
+			data : {
+				pno : calendar_pno,
+				userid : logined_userid
+			},
+			dataType: "json",
+			success: memberView,
+			error:memberError
+		});
+	}
+	function memberView(data){
+		console.log(data)
+		console.log("성공하였습니다.")
+		var listHtml = "";
+		for (var i=0; i<data.length; i++){
+			var mname = data[i];
+			listHtml += `<option value="\${mname.userid}">\${mname.mname}</option>`; //data를 뿌리고 그걸 option에다가 넣어줌 //value=userid
+		}
+		$("#calmemberlist").html(listHtml);
+	}
+	function memberError(){
+		var listHtml = "";
+		listHtml += `<option selected>해당하는 이름이 없습니다.</option>`;
+		$("#calmemberlist").html(listHtml);
+	}
+</script>
 
 </body>
 
