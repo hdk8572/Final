@@ -38,14 +38,15 @@
 						<input type="date" class="form-date" id="end" name="end" required="required"> -->
 						<div id="start"></div>~<div id="end"></div>
 					</div>
-				
-						<!-- 지도 -->
+					
 						<!-- 참석자  -->
 						<div id="attenduseridList"></div>
+						<!-- 지도 -->
+						<div id="splace"></div>
 						<!-- 내용 -->
 						<div id="smemo"></div>
+						
 					<div>
-				
 						<!-- 댓글 -->
 					<div class="cal-comment" >
 						<form id="commentFrm">
