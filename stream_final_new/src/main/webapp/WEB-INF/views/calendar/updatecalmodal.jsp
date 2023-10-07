@@ -1,16 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 모달 -->
-<div id="addcalmodal" class="modal">
+<div id="updatecalmodal" class="modal">
 	<div class="modal-dialog pcal">
 		<!-- Modal content -->
-		<div class="modal-content pcal">
+		<div class="modal-content updatecal">
+		<span class="read-close" data-bs-dismiss="modal" aria-label="Close">&times;</span>
 			<div class="modal-header pcal"></div>
-			<div class="modal-body pcal">
+				
+			<div class="modal-body updatecal">
 				<div class="card pcal">
 					<div class="card-body pcal">
 					<div class="card-header pcalTitle">
-						<h2 class="pcalTitle"><b>일정 작성</b></h2>
+						<h2 class="pcalTitle"><b>일정 수정</b></h2>
 					</div>
 						<form class="addcalmodal-frm" action="${pageContext.request.contextPath}/insertpcal" method="post">
 							<!-- url 때문에 pno필요함 -->
@@ -36,19 +38,14 @@
 									<input type="text" name="attenduseridArr" value="kh0002@kh.com"> 
 									<!-- 참가자 반복 -->
 									<input type="text" id="calmemberinput" placeholder="참가자" list="calmemberlist">
-									<select id="calmemberlist"> <!-- 일단 한 명만 추가해서 insert까지 하기  --> 
+									<select id="calmemberlist"> 
 									</select>
 								</div>
 							</div>
-							
 							<!-- 지도 -->
 							<div>
-								<div class="d-flex align-items-center"  id="form-content"> <!-- -->
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin align-middle me-2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-									<input type= "text" class= "form-control place" id="address" name="splace" placeholder= "장소를 입력하세요.">
-									<button type="button" id="cal-searchBtn">검색</button>
-								</div>
-								<%@ include file="/WEB-INF/views/kakaomap.jsp"%>
+								<div id="splace"></div>
+								<%@ include file="/WEB-INF/views/kakaomap.jsp"%>	
 							</div>
 							<div id="form-content">
 								<textarea class="form-control detail-content" id="csummernote" rows="5" name="smemo" placeholder="프로젝트에 관한 설명을 입력해주세요"></textarea>
@@ -131,25 +128,5 @@
 		}
 	}
 </script>
-	
-	<!-- 위즈윅 - summerNote	 -->
-	<script>
-		$(document).ready(function (){
-			$("#csummernote").summernote({					
-			     placeholder: '프로젝트 설명을 입력해주세요.',
-			     tabsize: 2,
-			     height: 120,
-			     toolbar: [
-			       ['style', ['style']],
-			       ['font', ['bold', 'underline', 'clear']],
-			       ['color', ['color']],
-			       ['para', ['ul', 'ol', 'paragraph']],
-			       ['table', ['table']],
-			       ['insert', ['link', 'picture', 'video']],
-			       ['view', ['fullscreen', 'codeview', 'help']]
-			     ]
-			});
-		});
-	</script>
 
 

@@ -74,9 +74,10 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 					<div class="content-cal">
  						<h2>
 							Calendar
-							<button class="btn btn-primary addcal" data-bs-toggle="modal" data-bs-target="#myModal" onclick="getMemberProjectListHandler(this)">+일정추가</button>
+							<button class="btn btn-primary addcal" data-bs-toggle="modal" data-bs-target="#addcalmodal" onclick="getMemberProjectListHandler(this)">+일정추가</button>
 						</h2>
 							<%@ include file="/WEB-INF/views/calendar/addcalmodal.jsp" %>
+							<%@ include file="/WEB-INF/views/calendar/updatecalmodal.jsp" %>
 						<div class="container-fluid p-0">
 							<div class="card-header">
 								<!-- 캘린더  -->

@@ -53,7 +53,6 @@ public class CalendarController {
 		return mv;
 	}
 	
-	
 	//캘린더 전체 조회 //달력에 표시할 모든 일정 목록을 가져오는 역할을 한다.
 	@GetMapping({"/pcalselectlist", "/pcalselectlist/{pno}"}) //1번처럼 들어올 수도 있고 2번처럼 들어올 수도 있다. //{}중괄호를 치고 번호를 적는 것임
 	@ResponseBody
@@ -92,11 +91,11 @@ public class CalendarController {
 	//캘린더 수정
 	@GetMapping("/updatepcal")
 	@ResponseBody
-	public HashMap<String, Object> update(CalendarVo cal) {
-		int update = calendarService.update(cal);
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		return map;
+	public int update(CalendarVo cal) {
+		int result = calendarService.update(cal);
+		return result;
 	}
+
 	
 	//캘린더 삭제
 	@PostMapping("/deletepcal")

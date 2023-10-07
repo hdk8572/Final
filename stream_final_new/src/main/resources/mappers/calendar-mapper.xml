@@ -75,12 +75,17 @@
 	</insert>
 
 
-	<!-- 캘린더 수정 -->
+	<!-- 캘린더 수정 --> <!-- 작성자,지도 수정x, 참가자는 보류 -->
 	<update id="update" parameterType="CalendarVo">
+		UPDATE SCHEDULE SET 
+		STITLE=#{title}, SSTART=#{start}, SEND=#{end}, SMEMO=#{smemo}
+		WHERE SNO=#{sno}
 	</update>
 
-	<!-- 캘린더 삭제 -->
+	<!-- 캘린더 삭제 --> <!-- TODO -->
 	<delete id="delete" parameterType="CalendarVo">
+		DELETE FROM SCHEDULE
+		WHERE SNO=#{sno}
 	</delete>
 
 	
