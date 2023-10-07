@@ -184,8 +184,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 			}
 		});
 	</script>
-	<script>
-		
-	</script>
+	
+
 </body>
 </html>

@@ -22,12 +22,16 @@
 	var map = new kakao.maps.Map(mapContainer, mapOption);
 	
 	// 주소-좌표 변환 객체를 생성합니다
-	var geocoder = new kakao.maps.services.Geocoder();
+		var geocoder = new kakao.maps.services.Geocoder();
+    var a1 =  $('#splace')[0].innerHTML;
 	
 	// 주소로 좌표를 검색합니다
 	console.log($('#address').val());
 	geocoder.addressSearch($('#address').val(), function(result, status) {
-			
+			var address = $('#splace').innerHTML
+			if (address != null)
+				console.log($('#splace'));
+				console.log($('#splace').innerHTML);
 			// 정상적으로 검색이 완료됐으면 
 			if (status === kakao.maps.services.Status.OK) {
 				var coords = new kakao.maps.LatLng(result[0].y, result[0].x);

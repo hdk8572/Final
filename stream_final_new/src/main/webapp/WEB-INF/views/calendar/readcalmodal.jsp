@@ -45,7 +45,7 @@
 						<!-- 지도 -->
 						<div>
 							<div id="splace"></div>
-							<%@ include file="/WEB-INF/views/kakaomap.jsp"%>
+							<%@ include file="/WEB-INF/views/kakaomap.jsp"%>	
 						</div>
 						<!-- 내용 -->
 						<div id="smemo"></div>
