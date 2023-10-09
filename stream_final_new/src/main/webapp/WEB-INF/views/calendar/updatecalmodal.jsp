@@ -14,9 +14,7 @@
 					<div class="card-header pcalTitle">
 						<h2 class="pcalTitle"><b>일정 수정</b></h2>
 					</div>
-						<form class="addcalmodal-frm" action="${pageContext.request.contextPath}/insertpcal" method="post">
-							<!-- url 때문에 pno필요함 -->
-							<input type="hidden" name="pno" value="${pno}">
+						<form>
 							<!-- TODO 일정번호 -->
 							<input type="hidden" name="sno" value="${sno}">
 							<input type="text" class="form-control title" name="title" id="form-content" placeholder="제목을 입력하세요.">
@@ -31,15 +29,8 @@
 								</div>
 								<!-- 작성자 -->
 									<input class="form-control userid" type="text" name="userid" value="${principal.username }" readonly>
+								<!-- 참가자TODO -->
 								<div class="form-userid" id="form-content" >
-									<!-- 참가자 임시로 넣음 -->
-									<input type="text" name="attenduseridArr" value="mplsam@kh.co.kr">
-									<input type="text" name="attenduseridArr" value="kh0001@kh.com">
-									<input type="text" name="attenduseridArr" value="kh0002@kh.com"> 
-									<!-- 참가자 반복 -->
-									<input type="text" id="calmemberinput" placeholder="참가자" list="calmemberlist">
-									<select id="calmemberlist"> 
-									</select>
 								</div>
 							</div>
 							<!-- 지도 -->
@@ -47,6 +38,7 @@
 								<div id="splace"></div>
 								<%@ include file="/WEB-INF/views/kakaomap.jsp"%>	
 							</div>
+							<!-- 내용 -->
 							<div id="form-content">
 								<textarea class="form-control detail-content" id="csummernote" rows="5" name="smemo" placeholder="프로젝트에 관한 설명을 입력해주세요"></textarea>
 						    </div>

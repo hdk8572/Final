@@ -95,8 +95,11 @@
 }
 
 /* 지도 */
-#map{
+ #map{
 	width: 100%;
 	height: 200px;
-}
+/* 	position: relative;
+	overflow: hidden;
+	display: none;  */
+} 
 
