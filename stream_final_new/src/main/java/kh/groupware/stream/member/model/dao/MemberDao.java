@@ -30,7 +30,7 @@ public class MemberDao {
 	public int editMyPage(MemberVo mvo) {
 		return sqlSession.update("member.editMyPage", mvo);
 	}
-	public MemberVo showEditMyPage(String userid) {
+	public MyPageVo showEditMyPage(String userid) {
 		return sqlSession.selectOne("member.showEditMyPage",userid);
 	}
 }

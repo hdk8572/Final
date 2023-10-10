@@ -84,7 +84,7 @@ public class MemberController {
 
 	@GetMapping("/member/editmypage")
 	public String showEditMyPage(Principal principal, Model model) {
-		MemberVo mvo = memberService.showEditMyPage(principal.getName());
+		MyPageVo mvo = memberService.showEditMyPage(principal.getName());
 		model.addAttribute("mvo", mvo);
 		System.out.println("[jy] mvo: " + mvo);
 		return "member/mypage";
@@ -95,6 +95,7 @@ public class MemberController {
 	public String editMyPage(MemberVo mvo, RedirectAttributes ra) {
 		int idCheck=0;
 		String result = null;
+		System.out.println("[jy] 정보수정시 mvo: "+ mvo);
 			int result1 = memberService.editMyPage(mvo);
 
 			if (result1 == 0) {

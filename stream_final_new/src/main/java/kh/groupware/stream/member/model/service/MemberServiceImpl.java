@@ -32,7 +32,7 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 	@Override
-	public MemberVo showEditMyPage(String userid) {
+	public MyPageVo showEditMyPage(String userid) {
 		return memberDao.showEditMyPage(userid);
 	}
 	// 마이페이지 정보수정

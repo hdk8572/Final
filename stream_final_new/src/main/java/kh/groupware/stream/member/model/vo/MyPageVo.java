@@ -10,23 +10,29 @@ public class MyPageVo {
 	private String mname;
 	private String mphone;
 	
+	private String ccode;
+	private String password;
+	
+	@Override
+	public String toString() {
+		return "MyPageVo [cname=" + cname + ", deptname=" + deptname + ", mrank=" + mrank + ", mname=" + mname
+				+ ", mphone=" + mphone + ", ccode=" + ccode + ", password=" + password + "]";
+	}
+
 	public MyPageVo() {
 		super();
 	}
 
-	public MyPageVo(String cname, String deptname, String mrank, String mname, String mphone) {
+	public MyPageVo(String cname, String deptname, String mrank, String mname, String mphone, String ccode,
+			String password) {
 		super();
 		this.cname = cname;
 		this.deptname = deptname;
 		this.mrank = mrank;
 		this.mname = mname;
 		this.mphone = mphone;
-	}
-
-	@Override
-	public String toString() {
-		return "MyPageVo [cname=" + cname + ", deptname=" + deptname + ", mrank=" + mrank + ", mname=" + mname
-				+ ", mphone=" + mphone + "]";
+		this.ccode = ccode;
+		this.password = password;
 	}
 
 	public String getCname() {
@@ -68,6 +74,23 @@ public class MyPageVo {
 	public void setMphone(String mphone) {
 		this.mphone = mphone;
 	}
-	
+
+	public String getCcode() {
+		return ccode;
+	}
+
+	public void setCcode(String ccode) {
+		this.ccode = ccode;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	
 }
+
+	

@@ -24,6 +24,8 @@ public class MemberVo {
 	private String mphone;
 	private String mrank;
 	
+	private String deptname;
+	
 	@Override
 	public String toString() {
 		return "MemberVo [userid=" + userid + ", deptno=" + deptno + ", ccode=" + ccode + ", password=" + password

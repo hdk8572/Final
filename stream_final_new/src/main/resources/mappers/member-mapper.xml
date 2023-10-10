@@ -53,8 +53,10 @@
 		USERID = #{userid}
 	</select>
 	<!-- 마이페이지 수정 화면 -->
-	<select id="showEditMyPage" parameterType="String" resultType="MemberVo">
-		SELECT * FROM USERS WHERE USERID = #{userid}
+	<select id="showEditMyPage" parameterType="String" resultType="MyPageVo">
+		SELECT U.MNAME, U.MRANK, U.MPHONE, U.CCODE, D.DEPTNAME FROM (SELECT * FROM USERS
+		WHERE USERID = #{userid}) U INNER JOIN DEPT D ON U.DEPTNO = D.DEPTNO
+		AND U.CCODE = D.CCODE
 	</select>
 
 

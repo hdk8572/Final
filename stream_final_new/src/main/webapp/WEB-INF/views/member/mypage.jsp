@@ -119,21 +119,21 @@
 									<label class="form-label">Department</label> <select
 										id="deptdrop" class="form-select mb-3" name="deptno"
 										value="${deptdrop}">
-										<option selected>부서를 조회해주세요</option>
+										<option selected>${mvo.deptname}</option>
 
 									</select>
 								</div>
 								<div class="mb-3">
 									<label class="form-label">휴대폰</label> <input
 										class="form-control form-control-lg" type="text"
-										id="userphone" placeholder="휴대전화를 입력하세요" name="mphone"
+										id="userphone" placeholder="${mvo.mphone}" name="mphone"
 										value="${mvo.mphone}">
 
 								</div>
 								<div class="mb-3">
 									<label class="form-label">직급</label> <input
 										class="form-control form-control-lg" type="text" id="userrank"
-										placeholder="${mvo.mrank }" name="mrank" value="${mrank}">
+										placeholder="${mvo.mrank }" name="mrank" value="${mvo.mrank }">
 
 								</div>
 							</div>
@@ -188,7 +188,7 @@
 
 	//직급확인
 	function checkUserrank(userrank) {
-		var rankToCheck = /^[가-힣]{2,10}$/;
+		var rankToCheck = /^[가-힣]{2,4}$/;
 		if (!rankToCheck.test(userrank)) {
 			alert("직급 형식이 옳지 않습니다.");
 			return false;

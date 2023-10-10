@@ -60,7 +60,8 @@ public class CompanyContoller {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/emailsend")
+	//회사 사원 초대(추가)
+	@GetMapping("/company/emailsend")
 	public String emailSend() {
 		return "/company/emailsend";
 	}
