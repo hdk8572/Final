@@ -18,8 +18,6 @@
 	// 지도의 확대 레벨
 	};
 	
-	
-	
 	// Input 요소에 Enter 키 이벤트 핸들러 등록
    	function searchOnEnter(event) {
    		var key = event.key;
@@ -67,6 +65,8 @@
 				// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 				map.setCenter(coords);
 				
+				// 지도를 표시
+			    mapContainer.style.display = 'block';
 				
 			}
 		});
