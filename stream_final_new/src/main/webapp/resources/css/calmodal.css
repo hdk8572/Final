@@ -88,18 +88,21 @@
 /* 모달 공통 */
 
 
-
-
 .form-control.userid {
 	width: 30%;
 }
 
-/* 지도 */
- #map{
+/* add+kakao 지도 */
+#map{
 	width: 100%;
 	height: 200px;
-/* 	position: relative;
-	overflow: hidden;
-	display: none;  */
 } 
+#map.map-hidden {
+  display: none;
+}
+#map.map-shown{
+	display: block;
+}
+/* add+kakao 지도 */
+
 

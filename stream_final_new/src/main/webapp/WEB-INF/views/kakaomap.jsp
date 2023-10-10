@@ -5,7 +5,7 @@
 		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin align-middle me-2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
 		<input type= "text" class= "form-control place" id="address" name="splace" placeholder= "장소를 입력하세요." onkeydown="searchOnEnter(event)">
 	</div>
-	<div id="map"></div>
+	<div id="map" class="map-hidden"></div>
 </div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=200d239f8c4b9f3e0d914ec332ddfe21&libraries=services"></script>
@@ -64,6 +64,10 @@
 
 				// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 				map.setCenter(coords);
+				
+				// 지도를 표시
+			    mapContainer.style.display = 'block';
+				
 			}
 		});
 	}

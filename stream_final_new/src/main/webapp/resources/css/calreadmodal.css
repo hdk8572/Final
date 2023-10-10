@@ -4,7 +4,7 @@
 	float: right;
 	font-size: 28px;
 	font-weight: bold;
-	padding-right: 10px;
+	padding: 20px 20px 0 0;
 }
 
 .read-close:hover,
@@ -44,3 +44,15 @@
 .form-control.comment {
 	width: 70%;
 }
+
+/* dropdown */
+.card-header #userid{
+	float: left;
+}
+#read-dropdown {
+	margin-left: 600px;
+}
+.dropdown-menu.show{
+	min-width: 0;
+}
+/* dropdown */

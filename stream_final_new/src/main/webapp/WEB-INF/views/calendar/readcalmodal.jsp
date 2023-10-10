@@ -8,15 +8,7 @@
   <!-- Modal content -->
   <div class="modal-content pcal">
   	<div class="modal-header pcal">
-  		<div class="read-dropdown-grop">
-			<div class="btn-dropdown-toggle" data-bs-toggle="dropdown">
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical me-2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
-			</div>
-			<ul class="dropdown-menu">
-				     <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#updatecalmodal">수정</a></li>
-				<li><a class="dropdown-item" href="#"> 삭제</a></li>
-			</ul>
-  		</div>
+  		
   		<!-- TODO -->
   		<span class="read-close" data-bs-dismiss="modal" aria-label="Close">&times;</span>
   	</div>
@@ -25,9 +17,18 @@
 	    	<div class="card">
 	    		<!-- TODO 일정번호 -->
 	    		<input type="hidden" name="sno">
-				<div class="card-header">
-					<!-- 작성자 -->
-					<div id="userid"></div> <!-- 여기에 뭐 적으면x -->
+				<div class="card-header" id="readcalmodal-header">
+				<!-- 작성자 -->
+				<div id="userid"></div> <!-- 여기에 뭐 적으면x -->
+				<div class="read-dropdown-grop">
+					<div class="btn-dropdown-toggle" id="read-dropdown" data-bs-toggle="dropdown">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical me-2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+					</div>
+					<ul class="dropdown-menu">
+						     <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#updatecalmodal">수정</a></li>
+						<li><a class="dropdown-item" href="#"> 삭제</a></li>
+					</ul>
+		  		</div>
 				</div>
 				<div class="card-body">
 					<!-- 제목 -->

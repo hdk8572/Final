@@ -41,7 +41,7 @@
 <!--  -->
 									</div>
 									<div class="reply-input">
-										<input type="text" class="form-control input" name="rcontent" placeholder="Input">
+										<input type="text" class="form-control input" name="rcontent" placeholder="Enter 클릭 시 입력됩니다.">
 										<input type="hidden" name="tno">
 										<input type="hidden" name="userid" value="${principal.username}">
 									</div>
@@ -56,6 +56,14 @@
 </div>
 <script>
 
+	$(document).on("mouseover", ".d-flex.align-items-start", function() {
+	    $(this).find(".reply-btn").css("visibility", "visible");
+	});
+
+	$(document).on("mouseout", ".d-flex.align-items-start", function() {
+	    $(this).find(".reply-btn").css("visibility", "hidden");
+	});
+	
 function replyLoadList() {
 	console.log(targetTno);
 	$.ajax({
@@ -80,33 +88,19 @@ function makeReplyList(data) {
 		<div class="d-flex align-items-start">
 			<img src="img/avatars/avatar-5.jpg" width="36" height="36" class="rounded-circle me-2" alt="Vanessa Tucker">
 			<div class="flex-grow-1">
-				<small class="float-end text-navy">5m ago</small>
+				<small class="float-end text-navy">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit align-middle me-2 reply-btn replyEditBtn"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>			
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2 reply-btn replyDeleteBtn"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg>
+				</small>
 				<strong>\${rl.userid}</strong><br>
 				<p>\${rl.rcontent}</p>
-				<small class="text-muted">Today 7:51 pm</small><br>
+				<small class="text-muted">\${rl.rdate}</small><br>
 			</div>
 		</div>
 		`;
 	}
 	$(".replyList").html(replyHtml);
 }
-
-/* function makeReplyList(data) {
-	var replyHtml = "";
-	for(var i=0; i<data.length; i++) {
-		var rl = data[i];
-		replyHtml+=`
-		<li>
-			<div>
-				<p>\${rl.userid}</p>
-				<p>\${rl.rcontent}</p>
-			</div>
-		</li>
-		`;
-	}
-	$(".replyList").html(replyHtml);
-} */
-
 
 </script>
 <script>
@@ -116,30 +110,34 @@ function makeReplyList(data) {
 			event.preventDefault();
 			console.log("Enter 입력됨");
 			insertReply();			
+			$(".form-control.input").val("");
 		} else {
 			null;
 		}
 	});
 	
 	function insertReply() {
-		console.log("댓글 추가");
-		console.log(targetTno);
 		$.ajax ({
 			url: "${pageContext.request.contextPath}/insertReply",
 			type: "post",
 			data: $(".wrap-reply").serialize(),
 			dataType: "json",
-			success: makeReply,
+			success: makeReplyList,
 			error: function() {
 				alert("insertReply에서 에러났습니다.");
 			}
 		});
 	}
 	
-	function makeReply(data) {
-		console.log(data);	
-	}
-
+	$(document).on("click", ".replyEditBtn", function() {
+		console.log("수정");
+	});
+	
+	$(document).on("click", ".replyDeleteBtn", function() {
+		console.log("삭제");
+	});
+	
+	
 </script>
 
 <!-- 모달 -->
