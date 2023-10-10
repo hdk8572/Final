@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kh.groupware.stream.reply.model.dao.ReplyDao;
 import kh.groupware.stream.reply.model.vo.ReplyVo;
@@ -20,8 +21,10 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 	
 	@Override
-	public int insertReply(ReplyVo vo) {
-		return replyDao.insert(vo);
+	@Transactional
+	public List<ReplyVo> insertReply(ReplyVo vo) {
+		int result =  replyDao.insert(vo);
+		return replyDao.selectList(vo.getTno());
 	}
 	
 	

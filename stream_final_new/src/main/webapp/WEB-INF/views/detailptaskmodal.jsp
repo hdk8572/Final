@@ -91,23 +91,6 @@ function makeReplyList(data) {
 	$(".replyList").html(replyHtml);
 }
 
-/* function makeReplyList(data) {
-	var replyHtml = "";
-	for(var i=0; i<data.length; i++) {
-		var rl = data[i];
-		replyHtml+=`
-		<li>
-			<div>
-				<p>\${rl.userid}</p>
-				<p>\${rl.rcontent}</p>
-			</div>
-		</li>
-		`;
-	}
-	$(".replyList").html(replyHtml);
-} */
-
-
 </script>
 <script>
 	
@@ -116,29 +99,28 @@ function makeReplyList(data) {
 			event.preventDefault();
 			console.log("Enter 입력됨");
 			insertReply();			
+			$(".form-control.input").val("");
 		} else {
 			null;
 		}
 	});
 	
 	function insertReply() {
-		console.log("댓글 추가");
-		console.log(targetTno);
 		$.ajax ({
 			url: "${pageContext.request.contextPath}/insertReply",
 			type: "post",
 			data: $(".wrap-reply").serialize(),
 			dataType: "json",
-			success: makeReply,
+			success: makeReplyList,
 			error: function() {
 				alert("insertReply에서 에러났습니다.");
 			}
 		});
 	}
 	
-	function makeReply(data) {
-		console.log(data);	
-	}
+/* 	function makeReply(data) {
+		makeReplyList(data);
+	} */
 
 </script>
 
