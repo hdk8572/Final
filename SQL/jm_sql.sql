@@ -269,3 +269,71 @@ select userid, mname
     join users using(userid)
     where pno='13'
 ;
+
+select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    		from project p right join task t using (pno)
+    		where tmember = 'mplsam@kh.co.kr' or t.userid ='mplsam@kh.co.kr'
+    		order by pno asc, bref desc, brelevel asc, brestep asc, tno desc
+            ;
+            
+            
+            
+            
+            
+            
+select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    		from project p right join task t using (pno)
+    		where tmember = 'sple@kh.co.kr' or t.userid ='sple@kh.co.kr'
+    		order by 
+            pno asc, 
+    bref desc, 
+    brelevel asc, 
+-- <choose>
+--    <when test="ordertype == ttitle">
+--        ttitle asc
+--    </when>
+--    <when test="ordertype == tstatus">
+--      tstatus asc
+--    </when>
+--    <when test="ordertype == tstartdate">
+--      tstartdate asc
+--    </when>
+--    <otherwise>
+--        brestep asc
+--    </otherwise>
+--</choose>
+    
+--    tno desc
+;
+
+select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+    		from project p right join task t using (pno)
+    		where tmember = 'sple@kh.co.kr' or t.userid ='sple@kh.co.kr'
+    		order by 
+            to_number(pno) asc, 
+ to_number(bref) desc, 
+ brelevel asc, 
+-- <choose>
+--    <when test="ordertype == ttitle">
+--        ttitle asc
+--    </when>
+--    <when test="ordertype == tstatus">
+--      tstatus asc
+--    </when>
+--    <when test="ordertype == tstartdate">
+      tstartdate asc
+--    </when>
+--    <when test ="ordertype == "tno">
+--    tno asc
+--    </when>
+--    <otherwise>
+--        to_number(brestep) asc
+--    </otherwise>
+--</choose>
+;  
+
+select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
+    		from project p right join task t using (pno)
+    		where tmember = 'sple@kh.co.kr' or t.userid ='sple@kh.co.kr'
+    		order by to_number(pno) desc, to_number(bref) desc, brelevel asc, to_number(brestep) asc
+  ;

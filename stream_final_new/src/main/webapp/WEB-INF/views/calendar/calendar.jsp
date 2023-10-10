@@ -179,9 +179,11 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 						$("#readScheduleModal.modal  #smemo").html(info.event.extendedProps.smemo);
 						$("#readScheduleModal.modal  #splace").html(info.event.extendedProps.splace);
 						$("#readScheduleModal").modal("toggle");
+						
 					}
 				});
 				calendar.render();
+				
 			}
 		});
 	</script>
