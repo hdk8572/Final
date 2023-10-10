@@ -39,7 +39,7 @@
 	<!-- 회사회원가입 4: USERS Company Id insert -->
 	<insert id="newCompanyId" parameterType="kh.groupware.stream.company.model.vo.CompanyInsertParam">
 	 	INSERT INTO USERS (USERID, DEPTNO, CCODE, PASSWORD, ENABLED, AUTHORITY)
-	 	VALUES (#{ccode}||'@stream.com', 'D000', #{ccode}, default, 1, 'ROLE_C')
+	 	VALUES (#{ccode}||'@stream.com', 'D000', #{ccode}, #{password}, 1, 'ROLE_C')
 	</insert>
 	<!-- SELECT U.USERID, U.MNAME, (SELECT C.CNAME FROM COMPANY C WHERE U.CCODE 
 		= C.CCODE) CNAME, D.DEPTNAME FROM (SELECT * FROM USERS WHERE USERID = 'sple@kh.co.kr') 

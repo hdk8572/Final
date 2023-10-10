@@ -9,6 +9,7 @@ import javax.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +34,9 @@ public class CompanyContoller {
 
 	@Autowired
 	private CompanyService companyService;
+	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@GetMapping("/newcompany")
 	public ModelAndView showNewCompany(ModelAndView mv) {
@@ -42,9 +46,10 @@ public class CompanyContoller {
 
 	@PostMapping("/newcompany")
 	public String newCompany(CompanyInsertParam cvo) {
+		cvo.setPassword(bCryptPasswordEncoder.encode(cvo.getPassword()));
 		int result = companyService.newCompany(cvo);
 		try {
-			for (String email : cvo.getemailArr()) {
+			for (String email : cvo.getEmailArr()) {
 				MimeMessage mail = mailSender.createMimeMessage();
 				MimeMessageHelper mailHelper = new MimeMessageHelper(mail, "UTF-8");
 
