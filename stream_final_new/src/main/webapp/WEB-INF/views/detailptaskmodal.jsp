@@ -38,7 +38,7 @@
 							<div>
 								<form class="wrap-reply">
 									<div class="reply-input">
-										<input type="text" class="form-control replyInput" name="rcontent" placeholder="댓글 입력해주세요 - Enter 클릭 시 입력됩니다.">
+										<input type="text" class="form-control replyInput" name="rcontent" placeholder="댓글 입력창 - Enter 클릭 시 입력됩니다.">
 										<input type="hidden" name="tno">
 										<input type="hidden" name="userid" value="${principal.username}">
 									</div>
@@ -136,6 +136,8 @@ function makeReplyList(data) {
 	
 	$(document).on("click", ".replyEditBtn", function() {
 		/* $(this).closest("p").html("<input type='text' class='form-control input' name='rcontent' placeholder='Enter 클릭 시 입력됩니다.'>"); */
+		
+		$(this).closest(".d-flex.align-items-start").find("P").html("<input type='text' class='form-control updateInputReply' id='updateReplyInput' name='rcontent' placeholder='수정할 내용 입력해주세요.'>");
 		$(this).closest(".d-flex.align-items-start").find("P").html("<input type='text' class='form-control updateInputReply' id='updateReplyInput' name='rcontent' placeholder='수정할 내용 입력해주세요.'>");
 		
 		$(".form-control.updateInputReply").keydown(function(event) {

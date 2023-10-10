@@ -2,6 +2,7 @@ package kh.groupware.stream.chat.model.vo;
 
 import org.springframework.stereotype.Component;
 
+@Component
 public class ChatVo {
 //	--COMMENT ON COLUMN "CHAT"."CCNO" IS '대화순번';
 //	--COMMENT ON COLUMN "CHAT"."CHATNO" IS '채팅방번호';
