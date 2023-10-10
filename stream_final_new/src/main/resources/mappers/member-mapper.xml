@@ -44,6 +44,18 @@
 	<!-- SELECT U.USERID, U.MNAME, (SELECT C.CNAME FROM COMPANY C WHERE U.CCODE 
 		= C.CCODE) CNAME, D.DEPTNAME FROM (SELECT * FROM USERS WHERE USERID = 'sple@kh.co.kr') 
 		U INNER JOIN DEPT D ON U.DEPTNO = D.DEPTNO AND U.CCODE = D.CCODE; -->
+		
+	<!-- 마이페이지 수정 -->
+	<select id="editMyPage" parameterType="MemberVo">
+		UPDATE USERS SET
+		DEPTNO =
+		#{deptno}, PASSWORD = #{password}, MRANK = #{mrank}, MPHONE = #{mphone}, ENABLED= 1 WHERE
+		USERID = #{userid}
+	</select>
+	<!-- 마이페이지 수정 화면 -->
+	<select id="showEditMyPage" parameterType="String" resultType="MemberVo">
+		SELECT * FROM USERS WHERE USERID = #{userid}
+	</select>
 
 
 </mapper>

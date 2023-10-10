@@ -284,7 +284,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" class="mp-button"><button
-						class="btn mpbtn btn-primary btn-sm mp-button">정보수정</button></td>
+						class="btn mpbtn btn-primary btn-sm mp-button" id="editmypage">정보수정</button></td>
 			</tr>
 		</table>
 	</div>
@@ -361,7 +361,7 @@
 					function() {
 						$
 								.ajax({
-									url : '${pageContext.request.contextPath}/showmypage',
+									url : '${pageContext.request.contextPath}/member/showmypage',
 									method : 'GET',
 									data : {
 										userid : '${principal.username}'
@@ -394,5 +394,11 @@
 								});
 						// 모달창 띄우기
 					});
+
+	$("#editmypage").click(function() {
+		var url = "${pageContext.request.contextPath}/member/editmypage";
+		window.location.href = url;
+	});
+</script>
 </script>
 
