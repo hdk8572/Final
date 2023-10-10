@@ -97,11 +97,8 @@
 	width: 100%;
 	height: 200px;
 } 
-#map.map-hidden {
+.map-hidden {
   display: none;
-}
-#map.map-shown{
-	display: block;
 }
 /* add+kakao 지도 */
 

@@ -43,7 +43,16 @@
 							</div>
 							
 							<!-- 지도 -->
+							<div>
+								<div class="d-flex align-items-center"  id="form-content">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin align-middle me-2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+									<input type= "text" class= "form-control place" id="address" name="splace" placeholder= "장소를 입력하세요." onkeydown="searchOnEnter(event)">
+								</div>
+							</div>
+							<div  class="map-hidden">
 								<%@ include file="/WEB-INF/views/kakaomap.jsp"%>
+							</div>
+								
 								
 							<!-- 내용  -->
 							<div id="form-content">
@@ -51,7 +60,7 @@
 						    </div>
 							<div align="center">
 								<button type="submit" class="btn btn-primary" >등록</button>
-								<button  type="reset" class="btn btn-warning">취소</button>
+								<button  type="reset" class="btn btn-warning" onclick="cancelAddEvent()">취소</button>
 							</div>
 						</form>
 					</div>
