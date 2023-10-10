@@ -282,3 +282,9 @@ form {
 .flex-grow-1 > p {
 	margin: 0;
 }
+
+.reply-btn {
+	color: #aea8ca;
+	visibility: hidden;
+	cursor: pointer;
+}

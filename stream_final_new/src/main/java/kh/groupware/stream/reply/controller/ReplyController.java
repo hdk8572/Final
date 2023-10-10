@@ -33,14 +33,11 @@ public class ReplyController {
 		return replyService.insertReply(vo);
 	}
 		
-	
-/*	
-	@PostMapping ("/insertReply")
-	@ResponseBody
-	public int insertReply(@RequestParam("tno") String tno) {
-	    return replyService.insertReply(tno);
-	}
-*/
+	/*
+	 * @PostMapping ("/delteReply")
+	 * 
+	 * @ResponseBody public int deleteReply(String rno) { }
+	 */
 	
 	
 }
