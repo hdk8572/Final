@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.groupware.stream.reply.model.service.ReplyService;
 import kh.groupware.stream.reply.model.vo.ReplyVo;
@@ -41,8 +42,10 @@ public class ReplyController {
 	
 	@PostMapping ("/doUpdateReply")
 	@ResponseBody
-	public int updateReply(ReplyVo vo) {
-		return replyService.updateReply(vo);
+	public int updateReply(ReplyVo vo, RedirectAttributes rttr) {
+			rttr.addFlashAttribute("msgType", "성공 메시지");
+			rttr.addFlashAttribute("msg", "수정 성공했습니다.");
+			return replyService.updateReply(vo);
 	}
 	
 	@PostMapping ("/doDeleteReply")

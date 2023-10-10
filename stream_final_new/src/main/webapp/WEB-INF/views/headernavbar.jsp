@@ -242,6 +242,12 @@
 						class="align-middle me-1" data-feather="settings"></i> 환경 설정
 					</a>
 					<div class="dropdown-divider"></div>
+					
+					<a class="dropdown-item" href="index.html"> <i
+						class="align-middle me-1" data-feather="settings"></i> 프로필 사진 설정
+					</a>
+					<div class="dropdown-divider"></div>
+					
 					<a class="dropdown-item"
 						href="${pageContext.request.contextPath}/logout"> <i
 						class="align-middle me-2" data-feather="log-out"></i> Log out

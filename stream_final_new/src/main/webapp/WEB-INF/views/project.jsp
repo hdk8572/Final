@@ -173,7 +173,6 @@
 		});
 		$(this).find(".detailProject").click(detailProject);
 		
-		
 	}); 
 	
 	</script>
