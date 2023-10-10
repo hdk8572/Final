@@ -140,9 +140,12 @@ function makeReplyList(data) {
 		/* $(this).closest("p").html("<input type='text' class='form-control input' name='rcontent' placeholder='Enter 클릭 시 입력됩니다.'>"); */
 		
 		$(this).closest(".d-flex.align-items-start").find("P").html("<input type='text' class='form-control updateInputReply' id='updateReplyInput' name='rcontent' placeholder='수정할 내용 입력해주세요.'>");
+		/* 수정 버튼 누르면 input창 생성 */
 		
+
 		<!--- 댓글 수정 기능 --->
 		$(".form-control.updateInputReply").keydown(function(event) {
+
 			if(event.keyCode == 13) {
 				/* event.preventDefault(); */
 				var targetRcontentUpdate = $(this).closest(".d-flex.align-items-start").find("#updateReplyInput").val();
@@ -196,6 +199,7 @@ function makeReplyList(data) {
 	$(document).on("click", ".replyDeleteBtn", function() {
 		var targetRno = $(this).closest(".d-flex.align-items-start").find("input[name=rno]").val();
 		console.log(targetRno);
+
 		var confirm_val = confirm("댓글을 삭제하시겠습니까?");
 		if(confirm_val == true){
 		    <!--- 확인 or yes 버튼을 눌렀을 때 실행 될 함수 구현 --->
@@ -214,6 +218,7 @@ function makeReplyList(data) {
 		}else if(confirm_val == false){
 			replyLoadList();
 		}
+
 	});
 	
 </script>
