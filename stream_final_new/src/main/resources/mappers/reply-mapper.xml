@@ -3,10 +3,16 @@
 <mapper namespace="reply">
 	
 	<select id="selectList" parameterType="string" resultType="ReplyVo">
-		SELECT RNO, TNO, USERID, RCONTENT, RDATE
+		SELECT RNO, TNO, USERID, RCONTENT, TO_CHAR(RDATE, 'YYYY-MM-DD HH24:MI') RDATE
 		FROM REPLY
 		WHERE TNO = #{tno}
 	</select>
+	
+	<!-- <select id="selectList" parameterType="string" resultType="ReplyVo">
+		SELECT RNO, TNO, USERID, RCONTENT, RDATE
+		FROM REPLY
+		WHERE TNO = #{tno}
+	</select> -->
 	
 	<insert id="insertReply" parameterType="ReplyVo">
 		INSERT INTO REPLY(RNO, TNO, USERID, RCONTENT, RDATE)

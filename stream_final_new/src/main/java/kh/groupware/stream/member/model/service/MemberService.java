@@ -7,7 +7,9 @@ public interface MemberService {
 
 	int signUp(MemberVo mvo);
 	int idCheck(String userid);
-	public MyPageVo showMyPage(String userid);
+	MyPageVo showMyPage(String userid);
+	MemberVo showEditMyPage(String userid);
+	int editMyPage(MemberVo mvo);
 	
 	
 

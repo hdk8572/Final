@@ -74,17 +74,35 @@ public class MemberController {
 		return mv;
 	}
 
-	/*
-	 * // 마이페이지 임시
-	 * 
-	 * @GetMapping("/mypage") public String myPage() { return "member/mypage"; }
-	 */
-	
-	@GetMapping("/showmypage")
+	// 마이페이지
+	@GetMapping("/member/showmypage")
 	@ResponseBody
 	public MyPageVo showMyPage(String userid) {
 		MyPageVo showMyPage = memberService.showMyPage(userid);
 		return showMyPage;
 	}
 
+	@GetMapping("/member/editmypage")
+	public String showEditMyPage(Principal principal, Model model) {
+		MemberVo mvo = memberService.showEditMyPage(principal.getName());
+		model.addAttribute("mvo", mvo);
+		System.out.println("[jy] mvo: " + mvo);
+		return "member/mypage";
+	}
+	
+	// 마이페이지 정보수정
+	@PostMapping("/member/editmypage")
+	public String editMyPage(MemberVo mvo, RedirectAttributes ra) {
+		int idCheck=0;
+		String result = null;
+			int result1 = memberService.editMyPage(mvo);
+
+			if (result1 == 0) {
+				ra.addFlashAttribute("alertmsg", "회원정보 수정에 실패하였습니다. 다시 시도해주세요!");
+				return "redirect:/newmember";
+
+			} else
+				ra.addFlashAttribute("alertmsg", "회원정보 수정에 성공했습니다.");
+			return "redirect:/projectlist";
+		}
 }

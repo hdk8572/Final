@@ -51,5 +51,10 @@
 .content-cal{
 	width: 95%;
 	padding-left: 90px;
-	
+}
+.fc-icon.fc-icon-chevron-right::before {
+    font-family: inherit; /* 부모 요소 폰트 스타일을 적용시킴 */
+}
+.fc-icon.fc-icon-chevron-left::before {
+    font-family: inherit;  /* 부모 요소 폰트 스타일을 적용시킴 */
 }

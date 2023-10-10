@@ -59,6 +59,11 @@ public class CompanyContoller {
 		}
 		return "redirect:/";
 	}
+	
+	@GetMapping("/emailsend")
+	public String emailSend() {
+		return "/company/emailsend";
+	}
 //
 //	@PostMapping(value = "/mailsend")
 //	public String mailSend(@RequestParam("emailArr") String[] emailArr, CompanyInsertParam cvo) throws Exception {

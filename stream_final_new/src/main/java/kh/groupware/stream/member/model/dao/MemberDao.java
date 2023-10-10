@@ -27,4 +27,10 @@ public class MemberDao {
 	public MyPageVo showMyPage(String userid) {
 		return sqlSession.selectOne("member.showMyPage", userid);
 	}
+	public int editMyPage(MemberVo mvo) {
+		return sqlSession.update("member.editMyPage", mvo);
+	}
+	public MemberVo showEditMyPage(String userid) {
+		return sqlSession.selectOne("member.showEditMyPage",userid);
+	}
 }

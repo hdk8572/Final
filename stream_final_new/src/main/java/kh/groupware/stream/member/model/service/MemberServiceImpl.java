@@ -25,10 +25,20 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.idCheck(userid);
 	}
 	
+	// 마이페이지
 	@Override
 	public MyPageVo showMyPage(String userid) {
 		return memberDao.showMyPage(userid); 
 		
+	}
+	@Override
+	public MemberVo showEditMyPage(String userid) {
+		return memberDao.showEditMyPage(userid);
+	}
+	// 마이페이지 정보수정
+	@Override
+	public int editMyPage(MemberVo mvo) {
+		return memberDao.editMyPage(mvo);
 	}
 
 }
