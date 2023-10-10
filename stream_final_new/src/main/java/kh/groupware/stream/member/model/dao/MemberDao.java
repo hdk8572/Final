@@ -30,6 +30,9 @@ public class MemberDao {
 	public int editMyPage(MemberVo mvo) {
 		return sqlSession.update("member.editMyPage", mvo);
 	}
+	public int editMyPage2(MemberVo mvo) {
+		return sqlSession.update("member.editMyPage2", mvo);
+	}
 	public MyPageVo showEditMyPage(String userid) {
 		return sqlSession.selectOne("member.showEditMyPage",userid);
 	}
