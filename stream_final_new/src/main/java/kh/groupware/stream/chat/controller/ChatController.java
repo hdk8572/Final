@@ -57,7 +57,9 @@ public class ChatController {
 	        return mv;
 	    }
     @GetMapping("/room")
-    public ModelAndView getRoom(String roomId, Model model,ModelAndView mv){
+    public ModelAndView getRoom(String roomId, Model model,ModelAndView mv,Principal principal){
+    	String userId = principal.getName();
+    	mv.addObject("ID",userId);
     	model.addAttribute("room", service.findRoomById(roomId)); 
     	mv.setViewName("chatting/room");
     	//만약 mName이 null이면 표시하지 않음(추가예정)

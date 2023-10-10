@@ -37,9 +37,9 @@
 	<script>
 		$(document).ready(function() {
 
-			var userId = "${room.userId}";
+			var userId = "${ID}";
 			var roomId = "${room.roomId}";
-			var username = "${room.userId}"; 
+			var username = "${ID}"; 
 			var name = "${room.mName}";
 			
 			console.log(userId + ", " + roomId + ", " + username);			
@@ -56,12 +56,12 @@
 					var str = '';
 					if (userId === username) {
 						str = "<div class='alert alert-secondary'>";
-						str += "<b>" + name + " : " + message + "</b>";
+						str += "<b>" + username + " : " + message + "</b>";
 						str += "</div>";
 						$("#msgArea").append(str);
 					} else {
 						str += "<div class='alert alert-warning'>";
-						str += "<b>" + name + " : " + message + "</b>";
+						str += "<b>" + username + " : " + message + "</b>";
 						str += "</div>";
 						$("#msgArea").append(str);
 					}

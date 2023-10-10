@@ -30,7 +30,7 @@
 				</c:forEach>
     	</div>
         <input type="text" name="roomName" class="form-control" placeholder="Room Name">
-        <!-- <input type="text" name="userId" class="form-control" placeholder="userId Name"> -->
+        <input type="text" name="userId" class="form-control" placeholder="userId Name" value="${principal.username}">
         <button class="btn btn-secondary">개설하기</button>
     </form>
      <script>

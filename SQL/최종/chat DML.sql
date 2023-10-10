@@ -119,12 +119,18 @@ join users USING(userid)
 ORDER BY CDATE ASC
 ;
 SELECT * FROM CHATMEMBER JOIN USERS USING(USERID) WHERE ROOMID='1';
-
-
+SELECT * FROM CHATROOM  WHERE USERID='mplsam@kh.co.kr';
+select * from users;
 select ROOMID,MNAME,MESSAGE,CDATE from CHATMESSAGE join users USING(userId) WHERE ROOMID = '2' ORDER BY CDATE ASC;
 SELECT ROOMID,ROOMNAME,MNAME,userid FROM CHATROOM JOIN USERS USING(USERID) WHERE ROOMID='2';
 SELECT * FROM CHATROOM where userid='sample@kh.co.kr';
+SELECT ROOMID,ROOMNAME,USERID FROM CHATROOM JOIN chatmember USING(USERID) WHERE ROOMID='3' and userid='sample@kh.co.kr';
+SELECT ROOMID,ROOMNAME,MNAME,USERID FROM CHATROOM JOIN USERS USING(USERID) WHERE ROOMID='3';
+select * from chatmember;
 
+
+select * from chatroom;
+select * from chatmessage;
 DROP SEQUENCE chat_sequence;
 create SEQUENCE chat_sequence
 start with 1
@@ -141,8 +147,8 @@ select userid,mname
 from users;
 
 --채팅방 인원 추가 
-INSERT INTO CHATMEMBER VALUES ('1', 'sample@kh.co.kr');
-INSERT INTO CHATMEMBER VALUES ('1', 'sple@kh.co.kr');
+INSERT INTO CHATMEMBER VALUES ('3', 'sample@kh.co.kr');
+INSERT INTO CHATMEMBER VALUES ('3', 'sple@kh.co.kr');
 INSERT INTO CHATMEMBER VALUES ('1', 'spam@kh.co.kr');
 
 --채팅방 진입 USERID를 세션으로 받아서 진입

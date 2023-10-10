@@ -23,7 +23,7 @@
 	
 	<!-- 만든 채팅방 전체 리스트 조회 -->
 	<select id="findAllRooms" resultMap="chatRoomMap">
-		SELECT * FROM CHATROOM <!-- WHERE USERID=#{userId} 세션 확인후 주석 풀기-->
+		SELECT * FROM CHATROOM  WHERE USERID=#{userId} 
 	</select>
 	
 	<!-- 채팅방 멤버 추가 -->
