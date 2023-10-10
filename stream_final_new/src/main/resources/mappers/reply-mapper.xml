@@ -5,18 +5,34 @@
 	<select id="selectList" parameterType="string" resultType="ReplyVo">
 		SELECT RNO, TNO, USERID, RCONTENT, TO_CHAR(RDATE, 'YYYY-MM-DD HH24:MI') RDATE
 		FROM REPLY
-		WHERE TNO = #{tno}
+		WHERE TNO = #{tno} 
+		ORDER BY TO_NUMBER(RNO) DESC
 	</select>
-	
-	<!-- <select id="selectList" parameterType="string" resultType="ReplyVo">
+
+	<select id="selectOne" parameterType="string" resultType="ReplyVo">
 		SELECT RNO, TNO, USERID, RCONTENT, RDATE
-		FROM REPLY
-		WHERE TNO = #{tno}
-	</select> -->
+        FROM REPLY
+        WHERE RNO = #{rno}
+	</select>	
 	
 	<insert id="insertReply" parameterType="ReplyVo">
 		INSERT INTO REPLY(RNO, TNO, USERID, RCONTENT, RDATE)
 		VALUES (replyrno_sequence.nextval, #{tno}, #{userid}, #{rcontent}, systimestamp)
 	</insert>
+	
+	<update id="updateReply" parameterType="ReplyVo">
+		UPDATE REPLY SET RCONTENT=#{rcontent}
+		WHERE RNO=#{rno}
+	</update>
+	
+	<delete id="deleteReply" parameterType="ReplyVo">
+		DELETE FROM REPLY
+		WHERE RNO = #{rno}
+	</delete>
+	
+<!-- 	<update id="updateReply" parameterType="ReplyVo">
+		UPDATE REPLY SET RNO=#{rno}, TNO=#{tno}, USERID=#{userid}, RCONTENT=#{rcontent}, RDATE=#{rdate}
+		WHERE RNO=#{rno}
+	</update> -->
 	
 </mapper>

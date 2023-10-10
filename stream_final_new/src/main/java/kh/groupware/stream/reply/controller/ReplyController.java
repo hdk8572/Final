@@ -32,12 +32,16 @@ public class ReplyController {
 	public List<ReplyVo> insertReply(ReplyVo vo) {
 		return replyService.insertReply(vo);
 	}
-		
-	/*
-	 * @PostMapping ("/delteReply")
-	 * 
-	 * @ResponseBody public int deleteReply(String rno) { }
-	 */
 	
+	@PostMapping ("/goUpdateReply")
+	@ResponseBody
+	public ReplyVo selectOne(String rno) {
+		return replyService.selectOne(rno);
+	}
 	
+	@PostMapping ("/doDeleteReply")
+	@ResponseBody
+	public int deleteReply(String rno) {
+		return replyService.deleteReply(rno);
+	}
 }

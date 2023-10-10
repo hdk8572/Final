@@ -21,11 +21,30 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 	
 	@Override
+	public ReplyVo selectOne(String rno) {
+		return replyDao.selectOne(rno);
+	}
+	
+	@Override
 	@Transactional
 	public List<ReplyVo> insertReply(ReplyVo vo) {
 		int result =  replyDao.insert(vo);
 		return replyDao.selectList(vo.getTno());
 	}
 	
+	@Override
+	public int updateReply(ReplyVo vo) {
+		return replyDao.update(vo);
+	}
+	
+	@Override
+	public int deleteReply(String rno) {
+		return replyDao.delete(rno);
+	}
+
+//	@Override
+//	public int updateReply(ReplyVo vo) {
+//		return replyDao.update(vo);
+//	}
 	
 }

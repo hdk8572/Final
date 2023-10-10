@@ -37,13 +37,13 @@
 							</form>
 							<div>
 								<form class="wrap-reply">
-									<div class="replyList">
-<!--  -->
-									</div>
 									<div class="reply-input">
-										<input type="text" class="form-control input" name="rcontent" placeholder="Enter 클릭 시 입력됩니다.">
+										<input type="text" class="form-control replyInput" name="rcontent" placeholder="댓글 입력해주세요 - Enter 클릭 시 입력됩니다.">
 										<input type="hidden" name="tno">
 										<input type="hidden" name="userid" value="${principal.username}">
+									</div>
+									<div class="replyList">
+<!--  -->
 									</div>
 								</form>
 							</div>
@@ -72,12 +72,17 @@ function replyLoadList() {
 		data: {tno:targetTno},
 		async : false,
 		dataType: "json",
-		success: makeReplyList,
+		success:function(result) {
+			makeReplyList(result);
+		},
+			
+			/* makeReplyList, */
 		error: function() {
 			alert("replyLoadList에서 에러났습니다.");
 		}
 	});
 	console.log("replyLoadList 실행");
+	
 }
 
 function makeReplyList(data) {
@@ -93,7 +98,8 @@ function makeReplyList(data) {
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2 reply-btn replyDeleteBtn"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg>
 				</small>
 				<strong>\${rl.userid}</strong><br>
-				<p>\${rl.rcontent}</p>
+				<p id="updateReply" value="\${rl.rcontent}" >\${rl.rcontent}</p>
+				<input type="hidden" name="rno" value="\${rl.rno}">
 				<small class="text-muted">\${rl.rdate}</small><br>
 			</div>
 		</div>
@@ -105,12 +111,11 @@ function makeReplyList(data) {
 </script>
 <script>
 	
-	$(".form-control.input").keydown(function(event) {
+	$(".form-control.replyInput").keydown(function(event) {
 		if(event.keyCode == 13) {
 			event.preventDefault();
-			console.log("Enter 입력됨");
 			insertReply();			
-			$(".form-control.input").val("");
+			$(".form-control.replyInput").val("");
 		} else {
 			null;
 		}
@@ -130,11 +135,67 @@ function makeReplyList(data) {
 	}
 	
 	$(document).on("click", ".replyEditBtn", function() {
-		console.log("수정");
+		/* $(this).closest("p").html("<input type='text' class='form-control input' name='rcontent' placeholder='Enter 클릭 시 입력됩니다.'>"); */
+		$(this).closest(".d-flex.align-items-start").find("P").html("<input type='text' class='form-control updateInputReply' id='updateReplyInput' name='rcontent' placeholder='수정할 내용 입력해주세요.'>");
+		
+		$(".form-control.updateInputReply").keydown(function(event) {
+			if(event.keyCode == 13) {
+				/* event.preventDefault(); */
+				var targetRcontentUpdate = $(this).closest(".d-flex.align-items-start").find("#updateReplyInput").val();
+				
+				$.ajax({
+					url: "${pageContext.request.contextPath}/doUpdateReply",
+					type: "post",
+					dataType: "json",
+					data: {rno: targetRno, rcontent: targetRcontentUpdate},
+					success: function(result) {
+						replyLoadList();
+					},
+					error: function() {
+						alert("실패했습니다.");
+					}
+				});
+			} else {
+				null;
+			}
+		});
+		
+		var targetRno = $(this).closest(".d-flex.align-items-start").find("input[name=rno]").val();
+		/* var targetRcontent = $(this).find("#updateReplyInput").val(); */
+		var targetRcontent = $(this).closest(".d-flex.align-items-start").find("#updateReplyInput").val();
+
+		console.log(targetRcontent);
+		
+ 		$.ajax({
+			url: "${pageContext.request.contextPath}/goUpdateReply",
+			type: "post",
+			dataType: "json",
+			data: {rno: targetRno, rcontent: targetRcontent},
+			success: function(result) {
+				$("#updateReplyInput").val(result.rcontent);
+			},
+			error: function() {
+				alert("ReplyUpdate에서 에러났습니다.");
+			}
+		});
+ 		
 	});
 	
 	$(document).on("click", ".replyDeleteBtn", function() {
-		console.log("삭제");
+		var targetRno = $(this).closest(".d-flex.align-items-start").find("input[name=rno]").val();
+		console.log(targetRno);
+		$.ajax({
+			url: "${pageContext.request.contextPath}/doDeleteReply",
+			type: "post",
+			dataType: "json",
+			data: {rno: targetRno},
+			success: function(result) {
+				replyLoadList();
+			},
+			error: function() {
+				alert("doDeleteReply에서 에러났습니다.");
+			}
+		});
 	});
 	
 	

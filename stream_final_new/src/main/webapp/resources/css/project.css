@@ -80,6 +80,7 @@
 
 .form-control.detail-content.tcontent {
     height: 300px;
+    margin-bottom: 1.5rem;
 }
 
 .form-control.detail-content.tcontent > p {
