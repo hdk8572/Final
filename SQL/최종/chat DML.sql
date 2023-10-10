@@ -51,7 +51,7 @@ REFERENCES "USERS" (
 
 DROP TABLE "CHATMEMBER";
 CREATE TABLE "CHATMEMBER" (
-	"ROOMID"	VARCHAR2(10)	NOT NULL,	
+	"ROOMID"	VARCHAR2(50)	NOT NULL,	
 	"USERID"	VARCHAR2(40)	NOT NULL	
 );
 COMMENT ON COLUMN "CHATMEMBER"."ROOMID" IS '채팅방번호';
@@ -87,13 +87,22 @@ where roomid = '1';
 
 select *
 from users;
-
 select *
-from chatroom
-join users USING(userid);
+from chatmember;
+select *
+from chatroom;
+select userId 
+from users
+where userid='kh0001@kh.com';
 
+join chatmessage USING(roomId)
+where roomid='22';
+join users USING(userid)
+insert into chatmessage (roomid,userid,message) VALUES('22','mplsam@kh.co.kr','되나?');
+insert into chatmessage (roomid,userid,message) VALUES('22','sple@kh.co.kr','ghkrdls');
 select * 
 from chatmessage;
+select mname, from CHATMESSAGE join users USING(userId) WHERE ROOMID = '22' ORDER BY CDATE ASC;
 select mname from chatmessage join users using(userid);
 select * 
 from chatroom;
@@ -113,13 +122,22 @@ select roomid,roomname,users.mname
 from chatroom
 join users USING(userid);
 
+select userid
+from users
+join chatmessage using(userid)
+where roomid='22' and userid='mplsam@kh.co.kr';
+
 select roomid,mname,message,cdate
 from chatmessage
 join users USING(userid)
 ORDER BY CDATE ASC
 ;
+select ROOMID,MNAME,MESSAGE,CDATE from CHATMESSAGE join users USING(userId) WHERE ROOMID = '22' ORDER BY CDATE ASC;
 SELECT * FROM CHATMEMBER JOIN USERS USING(USERID) WHERE ROOMID='1';
-
+select * from users;
+select * from chatmember where roomid='22';
+INSERT INTO CHATMEMBER(ROOMID,USERID) VALUES('22','sample@kh.co.kr');
+INSERT INTO CHATMEMBER(ROOMID,USERID) VALUES('22','kh0002@kh.com');
 
 select ROOMID,MNAME,MESSAGE,CDATE from CHATMESSAGE join users USING(userId) WHERE ROOMID = '2' ORDER BY CDATE ASC;
 SELECT ROOMID,ROOMNAME,MNAME,userid FROM CHATROOM JOIN USERS USING(USERID) WHERE ROOMID='2';
@@ -129,7 +147,7 @@ DROP SEQUENCE chat_sequence;
 create SEQUENCE chat_sequence
 start with 1
 INCREMENT by 1;
-
+SELECT * FROM CHATROOM  WHERE ROOMID='22';
 -------------------------------------
 SELECT * FROM USERS;
 SELECT * FROM chatmember;
@@ -141,7 +159,8 @@ select userid,mname
 from users;
 
 --채팅방 인원 추가 
-INSERT INTO CHATMEMBER VALUES ('1', 'sample@kh.co.kr');
+INSERT INTO CHATMEMBER VALUES ('21', 'sample@kh.co.kr');
+INSERT INTO CHATMEMBER VALUES ('21', 'mplsam@kh.co.kr');
 INSERT INTO CHATMEMBER VALUES ('1', 'sple@kh.co.kr');
 INSERT INTO CHATMEMBER VALUES ('1', 'spam@kh.co.kr');
 
@@ -150,8 +169,9 @@ SELECT MNAME FROM USERS WHERE USERID = 'sample@kh.co.kr';
 
 
 --INSERT INTO CHATROOM (ROOMID,ROOMNAME,USERID) VALUES (#{roomId},#{USERID},#{roomName})
-INSERT INTO CHATROOM (ROOMID,ROOMNAME,USERID) VALUES (chat_sequence.NEXTVAL,'roomname확인','sample@kh.co.kr');
+INSERT INTO CHATROOM (ROOMID,ROOMNAME) VALUES (chat_sequence.NEXTVAL,'roomname확인123');
 INSERT INTO CHATROOM (ROOMID,ROOMNAME,USERID) VALUES (chat_sequence.NEXTVAL,'roomname확인2','sample@kh.co.kr');
 DELETE FROM CHATROOM;
 
+select ROOMID,MNAME,MESSAGE,CDATE from CHATMESSAGE join users USING(userId) WHERE ROOMID = '21' ORDER BY CDATE ASC;
 commit;

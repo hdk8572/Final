@@ -1,7 +1,5 @@
 package kh.groupware.stream.chat.controller;
 
-
-
 import java.security.Principal;
 import java.util.List;
 
@@ -28,49 +26,59 @@ public class ChatController {
 	@GetMapping("/chatlist")
 	public String selectchat(Model model) {
 		return "/chatting/select";
-		
-	}
-	 @GetMapping("/chat")
-	    public String chatGET(){
 
-	        System.out.println("@ChatController, chat GET()");
-	        
-	        return "chat";
-	    }
-	 @GetMapping("/chat1")
-	    public String chatGETTest(){
-		 System.out.println("@ChatController, chat GET()");
-	        
-	        return "chat1";
-	    }	 
-	
-	
-	
-	
-	
-	  @GetMapping(value = "/rooms")
-	    public ModelAndView rooms(ModelAndView mv,Principal principal, Model model) throws Exception{        
-		  	String userId = principal.getName();
-		  	mv.setViewName("chatting/rooms");
-			mv.addObject("list", service.findAllRooms(userId));
-			model.addAttribute("viewMemmber", service.ViewMember());
-	        return mv;
-	    }
-    @GetMapping("/room")
-    public ModelAndView getRoom(String roomId, Model model,ModelAndView mv){
-    	model.addAttribute("room", service.findRoomById(roomId)); 
-    	mv.setViewName("chatting/room");
-    	//만약 mName이 null이면 표시하지 않음(추가예정)
-        model.addAttribute("viewChat", service.ViewChat(roomId));
-        return mv;
-    }
-	    @PostMapping(value = "/room")
-	    public String create(@RequestParam String roomName,Principal principal, RedirectAttributes rttr){
-//	    	log.info("# Create Chat Room, roomName: " + roomName + ", userId: " + userId);
-	    	String userId = principal.getName();
-	    	service.AddChatRoom(roomName, userId);
-	        rttr.addFlashAttribute("roomName1", roomName);
-	        return "redirect:/rooms";
-	    }
+	}
+
+	@GetMapping("/chat")
+	public String chatGET() {
+
+		System.out.println("@ChatController, chat GET()");
+
+		return "chat";
+	}
+
+	@GetMapping("/chat1")
+	public String chatGETTest() {
+		System.out.println("@ChatController, chat GET()");
+
+		return "chat1";
+	}
+
+//	@GetMapping(value = "/rooms")
+//	public ModelAndView rooms(ModelAndView mv, Principal principal, Model model) throws Exception {
+//		String userId = principal.getName();
+//		mv.setViewName("chatting/rooms");
+//		mv.addObject("list", service.findAllRooms(userId));
+//		model.addAttribute("viewMemmber", service.ViewMember());
+//		return mv;
+//	}
+
+	@GetMapping(value = "/rooms")
+	public ModelAndView rooms(ModelAndView mv) throws Exception {
+		mv.setViewName("chatting/rooms");
+		mv.addObject("list", service.findAllRooms());
+		mv.addObject("viewMemmber", service.ViewMember());
+		return mv;
+	}
+
+	@GetMapping("/room")
+	public ModelAndView getRoom(String roomId, Principal principal, ModelAndView mv,Model model) throws Exception {
+		String userId = principal.getName();
+		mv.setViewName("chatting/room");
+		mv.addObject("Id", userId);
+		mv.addObject("room", service.readRoom(roomId));
+		model.addAttribute("viewChat", service.ViewChat(roomId));
+		return mv;
+	}
+
+	@PostMapping(value = "/room")
+	public String create(@RequestParam String roomName, @RequestParam String userId, RedirectAttributes rttr)  throws Exception {
+//	    	log.info("# Create Chat Room, roomName: " + roomName + ", userId: " + userId);	    	
+		service.memberInsert(userId);
+		service.AddChatRoom(roomName);
+		rttr.addFlashAttribute("roomName1", roomName);
+		rttr.addFlashAttribute("member", userId);
+		return "redirect:/rooms";
+	}
 
 }
