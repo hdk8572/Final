@@ -53,7 +53,8 @@
 .myPageBox {
 	width: 700px;
 	border: 1px white solid;
-	background-color: white; border-radius : 20px;
+	background-color: white;
+	border-radius: 20px;
 	padding: 20px;
 	border-radius: 20px;
 }
@@ -109,17 +110,16 @@
 								<div class="mb-3">
 									<label class="form-label">Company Code</label> <input
 										class="form-control form-control-lg" type="text" name="ccode"
-										placeholder="${mvo.ccode }" /> <small> <a href="#"
-										class="ccodeToDept">부서조회</a>
+										placeholder="${mvo.ccode }" value="${mvo.ccode}" /> <small>
+										<a href="#" class="ccodeToDept">부서조회</a>
 
 									</small>
 								</div>
 
 								<div class="mb-3">
 									<label class="form-label">Department</label> <select
-										id="deptdrop" class="form-select mb-3" name="deptno"
-										value="${deptdrop}">
-										<option selected>${mvo.deptname}</option>
+										id="deptdrop" class="form-select mb-3" name="deptno">
+										<option value="${mvo.deptno }" selected>${mvo.deptname }</option>
 
 									</select>
 								</div>
@@ -236,7 +236,7 @@
 		if (!checkBlank(username, "이름을")) {
 			return false;
 		}
-		var nameToCheck = /^[가-힣]{2,5}$/;
+		var nameToCheck = /^[가-힣]{2,15}$/;
 		if (!nameToCheck.test(username)) {
 			alert("이름 형식이 옳지 않습니다.");
 			return false;
