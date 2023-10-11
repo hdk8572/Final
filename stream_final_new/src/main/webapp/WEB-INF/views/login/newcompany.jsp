@@ -34,6 +34,7 @@
 </head>
 
 <body>
+	<%@ include file="/WEB-INF/views/alertmsg.jsp"%>
 	<main class="d-flex w-100">
 		<div class="container d-flex flex-column">
 			<div class="row vh-100">
@@ -67,6 +68,7 @@
 										<button type="button"
 											class="btn btn-lg btn-primary nextButton">다음</button>
 									</div>
+									<input type="hidden" name="password" value="12345"/>
 								</div>
 							</div>
 
@@ -191,9 +193,9 @@
 	function checkAll(){
 		if(!checkCname(Company.cname.value)){
 			return false;
-		}else if(!CheckCphone(Company.cphone.value)){
+		}else if(!checkCphone(Company.cphone.value)){
 			return false;
-		} else if(!CheckCaddress(Company.caddress.value)){
+		} else if(!checkCaddress(Company.caddress.value)){
 			return false;
 		}
 		return true;
@@ -207,10 +209,10 @@
 	return true;
 	}
 
-function checkCname(cname){
+	function checkCname(cname){
 	if(!checkBlank(cname, "회사명을"))
 		return false;
-	var cnameToCheck = /^[A-Za-z가-힣]{2,25}$/;
+	var nameToCheck = /^[A-Za-z가-힣]{2,25}$/;
 	if(!nameToCheck.test(cname)){
 		alert("회사명 형식이 옳지 않습니다.");
 		return false;
@@ -220,7 +222,7 @@ function checkCname(cname){
 	function checkCphone(cphone){
 	if(!checkBlank(cphone, "회사 전화번호를"))
 		return false;
-	 const phoneToCheck = userphone.replace(/\D/g, '');
+	 const phoneToCheck = cphone.replace(/\D/g, '');
 	  if (phoneToCheck.length < 10 || phoneToCheck.length > 11) {
 	    alert("10-11자 사이의 숫자를 입력해주세요.")
 		  return false;

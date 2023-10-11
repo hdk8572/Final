@@ -5,7 +5,26 @@
 .form-check-input {
 	margin-left: 20px;
 }
-.myPageBox {
-	width:500px;
 
+.content {
+	display: flex; /* 내용물을 가로로 정렬하기 위해 Flexbox를 사용합니다. */
+	justify-content: center; /* 가로 중앙 정렬 */
+	align-items: center; /* 세로 중앙 정렬 */
+	height: 100vh; /* 부모 div의 높이를 화면 높이와 동일하게 설정합니다. */
+}
+
+.myPageBox {
+	width: 700px;
+	border: 1px white solid;
+	background-color: white;
+	border-radius: 20px;
+	padding: 20px;
+	border-radius: 20px;
+}
+
+.myPageTitle {
+	text-align: center;
+	font-size: 30px;
+	margin: 10px;
+	font-weight: 600;
 }
