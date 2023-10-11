@@ -24,6 +24,8 @@ public class PtaskVo {
 	//admin 통계용
 	private String tcnt;
 	
+	//전체보기 페이지 정렬순서 변경을 위한 컬럼
+	private String ordertype;
 	
 
 	@Override
@@ -31,7 +33,7 @@ public class PtaskVo {
 		return "PtaskVo [tno=" + tno + ", pno=" + pno + ", userid=" + userid + ", tmember=" + tmember + ", ttitle="
 				+ ttitle + ", tcontent=" + tcontent + ", tstatus=" + tstatus + ", tdate=" + tdate + ", tstartdate="
 				+ tstartdate + ", tenddate=" + tenddate + ", bref=" + bref + ", brelevel=" + brelevel + ", brestep="
-				+ brestep + ", tcnt=" + tcnt + "]";
+				+ brestep + ", tcnt=" + tcnt + ", ordertype=" + ordertype + "]";
 	}
 
 	public PtaskVo() {
@@ -68,6 +70,30 @@ public class PtaskVo {
 		this.bref = bref;
 		this.brelevel = brelevel;
 		this.brestep = brestep;
+	}
+	
+
+	
+
+	public PtaskVo(String tno, String pno, String userid, String tmember, String ttitle, String tcontent,
+			String tstatus, String tdate, String tstartdate, String tenddate, String bref, String brelevel,
+			String brestep, String tcnt, String ordertype) {
+		super();
+		this.tno = tno;
+		this.pno = pno;
+		this.userid = userid;
+		this.tmember = tmember;
+		this.ttitle = ttitle;
+		this.tcontent = tcontent;
+		this.tstatus = tstatus;
+		this.tdate = tdate;
+		this.tstartdate = tstartdate;
+		this.tenddate = tenddate;
+		this.bref = bref;
+		this.brelevel = brelevel;
+		this.brestep = brestep;
+		this.tcnt = tcnt;
+		this.ordertype = ordertype;
 	}
 
 	public String getTno() {
@@ -162,6 +188,16 @@ public class PtaskVo {
 	public void setTcnt(String tcnt) {
 		this.tcnt = tcnt;
 	}
+
+	public String getOrderType() {
+		return ordertype;
+	}
+
+	public void setOrderType(String orderType) {
+		this.ordertype = orderType;
+	}
+
+
 	
 	
 	

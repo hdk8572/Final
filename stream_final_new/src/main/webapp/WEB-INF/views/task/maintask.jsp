@@ -76,9 +76,18 @@
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
-																<li class="dropdown-item">오름차순</li>
-																<li class="dropdown-item">내림차순</li>
-																<li class="dropdown-item">정렬 해제</li>
+																<li class="dropdown-item" >
+																<button class="jm-tp" name="ordertype" value="tno1">오름차순</button>
+																<input type="hidden" name="ordertype" value="tno1">
+																</li>
+																<li class="dropdown-item" >
+																<button class="jm-tp" name="ordertype" value="tno2">내림차순</button>
+																<input type="hidden" name="ordertype" value="tno2">
+																</li>
+																<li class="dropdown-item">
+																<button class="jm-tp" name="ordertype" value="tno0">정렬 해제</button>
+																<input type="hidden" name="ordertype" value="tno0">
+																</li>
 															</ul>
 														</div>
 													</div>
@@ -99,9 +108,9 @@
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
-																<li class="dropdown-item">오름차순</li>
-																<li class="dropdown-item">내림차순</li>
-																<li class="dropdown-item">정렬 해제</li>
+																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tstatus1">오름차순</button></li>
+																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tstatus2">내림차순</button></li>
+																<li class="dropdown-item"><button class="jm-tp" name="ordertype" value="tstatus0">정렬 해제</button></li>
 															</ul>
 														</div>
 													</div>
@@ -122,9 +131,9 @@
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
-																<li class="dropdown-item">오름차순</li>
-																<li class="dropdown-item">내림차순</li>
-																<li class="dropdown-item">정렬 해제</li>
+																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tmember1">오름차순</button></li>
+																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tmember2">내림차순</button></li>
+																<li class="dropdown-item"><button class="jm-tp" name="ordertype" value="tmember0">정렬 해제</button></li>
 															</ul>
 														</div>
 													</div>
@@ -146,9 +155,9 @@
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
-																<li class="dropdown-item">오름차순</li>
-																<li class="dropdown-item">내림차순</li>
-																<li class="dropdown-item">정렬 해제</li>
+																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tstartdate1">오름차순</button></li>
+																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tstartdate2">내림차순</button></li>
+																<li class="dropdown-item"><button class="jm-tp" name="ordertype" value="tstartdate0">정렬 해제</button></li>
 															</ul>
 														</div>
 													</div>
@@ -169,9 +178,9 @@
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
-																<li class="dropdown-item">오름차순</li>
-																<li class="dropdown-item">내림차순</li>
-																<li class="dropdown-item">정렬 해제</li>
+																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tenddate1">오름차순</button></li>
+																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tenddate2">내림차순</button></li>
+																<li class="dropdown-item"><button class="jm-tp" name="ordertype" value="tenddate0">정렬 해제</button></li>
 															</ul>
 														</div>
 													</div>
@@ -192,9 +201,9 @@
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
-																<li class="dropdown-item">오름차순</li>
-																<li class="dropdown-item">내림차순</li>
-																<li class="dropdown-item">정렬 해제</li>
+																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tdate1">오름차순</button></li>
+																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tdate2">내림차순</button></li>
+																<li class="dropdown-item"><button class="jm-tp" name="ordertype" value="tdate0">정렬 해제</button></li>
 															</ul>
 														</div>
 													</div>
@@ -203,7 +212,7 @@
 											<div class="jm-drop  col-lg-1 jm-grey-nb">
 												<div class="dropdown jm-move" id="tno" draggable="true">
 													<div class="jm-title">
-														<div class="card-subtitle text-muted "
+														<div class="card-subtitle text-muted"
 															data-bs-toggle="dropdown">
 															<span class="jm-cen">업무번호</span>
 															<svg xmlns="http://www.w3.org/2000/svg" width="24"
@@ -215,9 +224,9 @@
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
-																<li class="dropdown-item">오름차순</li>
-																<li class="dropdown-item">내림차순</li>
-																<li class="dropdown-item">정렬 해제</li>
+																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tno1">오름차순</button></li>
+																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tno2">내림차순</button></li>
+																<li class="dropdown-item"><button class="jm-tp" name="ordertype" value="tno0">정렬 해제</button></li>
 															</ul>
 														</div>
 													</div>
@@ -357,7 +366,35 @@
 	
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
 	<script src="${pageContext.request.contextPath}/js/maintask.js"></script>
-
+	<script>
+		abc=()=>{
+			var e1 = event.target;
+			console.log(e1);
+			var e2 = $(e1).find('input').val();
+			console.log(e2);
+			
+			$.ajax({
+				type:"post",
+			
+			data:{
+				ordertype : e2,
+				userid : principal_username,
+				},
+			dataType: "json",
+			url: contextPath+"/sort",
+			success:function(data){
+					console.log(data);
+				},
+			error : function(request, status, error){
+					console.log(request);
+					console.log(status);
+					console.log(error);
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					}
+			})
+		}
+		$(".dropdown-item").on("click", abc);
+	</script>
 </body>
 
 </html>

@@ -1,6 +1,8 @@
 package kh.groupware.stream.main.model.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +36,17 @@ public class MaintaskServiceImpl implements MaintaskService {
 	
 	public List<MemberSimpleVo> projectMemberList(String pno){
 		return maintaskDao.projectMemberList(pno);
+	}
+	/*
+	public List<ProjectVo> TaskSortList(String userid){
+		return maintaskDao.TaskSortList(userid);
+	}
+	*/
+	public List<ProjectVo> TaskSortList(String userid, String ordertype) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put(ordertype, ordertype);
+		map.put(userid, userid);
+		return maintaskDao.TaskSortList(userid, ordertype);
 	}
 
 }

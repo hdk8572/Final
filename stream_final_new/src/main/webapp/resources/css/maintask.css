@@ -123,3 +123,6 @@ div.jm-task-title{
 .jm-hidden{
 	display: none;
 }
+.dropdown-item>button{
+	z-index: -1;
+}

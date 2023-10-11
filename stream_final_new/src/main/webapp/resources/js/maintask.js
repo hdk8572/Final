@@ -160,7 +160,6 @@ function getProjectMemberList(thisElement){
 				console.log("성공하였습니다.");
 				showProjectMemberView(data, htmlTarget)
 			},
-			
 			error:function(request, status, error){
 			console.log(request);
 			console.log(status);
@@ -227,10 +226,11 @@ function innerTaskaddListHandler (data) {
 			//	alert("전송된 값 없음");
 			//}
 		},
-		error:function(request, status, error, data){
+		error:function(request, status, error){
+		console.log(request);
+		console.log(status);
+		console.log(error);
 			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-			console.log(arguments);
-			console.log(data)
 		}
 	});
 }

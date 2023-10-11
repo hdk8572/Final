@@ -11,4 +11,5 @@ public interface MaintaskService {
 	public List<ProjectVo> projectNameList(String userid);
 	public ProjectVo insertInnerTask(PtaskVo vo);
 	public List<MemberSimpleVo> projectMemberList(String pno);
+	public List<ProjectVo> TaskSortList(String userid,  String ordertype);
 }
