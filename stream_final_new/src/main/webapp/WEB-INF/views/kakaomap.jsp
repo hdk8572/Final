@@ -53,9 +53,10 @@
 		
 			var address = $('#splace').text();
 
-			if (address != null)
+			if (address != null) {
 				console.log($('#splace'));
 				console.log($('#splace').text());
+			}
 			// 정상적으로 검색이 완료됐으면 
 			if (status === kakao.maps.services.Status.OK) {
 				var coords = new kakao.maps.LatLng(result[0].y, result[0].x);

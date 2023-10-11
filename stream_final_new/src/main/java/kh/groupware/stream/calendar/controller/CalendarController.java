@@ -66,7 +66,7 @@ public class CalendarController {
 	@GetMapping("/pcalselectone")
 	public String calSelectOne(Model model, String sno) { 
 		CalendarVo cal = calendarService.selectOne(sno);
-		model.addAttribute("sno", sno);
+		model.addAttribute("cal", cal);
 		return "calendar"; //화면에 뿌릴 것을 return해야함
 	}
 	
