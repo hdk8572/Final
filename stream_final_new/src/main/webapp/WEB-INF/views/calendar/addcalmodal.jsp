@@ -105,7 +105,12 @@
 		}
 		$("#calmemberlist").html(listHtml);
 	}
-	function memberError(){
+	function memberError(request, status, error){
+		console.log("오류발생!!!!!!!!!!!");
+		console.log(request);
+		console.log(status);
+		console.log(error);
+		
 		var listHtml = "";
 		listHtml += `<option selected>해당하는 이름이 없습니다.</option>`;
 		$("#calmemberlist").html(listHtml);

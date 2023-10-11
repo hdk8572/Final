@@ -110,12 +110,19 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 			//<달력에 표시될 일정을 가져옴>
 			// calendar date get from db 
 			$.ajax({
+				//동기 async : false, 
 				url: '${pageContext.request.contextPath}/pcalselectlist/'+calendar_pno,	
 				data: { date : '2023-09-12'},  
 				dataType : "json",
 				success: function(result){	//요청이 성공적으로 완료될 때 실행할 콜백 함수를 정의
-					console.log(result);  // result == event Data Arr //서버에서 반환된 데이터를 담고 있는 매개변수이다.
-					makeFullCalendar(result);	//받은 데이터를 이용하여 makeFullCalendar 함수를 호출한다.
+						 console.log(result);  // result == event Data Arr //서버에서 반환된 데이터를 담고 있는 매개변수이다.
+						 makeFullCalendar(result);	//받은 데이터를 이용하여 makeFullCalendar 함수를 호출한다.
+				},
+				error : ( request, status, error) => {
+					console.log(request);
+					console.log(status);
+					console.log(error);
+					alert("code:" +request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 				}
 			});
 			
