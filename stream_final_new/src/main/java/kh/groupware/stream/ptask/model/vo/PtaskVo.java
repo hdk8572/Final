@@ -2,6 +2,8 @@ package kh.groupware.stream.ptask.model.vo;
 
 import org.springframework.stereotype.Component;
 
+import kh.groupware.stream.files.model.vo.FileVo;
+
 @Component
 public class PtaskVo {
 
@@ -21,12 +23,16 @@ public class PtaskVo {
 	private String brelevel;//0 : 원본 1 : 하위 업무
 	private String brestep;	//하위 업무들간의 순서
 	
+	private FileVo file;
+	
 	//admin 통계용
 	private String tcnt;
+
 	
 	//전체보기 페이지 정렬순서 변경을 위한 컬럼
 	private String ordertype;
 	
+
 
 	@Override
 	public String toString() {
@@ -38,10 +44,11 @@ public class PtaskVo {
 
 	public PtaskVo() {
 		super();
-	}
+
 
 	public PtaskVo(String tno, String pno, String userid, String tmember, String ttitle, String tcontent,
-			String tstatus, String tdate, String tstartdate, String tenddate) {
+			String tstatus, String tdate, String tstartdate, String tenddate, String bref, String brelevel,
+			String brestep, FileVo file, String tcnt) {
 		super();
 		this.tno = tno;
 		this.pno = pno;
@@ -53,23 +60,15 @@ public class PtaskVo {
 		this.tdate = tdate;
 		this.tstartdate = tstartdate;
 		this.tenddate = tenddate;
-	}
-
-	public PtaskVo(String tno, String pno, String userid, String tmember, String ttitle, String tstatus, String tdate,
-			String tstartdate, String tenddate, String bref, String brelevel, String brestep) {
-		super();
-		this.tno = tno;
-		this.pno = pno;
-		this.userid = userid;
-		this.tmember = tmember;
-		this.ttitle = ttitle;
-		this.tstatus = tstatus;
-		this.tdate = tdate;
-		this.tstartdate = tstartdate;
-		this.tenddate = tenddate;
 		this.bref = bref;
 		this.brelevel = brelevel;
 		this.brestep = brestep;
+		this.file = file;
+		this.tcnt = tcnt;
+	}
+
+	public PtaskVo() {
+		super();
 	}
 	
 
@@ -99,60 +98,79 @@ public class PtaskVo {
 	public String getTno() {
 		return tno;
 	}
+
 	public void setTno(String tno) {
 		this.tno = tno;
 	}
+
 	public String getPno() {
 		return pno;
 	}
+
 	public void setPno(String pno) {
 		this.pno = pno;
 	}
-	public String getuserid() {
+
+	public String getUserid() {
 		return userid;
 	}
-	public void setuserid(String userid) {
+
+	public void setUserid(String userid) {
 		this.userid = userid;
 	}
+
 	public String getTmember() {
 		return tmember;
 	}
+
 	public void setTmember(String tmember) {
 		this.tmember = tmember;
 	}
+
 	public String getTtitle() {
 		return ttitle;
 	}
+
 	public void setTtitle(String ttitle) {
 		this.ttitle = ttitle;
 	}
+
 	public String getTcontent() {
 		return tcontent;
 	}
+
 	public void setTcontent(String tcontent) {
 		this.tcontent = tcontent;
 	}
+
 	public String getTstatus() {
 		return tstatus;
 	}
+
 	public void setTstatus(String tstatus) {
 		this.tstatus = tstatus;
 	}
+
 	public String getTdate() {
 		return tdate;
 	}
+
 	public void setTdate(String tdate) {
 		this.tdate = tdate;
 	}
+
 	public String getTstartdate() {
 		return tstartdate;
 	}
+
 	public void setTstartdate(String tstartdate) {
 		this.tstartdate = tstartdate;
 	}
+
 	public String getTenddate() {
 		return tenddate;
 	}
+
 	public void setTenddate(String tenddate) {
 		this.tenddate = tenddate;
 	}
@@ -181,6 +199,14 @@ public class PtaskVo {
 		this.brestep = brestep;
 	}
 
+	public FileVo getFile() {
+		return file;
+	}
+
+	public void setFile(FileVo file) {
+		this.file = file;
+	}
+
 	public String getTcnt() {
 		return tcnt;
 	}
@@ -189,6 +215,7 @@ public class PtaskVo {
 		this.tcnt = tcnt;
 	}
 
+
 	public String getOrderType() {
 		return ordertype;
 	}
@@ -196,12 +223,11 @@ public class PtaskVo {
 	public void setOrderType(String orderType) {
 		this.ordertype = orderType;
 	}
-
-
-	
-	
-	
-	
 }
+	
+	
+	
+	
+
 
 

@@ -39,6 +39,12 @@ public class ReplyController {
 		return replyService.selectOne(rno);
 	}
 	
+	@PostMapping ("/doUpdateReply")
+	@ResponseBody
+	public int updateReply(ReplyVo vo) {
+		return replyService.updateReply(vo);
+	}
+	
 	@PostMapping ("/doDeleteReply")
 	@ResponseBody
 	public int deleteReply(String rno) {

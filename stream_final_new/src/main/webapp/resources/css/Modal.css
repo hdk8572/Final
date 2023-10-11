@@ -208,6 +208,14 @@
     height: 670px;
 }
 
+.fileUploadBtn {
+    position: relative;
+  	top: -13px;	
+    right: -114px;
+	
+}
+
+
 /* updateProjectModal */
 
 .modal-dialog.updateProject {
@@ -293,4 +301,10 @@ form {
 
 .updateInputReply {
 	margin-bottom: 0;
+}
+
+.fileUpload{
+    position: relative;
+    top: -15px;
+    left: 200px;
 }

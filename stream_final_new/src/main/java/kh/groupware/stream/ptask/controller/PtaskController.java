@@ -4,12 +4,17 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import kh.groupware.stream.files.model.service.FileService;
+import kh.groupware.stream.files.model.vo.FileVo;
 import kh.groupware.stream.project.model.vo.PnoTnoParam;
 import kh.groupware.stream.ptask.model.service.PtaskService;
 import kh.groupware.stream.ptask.model.vo.PtaskVo;
@@ -19,6 +24,10 @@ public class PtaskController {
 
 	@Autowired
 	private PtaskService ptaskService;
+	
+	@Autowired
+	private FileService fileService;
+	
 
 	@GetMapping("/ptasklist")
 	public String ptasklist(Model model, String pno) {
@@ -29,12 +38,20 @@ public class PtaskController {
 	}
 
 	@PostMapping("/insertPtask")
-	public String insertTask(Model model, PtaskVo vo) {
-		System.out.println("asdasdasdasd :" + vo);
+	@Transactional
+	public String insertTask(Model model, PtaskVo vo, MultipartFile upload) {
+		// file server save ==> return savedpath 
+		
+		fileService.savedFile(upload);
 		ptaskService.insertTask(vo);
-		/* return "redirect:ptasklist?pno="+vo.getPno(); */
 		return "redirect:ptasklist?pno="+vo.getPno();
 	}
+	
+//	@PostMapping("/insertPtask")
+//	public String insertTask(Model model, PtaskVo vo, MultipartFile upload) {
+//		ptaskService.insertTask(vo);
+//		return "redirect:ptasklist?pno="+vo.getPno();
+//	}
 	
 	// 아래는 진짜 암기하자
 	/* @GetMapping("/ptaskselectOne")
