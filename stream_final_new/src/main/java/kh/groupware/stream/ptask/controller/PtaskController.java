@@ -46,7 +46,10 @@ public class PtaskController {
 	public Map<String, String> insertTask(Model model, PtaskVo vo, MultipartFile upload, HttpServletRequest request) {
 		// file server save ==> return savedpath
 		
-		Map config = new HashMap(); 
+		Map config = new HashMap();
+		config.put("cloud_name", "dup9irkxd");
+		config.put("api_key", "371128821948137");
+		config.put("api_secret", config)
 		
 		fileService.savedFile(upload);
 		ptaskService.insertTask(vo);
