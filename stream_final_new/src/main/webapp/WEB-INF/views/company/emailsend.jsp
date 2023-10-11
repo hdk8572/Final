@@ -41,6 +41,9 @@
 			<%@ include file="/WEB-INF/views/headernavbar.jsp"%>
 			<main class="content">
 				<div class="container-fluid p-0">
+				
+				
+				
 				</div>
 			</main>
 		</div>

@@ -81,14 +81,14 @@ public class MemberController {
 	}
 
 	// 마이페이지
-	@GetMapping("/member/showmypage")
+	@GetMapping("/showmypage")
 	@ResponseBody
 	public MyPageVo showMyPage(String userid) {
 		MyPageVo showMyPage = memberService.showMyPage(userid);
 		return showMyPage;
 	}
 
-	@GetMapping("/member/editmypage")
+	@GetMapping("/editmypage")
 	public String showEditMyPage(Principal principal, Model model) {
 		MyPageVo mvo = memberService.showEditMyPage(principal.getName());
 		model.addAttribute("mvo", mvo);
@@ -97,7 +97,7 @@ public class MemberController {
 	}
 	
 	// 마이페이지 정보수정
-	@PostMapping("/member/editmypage")
+	@PostMapping("/editmypage")
 	public String editMyPage(MemberVo mvo, RedirectAttributes ra) {
 		String result = null;
 		System.out.println("[jy] 정보수정시 mvo: " + mvo);

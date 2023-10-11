@@ -170,10 +170,13 @@
 					data-feather="phone"></i> <span>전화번호</span></td>
 				<td class="mp-content" data-field="mphone"></td>
 			</tr>
+			
+			<c:if test="${principal.authorities eq 'ROLE_M'}" >
 			<tr>
 				<td colspan="2" class="mp-button"><button
 						class="btn mpbtn btn-primary btn-sm mp-button" id="editmypage">정보수정</button></td>
 			</tr>
+			</c:if>
 		</table>
 	</div>
 	<a class="mpmodal_close_btn">X</a>
@@ -249,7 +252,7 @@
 					function() {
 						$
 								.ajax({
-									url : '${pageContext.request.contextPath}/member/showmypage',
+									url : '${pageContext.request.contextPath}/showmypage',
 									method : 'GET',
 									data : {
 										userid : '${principal.username}'
@@ -284,9 +287,9 @@
 					});
 
 	$("#editmypage").click(function() {
-		var url = "${pageContext.request.contextPath}/member/editmypage";
+		var url = "${pageContext.request.contextPath}/editmypage";
 		window.location.href = url;
 	});
 </script>
-</script>
+
 
