@@ -25,12 +25,12 @@ public class ChatServlceImpl implements ChatService{
 		return dao.MessageInsert(vo);
 	}
 	@Override
-	public List<ChatRoomVo> findAllRooms(){
-		return dao.findAllRooms();
+	public List<ChatRoomVo> findAllRooms(String userId){
+		return dao.findAllRooms(userId);
 	}
 	@Override
-	public int AddChatRoom(String roomName) {
-		return dao.AddChatRoom(roomName);
+	public int AddChatRoom(String roomName,String userId) {
+		return dao.AddChatRoom(roomName,userId);
 	}
 	@Override
 	public ChatRoomVo findRoomById(String userId) {
@@ -39,13 +39,5 @@ public class ChatServlceImpl implements ChatService{
 	@Override
 	public List<ChatRoomVo> ViewMember() {
 		return dao.ViewMember();
-	}
-	@Override
-	public int memberInsert(String userId) {
-		return dao.memberInsert(userId);
-	}
-	@Override
-	public ChatRoomVo readRoom(String roomId) {
-		return dao.readRoom(roomId);
 	}
 }

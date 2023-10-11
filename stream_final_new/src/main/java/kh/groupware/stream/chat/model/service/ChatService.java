@@ -15,10 +15,8 @@ public interface ChatService {
 
 	List<ChatMessageVo> ViewChat(String roomId);
 	int MessageInsert(ChatMessageVo vo);
-	List<ChatRoomVo> findAllRooms();
-	int AddChatRoom(String roomName);
+	List<ChatRoomVo> findAllRooms(String userId);
+	int AddChatRoom(String roomName,String userId);
 	ChatRoomVo findRoomById(String id);
 	List<ChatRoomVo> ViewMember();
-	int memberInsert(String userId);
-	ChatRoomVo readRoom(String roomId);
 }

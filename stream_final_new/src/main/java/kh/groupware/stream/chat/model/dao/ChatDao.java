@@ -22,31 +22,25 @@ public class ChatDao {
 	 * return sqlSession.selectOne("selecuserOne"); }
 	 */
 	
-	
-	public int AddChatRoom(String roomName) {
-		ChatRoomVo room = ChatRoomVo.create(roomName);
+	public int AddChatRoom(String roomName,String userId) {
+		ChatRoomVo room = ChatRoomVo.create(roomName, userId);
 		return sqlSession.insert("chat.chatInsert",room);
 	}
 	
-	public List<ChatRoomVo> findAllRooms(){
-		return sqlSession.selectList("chat.findAllRooms");
+	public List<ChatRoomVo> findAllRooms(String userId){
+		return sqlSession.selectList("chat.findAllRooms",userId);
 	}
 	public int MessageInsert(ChatMessageVo vo) {
 		return sqlSession.insert("chat.messageInsert",vo);
 	}
-	public List<ChatMessageVo> ViewChat(String roomId){
-		return sqlSession.selectList("chat.viewChat",roomId);
+	public List<ChatMessageVo> ViewChat(String id){
+		return sqlSession.selectList("chat.viewChat",id);
 	}
-	 public ChatRoomVo findRoomById(String userId) {
-	        return sqlSession.selectOne("chat.findRoomById",userId);
+	 public ChatRoomVo findRoomById(String id) {
+	        return sqlSession.selectOne("chat.findRoomById", id);
 	  }
 	public List<ChatRoomVo> ViewMember(){
 			return sqlSession.selectList("chat.viewMember");
 	}
-	public int memberInsert(String userId) {
-		return sqlSession.insert("chat.memberInsert",userId);
-	}
-	public ChatRoomVo readRoom(String roomId) {
-		return sqlSession.selectOne("chat.readRoom",roomId);
-	}
+
 }

@@ -17,25 +17,26 @@
 	
 	<!-- 채팅방 만들기 -->
 	<insert id="chatInsert" parameterType="ChatRoomVo">
-		INSERT INTO CHATROOM (ROOMID,ROOMNAME) VALUES (chat_sequence.NEXTVAL,#{roomName})
+		INSERT INTO CHATROOM (ROOMID,USERID,ROOMNAME) VALUES (chat_sequence.NEXTVAL,#{userId},#{roomName})
 	</insert>
 	
 	
 	<!-- 만든 채팅방 전체 리스트 조회 -->
 	<select id="findAllRooms" resultMap="chatRoomMap">
-		SELECT * FROM CHATROOM <!-- WHERE USERID=#{userId} 세션 확인후 주석 풀기-->
+		SELECT * FROM CHATROOM  WHERE USERID=#{userId} 
 	</select>
 	
 	<!-- 채팅방 멤버 추가 -->
 	<insert id="memberInsert" parameterType="ChatRoomVo">
-		INSERT INTO CHATMEMBER(ROOMID,USERID) VALUES(#{roomId},#{userId})
+		INSERT INTO CHATMEMBER(ROOMID,USERID) VALUES(ROOMID=#{roomId},USERID=#{userId})
 	</insert>
 	
 	
 	<!-- 해당 채팅방 진입 selectone (추가!!) 채팅방 진입하면 -->
 	<select id="findRoomById" resultMap="chatRoomMap">
-		SELECT USERID FROM USERS JOIN CHATMESSAGE USING(userId)  WHERE ROOMID = #{roomId} AND USERID = #{userId}
+		SELECT ROOMID,ROOMNAME,MNAME,USERID FROM CHATROOM JOIN USERS USING(USERID) WHERE ROOMID=#{roomId}
 	</select>
+	
 	<!-- 메세지 입력시 db저장 -->
 	<insert id="messageInsert" parameterType="ChatMessageVo">
 		INSERT INTO CHATMESSAGE (USERID,MESSAGE,ROOMID,cDate) VALUES (#{userId},#{message},#{roomId},SYSTIMESTAMP)
@@ -48,14 +49,13 @@
 	
 	<!-- 대화 내역 보기 -->
 	<select id="viewChat" resultMap="chatMessageMap">
-		select USERID,ROOMID,MNAME,MESSAGE,CDATE from CHATMESSAGE join users USING(userId) WHERE ROOMID = #{roomId} ORDER BY CDATE ASC
+		select ROOMID,MNAME,MESSAGE,CDATE from CHATMESSAGE join users USING(userId) WHERE ROOMID = #{roomId} ORDER BY CDATE ASC
 	</select>
 	
 	<!-- 대화상대 리스트 -->
 	<select id="viewMember" resultMap="chatRoomMap">
 		select userId,mName from users
 	</select>
-	<select id="readRoom" resultMap="chatRoomMap">
-	select * from chatroom  where roomid=#{roomId}
-	</select>
+	
 </mapper>
+

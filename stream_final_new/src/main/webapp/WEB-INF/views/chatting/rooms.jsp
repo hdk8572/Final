@@ -25,7 +25,7 @@
     <%-- ${principal.username} --%>
     <form action="/stream/room" method="post">
         <input type="text" name="roomName" class="form-control" placeholder="Room Name">
-        <!-- <input type="text" name="userId" class="form-control" placeholder="userId Name"> --> 
+       <input type="text" name="userId" class="form-control" placeholder="userId Name" value="${principal.username}">
         
         <div>
     		<c:forEach var="viewMemmber" items="${viewMemmber}">

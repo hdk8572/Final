@@ -230,46 +230,7 @@
             });
 			return;
 		}
-		
-		// 방 제목 미입력 시
-		if($("#s_room_title").val() == "") {
-			swal({
-                title: "",
-                text: "방 제목을 입력해주세요",
-                icon: "error",
-                closeOnClickOutside: false,
-                closeOnEsc: false
-            });
-		} else {
-			$.ajax({
-				url : "<%=request.getContextPath()%>/echo/insertmember"
-					, type: "post"
-					, data: obj
-					, success: function(result) {
-						$(".btn-close").trigger('click');
-						if(result.includes('실패')) {
-							swal({
-			                    title: "",
-			                    text: result,
-			                    icon: "error",
-			                    closeOnClickOutside: false,
-			                    closeOnEsc: false
-			                });
-							$("#menu_chat").get(0).click();
-						} else {
-							swal({
-			                    title: "",
-			                    text: result,
-			                    icon: "success",
-			                    closeOnClickOutside: false,
-			                    closeOnEsc: false
-			                });
-							$("#menu_chat").get(0).click();
-						}
-					}
-			});
-		}
-		
+			
 	});
 </script>
 
