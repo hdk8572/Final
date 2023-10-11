@@ -36,11 +36,13 @@ public class ChatDao {
 	public List<ChatMessageVo> ViewChat(String id){
 		return sqlSession.selectList("chat.viewChat",id);
 	}
-	 public ChatRoomVo findRoomById(String id) {
-	        return sqlSession.selectOne("chat.findRoomById", id);
+	 public ChatRoomVo findRoomById(String roomId) {
+	        return sqlSession.selectOne("chat.findRoomById", roomId);
 	  }
 	public List<ChatRoomVo> ViewMember(){
 			return sqlSession.selectList("chat.viewMember");
 	}
-
+	public ChatRoomVo findWriter(String userId){
+		return sqlSession.selectOne("chat.findWriter",userId);
+	}
 }

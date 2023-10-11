@@ -54,23 +54,25 @@ public class ChatController {
 //	}
 
 	 @GetMapping(value = "/rooms")
-	    public ModelAndView rooms(ModelAndView mv,Principal principal, Model model) throws Exception{        
+	    public ModelAndView rooms(ModelAndView mv,Principal principal) throws Exception{        
 		  	String userId = principal.getName();
 		  	mv.setViewName("chatting/rooms");
 			mv.addObject("list", service.findAllRooms(userId));
-			model.addAttribute("viewMemmber", service.ViewMember());
+			mv.addObject("viewMemmber", service.ViewMember());
 	        return mv;
 	    }
- @GetMapping("/room")
- public ModelAndView getRoom(String roomId, Model model,ModelAndView mv,Principal principal){
- 	String userId = principal.getName();
- 	mv.addObject("ID",userId);
- 	model.addAttribute("room", service.findRoomById(roomId)); 
- 	mv.setViewName("chatting/room");
- 	//만약 mName이 null이면 표시하지 않음(추가예정)
-     model.addAttribute("viewChat", service.ViewChat(roomId));
-     return mv;
- }
+	 @GetMapping("/room")
+	 public ModelAndView getRoom(String roomId,ModelAndView mv,Principal principal){
+	 	String userId = principal.getName();
+	 	mv.addObject("ID",userId);
+	 	mv.addObject("room", service.findRoomById(roomId)); 
+	 	
+	 	//만약 mName이 null이면 표시하지 않음(추가예정)
+	 	mv.addObject("viewChat", service.ViewChat(roomId));
+	 	mv.addObject("name",service.findWriter(userId));
+	 	mv.setViewName("chatting/room");
+	     return mv;
+	 }
 	    @PostMapping(value = "/room")
 	    public String create(@RequestParam String roomName,Principal principal, RedirectAttributes rttr){
 //	    	log.info("# Create Chat Room, roomName: " + roomName + ", userId: " + userId);
