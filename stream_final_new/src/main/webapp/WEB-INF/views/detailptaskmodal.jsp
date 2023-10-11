@@ -77,9 +77,15 @@ function replyLoadList() {
 		},
 			
 			/* makeReplyList, */
-		error: function() {
-			alert("replyLoadList에서 에러났습니다.");
+		error: function(request, status, error) {
+			console.log("오류발생 !!!!!");
+			console.log(request);
+			console.log(status);
+			console.log(error);
 		}
+/* 		error: function() {
+			alert("replyLoadList에서 에러났습니다.");
+		} */
 	});
 	console.log("replyLoadList 실행");
 	

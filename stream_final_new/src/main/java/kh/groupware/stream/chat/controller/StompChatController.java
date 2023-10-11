@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 
 import kh.groupware.stream.chat.model.dao.ChatDao;
 import kh.groupware.stream.chat.model.vo.ChatMessageVo;
-import kh.groupware.stream.chat.model.vo.ChatRoomVo;
 import lombok.RequiredArgsConstructor;
 
 
