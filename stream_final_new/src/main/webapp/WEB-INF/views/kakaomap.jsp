@@ -27,18 +27,18 @@
         }
     };
     
+    //지도 초기화
     function cancelAddEvent(){
-    	//지도 초기화
     	var kakaoaddmap = document.getElementById('map');
     	kakaoaddmap.innerHTML =''; //지도를 비운다.
     	
     	$('.map-hidden').css("display", 'none');
-    	
+
     }
 
 	// showMap 함수 정의
 	function showMap() {
-	    var address = $('#address').val(); // 입력된 주소 가져오기
+	    var address = $('#splace').text(); // 입력된 주소 가져오기
 		
 	// 지도를 생성합니다    
 	var map = new kakao.maps.Map(mapContainer, mapOption);

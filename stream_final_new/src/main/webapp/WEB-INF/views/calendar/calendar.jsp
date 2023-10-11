@@ -76,8 +76,6 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 							Calendar
 							<button class="btn btn-primary addcal" data-bs-toggle="modal" data-bs-target="#addcalmodal" onclick="getMemberProjectListHandler(this)">+일정추가</button>
 						</h2>
-							<%@ include file="/WEB-INF/views/calendar/addcalmodal.jsp" %>
-							<%@ include file="/WEB-INF/views/calendar/updatecalmodal.jsp" %>
 						<div class="container-fluid p-0">
 							<div class="card-header">
 								<!-- 캘린더  -->
@@ -88,7 +86,9 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 								</div>
 							</div>
 						</div>
-				 	 <%@ include file="/WEB-INF/views/calendar/readcalmodal.jsp" %>
+<%@ include file="/WEB-INF/views/calendar/addcalmodal.jsp" %>
+<%@ include file="/WEB-INF/views/calendar/updatecalmodal.jsp" %>
+<%@ include file="/WEB-INF/views/calendar/readcalmodal.jsp" %>
 					 </div>
 				</main>
 				<%@ include file="/WEB-INF/views/footer.jsp"%>
@@ -187,6 +187,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 						$("#readcalmodal.modal  #splace").html(info.event.extendedProps.splace);
 						$("#readcalmodal").modal("toggle"); // readcalmodal 띄우는 코드 toggle로 띄운다.
 						
+						showMap();
 					}
 				});
 				calendar.render();
