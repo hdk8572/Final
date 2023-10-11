@@ -161,7 +161,10 @@ function getProjectMemberList(thisElement){
 				showProjectMemberView(data, htmlTarget)
 			},
 			
-			error:function(request, status, error, data){
+			error:function(request, status, error){
+			console.log(request);
+			console.log(status);
+			console.log(error);
 			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 			}
 		});
