@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,16 +42,21 @@ public class MemberController {
 
 	// 회원가입(update)
 	@PostMapping("/newmember")
-	public String signUp(MemberVo mvo, RedirectAttributes ra) {
+	public String signUp(MemberVo mvo, RedirectAttributes ra) throws Exception {
 		int idCheck = 0;
+		int ccodeCheck = 0;
 		String result = null;
 
 		idCheck = memberService.idCheck(mvo.getUserid());
-
+		ccodeCheck = memberService.ccodeCheck(mvo);
 		if (idCheck == 0) {
 			ra.addFlashAttribute("alertmsg", "존재하지 않는 정보입니다. 링크를 전달받은 이메일 주소를 입력해주세요.");
 			return "redirect:/newmember";
 
+		} else if (ccodeCheck == 0){
+			ra.addFlashAttribute("alertmsg", "회사코드를 잘못 입력하셨습니다.");
+			return "redirect:/newmember";
+			
 		} else {
 
 			mvo.setPassword(bCryptPasswordEncoder.encode(mvo.getPassword()));
@@ -106,4 +112,11 @@ public class MemberController {
 				ra.addFlashAttribute("alertmsg", "회원정보 수정에 성공했습니다.");
 			return "redirect:/projectlist";
 		}
+	
+	@ExceptionHandler
+	public String exception(RedirectAttributes ra) {
+		ra.addFlashAttribute("alertmsg", "오류가 발생하여 메인페이지로 이동합니다.");
+		return "redirect:/";
+	}
+	
 }

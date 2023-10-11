@@ -220,7 +220,7 @@
 				  return false;
 			  }
 
-			  if (phoneToCheck.length === 11 && !/^01/.test(phoneToCheckr)) {
+			  if (phoneToCheck.length === 11 && !/^01/.test(phoneToCheck)) {
 				    alert("01로 시작되는 전화번호를 입력해주세요.")
 				  return false;
 			  }

@@ -16,6 +16,12 @@
 		COUNT(USERID) FROM USERS
 		WHERE USERID=#{userid}
 	</select>
+	
+	<!-- 회사코드 체크 -->
+	<select id="ccodeCheck" parameterType="MemberVo" resultType="_int">
+		SELECT COUNT(USERID) FROM USERS
+		WHERE CCODE=#{ccode} and USERID=#{userid}
+	</select>
 
 	<!-- 마이페이지 -->
 	<select id="showMyPage" parameterType="String"

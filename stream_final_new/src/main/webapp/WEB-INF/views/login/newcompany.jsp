@@ -16,7 +16,8 @@
 <title>기업 가입</title>
 
 <!-- Bootstrap Css -->
-<link href="${pageContext.request.contextPath}/css/streamapp.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/streamapp.css"
+	rel="stylesheet">
 <!-- Newcompany Css-->
 <link href="${pageContext.request.contextPath}/css/newcompany.css"
 	rel="stylesheet">
@@ -44,23 +45,23 @@
 							<p class="lead">기업 정보를 입력 후 그룹웨어 Stream을 이용해보세요!</p>
 						</div>
 						<form action="${pageContext.request.contextPath}/newcompany"
-							method="post">
+							method="post" name="Company" onsubmit="return checkAll();">
 							<div class="card cards">
 								<div class="m-sm-4 ccard">
 									<div class="mb-3">
 										<label class="form-label">회사 명</label> <input
 											class="form-control form-control-lg" type="text" name="cname"
-											placeholder="" />
+											id="cname" placeholder="" />
 									</div>
 									<div class="mb-3">
 										<label class="form-label">회사 전화번호</label> <input
-											class="form-control form-control-lg" type="text"
+											class="form-control form-control-lg" type="text" id="cphone"
 											name="cphone" placeholder="" />
 									</div>
 									<div class="mb-3">
 										<label class="form-label">회사 주소</label> <input
 											class="form-control form-control-lg" type="text"
-											name="caddress" placeholder="" />
+											id="caddress" name="caddress" placeholder="" />
 									</div>
 									<div class="text-center mt-3">
 										<button type="button"
@@ -185,7 +186,70 @@
 		}
 	</script>
 
-<!-- Dept Script -->
+	<!-- 회사가입 항목체크 -->
+	<script>
+	function checkAll(){
+		if(!checkCname(Company.cname.value)){
+			return false;
+		}else if(!CheckCphone(Company.cphone.value)){
+			return false;
+		} else if(!CheckCaddress(Company.caddress.value)){
+			return false;
+		}
+		return true;
+		}
+		
+	function checkBlank(value, dataName){
+	if (value == ""){
+		alert(dataName + " 입력해주세요!");
+		return false;
+	}
+	return true;
+	}
+
+function checkCname(cname){
+	if(!checkBlank(cname, "회사명을"))
+		return false;
+	var cnameToCheck = /^[A-Za-z가-힣]{2,25}$/;
+	if(!nameToCheck.test(cname)){
+		alert("회사명 형식이 옳지 않습니다.");
+		return false;
+	}
+	return true;
+}
+	function checkCphone(cphone){
+	if(!checkBlank(cphone, "회사 전화번호를"))
+		return false;
+	 const phoneToCheck = userphone.replace(/\D/g, '');
+	  if (phoneToCheck.length < 10 || phoneToCheck.length > 11) {
+	    alert("10-11자 사이의 숫자를 입력해주세요.")
+		  return false;
+	    
+	  }
+
+	  if (phoneToCheck.length === 10 && !/^01/.test(phoneToCheck)) {
+		    alert("01로 시작되는 전화번호를 입력해주세요.")
+		  return false;
+	  }
+
+	  if (phoneToCheck.length === 11 && !/^01/.test(phoneToCheck)) {
+		    alert("01로 시작되는 전화번호를 입력해주세요.")
+		  return false;
+	  }
+	  if (!/^\d+$/.test(phoneToCheck)) {
+		    alert("전화번호 형식이 옳지 않습니다.")
+	    return false;
+	  }
+	  return true;
+	}
+	function checkCaddress (caddress){
+	if(!checkBlank(caddress, "회사주소를")){
+		return false;
+	}
+	return true;
+	}
+</script>
+	<!-- Dept Script -->
 	<script>
 		var dRowCount = 0;
 
@@ -222,7 +286,7 @@
 		}
 	</script>
 
-<!-- Email Script -->
+	<!-- Email Script -->
 	<script>
 		var eRowCount = 0;
 

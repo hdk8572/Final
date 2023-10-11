@@ -142,7 +142,7 @@
 		function checkBlank(value, dataName) {
 			if (value == "") {
 				alert(dataName + " 입력해주세요!");
-				return false
+				return false;
 			}
 			return true;
 		}
@@ -177,7 +177,7 @@
 			if (!checkBlank(username, "이름을")) {
 				return false;
 			}
-			var nameToCheck = /^[가-힣]{2,5}$/;
+			var nameToCheck = /^[A-Za-z가-힣]{2,15}$/;
 			if (!nameToCheck.test(username)) {
 				alert("이름 형식이 옳지 않습니다.");
 				return false;
@@ -223,7 +223,11 @@
 			}
 			$("#deptdrop").html(listHtml);
 		}
-		function deptError() {
+		function deptError(request, status, error) {
+			console.log(request);
+			console.log(status);
+			console.log(error);
+			alert("code: " +request.status + "\n" + "message: " + request.responseText+"\n" + "error: " + error )
 			var listHtml = "";
 			listHtml += `<option selected>해당하는 부서가 없습니다</option>`;
 			$("#deptdrop").html(listHtml);

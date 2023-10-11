@@ -24,8 +24,8 @@
 			keyColumn="ccode" resultType="string">
 			SELECT 'C' || TO_CHAR(COMPANY_SEQUENCE.NEXTVAL, 'FM000') ccode FROM DUAL
 		</selectKey>
-		INSERT INTO COMPANY (CCODE, CNAME, CPHONE, CADDRESS, CPASSWORD) VALUES
-		(#{ccode}, #{cname}, #{cphone}, #{caddress}, 12345)
+		INSERT INTO COMPANY (CCODE, CNAME, CPHONE, CADDRESS) VALUES
+		(#{ccode}, #{cname}, #{cphone}, #{caddress})
 	</insert>
 	<!-- TODO! 12345 암호화해서 넣어야함 -->
 

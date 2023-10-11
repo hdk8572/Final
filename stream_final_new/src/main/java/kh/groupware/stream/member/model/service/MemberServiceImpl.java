@@ -15,7 +15,7 @@ public class MemberServiceImpl implements MemberService {
 	
 	//회원가입(update)
 	@Override
-	public int signUp(MemberVo mvo) {
+	public int signUp(MemberVo mvo) throws Exception{
 		return memberDao.signUp(mvo);
 	}
 	
@@ -23,6 +23,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int idCheck(String userid) {
 		return memberDao.idCheck(userid);
+	}
+	//회사코드 체크
+	@Override
+	public int ccodeCheck(MemberVo mvo) {
+		return memberDao.ccodeCheck(mvo);
 	}
 	
 	// 마이페이지
@@ -40,5 +45,6 @@ public class MemberServiceImpl implements MemberService {
 	public int editMyPage(MemberVo mvo) {
 		return memberDao.editMyPage(mvo);
 	}
+
 
 }

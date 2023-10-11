@@ -17,10 +17,10 @@ public class CompanyDao {
 
 	// 회사회원가입 1: COMPANY insert
 	public int newCompany(CompanyInsertParam cvo) {
-		System.out.println("before:" + cvo);
+		System.out.println("[jy] before:" + cvo);
 		int result = sqlSession.insert("company.newCompany", cvo);
-		System.out.println("after :" + cvo);
-		System.out.println("result :" + result);
+		System.out.println("[jy] after :" + cvo);
+		System.out.println("[jy] result :" + result);
 		return result;
 	}
 
