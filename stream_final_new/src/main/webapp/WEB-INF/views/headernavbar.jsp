@@ -103,13 +103,16 @@
 						<a id="load">더보기</a>
 					</div>
 				</div></li>
+			<c:forEach items="${principal.authorities}" var="authority">
+				<c:if test="${authority.authority eq 'ROLE_M'}">
+					<div class="container">
+						<div class="sidesheet"></div>
+						<button id="popup">채팅</button>
+					</div>
+				</c:if>
+			</c:forEach>
 
-			<div class="container">
-				<div class="sidesheet"></div>
-				<button id="popup">채팅</button>
-			</div>
 
-		
 
 			<li class="nav-item dropdown"><a
 				class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
@@ -170,12 +173,12 @@
 					data-feather="phone"></i> <span>전화번호</span></td>
 				<td class="mp-content" data-field="mphone"></td>
 			</tr>
-			
-			<c:if test="${principal.authorities eq 'ROLE_M'}" >
-			<tr>
-				<td colspan="2" class="mp-button"><button
-						class="btn mpbtn btn-primary btn-sm mp-button" id="editmypage">정보수정</button></td>
-			</tr>
+
+			<c:if test="${principal.authorities eq 'ROLE_M'}">
+				<tr>
+					<td colspan="2" class="mp-button"><button
+							class="btn mpbtn btn-primary btn-sm mp-button" id="editmypage">정보수정</button></td>
+				</tr>
 			</c:if>
 		</table>
 	</div>

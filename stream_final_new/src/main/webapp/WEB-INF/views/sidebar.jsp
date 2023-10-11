@@ -58,9 +58,9 @@
 				</c:if>
 
 
-				<c:if test="${principal.authorities eq 'ROLE_C' }">
+				<c:if test="${authority.authority eq 'ROLE_C' }">
 					<li class="sidebar-item"><a class="sidebar-link"
-						href="${pageContext.request.contextPath}/#"> <i
+						href="${pageContext.request.contextPath}/company/emailsend"> <i
 							class="align-middle" data-feather="align-left"></i> <span
 							class="align-middle">직원 초대</span>
 					</a></li>

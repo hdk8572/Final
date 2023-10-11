@@ -62,11 +62,17 @@
 		#{deptno}, MNAME = #{mname}, MRANK = #{mrank}, MPHONE = #{mphone}, ENABLED= 1 WHERE
 		USERID = #{userid}
 	</select>
+	
 	<!-- 마이페이지 수정 화면 -->
 	<select id="showEditMyPage" parameterType="String" resultType="MyPageVo">
 		SELECT U.MNAME, U.MRANK, U.MPHONE, U.CCODE, D.DEPTNAME, D.DEPTNO FROM (SELECT * FROM USERS
 		WHERE USERID = #{userid}) U INNER JOIN DEPT D ON U.DEPTNO = D.DEPTNO
 		AND U.CCODE = D.CCODE
+	</select>
+	
+	<!-- 회사코드 가져오기 -->
+	<select id="selectCcode" parameterType="String" resultType="String">
+		SELECT CCODE FROM USERS WHERE USERID = #{cname}
 	</select>
 	
 	

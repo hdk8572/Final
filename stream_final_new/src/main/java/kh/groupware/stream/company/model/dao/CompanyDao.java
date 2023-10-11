@@ -36,6 +36,10 @@ public class CompanyDao {
 	public int newCompanyId (CompanyInsertParam cvo) {
 		return sqlSession.insert("member.newCompanyId", cvo);
 	}
+	
+	public String selectCcode(String cname) {
+		return sqlSession.selectOne("member.selectCcode", cname);
+	}
 
 	/*
 	 * // 로그인시 부서조회 public String selectOne(CompanyVo cvo) { return
