@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <!-- 모달 -->
-<div id="readScheduleModal" class="modal project right fade" aria-labelledby="myModalLabel">
+<div id="readcalmodal" class="modal project right fade" aria-labelledby="myModalLabel">
 <div class="modal-dialog pcal">
   <!-- Modal content -->
   <div class="modal-content pcal">

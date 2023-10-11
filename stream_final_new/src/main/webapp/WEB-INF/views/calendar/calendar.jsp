@@ -157,7 +157,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 				 	/* 일정 상세정보를 띄우겠다.*/
 					eventClick: function(info) {
 						console.log(info.event.title);
-						var event = info.event;
+						var event = info.event; //fullcalendar 이벤트 객체의 일부
 						//작성자!!!!임 (다른사람도 적은 일정들)
 						console.log(info.event.extendedProps.sno);
 						
@@ -166,19 +166,19 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 						for(var i=0; i<info.event.extendedProps.attenduseridList.length; i++){
 							htmlval += '<div>'+info.event.extendedProps.attenduseridList[i]+'</div>';
 						}
-						$("#readScheduleModal.modal  #attenduseridList").html(htmlval);
+						$("#readcalmodal.modal  #attenduseridList").html(htmlval);
 						
 						//TODO 찍어봐라
 						console.log("info.event.id!!!!!!!");
 						console.log(info.event.id);
 						
-						$("#readScheduleModal.modal  #title").html(info.event.title); //띄우려는 모달이랑 이름 맞춰야한다.
-						$("#readScheduleModal.modal  #userid").html(info.event.extendedProps.userid); //extendedProps -> api에서 가져옴, 값을 띄우는 걸 도와줌
-						$("#readScheduleModal.modal  #start").html(info.event.startStr);
-						$("#readScheduleModal.modal  #end").html(info.event.endStr);
-						$("#readScheduleModal.modal  #smemo").html(info.event.extendedProps.smemo);
-						$("#readScheduleModal.modal  #splace").html(info.event.extendedProps.splace);
-						$("#readScheduleModal").modal("toggle");
+						$("#readcalmodal.modal  #title").html(info.event.title); //띄우려는 모달이랑 이름 맞춰야한다.
+						$("#readcalmodal.modal  #userid").html(info.event.extendedProps.userid); //extendedProps -> api에서 가져옴, 값을 띄우는 걸 도와줌
+						$("#readcalmodal.modal  #start").html(info.event.startStr);
+						$("#readcalmodal.modal  #end").html(info.event.endStr);
+						$("#readcalmodal.modal  #smemo").html(info.event.extendedProps.smemo);
+						$("#readcalmodal.modal  #splace").html(info.event.extendedProps.splace);
+						$("#readcalmodal").modal("toggle"); // readcalmodal 띄우는 코드 toggle로 띄운다.
 						
 					}
 				});
