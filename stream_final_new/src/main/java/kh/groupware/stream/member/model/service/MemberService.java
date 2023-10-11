@@ -11,6 +11,7 @@ public interface MemberService {
 	MyPageVo showMyPage(String userid);
 	MyPageVo showEditMyPage(String userid);
 	int editMyPage(MemberVo mvo);
+	int editMyPage2(MemberVo mvo);
 	
 	
 

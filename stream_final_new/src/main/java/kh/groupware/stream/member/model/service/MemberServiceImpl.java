@@ -45,6 +45,10 @@ public class MemberServiceImpl implements MemberService {
 	public int editMyPage(MemberVo mvo) {
 		return memberDao.editMyPage(mvo);
 	}
+	@Override
+	public int editMyPage2(MemberVo mvo) {
+		return memberDao.editMyPage2(mvo);
+	}
 
 
 }

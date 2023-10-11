@@ -99,19 +99,29 @@ public class MemberController {
 	// 마이페이지 정보수정
 	@PostMapping("/member/editmypage")
 	public String editMyPage(MemberVo mvo, RedirectAttributes ra) {
-		int idCheck=0;
 		String result = null;
-		System.out.println("[jy] 정보수정시 mvo: "+ mvo);
+		System.out.println("[jy] 정보수정시 mvo: " + mvo);
+		if (mvo.getPassword() == null || mvo.getPassword().equals("")) {
+			int result2 = memberService.editMyPage2(mvo);
+			if (result2 == 0) {
+				ra.addFlashAttribute("alertmsg", "회원정보 수정에 실패하였습니다. 다시 시도해주세요!");
+				return "redirect:/member/editmypage";
+			} else
+				ra.addFlashAttribute("alertmsg", "회원정보 수정에 성공했습니다.");
+		} else {
+			mvo.setPassword(bCryptPasswordEncoder.encode(mvo.getPassword()));
 			int result1 = memberService.editMyPage(mvo);
 
 			if (result1 == 0) {
 				ra.addFlashAttribute("alertmsg", "회원정보 수정에 실패하였습니다. 다시 시도해주세요!");
-				return "redirect:/newmember";
+				return "redirect:/member/editmypage";
 
 			} else
 				ra.addFlashAttribute("alertmsg", "회원정보 수정에 성공했습니다.");
-			return "redirect:/projectlist";
+
 		}
+		return "redirect:/projectlist";
+	}
 	
 	@ExceptionHandler
 	public String exception(RedirectAttributes ra) {
