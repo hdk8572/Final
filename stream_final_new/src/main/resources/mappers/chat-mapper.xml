@@ -23,7 +23,8 @@
 	
 	<!-- 만든 채팅방 전체 리스트 조회 -->
 	<select id="findAllRooms" resultMap="chatRoomMap">
-		SELECT * FROM CHATROOM  <!-- WHERE USERID=#{userId} ROOM생성이 안되어있으면 이 주석 막아야됨-->
+		<!-- SELECT * FROM CHATROOM WHERE USERID=#{userId} -->
+		SELECT ROOMNAME FROM CHATMEMBER JOIN CHATROOM USING(USERID)  WHERE USERID=#{userId}
 	</select>
 	
 	<!-- 채팅방 멤버 추가 -->

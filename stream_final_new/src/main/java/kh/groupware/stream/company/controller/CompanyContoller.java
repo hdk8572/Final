@@ -1,5 +1,6 @@
 package kh.groupware.stream.company.controller;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 
@@ -47,6 +48,7 @@ public class CompanyContoller {
 
 	@PostMapping("/newcompany")
 	public String newCompany(CompanyInsertParam cvo, RedirectAttributes ra) {
+		
 		if (cvo.getEmailArr() == null || cvo.getEmailArr().equals("")) {
 			ra.addFlashAttribute("alertmsg", "최소 한개의 이메일을 등록해주세요!");
 			return "redirect:/newcompany";
@@ -73,10 +75,46 @@ public class CompanyContoller {
 		return "redirect:/";
 	}
 
-	// 회사 사원 초대(추가)
+	// 회사 사원초대(추가) 화면
 	@GetMapping("/company/emailsend")
 	public String emailSend() {
 		return "/company/emailsend";
+	}
+	
+	// 회사 사원초대(추가)
+	@PostMapping("/company/emailsend")
+	public String inviteMember(CompanyInsertParam cvo, RedirectAttributes ra, Principal principal) {
+		String cname = principal.getName();
+		String ccode = companyService.selectCcode(cname);
+		
+		cvo.setCcode(ccode);
+		System.out.println("[jy] cvo.getCcode(): " + cvo.getCcode());
+		System.out.println("[jy] cvo.getDefaultDeptCode(): " + cvo.getDefaultDeptCode());
+		
+		
+		if (cvo.getEmailArr() == null || cvo.getEmailArr().equals("")) {
+			ra.addFlashAttribute("alertmsg", "최소 한개의 이메일을 등록해주세요!");
+			return "redirect:/company/emailsend";
+		} else {
+			int result = companyService.inviteMember(cvo);
+			try {
+				for (String email : cvo.getEmailArr()) {
+					MimeMessage mail = mailSender.createMimeMessage();
+					MimeMessageHelper mailHelper = new MimeMessageHelper(mail, "UTF-8");
+
+					mailHelper.setTo(email); // for문으로 아이디 받음
+					mailHelper.setSubject("업무협업툴 Stream으로 여러분을 초대합니다!"); // Stream으로 여러분을 초대합니다!
+					mailHelper.setText("다음 Url에 접속하셔서 " + "회원가입을 진행해주세요!" + "※회원가입시 본 이메일을 전송받은 이메일을 입력해주셔야합니다※"
+							+ "회사코드: " + cvo.getCcode() + "http://127.0.0.1:8090/stream/newmember");
+
+					mailSender.send(mail);
+				}
+			} catch (MessagingException e) {
+				e.printStackTrace();
+			}
+		}
+		ra.addFlashAttribute("alertmsg", "회사등록에 성공하였습니다. 문자로 회사 가입정보를 보내드렸습니다 확인해주세요!");
+		return "redirect:/";
 	}
 //
 //	@PostMapping(value = "/mailsend")

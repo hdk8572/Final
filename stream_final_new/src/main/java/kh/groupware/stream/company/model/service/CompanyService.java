@@ -13,6 +13,8 @@ public interface CompanyService {
 	//회사회원가입 3: USERS insert
 	//회사회원가입 4: USERS Company Id insert
 	public int newCompany(CompanyInsertParam cvo);
+	public int inviteMember(CompanyInsertParam cvo);
+	public String selectCcode(String cname);
 
 //	public int newDept (CompanyInsertParam cvo);
 //	public int newUsers (CompanyInsertParam cvo);
