@@ -13,7 +13,7 @@
 					<div class="card-header ptaskTitle">
 						<h2 class="ptaskTitle"><b>업무 작성</b></h2>
 					</div>
-						<form action="${pageContext.request.contextPath}/insertPtask" method="post">					
+						<form action="${pageContext.request.contextPath}/insertPtask" method="post" encType="multipart/form-data">					
 						<input type="text" class="form-control title" name="ttitle" placeholder="제목을 입력하세요.">
 						<div class="d-flex align-items-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock align-middle me-2"><circle cx="12" cy= "12 " r= "10 "></circle><polyline points= "12 6 12 12 16 14 "></polyline></svg>
@@ -29,7 +29,8 @@
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2">
 							  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r= "4"></circle>
 							</svg>
-							<input type= "text" class= "form-control manager ml-2" name="tmember" placeholder= "담당자">
+							<input type="text" class= "form-control manager ml-2" name="tmember" placeholder= "담당자">
+							<input type="file" class= "btn btn-primary fileUploadBtn" name="upload" >
 						</div>
 						<textarea class="form-control input" id="summernote" rows="10" name="tcontent" placeholder="내용을 입력해주세요"></textarea>
 						<input type="hidden" name="tdate" value=sysdate>

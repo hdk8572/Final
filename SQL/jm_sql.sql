@@ -287,7 +287,7 @@ select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartda
     		order by 
             pno asc, 
     bref desc, 
-    brelevel asc, 
+    brelevel asc
 -- <choose>
 --    <when test="ordertype == ttitle">
 --        ttitle asc
@@ -337,3 +337,8 @@ select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, to_char(tdate, 
     		where tmember = 'sple@kh.co.kr' or t.userid ='sple@kh.co.kr'
     		order by to_number(pno) desc, to_number(bref) desc, brelevel asc, to_number(brestep) asc
   ;
+select ttitle, tstatus, tmember, tstartdate, tenddate, tdate, tno, pno, pname, userid, bref, brestep, brelevel
+    from task join project using(pno, userid)
+    where tmember = 'sple@kh.co.kr' or userid = 'sple@kh.co.kr'
+    order by to_number(pno) desc, to_number(bref) desc,  to_number(tno) desc
+    ;

@@ -22,6 +22,7 @@
 		<typeAlias type="kh.groupware.stream.chat.model.vo.ChatRoomVo" alias="ChatRoomVo"/>
 		<typeAlias type="kh.groupware.stream.admin.vo.AdminVo" alias="AdminVo"/>
 		<typeAlias type="kh.groupware.stream.reply.model.vo.ReplyVo" alias="ReplyVo"/>
+		<typeAlias type="kh.groupware.stream.files.model.vo.FileVo" alias="FileVo"/>
 	</typeAliases>
 	
 	<mappers>
@@ -36,6 +37,7 @@
 		<mapper resource="mappers/chat-mapper.xml"/>
 		<mapper resource="mappers/admin-mapper.xml"/>
 		<mapper resource="mappers/reply-mapper.xml"/>
+		<mapper resource="mappers/file-mapper.xml"/>
 	</mappers>	
 	
 </configuration>

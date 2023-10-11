@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>

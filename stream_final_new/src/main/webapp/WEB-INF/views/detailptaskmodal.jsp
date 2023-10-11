@@ -30,20 +30,21 @@
 									  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r= "4"/>
 									</svg>
 									<div class= "form-control manager ml-2 userid"></div>
+									<div class=""></div>
 								</div>
 								<div class="form-control detail-content input tcontent"></div>
 								<input type="hidden" name="pno">
 								<input type="hidden" name="tno">
 							</form>
 							<div>
-								<form class="wrap-reply">
+								<form class="wrap-reply" action="${pageContext.request.contextPath}/doUpload" method="post" enctype="multipart/form-data">
 									<div class="reply-input">
-										<input type="text" class="form-control replyInput" name="rcontent" placeholder="댓글 입력해주세요 - Enter 클릭 시 입력됩니다.">
+										<input type="text" class="form-control replyInput" name="rcontent" placeholder="댓글 입력창 - Enter 클릭 시 입력됩니다.">
+										<input type="file" class="fileUpload">
 										<input type="hidden" name="tno">
 										<input type="hidden" name="userid" value="${principal.username}">
 									</div>
 									<div class="replyList">
-<!--  -->
 									</div>
 								</form>
 							</div>
@@ -77,15 +78,9 @@ function replyLoadList() {
 		},
 			
 			/* makeReplyList, */
-		error: function(request, status, error) {
-			console.log("오류발생 !!!!!");
-			console.log(request);
-			console.log(status);
-			console.log(error);
-		}
-/* 		error: function() {
+		error: function() {
 			alert("replyLoadList에서 에러났습니다.");
-		} */
+		}
 	});
 	console.log("replyLoadList 실행");
 	
@@ -109,6 +104,7 @@ function makeReplyList(data) {
 				<small class="text-muted">\${rl.rdate}</small><br>
 			</div>
 		</div>
+		<hr>
 		`;
 	}
 	$(".replyList").html(replyHtml);
@@ -142,25 +138,36 @@ function makeReplyList(data) {
 	
 	$(document).on("click", ".replyEditBtn", function() {
 		/* $(this).closest("p").html("<input type='text' class='form-control input' name='rcontent' placeholder='Enter 클릭 시 입력됩니다.'>"); */
+		
+		
 		$(this).closest(".d-flex.align-items-start").find("P").html("<input type='text' class='form-control updateInputReply' id='updateReplyInput' name='rcontent' placeholder='수정할 내용 입력해주세요.'>");
 		
+		
+		<!--- 댓글 수정 기능 --->
 		$(".form-control.updateInputReply").keydown(function(event) {
 			if(event.keyCode == 13) {
 				/* event.preventDefault(); */
 				var targetRcontentUpdate = $(this).closest(".d-flex.align-items-start").find("#updateReplyInput").val();
-				
-				$.ajax({
-					url: "${pageContext.request.contextPath}/doUpdateReply",
-					type: "post",
-					dataType: "json",
-					data: {rno: targetRno, rcontent: targetRcontentUpdate},
-					success: function(result) {
-						replyLoadList();
-					},
-					error: function() {
-						alert("실패했습니다.");
-					}
-				});
+				var confirm_val = confirm("댓글을 수정하시겠습니까?");
+				if(confirm_val == true){
+				    <!--- 확인 or yes 버튼을 눌렀을 때 실행 될 함수 구현 --->
+				    $.ajax({
+						url: "${pageContext.request.contextPath}/doUpdateReply",
+						type: "post",
+						dataType: "json",
+						data: {rno: targetRno, rcontent: targetRcontentUpdate},
+						success: function(result) {
+							alert("수정됬습니다.");	
+							replyLoadList();
+						},
+						error: function() {
+							alert("수정 작업을 취소했습니다.");
+						}
+					});
+				}else if(confirm_val == false){
+					alert("수정 작업을 취소했습니다.");
+					replyLoadList();
+				}
 			} else {
 				null;
 			}
@@ -170,7 +177,6 @@ function makeReplyList(data) {
 		/* var targetRcontent = $(this).find("#updateReplyInput").val(); */
 		var targetRcontent = $(this).closest(".d-flex.align-items-start").find("#updateReplyInput").val();
 
-		console.log(targetRcontent);
 		
  		$.ajax({
 			url: "${pageContext.request.contextPath}/goUpdateReply",
@@ -187,23 +193,29 @@ function makeReplyList(data) {
  		
 	});
 	
+	<!--- 댓글 삭제 기능 --->
 	$(document).on("click", ".replyDeleteBtn", function() {
 		var targetRno = $(this).closest(".d-flex.align-items-start").find("input[name=rno]").val();
 		console.log(targetRno);
-		$.ajax({
-			url: "${pageContext.request.contextPath}/doDeleteReply",
-			type: "post",
-			dataType: "json",
-			data: {rno: targetRno},
-			success: function(result) {
-				replyLoadList();
-			},
-			error: function() {
-				alert("doDeleteReply에서 에러났습니다.");
-			}
-		});
+		var confirm_val = confirm("댓글을 삭제하시겠습니까?");
+		if(confirm_val == true){
+		    <!--- 확인 or yes 버튼을 눌렀을 때 실행 될 함수 구현 --->
+			$.ajax({
+				url: "${pageContext.request.contextPath}/doDeleteReply",
+				type: "post",
+				dataType: "json",
+				data: {rno: targetRno},
+				success: function(result) {
+					replyLoadList();
+				},
+				error: function() {
+					alert("doDeleteReply에서 에러났습니다.");
+				}
+			});
+		}else if(confirm_val == false){
+			replyLoadList();
+		}
 	});
-	
 	
 </script>
 

@@ -20,13 +20,15 @@
 			<result property="bref" column="bref"/>
 			<result property="brestep" column="brestep"/>
 			<result property="brelevel" column="brelevel"/>
+			<result property="ordertype" column="ordertype"/>	
 		</collection>
 	</resultMap>
+	
 	<!-- 프로젝트, 업무 뿌리기 -->
 	<select id="projectNameList" resultMap="maintaskVoMap" parameterType="string">
 		select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
     		from project p right join task t using (pno)
-    		where tmember = 'sple@kh.co.kr' or t.userid ='sple@kh.co.kr'
+    		where tmember = #{userid} or t.userid = #{userid}
     		order by to_number(pno) desc, to_number(bref) desc, brelevel asc, to_number(brestep) asc
 	</select>
 	<!--  
@@ -45,10 +47,13 @@
 	 
 	<!-- 프로젝트 기준 화면 뿌리기 -->
 	<select id="projectOneTaskList" resultMap="maintaskVoMap" parameterType="string">
-		select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
+		select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
     		from project p right join (select * from task t where pno=#{pno}) t using (pno)
     		where tmember = #{userid} or t.userid=#{userid} 
-    		order by to_number(bref) desc, brelevel asc, to_number(brestep) asc, tno desc
+    		order by to_number(pno) desc, to_number(bref) desc, brelevel asc, 
+    		
+    		
+    		to_number(brestep) asc
 	</select>
 	
 	 <!-- 
@@ -90,4 +95,24 @@
 			where pno=#{pno}
 	</select>
 	
+	<select id="taskSortedList" resultMap="maintaskVoMap" parameterType="string">
+		select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
+    		from project p right join task t using (pno)
+    		where tmember = #{userid} or t.userid = #{userid}
+    		order by to_number(pno) desc, to_number(bref) desc, brelevel asc, 
+    	<choose>
+    		<when test="ordertype == ttitle1">
+        		ttitle asc
+    		</when>
+    		<when test="ordertype == tstatus1">
+      			tstatus asc
+    		</when>
+		    <when test="ordertype == tstartdate1">
+		      tstartdate asc
+		    </when>
+		    <otherwise>
+		        to_number(brestep) asc
+		    </otherwise>
+		</choose>
+	</select>
 </mapper>

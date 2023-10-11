@@ -1,29 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+ <sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal"/>
+</sec:authorize>
 <!DOCTYPE html>
 <html>
 <head>
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<style>
+.alert-secondary{
+	color: green;
+}
+.alert-warning{
+	color: pink;
+}
+</style>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+
 	<div class="container">
 		<div class="col-6">
 			<h1>${room.roomName}</h1>
+		 <%-- 해당 브라우저에 로그인한 사람이 만든 사람 즉 작성자 ${room.userId} = green --%>
 		</div>
 		<div>
-			<div class="col-6" id="msgArea">
-				<c:if test="${!empty viewChat}">
-					<c:forEach items="${viewChat}" var="item">
-						<div class='alert alert-secondary'>
-							<b> ${item.mName}: ${item.message} </b>
-						</div>
-					</c:forEach>
-				</c:if>
+			<div id="msgArea" class="col-6" >
+				<c:choose>
+					<c:when test="${room.userId eq ID}">
+						<c:forEach items="${viewChat}" var="item">
+							<div class='alert alert-secondary'>
+								<b> ${item.mName}: ${item.message} </b>
+							</div>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${viewChat}" var="item">
+							<div class='alert alert-warning'>
+								<b> ${item.mName}: ${item.message} </b>
+							</div>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
 			</div>
 			<div class="input-group mb-3">
 				<input type="text" id="msg" class="form-control">
@@ -34,15 +58,17 @@
 		</div>
 		<div class="col-6"></div>
 	</div>
+
 	<script>
 		$(document).ready(function() {
 
-			var userId = "${ID}";
+			var mainId = "${room.userId}"; //방만든사람 
 			var roomId = "${room.roomId}";
-			var username = "${ID}"; 
-			var name = "${room.mName}";
+			var username = "${principal.username}";  //현재 로그인 사용자
+			var roomname = "${room.roomName}"; 			
 			
-			console.log(userId + ", " + roomId + ", " + username);			
+			
+			console.log(mainId + ", " + roomId + ", " + username+", "+roomname+",");		
 			var sockJs = new SockJS("/stream/stomp/chat");
 			var stomp = Stomp.over(sockJs);
 
@@ -51,26 +77,25 @@
 
 				stomp.subscribe("/sub/chat/room/" + roomId, function(chat) {
 					var content = JSON.parse(chat.body);
-					var userId = content.userId;
+					var userId = content.userId; //현재 로그인 사용자
 					var message = content.message;
 					var str = '';
-					if (userId === username) {
+					
+					if (mainId === username) {
 						str = "<div class='alert alert-secondary'>";
-						str += "<b>" + username + " : " + message + "</b>";
+						str += "<b>" + userId + " : " + message + "</b>";
 						str += "</div>";
 						$("#msgArea").append(str);
 					} else {
 						str += "<div class='alert alert-warning'>";
-						str += "<b>" + username + " : " + message + "</b>";
+						str += "<b>" + userId + " : " + message + "</b>";
 						str += "</div>";
 						$("#msgArea").append(str);
 					}
 				});
-
+				
 				$("#button-send").on("click", function(e) {
-					var msg = document.getElementById("msg");
-
-					
+					var msg = document.getElementById("msg");				
 					stomp.send('/pub/chat/message', {}, JSON.stringify({
 						roomId : roomId,
 						message : msg.value,
@@ -79,22 +104,6 @@
 					msg.value = '';
 				});
 				
-				$("#msg").on("keyup", function(e){
-					if(event.keyCode === 13){
-						console.log(username + ":" + msg.value);
-						stomp.send('/pub/chat/message', {}, JSON.stringify({
-							roomId : roomId,
-							message : msg.value,
-							userId : username
-						}));
-						msg.value = '';
-					}
-				});
-
-				
-
-				
-
 				stomp.send('/pub/chat/enter', {}, JSON.stringify({
 					roomId : roomId,
 					userId : username

@@ -35,6 +35,18 @@ public class CompanyServiceImpl implements CompanyService {
 		return result;
 	}
 
+	@Override
+	public int inviteMember(CompanyInsertParam cvo) {
+		int result = companyDao.newUsers(cvo);
+		return result;
+	}
+
+	@Override
+	public String selectCcode(String cname) {
+		String result = companyDao.selectCcode(cname);
+		return result;
+	}
+
 	
 	
 	

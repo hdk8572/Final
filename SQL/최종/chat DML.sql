@@ -144,13 +144,18 @@ SELECT ROOMID,ROOMNAME,MNAME,userid FROM CHATROOM JOIN USERS USING(USERID) WHERE
 SELECT * FROM CHATROOM where userid='sample@kh.co.kr';
  
 
-
+SELECT ROOMID,ROOMNAME,MNAME,USERID FROM CHATROOM JOIN USERS USING(USERID) WHERE ROOMID='1';
 DROP SEQUENCE chat_sequence;
 create SEQUENCE chat_sequence
 start with 1
 INCREMENT by 1;
-SELECT * FROM CHATROOM  WHERE ROOMID='22';
+SELECT * FROM CHATROOM  ;
 SELECT * FROM CHATROOM  JOIN chatmember USING(USERID) WHERE USERID='sample@kh.co.kr';
+
+INSERT INTO CHATMEMBER VALUES ('1', 'sple@kh.co.kr');
+SELECT * FROM CHATMEMBER JOIN CHATROOM USING(USERID)  WHERE USERID='sple@kh.co.kr';
+SELECT *FROM CHATROOM;
+SELECT * FROM CHATROOM  WHERE USERID='mplsam@kh.co.kr';
 -------------------------------------
 SELECT * FROM USERS;
 SELECT * FROM chatmember;
@@ -165,15 +170,30 @@ from users;
 INSERT INTO CHATMEMBER VALUES ('21', 'sample@kh.co.kr');
 INSERT INTO CHATMEMBER VALUES ('21', 'mplsam@kh.co.kr');
 INSERT INTO CHATMEMBER VALUES ('1', 'sple@kh.co.kr');
-INSERT INTO CHATMEMBER VALUES ('1', 'spam@kh.co.kr');
+INSERT INTO CHATMEMBER VALUES ('1', 'mplsam@kh.co.kr');
+INSERT INTO CHATMEMBER VALUES ('1', 'sql@ctest.co.kr');
+select * from chatmember;
 
+--findallroom
+select USERID from chatroom JOIN CHATMEMBER USING(ROOMID) CHATMEMBER  where userid='mplsam@kh.co.kr';
+SELECT * FROM CHATROOM;
+---6번방에 인서트
+INSERT INTO CHATMEMBER VALUES ('6', 'sample@kh.co.kr');
+INSERT INTO CHATMEMBER VALUES ('6', 'mplsam@kh.co.kr');
+
+
+
+select * from users;
+select mname from chatmember join users using (userid) where userid='mplsam@kh.co.kr';
+select * from chatMember join users using (userId) where userId='mplsam@kh.co.kr';
+JOIN chatmember USING(USERID)
 --채팅방 진입 USERID를 세션으로 받아서 진입
 SELECT MNAME FROM USERS WHERE USERID = 'sample@kh.co.kr';
-
+SELECT ROOMID,MNAME,USERID FROM chatmember JOIN USERS USING(USERID) WHERE ROOMID='1' AND USERID='mplsam@kh.co.kr';
 
 --INSERT INTO CHATROOM (ROOMID,ROOMNAME,USERID) VALUES (#{roomId},#{USERID},#{roomName})
 INSERT INTO CHATROOM (ROOMID,ROOMNAME) VALUES (chat_sequence.NEXTVAL,'roomname확인123');
-INSERT INTO CHATROOM (ROOMID,ROOMNAME,USERID) VALUES (chat_sequence.NEXTVAL,'roomname확인2','sample@kh.co.kr');
+INSERT INTO CHATROOM (ROOMID,ROOMNAME,USERID) VALUES (chat_sequence.NEXTVAL,'roomname확인2','sple@kh.co.kr');
 DELETE FROM CHATROOM;
 
 select ROOMID,MNAME,MESSAGE,CDATE from CHATMESSAGE join users USING(userId) WHERE ROOMID = '21' ORDER BY CDATE ASC;
