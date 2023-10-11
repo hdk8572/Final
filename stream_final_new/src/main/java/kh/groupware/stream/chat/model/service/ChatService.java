@@ -13,11 +13,12 @@ import kh.groupware.stream.chat.model.vo.ChatVo;
 public interface ChatService {
 	
 
-	List<ChatMessageVo> ViewChat(String userId);
+	List<ChatMessageVo> ViewChat(String roomId);
 	int MessageInsert(ChatMessageVo vo);
-	List<ChatRoomVo> findAllRooms(String userId);
-	int AddChatRoom(String roomName,String userId);
+	List<ChatRoomVo> findAllRooms();
+	int AddChatRoom(String roomName);
 	ChatRoomVo findRoomById(String id);
 	List<ChatRoomVo> ViewMember();
-	
+	int memberInsert(String userId);
+	ChatRoomVo readRoom(String roomId);
 }

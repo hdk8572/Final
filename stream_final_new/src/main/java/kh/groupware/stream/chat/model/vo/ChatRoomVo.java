@@ -14,11 +14,10 @@ public class ChatRoomVo {
 	private String mName;
 	private List<WebSocketSession> sessions = new ArrayList<>();
 	
-	public static ChatRoomVo create(String roomName, String userId) {
+	public static ChatRoomVo create(String roomName) {
 		ChatRoomVo room = new ChatRoomVo();
 		room.roomId = UUID.randomUUID().toString();
 		room.roomName = roomName;
-		room.userId = userId;
 		return room;
 	}
 

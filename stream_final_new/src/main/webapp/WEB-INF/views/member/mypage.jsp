@@ -109,7 +109,7 @@
 								<div class="mb-3">
 									<label class="form-label">Company Code</label> <input
 										class="form-control form-control-lg" type="text" name="ccode"
-										placeholder="${mvo.ccode }" value="${mvo.ccode}"/> <small> <a href="#"
+										placeholder="${mvo.ccode }" /> <small> <a href="#"
 										class="ccodeToDept">부서조회</a>
 
 									</small>
@@ -117,8 +117,9 @@
 
 								<div class="mb-3">
 									<label class="form-label">Department</label> <select
-										id="deptdrop" class="form-select mb-3" name="deptno">
-										<option value="${mvo.deptno }" selected>${mvo.deptname }</option>
+										id="deptdrop" class="form-select mb-3" name="deptno"
+										value="${deptdrop}">
+										<option selected>${mvo.deptname}</option>
 
 									</select>
 								</div>

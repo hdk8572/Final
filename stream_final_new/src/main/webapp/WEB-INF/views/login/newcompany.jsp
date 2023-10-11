@@ -62,11 +62,6 @@
 											class="form-control form-control-lg" type="text"
 											name="caddress" placeholder="" />
 									</div>
-									<div class="mb-3">
-										<label class="form-label">비밀 번호</label> <input
-											class="form-control form-control-lg" type="text"
-											name="password" placeholder="" />
-									</div>
 									<div class="text-center mt-3">
 										<button type="button"
 											class="btn btn-lg btn-primary nextButton">다음</button>

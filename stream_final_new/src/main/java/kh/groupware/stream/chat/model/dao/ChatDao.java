@@ -23,24 +23,30 @@ public class ChatDao {
 	 */
 	
 	
-	public int AddChatRoom(String roomName,String userId) {
-		ChatRoomVo room = ChatRoomVo.create(roomName, userId);
+	public int AddChatRoom(String roomName) {
+		ChatRoomVo room = ChatRoomVo.create(roomName);
 		return sqlSession.insert("chat.chatInsert",room);
 	}
 	
-	public List<ChatRoomVo> findAllRooms(String userId){
-		return sqlSession.selectList("chat.findAllRooms",userId);
+	public List<ChatRoomVo> findAllRooms(){
+		return sqlSession.selectList("chat.findAllRooms");
 	}
 	public int MessageInsert(ChatMessageVo vo) {
 		return sqlSession.insert("chat.messageInsert",vo);
 	}
-	public List<ChatMessageVo> ViewChat(String id){
-		return sqlSession.selectList("chat.viewChat",id);
+	public List<ChatMessageVo> ViewChat(String roomId){
+		return sqlSession.selectList("chat.viewChat",roomId);
 	}
-	 public ChatRoomVo findRoomById(String id) {
-	        return sqlSession.selectOne("chat.findRoomById", id);
+	 public ChatRoomVo findRoomById(String userId) {
+	        return sqlSession.selectOne("chat.findRoomById",userId);
 	  }
 	public List<ChatRoomVo> ViewMember(){
 			return sqlSession.selectList("chat.viewMember");
+	}
+	public int memberInsert(String userId) {
+		return sqlSession.insert("chat.memberInsert",userId);
+	}
+	public ChatRoomVo readRoom(String roomId) {
+		return sqlSession.selectOne("chat.readRoom",roomId);
 	}
 }

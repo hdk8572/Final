@@ -39,7 +39,7 @@
 	<!-- 회사회원가입 4: USERS Company Id insert -->
 	<insert id="newCompanyId" parameterType="kh.groupware.stream.company.model.vo.CompanyInsertParam">
 	 	INSERT INTO USERS (USERID, DEPTNO, CCODE, PASSWORD, ENABLED, AUTHORITY)
-	 	VALUES (#{ccode}||'@stream.com', 'D000', #{ccode}, #{password}, 1, 'ROLE_C')
+	 	VALUES (#{ccode}||'@stream.com', 'D000', #{ccode}, default, 1, 'ROLE_C')
 	</insert>
 	<!-- SELECT U.USERID, U.MNAME, (SELECT C.CNAME FROM COMPANY C WHERE U.CCODE 
 		= C.CCODE) CNAME, D.DEPTNAME FROM (SELECT * FROM USERS WHERE USERID = 'sple@kh.co.kr') 
@@ -49,23 +49,15 @@
 	<select id="editMyPage" parameterType="MemberVo">
 		UPDATE USERS SET
 		DEPTNO =
-		#{deptno}, MNAME = #{mname}, PASSWORD = #{password}, MRANK = #{mrank}, MPHONE = #{mphone}, ENABLED= 1 WHERE
-		USERID = #{userid}
-	</select>
-		<select id="editMyPage2" parameterType="MemberVo">
-		UPDATE USERS SET
-		DEPTNO =
-		#{deptno}, MNAME = #{mname}, MRANK = #{mrank}, MPHONE = #{mphone}, ENABLED= 1 WHERE
+		#{deptno}, PASSWORD = #{password}, MRANK = #{mrank}, MPHONE = #{mphone}, ENABLED= 1 WHERE
 		USERID = #{userid}
 	</select>
 	<!-- 마이페이지 수정 화면 -->
 	<select id="showEditMyPage" parameterType="String" resultType="MyPageVo">
-		SELECT U.MNAME, U.MRANK, U.MPHONE, U.CCODE, D.DEPTNAME, D.DEPTNO FROM (SELECT * FROM USERS
+		SELECT U.MNAME, U.MRANK, U.MPHONE, U.CCODE, D.DEPTNAME FROM (SELECT * FROM USERS
 		WHERE USERID = #{userid}) U INNER JOIN DEPT D ON U.DEPTNO = D.DEPTNO
 		AND U.CCODE = D.CCODE
 	</select>
-	
-	
 
 
 </mapper>

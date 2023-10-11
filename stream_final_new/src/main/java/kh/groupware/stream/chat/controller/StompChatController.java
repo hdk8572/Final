@@ -22,13 +22,13 @@ public class StompChatController {
     //stompConfig에서 설정한 applicationDestinationPrefixes와 @MessageMapping 경로가 병합됨
     //"/pub/chat/enter"
     @MessageMapping(value = "/chat/enter")
-    public void enter(ChatMessageVo message){
-        message.setMessage( "님이 채팅방에 참여하였습니다.");
+    public void enter(ChatMessageVo message) throws Exception {
+       message.setMessage( "님이 채팅방에 참여하였습니다.");
         template.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
     }
 
     @MessageMapping(value = "/chat/message")
-    public void message(ChatMessageVo message){
+    public void message(ChatMessageVo message) throws Exception {
     	chatDao.MessageInsert(message);
         template.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
     }

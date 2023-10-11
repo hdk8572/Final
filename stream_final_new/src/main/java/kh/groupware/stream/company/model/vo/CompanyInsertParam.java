@@ -11,6 +11,7 @@ public class CompanyInsertParam {
 	private String cname;
 	private String cphone;
 	private String caddress;
+	private String cpassword;
 
 	private String defaultDeptCode; //기본 Dept 생성
 	private String defaultDeptName;
@@ -19,34 +20,32 @@ public class CompanyInsertParam {
 	private String[] emailArr; //email 값 받음
 	
 	private String idx;
-	
-	private String password;
 
 	@Override
 	public String toString() {
 		return "CompanyInsertParam [ccode=" + ccode + ", cname=" + cname + ", cphone=" + cphone + ", caddress="
-				+ caddress + ", defaultDeptCode=" + defaultDeptCode + ", defaultDeptName=" + defaultDeptName
-				+ ", deptArr=" + Arrays.toString(deptArr) + ", emailArr=" + Arrays.toString(emailArr) + ", idx=" + idx
-				+ ", password=" + password + "]";
+				+ caddress + ", cpassword=" + cpassword + ", defaultDeptCode=" + defaultDeptCode + ", defaultDeptName="
+				+ defaultDeptName + ", deptArr=" + Arrays.toString(deptArr) + ", emailArr="
+				+ Arrays.toString(emailArr) + ", idx=" + idx + "]";
 	}
 
 	public CompanyInsertParam() {
 		super();
 	}
 
-	public CompanyInsertParam(String ccode, String cname, String cphone, String caddress, String defaultDeptCode,
-			String defaultDeptName, String[] deptArr, String[] emailArr, String idx, String password) {
+	public CompanyInsertParam(String ccode, String cname, String cphone, String caddress, String cpassword,
+			String defaultDeptCode, String defaultDeptName, String[] deptArr, String[] emailArr, String idx) {
 		super();
 		this.ccode = ccode;
 		this.cname = cname;
 		this.cphone = cphone;
 		this.caddress = caddress;
+		this.cpassword = cpassword;
 		this.defaultDeptCode = defaultDeptCode;
 		this.defaultDeptName = defaultDeptName;
 		this.deptArr = deptArr;
 		this.emailArr = emailArr;
 		this.idx = idx;
-		this.password = password;
 	}
 
 	public String getCcode() {
@@ -81,6 +80,14 @@ public class CompanyInsertParam {
 		this.caddress = caddress;
 	}
 
+	public String getCpassword() {
+		return cpassword;
+	}
+
+	public void setCpassword(String cpassword) {
+		this.cpassword = cpassword;
+	}
+
 	public String getDefaultDeptCode() {
 		return defaultDeptCode;
 	}
@@ -105,11 +112,11 @@ public class CompanyInsertParam {
 		this.deptArr = deptArr;
 	}
 
-	public String[] getEmailArr() {
+	public String[] getemailArr() {
 		return emailArr;
 	}
 
-	public void setEmailArr(String[] emailArr) {
+	public void setemailArr(String[] emailArr) {
 		this.emailArr = emailArr;
 	}
 
@@ -120,15 +127,6 @@ public class CompanyInsertParam {
 	public void setIdx(String idx) {
 		this.idx = idx;
 	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	
 	
 }

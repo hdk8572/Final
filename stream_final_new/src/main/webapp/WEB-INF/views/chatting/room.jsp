@@ -11,19 +11,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="container">
+	 <div class="container">
 		<div class="col-6">
 			<h1>${room.roomName}</h1>
+			<h1>${room.roomId}</h1>
+			<h1>${Id}</h1>
 		</div>
 		<div>
 			<div class="col-6" id="msgArea">
-				<c:if test="${!empty viewChat}">
-					<c:forEach items="${viewChat}" var="item">
+					<c:forEach items="${Id}">
 						<div class='alert alert-secondary'>
-							<b> ${item.mName}: ${item.message} </b>
+							<b> ${Id}:  </b>
 						</div>
 					</c:forEach>
-				</c:if>
 			</div>
 			<div class="input-group mb-3">
 				<input type="text" id="msg" class="form-control">
@@ -34,14 +34,13 @@
 		</div>
 		<div class="col-6"></div>
 	</div>
-	<script>
+	 <script>
 		$(document).ready(function() {
 
-			var userId = "${ID}";
-			var roomId = "${room.roomId}";
-			var username = "${ID}"; 
-			var name = "${room.mName}";
-			
+			  var roomName = ${room.roomName};
+		      var roomId =${room.roomId};
+		      var username = ${Id};
+	      		
 			console.log(userId + ", " + roomId + ", " + username);			
 			var sockJs = new SockJS("/stream/stomp/chat");
 			var stomp = Stomp.over(sockJs);
@@ -51,17 +50,17 @@
 
 				stomp.subscribe("/sub/chat/room/" + roomId, function(chat) {
 					var content = JSON.parse(chat.body);
-					var userId = content.userId;
+					var writer = content.writer;
 					var message = content.message;
 					var str = '';
-					if (userId === username) {
+					if (writer === username) {
 						str = "<div class='alert alert-secondary'>";
-						str += "<b>" + username + " : " + message + "</b>";
+						str += "<b>" + writer + " : " + message + "</b>";
 						str += "</div>";
 						$("#msgArea").append(str);
 					} else {
 						str += "<div class='alert alert-warning'>";
-						str += "<b>" + username + " : " + message + "</b>";
+						str += "<b>" + writer+ " : " + message + "</b>";
 						str += "</div>";
 						$("#msgArea").append(str);
 					}
@@ -85,7 +84,7 @@
 						stomp.send('/pub/chat/message', {}, JSON.stringify({
 							roomId : roomId,
 							message : msg.value,
-							userId : username
+							writer : username
 						}));
 						msg.value = '';
 					}
@@ -97,7 +96,7 @@
 
 				stomp.send('/pub/chat/enter', {}, JSON.stringify({
 					roomId : roomId,
-					userId : username
+					writer : username
 				}));
 			});
 		});
