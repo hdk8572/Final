@@ -169,11 +169,11 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 						console.log(info.event.extendedProps.sno);
 						
 						//참가자 list
-						var htmlval = '';
+						var htmlval = ''; //그리고 여기도 sno로 채워짐
 						for(var i=0; i<info.event.extendedProps.attenduseridList.length; i++){
 							htmlval += '<div>'+info.event.extendedProps.attenduseridList[i]+'</div>';
 						}
-						$("#readcalmodal.modal  #attenduseridList").html(htmlval);
+						$("#readcalmodal.modal  #attenduseridList").html(htmlval); //여기서 sno가 들어옴
 						
 						//TODO 찍어봐라
 						console.log("info.event.id!!!!!!!");
