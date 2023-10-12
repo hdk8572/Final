@@ -27,65 +27,17 @@ public class PtaskVo {
 	private String tcnt;
 	
 	//전체보기 페이지 정렬순서 변경을 위한 컬럼
+	private String ordertype;
 	
 	private FileVo filevo;
-
-	
-
-	public PtaskVo() {
-		super();
-	}
-
-	
-
-
 
 	@Override
 	public String toString() {
 		return "PtaskVo [tno=" + tno + ", pno=" + pno + ", userid=" + userid + ", tmember=" + tmember + ", ttitle="
-				+ ttitle + ", tcontent=" + tcontent + ", tstatus=" + tstatus + ", tdate=" + tdate + ", tstartdate="
+				+ ttitle + ", tcontent=" + "CLOB" + ", tstatus=" + tstatus + ", tdate=" + tdate + ", tstartdate="
 				+ tstartdate + ", tenddate=" + tenddate + ", bref=" + bref + ", brelevel=" + brelevel + ", brestep="
-				+ brestep + ", tcnt=" + tcnt + ", filevo=" + filevo + "]";
+				+ brestep + ", tcnt=" + tcnt + ", ordertype=" + ordertype + ", filevo=" + filevo + "]";
 	}
-
-
-
-
-
-	public PtaskVo(String tno, String pno, String userid, String tmember, String ttitle, String tcontent,
-			String tstatus, String tdate, String tstartdate, String tenddate) {
-		super();
-		this.tno = tno;
-		this.pno = pno;
-		this.userid = userid;
-		this.tmember = tmember;
-		this.ttitle = ttitle;
-		this.tcontent = tcontent;
-		this.tstatus = tstatus;
-		this.tdate = tdate;
-		this.tstartdate = tstartdate;
-		this.tenddate = tenddate;
-	}
-
-	public PtaskVo(String tno, String pno, String userid, String tmember, String ttitle, String tstatus, String tdate,
-			String tstartdate, String tenddate, String bref, String brelevel, String brestep) {
-		super();
-		this.tno = tno;
-		this.pno = pno;
-		this.userid = userid;
-		this.tmember = tmember;
-		this.ttitle = ttitle;
-		this.tstatus = tstatus;
-		this.tdate = tdate;
-		this.tstartdate = tstartdate;
-		this.tenddate = tenddate;
-		this.bref = bref;
-		this.brelevel = brelevel;
-		this.brestep = brestep;
-	}
-	
-
-	
 
 	public String getTno() {
 		return tno;
@@ -199,6 +151,14 @@ public class PtaskVo {
 		this.tcnt = tcnt;
 	}
 
+	public String getOrdertype() {
+		return ordertype;
+	}
+
+	public void setOrdertype(String ordertype) {
+		this.ordertype = ordertype;
+	}
+
 	public FileVo getFilevo() {
 		return filevo;
 	}
@@ -209,7 +169,5 @@ public class PtaskVo {
 	
 
 
-
 }
-
 
