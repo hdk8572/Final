@@ -66,8 +66,6 @@ public class ChatController {
 	 	String userId = principal.getName();
 	 	mv.addObject("ID",userId);
 	 	mv.addObject("room", service.findRoomById(roomId)); 
-	 	
-	 	//만약 mName이 null이면 표시하지 않음(추가예정)
 	 	mv.addObject("viewChat", service.ViewChat(roomId));
 	 	mv.addObject("name",service.findWriter(userId));
 	 	mv.setViewName("chatting/room");

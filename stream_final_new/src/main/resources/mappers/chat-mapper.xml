@@ -24,7 +24,7 @@
 	<!-- 만든 채팅방 전체 리스트 조회 -->
 	<select id="findAllRooms" resultMap="chatRoomMap">
 		<!-- SELECT * FROM CHATROOM WHERE USERID=#{userId} -->
-		SELECT ROOMNAME FROM CHATMEMBER JOIN CHATROOM USING(USERID)  WHERE USERID=#{userId}
+		SELECT ROOMNAME FROM CHATROOM <!-- JOIN CHATROOM USING(USERID)  WHERE USERID=#{userId} -->
 	</select>
 	
 	<!-- 채팅방 멤버 추가 -->
