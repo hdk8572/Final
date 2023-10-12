@@ -187,7 +187,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 						$("#readcalmodal.modal  #splace").html(info.event.extendedProps.splace);
 						$("#readcalmodal").modal("toggle"); // readcalmodal 띄우는 코드 toggle로 띄운다.
 						
-						showMap();
+						readshowMap();
 					}
 				});
 				calendar.render();

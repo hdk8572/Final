@@ -123,7 +123,9 @@
 					<main class="content">
 						<h2>캘린더</h2>
 						<div class="container-fluid p-0">
-							<p>임지연</p>
+							<!-- <p>임지연</p> -->
+							
+							
 							
 							<!-- 내용 -->
 							

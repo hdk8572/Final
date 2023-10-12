@@ -14,7 +14,7 @@
 	// 지도의 확대 레벨
 	};
 	
-	// Input 요소에 Enter 키 이벤트 핸들러 등록 //hasdjflkasdjflaksdf*
+	// Input 요소에 Enter 키 이벤트 핸들러 등록 
    	function searchOnEnter(event) {
    		var key = event.key;
 		// Enter 키인 경우 지도를 표시
@@ -22,7 +22,6 @@
             event.preventDefault(); // 폼 제출을 막음
             
             $('.map-hidden').css("display", 'block');
-            
             showMap(); // 지도를 표시하는 함수 호출
         }
     };
@@ -38,7 +37,7 @@
 
 	// showMap 함수 정의
 	function showMap() {
-	    var address = $('#splace').text(); // 입력된 주소 가져오기
+	    var address = $('#splace').val(); // 입력된 주소 가져오기
 		
 	// 지도를 생성합니다    
 	var map = new kakao.maps.Map(mapContainer, mapOption);
@@ -53,10 +52,10 @@
 		
 			var address = $('#splace').text();
 
-			if (address != null) {
+			if (address != null) 
 				console.log($('#splace'));
 				console.log($('#splace').text());
-			}
+			
 			// 정상적으로 검색이 완료됐으면 
 			if (status === kakao.maps.services.Status.OK) {
 				var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
@@ -79,8 +78,9 @@
 				// 지도를 표시
 			    mapContainer.style.display = 'block';
 				
-			}
+			}//if
 		});
 	}
+
 
 	</script>
