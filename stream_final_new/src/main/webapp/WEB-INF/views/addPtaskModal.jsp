@@ -34,7 +34,7 @@
 						</div>
 						<textarea class="form-control input" id="summernote" rows="10" name="tcontent" placeholder="내용을 입력해주세요"></textarea>
 						<input type="hidden" name="tdate" value=sysdate>
-						<input type="hidden" name="userid" value="kh0002@kh.com">
+						<input type="hidden" name="userid" value="${principal.username}">
 						<input type="hidden" name="pno" value="${pno}">
 						<div class="form-control">
 							<input type="date" class="form-date" name="tstartdate" required="required">
@@ -54,3 +54,16 @@
 	</div>
 </div>
 <!-- 모달 -->
+<script>
+	const cloudinary = require('cloudinary').v2;
+	
+	//Configure your cloud name, API key and API secret:
+	
+	const myconfig = cloudinary.config({
+	cloud_name: "dup9irkxd",
+	api_key: "371128821948137",
+	api_secret: "utt72ECxh7rpq4CPsbg01B5XyiM",
+	secure: true
+	});
+
+</script>

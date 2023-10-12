@@ -28,8 +28,12 @@
 	</select>	
 	
 	<insert id="insertTask" parameterType="PtaskVo">
-		INSERT INTO TASK (TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, tstartdate, tenddate)
-		VALUES (task_sequence.NEXTVAL, #{pno}, #{userid}, #{tmember}, #{ttitle}, #{tcontent}, #{tstatus}, #{tstartdate}, #{tenddate})
+		<selectKey order="BEFORE" keyColumn="ctno" keyProperty="tno" resultType="string">
+		select task_sequence.NEXTVAL as ctno from dual
+		</selectKey>
+		INSERT 
+		INTO TASK (TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, tstartdate, tenddate)
+			VALUES (#{tno}, #{pno}, #{userid}, #{tmember}, #{ttitle}, #{tcontent}, #{tstatus}, #{tstartdate}, #{tenddate})
 	</insert>
 
 	<delete id="deleteTask" parameterType="PtaskVo">
