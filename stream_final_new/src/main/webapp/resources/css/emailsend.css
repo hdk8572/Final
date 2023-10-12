@@ -1,0 +1,47 @@
+.content {
+	display: flex;
+	justify-content: center;
+	height: 100vh;
+}
+
+.emailBox {
+	width: 700px;
+	border: 1px white solid;
+	background-color: white;
+	border-radius: 20px;
+	padding: 20px;
+	border-radius: 20px;
+	justify-content: center;
+}
+
+.input-email {
+	width: 500px;
+}
+
+.emailTable {
+	margin-top: 50px; width : 650px;
+	text-align: center;
+	width: 650px;
+}
+
+.addTable {
+	width: 650px;
+	text-align: center;
+}
+
+p {
+	font-size: 20px;
+	font-weight: 600;
+	margin: 10px;
+}
+
+.emailTitle {
+	text-align: center;
+	font-size: 20px;
+	margin: 20px;
+	font-weight: 600;
+}
+
+.delete-text {
+	cursor: pointer;
+}

@@ -16,6 +16,9 @@
 <!-- Bootstrap Css -->
 <link href="${pageContext.request.contextPath}/css/streamapp.css"
 	rel="stylesheet">
+<!-- Emailsend Css -->
+<link href="${pageContext.request.contextPath}/css/attend.css"
+	rel="stylesheet">
 <!-- Modal Css -->
 <link href="${pageContext.request.contextPath}/css/Modal.css"
 	rel="stylesheet">
@@ -40,7 +43,29 @@
 		<div class="main">
 			<%@ include file="/WEB-INF/views/headernavbar.jsp"%>
 			<main class="content">
-				<div class="container-fluid p-0">
+				<div class="attendBox">
+
+					<div class="attendTitle">
+						<p>근태관리</p>
+					</div>
+					<div class="attendBtn">
+						<button type="button" id="inbtn">출근</button>
+						<button type="button" id="outbtn">퇴근</button>
+						<button type="button" id="earlybtn">조퇴</button>
+						<input type="hidden" name="userid" value="${principal.username }">
+					</div>
+					<table>
+						<thead>
+							<th>날짜</th>
+							<th>출근시간</th>
+							<th>퇴근시간</th>
+							<th>근무시간</th>
+							<th>상태</th>
+						</thead>
+						<tbody>
+
+						</tbody>
+					</table>
 				</div>
 			</main>
 		</div>
@@ -51,4 +76,18 @@
 <script src="${pageContext.request.contextPath}/js/stream.js"></script>
 <script src="${pageContext.request.contextPath}/js/modal.js"></script>
 <script src="${pageContext.request.contextPath}/js/app.js"></script>
+<script>
+	
+	    $("#inbtn").click(function(){
+	    	var data = {
+	    			name: "userid",
+	    			value: '${principal.username}'
+	    	};
+	    $.post("${pageContext.request.contextPath}/member/attendin", data, function(response){
+	    	console.log("success")
+	    })
+	    });
+	
+
+</script>
 </html>

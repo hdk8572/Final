@@ -16,6 +16,9 @@
 <!-- Bootstrap Css -->
 <link href="${pageContext.request.contextPath}/css/streamapp.css"
 	rel="stylesheet">
+<!-- Emailsend Css -->
+<link href="${pageContext.request.contextPath}/css/emailsend.css"
+	rel="stylesheet">
 <!-- Modal Css -->
 <link href="${pageContext.request.contextPath}/css/Modal.css"
 	rel="stylesheet">
@@ -32,53 +35,6 @@
 	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
 	rel="stylesheet">
 <style>
-.content {
-	display: flex;
-	justify-content: center;
-	height: 100vh;
-}
-
-.emailBox {
-	width: 700px;
-	border: 1px white solid;
-	background-color: white;
-	border-radius: 20px;
-	padding: 20px;
-	border-radius: 20px;
-	justify-content: center;
-}
-
-.input-email {
-	width: 500px;
-}
-
-.emailTable {
-	margin-top: 50px; width : 650px;
-	text-align: center;
-	width: 650px;
-}
-
-.addTable {
-	width: 650px;
-	text-align: center;
-}
-
-p {
-	font-size: 20px;
-	font-weight: 600;
-	margin: 10px;
-}
-
-.emailTitle {
-	text-align: center;
-	font-size: 20px;
-	margin: 20px;
-	font-weight: 600;
-}
-
-.delete-text {
-	cursor: pointer;
-}
 </style>
 </head>
 <body>
@@ -89,7 +45,9 @@ p {
 			<%@ include file="/WEB-INF/views/headernavbar.jsp"%>
 			<main class="content">
 				<div class="emailBox">
-					<form action="${pageContext.request.contextPath}/company/emailsend " method="post">
+					<form
+						action="${pageContext.request.contextPath}/company/emailsend "
+						method="post">
 						<div class="emailTitle">사원초대</div>
 						<table class="emailTable">
 							<tr>
@@ -97,8 +55,8 @@ p {
 									type="text" id="input-email" name="ncemail"
 									placeholder="ex) 이메일을 입력하세요. " /></td>
 								<td><button type="button" onclick="addEmailTable()"
-										class="btn btn-lg btn-primary">추가</button>
-										<input type="hidden" value="D000" name="defaultDeptCode">
+										class="btn btn-lg btn-primary">추가</button> <input
+									type="hidden" value="D000" name="defaultDeptCode">
 									<button type="submit" class="btn btn-lg btn-primary">전송</button>
 								</td>
 							</tr>

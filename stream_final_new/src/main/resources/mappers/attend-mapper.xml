@@ -2,4 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="attend">
 
+	<!-- 출근 -->
+	<insert id="attendIn" parameterType="String">
+		INSERT INTO ATTEND (ATDATE, USERID, ATSTATENO, ATINTIME, ATWORKHOUR) VALUES
+		(sysdate, #{userid}, 1, sysdate, 0)
+	</insert>
 </mapper>
