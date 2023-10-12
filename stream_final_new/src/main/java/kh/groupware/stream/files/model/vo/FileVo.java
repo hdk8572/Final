@@ -8,7 +8,7 @@ public class FileVo {
 	private String fname;
 	private String userid;
 	private String fdate;
-	private int fsize;
+	private long fsize;
 	private String fpath;
 	private String foriginname;
 	
@@ -18,7 +18,7 @@ public class FileVo {
 				+ fpath + ", foriginname=" + foriginname + "]";
 	}
 
-	public FileVo(String fname, String userid, String fdate, int fsize, String fpath, String foriginname) {
+	public FileVo(String fname, String userid, String fdate, long fsize, String fpath, String foriginname) {
 		super();
 		this.fname = fname;
 		this.userid = userid;
@@ -56,11 +56,11 @@ public class FileVo {
 		this.fdate = fdate;
 	}
 
-	public int getFsize() {
+	public long getFsize() {
 		return fsize;
 	}
 
-	public void setFsize(int fsize) {
+	public void setFsize(long fsize) {
 		this.fsize = fsize;
 	}
 
