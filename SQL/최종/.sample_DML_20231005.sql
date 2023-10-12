@@ -327,4 +327,10 @@ VALUES (replyrno_sequence.nextval, 9, 'sple@kh.co.kr', '테스트내용3', sysda
 INSERT INTO REPLY(RNO, TNO, USERID, RCONTENT, RDATE)
 VALUES (replyrno_sequence.nextval, 9, 'sple@kh.co.kr', '테스트내용4', sysdate);
 
+INSERT INTO WORKSTATE VALUES (0, '미출근');
+INSERT INTO WORKSTATE VALUES (1, '출근');
+INSERT INTO WORKSTATE VALUES (2, '퇴근');
+INSERT INTO WORKSTATE VALUES (3, '지각');
+INSERT INTO WORKSTATE VALUES (4, '조퇴');
+
 COMMIT;

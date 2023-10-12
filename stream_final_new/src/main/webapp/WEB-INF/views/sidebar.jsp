@@ -19,8 +19,9 @@
 			<c:forEach items="${principal.authorities}" var="authority">
 				<c:if test="${authority.authority eq 'ROLE_M'}">
 					<li class="sidebar-item active"><a class="sidebar-link"
-						href="${pageContext.request.contextPath}/projectlist"> <i
-							class="align-middle" data-feather="sliders"></i> <span
+						href="${pageContext.request.contextPath}/projectlist"> <!-- <i
+							class="align-middle" data-feather="sliders"></i>  -->
+							  <i class="align-middle" data-feather="grid"></i> <span
 							class="align-middle">내 프로젝트</span>
 					</a></li>
 
@@ -34,14 +35,13 @@
 					</a></li>
 
 					<li class="sidebar-item"><a class="sidebar-link"
-						href="${pageContext.request.contextPath}/pcal"> <i
-							class="align-middle" data-feather="check-square"></i> <span
-							class="align-middle">캘린더</span>
-					</a></li>
+						href="${pageContext.request.contextPath}/pcal"><i
+							class="align-middle me-2" data-feather="calendar"></i> <span
+							class="align-middle">캘린더</span> </a></li>
 
 					<li class="sidebar-item"><a class="sidebar-link"
 						href="${pageContext.request.contextPath}/#"> <i
-							class="align-middle" data-feather="grid"></i> <span
+							class="align-middle me-2" data-feather="paperclip"></i> <span
 							class="align-middle">파일함</span>
 					</a></li>
 
@@ -49,21 +49,16 @@
 						href="${pageContext.request.contextPath}/#"> <i
 							class="align-middle" data-feather="align-left"></i> <span
 							class="align-middle">내 게시물</span></a></li>
-
 					<li class="sidebar-item"><a class="sidebar-link"
-						href="${pageContext.request.contextPath}/chatlist"> <i
-							class="align-middle" data-feather="align-left"></i> <span
-							class="align-middle">채팅</span>
-					</a></li>
+						href="${pageContext.request.contextPath}/member/attend"><i
+							class="align-middle me-2" data-feather="user-check"></i><span
+							class="align-middle">근태관리</span> </a></li>
 				</c:if>
-
-
 				<c:if test="${authority.authority eq 'ROLE_C' }">
 					<li class="sidebar-item"><a class="sidebar-link"
-						href="${pageContext.request.contextPath}/company/emailsend"> <i
-							class="align-middle" data-feather="align-left"></i> <span
-							class="align-middle">직원 초대</span>
-					</a></li>
+						href="${pageContext.request.contextPath}/company/emailsend"><i
+							class="align-middle me-2" data-feather="users"></i> <span
+							class="align-middle">직원 초대</span> </a></li>
 				</c:if>
 			</c:forEach>
 		</ul>

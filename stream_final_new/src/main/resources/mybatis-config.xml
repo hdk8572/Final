@@ -13,6 +13,8 @@
 		<typeAlias type="kh.groupware.stream.company.model.vo.CompanyVo" alias="CompanyVo"/>
 		<typeAlias type="kh.groupware.stream.dept.model.vo.DeptVo" alias="DeptVo"/>
 		<typeAlias type="kh.groupware.stream.email.model.vo.EmailVo" alias="EmailVo"/>
+		<typeAlias type="kh.groupware.stream.attend.model.vo.AttendVo" alias="AttendVo"/>
+		
 		<typeAlias type="kh.groupware.stream.member.model.vo.MemberSimpleVo" alias="MemberSimpleVo"/>
 		<typeAlias type="kh.groupware.stream.ptask.model.vo.PtaskVo" alias="PtaskVo"/>
 		<typeAlias type="kh.groupware.stream.project.model.vo.ProjectVo" alias="ProjectVo"/>
@@ -23,12 +25,14 @@
 		<typeAlias type="kh.groupware.stream.admin.vo.AdminVo" alias="AdminVo"/>
 		<typeAlias type="kh.groupware.stream.reply.model.vo.ReplyVo" alias="ReplyVo"/>
 		<typeAlias type="kh.groupware.stream.files.model.vo.FileVo" alias="FileVo"/>
+
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
 		<mapper resource="mappers/company-mapper.xml"/>
 		<mapper resource="mappers/department-mapper.xml"/>
+		<mapper resource="mappers/attend-mapper.xml"/>
 		
 		<mapper resource="mappers/ptask-mapper.xml"/>
 		<mapper resource="mappers/project-mapper.xml"/>
