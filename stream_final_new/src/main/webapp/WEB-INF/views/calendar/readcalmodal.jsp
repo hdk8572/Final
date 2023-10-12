@@ -2,14 +2,56 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<style>
+.modal-content.project {
+  border-radius: 40px 0 0 40px;
+}
+
+.modal-header.project {
+    border-radius: 40px 0 0;
+}
+
+.modal.project.right .modal-dialog {
+	position: fixed;
+	margin: auto;
+	width: 40%;
+	height: 100%;
+	-webkit-transform: translate3d(0%, 0, 0);
+	    -ms-transform: translate3d(0%, 0, 0);
+	     -o-transform: translate3d(0%, 0, 0);
+	        transform: translate3d(0%, 0, 0);
+}
+.modal.project.right.fade .modal-dialog {
+	right:-40%;
+	-webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+     transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+.modal.project.right.fade.show .modal-dialog {
+	right: 0;
+}
+
+.modal-body.updateProject {
+	cursor: auto;	
+    /* height: 670px; */
+    height: 94%;
+}
+
+.form-control {
+	margin-bottom: 1.5rem;
+    border: transparent;
+    border-bottom: 1px solid #ced4da;
+    border-radius: 0px;	
+}
+</style><!-- TODO -->
+
 <!-- 모달 -->
 <div id="readcalmodal" class="modal project right fade" aria-labelledby="myModalLabel">
 <div class="modal-dialog pcal">
   <!-- Modal content -->
   <div class="modal-content pcal">
   	<div class="modal-header pcal">
-  		
-  		<!-- TODO -->
   		<span class="read-close" data-bs-dismiss="modal" aria-label="Close">&times;</span>
   	</div>
  	<div class="modal-body">
@@ -73,7 +115,7 @@
   	</div>
   </div>
 </div>
-<script>
+<!-- <script>
 	var mapContainer_readmodal = document.getElementById('map-readmodal'), // 지도를 표시할 div 
 	mapOption_readmodal = {
 		center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -97,35 +139,34 @@
 		// 주소로 좌표를 검색합니다
 		geocoder2.addressSearch(splaceText , function(result, status) {
 			
-			var address = splaceText;
+			var splaceText =  $('#readcalmodal #splace').text();//?
 			
 			// 정상적으로 검색이 완료됐으면 
 			if (status === kakao.maps.services.Status.OK) {
-				var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+				var readcoords = new kakao.maps.LatLng(result[0].y, result[0].x);
 		
 				// 결과값으로 받은 위치를 마커로 표시합니다
-				var marker2 = new kakao.maps.Marker2({
+				var marker2 = new kakao.maps.Marker({
 					map : map2,
-					position : coords
+					position : readcoords
 				});
 		
 				// 인포윈도우로 장소에 대한 설명을 표시합니다
 				var infowindow = new kakao.maps.InfoWindow({
 					content : '<div style="width:150px;text-align:center;padding:6px 0;">장소</div>'
 				});
-				infowindow.open(map, marker2);
+				infowindow.open(map2, marker2);
 		
 			   
 				// 이 코드 넣었더니 지도 뜸!!
-			    setTimeout(function(){ map2.relayout(); }, 1000);
+			    setTimeout(function(){ mapContainer_readmodal.relayout(); }, 1000); //map2
 				
-			 // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-				map.setCenter(coords);
+				// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+				map2.setCenter(readcoords);
 			 
 				// 지도를 표시
 			    mapContainer_readmodal.style.display = 'block';
 			  
-			    
 				/* function relayout() {    
 				    // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
 				    // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다 
@@ -135,12 +176,10 @@
 				
 				/* 
 				 */
-				
-				
 			} // if
 		});  // cb function
 	}
-</script>  
+</script>   -->
 
 
 <!-- 모달 -->

@@ -74,7 +74,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 					<div class="content-cal">
  						<h2>
 							Calendar
-							<button class="btn btn-primary addcal" data-bs-toggle="modal" data-bs-target="#addcalmodal" onclick="getMemberProjectListHandler(this)">+일정추가</button>
+							<button class="btn btn-primary addcal"  id="myBtn" data-bs-toggle="modal" data-bs-target="#addcalmodal" onclick="getMemberProjectListHandler(this)">+일정추가</button>
 						</h2>
 						<div class="container-fluid p-0">
 							<div class="card-header">
