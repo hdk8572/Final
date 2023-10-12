@@ -133,10 +133,7 @@
 				    map-readmodal.relayout();
 				} */
 				
-				/* 	// 마우스 드래그로 지도 이동 막기
-				map.setDraggable(false);
-				// 마우스 휠로 지도 확대,축소 막기
-				map.setZoomable(false);
+				/* 
 				 */
 				
 				
