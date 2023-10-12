@@ -342,3 +342,19 @@ select ttitle, tstatus, tmember, tstartdate, tenddate, tdate, tno, pno, pname, u
     where tmember = 'sple@kh.co.kr' or userid = 'sple@kh.co.kr'
     order by to_number(pno) desc, to_number(bref) desc,  to_number(tno) desc
     ;
+select message, cdate, rn 
+from
+(select roomid, message, cdate, row_number()over(order by cdate desc) rn
+    from chatmessage
+    where roomid=30)
+   where rn=1 
+    ;
+    
+    
+insert into task (TNO, PNO, USERID, tmember, TTITLE, tcontent, TSTATUS, TDATE, tstartdate, tenddate, BREF, BRESTEP, BRELEVEL)
+		values (
+			task_sequence.NEXTVAL, #{pno}, #{userid}, #{tmember}, #{ttitle}, 'DEFAULT', #{tstatus}, sysdate, #{tstartdate}, #{tenddate}, 
+				(select bref from task where tno=#{tno}),
+				'0','0'
+				
+				)

@@ -20,7 +20,6 @@
 			<result property="bref" column="bref"/>
 			<result property="brestep" column="brestep"/>
 			<result property="brelevel" column="brelevel"/>
-			<result property="ordertype" column="ordertype"/>	
 		</collection>
 	</resultMap>
 	
@@ -101,14 +100,23 @@
     		where tmember = #{userid} or t.userid = #{userid}
     		order by to_number(pno) desc, to_number(bref) desc, brelevel asc, 
     	<choose>
-    		<when test="ordertype == ttitle1">
+    		<when test="ordertype == 'ttitle1'">
         		ttitle asc
     		</when>
-    		<when test="ordertype == tstatus1">
+    		<when test="ordertype == 'ttitle2'">
+        		ttitle desc
+    		</when>
+    		<when test="ordertype == 'tstatus1'">
       			tstatus asc
     		</when>
-		    <when test="ordertype == tstartdate1">
+    		<when test="ordertype == 'tstatus2'">
+      			tstatus desc
+    		</when>
+		    <when test="ordertype == 'tstartdate1'">
 		      tstartdate asc
+		    </when>
+		    <when test="ordertype == 'tstartdate2'">
+		      tstartdate desc
 		    </when>
 		    <otherwise>
 		        to_number(brestep) asc
