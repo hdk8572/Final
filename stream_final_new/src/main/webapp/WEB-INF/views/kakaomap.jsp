@@ -13,6 +13,28 @@
 		level : 3
 	// 지도의 확대 레벨
 	};
+	
+	// Input 요소에 Enter 키 이벤트 핸들러 등록 //hasdjflkasdjflaksdf*
+   	function searchOnEnter(event) {
+   		var key = event.key;
+		// Enter 키인 경우 지도를 표시
+        if (key === 'Enter') { 
+            event.preventDefault(); // 폼 제출을 막음
+            
+            $('.map-hidden').css("display", 'block');
+            
+            showMap(); // 지도를 표시하는 함수 호출
+        }
+    };
+    
+    //지도 초기화
+    function cancelAddEvent(){
+    	var kakaoaddmap = document.getElementById('map');
+    	kakaoaddmap.innerHTML =''; //지도를 비운다.
+    	
+    	$('.map-hidden').css("display", 'none');
+
+    }
 
 	// showMap 함수 정의
 	function showMap() {
@@ -35,7 +57,6 @@
 				console.log($('#splace'));
 				console.log($('#splace').text());
 			}
-			
 			// 정상적으로 검색이 완료됐으면 
 			if (status === kakao.maps.services.Status.OK) {
 				var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
@@ -60,28 +81,6 @@
 				
 			}
 		});
-	
-		// Input 요소에 Enter 키 이벤트 핸들러 등록 //hasdjflkasdjflaksdf*
-	   	function searchOnEnter(event) {
-	   		var key = event.key;
-			// Enter 키인 경우 지도를 표시
-	        if (key === 'Enter') { 
-	            event.preventDefault(); // 폼 제출을 막음
-	            
-	            $('.map-hidden').css("display", 'block');
-	            
-	            showMap(); // 지도를 표시하는 함수 호출
-	        }
-	    };
-	    
-	    //지도 초기화
-	    function cancelAddEvent(){
-	    	var kakaoaddmap = document.getElementById('map');
-	    	kakaoaddmap.innerHTML =''; //지도를 비운다.
-	    	
-	    	$('.map-hidden').css("display", 'none');
-
-    }
 	}
 
 	</script>
