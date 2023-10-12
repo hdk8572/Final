@@ -76,18 +76,9 @@
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
-																<li class="dropdown-item" >
-																<button class="jm-tp" name="ordertype" value="tno1">오름차순</button>
-																<input type="hidden" name="ordertype" value="tno1">
-																</li>
-																<li class="dropdown-item" >
-																<button class="jm-tp" name="ordertype" value="tno2">내림차순</button>
-																<input type="hidden" name="ordertype" value="tno2">
-																</li>
-																<li class="dropdown-item">
-																<button class="jm-tp" name="ordertype" value="tno0">정렬 해제</button>
-																<input type="hidden" name="ordertype" value="tno0">
-																</li>
+																<li class="dropdown-item jm-order" data-ordertype="ttitle1">오름차순</li>
+																<li class="dropdown-item jm-order" data-ordertype="ttitle2">내림차순</li>
+																<li class="dropdown-item jm-order" data-ordertype="ttitle0">정렬 해제</li>
 															</ul>
 														</div>
 													</div>
@@ -108,9 +99,9 @@
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
-																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tstatus1">오름차순</button></li>
-																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tstatus2">내림차순</button></li>
-																<li class="dropdown-item"><button class="jm-tp" name="ordertype" value="tstatus0">정렬 해제</button></li>
+																<li class="dropdown-item jm-order" data-ordertype="tstatus1">오름차순</li>
+																<li class="dropdown-item jm-order" data-ordertype="tstatus2">내림차순</li>
+																<li class="dropdown-item jm-order" data-ordertype="tstatus0">정렬 해제</li>
 															</ul>
 														</div>
 													</div>
@@ -131,9 +122,9 @@
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
-																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tmember1">오름차순</button></li>
-																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tmember2">내림차순</button></li>
-																<li class="dropdown-item"><button class="jm-tp" name="ordertype" value="tmember0">정렬 해제</button></li>
+																<li class="dropdown-item jm-order" data-ordertype="tmember1">오름차순</li>
+																<li class="dropdown-item jm-order" data-ordertype="tmember2">내림차순</li>
+																<li class="dropdown-item jm-order" data-ordertype="tmember0">정렬 해제</li>
 															</ul>
 														</div>
 													</div>
@@ -155,9 +146,9 @@
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
-																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tstartdate1">오름차순</button></li>
-																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tstartdate2">내림차순</button></li>
-																<li class="dropdown-item"><button class="jm-tp" name="ordertype" value="tstartdate0">정렬 해제</button></li>
+																<li class="dropdown-item jm-order" data-ordertype="tstartdate1">오름차순</li>
+																<li class="dropdown-item jm-order" data-ordertype="tstartdate2">내림차순</li>
+																<li class="dropdown-item jm-order" data-ordertype="tstartdate0">정렬 해제</li>
 															</ul>
 														</div>
 													</div>
@@ -178,9 +169,9 @@
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
-																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tenddate1">오름차순</button></li>
-																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tenddate2">내림차순</button></li>
-																<li class="dropdown-item"><button class="jm-tp" name="ordertype" value="tenddate0">정렬 해제</button></li>
+																<li class="dropdown-item jm-order" data-ordertype="tenddate1">오름차순</li>
+																<li class="dropdown-item jm-order" data-ordertype="tenddate2">내림차순</li>
+																<li class="dropdown-item jm-order" data-ordertype="tenddate0">정렬 해제</li>
 															</ul>
 														</div>
 													</div>
@@ -201,9 +192,9 @@
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
-																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tdate1">오름차순</button></li>
-																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tdate2">내림차순</button></li>
-																<li class="dropdown-item"><button class="jm-tp" name="ordertype" value="tdate0">정렬 해제</button></li>
+																<li class="dropdown-item jm-order" data-ordertype="tdate1">오름차순</li>
+																<li class="dropdown-item jm-order" data-ordertype="tdate2">내림차순</li>
+																<li class="dropdown-item jm-order" data-ordertype="tdate0">정렬 해제</li>
 															</ul>
 														</div>
 													</div>
@@ -224,9 +215,9 @@
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
-																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tno1">오름차순</button></li>
-																<li class="dropdown-item" ><button class="jm-tp" name="ordertype" value="tno2">내림차순</button></li>
-																<li class="dropdown-item"><button class="jm-tp" name="ordertype" value="tno0">정렬 해제</button></li>
+																<li class="dropdown-item jm-order" data-ordertype="tno1">오름차순</li>
+																<li class="dropdown-item jm-order" data-ordertype="tno2">내림차순</li>
+																<li class="dropdown-item jm-order" data-ordertype="tno0">정렬 해제</li>
 															</ul>
 														</div>
 													</div>
@@ -370,7 +361,7 @@
 		abc=()=>{
 			var e1 = event.target;
 			console.log(e1);
-			var e2 = $(e1).find('input').val();
+			var e2 = $(e1).data('ordertype');
 			console.log(e2);
 			
 			$.ajax({
@@ -393,7 +384,7 @@
 					}
 			})
 		}
-		$(".dropdown-item").on("click", abc);
+		$(".jm-order").on("click", abc);
 	</script>
 </body>
 

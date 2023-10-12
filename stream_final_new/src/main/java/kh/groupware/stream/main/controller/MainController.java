@@ -2,9 +2,7 @@ package kh.groupware.stream.main.controller;
 
 
 import java.security.Principal;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kh.groupware.stream.main.model.dto.MaintaskSortVo;
 import kh.groupware.stream.main.model.service.MaintaskService;
 import kh.groupware.stream.member.model.vo.MemberSimpleVo;
 import kh.groupware.stream.project.model.vo.ProjectVo;
@@ -45,15 +44,11 @@ public class MainController {
 		List<MemberSimpleVo> projectMemberList = maintastService.projectMemberList(pno);
 		return projectMemberList;
 	}
+	
 	@PostMapping("/sort")
 	@ResponseBody
-	public List<ProjectVo> sort(Model model, Principal principal) {
-		String userid = principal.getName();
-		String ordertype = "";
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put(ordertype, ordertype);
-		map.put(userid, userid);
-		List<ProjectVo> sortList = maintastService.TaskSortList(ordertype, userid);
+	public List<ProjectVo> sort(MaintaskSortVo vo) {
+		List<ProjectVo> sortList = maintastService.TaskSortList(vo);
 		return sortList;
 	}
 	

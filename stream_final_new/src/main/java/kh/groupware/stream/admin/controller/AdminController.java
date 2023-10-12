@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import kh.groupware.stream.admin.service.AdminService;
+import kh.groupware.stream.admin.model.service.AdminService;
 
 @Controller
 public class AdminController {

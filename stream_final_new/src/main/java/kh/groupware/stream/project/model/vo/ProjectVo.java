@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import kh.groupware.stream.main.model.dto.MaintaskDto;
+import kh.groupware.stream.main.model.dto.MaintaskSortVo;
 import kh.groupware.stream.member.model.vo.MemberSimpleVo;
 
 @Component
@@ -31,7 +32,13 @@ public class ProjectVo {
 // commonVo ( id, 이름 )
 	private List<MemberSimpleVo> memberProjectList;
 
+// 정렬용
+	private List<MaintaskSortVo> maintaskSortList;
+
 	
+
+
+
 
 
 	@Override
@@ -40,8 +47,11 @@ public class ProjectVo {
 				+ ", paccess=" + paccess + ", pdate=" + pdate + ", pstartdate=" + pstartdate + ", penddate=" + penddate
 				+ ", prow=" + prow + ", pstatus=" + pstatus + ", deptno=" + deptno + ", mname=" + mname + ", mrank="
 				+ mrank + ", deptName=" + deptName + ", maintaskList=" + maintaskList + ", memberProjectList="
-				+ memberProjectList + "]";
+				+ memberProjectList + ", maintaskSortList=" + maintaskSortList + "]";
 	}
+
+
+
 
 
 
@@ -75,6 +85,37 @@ public class ProjectVo {
 		this.maintaskList = maintaskList;
 		this.memberProjectList = memberProjectList;
 	}
+	
+	
+
+
+
+	public ProjectVo(String pno, String userid, String pname, String pcontent, String paccess, String pdate,
+			String pstartdate, String penddate, String prow, String pstatus, String deptno, String mname, String mrank,
+			String deptName, List<MaintaskDto> maintaskList, List<MemberSimpleVo> memberProjectList,
+			List<MaintaskSortVo> maintaskSortList) {
+		super();
+		this.pno = pno;
+		this.userid = userid;
+		this.pname = pname;
+		this.pcontent = pcontent;
+		this.paccess = paccess;
+		this.pdate = pdate;
+		this.pstartdate = pstartdate;
+		this.penddate = penddate;
+		this.prow = prow;
+		this.pstatus = pstatus;
+		this.deptno = deptno;
+		this.mname = mname;
+		this.mrank = mrank;
+		this.deptName = deptName;
+		this.maintaskList = maintaskList;
+		this.memberProjectList = memberProjectList;
+		this.maintaskSortList = maintaskSortList;
+	}
+
+
+
 
 
 
@@ -210,6 +251,15 @@ public class ProjectVo {
 		this.memberProjectList = memberProjectList;
 	}
 
+	public List<MaintaskSortVo> getMaintaskSortList() {
+		return maintaskSortList;
+	}
+
+	public void setMaintaskSortList(List<MaintaskSortVo> maintaskSortList) {
+		this.maintaskSortList = maintaskSortList;
+	}
+
+	
 
 
 }

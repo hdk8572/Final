@@ -22,9 +22,11 @@
 		<typeAlias type="kh.groupware.stream.calendar.model.vo.CalendarVo" alias="CalendarVo"/>
 		<typeAlias type="kh.groupware.stream.chat.model.vo.ChatMessageVo" alias="ChatMessageVo"/>
 		<typeAlias type="kh.groupware.stream.chat.model.vo.ChatRoomVo" alias="ChatRoomVo"/>
-		<typeAlias type="kh.groupware.stream.admin.vo.AdminVo" alias="AdminVo"/>
+		<typeAlias type="kh.groupware.stream.admin.model.vo.AdminVo" alias="AdminVo"/>
 		<typeAlias type="kh.groupware.stream.reply.model.vo.ReplyVo" alias="ReplyVo"/>
 		<typeAlias type="kh.groupware.stream.files.model.vo.FileVo" alias="FileVo"/>
+
+		<typeAlias type="kh.groupware.stream.main.model.dto.MaintaskSortVo" alias="MaintaskSortVo"/>		
 
 	</typeAliases>
 	

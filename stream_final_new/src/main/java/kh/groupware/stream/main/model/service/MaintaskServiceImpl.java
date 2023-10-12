@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kh.groupware.stream.main.model.dao.MaintaskDao;
+import kh.groupware.stream.main.model.dto.MaintaskSortVo;
 import kh.groupware.stream.member.model.vo.MemberSimpleVo;
 import kh.groupware.stream.project.model.vo.ProjectVo;
 import kh.groupware.stream.ptask.model.vo.PtaskVo;
@@ -37,16 +38,17 @@ public class MaintaskServiceImpl implements MaintaskService {
 	public List<MemberSimpleVo> projectMemberList(String pno){
 		return maintaskDao.projectMemberList(pno);
 	}
-	/*
-	public List<ProjectVo> TaskSortList(String userid){
-		return maintaskDao.TaskSortList(userid);
+	
+	public List<ProjectVo> TaskSortList(MaintaskSortVo vo){
+		return maintaskDao.TaskSortList(vo);
 	}
-	*/
+	
+	/*
 	public List<ProjectVo> TaskSortList(String userid, String ordertype) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put(ordertype, ordertype);
 		map.put(userid, userid);
 		return maintaskDao.TaskSortList(userid, ordertype);
 	}
-
+	*/
 }

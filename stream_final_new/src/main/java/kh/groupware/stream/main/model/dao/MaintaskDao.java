@@ -1,6 +1,5 @@
 package kh.groupware.stream.main.model.dao;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kh.groupware.stream.main.model.dto.MaintaskSortVo;
 import kh.groupware.stream.member.model.vo.MemberSimpleVo;
 import kh.groupware.stream.project.model.vo.ProjectVo;
 import kh.groupware.stream.ptask.model.vo.PtaskVo;
@@ -32,14 +32,11 @@ public class MaintaskDao {
 		return sqlSession.update("mainTask.InnerTaskInsertBeforeUpdate", vo);
 	}
 	
-	
 	public List<MemberSimpleVo> projectMemberList(String pno){
 		return sqlSession.selectList("mainTask.memberProjectselectOne", pno);
 	}
-	public List<ProjectVo> TaskSortList(String userid, String ordertype) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put(ordertype, ordertype);
-		map.put(userid, userid);
-		return sqlSession.selectList("mainTask.taskSortedList", map);
+	
+	public List<ProjectVo> TaskSortList(MaintaskSortVo vo) {
+		return sqlSession.selectList("mainTask.taskSortedList", vo);
 	}
 }
