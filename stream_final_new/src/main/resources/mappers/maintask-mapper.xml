@@ -25,9 +25,10 @@
 	
 	<!-- 프로젝트, 업무 뿌리기 -->
 	<select id="projectNameList" resultMap="maintaskVoMap" parameterType="string">
-		select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
-    		from project p right join task t using (pno)
-    		where tmember = #{userid} or t.userid = #{userid}
+		select (select pname from project where pno=t.pno) pname, pno, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
+    		from
+    		(select tno, pno, userid, tmember, ttitle, tcontent, tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel
+    			from task where tmember = #{userid} or userid = #{userid}) t
     		order by to_number(pno) desc, to_number(bref) desc, brelevel asc, to_number(brestep) asc
 	</select>
 	<!--  
@@ -95,9 +96,10 @@
 	</select>
 	
 	<select id="taskSortedList" resultMap="maintaskVoMap" parameterType="string">
-		select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
-    		from project p right join task t using (pno)
-    		where tmember = #{userid} or t.userid = #{userid}
+		select (select pname from project where pno=t.pno) pname, pno, userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
+    		from
+    		(select tno, pno, userid, tmember, ttitle, tcontent, tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel
+    			from task where tmember = #{userid} or userid = #{userid}) t
     		order by to_number(pno) desc, to_number(bref) desc, brelevel asc, 
     	<choose>
     		<when test="ordertype == 'ttitle1'">
@@ -112,11 +114,35 @@
     		<when test="ordertype == 'tstatus2'">
       			tstatus desc
     		</when>
+		     <when test="ordertype == 'tmember1'">
+		      tmember asc
+		    </when>
+		     <when test="ordertype == 'tmember2'">
+		      tmember desc
+		    </when>
 		    <when test="ordertype == 'tstartdate1'">
 		      tstartdate asc
 		    </when>
 		    <when test="ordertype == 'tstartdate2'">
 		      tstartdate desc
+		    </when>
+		     <when test="ordertype == 'tenddate1'">
+		      tenddate asc
+		    </when>
+		     <when test="ordertype == 'tenddate2'">
+		      tenddate desc
+		    </when>
+		     <when test="ordertype == 'date1'">
+		      tdate asc
+		    </when>
+		     <when test="ordertype == 'date2'">
+		      tdate desc
+		    </when>
+		     <when test="ordertype == 'tno1'">
+		      tno asc
+		    </when>
+		     <when test="ordertype == 'tno2'">
+		      tno desc
 		    </when>
 		    <otherwise>
 		        to_number(brestep) asc

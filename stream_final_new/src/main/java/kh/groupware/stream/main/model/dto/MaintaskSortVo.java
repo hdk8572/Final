@@ -29,7 +29,7 @@ public class MaintaskSortVo {
 		return ordertype;
 	}
 
-	public void setOrderType(String ordertype) {
+	public void setOrdertype(String ordertype) {
 		this.ordertype = ordertype;
 	}
 	

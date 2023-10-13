@@ -310,18 +310,18 @@ select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartda
     		from project p right join task t using (pno)
     		where tmember = 'sple@kh.co.kr' or t.userid ='sple@kh.co.kr'
     		order by 
-            to_number(pno) asc, 
+            to_number(pno) desc, 
  to_number(bref) desc, 
  brelevel asc, 
 -- <choose>
 --    <when test="ordertype == ttitle">
---        ttitle asc
+        ttitle desc
 --    </when>
 --    <when test="ordertype == tstatus">
 --      tstatus asc
 --    </when>
 --    <when test="ordertype == tstartdate">
-      tstartdate asc
+--      tstartdate asc
 --    </when>
 --    <when test ="ordertype == "tno">
 --    tno asc
@@ -342,19 +342,63 @@ select ttitle, tstatus, tmember, tstartdate, tenddate, tdate, tno, pno, pname, u
     where tmember = 'sple@kh.co.kr' or userid = 'sple@kh.co.kr'
     order by to_number(pno) desc, to_number(bref) desc,  to_number(tno) desc
     ;
-select message, cdate, rn 
-from
-(select roomid, message, cdate, row_number()over(order by cdate desc) rn
-    from chatmessage
-    where roomid=30)
-   where rn=1 
-    ;
+--select message, cdate, rn 
+--from
+--(select roomid, message, cdate, row_number()over(order by cdate desc) rn
+--    from chatmessage
+--    where roomid=30)
+--   where rn=1 
+--    ;
     
     
-insert into task (TNO, PNO, USERID, tmember, TTITLE, tcontent, TSTATUS, TDATE, tstartdate, tenddate, BREF, BRESTEP, BRELEVEL)
-		values (
-			task_sequence.NEXTVAL, #{pno}, #{userid}, #{tmember}, #{ttitle}, 'DEFAULT', #{tstatus}, sysdate, #{tstartdate}, #{tenddate}, 
-				(select bref from task where tno=#{tno}),
-				'0','0'
-				
-				)
+--insert into task (TNO, PNO, USERID, tmember, TTITLE, tcontent, TSTATUS, TDATE, tstartdate, tenddate, BREF, BRESTEP, BRELEVEL)
+--		values (
+--			task_sequence.NEXTVAL, #{pno}, #{userid}, #{tmember}, #{ttitle}, 'DEFAULT', #{tstatus}, sysdate, #{tstartdate}, #{tenddate}, 
+--				(select bref from task where tno=#{tno}),
+--				'0','0'
+--				
+--				)
+
+select (select pname from project where pno=t.pno) pname, pno, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
+    		from task t
+    		where tmember = 'sple@kh.co.kr' or t.userid = 'sple@kh.co.kr'
+    		order by to_number(pno) desc, to_number(bref) desc, brelevel asc, to_number(brestep) asc
+;
+select pname from project where pno=1;
+
+
+select pname, pno, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') 
+tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, 
+tno, bref, brestep, brelevel from project p right join task t using (pno) where tmember = 'sple@kh.co.kr' 
+or t.userid = 'sple@kh.co.kr' 
+--and ttitle='ttitle1' 
+order by to_number(pno) desc, to_number(bref) 
+desc, brelevel asc, ttitle asc 
+;
+
+select pname, pno, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, 
+to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, 
+bref, brestep, brelevel from project p right join task t using (pno) where tmember = 'sple@kh.co.kr' 
+or t.userid = 'sple@kh.co.kr' order by to_number(pno) desc, to_number(bref) desc, brelevel 
+asc, to_number(brestep) asc 
+;
+
+
+
+
+-- 강사님 수정. panme 하나 불러오면서 project join 하는건 비생산적.
+select (select pname from project where pno=t.pno), pno, userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') 
+                tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, 
+tno, bref, brestep, brelevel 
+from 
+(
+select * from task where tmember = 'sple@kh.co.kr' or userid = 'sple@kh.co.kr'
+) t 
+order by 
+to_number(pno) desc
+, brelevel asc
+, ttitle asc 
+--, to_number(bref) desc
+--, ttitle asc 
+;
+desc task;

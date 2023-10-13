@@ -361,7 +361,7 @@
 		abc=()=>{
 			var e1 = event.target;
 			console.log(e1);
-			var e2 = $(e1).data('ordertype');
+			var e2 = $(e1).data("ordertype");
 			console.log(e2);
 			
 			$.ajax({
@@ -369,7 +369,7 @@
 			
 				data:{
 					ordertype : e2,
-					userid : principal_username,
+					userid : principal_username
 					},
 				dataType: "json",
 				url: contextPath+"/sort",
