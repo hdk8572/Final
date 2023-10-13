@@ -31,19 +31,7 @@
     			from task where tmember = #{userid} or userid = #{userid}) t
     		order by to_number(pno) desc, to_number(bref) desc, brelevel asc, to_number(brestep) asc
 	</select>
-	<!--  
-	<select id="projectNameList" resultMap="maintaskVoMap"  parameterType="string">
-		select pname, pno, userid, projectwriter userid, taskwriter userid, mname, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
-    		from (select pname, pno, p.userid projectwriter, t.userid taskwriter , tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
-   						from project p 
-    					right join task t using (pno)
-    					join member_project mp using(pno)
-    					where tmember = 'sple@kh.co.kr' or t.userid ='sple@kh.co.kr'
-    					group by (pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel)
-    					order by to_number(pno) desc, bref desc, brelevel asc, brestep asc, tno desc) ff
-    		join users u on (u.userid= ff.taskwriter)
-	</select>
-	 -->
+
 	 
 	<!-- 프로젝트 기준 화면 뿌리기 -->
 	<select id="projectOneTaskList" resultMap="maintaskVoMap" parameterType="string">
@@ -55,21 +43,14 @@
     		
     		to_number(brestep) asc
 	</select>
+	<select id="">
+		select (select pname from project where pno=t.pno) pname, pno, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
+    	from (select pno, userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel 
+                    from task where pno=${pno} and tmember = #{userid} or userid= #{userid} ) t
+    	order by to_number(pno) desc, to_number(bref) desc, brelevel asc, 
+        to_number(brestep) asc
+	</select>
 	
-	 <!-- 
-	 <select id="projectOneTaskList" resultMap="maintaskVoMap" parameterType="string">
-	 	select pname, pno, userid, projectwriter, taskwriter, mname, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
-    		from (select pname, pno, p.userid projectwriter, t.userid taskwriter , tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel
-   						from project p 
-    					right join (select * from task t where pno=#{pno}) t using (pno)
-    					join member_project mp using(pno)
-    					where tmember = 'sple@kh.co.kr' or t.userid ='sple@kh.co.kr'
-    					group by (pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel)
-    					order by to_number(pno) desc, bref desc, brelevel asc, brestep asc, tno desc) ff
-    		join users u on (u.userid= ff.taskwriter)
-	 </select>
-	  -->
-	  
 	<!-- 하위업무 추가 -->
 	<insert id="innerTaskInsert" parameterType="PtaskVo">
 		insert into task (TNO, PNO, USERID, tmember, TTITLE, tcontent, TSTATUS, TDATE, tstartdate, tenddate, BREF, BRESTEP, BRELEVEL)

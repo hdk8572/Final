@@ -402,3 +402,9 @@ to_number(pno) desc
 --, ttitle asc 
 ;
 desc task;
+
+select (select pname from project where pno=t.pno) pname, pno, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
+    	from (select * from task t where pno=6 and tmember = 'sple@kh.co.kr' or t.userid='sple@kh.co.kr' ) t
+    	order by to_number(pno) desc, to_number(bref) desc, brelevel asc, 
+        to_number(brestep) asc
+;
