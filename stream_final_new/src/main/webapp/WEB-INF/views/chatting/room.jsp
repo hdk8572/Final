@@ -28,26 +28,14 @@
 	<div class="container">
 		<div class="col-6">
 			<h1>${room.roomName}</h1>
-		 <%-- 해당 브라우저에 로그인한 사람이 만든 사람 즉 작성자 ${room.userId} = green --%>
 		</div>
 		<div>
 			<div id="msgArea" class="col-6" >
-				<c:choose>
-					<c:when test="${room.userId eq ID}">
 						<c:forEach items="${viewChat}" var="item">
 							<div class='alert alert-secondary'>
 								<b> ${item.mName}: ${item.message} </b>
 							</div>
 						</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<c:forEach items="${viewChat}" var="item">
-							<div class='alert alert-warning'>
-								<b> ${item.mName}: ${item.message} </b>
-							</div>
-						</c:forEach>
-					</c:otherwise>
-				</c:choose>
 			</div>
 			<div class="input-group mb-3">
 				<input type="text" id="msg" class="form-control">
@@ -66,7 +54,7 @@
 			var roomId = "${room.roomId}";
 			var username = "${principal.username}";  //현재 로그인 사용자
 			var roomname = "${room.roomName}"; 			
-			
+			var user = "${name.mName}";
 			
 			console.log(mainId + ", " + roomId + ", " + username+", "+roomname+",");		
 			var sockJs = new SockJS("/stream/stomp/chat");
@@ -77,11 +65,11 @@
 
 				stomp.subscribe("/sub/chat/room/" + roomId, function(chat) {
 					var content = JSON.parse(chat.body);
-					var userId = content.userId; //현재 로그인 사용자
+					var userId = content.userId; //name 출력하는 곳
 					var message = content.message;
 					var str = '';
 					
-					if (mainId === username) {
+					if (username === userId) {
 						str = "<div class='alert alert-secondary'>";
 						str += "<b>" + userId + " : " + message + "</b>";
 						str += "</div>";

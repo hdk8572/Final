@@ -21,6 +21,12 @@ public class ChatRoomVo {
 		room.userId = userId;
 		return room;
 	}
+	public static ChatRoomVo member(String roomId,String userId) {
+		ChatRoomVo room = new ChatRoomVo();
+		room.roomId = roomId;
+		room.userId = userId;
+		return room;
+	}
 
 	@Override
 	public String toString() {

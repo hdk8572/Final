@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="chat">
 	<resultMap type="ChatRoomVo" id="chatRoomMap">
-		<id property="roomId" column="roomid"/>
+		<result property="roomId" column="roomid"/>
 		<result property="roomName" column="roomname"/>
 		<result property="userId" column="userid"/>
 		<result property="mName" column="mname"/>
 	</resultMap>
 	<resultMap type="ChatMessageVo" id="chatMessageMap">
-		<id property="roomId" column="roomid"/>
+		<result property="roomId" column="roomid"/>
 		<result property="userId" column="userid"/>
 		<result property="message" column="message"/>
 		<result property="cDate" column="cdate"/>
@@ -21,15 +21,33 @@
 	</insert>
 	
 	
-	<!-- 만든 채팅방 전체 리스트 조회 -->
+	<!-- 만든 채팅방 전체 리스트 조회 +마지막 작성대화 -->
+<!-- 	<select id="findAllRooms" resultMap="chatMessageMap">
+		SELECT c.roomid, m.userid, m.message, m.cdate, c.roomname
+FROM chatroom c
+JOIN chatmessage m ON c.roomid = m.roomid
+WHERE (m.roomid, m.cdate) IN (
+  SELECT roomid, MAX(cdate)
+  FROM chatmessage
+  GROUP BY roomid
+)
+	</select> -->
 	<select id="findAllRooms" resultMap="chatRoomMap">
-		<!-- SELECT * FROM CHATROOM WHERE USERID=#{userId} -->
-		SELECT ROOMNAME FROM CHATROOM <!-- JOIN CHATROOM USING(USERID)  WHERE USERID=#{userId} -->
+<!-- 	SELECT * FROM CHATMEMBER JOIN CHATROOM USING(ROOMID)
+WHERE chatmember.userid=#{userId} OR CHATROOM.USERID=#{userId} -->
+	select * from chatroom
 	</select>
-	
+	<select id="findRooms" resultMap="chatRoomMap">
+		SELECT * FROM CHATROOM WHERE USERID=#{userId}
+		<!-- SELECT * FROM CHATROOM JOIN CHATROOM USING(USERID)  WHERE USERID=#{userId}  -->
+	</select>
 	<!-- 채팅방 멤버 추가 -->
 	<insert id="memberInsert" parameterType="ChatRoomVo">
-		INSERT INTO CHATMEMBER(ROOMID,USERID) VALUES(ROOMID=#{roomId},USERID=#{userId})
+		<!-- INSERT INTO CHATMEMBER VALUES ((SELECT MAX(ROOMID) ROOMID FROM CHATROOM),#{userId} ) -->
+		INSERT INTO CHATMEMBER (ROOMID, USERID)
+SELECT (SELECT MAX(ROOMid) FROM chatROOM), #{userId} FROM DUAL
+UNION ALL
+SELECT (SELECT MAX(ROOMid) FROM chatROOM), #{userId} FROM DUAL
 	</insert>
 	
 	
@@ -59,9 +77,20 @@
 	</select>
 	
 	<select id="findWriter" resultMap="chatRoomMap">
-		select * from chatMember join users using (userId) where userId=#{userId}
+		select mname from users where userid=#{userId}
 	</select>
 
-	
+	<select id="lastMessage" resultMap="chatRoomMap">
+	select roomid, message, cdate
+	from
+	(select roomid, roomname, c1.userid roommaster, m1.userid chatter, message,
+	cdate, row_number()over(order by cdate desc) rn
+	from chatroom c1
+	join chatmessage m1 using(roomid)
+	where roomid=#{roomId}
+	)
+	where rn = 1
+	</select>
+
 </mapper>
 

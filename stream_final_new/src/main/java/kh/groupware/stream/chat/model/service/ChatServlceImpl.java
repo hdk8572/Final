@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import kh.groupware.stream.chat.model.dao.ChatDao;
 import kh.groupware.stream.chat.model.vo.ChatMessageVo;
 import kh.groupware.stream.chat.model.vo.ChatRoomVo;
-import kh.groupware.stream.chat.model.vo.ChatVo;
 @Service
 public class ChatServlceImpl implements ChatService{
 	
@@ -43,6 +42,18 @@ public class ChatServlceImpl implements ChatService{
 	@Override
 	public ChatRoomVo findWriter(String userId) {
 		return dao.findWriter(userId);
+	}
+	@Override
+	public List<ChatRoomVo> findRooms(String userId) {
+		return dao.findRooms(userId);
+	}
+	@Override
+	public ChatRoomVo lastMessage(String roomId) {
+		return dao.lastMessage(roomId);
+	}
+	@Override
+	public int memberInsert(String userId) {
+		return dao.memberInsert(userId);
 	}
 
 }

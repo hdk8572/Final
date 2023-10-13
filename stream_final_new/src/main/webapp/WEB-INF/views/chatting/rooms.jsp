@@ -25,30 +25,26 @@
     <%-- ${principal.username} --%>
     <form action="/stream/room" method="post">
         <input type="text" name="roomName" class="form-control" placeholder="Room Name">
-       <input type="text" name="userId" class="form-control" placeholder="userId Name" value="${principal.username}">
-        
         <div>
-    		<c:forEach var="viewMemmber" items="${viewMemmber}">
-    		
-    				<%-- <li><input type="checkbox" name="member" class="form-control">${viewMemmber.mName}</li> --%>
-    				<li><input type="checkbox" name="member" class="form-control">${viewMemmber.userId}</li>
+    		<c:forEach var="viewMemmber" items="${viewMemmber}">		
+    				<li><input type="checkbox" name="member" class="form-control" value="${viewMemmber.userId}">${viewMemmber.userId}</li>
 			</c:forEach>
-    	</div>       
+    	</div>      
         <button class="btn btn-secondary">개설하기</button>
     </form>
      <script>
         $(document).ready(function(){
             var roomName1 = "${roomName1}";
             var member = "${member}";
-            
 
             $(".btn-create").on("click", function (e){
                 e.preventDefault();
-
+					
                 var roomName = $("input[roomName='roomName']").val();
-                var member = $("input[roomName='member']").val(); 
-
-                if(name == "" || userId == "") 
+               
+                var member = $("input[member='member']").val(); 
+					
+                if(member == "" || userId == "") 
                     alert("Please write both the room name and userId name.");
                 else
                     $("form").submit();

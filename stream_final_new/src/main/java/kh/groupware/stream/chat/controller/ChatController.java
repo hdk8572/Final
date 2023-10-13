@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.groupware.stream.chat.model.service.ChatService;
-import kh.groupware.stream.chat.model.vo.ChatVo;
 import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 
@@ -72,11 +71,13 @@ public class ChatController {
 	     return mv;
 	 }
 	    @PostMapping(value = "/room")
-	    public String create(@RequestParam String roomName,Principal principal, RedirectAttributes rttr){
+	    public String create(@RequestParam String roomName,@RequestParam String member,Principal principal, RedirectAttributes rttr){
 //	    	log.info("# Create Chat Room, roomName: " + roomName + ", userId: " + userId);
 	    	String userId = principal.getName();
-	    	service.AddChatRoom(roomName, userId);
+	    	service.AddChatRoom(roomName, member);
+			service.memberInsert(member); 
 	        rttr.addFlashAttribute("roomName1", roomName);
+			rttr.addFlashAttribute("member",member);
 	        return "redirect:/rooms";
 	    }
 

@@ -152,13 +152,91 @@ INCREMENT by 1;
 SELECT * FROM CHATROOM  ;
 SELECT * FROM CHATROOM  JOIN chatmember USING(USERID) WHERE USERID='sample@kh.co.kr';
 
-INSERT INTO CHATMEMBER VALUES ('1', 'sple@kh.co.kr');
-SELECT * FROM CHATMEMBER JOIN CHATROOM USING(USERID)  WHERE USERID='sple@kh.co.kr';
-SELECT *FROM CHATROOM;
-SELECT * FROM CHATROOM  WHERE USERID='mplsam@kh.co.kr';
+INSERT INTO CHATMEMBER VALUES ('29', 'sple@kh.co.kr');
+INSERT INTO CHATMEMBER VALUES ('29', 'mplsam@kh.co.kr');
+SELECT R.ROOMNAME,C.USERID,ROOMID FROM CHATMEMBER C JOIN CHATROOM R USING(ROOMID) WHERE C.USERID='sple@kh.co.kr';
+SELECT * FROM CHATROOM;
+SELECT * FROM CHATMEMBER C JOIN CHATROOM R USING(ROOMID) ;
+WHERE USERID='sple@kh.co.kr';
+
+SELECT * FROM CHATROOM join chatmessage using(roomid) where roomid='30';
+
+
+select *
+from(select *
+from
+(select roomid, roomname, c1.userid roommaster, m1.userid chatter, message, cdate, row_number()over(order by cdate desc) rn 
+    from chatroom c1
+    join chatmessage m1 using(roomid)
+    where roomid=30
+    )
+ );
+ select * from chatroom;
+ select * from chatmessage;
+SELECT * FROM chatmember ORDER BY cdate DESC LIMIT 1;
+select *
+from ( select *
+    from chat;
+    
+select roomid, m.userid, message, cdate,roomname
+from chatmessage m
+join chatroom c using(roomid)
+where roomid=30
+ORDER BY cdate DESC;
+
+SELECT roomid, m.userid, message, cdate, roomname
+FROM chatmessage m
+JOIN chatroom c USING(roomid)
+WHERE roomid = 30
+AND cdate = (SELECT MAX(cdate) FROM chatmessage WHERE roomid = 30);
+
+SELECT c.roomid, m.userid, m.message, m.cdate, c.roomname
+FROM chatroom c
+JOIN chatmessage m ON c.roomid = m.roomid
+WHERE (m.roomid, m.cdate) IN (
+  SELECT roomid, MAX(cdate)
+  FROM chatmessage
+  GROUP BY roomid
+);
+
+select roomid,roomname,c.userid,m.userid  from chatroom c join chatmember m using(roomid)
+where c.userid= 'mplsam@kh.co.kr' or m.userid = 'mplsam@kh.co.kr'
+;
+
+
+select * from users;
+SELECT c.roomid, m.userid, COALESCE(m.message, 'NULL') AS message, m.cdate, c.roomname
+FROM chatroom c
+LEFT JOIN chatmessage m ON c.roomid = m.roomid AND m.cdate = (
+    SELECT MAX(cdate)
+    FROM chatmessage
+    WHERE roomid = c.roomid
+);
+
+select * from chatmessage
+where roomid=30;
+where cdate
+
+select roomid, roomname, c1.userid roommaster, m1.userid chatter, message, cdate, row_number()over(order by cdate desc) rn 
+    from chatroom c1
+    join chatmessage m1 using(roomid)
+    where  c1.userid='mplsam@kh.co.kr';
+
+select roomname,message from chatmessage join chatroom using(roomid);
+select *; 
+
+SELECT *
+FROM CHATROOM ;
+JOIN CHATMESSAGE  USING(ROOMID)
+WHERE ROOMID = '30'
+ORDER BY m.CREATED_AT DESC;
+
+
+select * from chatmessage;
+SELECT * FROM CHATROOM  WHERE USERID='sple@kh.co.kr';
 -------------------------------------
 SELECT * FROM USERS;
-SELECT * FROM chatmember;
+SELECT * FROM chatmember ;
 SELECT * FROM CHATROOM;
 SELECT * FROM chatmessage;
 
@@ -181,16 +259,57 @@ SELECT * FROM CHATROOM;
 INSERT INTO CHATMEMBER VALUES ('6', 'sample@kh.co.kr');
 INSERT INTO CHATMEMBER VALUES ('6', 'mplsam@kh.co.kr');
 
+--해당 채팅방에 초대된 사람만 리스트보이기
+select * from chatroom;
+select * from chatmember;
+select roomid,roomname,userid from chatroom  join chatmember  using(roomid);
+
+SELECT * FROM CHATMEMBER JOIN CHATROOM USING(ROOMID)
+WHERE chatmember.userid='mplsam@kh.co.kr' OR CHATROOM.USERID='mplsam@kh.co.kr';
 
 
+
+SELECT roomid, roomname, chatmember.userid AS userid
+FROM chatroom
+JOIN chatmember USING(roomid)
+WHERE chatmember.userid='mplsam@kh.co.kr';
+
+SELECT *
+FROM chatroom;
+JOIN chatmember USING(roomid)
+WHERE chatmember.userid='mplsam@kh.co.kr' OR chatroom.USERID='mplsam@kh.co.kr';
+SELECT MAX(ROOMid) ROOMid FROM chatROOM;
+
+INSERT INTO CHATMEMBER VALUES ((SELECT MAX(ROOMid) ROOMid FROM chatROOM), 'spam@kh.co.kr');
+
+SELECT MAX(ROOMid) ROOMid FROM chatROOM;
+select *from chatmember;
+SELECT * FROM CHATROOM;
 select * from users;
+INSERT INTO CHATMEMBER VALUES ('47', 'mplsam@kh.co.kr');
+
+INSERT INTO CHATMEMBER VALUES(((SELECT MAX(ROOMid) ROOMid FROM chatROOM), 'spam@kh.co.kr'),((SELECT MAX(ROOMid) ROOMid FROM chatROOM), 'mplsam@kh.co.kr')));
+
+INSERT INTO CHATMEMBER (ROOMID, USERID)
+SELECT (SELECT MAX(ROOMid) FROM chatROOM), 'spam@kh.co.kr' FROM DUAL
+UNION ALL
+SELECT (SELECT MAX(ROOMid) FROM chatROOM), 'mplsam@kh.co.kr' FROM DUAL;
+
+
+SELECT *FROM CHATROOM;
+select * from chatmember;
+
+SELECT * FROM CHATMEMBER JOIN CHATROOM USING(ROOMID)
+WHERE chatmember.userid='sple@kh.co.kr' OR CHATROOM.USERID='mplsam@kh.co.kr';
+
+select mname from users where userid='sample@kh.co.kr';
 select mname from chatmember join users using (userid) where userid='mplsam@kh.co.kr';
 select * from chatMember join users using (userId) where userId='mplsam@kh.co.kr';
 JOIN chatmember USING(USERID)
 --채팅방 진입 USERID를 세션으로 받아서 진입
 SELECT MNAME FROM USERS WHERE USERID = 'sample@kh.co.kr';
 SELECT ROOMID,MNAME,USERID FROM chatmember JOIN USERS USING(USERID) WHERE ROOMID='1' AND USERID='mplsam@kh.co.kr';
-
+select * from chatmember;
 --INSERT INTO CHATROOM (ROOMID,ROOMNAME,USERID) VALUES (#{roomId},#{USERID},#{roomName})
 INSERT INTO CHATROOM (ROOMID,ROOMNAME) VALUES (chat_sequence.NEXTVAL,'roomname확인123');
 INSERT INTO CHATROOM (ROOMID,ROOMNAME,USERID) VALUES (chat_sequence.NEXTVAL,'roomname확인2','sple@kh.co.kr');

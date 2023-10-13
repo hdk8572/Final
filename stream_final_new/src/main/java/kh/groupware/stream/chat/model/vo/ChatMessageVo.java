@@ -9,10 +9,11 @@ public class ChatMessageVo {
 	private String message;
 	private String cDate;
 	private String mName;
+	private String roomName;
 	@Override
 	public String toString() {
 		return "ChatMessageVo [roomId=" + roomId + ", userId=" + userId + ", message=" + message + ", cDate=" + cDate
-				+ ", mName=" + mName + "]";
+				+ ", mName=" + mName + ", roomName=" + roomName + "]";
 	}
 	public String getRoomId() {
 		return roomId;
@@ -44,7 +45,13 @@ public class ChatMessageVo {
 	public void setmName(String mName) {
 		this.mName = mName;
 	}
-	
+	public String getRoomName() {
+		return roomName;
+	}
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
+	}
+
 
 	
 	
