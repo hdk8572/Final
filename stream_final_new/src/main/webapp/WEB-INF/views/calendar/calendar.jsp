@@ -1,27 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal" var="principal"/>
-</sec:authorize>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="author" content="Stream">
-
-<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
-
-<title>Stream - Final Project</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
-<!-- Tab bar -->
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-<!-- Bootstrap CSS -->
-<link href="${pageContext.request.contextPath}/css/streamapp.css" rel="stylesheet">
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- CSS -->
 <link href="${pageContext.request.contextPath }/css/calreadmodal.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/css/calmodal.css" rel="stylesheet"> 
@@ -36,13 +15,6 @@
 <!-- fullcalendar 언어 설정관련 script -->
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
 
-<!-- JQuery -->
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-
-<!-- SummerNote CDN -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-
-
 <script>
 let logined_userid="${principal.username}"; /* 로그인! */
 </script>
@@ -52,31 +24,6 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/alertmsg.jsp"%>
-	<div class="wrapper">
-		<%@include file="/WEB-INF/views/calendar/calendar-side.jsp"%>
-			<div class="main">
-				<%@ include file="/WEB-INF/views/headernavbar.jsp"%>
-			<main>
-				<div class="w3-bar tabBar">
-					<button class="w3-bar-item w3" onclick="openTab('Tab1')">피드</button>
-					<button class="w3-bar-item w3" onclick="openTab('Tab2')">업무</button>
-					<button class="w3-bar-item w3" onclick="openTab('Tab3')">캘린더</button>
-				</div>
-
-<%-- 				<div class="search">
-						<form action="${pageContext.request.contextPath}/pcalselectone" method="get"> <!-- ?? -->
-							<input class="serinput" type="text" placeholder="검색어 입력"> 
-							<img class="serimg" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
-						</form>
-					</div> --%>
-
-				<main class="content" id="content-calendar">
-					<div class="content-cal">
- 						<h2>
-							Calendar
-							<button class="btn btn-primary addcal"  id="myBtn" data-bs-toggle="modal" data-bs-target="#addcalmodal" onclick="getMemberProjectListHandler(this)">+일정추가</button>
-						</h2>
-						<div class="container-fluid p-0">
 							<div class="card-header">
 								<!-- 캘린더  -->
 								<div id="croot">
@@ -85,21 +32,9 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 									</div>
 								</div>
 							</div>
-						</div>
 <%@ include file="/WEB-INF/views/calendar/addcalmodal.jsp" %>
 <%@ include file="/WEB-INF/views/calendar/updatecalmodal.jsp" %>
 <%@ include file="/WEB-INF/views/calendar/readcalmodal.jsp" %>
-					 </div>
-				</main>
-				<%@ include file="/WEB-INF/views/footer.jsp"%>
-			</main>
-		</div>
-	</div>
-	
-	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
-	<script src="${pageContext.request.contextPath}/js/app.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-	
 	<!-- 달력을 구성  -->
 	<script>
 

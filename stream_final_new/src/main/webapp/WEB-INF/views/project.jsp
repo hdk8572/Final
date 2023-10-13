@@ -34,10 +34,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 	
 	
-	
 	<script>history.replaceState({}, null, location.pathname);</script> 
-	
-	
 	
 </head>
 
@@ -123,16 +120,18 @@
 
 				<!-- 캘린더 탭 -->
 				<div id="Tab3" class="w3-container tab ptab" style="display: none" style="height: 60px">
-					<main class="content">
-						<h2>캘린더</h2>
-						<div class="container-fluid p-0">
-							<!-- <p>임지연</p> -->
-							
-							
-							
-							<!-- 내용 -->
-							
-						</div>
+					<main class="content" id="content-calendar">
+						<div class="content-cal">
+							<h2>
+								캘린더
+								<button class="btn btn-primary addcal"  id="myBtn" data-bs-toggle="modal" data-bs-target="#addcalmodal" onclick="getMemberProjectListHandler(this)">+일정추가</button>
+							</h2>
+								<div class="container-fluid p-0">
+								<!-- 내용  -->
+								<%@ include file="/WEB-INF/views/calendar/calendar.jsp"%>
+								
+							</div>
+						 </div>
 					</main>
 				</div>
 			</main>

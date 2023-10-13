@@ -53,7 +53,6 @@
 								<%@ include file="/WEB-INF/views/kakaomap.jsp"%>
 							</div>
 								
-								
 							<!-- 내용  -->
 							<div id="form-content">
 								<textarea class="form-control detail-content" id="csummernote" rows="5" name="smemo" placeholder="프로젝트에 관한 설명을 입력해주세요"></textarea>
@@ -66,7 +65,6 @@
 					</div>
 				</div>  <!-- end of card -->
 			</div>
-			<div class="modal-footer ptask"></div>
 		</div>
 	</div>
 </div>
