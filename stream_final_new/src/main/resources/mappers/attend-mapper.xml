@@ -4,7 +4,17 @@
 
 	<!-- 출근 -->
 	<insert id="attendIn" parameterType="String">
-		INSERT INTO ATTEND (ATDATE, USERID, ATSTATENO, ATINTIME, ATWORKHOUR) VALUES
-		(sysdate, #{userid}, 1, sysdate, 0)
+		INSERT INTO ATTEND (ATDATE,
+		USERID, ATSTATENO, ATINTIME, ATWORKHOUR) VALUES
+		(TO_CHAR(sysdate,
+		'YYYY-MM-DD'), #{userid}, 1, TO_CHAR(sysdate, 'YYYY-MM-DD
+		HH24:MI:SS'), 0)
 	</insert>
+
+	<!-- 근태리스트 -->
+	<select id="attendList" parameterType="String" resultType="AttendVo">
+		SELECT ATDATE, ATSTATE,
+		ATINTIME, ATOUTTIME, ATWORKHOUR FROM ATTEND JOIN WORKSTATE ON
+		ATTEND.ATSTATENO = WORKSTATE.ATSTATENO WHERE USERID = #{userid}
+	</select>
 </mapper>

@@ -16,7 +16,8 @@
 <title>회원 가입</title>
 
 <!-- Bootstrap Css -->
-<link href="${pageContext.request.contextPath}/css/streamapp.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/streamapp.css"
+	rel="stylesheet">
 <!-- Newmember Css -->
 <link href="${pageContext.request.contextPath}/css/newmember.css"
 	rel=stylesheet">
@@ -119,7 +120,7 @@
 		</div>
 
 	</main>
-<!-------------------- Script ----------------------->
+	<!-------------------- Script ----------------------->
 	<script src="js/app.js"></script>
 
 	<script>
@@ -187,8 +188,8 @@
 		}
 
 		function checkDept(deptdrop) {
-	
-			if (deptdrop == "해당하는 부서가 없습니다"){
+
+			if (deptdrop == "해당하는 부서가 없습니다") {
 				alert("부서를 선택해주세요.")
 				return false;
 			}
@@ -213,10 +214,17 @@
 				error : deptError
 
 			});
-		}
-		function deptView(data) {
+
+			function deptView(data) {
+				if(data == null || data == ""){
+				var listHtml = "";
+				listHtml += `<option selected>해당하는 부서가 없습니다</option>`;
+				$("#deptdrop").html(listHtml);
+				return;
+			} else
 			console.log("성공하였습니다")
 			var listHtml = "";
+	
 			for (var i = 0; i < data.length; i++) {
 				var deptName = data[i];
 				listHtml += `<option value="\${deptName.deptno}">\${deptName.deptname}</option>`;
@@ -227,11 +235,9 @@
 			console.log(request);
 			console.log(status);
 			console.log(error);
-			alert("code: " +request.status + "\n" + "message: " + request.responseText+"\n" + "error: " + error )
-			var listHtml = "";
-			listHtml += `<option selected>해당하는 부서가 없습니다</option>`;
-			$("#deptdrop").html(listHtml);
-		}
+			alert("code: " + request.status + "\n" + "message: "
+					+ request.responseText + "\n" + "error: " + error);
+		}}
 	</script>
 
 
