@@ -31,11 +31,14 @@ public class PtaskServiceImpl implements PtaskService {
 	public int insertTask(PtaskVo vo) {
 		System.out.println("before: " +vo);
 		int result = ptaskDao.insertTask(vo);
-		System.out.println("after : " +vo);
+		System.out.println("result : " +result);
+		System.out.println("after 11: " +vo);
 		
-		if(vo.getFilevo().getFpath() != null && !vo.getFilevo().getFpath().equals("")){
+		if(vo.getFilevo() != null && !vo.getFilevo().equals("")){
+			System.out.println("들렸어");
             int savedFileId = fileDao.savedFile(vo); 
         }
+		System.out.println("안들렸어");
 		return result;
 	} 
 	

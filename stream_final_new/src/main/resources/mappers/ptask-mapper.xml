@@ -32,8 +32,8 @@
 		select task_sequence.NEXTVAL as ctno from dual
 		</selectKey>
 		INSERT 
-		INTO TASK (TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, tstartdate, tenddate)
-			VALUES (#{tno}, #{pno}, #{userid}, #{tmember}, #{ttitle}, #{tcontent}, #{tstatus}, #{tstartdate}, #{tenddate})
+		INTO TASK (TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, tstartdate, tenddate, bref, brelevel, brestep)
+			VALUES (#{tno}, #{pno}, #{userid}, #{tmember}, #{ttitle}, #{tcontent}, #{tstatus}, #{tstartdate}, #{tenddate}, #{tno}, '0', '0')
 	</insert>
 
 	<delete id="deleteTask" parameterType="PtaskVo">
