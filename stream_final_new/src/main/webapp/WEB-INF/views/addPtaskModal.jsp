@@ -57,13 +57,11 @@
 <script>
 	const cloudinary = require('cloudinary').v2;
 	
-	//Configure your cloud name, API key and API secret:
-	
 	const myconfig = cloudinary.config({
 	cloud_name: "dup9irkxd",
 	api_key: "371128821948137",
 	api_secret: "utt72ECxh7rpq4CPsbg01B5XyiM",
 	secure: true
 	});
-
 </script>
+
