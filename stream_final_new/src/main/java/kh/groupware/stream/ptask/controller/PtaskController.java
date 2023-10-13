@@ -105,8 +105,10 @@ public class PtaskController {
 	           return "redirect:ptasklist?pno="+vo.getPno(); // redirect to error page or similar.
 	        }
 	    } 
-	        
+	    
+	    System.out.println("taskId 가나요?");
         int taskId = ptaskService.insertTask(vo); 
+        System.out.println("taskId :" + taskId);
         return "redirect:ptasklist?pno="+vo.getPno();
 
 	}
