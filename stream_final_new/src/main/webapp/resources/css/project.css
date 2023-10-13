@@ -91,3 +91,7 @@
     width: 30%;
     margin-bottom: 1rem;
 }
+
+.tabtitle {
+	overflow: hidden;
+}

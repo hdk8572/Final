@@ -53,15 +53,4 @@
 		</div>
 	</div>
 </div>
-<!-- 모달 -->
-<script>
-	const cloudinary = require('cloudinary').v2;
-	
-	const myconfig = cloudinary.config({
-	cloud_name: "dup9irkxd",
-	api_key: "371128821948137",
-	api_secret: "utt72ECxh7rpq4CPsbg01B5XyiM",
-	secure: true
-	});
-</script>
 

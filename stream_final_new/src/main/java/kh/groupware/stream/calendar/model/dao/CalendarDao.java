@@ -18,8 +18,8 @@ public class CalendarDao {
 	private SqlSession sqlSession;
 	
 	//캘린더 전체 조회
-	public List<CalendarVo> selectList(String pno) {
-		return sqlSession.selectList("calendar.selectList", pno);
+	public List<CalendarVo> selectList(CalendarParamVo paramvo) {
+		return sqlSession.selectList("calendar.selectList", paramvo);
 	}
 	//캘린더 일정 상세 조회
 	public CalendarVo selectOne(String sno) {

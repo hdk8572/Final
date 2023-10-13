@@ -9,7 +9,7 @@ import kh.groupware.stream.member.model.vo.MemberSimpleVo;
 
 public interface CalendarService {
 	
-	public List<CalendarVo> selectList(String pno); //캘린더 조회
+	public List<CalendarVo> selectList(CalendarParamVo paramvo); //캘린더 조회
 	public CalendarVo selectOne(String sno);	//캘린더 일정 상세 조회
 	public List<MemberSimpleVo> memberProjectList(CalendarParamVo pno);	//참석자 조회
 	public int isAttendedProject(Map<String, String> map);	//프로젝트에 참여중인 사람인지 확인

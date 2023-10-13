@@ -22,8 +22,8 @@ public class CalendarServiceImpl implements CalendarService {
 	
 	//캘린더 조회
 	@Override
-	public List<CalendarVo> selectList(String pno) {
-		return calendarDao.selectList(pno);
+	public List<CalendarVo> selectList(CalendarParamVo paramvo) {
+		return calendarDao.selectList(paramvo);
 	}
 	//캘린더 일정 상세 조회
 	@Override

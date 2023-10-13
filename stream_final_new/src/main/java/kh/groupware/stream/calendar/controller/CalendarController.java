@@ -49,18 +49,27 @@ public class CalendarController {
 			}
 		}
 		mv.addObject("pno", pno);
-		mv.setViewName("calendar/calendar");
+		mv.setViewName("calendar/projectcalendar");
 		return mv;
 	}
 	
 	//캘린더 전체 조회 //달력에 표시할 모든 일정 목록을 가져오는 역할을 한다.
-	@GetMapping({"/pcalselectlist", "/pcalselectlist/{pno}"}) //1번처럼 들어올 수도 있고 2번처럼 들어올 수도 있다. //{}중괄호를 치고 번호를 적는 것임
+//	@GetMapping({"/pcalselectlist", "/pcalselectlist/{pno}"}) //1번처럼 들어올 수도 있고 2번처럼 들어올 수도 있다. //{}중괄호를 치고 번호를 적는 것임
+//	@ResponseBody
+//	public String calSelectList(@PathVariable(name = "pno", required = false) String pno) { //String pno->pno값을 들고올 수도 있는데(null값이 있을 수도 있음) 안 들고올 수도 있으니깐 앞에 저렇게 적어줌.required = false->꼭 pno가 있지 않을 수도 있어 
+//		List<CalendarVo> calendarList = null;
+//		calendarList = calendarService.selectList(pno);
+//		return new Gson().toJson(calendarList);	//캘린터 정보를 DB에서 조회한 후 JSON 형식으로 클라이언트에게 반환하는 것이다.
+//	}
+	//캘린더 전체 조회 //달력에 표시할 모든 일정 목록을 가져오는 역할을 한다.
+	@GetMapping({"/pcalselectlist"})
 	@ResponseBody
-	public String calSelectList(@PathVariable(name = "pno", required = false) String pno) { //String pno->pno값을 들고올 수도 있는데(null값이 있을 수도 있음) 안 들고올 수도 있으니깐 앞에 저렇게 적어줌.required = false->꼭 pno가 있지 않을 수도 있어 
+	public String calSelectList(CalendarParamVo paramvo) { //String pno->pno값을 들고올 수도 있는데(null값이 있을 수도 있음) 안 들고올 수도 있으니깐 앞에 저렇게 적어줌.required = false->꼭 pno가 있지 않을 수도 있어 
 		List<CalendarVo> calendarList = null;
-		calendarList = calendarService.selectList(pno);
+		calendarList = calendarService.selectList(paramvo);
 		return new Gson().toJson(calendarList);	//캘린터 정보를 DB에서 조회한 후 JSON 형식으로 클라이언트에게 반환하는 것이다.
 	}
+	
 	
 	//캘린더 일정 상세 조회
 	@GetMapping("/pcalselectone")
@@ -82,7 +91,7 @@ public class CalendarController {
 	//캘린더 등록
 	@PostMapping("/insertpcal")
 	public String insert(Model model, CalendarVo cal) {
-		cal.setAttenduseridList(Arrays.asList(cal.getAttenduseridArr()));
+		//cal.setAttenduseridList(Arrays.asList(cal.getAttenduseridArr()));
 		System.out.println("aaaa :" + cal);
 		calendarService.insert(cal);
 		return "redirect:pcal?sno="+cal.getSno();

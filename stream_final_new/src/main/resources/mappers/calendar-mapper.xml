@@ -5,6 +5,7 @@
 	<resultMap type="CalendarVo" id="CalendarMembersMap">
 		<id property="sno" column="sno"/>
 		<result column="USERID" property="userid" />
+		<result column="mname" property="mname" />
 		<result column="SSTART" property="start" />
 		<result column="SEND" property="end" />
 		<result column="STITLE" property="title" />
@@ -12,20 +13,26 @@
 		<result column="SMEMO" property="smemo" />
 		<result column="SPLACE" property="splace"/>
 		<result column="PNO" property="pno" />
-		<collection column="ATTENDUSERID" property="attenduseridList" javaType="list" ofType="string" />
+		<collection property="attenduseridList" ofType="MemberSimpleVo">
+			<result column="ATTENDUSERID" property="userid" />
+			<result column="ATTENDNAME" property="mname" />
+		</collection>
 	</resultMap>
 	
 	<!-- 일정 조회 -->
 	<!-- 동적 SQL문 where을 건 이유(if랑 세트) =pno를 안 들고 진입하는 경우도 있기 때문에(이걸 걸면 안에 where을 적을 필요가 없다.) --> <!-- 다른 방법으로 trim도 있다. --><!-- 		WHERE USERID =#{userid} or attenduserid =#{userid} -->
-	<select id="selectList" resultMap="CalendarMembersMap" parameterType="string">
-		SELECT SNO, USERID,	to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, 'yyyy-mm-dd') SEND, STITLE, SCOLOR, SPLACE, SMEMO, PNO, ATTENDUSERID
-		FROM SCHEDULE tbs left outer join member_schedule tbms using(sno)
-
-		<where>
-			<if test="pno != null">
-	          pno=#{pno}
-			</if>
-		</where>
+	<select id="selectList" resultMap="CalendarMembersMap" parameterType="CalendarParamVo">
+		SELECT SNO, USERID, mname, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, 'yyyy-mm-dd') SEND, STITLE, SCOLOR, SPLACE, SMEMO, PNO, ATTENDUSERID , ATTENDNAME
+		FROM v_u_schedule tbs left outer join v_u_member_schedule tbms using(sno) 
+		where pno
+		<choose>
+			<when test="pno != null and pno != ''">
+				= #{pno}
+			</when>
+			<otherwise>
+				in (select pno from member_project where  userid=#{userid})
+			</otherwise>
+		</choose>
 	</select>
 
 	<!-- 일정 상세조회 -->

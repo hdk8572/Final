@@ -7,10 +7,17 @@ public class CalendarParamVo {
 	
 	private String userid;
 	private String pno;
+	
+	// TODO
+	private String startdate;
+	private String enddate;
+	
 	@Override
 	public String toString() {
-		return "CalendarParamVo [userid=" + userid + ", pno=" + pno + "]";
+		return "CalendarParamVo [userid=" + userid + ", pno=" + pno + ", startdate=" + startdate + ", enddate="
+				+ enddate + "]";
 	}
+
 	public String getUserid() {
 		return userid;
 	}
@@ -22,6 +29,22 @@ public class CalendarParamVo {
 	}
 	public void setPno(String pno) {
 		this.pno = pno;
+	}
+
+	public String getStartdate() {
+		return startdate;
+	}
+
+	public void setStartdate(String startdate) {
+		this.startdate = startdate;
+	}
+
+	public String getEnddate() {
+		return enddate;
+	}
+
+	public void setEnddate(String enddate) {
+		this.enddate = enddate;
 	}
 	
 	

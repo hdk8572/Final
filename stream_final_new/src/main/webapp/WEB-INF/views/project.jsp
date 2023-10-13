@@ -33,6 +33,16 @@
 	<!-- SummerNote CDN -->
 	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 	
+<!--  Calendar CSS -->
+<link href="${pageContext.request.contextPath }/css/calreadmodal.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/calmodal.css" rel="stylesheet"> 
+<link href="${pageContext.request.contextPath }/css/fullcalendar.css" rel="stylesheet">
+<!-- fullcalendar css -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<!-- fullcalendar 언어 설정관련 script -->
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
 
 	
 	
@@ -55,15 +65,18 @@
 					</div>
 				</div>
 				<div class="w3-bar tabBar" style="height: 60px">
-					<button class="w3-bar-item w3" onclick="openTab('Tab1')" style="padding: 26px 25px">피드</button>
 					<button class="w3-bar-item w3" onclick="openTab('Tab2')" style="padding: 26px 25px">업무</button>
 					<button class="w3-bar-item w3" onclick="openTab('Tab3')" style="padding: 26px 25px">캘린더</button>
+					<button class="w3-bar-item w3" onclick="openTab('Tab1')" style="padding: 26px 25px">피드</button>
 				</div>
 
 				<!-- 피드 탭 -->
-				<div id="Tab1" class="w3-container tab ptab">
+				<div id="Tab1" class="w3-container tab ptab" style="display: none" style="height: 60px">
 					<main class="content">
-						<h2>피드</h2>
+						<div class="tabtitle">
+							<span class="text-tab">피드</span>
+							<button class="btn btn-primary addTaskTab" data-bs-toggle="modal" data-bs-target="#myModal">업무 등록</button>
+						</div>
 						<div class="container-fluid p-0">
 							<p>추후 진행</p>
 							<!-- 내용 -->
@@ -72,9 +85,9 @@
 				</div>
 
 				<!-- 업무 탭 [Task]-->
-				<div id="Tab2" class="w3-container tab ptab" style="display: none" style="height: 60px">
+				<div id="Tab2" class="w3-container tab ptab">
 					<main class="content">
-						<div>
+						<div class="tabtitle">
 							<span class="text-tab">업무</span>
 							<button class="btn btn-primary addTaskTab" data-bs-toggle="modal" data-bs-target="#myModal">업무 등록</button>
 						</div>
@@ -120,19 +133,17 @@
 				</div>
 
 				<!-- 캘린더 탭 -->
-				<div id="Tab3" class="w3-container tab ptab" style="display: none" style="height: 60px">
+				<div id="Tab3" class="w3-container tab ptab"  style="display: none" style="height: 60px">
 					<main class="content" id="content-calendar">
-						<div class="content-cal">
-							<h2>
-								캘린더
-								<button class="btn btn-primary addcal"  id="myBtn" data-bs-toggle="modal" data-bs-target="#addcalmodal" onclick="getMemberProjectListHandler(this)">+일정추가</button>
-							</h2>
-								<div class="container-fluid p-0">
-								<!-- 내용  -->
-								<%@ include file="/WEB-INF/views/calendar/calendar.jsp"%>
-								
-							</div>
-						 </div>
+						<div class="tabtitle">
+							<span class="text-tab">캘린더</span>
+							<button class="btn btn-primary addcal" id="myBtn" data-bs-toggle="modal" data-bs-target="#addcalmodal" onclick="getMemberProjectListHandler(this)">+일정추가</button>
+						</div>
+						<div class="container-fluid p-0">
+							<!-- 내용  -->
+							<%@ include file="/WEB-INF/views/calendar/calendar.jsp"%>
+							
+						</div>
 					</main>
 				</div>
 			</main>
@@ -160,7 +171,10 @@
 	  for (i = 0; i < x.length; i++) {
 	    x[i].style.display = "none";  
 	  }
-	  document.getElementById(tabName).style.display = "block";  
+	  document.getElementById(tabName).style.display = "block"; 
+	  if(tabName == "Tab3"){
+		  loadCalendarHandler();
+	  }
 	}
 	
 	$(document).ready(function (){
@@ -237,4 +251,16 @@
  	    $("#updateTstatus").val(updatedOption);
 	}
 	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </html>

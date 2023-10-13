@@ -20,6 +20,7 @@
 		<typeAlias type="kh.groupware.stream.project.model.vo.ProjectVo" alias="ProjectVo"/>
 		<typeAlias type="kh.groupware.stream.main.model.dto.MaintaskDto" alias="MaintaskDto"/>
 		<typeAlias type="kh.groupware.stream.calendar.model.vo.CalendarVo" alias="CalendarVo"/>
+		<typeAlias type="kh.groupware.stream.calendar.model.vo.CalendarParamVo" alias="CalendarParamVo"/>
 		<typeAlias type="kh.groupware.stream.chat.model.vo.ChatMessageVo" alias="ChatMessageVo"/>
 		<typeAlias type="kh.groupware.stream.chat.model.vo.ChatRoomVo" alias="ChatRoomVo"/>
 		<typeAlias type="kh.groupware.stream.admin.model.vo.AdminVo" alias="AdminVo"/>
