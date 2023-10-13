@@ -185,47 +185,42 @@
 		                <form class="frm select" action="${pageContext.request.contextPath}/ptasklist" method="get">
 		                    <input type="hidden" name="pno"  value="\${ul.pno}">
 		                    <div class="card-body list">
-		                        <div class="row">
-		                            <div class="col mt-0">
-		                                <h5 class="card-title">
-		                                    <span>\${ul.deptName}</span>: <span>\${ul.mname}</span><span> \${ul.mrank}</span>님
-		                                    <input type="hidden" name="deptName\${ul.pno}" data-deptName="\${ul.deptName}">
-		                                    <input type="hidden" name="mname\${ul.pno}" data-mname="\${ul.mname}">
-		                                    <input type="hidden" name="mrank\${ul.pno}" data-mrank="\${ul.mrank}">
-		                                    <input type="hidden" name="pstartdate\${ul.pno}" data-pstartdate="\${ul.pstartdate}">
-		                                    <input type="hidden" name="penddate\${ul.pno}" data-penddate="\${ul.penddate}">
-		                                </h5>
-		                            </div>
-		                            
-		                            <div class="col-auto">
-		                                <div class="stat text-primary">
-		                                    \${ul.prow}
-		                                </div>	
-		                            </div>
-		                        </div>
-		                        <h1 class="mt-1 mb-3" data-pname="\${ul.pname}">\${ul.pname}</h1>
-		                        <div class="mb-0" >
-		                            <span class="text-muted" data-pstatus="\${ul.pstatus}">\${ul.pstatus}</span>
-									<div class="dropdown-option" >
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
-				                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-												class="feather feather-more-horizontal align-middle me-2 dropbtn-option"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle>
-										</svg>	
-									  <div class="dropdown-content-option">
-									    <a href="#" class="dropdown-btn-update">
-									    	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit align-middle me-2 dropdown-btn-update"><path class="dropdown-btn-update" d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path class="dropdown-btn-update" d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-									    	<span class="dropdown-btn-update">수정</span>
-								    	</a>
-								    	
-								    	<a href="#" class="dropdown-btn-hide">
-								 	    	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2 dropdown-btn-hide"><path class="dropdown-btn-hide" d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line class="dropdown-btn-hide" x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg>
-									    	<span class="dropdown-btn-hide">숨김</span>
-									    </a>
-									  </div>
-									</div>
-		                        </div>
-		                    </div>	
-		                </form>
+	                    </form>
+	                        <div class="row">
+	                            <div class="col mt-0">
+	                                <h5 class="card-title">
+	                                    <span>\${ul.deptName}</span>: <span>\${ul.mname}</span><span> \${ul.mrank}</span>님
+	                                </h5>
+	                            </div>
+	                            
+	                            <div class="col-auto">
+	                                <div class="stat text-primary">
+	                                    \${ul.prow}
+	                                </div>	
+	                            </div>
+	                        </div>
+	                        <h1 class="mt-1 mb-3" data-pname="\${ul.pname}">\${ul.pname}</h1>
+	                        <div class="mb-0" >
+	                            <span class="text-muted" data-pstatus="\${ul.pstatus}">\${ul.pstatus}</span>
+								<div class="dropdown-option" >
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+			                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+											class="feather feather-more-horizontal align-middle me-2 dropbtn-option"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle>
+									</svg>	
+								  <div class="dropdown-content-option">
+								    <a href="#" class="dropdown-btn-update">
+								    	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit align-middle me-2 dropdown-btn-update"><path class="dropdown-btn-update" d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path class="dropdown-btn-update" d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+								    	<span class="dropdown-btn-update">수정</span>
+							    	</a>
+							    	
+							    	<a href="#" class="dropdown-btn-hide">
+							 	    	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2 dropdown-btn-hide"><path class="dropdown-btn-hide" d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line class="dropdown-btn-hide" x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg>
+								    	<span class="dropdown-btn-hide">숨김</span>
+								    </a>
+								  </div>
+								</div>
+	                        </div>
+	                    </div>	
 		            </div>
 	           </div>`;
 				}

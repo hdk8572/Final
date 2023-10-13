@@ -10,6 +10,9 @@ public interface ProjectService {
 	
 	public List<ProjectVo> selectList(String userid);
 	public List<ProjectVo> selectHide(String userid);
+	
+	public ProjectVo sessionPname(String pno);
+	
 	/* public ProjectVo selectOne(ProjectVo vo); */
 	public ProjectVo selectOne(PnoPrincipalParam pnoPrincipalParam);
     public List<ProjectVo> insertList(ProjectVo vo, String userid);

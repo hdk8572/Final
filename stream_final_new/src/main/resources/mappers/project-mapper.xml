@@ -17,7 +17,14 @@
 		WHERE PSTATUS IN ('숨김')
 		AND USERID = #{userid}
 	</select>
-	 
+	
+	<select id="sessionPname" resultType="ProjectVo">
+		SELECT PNO, PNAME
+		FROM PROJECT
+		WHERE PNO = #{pno}
+	</select>
+	
+	
 	<select id="selectOne" resultType="ProjectVo">
 		SELECT PNO, USERID, PNAME, PCONTENT, PACCESS, PDATE, to_char(PSTARTDATE, 'yyyy-mm-dd') PSTARTDATE, to_char(PENDDATE, 'yyyy-mm-dd') PENDDATE, PSTATUS
 		FROM PROJECT

@@ -28,6 +28,11 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 	
 	@Override
+	public ProjectVo sessionPname(String pno) {
+		return projectDao.sessionPname(pno);
+	}
+	
+	@Override
 	public List<ProjectVo> selectHide(String userid) {
 		return projectDao.selectHide(userid);
 	}

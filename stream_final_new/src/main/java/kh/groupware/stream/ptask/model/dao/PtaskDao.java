@@ -39,4 +39,8 @@ public class PtaskDao {
 		return sqlSession.delete("task.deleteTask", pno);
 	}
 	
+	public int update(PnoTnoParam pnoTnoParam) {
+		return sqlSession.update("task.updatePtask", pnoTnoParam);
+	}
+	
 }

@@ -33,8 +33,8 @@
 	<!-- SummerNote CDN -->
 	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 	
+
 	
-	<script>history.replaceState({}, null, location.pathname);</script> 
 	
 </head>
 
@@ -51,7 +51,7 @@
 						<i id="projectColor" class="project-color color-code-1"></i>
 					</div>
 					<div class="project-header-group">
-						<h2 style="font-weight: bold;position: relative;left: -12px;">프로젝트 이름</h2>
+						<h2 style="font-weight: bold;position: relative;left: -12px;">${projectPname.pname}</h2>
 					</div>
 				</div>
 				<div class="w3-bar tabBar" style="height: 60px">
@@ -97,7 +97,8 @@
 										<td>${tlist.ttitle}<button type="button" class="detailProject">상세내용</button></td>
 										<td>${tlist.tmember}</td>
 										<%-- <td>${tlist.tstatus}</td> --%>
-										<td><select class="status setting" name="tname">
+										<input type="hidden" id="updateTstatus" >
+										<td><select class="status setting" name="tstatus" id="updateTstatus">
 												<option class="status request" selected="selected">요청</option>
 												<option class="status progress">진행</option>
 												<option class="status feedback">피드백</option>
@@ -224,6 +225,16 @@
 		 	}
 		});
 		
+	}
+	</script>
+	<script>
+	$("select[id=updateTstatus]").change(updateOption);
+
+	function updateOption() {
+ 	    /* var updatedOption = $("select[id=updateStatus] option:selected").text(); */
+		var updatedOption = $(event.target).find("option:selected").text();
+ 	    console.log(updatedOption);	
+ 	    $("#updateTstatus").val(updatedOption);
 	}
 	</script>
 </html>

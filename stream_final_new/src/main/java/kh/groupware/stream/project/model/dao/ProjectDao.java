@@ -34,6 +34,10 @@ public class ProjectDao {
 		return sqlSession.selectOne("project.selectOne", pnoPrincipalParam);
 	}
 	
+	public ProjectVo sessionPname(String pno) {
+		return sqlSession.selectOne("project.sessionPname", pno);
+	}
+	
 	public int insertList(ProjectVo vo) {
 		return sqlSession.insert("project.insertList", vo);
 	}

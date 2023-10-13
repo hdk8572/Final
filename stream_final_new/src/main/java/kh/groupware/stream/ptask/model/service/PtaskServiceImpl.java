@@ -8,7 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kh.groupware.stream.files.model.dao.FileDao;
 import kh.groupware.stream.files.model.service.FileService;
+import kh.groupware.stream.project.model.dao.ProjectDao;
 import kh.groupware.stream.project.model.vo.PnoTnoParam;
+import kh.groupware.stream.project.model.vo.ProjectVo;
 import kh.groupware.stream.ptask.model.dao.PtaskDao;
 import kh.groupware.stream.ptask.model.vo.PtaskVo;
 
@@ -20,6 +22,9 @@ public class PtaskServiceImpl implements PtaskService {
 	
 	@Autowired
 	private FileDao fileDao;
+	
+	@Autowired
+	private ProjectDao projectDao;
 	
 	@Override
 	public List<PtaskVo> pselectList(String pno) {
@@ -50,6 +55,11 @@ public class PtaskServiceImpl implements PtaskService {
 	@Override
 	public PtaskVo selectOneInner(PnoTnoParam pnoTnoParam) {
 		return ptaskDao.selectOneInner(pnoTnoParam);
+	}
+	
+	@Override
+	public int update(PnoTnoParam pnoTnoParam) {
+		return ptaskDao.update(pnoTnoParam);
 	}
 	
 }

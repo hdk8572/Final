@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,8 +50,9 @@ public class ProjectController {
 	 
 	@GetMapping("/loadList")
 	@ResponseBody
-	public List<ProjectVo> loadList(Principal principal) {
+	public List<ProjectVo> loadList(Principal principal, String pname, HttpSession session) {
 		System.out.println("loadList 돌았습니다");
+		session.setAttribute("projectPname", pname);
 		String userid = principal.getName();
 		List<ProjectVo> list = projectService.selectList(userid);
 		return list;

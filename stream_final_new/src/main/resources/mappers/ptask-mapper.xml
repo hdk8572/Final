@@ -39,5 +39,10 @@
 	<delete id="deleteTask" parameterType="PtaskVo">
 		DELETE FROM TASK WHERE PNO = #(pno)
   	</delete>
+  	
+	<update id="updatePtask" parameterType="ProjectVo">
+		UPDATE TASK SET TNO=#{tno}, PNO=#{pno}, USERID=#{userid}, TMEMBER=#{tmember}, TTITLE=#{ttitle}, TCONTENT=#{tcontent}, TDATE=#{tdate}, TSTARTDATE=#{tstartdate}, TENDDATE=#{tenddate}, BREF=#{bref}, BRESTEP=#{brestep}, BRELEVEL=#{brelevel}
+		WHERE PNO=#{pno} and TNO=#{tno}
+	</update>
 
 </mapper>

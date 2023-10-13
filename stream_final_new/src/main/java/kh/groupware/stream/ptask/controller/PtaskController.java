@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +27,9 @@ import com.cloudinary.utils.StringUtils;
 
 import kh.groupware.stream.files.model.service.FileService;
 import kh.groupware.stream.files.model.vo.FileVo;
+import kh.groupware.stream.project.model.service.ProjectService;
 import kh.groupware.stream.project.model.vo.PnoTnoParam;
+import kh.groupware.stream.project.model.vo.ProjectVo;
 import kh.groupware.stream.ptask.model.service.PtaskService;
 import kh.groupware.stream.ptask.model.vo.PtaskVo;
 
@@ -36,13 +39,17 @@ public class PtaskController {
 	@Autowired
 	private PtaskService ptaskService;
 
-	
+	@Autowired
+	private ProjectService projectService;
 
 	@GetMapping("/ptasklist")
 	public String ptasklist(Model model, String pno) {
 		List<PtaskVo> tlist = ptaskService.pselectList(pno);
+		ProjectVo pname = projectService.sessionPname(pno);
 		model.addAttribute("pno", pno);
 		model.addAttribute("tlist", tlist);
+		model.addAttribute("projectPname", pname);
+		
 		return "project";
 	}
 	
@@ -118,4 +125,11 @@ public class PtaskController {
 	public PtaskVo selectOne(PnoTnoParam pnoTnoParam) {
 		return ptaskService.selectOneInner(pnoTnoParam);
 	}
+	
+	@GetMapping("updateTstatus")
+	@ResponseBody
+	public int updateTstatus(PnoTnoParam pnoTnoParam) {
+		return ptaskService.update(pnoTnoParam);
+	}
+	
 }
