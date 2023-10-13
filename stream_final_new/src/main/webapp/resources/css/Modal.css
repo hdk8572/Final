@@ -91,7 +91,8 @@
 .modal-body.updateProject {
 	cursor: auto;	
     /* height: 670px; */
-    height: 94%;
+    height: 90%;
+    /* height: 94%; 에서 90으로 바꿈 임지 */
 }
 
 .form-control {
@@ -150,7 +151,7 @@
     min-width: 0;
     position: relative;
     height: 100%;
-    overflow-x: hidden;
+ 	overflow-x: hidden;
 }
 
 .card-header.ptaskTitle {

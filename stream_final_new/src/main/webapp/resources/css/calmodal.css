@@ -19,14 +19,16 @@
 }
 
 .modal-header {
-	height: 65px;
+	/* height: 65px; */
+	
     background-color: #009b77;
 }
 
 .modal-body {
 	padding: 15px 15px;
 	margin: 0 auto;
-	height: 94%;
+	/* height: 94%; */
+	height:80%;
 }
 
 .modal-text {

@@ -14,6 +14,18 @@
 
 	<title>Stream - Final Project</title>
 	
+	<!--  Calendar CSS -->
+<%-- 	<link href="${pageContext.request.contextPath }/css/calreadmodal.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath }/css/calmodal.css" rel="stylesheet"> 
+	<link href="${pageContext.request.contextPath }/css/fullcalendar.css" rel="stylesheet">  --%>
+	
+	<!-- fullcalendar css -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+	<!-- fullcalendar 언어 설정관련 script -->
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
+	
 	<!-- Tab bar -->
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	
@@ -33,16 +45,7 @@
 	<!-- SummerNote CDN -->
 	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 	
-<!--  Calendar CSS -->
-<link href="${pageContext.request.contextPath }/css/calreadmodal.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath }/css/calmodal.css" rel="stylesheet"> 
-<link href="${pageContext.request.contextPath }/css/fullcalendar.css" rel="stylesheet">
-<!-- fullcalendar css -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-<!-- fullcalendar 언어 설정관련 script -->
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
+
 
 	
 	
@@ -251,16 +254,4 @@
  	    $("#updateTstatus").val(updatedOption);
 	}
 	</script>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 </html>
