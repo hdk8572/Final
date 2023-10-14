@@ -5,8 +5,8 @@
 	<div class="modal-dialog pcal">
 		<!-- Modal content -->
 		<div class="pcal modal-container ">
-			<div class="modal-header pcal"></div>
-			<div class="modal-body pcal">
+			<div class="modal-header-pcal"></div>
+			<div class="modal-body-pcal">
 				<div class="card pcal">
 					<div class="card-body pcal">
 					<div class="card-header pcalTitle">

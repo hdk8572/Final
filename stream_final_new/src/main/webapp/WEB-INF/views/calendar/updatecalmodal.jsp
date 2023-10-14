@@ -14,7 +14,10 @@
 					<div class="card-header pcalTitle">
 						<h2 class="pcalTitle"><b>일정 수정</b></h2>
 					</div>
-						<form>
+						<form action="${pageContext.request.contextPath}/updatepcal" method="post">
+							<!-- 일정번호 프로젝트번호 -->
+							<!-- url 때문에 pno필요함 -->
+							<input type="hidden" name="pno" value="${pno}">
 							<!-- TODO 일정번호 -->
 							<input type="hidden" name="sno" value="${sno}">
 							<input type="text" class="form-control title" name="title" id="form-content" placeholder="제목을 입력하세요.">
@@ -29,19 +32,30 @@
 								</div>
 								<!-- 작성자 -->
 									<input class="form-control userid" type="text" name="userid" value="${principal.username }" readonly>
-								<!-- 참가자TODO -->
 								<div class="form-userid" id="form-content" >
+									<!-- 참가자 임시로 넣음 -->
+									<input type="text" name="attenduseridArr" value="mplsam@kh.co.kr">
+									<input type="text" name="attenduseridArr" value="kh0001@kh.com">
+									<input type="text" name="attenduseridArr" value="kh0002@kh.com"> 
+									<!-- 참가자 반복 -->
+									<input type="text" id="calmemberinput" placeholder="참가자" list="calmemberlist">
+									<select id="calmemberlist"> <!-- 일단 한 명만 추가해서 insert까지 하기  --> 
+									</select>
 								</div>
 							</div>
+							
 							<!-- 지도 -->
 							<div>
 								<div id="splace"></div>
-								<div id="map-updatemodal"></div>
+								<!-- <div id="map-readmodal"></div> -->
 							</div>
-							<!-- 내용 -->
+							
+							<!-- 내용  -->
 							<div id="form-content">
 								<textarea class="form-control detail-content" id="csummernote" rows="5" name="smemo" placeholder="프로젝트에 관한 설명을 입력해주세요"></textarea>
 						    </div>
+							
+							<!-- 등록 취소 버튼 -->
 							<div align="center">
 								<button type="submit" class="btn btn-primary" >등록</button>
 								<button  type="reset" class="btn btn-warning">취소</button>
@@ -50,11 +64,10 @@
 					</div>
 				</div>  <!-- end of card -->
 			</div>
-			<div class="modal-footer ptask"></div>
 		</div>
 	</div>
 </div>
-<!-- 참가자들을 input에 추가한다. -->
+<!-- 참가자들을 input에 추가한다. 참가자 수정 가능 -->
 <script>
 	document.getElementById("calmemberlist").addEventListener("change", function() {
 	    var selectedValue = this.options[this.selectedIndex].text;
@@ -200,3 +213,4 @@ function readshowMap() {
 	});  // cb function
 }
 </script>
+<!-- 위즈윅 - summerNote	 -->
