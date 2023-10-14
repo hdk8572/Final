@@ -15,9 +15,9 @@
 	<title>Stream - Final Project</title>
 	
 	<!--  Calendar CSS -->
-<%-- 	<link href="${pageContext.request.contextPath }/css/calreadmodal.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/calreadmodal.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath }/css/calmodal.css" rel="stylesheet"> 
-	<link href="${pageContext.request.contextPath }/css/fullcalendar.css" rel="stylesheet">  --%>
+	<link href="${pageContext.request.contextPath }/css/fullcalendar.css" rel="stylesheet">  
 	
 	<!-- fullcalendar css -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">

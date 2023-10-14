@@ -12,10 +12,9 @@
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-.modal-content {
-  background-color: #f5f7fb;
-  padding: 0px;
-  border-radius: 10px;
+.pcal.modal-container {
+ 	background-color: #f5f7fb;
+    padding: 0px;
 }
 
 .modal-header {

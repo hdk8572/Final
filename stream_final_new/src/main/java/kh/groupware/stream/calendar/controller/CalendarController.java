@@ -98,7 +98,7 @@ public class CalendarController {
 	}
 	
 	//캘린더 수정
-	@GetMapping("/updatepcal")
+	@PostMapping("/updatepcal")
 	@ResponseBody
 	public int update(CalendarVo cal) {
 		int result = calendarService.update(cal);

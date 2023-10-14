@@ -4,7 +4,7 @@
 <div id="addcalmodal" class="modal">
 	<div class="modal-dialog pcal">
 		<!-- Modal content -->
-		<div class="modal-content pcal">
+		<div class="pcal modal-container ">
 			<div class="modal-header pcal"></div>
 			<div class="modal-body pcal">
 				<div class="card pcal">
