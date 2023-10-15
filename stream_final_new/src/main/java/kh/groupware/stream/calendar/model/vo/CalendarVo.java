@@ -37,7 +37,7 @@ public class CalendarVo {
 	
 	private String[] attenduseridArr;  // view에서 같은 name에 여러개 값이 있을때 배열에 실림
 	
-	// 끼인테이블(참가자는 여기에 들어가 있음) 
+	
 	private List<MemberSimpleVo> attenduseridList; 
 	
 //	[{
@@ -81,9 +81,6 @@ public class CalendarVo {
 				+ color + ", attenduseridArr=" + Arrays.toString(attenduseridArr) + ", attenduseridList="
 				+ attenduseridList + "]";
 	}
-
-
-
 
 
 

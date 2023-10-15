@@ -1,6 +1,6 @@
 package kh.groupware.stream.member.model.vo;
 
-
+//참석자의 간단한 정보를 나타내는 클래스이다.
 public class MemberSimpleVo {
 	private String userid;
 	private String mname;

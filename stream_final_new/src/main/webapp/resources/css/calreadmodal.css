@@ -50,8 +50,8 @@
 	float: left;
 }
 #read-dropdown {
-	margin-left: 600px;
-}
+	margin-left: 98%;
+} 
 .dropdown-menu.show{
 	min-width: 0;
 }

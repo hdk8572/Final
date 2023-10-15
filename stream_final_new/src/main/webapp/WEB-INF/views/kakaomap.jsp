@@ -81,6 +81,4 @@
 			}//if
 		});
 	}
-
-
-	</script>
+</script>
