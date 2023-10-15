@@ -172,13 +172,35 @@
 	  var i;
 	  var x = document.getElementsByClassName("tab");
 	  for (i = 0; i < x.length; i++) {
-	    x[i].style.display = "none";  
+	    x[i].style.display = "none";
 	  }
-	  document.getElementById(tabName).style.display = "block"; 
+	  document.getElementById(tabName).style.display = "block";
+	   
 	  if(tabName == "Tab3"){
 		  loadCalendarHandler();
 	  }
 	}
+	
+	const nonClick = document.querySelectorAll(".w3-bar-item.w3");
+
+	function handleClick(event) {
+	  // div에서 모든 "click" 클래스 제거
+	  nonClick.forEach((e) => {
+	    e.classList.remove("click");
+	  });
+	  // 클릭한 div만 "click"클래스 추가
+	  event.target.classList.add("click");
+	  $(".w3-bar-item.w3").css("color", "black");
+	  $(".w3-bar-item.w3.click").css("color", "#009b77");
+	  
+	  
+	  
+	}
+
+	nonClick.forEach((e) => {
+	  e.addEventListener("click", handleClick);
+	  
+	});	
 	
 	$(document).ready(function (){
 		$("#summernote").summernote({				//  위즈윅 - summerNote		
@@ -196,10 +218,6 @@
 		     ]
 		});
 		$(this).find(".detailProject").click(detailProject);
-		
-		
-		
-		
 		
 	}); 
 	
