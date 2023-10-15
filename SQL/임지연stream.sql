@@ -36,3 +36,31 @@ tm where pno='1' ;
         , PNO
 		FROM SCHEDULE
         WHERE PNO ='1';
+        
+-- view
+desc member_project;
+desc member_schedule;
+desc users;
+create view v_u_member_project
+as
+select PNO, USERID, MNAME, CCODE, DEPTNO
+from member_project join users using(userid)
+;
+create view v_u_member_project
+as
+select PNO, USERID, MNAME, CCODE, DEPTNO
+from member_project join users using(userid)
+;
+create view v_u_member_schedule
+as
+select SNO, ATTENDUSERID, MNAME as ATTENDNAME, CCODE, DEPTNO
+from member_schedule join users on (ATTENDUSERID = USERID)
+;
+select * from v_u_member_schedule;
+
+--view
+create view v_u_schedule
+as
+select s.*, u.mname, CCODE, DEPTNO
+from schedule s join users u on (s.userid = u.userid)
+;
