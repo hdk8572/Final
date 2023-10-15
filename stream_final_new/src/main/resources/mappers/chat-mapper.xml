@@ -45,9 +45,7 @@ WHERE chatmember.userid=#{userId} OR CHATROOM.USERID=#{userId} -->
 	<insert id="memberInsert" parameterType="ChatRoomVo">
 		<!-- INSERT INTO CHATMEMBER VALUES ((SELECT MAX(ROOMID) ROOMID FROM CHATROOM),#{userId} ) -->
 		INSERT INTO CHATMEMBER (ROOMID, USERID)
-SELECT (SELECT MAX(ROOMid) FROM chatROOM), #{userId} FROM DUAL
-UNION ALL
-SELECT (SELECT MAX(ROOMid) FROM chatROOM), #{userId} FROM DUAL
+SELECT (SELECT MAX(ROOMid) FROM chatROOM)AS ROOMID, #{userId} FROM DUAL
 	</insert>
 	
 	

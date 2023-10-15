@@ -107,7 +107,15 @@
 				<c:if test="${authority.authority eq 'ROLE_M'}">
 					<div class="container">
 						<div class="sidesheet"></div>
-						<button id="popup">채팅</button>
+						<button id="popup"
+							style="background: none; border: none; padding: 0; margin: 0;">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+								viewBox="0 0 24 24" fill="none" stroke="currentColor"
+								stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+								class="feather feather-message-square align-middle me-2">
+       						 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    						</svg>
+						</button>
 					</div>
 				</c:if>
 			</c:forEach>
@@ -193,7 +201,7 @@
 		popupButton.onclick = function() {
 			var jsPopup = window
 					.open("rooms", null,
-							"width=600, height=700, resizable=no, scrollbars=no,toolbars=no, menubar=no");
+							"width=450, height=650, resizable=no, scrollbars=no,toolbars=no, menubar=no");
 
 		};
 	};

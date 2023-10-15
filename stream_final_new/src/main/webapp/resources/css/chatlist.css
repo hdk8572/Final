@@ -5,10 +5,9 @@
 	}
 	
 	#s_emp_list {
-		font-size: 1.1em;
 		width: 120px;
 		height: 45px;
-		border: 1px solid;
+		border: 1px solid lightgray;
 	}
 	.chatfont{
 		text-align: center;
@@ -20,7 +19,6 @@
 	#s_chat_list {
 		width: 120px;
 		height: 45px;
-		font-size: 1.1em;
 		border: 1px solid;/* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -76,7 +74,8 @@
 
 /* Date */
 .form-date {
-	width: 45%;
+
+	
 }
 
 /* Project */
@@ -177,9 +176,13 @@
     box-shadow: 20px 20px 30px rgba(0,0,0,.2);
     border-radius: 10px;
 }
-
+.memberlist{
+	border-bottom: solid 1px;
+	padding: 0 0 10px;
+}
 .modal-content {
 	border-radius: 10px;
+	
 }
 
 .modal-header.updateProject {
@@ -205,7 +208,11 @@
 	cursor: auto;	
     height: 670px;
 }
-
+.btn btn-secondary{
+	margin: 20px 0 0 0;
+	position: relative;
+	left: 140px;
+}
 form {
 	cursor: auto;	
 }
@@ -219,17 +226,25 @@ form {
 	
 	.s_menu_box {
 		width: 414px;
-		height: 850px;
+		height: 560px;
 		border: 1px solid lightgray;
-		border-radius: 10px;
+		border-radius: 0px 10px 10px 10px;
 		padding: 20px;
 		overflow: auto;
-		margin: 5px 0;
+		margin:0 5px 0 0;
+		background-color: #f5f7fb;
 	}
-	
+
+	.roomlist{
+		height: 50px;
+		padding: 0px
+	}
+	.roomlist:hover{
+		background-color: #b2b2b2;
+	}
 	.s_modal_menu_box {
 		width: 100%;
-		height: 500px;
+		height: 350px;
 		border: 1px solid lightgray;
 		border-radius: 10px;
 		padding: 20px;
@@ -246,7 +261,7 @@ form {
 		border-bottom: 1px solid lightgray;
 		padding: 10px 0;
 	}
-	
+
 /* 	.s_img_style {
 		width: 50px;
 		height: 50px;
@@ -268,8 +283,8 @@ form {
 	
 	#s_sub_menu_box {
 		width: 250px; 
-		height: 1000px; 
-		margin-top: 25px;
+		margin-top: 15px;
+		
 		margin-left: 10px;
 	}
 	

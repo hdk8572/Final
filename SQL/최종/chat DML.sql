@@ -85,6 +85,10 @@ from chatmessage
 join users USING(userid)
 where roomid = '1';
 
+INSERT INTO CHATMEMBER (ROOMID, USERID)
+SELECT (SELECT MAX(ROOMid) FROM chatROOM), 'spam@kh.co.kr' FROM DUAL;
+
+
 select *
 from users;
 select *

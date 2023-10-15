@@ -18,6 +18,7 @@
 .alert-warning{
 	color: pink;
 }
+
 </style>
 
 <meta charset="UTF-8">

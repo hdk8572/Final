@@ -13,7 +13,7 @@
 	<div class="sidebar-content js-simplebar">
 		<span class="align-brand-middle"><a
 			href="${pageContext.request.contextPath}/projectlist"
-			class="sidebar-brand-new">AdminKit</a></span>
+			class="sidebar-brand-new">Stream</a></span>
 
 		<ul class="sidebar-nav">
 			<c:forEach items="${principal.authorities}" var="authority">

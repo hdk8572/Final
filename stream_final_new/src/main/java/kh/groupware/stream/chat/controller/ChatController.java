@@ -22,20 +22,11 @@ public class ChatController {
 	@Autowired
 	private ChatService service;
 
-	@GetMapping("/chatlist")
-	public String selectchat(Model model) {
-		return "/chatting/select";
-
-	}
-
-	@GetMapping("/chat")
-	public String chatGET() {
-
-		System.out.println("@ChatController, chat GET()");
-
-		return "chat";
-	}
-
+	
+	  @GetMapping("/chatlist") public String selectchat(Model model) { return
+	  "/chatting/chattest";
+	  
+	  }
 	@GetMapping("/chat1")
 	public String chatGETTest() {
 		System.out.println("@ChatController, chat GET()");
@@ -52,34 +43,36 @@ public class ChatController {
 //		return mv;
 //	}
 
-	 @GetMapping(value = "/rooms")
-	    public ModelAndView rooms(ModelAndView mv,Principal principal) throws Exception{        
-		  	String userId = principal.getName();
-		  	mv.setViewName("chatting/rooms");
-			mv.addObject("list", service.findAllRooms(userId));
-			mv.addObject("viewMemmber", service.ViewMember());
-	        return mv;
-	    }
-	 @GetMapping("/room")
-	 public ModelAndView getRoom(String roomId,ModelAndView mv,Principal principal){
-	 	String userId = principal.getName();
-	 	mv.addObject("ID",userId);
-	 	mv.addObject("room", service.findRoomById(roomId)); 
-	 	mv.addObject("viewChat", service.ViewChat(roomId));
-	 	mv.addObject("name",service.findWriter(userId));
-	 	mv.setViewName("chatting/room");
-	     return mv;
-	 }
-	    @PostMapping(value = "/room")
-	    public String create(@RequestParam String roomName,@RequestParam String member,Principal principal, RedirectAttributes rttr){
-//	    	log.info("# Create Chat Room, roomName: " + roomName + ", userId: " + userId);
-	    	String userId = principal.getName();
-	    	service.AddChatRoom(roomName, member);
-			service.memberInsert(member); 
-	        rttr.addFlashAttribute("roomName1", roomName);
-			rttr.addFlashAttribute("member",member);
-	        return "redirect:/rooms";
-	    }
+	@GetMapping(value = "/rooms")
+	public ModelAndView rooms(ModelAndView mv, Principal principal) throws Exception {
+		String userId = principal.getName();
+		mv.setViewName("chatting/rooms");
+		mv.addObject("list", service.findAllRooms(userId));
+		mv.addObject("viewMemmber", service.ViewMember());
+		return mv;
+	}
 
+	@GetMapping("/room")
+	public ModelAndView getRoom(String roomId, ModelAndView mv, Principal principal) {
+		String userId = principal.getName();
+		mv.addObject("ID", userId);
+		mv.addObject("room", service.findRoomById(roomId));
+		mv.addObject("viewChat", service.ViewChat(roomId));
+		mv.addObject("name", service.findWriter(userId));
+		mv.setViewName("chatting/room");
+		return mv;
+	}
+
+	@PostMapping(value = "/room")
+	public String create(@RequestParam String roomName, @RequestParam String member, Principal principal,
+			RedirectAttributes rttr) {
+//	    	log.info("# Create Chat Room, roomName: " + roomName + ", userId: " + userId);
+		String userId = principal.getName();
+		service.AddChatRoom(roomName, userId);
+		service.memberInsert(member);
+		rttr.addFlashAttribute("roomName1", roomName);
+		rttr.addFlashAttribute("member", member);
+		return "redirect:/rooms";
+	}
 
 }
