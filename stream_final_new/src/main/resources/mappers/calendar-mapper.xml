@@ -45,7 +45,7 @@
 	<select id="memberProjectList" resultType="MemberSimpleVo">
 		select userid, (select mname from users tu where tm.userid=tu.userid ) mname 
 		from MEMBER_PROJECT tm 		
-		where pno=1
+		where pno=#{pno}
 	</select>
 	
 

@@ -85,7 +85,7 @@ function loadCalendarHandler() {
 				$("#readcalmodal.modal  #splace").html(info.event.extendedProps.splace);
 				$("#readcalmodal").modal("toggle"); // readcalmodal 띄우는 코드 toggle로 띄운다.
 				
-				readshowMap();
+				readshowMap(); //일정상세 지도
 			}
 		});
 		calendar.render();

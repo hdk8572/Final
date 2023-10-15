@@ -1,6 +1,7 @@
 package kh.groupware.stream.calendar.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +23,7 @@ import com.google.gson.Gson;
 import kh.groupware.stream.calendar.model.service.CalendarService;
 import kh.groupware.stream.calendar.model.vo.CalendarParamVo;
 import kh.groupware.stream.calendar.model.vo.CalendarVo;
+import kh.groupware.stream.member.model.vo.MemberSimpleVo;
 
 @Controller
 public class CalendarController {
@@ -88,17 +90,25 @@ public class CalendarController {
 	}//짧게 쓰는 방법임
 
 	
-	//캘린더 등록
+	//캘린더 등록 
 	@PostMapping("/insertpcal")
 	public String insert(Model model, CalendarVo cal) {
-		//cal.setAttenduseridList(Arrays.asList(cal.getAttenduseridArr()));
+		List<String> attenduseridArr = Arrays.asList(cal.getAttenduseridArr());
+		List<MemberSimpleVo> attenduseridList= new ArrayList<MemberSimpleVo>();
+		
+		for(String userId : attenduseridArr) {
+			MemberSimpleVo member = new MemberSimpleVo();
+			member.setUserid(userId);
+			attenduseridList.add(member);
+		}
+		cal.setAttenduseridList(attenduseridList);
 		System.out.println("aaaa :" + cal);
 		calendarService.insert(cal);
 		return "redirect:pcal?sno="+cal.getSno();
 	}
 	
 	//캘린더 수정
-	@GetMapping("/updatepcal")
+	@PostMapping("/updatepcal")
 	@ResponseBody
 	public int update(CalendarVo cal) {
 		int result = calendarService.update(cal);

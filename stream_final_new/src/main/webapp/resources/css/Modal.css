@@ -23,6 +23,7 @@
 .modal-header {
 	height: 65px;
     background-color: #009b77;
+    border-radius: 10px 0px 0px 0px; 
 }
 
 .modal-body {

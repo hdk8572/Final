@@ -1,41 +1,20 @@
 /* 모달 공통 */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1000; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+
+.pcal.modal-container {
+ 	background-color: #f5f7fb;
+    padding: 0px;
+   	border-radius: 10px 10px 0px 0px;
 }
 
-.modal-content {
-  background-color: #f5f7fb;
-  padding: 0px;
-  border-radius: 10px;
-}
-
-.modal-header {
-	/* height: 65px; */
-	
-    background-color: #009b77;
-}
-
-.modal-body {
+.modal-body-pcal {
 	padding: 15px 15px;
 	margin: 0 auto;
 	/* height: 94%; */
 	height:80%;
 }
 
-.modal-text {
-	display: block;
-	padding: 0.625rem 1.625rem;
-}
-.modal-header.pcal {
+.modal-header-pcal {
     height: 65px;
     background-color: #009b77;
 	border-radius: 10px 10px 0px 0px;
@@ -90,24 +69,14 @@
 /* 모달 공통 */
 
 /* read */
-.modal-content.pcal {
+/* .modal-content.pcal {
   border-radius: 40px 0 0 40px;
-}
+} */
 
 .modal-header.project {
     border-radius: 40px 0 0;
 }
 
-.modal.project.right .modal-dialog {
-	position: fixed;
-	margin: auto;
-	width: 30%;
-	height: 100%;
-	-webkit-transform: translate3d(0%, 0, 0);
-	    -ms-transform: translate3d(0%, 0, 0);
-	     -o-transform: translate3d(0%, 0, 0);
-	        transform: translate3d(0%, 0, 0);
-}
 .modal.project.right.fade .modal-dialog {
 	right:-40%;
 	-webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
