@@ -5,7 +5,6 @@
 	<div class="modal-dialog pcal">
 		<!-- Modal content -->
 		<div class="pcal modal-container">
-		<span class="read-close" data-bs-dismiss="modal" aria-label="Close">&times;</span>
 			<div class="modal-header-pcal"></div>
 				
 			<div class="modal-body-pcal">
@@ -30,11 +29,11 @@
 							
 							 <!-- 작성자&참석자 -->
 							 <div class="d-flex align-items-center" id="form-content">
-								<div>
+								<div class="userid-img">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r= "4"></circle></svg>
 								</div>
 								<!-- 작성자 -->
-								<input class="form-control userid" type="text" name="userid" value="${principal.username }" readonly>
+								<div class="form-control userid" id="userid"></div>
 								<div class="form-userid" id="form-content" >
 									<!-- 참가자 임시로 넣음 -->
 									<!-- 참가자 반복 -->
@@ -44,21 +43,23 @@
 								</div>
 							</div>
 							
+							<!-- ????왜 뜸 ??????? ㄱㅇㄷ -->
 							<!-- 지도 -->
-							<div>
-								<div id="splace"></div>
-								<div id="map-updatemodal"></div>
-							</div>
+								<div class="d-flex align-items-center">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin align-middle me-2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+									<div class= "form-control place" id="splace"></div>
+								</div>
+									<div class="map" id="map-updatemodal"></div>
 							
 							<!-- 내용  -->
 							<div id="form-content">
-								<textarea class="form-control detail-content" id="csummernote" rows="5" name="smemo" placeholder="프로젝트에 관한 설명을 입력해주세요"></textarea>
+								<textarea class="form-control detail-content" id="summernote-updatecalmodal" name="smemo"></textarea>
 						    </div>
 							
 							<!-- 등록 취소 버튼 -->
 							<div align="center">
-								<button  type="button" class="btn btn-primary" >수정</button>
-								<button  type="reset" class="btn btn-warning">취소</button>
+								<button  type="button" id="updBtn" class="btn btn-primary" >수정</button>
+								<button  type="reset"  class="btn btn-warning">취소</button>
 							</div>
 						</form>
 					</div>
@@ -74,6 +75,7 @@
 		var selectedUpdateTitle = $("#readcalmodal #title").text();
 		var selectedUpdateStart = $("#readcalmodal #start").text();
 		var selectedUpdateEnd = $("#readcalmodal #end").text();
+		var selectedUpdateUserid = $("#readcalmodal #userid").text();
 		/* var selectedUpdateUserid = $("#readcalmodal #attenduseridList").text(); */
 		var selectedUpdateSplace = $("#readcalmodal #splace").text();
 		var selectedUpdateSmemo = $("#readcalmodal #smemo").text();
@@ -84,15 +86,54 @@
 		/* $("#updatecalmodal input[name='attenduseridList']").val(selectedUpdateUserid); */
 		$("#updatecalmodal textarea[name='smemo']").val(selectedUpdateSmemo);
 		
+		$('#updatecalmodal #userid').text(selectedUpdateUserid);
 		$('#updatecalmodal #splace').text(selectedUpdateSplace);
 		 updateshowMap(); 
 	});
 </script>
 
+<!-- 왕 슬픔  -->
+<script>
+	$('#updatecalmodal #updBtn').on("click", function(){
+		//수정할 데이터를 수집한다.
+		var title = $('#title').val();
+		var start = $('#start').val();
+		var end = $('#end').val();
+		var smemo = $('#smemo').val();
+		var sno = $('#sno').val();
+		
+		//ajax 요청을 보낸다.
+		$.ajax({
+			type: 'POST',
+			url: contextPath + "/updatepcal", //수정 엔드포인트이다
+			data: {
+				title: title,
+				start: start,
+				end: end,
+				smemo: smemo,
+				sno: sno
+			},
+			
+			success: function(response){
+				//수정이 성공하면 실행될 코드
+				if(response === 1) {
+					//수정이 성공했을 때
+					alert('일정이 수정되었습니다.');
+				}else{
+					alert('일정 수정에 실패했습니다.')
+				}
+			},
+			error: function() {
+				//ajax 요청 실패 시 실행될 코드이다.
+				alert('서버와의 통신 중 오류가 발생했습니다.');
+			}
+		});
+	})
+</script>
+
+<!-- TODO -->
 <script >
 $('#updBtn').on("click", function() {
-    // ... 다른 코드 ...
-
     $('#map-updatemodal').css('display', 'block'); // 예를 들어 이와 같이 표시 설정
 });
 </script>
@@ -114,8 +155,6 @@ $('#updBtn').on("click", function() {
 			mapContainer_updatemodal.style.display ='none';
 			return;
 		}
-		
-		
 		
 		// 지도를 생성합니다    
 		var map3 = new kakao.maps.Map(mapContainer_updatemodal, mapOption_updatemodal);
@@ -163,12 +202,14 @@ $('#updBtn').on("click", function() {
 				    map-readmodal.relayout();
 				} */
 				
-				/* 	// 마우스 드래그로 지도 이동 막기
-				map.setDraggable(false);
+				// 마우스 드래그로 지도 이동 막기
+				map3.setDraggable(false);
 				// 마우스 휠로 지도 확대,축소 막기
-				map.setZoomable(false);
-				 */
+				map3.setZoomable(false);
+				
 			} // if
 		});  // cb function
 	}
 </script>
+
+

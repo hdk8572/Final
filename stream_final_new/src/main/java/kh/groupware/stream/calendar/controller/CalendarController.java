@@ -119,13 +119,8 @@ public class CalendarController {
 	//캘린더 삭제
 	@PostMapping("/deletepcal")
 	@ResponseBody
-	public HashMap<String, Object> delete(
-			@RequestParam(name="sno", required = false) String sno) {
-		
-		int delete = calendarService.delete(sno);
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		
-		return map;
+	public int delete(@RequestParam(name = "sno") String sno) {
+	    return calendarService.delete(sno);
 	}
 	
 	

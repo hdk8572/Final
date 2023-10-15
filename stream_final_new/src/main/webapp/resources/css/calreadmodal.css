@@ -1,10 +1,31 @@
+/* read */
+/* .modal-content.pcal {
+  border-radius: 40px 0 0 40px;
+} */
+
+.modal-header.project {
+    border-radius: 40px 0 0;
+}
+
+.modal.project.right.fade .modal-dialog {
+	right:-40%;
+	-webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+     transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+.modal.project.right.fade.show .modal-dialog {
+	right: 0;
+}
+/* read */
+
 /* The Close Button */
 .read-close {
 	color: white;
 	float: right;
 	font-size: 28px;
 	font-weight: bold;
-	padding: 20px 20px 0 0;
+	padding: 20px 25px 0 0;
 }
 
 .read-close:hover,
@@ -14,6 +35,23 @@
   cursor: pointer;
 }
 /* The Close Button */
+
+/* dropdown-btn */
+.card-header #userid{
+	float: left;
+}
+#read-dropdown {
+	margin-left: 98%;
+} 
+.dropdown-menu.show{
+	min-width: 0;
+}
+#read-dropdown-menu{
+	transform: translate3d(-15px, 42px, 0px) !important;
+}
+/* dropdown-btn */
+
+
 
 .form-select.mb-3.selectCategory {
     width: 30%;
@@ -40,19 +78,20 @@
 .stitle{
 	border-bottom: 1px solid #80808038;
 	padding-bottom: 10px;
+	margin-bottom: 1.5rem;
 }
+.form-control#smemo{
+	border: 1px solid #ced4da;
+	height: 150px;
+}
+
 .form-control.comment {
 	width: 70%;
 }
 
-/* dropdown */
-.card-header #userid{
-	float: left;
+/* 공간 확보 */
+
+.form-read-date{
+	margin-bottom: 1.5rem;
+	width: 15%;
 }
-#read-dropdown {
-	margin-left: 98%;
-} 
-.dropdown-menu.show{
-	min-width: 0;
-}
-/* dropdown */

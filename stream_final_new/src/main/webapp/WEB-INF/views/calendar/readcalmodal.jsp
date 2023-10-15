@@ -18,14 +18,14 @@
 				    		<input type="hidden" name="sno">
 							<div class="card-header" id="readcalmodal-header">
 							<!-- 작성자 -->
-							<div id="userid"></div> <!-- 여기에 뭐 적으면x -->
+							<div id="userid"></div>
 							<div class="read-dropdown-grop">
 								<div class="btn-dropdown-toggle" id="read-dropdown" data-bs-toggle="dropdown">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical me-2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
 								</div>
-								<ul class="dropdown-menu">
+								<ul class="dropdown-menu" id="read-dropdown-menu">
 									     <li><a class="dropdown-item" href="#" id="updBtn" data-bs-toggle="modal" data-bs-target="#updatecalmodal">수정</a></li>
-									<li><a class="dropdown-item" href="#"> 삭제</a></li>
+									<li><a class="dropdown-item" id="dltBtn" href="#"> 삭제</a></li>
 								</ul>
 					  		</div>
 							</div>
@@ -34,32 +34,30 @@
 								<div class="stitle" id="title"></div>
 								
 								<!-- 날짜 -->
-								<div class="d-flex align-items-center" id="form-content">
+								<div class="d-flex align-items-center" id="form-date-readsvg">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar align-middle me-2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-									<div id="start"></div>~<div id="end"></div>
+									<div class="form-read-date" id="start"></div>  <div class="form-read-date" id="end"></div>
 								</div>
 								
 								<!-- 참석자  -->
 								<div id="attenduseridList"></div>
 								
 								<!-- 지도 -->
-								<div>
-									<div id="splace"></div>
-									<div id="map-readmodal"></div>
+								<div class="d-flex align-items-center" id="form-map-readsvg">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin align-middle me-2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+									<div class= "form-control place" id="splace"></div>
 								</div>
+									<div class="map" id="map-readmodal"></div>
 								
 								<!-- 내용 -->
-								<div id="smemo"></div>
+								<div class="form-control " id="smemo"></div>
 									
 								<!-- 댓글 -->
-								<div class="cal-comment" >
-									<form id="commentFrm">
-										<h4>댓글쓰기</h4>
-										<div class="comment-box">
-											<input type="text" class="form-control comment" placeholder="Input">
-											<input type="submit" class="c-btn" value="등록">
-										</div>
-									</form>
+								<div class="d-flex align-items-center" >
+									<div class="comment-box">
+										<input type="text" class="form-control comment" placeholder="Input">
+										<input type="submit" class="c-btn" value="등록">
+									</div>
 								</div>
 							</div>
 						</div>
@@ -67,7 +65,34 @@
 				</div>
 		  </div>
 	 </div>
-</div>
+</div> 
+
+<!-- TODO 왕 슬픔 -->
+<script>
+	$('#dltBtn').on("click", function(){
+		
+		if(confirm('정말로 삭제할거냐?')) {
+			var sno =$('#sno').val();
+			
+			//ajax
+			$.ajax({
+				type: 'POST',
+				url: contextPath + "/deletepcal",
+				data:{sno:sno},
+				success: function(response){
+					if(response === 1) {
+						alert('일정이 삭제되었습니다.')
+					}else{
+						alert('일정 삭제에 실패했습니다.');
+					}
+				},
+				error: function() {
+					alert('서버와의 통신 중 오류가 발생했습니다.');
+				}
+			});
+		}
+	});
+</script>
 
 <!-- 지도 api -->
 <script>
@@ -80,7 +105,6 @@
 	
 	//showMap 함수 정의
 	function readshowMap() {
-		
 		
 		var splaceText = $('#readcalmodal #splace').text().trim();
 		if(!splaceText){
@@ -126,16 +150,6 @@
 			 
 				// 지도를 표시
 			    mapContainer_readmodal.style.display = 'block';
-			  
-				/* function relayout() {    
-				    // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
-				    // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다 
-				    // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
-				    map-readmodal.relayout();
-				} */
-				
-				/* 
-				 */
 			} // if
 		});  // cb function
 	}

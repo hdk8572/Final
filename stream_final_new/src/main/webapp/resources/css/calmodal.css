@@ -47,9 +47,6 @@
     box-shadow: 20px 20px 30px rgba(0,0,0,.2);
     border-radius: 10px;
 }
-.form-date {
-    width: 45%;
-}
 
 /* 모달 간격 조정 */
 #form-content{
@@ -68,42 +65,28 @@
 
 /* 모달 공통 */
 
-/* read */
-/* .modal-content.pcal {
-  border-radius: 40px 0 0 40px;
-} */
-
-.modal-header.project {
-    border-radius: 40px 0 0;
-}
-
-.modal.project.right.fade .modal-dialog {
-	right:-40%;
-	-webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
-    -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
-    -o-transition: opacity 0.3s linear, right 0.3s ease-out;
-     transition: opacity 0.3s linear, right 0.3s ease-out;
-}
-.modal.project.right.fade.show .modal-dialog {
-	right: 0;
-}
-/* read */
-
+/* add */
 .form-control.userid {
 	width: 30%;
 }
+.userid-img{
+	margin-bottom: 15px;
+	margin-right: 0.4rem;
+}
 
 /* add+kakao 지도 */
-#map{
-	width: 100%;
+.map{
+	width: 90%;
 	height: 200px;
+	border-radius: 20px;
+	margin: 0 auto;
+	margin-bottom: 2.0rem; /* 아래쪽 여백을 추가 */
 } 
 .map-hidden {
   display: none;
 }
 /* read+kakao 지도 */
 #map-readmodal{
-	width: 100%;
-	height: 200px;
-}  
+
+} 
 
