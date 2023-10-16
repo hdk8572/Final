@@ -302,6 +302,7 @@ SELECT (SELECT MAX(ROOMid) FROM chatROOM), 'mplsam@kh.co.kr' FROM DUAL;
 
 SELECT *FROM CHATROOM;
 select * from chatmember;
+select * from chatmessage;
 
 SELECT * FROM CHATMEMBER JOIN CHATROOM USING(ROOMID)
 WHERE chatmember.userid='sple@kh.co.kr' OR CHATROOM.USERID='mplsam@kh.co.kr';
