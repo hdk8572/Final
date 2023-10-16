@@ -56,7 +56,8 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 <body>
 	<%@ include file="/WEB-INF/views/alertmsg.jsp"%>
 	<div class="wrapper">
-		<%@include file="/WEB-INF/views/calendar/calendar-side.jsp"%>
+		<%-- <%@include file="/WEB-INF/views/calendar/calendar-side.jsp"%> --%>
+		<%@ include file="/WEB-INF/views/sidebar.jsp"%>
 			<div class="main">
 				<%@ include file="/WEB-INF/views/headernavbar.jsp"%>
 			<main>
