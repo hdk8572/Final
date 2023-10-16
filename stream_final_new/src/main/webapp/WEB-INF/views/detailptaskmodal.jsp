@@ -39,7 +39,7 @@
 							<div>
 								<form class="wrap-reply" action="${pageContext.request.contextPath}/doUpload" method="post" enctype="multipart/form-data">
 									<div class="reply-input">
-										<input type="text" class="form-control replyInput" name="rcontent" placeholder="댓글 입력창 - Enter 클릭 시 입력됩니다.">
+										<input type="text" class="form-control replyInput" name="rcontent" placeholder="댓글을 입력해주세요 - Enter 클릭 시 입력됩니다.">
 										<input type="file" class="fileUpload">
 										<input type="hidden" name="tno">
 										<input type="hidden" name="userid" value="${principal.username}">

@@ -48,10 +48,10 @@ function doUpdateProject() {
 			console.log(result);
 			if(result>0){
 				if(result.pstatus == "숨김") {
-					location.href=contextPath+"/projectlist";
+					location.href=contextPath+"/member/projectlist";
 					$thisElement.closest(".col-sm-6.list-card[data-pno]").remove();
 				} else {
-					location.href=contextPath+"/projectlist";
+					location.href=contextPath+"/member/projectlist";
 				}
 			
 			} else {
@@ -74,7 +74,7 @@ function hideProject($thisElement) {
 		dataType: "json",
 		success: function(result) {
 			console.log("hide 다녀왔습니다");
-			location.href=contextPath+"/projectlist";
+			location.href=contextPath+"/member/projectlist";
 		},
 		error: function() {
 			console.log("doUpdateProject.direct에서 오류 발생");
