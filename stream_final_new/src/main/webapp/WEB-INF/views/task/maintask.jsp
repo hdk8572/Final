@@ -44,7 +44,7 @@
 
 					<div class="h3 mb-3 jm-header">
 						<div>
-							<span>전체 업무</span> <span id="fullTaskCnt"></span>
+							<span>sple@kh.co.kr님의 프로젝트 목록</span> <span id="fullTaskCnt"></span>
 						</div>
 					</div>
 					<div>

@@ -43,7 +43,7 @@
 }
 
 .text-tab {
-	position: absolute; 
+	position: static; 
 	font-size: 1.53125rem;
 }
 
