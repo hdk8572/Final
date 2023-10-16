@@ -238,7 +238,7 @@
 		$("#detailProjectModal").modal("toggle");
 		
 		$.ajax({
-		 	url: "${pageContext.request.contextPath}/ptaskselectOne",
+		 	url: "${pageContext.request.contextPath}/member/ptaskselectOne",
 		 	type: "get",
 		 	dataType: "json",
 		 	data: {tno: targetTno, pno: targetPno},

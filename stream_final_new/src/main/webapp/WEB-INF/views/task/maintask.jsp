@@ -245,7 +245,7 @@
 														</span> <span class="jm-project-title">${project.pname }</span> <span
 															class="jm-project-task-count">(${project.maintaskList.size() })</span>
 														<form class="jm-dn"
-															action="${pageContext.request.contextPath }/ptasklist"
+															action="${pageContext.request.contextPath }/member/ptasklist"
 															method="get">
 															<input type="hidden" name="pno" value="${project.pno}">
 															<button class="jm-tp">바로가기</button>
@@ -407,7 +407,7 @@
 					</span> <span class="jm-project-title">\${project.pname }</span> <span
 						class="jm-project-task-count">(\${project.maintaskList.length })</span>
 					<form class="jm-dn"
-						action="${pageContext.request.contextPath }/ptasklist"
+						action="${pageContext.request.contextPath }/member/ptasklist"
 						method="get">
 						<input type="hidden" name="pno" value="\${project.pno}">
 						<button class="jm-tp">바로가기</button>

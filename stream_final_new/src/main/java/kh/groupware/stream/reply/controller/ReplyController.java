@@ -20,32 +20,32 @@ public class ReplyController {
 	@Autowired
 	private ReplyService replyService;
 	
-	@GetMapping ("/replyList")
+	@GetMapping ("/member/replyList")
 	@ResponseBody
 	public List<ReplyVo> selectList(String tno) {
 		List<ReplyVo> vo = replyService.selectList(tno);
 		return vo; 
 	}
 
-	@PostMapping ("/insertReply")
+	@PostMapping ("/member/insertReply")
 	@ResponseBody
 	public List<ReplyVo> insertReply(ReplyVo vo) {
 		return replyService.insertReply(vo);
 	}
 	
-	@PostMapping ("/goUpdateReply")
+	@PostMapping ("/member/goUpdateReply")
 	@ResponseBody
 	public ReplyVo selectOne(String rno) {
 		return replyService.selectOne(rno);
 	}
 	
-	@PostMapping ("/doUpdateReply")
+	@PostMapping ("/member/doUpdateReply")
 	@ResponseBody
 	public int updateReply(ReplyVo vo) {
 		return replyService.updateReply(vo);
 	}
 	
-	@PostMapping ("/doDeleteReply")
+	@PostMapping ("/member/doDeleteReply")
 	@ResponseBody
 	public int deleteReply(String rno) {
 		return replyService.deleteReply(rno);

@@ -90,7 +90,7 @@
 		
 		console.log($("#addProject").serialize());  // "n1=v1&n2=v2"&pcontent=rkqdfjklfjlddfld
 		$.ajax ({
-			url: "${pageContext.request.contextPath}/projectInsert",
+			url: "${pageContext.request.contextPath}/member/projectInsert",
 			type: "post",
 			//data: $("#addProject").serialize(),
 			data : $("#addProject").serialize(),

@@ -12,7 +12,7 @@
 <nav id="sidebar" class="sidebar js-sidebar">
 	<div class="sidebar-content js-simplebar">
 		<span class="align-brand-middle"><a
-			href="${pageContext.request.contextPath}/projectlist"
+			href="${pageContext.request.contextPath}/member/projectlist"
 			class="sidebar-brand-new">Stream</a></span>
 
 		<ul class="sidebar-nav">

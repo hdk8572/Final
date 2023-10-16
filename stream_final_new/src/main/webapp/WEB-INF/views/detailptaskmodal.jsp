@@ -68,7 +68,7 @@
 function replyLoadList() {
 	console.log(targetTno);
 	$.ajax({
-		url: "${pageContext.request.contextPath}/replyList",
+		url: "${pageContext.request.contextPath}/member/replyList",
 		type: "get",
 		data: {tno:targetTno},
 		async : false,
@@ -125,7 +125,7 @@ function makeReplyList(data) {
 	
 	function insertReply() {
 		$.ajax ({
-			url: "${pageContext.request.contextPath}/insertReply",
+			url: "${pageContext.request.contextPath}/member/insertReply",
 			type: "post",
 			data: $(".wrap-reply").serialize(),
 			dataType: "json",
@@ -152,7 +152,7 @@ function makeReplyList(data) {
 				if(confirm_val == true){
 				    <!--- 확인 or yes 버튼을 눌렀을 때 실행 될 함수 구현 --->
 				    $.ajax({
-						url: "${pageContext.request.contextPath}/doUpdateReply",
+						url: "${pageContext.request.contextPath}/member/doUpdateReply",
 						type: "post",
 						dataType: "json",
 						data: {rno: targetRno, rcontent: targetRcontentUpdate},
@@ -179,7 +179,7 @@ function makeReplyList(data) {
 
 		
  		$.ajax({
-			url: "${pageContext.request.contextPath}/goUpdateReply",
+			url: "${pageContext.request.contextPath}/member/goUpdateReply",
 			type: "post",
 			dataType: "json",
 			data: {rno: targetRno, rcontent: targetRcontent},
@@ -201,7 +201,7 @@ function makeReplyList(data) {
 		if(confirm_val == true){
 		    <!--- 확인 or yes 버튼을 눌렀을 때 실행 될 함수 구현 --->
 			$.ajax({
-				url: "${pageContext.request.contextPath}/doDeleteReply",
+				url: "${pageContext.request.contextPath}/member/doDeleteReply",
 				type: "post",
 				dataType: "json",
 				data: {rno: targetRno},

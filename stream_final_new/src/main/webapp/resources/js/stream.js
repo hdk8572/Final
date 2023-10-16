@@ -18,7 +18,7 @@ function goUpdateForm(pno) {
 	console.log($("#updateProjectModal").find('input [name=userid]').val());
 	
 	$.ajax({
-	 	url: contextPath+"/projectOne",
+	 	url: contextPath+"/member/projectOne",
 	 	type: "get",
 	 	data: {pno:pno, userid:useridJs},
 	 	dataType: "json",
@@ -41,7 +41,7 @@ function goUpdateForm(pno) {
 
 function doUpdateProject() {
  	$.ajax ({
-		url: contextPath+"/doUpdateProject",
+		url: contextPath+"/member/doUpdateProject",
 		type: "get",
 		data: $("#infoProject").serialize(),
 		success: function(result) {
@@ -68,7 +68,7 @@ function hideProject($thisElement) {
     //var pstatus = $thisElement.closest(".list-card").find(".text-muted").attr("data-pstatus");// 엄청 중요합니다.
     var pno = $thisElement;
     $.ajax ({
-    	url: contextPath+"/doUpdateProject.direct",
+    	url: contextPath+"/member/doUpdateProject.direct",
     	type: "get",
     	data: {pno:pno, userid:useridJs},
 		dataType: "json",

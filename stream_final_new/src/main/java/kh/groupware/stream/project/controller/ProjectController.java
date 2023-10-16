@@ -26,14 +26,14 @@ public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
 
-	@GetMapping("/projectlist")
+	@GetMapping("/member/projectlist")
 	public String main() {
 		System.out.println("정상적으로 돌았습니다");
 		return "projectList";
 	}
 
 	
-	@GetMapping("/projectOne")
+	@GetMapping("/member/projectOne")
 	@ResponseBody
 	public ProjectVo selectOne(PnoPrincipalParam pnoPrincipalParam) {
 		ProjectVo vo = projectService.selectOne(pnoPrincipalParam);
@@ -48,7 +48,7 @@ public class ProjectController {
 	 * return vo; }
 	 */
 	 
-	@GetMapping("/loadList")
+	@GetMapping("/member/loadList")
 	@ResponseBody
 	public List<ProjectVo> loadList(Principal principal, String pname, HttpSession session) {
 		System.out.println("loadList 돌았습니다");
@@ -58,7 +58,7 @@ public class ProjectController {
 		return list;
 	}
 
-	@GetMapping("/loadHide")
+	@GetMapping("/member/loadHide")
 	@ResponseBody
 	public List<ProjectVo> loadHide(Principal principal) {
 		System.out.println("loadHide 돌았습니다");
@@ -67,7 +67,7 @@ public class ProjectController {
 		return list;
 	}
 
-	@PostMapping("/projectInsert")
+	@PostMapping("/member/projectInsert")
 	@ResponseBody
 	public List<ProjectVo> insert(ProjectVo vo, Principal principal) {
 		String userid = principal.getName();
@@ -75,7 +75,7 @@ public class ProjectController {
 		return add;
 	}
 
-	@GetMapping("/deleteList.ajax")
+	@GetMapping("/member/deleteList.ajax")
 	@ResponseBody
 	public Map<String, Object> delete(String pno) {
 		int deletedLists = projectService.delete(pno);
@@ -85,14 +85,14 @@ public class ProjectController {
 		return map;
 	}
 
-	@GetMapping("/doUpdateProject")
+	@GetMapping("/member/doUpdateProject")
 	@ResponseBody
 	public int update(ProjectVo vo) {
 		int result = projectService.update(vo);
 		return result;
 	}
 
-	@GetMapping("/doUpdateProject.direct")
+	@GetMapping("/member/doUpdateProject.direct")
 	@ResponseBody
 	public int updateBtn(PnoPrincipalParam pnoPrincipalParam) {
 		ProjectVo currentVo = projectService.selectOne(pnoPrincipalParam);
