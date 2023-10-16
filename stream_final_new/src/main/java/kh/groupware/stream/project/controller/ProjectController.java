@@ -39,14 +39,6 @@ public class ProjectController {
 		ProjectVo vo = projectService.selectOne(pnoPrincipalParam);
 		return vo;
 	}
-	
-	/*
-	 * @GetMapping("/projectOne/{pno}")
-	 * 
-	 * @ResponseBody public ProjectVo selectOne(@PathVariable("pno") String pno,
-	 * Principal principal) { ProjectVo vo = projectService.selectOne(pno, userid);
-	 * return vo; }
-	 */
 	 
 	@GetMapping("/member/loadList")
 	@ResponseBody

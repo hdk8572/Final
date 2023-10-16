@@ -44,6 +44,7 @@ public class PtaskController {
 
 	@GetMapping("/member/ptasklist")
 	public String ptasklist(Model model, String pno) {
+		System.out.println("pno :"+pno);
 		List<PtaskVo> tlist = ptaskService.pselectList(pno);
 		ProjectVo pname = projectService.sessionPname(pno);
 		model.addAttribute("pno", pno);

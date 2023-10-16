@@ -15,6 +15,8 @@ function selectOption(e){
 
 function goUpdateForm(pno) {
 	$("#updateProjectModal").modal("toggle");
+	console.log("userid :"+useridJs);
+	console.log("pno :"+pno);
 	console.log($("#updateProjectModal").find('input [name=userid]').val());
 	
 	$.ajax({
