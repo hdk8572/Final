@@ -103,12 +103,11 @@
 						<a id="load">더보기</a>
 					</div>
 				</div></li>
-			<c:forEach items="${principal.authorities}" var="authority">
-				<c:if test="${authority.authority eq '[ROLE_M]'}">
+<%-- 			<c:forEach items="${principal.authorities}" var="authority">
+				<c:if test="${authority.authority eq '[ROLE_M]'}"> --%>
 					<div class="container">
 						<div class="sidesheet"></div>
-						<button id="popup"
-							style="background: none; border: none; padding: 0; margin: 0;">
+						<button id="popup" style="background: none; border: none; padding: 0; margin: 0;">
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 								viewBox="0 0 24 24" fill="none" stroke="currentColor"
 								stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -118,10 +117,10 @@
     						</svg>
 						</button>
 					</div>
-				</c:if>
+<%-- 				</c:if>
 			</c:forEach>
 
-
+ --%>
 
 			<li class="nav-item dropdown"><a
 				class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
@@ -196,13 +195,12 @@
 
 
 
-<script type="text/javascript">
+<script>
 	window.onload = function() {
 		var popupButton = document.getElementById("popup");
 		popupButton.onclick = function() {
 			var jsPopup = window
-					.open("member/rooms", null,
-							"width=450, height=650, resizable=no, scrollbars=no,toolbars=no, menubar=no");
+					.open("member/rooms","width=450, height=650, resizable=no, scrollbars=no,toolbars=no, menubar=no");
 
 		};
 	};
