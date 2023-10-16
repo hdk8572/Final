@@ -24,28 +24,28 @@ public class MainController {
 //	@Autowired
 //	private PtaskService ptastService;
 	
-	@GetMapping("/maintask")
+	@GetMapping("/member/maintask")
 	public String maintask(Model model, Principal principal) {
 		String userid = principal.getName();
 		model.addAttribute("projectList", maintastService.projectNameList(userid));
 		return "task/maintask";
 	}
 	
-	@PostMapping("/innertaskinsert")
+	@PostMapping("/member/innertaskinsert")
 	@ResponseBody
 	public ProjectVo insert(PtaskVo vo){
 		ProjectVo projectTaskList = maintastService.insertInnerTask(vo);
 		return projectTaskList;
 	}
 	
-	@GetMapping("/showprojectmemberlist")
+	@GetMapping("/member/showprojectmemberlist")
 	@ResponseBody
 	public List<MemberSimpleVo> memberlist(String pno) {
 		List<MemberSimpleVo> projectMemberList = maintastService.projectMemberList(pno);
 		return projectMemberList;
 	}
 	
-	@PostMapping("/sort")
+	@PostMapping("/member/sort")
 	@ResponseBody
 	public List<ProjectVo> sort(MaintaskSortVo vo) {
 		List<ProjectVo> sortList = maintastService.TaskSortList(vo);
