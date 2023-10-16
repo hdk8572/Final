@@ -18,13 +18,13 @@ color: #939ba2;
 
 <nav id="sidebar" class="sidebar js-sidebar">
 	<div class="sidebar-content js-simplebar">
-		<span class="align-brand-middle"><a href="${pageContext.request.contextPath}/projectlist"
+		<span class="align-brand-middle"><a href="${pageContext.request.contextPath}/member/projectlist"
 			class="sidebar-brand-new">AdminKit</a>
 		</span>
 
 		<ul class="sidebar-nav">
 			<li class="sidebar-item active">
-				<a class="sidebar-link" href="${pageContext.request.contextPath}/projectlist"> 
+				<a class="sidebar-link" href="${pageContext.request.contextPath}/member/projectlist"> 
 					<i class="align-middle" data-feather="sliders"></i> 
 					<span class="align-middle">내 프로젝트</span>
 				</a>

@@ -104,7 +104,7 @@
 					</div>
 				</div></li>
 			<c:forEach items="${principal.authorities}" var="authority">
-				<c:if test="${authority.authority eq 'ROLE_M'}">
+				<c:if test="${authority.authority eq '[ROLE_M]'}">
 					<div class="container">
 						<div class="sidesheet"></div>
 						<button id="popup"
@@ -113,7 +113,8 @@
 								viewBox="0 0 24 24" fill="none" stroke="currentColor"
 								stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
 								class="feather feather-message-square align-middle me-2">
-       						 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+       						 <path
+									d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
     						</svg>
 						</button>
 					</div>
@@ -181,11 +182,11 @@
 					data-feather="phone"></i> <span>전화번호</span></td>
 				<td class="mp-content" data-field="mphone"></td>
 			</tr>
-
-			<c:if test="${principal.authorities eq 'ROLE_M'}">
+			<c:if test="${principal.authorities eq '[ROLE_M]'}">
 				<tr>
 					<td colspan="2" class="mp-button"><button
-							class="btn mpbtn btn-primary btn-sm mp-button" id="editmypage">정보수정</button></td>
+							class="btn mpbtn btn-primary btn-sm mp-button" id="editmypage">정보수정
+						</button></td>
 				</tr>
 			</c:if>
 		</table>
