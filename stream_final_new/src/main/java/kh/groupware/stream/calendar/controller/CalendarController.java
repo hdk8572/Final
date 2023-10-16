@@ -46,7 +46,7 @@ public class CalendarController {
 			if(result < 1) {
 				// 해당 프로젝트에 참여하고 있지 않은 회원으로 프로젝트 리스트 화면으로 이동하게 함.
 				rttr.addFlashAttribute("alertmsg", "소속된 프로젝트를 선택하세요.");
-				mv.setViewName("redirect:/projectlist");
+				mv.setViewName("redirect:/member/projectlist");
 				return mv;
 			}
 		}

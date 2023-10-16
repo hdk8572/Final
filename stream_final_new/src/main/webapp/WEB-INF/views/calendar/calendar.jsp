@@ -22,7 +22,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 <%@ include file="/WEB-INF/views/calendar/readcalmodal.jsp" %>
 <%@ include file="/WEB-INF/views/calendar/updatecalmodal.jsp" %>
 <!-- 달력을 구성  -->
-<%-- <%@ include file="/WEB-INF/views/calendar/calendarhandler.jsp" %> --%>
+<%@ include file="/WEB-INF/views/calendar/calendarhandler.jsp" %>
 
 <!-- 참가자들을 input에 추가한다. -->
 <script>
