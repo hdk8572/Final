@@ -136,6 +136,20 @@ innerTaskInputHandler=(thisElement)=>{
 	getProjectMemberList(thisElement);
 }
 
+boxOutHandler=(event)=>{
+	const a1 = event.target;
+	if( $(".jm-innerTaskInput").hasClass('active') ){
+		if(	!$(a1).hasClass("jm-innerTaskInput") 
+			&& !$(a1).hasClass("jm-inner-task-button")
+			&& !$(a1).parents('div').hasClass("jm-innerTaskInput")
+			){
+			console.log("영역외");
+			console.log(a1);
+			$(".jm-innerTaskInput").removeClass('row active');
+		}
+	}
+}
+
 function getProjectMemberList(thisElement){
 	var a1 = thisElement;
 	console.log(a1);
@@ -180,19 +194,6 @@ function showProjectMemberView(data, htmlTarget){
 		$(htmlTarget).html(listHtml);
 }
 
-boxOutHandler=(event)=>{
-	const a1 = event.target;
-	if( $(".jm-innerTaskInput").hasClass('active') ){
-		if(	!$(a1).hasClass("jm-innerTaskInput") 
-			&& !$(a1).hasClass("jm-inner-task-button")
-			&& !$(a1).parents('div').hasClass("jm-innerTaskInput")
-			){
-			console.log("영역외");
-			console.log(a1);
-			$(".jm-innerTaskInput").removeClass('row active');
-		}
-	}
-}
 
 ttileCheckHandler=(event)=>{
 	console.log("submit 눌렸다."+event.target);

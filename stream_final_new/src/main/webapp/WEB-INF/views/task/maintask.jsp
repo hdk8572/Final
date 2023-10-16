@@ -41,21 +41,13 @@
 			<main class="content">
 
 				<div class="container-fluid p-0">
-
 					<div class="h3 mb-3 jm-header">
-						<div>
-							<span>sple@kh.co.kr님의 프로젝트 목록</span> <span id="fullTaskCnt"></span>
-						</div>
+						<span>${principal.username}님의 프로젝트 목록</span> <span id="fullTaskCnt"></span>
 					</div>
-					<div>
-						<div class="card-body">
-						</div>
-					</div>
-
 					<div class="row">
 						<div class="col-12">
 							<div class="card">
-								<div class="card-body jm-body">
+								<div class="jm-body">
 								<!-- 반복문 안쓴곳 -->
 									<div class="jm-rwap-task jm-grey">
 										<div class="jm-task-title row ">
