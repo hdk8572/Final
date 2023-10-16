@@ -9,7 +9,7 @@ function loadCalendarHandler() {
 	// calendar date get from db 
 	$.ajax({
 		//동기 async : false, 
-		url: '${pageContext.request.contextPath}/pcalselectlist'	
+		url: '${pageContext.request.contextPath}/member/pcalselectlist'	
 		,data: { startdate : '2023-09-12', pno: '${pno}', userid:'${principal.username}'} 
 		,dataType : "json"
 		,success: function(result){	//요청이 성공적으로 완료될 때 실행할 콜백 함수를 정의

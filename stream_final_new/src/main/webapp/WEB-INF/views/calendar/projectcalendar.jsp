@@ -22,7 +22,8 @@
 <!-- Bootstrap CSS -->
 <link href="${pageContext.request.contextPath}/css/streamapp.css" rel="stylesheet">
 
-
+<!-- Modal CSS -->
+<link href="${pageContext.request.contextPath}/css/Modal.css" rel="stylesheet">
 
 <!-- CSS -->
 <link href="${pageContext.request.contextPath }/css/calreadmodal.css" rel="stylesheet">
@@ -59,18 +60,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 			<div class="main">
 				<%@ include file="/WEB-INF/views/headernavbar.jsp"%>
 			<main>
-				<div class="w3-bar tabBar">
-					<button class="w3-bar-item w3" onclick="openTab('Tab1')">피드</button>
-					<button class="w3-bar-item w3" onclick="openTab('Tab2')">업무</button>
-					<button class="w3-bar-item w3" onclick="openTab('Tab3')">캘린더</button>
-				</div>
 
-<%-- 				<div class="search">
-						<form action="${pageContext.request.contextPath}/pcalselectone" method="get"> <!-- ?? -->
-							<input class="serinput" type="text" placeholder="검색어 입력"> 
-							<img class="serimg" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
-						</form>
-					</div> --%>
 
 				<main class="content" id="content-calendar">
 					<div class="content-cal">
