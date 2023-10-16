@@ -29,7 +29,7 @@
 					<li class="sidebar-header">모아보기</li>
 
 					<li class="sidebar-item"><a class="sidebar-link"
-						href="${pageContext.request.contextPath}/maintask"> <i
+						href="${pageContext.request.contextPath}/member/maintask"> <i
 							class="align-middle" data-feather="square"></i> <span
 							class="align-middle">전체업무</span>
 					</a></li>

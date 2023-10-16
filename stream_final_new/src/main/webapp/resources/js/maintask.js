@@ -86,7 +86,7 @@ taskDetailButtonClickTestHandler=(thisButton)=>{
 	$("#detailProjectModal").modal("toggle");
 	
 	$.ajax({
-		 	url: contextPath+"/ptaskselectOne",
+		 	url: contextPath+"/member/ptaskselectOne",
 		 	type: "get",
 		 	dataType: "json",
 		 	data: {tno: targetTno, pno: targetPno},
@@ -148,7 +148,7 @@ function getProjectMemberList(thisElement){
 	var htmlTarget = $(a1).closest('li').next().find('select[name=tmember]')[0];
 	console.log(htmlTarget);
 		$.ajax({
-			url:contextPath+"/showprojectmemberlist",
+			url:contextPath+"/member/showprojectmemberlist",
 			type:"get",
 			data : {
 				pno : a4,
@@ -212,7 +212,7 @@ function innerTaskaddListHandler (data) {
 	var d1 = $(a1).closest(".addInnerTask").serialize();
 	console.log(d1);
 	$.ajax ({
-		url: contextPath+"/innertaskinsert",
+		url: contextPath+"/member/innertaskinsert",
 		type: "post",
 //		data : $(this).closest(".addInnerTask").serialize(),
 		data : d1,
