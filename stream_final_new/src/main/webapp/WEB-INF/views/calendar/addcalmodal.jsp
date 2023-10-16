@@ -12,7 +12,7 @@
 					<div class="card-header pcalTitle">
 						<h2 class="pcalTitle"><b>일정 작성</b></h2>
 					</div>
-						<form class="addcalmodal-frm" action="${pageContext.request.contextPath}/insertpcal" method="post">
+						<form class="addcalmodal-frm" action="${pageContext.request.contextPath}/member/insertpcal" method="post">
 							<!-- url 때문에 pno필요함 -->
 							<input type="hidden" name="pno" value="${pno}">
 							<!-- TODO 일정번호 -->

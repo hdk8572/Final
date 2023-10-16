@@ -38,7 +38,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 		console.log("calendar_pno: "+calendar_pno);
 		console.log("logined_userid: "+logined_userid);
 		$.ajax({
-			url:'${pageContext.request.contextPath}/memberProjectList',
+			url:'${pageContext.request.contextPath}/member/memberProjectList',
 			type:"get",
 			data : {
 				pno : calendar_pno,

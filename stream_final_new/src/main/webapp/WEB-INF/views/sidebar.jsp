@@ -35,7 +35,7 @@
 					</a></li>
 
 					<li class="sidebar-item"><a class="sidebar-link"
-						href="${pageContext.request.contextPath}/pcal"><i
+						href="${pageContext.request.contextPath}/member/pcal"><i
 							class="align-middle me-2" data-feather="calendar"></i> <span
 							class="align-middle">캘린더</span> </a></li>
 

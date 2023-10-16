@@ -13,7 +13,7 @@
 					<div class="card-header pcalTitle">
 						<h2 class="pcalTitle"><b>일정 수정</b></h2>
 					</div>
-						<form action="${pageContext.request.contextPath}/updatepcal" method="post">
+						<form action="${pageContext.request.contextPath}/member/updatepcal" method="post">
 							<!-- 일정번호 프로젝트번호 -->
 							<!-- url 때문에 pno필요함 -->
 							<input type="hidden" name="pno" value="${pno}">
@@ -43,7 +43,6 @@
 								</div>
 							</div>
 							
-							<!-- ????왜 뜸 ??????? ㄱㅇㄷ -->
 							<!-- 지도 -->
 								<div class="d-flex align-items-center">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin align-middle me-2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
@@ -105,7 +104,7 @@
 		//ajax 요청을 보낸다.
 		$.ajax({
 			type: 'POST',
-			url: contextPath + "/updatepcal", //수정 엔드포인트이다
+			url: contextPath + "/member/updatepcal", //수정 엔드포인트이다
 			data: {
 				title: title,
 				start: start,
@@ -188,7 +187,7 @@ $('#updBtn').on("click", function() {
 				// 이 코드 넣었더니 지도 뜸!!
 			    setTimeout(function(){ map3.relayout(); }, 1000);
 				
-			 // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+				// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 				map3.setCenter(updatecoords);
 			 
 				// 지도를 표시

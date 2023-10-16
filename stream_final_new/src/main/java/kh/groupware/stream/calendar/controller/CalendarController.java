@@ -31,7 +31,7 @@ public class CalendarController {
 	@Autowired 
 	private CalendarService calendarService;
 	
-	@GetMapping({"/pcal", "/pcal/{pno}"})
+	@GetMapping({"/member/pcal", "/member/pcal/{pno}"})
 	public ModelAndView selectList(ModelAndView mv, @PathVariable(name = "pno", required = false) String pno
 			, Principal principal
 			, RedirectAttributes rttr
@@ -64,7 +64,7 @@ public class CalendarController {
 //		return new Gson().toJson(calendarList);	//캘린터 정보를 DB에서 조회한 후 JSON 형식으로 클라이언트에게 반환하는 것이다.
 //	}
 	//캘린더 전체 조회 //달력에 표시할 모든 일정 목록을 가져오는 역할을 한다.
-	@GetMapping({"/pcalselectlist"})
+	@GetMapping({"/member/pcalselectlist"})
 	@ResponseBody
 	public String calSelectList(CalendarParamVo paramvo) { //String pno->pno값을 들고올 수도 있는데(null값이 있을 수도 있음) 안 들고올 수도 있으니깐 앞에 저렇게 적어줌.required = false->꼭 pno가 있지 않을 수도 있어 
 		List<CalendarVo> calendarList = null;
@@ -74,7 +74,7 @@ public class CalendarController {
 	
 	
 	//캘린더 일정 상세 조회
-	@GetMapping("/pcalselectone")
+	@GetMapping("/member/pcalselectone")
 	public String calSelectOne(Model model, String sno) { 
 		CalendarVo cal = calendarService.selectOne(sno);
 		model.addAttribute("cal", cal);
@@ -83,7 +83,7 @@ public class CalendarController {
 	
 	//작성자도 포함
 	//참석자 후보 조회 -  MemberProject 조회
-	@GetMapping("/memberProjectList")
+	@GetMapping("/member/memberProjectList")
 	@ResponseBody
 	public String memberProjectList(CalendarParamVo param) {
 		return new Gson().toJson(calendarService.memberProjectList(param));
@@ -91,7 +91,7 @@ public class CalendarController {
 
 	
 	//캘린더 등록 
-	@PostMapping("/insertpcal")
+	@PostMapping("/member/insertpcal")
 	public String insert(Model model, CalendarVo cal) {
 		List<String> attenduseridArr = Arrays.asList(cal.getAttenduseridArr());
 		List<MemberSimpleVo> attenduseridList= new ArrayList<MemberSimpleVo>();
@@ -108,7 +108,7 @@ public class CalendarController {
 	}
 	
 	//캘린더 수정
-	@PostMapping("/updatepcal")
+	@PostMapping("/member/updatepcal")
 	@ResponseBody
 	public int update(CalendarVo cal) {
 		int result = calendarService.update(cal);
@@ -117,7 +117,7 @@ public class CalendarController {
 
 	
 	//캘린더 삭제
-	@PostMapping("/deletepcal")
+	@PostMapping("/member/deletepcal")
 	@ResponseBody
 	public int delete(@RequestParam(name = "sno") String sno) {
 	    return calendarService.delete(sno);
