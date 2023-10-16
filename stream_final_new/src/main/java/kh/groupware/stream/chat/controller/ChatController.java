@@ -43,7 +43,7 @@ public class ChatController {
 //		return mv;
 //	}
 
-	@GetMapping(value = "/rooms")
+	@GetMapping(value = "/member/rooms")
 	public ModelAndView rooms(ModelAndView mv, Principal principal) throws Exception {
 		String userId = principal.getName();
 		mv.setViewName("chatting/rooms");
@@ -52,7 +52,7 @@ public class ChatController {
 		return mv;
 	}
 
-	@GetMapping("/room")
+	@GetMapping("/member/room")
 	public ModelAndView getRoom(String roomId, ModelAndView mv, Principal principal) {
 		String userId = principal.getName();
 		mv.addObject("ID", userId);
@@ -63,7 +63,7 @@ public class ChatController {
 		return mv;
 	}
 
-	@PostMapping(value = "/room")
+	@PostMapping(value = "/member/room")
 	public String create(@RequestParam String roomName, @RequestParam String member, Principal principal,
 			RedirectAttributes rttr) {
 //	    	log.info("# Create Chat Room, roomName: " + roomName + ", userId: " + userId);
@@ -72,7 +72,7 @@ public class ChatController {
 		service.memberInsert(member);
 		rttr.addFlashAttribute("roomName1", roomName);
 		rttr.addFlashAttribute("member", member);
-		return "redirect:/rooms";
+		return "redirect:/member/rooms";
 	}
 
 }

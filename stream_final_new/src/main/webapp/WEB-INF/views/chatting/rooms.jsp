@@ -61,7 +61,7 @@
 											class="avatar img-fluid rounded me-1" alt="Charles Hall"
 											style="border-radius: 50% !important;" /> <a
 											class="roomnamelist"
-											href="<c:url value='/room'><c:param name='roomId' value='${room.roomId}' /></c:url>"
+											href="<c:url value='/member/room'><c:param name='roomId' value='${room.roomId}' /></c:url>"
 											style="display: inline-block;padding:15px ;width: 320px; overflow: hidden; white-space: nowrap; text-decoration: none;">${room.roomName}</a>
 										</li>
 									</div>
@@ -72,7 +72,7 @@
 				</div>
 
 				<div id="s_menu_box2" class="s_menu_box s_scroll">
-					<form action="/stream/room" method="post">
+					<form action="/stream/member/room" method="post">
 					<div class="modal-body">
 						<div>
 							<div class="s_select_part_tt">방 제목</div>
