@@ -68,7 +68,7 @@
 					</div>
 				</div>
 				<div class="w3-bar tabBar" style="height: 60px">
-					<button class="w3-bar-item w3" onclick="openTab('Tab2')" style="padding: 26px 25px">업무</button>
+					<button class="w3-bar-item w3" onclick="openTab('Tab2')" style="padding: 26px 25px; color: rgb(0, 155, 119);">업무</button>
 					<button class="w3-bar-item w3" onclick="openTab('Tab3')" style="padding: 26px 25px">캘린더</button>
 					<button class="w3-bar-item w3" onclick="openTab('Tab1')" style="padding: 26px 25px">피드</button>
 				</div>
@@ -192,8 +192,6 @@
 	  event.target.classList.add("click");
 	  $(".w3-bar-item.w3").css("color", "black");
 	  $(".w3-bar-item.w3.click").css("color", "#009b77");
-	  
-	  
 	  
 	}
 
