@@ -131,7 +131,7 @@ innerTaskInputHandler=(thisElement)=>{
 	var a3 = '#'+a2;	//#taskInputNo_{tno}	
 	console.log(a3);
 	$(a3).find(".jm-innerTaskInput").addClass('row active');
-	$(a3).find(".jm-innerTaskInput").css("display","block, flex");
+	//$(a3).find(".jm-innerTaskInput").css("display","flex");
 	$(".innerTdate").text(functionDateHandler())
 	getProjectMemberList(thisElement);
 }
@@ -146,6 +146,7 @@ boxOutHandler=(event)=>{
 			console.log("영역외");
 			console.log(a1);
 			$(".jm-innerTaskInput").removeClass('row active');
+			//$(".jm-innerTaskInput").css("display","none");
 		}
 	}
 }

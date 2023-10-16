@@ -408,3 +408,17 @@ select (select pname from project where pno=t.pno) pname, pno, t.userid, tmember
     	order by to_number(pno) desc, to_number(bref) desc, brelevel asc, 
         to_number(brestep) asc
 ;
+
+select mname, mrank, pmember, pmaster, deptname, deptno, ccode, pno, pname, pcontent, paccess, pdate, pstartdate, penddate, pcolor, pstatus
+    from(
+        select mname, mrank, userid, deptno, ccode from users where userid = 'sple@kh.co.kr') users
+    join dept dept using(deptno, ccode)
+    join (select pno, ppr.userid pmaster, pname, pcontent, paccess, pdate, pstartdate, penddate, pcolor, pstatus, jj.userid pmember
+    from project ppr
+    join (select mp.pno, userid
+            from project pr
+            join member_project mp using(userid)
+           
+            group by (mp.pno, userid)
+            ) jj using(pno)) on (userid = pmember)
+    ;

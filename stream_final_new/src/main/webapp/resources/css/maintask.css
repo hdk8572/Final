@@ -87,6 +87,7 @@ div.jm-task-title{
 	z-index: 100;
 }
 
+
 .jm-header{
 	color: #000;
 	font-weight: 400;
@@ -122,6 +123,9 @@ div.jm-task-title{
 
 .jm-hidden{
 	display: none;
+}
+.jm-hidden.jm-innerTaskInput.active{
+	display: flex;
 }
 .dropdown-item>button{
 	z-index: -1;
