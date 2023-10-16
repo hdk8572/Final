@@ -68,7 +68,7 @@
 					</div>
 				</div>
 				<div class="w3-bar tabBar" style="height: 60px">
-					<button class="w3-bar-item w3" onclick="openTab('Tab2')" style="padding: 26px 25px">업무</button>
+					<button class="w3-bar-item w3" onclick="openTab('Tab2')" style="padding: 26px 25px; color: rgb(0, 155, 119);">업무</button>
 					<button class="w3-bar-item w3" onclick="openTab('Tab3')" style="padding: 26px 25px">캘린더</button>
 					<button class="w3-bar-item w3" onclick="openTab('Tab1')" style="padding: 26px 25px">피드</button>
 				</div>
@@ -193,8 +193,6 @@
 	  $(".w3-bar-item.w3").css("color", "black");
 	  $(".w3-bar-item.w3.click").css("color", "#009b77");
 	  
-	  
-	  
 	}
 
 	nonClick.forEach((e) => {
@@ -238,7 +236,7 @@
 		$("#detailProjectModal").modal("toggle");
 		
 		$.ajax({
-		 	url: "${pageContext.request.contextPath}/ptaskselectOne",
+		 	url: "${pageContext.request.contextPath}/member/ptaskselectOne",
 		 	type: "get",
 		 	dataType: "json",
 		 	data: {tno: targetTno, pno: targetPno},

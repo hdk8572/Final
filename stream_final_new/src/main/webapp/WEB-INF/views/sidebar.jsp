@@ -12,7 +12,7 @@
 <nav id="sidebar" class="sidebar js-sidebar">
 	<div class="sidebar-content js-simplebar">
 		<span class="align-brand-middle"><a
-			href="${pageContext.request.contextPath}/projectlist"
+			href="${pageContext.request.contextPath}/member/projectlist"
 			class="sidebar-brand-new">Stream</a></span>
 
 		<ul class="sidebar-nav">
@@ -29,7 +29,7 @@
 					<li class="sidebar-header">모아보기</li>
 
 					<li class="sidebar-item"><a class="sidebar-link"
-						href="${pageContext.request.contextPath}/maintask"> <i
+						href="${pageContext.request.contextPath}/member/maintask"> <i
 							class="align-middle" data-feather="square"></i> <span
 							class="align-middle">전체업무</span>
 					</a></li>

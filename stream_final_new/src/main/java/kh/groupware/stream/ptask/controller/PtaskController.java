@@ -42,7 +42,7 @@ public class PtaskController {
 	@Autowired
 	private ProjectService projectService;
 
-	@GetMapping("/ptasklist")
+	@GetMapping("/member/ptasklist")
 	public String ptasklist(Model model, String pno) {
 		List<PtaskVo> tlist = ptaskService.pselectList(pno);
 		ProjectVo pname = projectService.sessionPname(pno);
@@ -63,7 +63,7 @@ public class PtaskController {
 //		return "redirect:ptasklist?pno="+vo.getPno();
 //	}
 
-	@PostMapping("/insertPtask")
+	@PostMapping("/member/insertPtask")
 	public String insertTask(Model model, PtaskVo vo, FileVo fvo, MultipartFile upload, HttpServletRequest request) {
 	    // file server save ==> return savedpath
 
@@ -109,24 +109,24 @@ public class PtaskController {
 	            }
 	        } catch (IOException e) {
 	           e.printStackTrace(); // or log error message using a logging framework
-	           return "redirect:ptasklist?pno="+vo.getPno(); // redirect to error page or similar.
+	           return "redirect:/member/ptasklist?pno="+vo.getPno(); // redirect to error page or similar.
 	        }
 	    } 
 	    
 	    System.out.println("taskId 가나요?");
         int taskId = ptaskService.insertTask(vo); 
         System.out.println("taskId :" + taskId);
-        return "redirect:ptasklist?pno="+vo.getPno();
+        return "redirect:/member/ptasklist?pno="+vo.getPno();
 
 	}
 	
-	@GetMapping("/ptaskselectOne") 
+	@GetMapping("/member/ptaskselectOne") 
 	@ResponseBody
 	public PtaskVo selectOne(PnoTnoParam pnoTnoParam) {
 		return ptaskService.selectOneInner(pnoTnoParam);
 	}
 	
-	@GetMapping("updateTstatus")
+	@GetMapping("/member/updateTstatus")
 	@ResponseBody
 	public int updateTstatus(PnoTnoParam pnoTnoParam) {
 		return ptaskService.update(pnoTnoParam);

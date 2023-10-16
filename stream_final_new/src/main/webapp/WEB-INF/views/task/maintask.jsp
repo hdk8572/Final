@@ -245,7 +245,7 @@
 														</span> <span class="jm-project-title">${project.pname }</span> <span
 															class="jm-project-task-count">(${project.maintaskList.size() })</span>
 														<form class="jm-dn"
-															action="${pageContext.request.contextPath }/ptasklist"
+															action="${pageContext.request.contextPath }/member/ptasklist"
 															method="get">
 															<input type="hidden" name="pno" value="${project.pno}">
 															<button class="jm-tp">바로가기</button>
@@ -357,8 +357,9 @@
 	
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
 	<script src="${pageContext.request.contextPath}/js/maintask.js"></script>
+	
 	<script>
-		abc=()=>{
+		taskSortHandler=()=>{
 			var e1 = event.target;
 			console.log(e1);
 			var e2 = $(e1).data("ordertype");
@@ -372,7 +373,7 @@
 					userid : principal_username
 					},
 				dataType: "json",
-				url: contextPath+"/sort",
+				url: contextPath+"/member/sort",
 				success:function(data){
 					console.log(data);
 					sortMakeView(data)
@@ -385,7 +386,7 @@
 					}
 			})
 		}
-		$(".jm-order").on("click", abc);
+		$(".jm-order").on("click", taskSortHandler);
 	</script>
 	<script>
 	sortMakeView=(data)=>{
@@ -407,7 +408,7 @@
 					</span> <span class="jm-project-title">\${project.pname }</span> <span
 						class="jm-project-task-count">(\${project.maintaskList.length })</span>
 					<form class="jm-dn"
-						action="${pageContext.request.contextPath }/ptasklist"
+						action="${pageContext.request.contextPath }/member/ptasklist"
 						method="get">
 						<input type="hidden" name="pno" value="\${project.pno}">
 						<button class="jm-tp">바로가기</button>

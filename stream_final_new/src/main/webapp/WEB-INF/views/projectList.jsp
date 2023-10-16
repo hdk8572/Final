@@ -144,7 +144,7 @@
 	
 	function loadHide() {
 		$.ajax({
-			url: "${pageContext.request.contextPath}/loadHide",
+			url: "${pageContext.request.contextPath}/member/loadHide",
 			type: "get",
 			data: $("#wrap-list").serialize(),
 			async : false,
@@ -159,7 +159,7 @@
 	
 	function loadList() {
 		$.ajax({
-			url: "${pageContext.request.contextPath}/loadList",
+			url: "${pageContext.request.contextPath}/member/loadList",
 			type: "get",
 			data: $("#wrap-list").serialize(),
 			async : false,
@@ -182,7 +182,7 @@
 			listHtml+=`
 	        	<div class="col-sm-6 list-card" data-pno="\${ul.pno}" >
 		            <div class="card">
-		                <form class="frm select" action="${pageContext.request.contextPath}/ptasklist" method="get">
+		                <form class="frm select" action="${pageContext.request.contextPath}/member/ptasklist" method="get">
 		                    <input type="hidden" name="pno"  value="\${ul.pno}">
 		                    <div class="card-body list">
 	                    </form>
