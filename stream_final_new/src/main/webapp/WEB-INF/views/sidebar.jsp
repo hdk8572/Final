@@ -19,7 +19,7 @@
 			<c:forEach items="${principal.authorities}" var="authority">
 				<c:if test="${authority.authority eq 'ROLE_M'}">
 					<li class="sidebar-item active"><a class="sidebar-link"
-						href="${pageContext.request.contextPath}/projectlist"> <!-- <i
+						href="${pageContext.request.contextPath}/member/projectlist"> <!-- <i
 							class="align-middle" data-feather="sliders"></i>  -->
 							  <i class="align-middle" data-feather="grid"></i> <span
 							class="align-middle">내 프로젝트</span>
