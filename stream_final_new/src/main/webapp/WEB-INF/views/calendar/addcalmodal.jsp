@@ -36,8 +36,16 @@
 									<input type="text" name="attenduseridArr" value="kh0001@kh.com">
 									<input type="text" name="attenduseridArr" value="kh0002@kh.com">  -->
 									<!-- 참가자 반복 -->
-									<input type="text" id="calmemberinput" placeholder="참가자" list="calmemberlist">
-									<select id="calmemberlist"> <!-- 일단 한 명만 추가해서 insert까지 하기  --> 
+									<div id="attenduserid-wrap">
+									<!-- 
+										<div class="attenduserid-item">
+											<input type="text" placeholder="참가자" readonly>
+											<input type="hidden"  name="attenduseridArr">
+										</div>
+									 -->	
+									</div>
+									<select id="calmemberlist" > <!-- 일단 한 명만 추가해서 insert까지 하기  --> 
+										<option value="">참가자 추가</option>
 									</select>
 								</div>
 							</div>

@@ -74,10 +74,12 @@
 		INSERT All
 		INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SPLACE, SCOLOR)
 				VALUES (schedule_sequence.NEXTVAL, #{userid}, #{pno}, #{start}, #{end}, #{smemo}, #{title}, #{splace},'#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'))
+		<if test="attenduseridList != null">
 		<foreach collection="attenduseridList" item="attenduserid">
 		INTO Member_SCHEDULE (SNO, ATTENDUSERID)
-			VALUES (schedule_sequence.NEXTVAL, #{attenduserid})
+			VALUES (schedule_sequence.NEXTVAL, #{attenduserid.userid})
 		</foreach>		
+		</if>
 		SELECT * FROM dual
 	</insert>
 

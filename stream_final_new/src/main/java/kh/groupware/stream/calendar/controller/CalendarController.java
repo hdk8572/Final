@@ -93,7 +93,7 @@ public class CalendarController {
 	//강사님이 알려주신 코드
 	//캘린더 등록
 	@PostMapping("/insertpcal")
-	public String insert(Model model, CalendarVo cal) {
+	public String insert(Model model, CalendarInsertParamVo cal) {
 		//cal.setAttenduseridList(Arrays.asList(cal.getAttenduseridArr()));
 		cal.setAttenduseridList(Arrays.asList(cal.getAttenduseridArr()));
 		System.out.println("aaaa :" + cal);
@@ -106,15 +106,20 @@ public class CalendarController {
 	//캘린더 등록 
 	@PostMapping("/member/insertpcal")
 	public String insert(Model model, CalendarVo cal) {
-		List<String> attenduseridArr = Arrays.asList(cal.getAttenduseridArr());
-		List<MemberSimpleVo> attenduseridList= new ArrayList<MemberSimpleVo>();
 		
-		for(String userId : attenduseridArr) {
-			MemberSimpleVo member = new MemberSimpleVo();
-			member.setUserid(userId);
-			attenduseridList.add(member);
+		
+//CalendarVo [sno=, userid=mplsam@kh.co.kr, mname=null, pno=1, splace=삼성동, smemo=<p>와우</p><p>영한 변환 잘됨</p>, start=2023-10-17, end=2023-10-19, title=aaa, color=null, attenduseridArr=null, attenduseridList=null]
+		if(cal.getAttenduseridArr() != null && cal.getAttenduseridArr().length > 0) {
+			List<String> attenduseridArr = Arrays.asList(cal.getAttenduseridArr());
+			List<MemberSimpleVo> attenduseridList= new ArrayList<MemberSimpleVo>();
+			
+			for(String userId : attenduseridArr) {
+				MemberSimpleVo member = new MemberSimpleVo();
+				member.setUserid(userId);
+				attenduseridList.add(member);
+			}
+			cal.setAttenduseridList(attenduseridList);
 		}
-		cal.setAttenduseridList(attenduseridList);
 		System.out.println("aaaa :" + cal);
 		calendarService.insert(cal);
 		return "redirect:pcal?sno="+cal.getSno();

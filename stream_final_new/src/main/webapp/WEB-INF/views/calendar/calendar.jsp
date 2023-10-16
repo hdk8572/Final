@@ -27,8 +27,31 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 <!-- 참가자들을 input에 추가한다. -->
 <script>
 	document.getElementById("calmemberlist").addEventListener("change", function() {
-	    var selectedValue = this.options[this.selectedIndex].text;
-	    document.getElementById("calmemberinput").value = selectedValue;
+		if(this.selectedIndex == 0){
+			return;
+		}
+	    var selectedText = this.options[this.selectedIndex].text;
+	    var selectedValue = this.options[this.selectedIndex].value;
+	    //document.getElementById("calmemberinput").value = selectedValue; // 하나가 아니기때문에 id = "calmemberinput" 안됨
+		var checkSameUserId = false;
+	    $(".attenduserid-item").each(function(idx, thisItem){
+	    	itemValue = $(thisItem).children("[name=attenduseridArr]").val();
+	    	console.log(itemValue);
+	    	if(selectedValue == itemValue){
+	    		alert("이미 참석자에 등록된 사원입니다.");
+	    		checkSameUserId = true;
+	    		return;
+	    	}
+	    });
+	    if(checkSameUserId == false){  //등록된 적 없는 사원일 경우 추가
+		    var htmlVal='';
+		    htmlVal+='<div class="attenduserid-item">';
+		    htmlVal+='<input type="text" class="form-control userid" placeholder="참가자" readonly value="'+selectedText+'">';
+		    htmlVal+='<input type="hidden" name="attenduseridArr" value="'+selectedValue+'" >';
+		    htmlVal+='</div">';
+		    
+		    $("#attenduserid-wrap").append(htmlVal);
+	    }
 	});
 </script>
 
@@ -52,7 +75,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 	function memberView(data){
 		console.log(data)
 		console.log("성공하였습니다.")
-		var listHtml = "";
+		var listHtml = '<option value="">참가자 추가</option>';
 		for (var i=0; i<data.length; i++){
 			var mname = data[i];
 			listHtml += `<option value="\${mname.userid}">\${mname.mname}</option>`; //data를 뿌리고 그걸 option에다가 넣어줌 //value=userid
@@ -65,7 +88,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 		console.log(status);
 		console.log(error);
 		
-		var listHtml = "";
+		var listHtml = '<option value="">참가자 추가</option>';
 		listHtml += `<option selected>해당하는 이름이 없습니다.</option>`;
 		$("#calmemberlist").html(listHtml);
 	}
