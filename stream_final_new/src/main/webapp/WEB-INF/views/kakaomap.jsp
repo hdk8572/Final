@@ -79,6 +79,6 @@
 			    mapContainer.style.display = 'block';
 				
 			}//if
-		});
+		});  // cb function
 	}
 </script>

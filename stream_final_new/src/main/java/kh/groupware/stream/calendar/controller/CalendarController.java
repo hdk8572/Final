@@ -90,6 +90,19 @@ public class CalendarController {
 	}//짧게 쓰는 방법임
 
 	
+	//강사님이 알려주신 코드
+	//캘린더 등록
+	@PostMapping("/insertpcal")
+	public String insert(Model model, CalendarVo cal) {
+		//cal.setAttenduseridList(Arrays.asList(cal.getAttenduseridArr()));
+		cal.setAttenduseridList(Arrays.asList(cal.getAttenduseridArr()));
+		System.out.println("aaaa :" + cal);
+		calendarService.insert(cal);
+		return "redirect:pcal?sno="+cal.getSno();
+	}
+	
+	
+	/*
 	//캘린더 등록 
 	@PostMapping("/member/insertpcal")
 	public String insert(Model model, CalendarVo cal) {
@@ -106,6 +119,7 @@ public class CalendarController {
 		calendarService.insert(cal);
 		return "redirect:pcal?sno="+cal.getSno();
 	}
+	*/
 	
 	//캘린더 수정
 	@PostMapping("/member/updatepcal")

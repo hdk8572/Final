@@ -121,9 +121,9 @@
 		
 		// 주소로 좌표를 검색합니다
 		console.log(splaceText);
-		geocoder2.addressSearch(splaceText , function(result, status) {
+		geocoder2.addressSearch(splaceText, function(result, status) {
 			
-			var splaceText =  $('#readcalmodal #splace').text();
+			var splaceText = $('#readcalmodal #splace').text();
 			
 			// 정상적으로 검색이 완료됐으면 
 			if (status === kakao.maps.services.Status.OK) {
@@ -149,7 +149,8 @@
 				map2.setCenter(readcoords);
 			 
 				// 지도를 표시
-			    mapContainer_readmodal.style.display = 'block';
+				 mapContainer_readmodal.style.display = 'block';
+				
 			} // if
 		});  // cb function
 	}

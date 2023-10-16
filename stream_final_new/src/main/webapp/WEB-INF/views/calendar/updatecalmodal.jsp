@@ -36,6 +36,9 @@
 								<div class="form-control userid" id="userid"></div>
 								<div class="form-userid" id="form-content" >
 									<!-- 참가자 임시로 넣음 -->
+									<!-- <input type="text" name="attenduseridArr" value="mplsam@kh.co.kr">
+									<input type="text" name="attenduseridArr" value="kh0001@kh.com">
+									<input type="text" name="attenduseridArr" value="kh0002@kh.com">  -->
 									<!-- 참가자 반복 -->
 									<input type="text" id="calmemberinput" placeholder="참가자" list="calmemberlist">
 									<select id="calmemberlist"> <!-- 일단 한 명만 추가해서 insert까지 하기  --> 
@@ -130,19 +133,20 @@
 	})
 </script>
 
-<!-- TODO -->
-<script >
+<!-- TODO 뜨는데? 상관없는 코드인듯-->
+<!-- <script >
 $('#updBtn').on("click", function() {
     $('#map-updatemodal').css('display', 'block'); // 예를 들어 이와 같이 표시 설정
 });
-</script>
+</script> -->
 
 <!-- 지도 api -->
 <script>
 	var mapContainer_updatemodal = document.getElementById('map-updatemodal'), // 지도를 표시할 div 
 	mapOption_updatemodal = {
 		center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-		level : 3 // 지도의 확대 레벨
+		level : 3, // 지도의 확대 레벨
+		disableDoubleClickZoom: true
 	};
 
 	//showMap 함수 정의
@@ -193,14 +197,6 @@ $('#updBtn').on("click", function() {
 				// 지도를 표시
 			    mapContainer_updatemodal.style.display = 'block';
 			  
-			    
-				/* function relayout() {    
-				    // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
-				    // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다 
-				    // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
-				    map-readmodal.relayout();
-				} */
-				
 				// 마우스 드래그로 지도 이동 막기
 				map3.setDraggable(false);
 				// 마우스 휠로 지도 확대,축소 막기
