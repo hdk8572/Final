@@ -43,7 +43,7 @@
 }
 
 .text-tab {
-	position: static; 
+	position: absolute; 
 	font-size: 1.53125rem;
 }
 
@@ -94,4 +94,12 @@
 
 .tabtitle {
 	overflow: hidden;
+}
+
+.w3-bar-item.w3.click{
+    color: rgb(0, 155, 119);
+}
+
+.w3-container.tab.ptab{
+	display:none;
 }

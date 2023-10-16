@@ -50,4 +50,8 @@ public class ProjectDao {
 		return sqlSession.update("project.updateList", vo);
 	}
 	
+	public List<ProjectVo> searchProjectList(ProjectVo vo) {
+		return sqlSession.selectList("project.searchProjectList", vo);
+	}
+	
 }

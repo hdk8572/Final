@@ -36,7 +36,9 @@ public class ProjectController {
 	@GetMapping("/member/projectOne")
 	@ResponseBody
 	public ProjectVo selectOne(PnoPrincipalParam pnoPrincipalParam) {
+		System.out.println("pnoPrincipalParam :"+pnoPrincipalParam);
 		ProjectVo vo = projectService.selectOne(pnoPrincipalParam);
+		System.out.println("vo :"+vo);
 		return vo;
 	}
 	 
@@ -92,5 +94,14 @@ public class ProjectController {
 		currentVo.setPstatus("숨김");
 		int result = projectService.update(currentVo);
 		return 0;
+	}
+	
+	@GetMapping("/member/serachProjectList")
+	@ResponseBody
+	public List<ProjectVo> search(String keyword, String userid) {
+		ProjectVo pvo = new ProjectVo();
+		pvo.setUserid(userid);
+		pvo.setKeyword(keyword);
+		return projectService.searchProjectList(pvo, keyword);
 	}
 }

@@ -20,6 +20,9 @@ public class ProjectVo {
 	private String penddate;
 	private String prow; // 함수 Vo에 없음
 	private String pstatus;
+	
+	private String type;
+	private String keyword;
 
 // deptVo + usersVo	
 	private String deptno;
@@ -35,38 +38,21 @@ public class ProjectVo {
 // 정렬용
 	private List<MaintaskSortVo> maintaskSortList;
 
-	
-
-
-
-
-
 	@Override
 	public String toString() {
 		return "ProjectVo [pno=" + pno + ", userid=" + userid + ", pname=" + pname + ", pcontent=" + pcontent
 				+ ", paccess=" + paccess + ", pdate=" + pdate + ", pstartdate=" + pstartdate + ", penddate=" + penddate
-				+ ", prow=" + prow + ", pstatus=" + pstatus + ", deptno=" + deptno + ", mname=" + mname + ", mrank="
-				+ mrank + ", deptName=" + deptName + ", maintaskList=" + maintaskList + ", memberProjectList="
-				+ memberProjectList + ", maintaskSortList=" + maintaskSortList + "]";
+				+ ", prow=" + prow + ", pstatus=" + pstatus + ", type=" + type + ", keyword=" + keyword + ", deptno="
+				+ deptno + ", mname=" + mname + ", mrank=" + mrank + ", deptName=" + deptName + ", maintaskList="
+				+ maintaskList + ", memberProjectList=" + memberProjectList + ", maintaskSortList=" + maintaskSortList
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
 	}
-
-
-
-
-
-
-	public ProjectVo() {
-		super();
-	}
-
-
-
-	
-
 
 	public ProjectVo(String pno, String userid, String pname, String pcontent, String paccess, String pdate,
-			String pstartdate, String penddate, String prow, String pstatus, String deptno, String mname, String mrank,
-			String deptName, List<MaintaskDto> maintaskList, List<MemberSimpleVo> memberProjectList) {
+			String pstartdate, String penddate, String prow, String pstatus, String type, String keyword, String deptno,
+			String mname, String mrank, String deptName, List<MaintaskDto> maintaskList,
+			List<MemberSimpleVo> memberProjectList, List<MaintaskSortVo> maintaskSortList) {
 		super();
 		this.pno = pno;
 		this.userid = userid;
@@ -78,33 +64,8 @@ public class ProjectVo {
 		this.penddate = penddate;
 		this.prow = prow;
 		this.pstatus = pstatus;
-		this.deptno = deptno;
-		this.mname = mname;
-		this.mrank = mrank;
-		this.deptName = deptName;
-		this.maintaskList = maintaskList;
-		this.memberProjectList = memberProjectList;
-	}
-	
-	
-
-
-
-	public ProjectVo(String pno, String userid, String pname, String pcontent, String paccess, String pdate,
-			String pstartdate, String penddate, String prow, String pstatus, String deptno, String mname, String mrank,
-			String deptName, List<MaintaskDto> maintaskList, List<MemberSimpleVo> memberProjectList,
-			List<MaintaskSortVo> maintaskSortList) {
-		super();
-		this.pno = pno;
-		this.userid = userid;
-		this.pname = pname;
-		this.pcontent = pcontent;
-		this.paccess = paccess;
-		this.pdate = pdate;
-		this.pstartdate = pstartdate;
-		this.penddate = penddate;
-		this.prow = prow;
-		this.pstatus = pstatus;
+		this.type = type;
+		this.keyword = keyword;
 		this.deptno = deptno;
 		this.mname = mname;
 		this.mrank = mrank;
@@ -114,10 +75,9 @@ public class ProjectVo {
 		this.maintaskSortList = maintaskSortList;
 	}
 
-
-
-
-
+	public ProjectVo() {
+		super();
+	}
 
 	public String getPno() {
 		return pno;
@@ -199,6 +159,22 @@ public class ProjectVo {
 		this.pstatus = pstatus;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	public String getDeptno() {
 		return deptno;
 	}
@@ -239,13 +215,9 @@ public class ProjectVo {
 		this.maintaskList = maintaskList;
 	}
 
-
-
 	public List<MemberSimpleVo> getMemberProjectList() {
 		return memberProjectList;
 	}
-
-
 
 	public void setMemberProjectList(List<MemberSimpleVo> memberProjectList) {
 		this.memberProjectList = memberProjectList;
@@ -258,8 +230,5 @@ public class ProjectVo {
 	public void setMaintaskSortList(List<MaintaskSortVo> maintaskSortList) {
 		this.maintaskSortList = maintaskSortList;
 	}
-
-	
-
 
 }

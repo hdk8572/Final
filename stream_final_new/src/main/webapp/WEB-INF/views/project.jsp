@@ -67,14 +67,14 @@
 						<h2 style="font-weight: bold;position: relative;left: -12px;">${projectPname.pname}</h2>
 					</div>
 				</div>
-				<div class="w3-bar tabBar" style="height: 60px">
-					<button class="w3-bar-item w3" onclick="openTab('Tab2')" style="padding: 26px 25px; color: rgb(0, 155, 119);">업무</button>
-					<button class="w3-bar-item w3" onclick="openTab('Tab3')" style="padding: 26px 25px">캘린더</button>
-					<button class="w3-bar-item w3" onclick="openTab('Tab1')" style="padding: 26px 25px">피드</button>
+				<div class="w3-bar tabBar" >
+					<button class="w3-bar-item w3" onclick="openTab('Tab2')" data-tabmenu="Tab2" >업무</button>
+					<button class="w3-bar-item w3" onclick="openTab('Tab3')" data-tabmenu="Tab3">캘린더</button>
+					<button class="w3-bar-item w3" onclick="openTab('Tab1')" data-tabmenu="Tab1" >피드</button>
 				</div>
 
 				<!-- 피드 탭 -->
-				<div id="Tab1" class="w3-container tab ptab" style="display: none" style="height: 60px">
+				<div id="Tab1" class="w3-container tab ptab" >
 					<main class="content">
 						<div class="tabtitle">
 							<span class="text-tab">피드</span>
@@ -136,7 +136,7 @@
 				</div>
 
 				<!-- 캘린더 탭 -->
-				<div id="Tab3" class="w3-container tab ptab"  style="display: none" style="height: 60px">
+				<div id="Tab3" class="w3-container tab ptab">
 					<main class="content" id="content-calendar">
 						<div class="tabtitle">
 							<span class="text-tab">캘린더</span>
@@ -167,6 +167,9 @@
 	/* ajax 용 - principal.username */
 	const useridJs = "${principal.username}";
 	
+	
+	openTab('Tab2');   // 로딩되고 나서 처음 업무가 보이도록 함.
+	
 	/* 상단 탭바 위치 이동*/
 	function openTab(tabName) {
 	  var i;
@@ -174,13 +177,21 @@
 	  for (i = 0; i < x.length; i++) {
 	    x[i].style.display = "none";
 	  }
+	  $(".w3-bar-item.w3").removeClass("click");
+	  $(".w3-bar-item.w3").each(function(idx, thisElement){
+		  console.log(tabName);
+		  console.log($(thisElement).data("tabmenu"));
+		  if(tabName == $(thisElement).data("tabmenu")){
+			  $(thisElement).addClass("click");
+		  }
+	  });
+	  
 	  document.getElementById(tabName).style.display = "block";
-	   
 	  if(tabName == "Tab3"){
 		  loadCalendarHandler();
 	  }
 	}
-	
+/* 	
 	const nonClick = document.querySelectorAll(".w3-bar-item.w3");
 
 	function handleClick(event) {
@@ -199,7 +210,7 @@
 	  e.addEventListener("click", handleClick);
 	  
 	});	
-	
+ */	
 	$(document).ready(function (){
 		$("#summernote").summernote({				//  위즈윅 - summerNote		
 		     placeholder: '프로젝트 설명을 입력해주세요.',
