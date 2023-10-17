@@ -24,6 +24,7 @@ function loadedHandler(){
 	
 	//업무추가 메뉴 닫기 이벤트
 	$('html').on("click", boxOutHandler);
+	titleHoverHandler();
 	
 	
 }
@@ -359,6 +360,7 @@ listHtml += `
 		var id = "#projectNo_"+ project.pno;
 		$(id).html(listHtml);
 		console.log(id);
+		titleHoverHandler()
 }
 
 

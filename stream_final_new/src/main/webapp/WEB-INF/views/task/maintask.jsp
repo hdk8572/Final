@@ -515,14 +515,18 @@
 		}
 	
 		$('#taskContentUI').html(htmlList)
+		titleHoverHandler()
 	}
 	</script>
 	<script>
+	function titleHoverHandler(){
 		$(".jm-title-ttitle").hover(()=>{
+			$(event.target).find(".jm-hidden-btn").css("visibility", "hidden");
 			$(event.target).find(".jm-hidden-btn").css("visibility", "visible");
 		},()=>{
 			$(event.target).find(".jm-hidden-btn").css("visibility", "hidden");
 		})
+		}
 	</script>
 </body>
 
