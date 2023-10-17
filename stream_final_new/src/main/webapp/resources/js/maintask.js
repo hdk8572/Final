@@ -24,6 +24,7 @@ function loadedHandler(){
 	
 	//업무추가 메뉴 닫기 이벤트
 	$('html').on("click", boxOutHandler);
+	titleHoverHandler();
 	
 	
 }
@@ -131,9 +132,22 @@ innerTaskInputHandler=(thisElement)=>{
 	var a3 = '#'+a2;	//#taskInputNo_{tno}	
 	console.log(a3);
 	$(a3).find(".jm-innerTaskInput").addClass('row active');
-	$(a3).find(".jm-innerTaskInput").css("display","block, flex");
 	$(".innerTdate").text(functionDateHandler())
 	getProjectMemberList(thisElement);
+}
+
+boxOutHandler=(event)=>{
+	const a1 = event.target;
+	if( $(".jm-innerTaskInput").hasClass('active') ){
+		if(	!$(a1).hasClass("jm-innerTaskInput") 
+			&& !$(a1).hasClass("jm-inner-task-button")
+			&& !$(a1).parents('div').hasClass("jm-innerTaskInput")
+			){
+			console.log("영역외");
+			console.log(a1);
+			$(".jm-innerTaskInput").removeClass('row active');
+		}
+	}
 }
 
 function getProjectMemberList(thisElement){
@@ -180,19 +194,6 @@ function showProjectMemberView(data, htmlTarget){
 		$(htmlTarget).html(listHtml);
 }
 
-boxOutHandler=(event)=>{
-	const a1 = event.target;
-	if( $(".jm-innerTaskInput").hasClass('active') ){
-		if(	!$(a1).hasClass("jm-innerTaskInput") 
-			&& !$(a1).hasClass("jm-inner-task-button")
-			&& !$(a1).parents('div').hasClass("jm-innerTaskInput")
-			){
-			console.log("영역외");
-			console.log(a1);
-			$(".jm-innerTaskInput").removeClass('row active');
-		}
-	}
-}
 
 ttileCheckHandler=(event)=>{
 	console.log("submit 눌렸다."+event.target);
@@ -252,7 +253,7 @@ console.log(project.mname);
 														<span class="jm-project-task-count">(${project.maintaskList.length})</span>
 														<form class="jm-dn" action="${contextPath}/ptasklist" method="get">
 															<input type="hidden" name="pno" value="${project.pno}" >
-															<button class="jm-tp">바로가기</button>
+															<button class="jm-tp jm-hidden-btn">바로가기</button>
 														</form>
 													</div>
 												</div>
@@ -279,11 +280,11 @@ listHtml += `
 			`;
 		if(task.brelevel == 0) {
 listHtml += `
-																	<button class="jm-inner-task-button" onclick="innerTaskInputHandler(this)">업무추가</button>
+																	<button class="jm-inner-task-button jm-hidden-btn" onclick="innerTaskInputHandler(this)">업무추가</button>
 			`; 
 		}
 listHtml += `
-																	<button class="jm-tp jm-task-info" onclick="taskDetailButtonClickTestHandler(this);">자세히 보기</button>
+																	<button class="jm-tp jm-task-info jm-hidden-btn" onclick="taskDetailButtonClickTestHandler(this);">자세히 보기</button>
 																	<div class="jm-hidden">
 																			<input type="hidden" name="pno" value="${project.pno}">
 																			<input type="hidden" name="tno" value="${task.tno }">
@@ -359,6 +360,7 @@ listHtml += `
 		var id = "#projectNo_"+ project.pno;
 		$(id).html(listHtml);
 		console.log(id);
+		titleHoverHandler()
 }
 
 

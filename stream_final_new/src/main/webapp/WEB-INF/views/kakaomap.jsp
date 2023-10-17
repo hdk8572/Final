@@ -26,14 +26,14 @@
         }
     };
     
-    //지도 초기화
+  //지도 초기화!!!
     function cancelAddEvent(){
     	var kakaoaddmap = document.getElementById('map');
     	kakaoaddmap.innerHTML =''; //지도를 비운다.
     	
     	$('.map-hidden').css("display", 'none');
 
-    }
+    } 
 
 	// showMap 함수 정의
 	function showMap() {
@@ -79,6 +79,6 @@
 			    mapContainer.style.display = 'block';
 				
 			}//if
-		});
+		});  // cb function
 	}
 </script>

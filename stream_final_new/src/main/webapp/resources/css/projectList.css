@@ -31,3 +31,10 @@
 .form-control:disabled, .form-control[readonly] {
 	background-color: white;
 }
+
+.form-control.searchBar {
+	display: inline-flex;
+    width: 15%;
+    border: 0;
+   
+}

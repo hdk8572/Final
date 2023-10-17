@@ -67,14 +67,14 @@
 						<h2 style="font-weight: bold;position: relative;left: -12px;">${projectPname.pname}</h2>
 					</div>
 				</div>
-				<div class="w3-bar tabBar" style="height: 60px">
-					<button class="w3-bar-item w3" onclick="openTab('Tab2')" style="padding: 26px 25px; color: rgb(0, 155, 119);">업무</button>
-					<button class="w3-bar-item w3" onclick="openTab('Tab3')" style="padding: 26px 25px">캘린더</button>
-					<button class="w3-bar-item w3" onclick="openTab('Tab1')" style="padding: 26px 25px">피드</button>
+				<div class="w3-bar tabBar" >
+					<button class="w3-bar-item w3" onclick="openTab('Tab2')" data-tabmenu="Tab2" >업무</button>
+					<button class="w3-bar-item w3" onclick="openTab('Tab3')" data-tabmenu="Tab3">캘린더</button>
+					<button class="w3-bar-item w3" onclick="openTab('Tab1')" data-tabmenu="Tab1" >피드</button>
 				</div>
 
 				<!-- 피드 탭 -->
-				<div id="Tab1" class="w3-container tab ptab" style="display: none" style="height: 60px">
+				<div id="Tab1" class="w3-container tab ptab" >
 					<main class="content">
 						<div class="tabtitle">
 							<span class="text-tab">피드</span>
@@ -98,16 +98,20 @@
 						<%@ include file="/WEB-INF/views/addPtaskModal.jsp"%>
 
 						<div class="container-fluid p-0">
+							<input type="hidden" name="pno" value="${pno}">
 							<table class="table table-hover my-0">
 								<tbody>
 								<tr>
 									<th class="d-none d-xl-table-cell">업무명</th>
 									<th class="d-none d-xl-table-cell">담당자</th>
 									<th class="d-none d-xl-table-cell">진행도</th>
-									<th class="d-none d-xl-table-cell">작성날짜</th>
+									<th class="d-none d-xl-table-cell">작성일</th>
 									<th class="d-none d-xl-table-cell">시작일</th>
 									<th class="d-none d-xl-table-cell">마감일</th>
 								</tr>
+								</tbody>
+								<tbody class="wrap-PtaskList">
+								<!--  
 								<c:forEach items="${tlist}" var="tlist">
 									<tr class="listOne">
 										<td>${tlist.ttitle}<button type="button" class="detailProject">상세내용</button></td>
@@ -128,6 +132,7 @@
 										<input type="hidden" name="pno" value="${tlist.pno}">
 									</tr>
 								</c:forEach>
+								-->
 								</tbody>
 							</table>
 							<%@ include file="/WEB-INF/views/detailptaskmodal.jsp"%>
@@ -136,11 +141,11 @@
 				</div>
 
 				<!-- 캘린더 탭 -->
-				<div id="Tab3" class="w3-container tab ptab"  style="display: none" style="height: 60px">
+				<div id="Tab3" class="w3-container tab ptab">
 					<main class="content" id="content-calendar">
 						<div class="tabtitle">
 							<span class="text-tab">캘린더</span>
-							<button class="btn btn-primary addcal" id="myBtn" data-bs-toggle="modal" data-bs-target="#addcalmodal" onclick="getMemberProjectListHandler(this)">+일정추가</button>
+							<button class="btn btn-primary addcal" id="myBtn" type="reset" data-bs-toggle="modal" data-bs-target="#addcalmodal" onclick="getMemberProjectListHandler(this)">+일정추가</button>
 						</div>
 						<div class="container-fluid p-0">
 							<!-- 내용  -->
@@ -153,7 +158,7 @@
 		</div>
 
 	</div>
-</body>
+
 	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
 	<!-- SummerNote CDN -->
@@ -166,6 +171,9 @@
 	
 	/* ajax 용 - principal.username */
 	const useridJs = "${principal.username}";
+	const ptaskPno = $(".container-fluid.p-0").find("input[name=pno]").val();
+	
+	// openTab('Tab2');   // 로딩되고 나서 처음 업무가 보이도록 함.
 	
 	/* 상단 탭바 위치 이동*/
 	function openTab(tabName) {
@@ -174,33 +182,22 @@
 	  for (i = 0; i < x.length; i++) {
 	    x[i].style.display = "none";
 	  }
+	  $(".w3-bar-item.w3").removeClass("click");
+	  $(".w3-bar-item.w3").each(function(idx, thisElement){
+		  if(tabName == $(thisElement).data("tabmenu")){
+			  $(thisElement).addClass("click");
+		  }
+	  });
+	  
 	  document.getElementById(tabName).style.display = "block";
-	   
 	  if(tabName == "Tab3"){
 		  loadCalendarHandler();
+	  } else if(tabName == "Tab2") {
+		  loadPtaskList();
 	  }
 	}
 	
-	const nonClick = document.querySelectorAll(".w3-bar-item.w3");
-
-	function handleClick(event) {
-	  // div에서 모든 "click" 클래스 제거
-	  nonClick.forEach((e) => {
-	    e.classList.remove("click");
-	  });
-	  // 클릭한 div만 "click"클래스 추가
-	  event.target.classList.add("click");
-	  $(".w3-bar-item.w3").css("color", "black");
-	  $(".w3-bar-item.w3.click").css("color", "#009b77");
-	  
-	}
-
-	nonClick.forEach((e) => {
-	  e.addEventListener("click", handleClick);
-	  
-	});	
-	
-	$(document).ready(function (){
+	$(document).ready(function() {
 		$("#summernote").summernote({				//  위즈윅 - summerNote		
 		     placeholder: '프로젝트 설명을 입력해주세요.',
 		     tabsize: 2,
@@ -215,20 +212,90 @@
 		       ['view', ['fullscreen', 'codeview', 'help']]
 		     ]
 		});
+		openTab('Tab2');
+		mouseEvent();
 		$(this).find(".detailProject").click(detailProject);
 		
 	}); 
 	
 	</script>
 	<script>
-	$(".listOne").mouseover(function() {
-		$(this).find(".detailProject").css("visibility", "visible");
-	});
-	$(".listOne").mouseout(function() {
-		$(this).find(".detailProject").css("visibility", "hidden");
-	});
+	function mouseEvent() {
+		$(".listOne").hover(
+			function(){
+				$(".detailProject").css("visibility", "hidden");
+				$(this).find(".detailProject").css("visibility", "visible");
+						
+		},
+			function(){
+				$(".detailProject").css("visibility", "hidden");				
+			}
+		);
+	}
+	
+	
+	
 	</script>
 	<script>
+	
+	function loadPtaskList() {
+		$.ajax({
+			url: "${pageContext.request.contextPath}/member/loadPtaskList",
+			type: "get",
+			async : false,
+			dataType: "json",
+			data: {pno: ptaskPno},
+			success: function(data) {
+				console.log("data :");
+				console.log(data);
+				makePtaskList(data);
+			},
+			error: function() {
+				console.log("loadPtaskList에서 실패");
+			}
+		});
+		console.log("loadPtaskList 실행");
+	}
+	
+	function makePtaskList(data) {
+	    var pTaskListHtml = "";
+	    for(var i=0; i<data.length; i++){
+			var pl = data[i];
+
+			console.log("item.tstatus :"+pl.tstatus);
+			
+			pTaskListHtml+=`
+	        	<tr class="listOne">
+					<td>\${pl.ttitle}<button type="button" class="detailProject">상세내용</button></td>
+					<td>\${pl.tmember}</td>
+					<%-- <td>${tlist.tstatus}</td> --%>
+					<input type="hidden" id="updateTstatus" >
+//					\${pl.tstatus}
+					<input type="hidden" id="currentTstatus" value="\${pl.tstatus}" >
+					<td>
+						<select class="status setting" name="tstatus" id="updateTstatus_\${i}">
+							<option class="status request" value="요청" name="요청" selected>요청</option>
+							<option class="status progress" value="진행" name="요청">진행</option>
+							<option class="status feedback" value="피드백" name="요청">피드백</option>
+							<option class="status complete" value="완료" name="요청">완료</option>
+							<option class="status remain" value="보류" name="요청">보류</option>
+						</select>
+					</td>
+					<td>\${pl.tdate}</td>
+					<td>\${pl.tstartdate}</td>
+					<td>\${pl.tenddate}</td>
+					<input type="hidden" name="tno" value="\${pl.tno}">
+					<input type="hidden" name="pno" value="\${pl.pno}">
+				</tr>`;
+				}
+	    $(".wrap-PtaskList").html(pTaskListHtml);
+	    for(var i=0; i<data.length; i++){
+			var pl = data[i];
+			console.log("item.tstatus :"+pl.tstatus);
+			$("select#updateTstatus_"+i).val(pl.tstatus).prop("selected", true);
+	    }
+	}
+	
 	function detailProject() {
 		targetTno = $(this).closest("tr").find("input[name=tno]").val();
 		targetPno = $(this).closest("tr").find("input[name=pno]").val();
@@ -242,7 +309,6 @@
 		 	data: {tno: targetTno, pno: targetPno},
 		 	async : false,
 		 	success: function(result){
-		 		console.log(result);
 		 		$(".wrap-card .tcontent").html(result.tcontent);
 		 		$(".wrap-card .ttitle").html(result.ttitle);
 		 		$(".wrap-card .tstatus").html(result.tstatus);
@@ -270,4 +336,21 @@
  	    $("#updateTstatus").val(updatedOption);
 	}
 	</script>
+	<script>
+	
+	function selectOption() {
+		$("select[name=tstatus]").load(function() {
+			console.log($(this).val());
+		});
+		
+		$("select[name=tstatus]").change(function() {
+			console.log($(this).val());
+		});
+	}
+	
+	
+	
+	
+	</script>
+</body>
 </html>

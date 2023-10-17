@@ -39,7 +39,7 @@
 </head>
 <body>
 	<div class="wrapper">
-
+		<%@ include file="/WEB-INF/views/alertmsg.jsp"%>
 		<%@ include file="/WEB-INF/views/sidebar.jsp"%>
 		<div class="main">
 			<%@ include file="/WEB-INF/views/headernavbar.jsp"%>

@@ -408,3 +408,34 @@ select (select pname from project where pno=t.pno) pname, pno, t.userid, tmember
     	order by to_number(pno) desc, to_number(bref) desc, brelevel asc, 
         to_number(brestep) asc
 ;
+
+select mname, mrank, pmember, pmaster, deptname, deptno, ccode, pno, pname, pcontent, paccess, pdate, pstartdate, penddate, pcolor, pstatus
+    from(
+        select mname, mrank, userid, deptno, ccode from users where userid = 'sple@kh.co.kr') users
+    join dept dept using(deptno, ccode)
+    join (select pno, ppr.userid pmaster, pname, pcontent, paccess, pdate, pstartdate, penddate, pcolor, pstatus, jj.userid pmember
+    from project ppr
+    join (select mp.pno, userid
+            from project pr
+            join member_project mp using(userid)
+           
+            group by (mp.pno, userid)
+            ) jj using(pno)) on (userid = pmember)
+    ;
+    
+select (select pname from project where pno=t.pno) pname, pno, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
+    		from
+    		(select tno, pno, userid, tmember, ttitle, tcontent, tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel
+    			from task where tmember = 'sple@kh.co.kr' or userid = 'sple@kh.co.kr') t
+    		order by to_number(pno) desc, to_number(bref) desc, brelevel asc, to_number(brestep) asc;
+            
+select mname from users where userid = 'sple@kh.co.kr';
+
+
+select (select pname from project where pno=t.pno) pname, pno, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
+    		from
+    		(select tno, pno, userid, tmember, ttitle, tcontent, tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel
+    			from task where tmember = 'sple@kh.co.kr' or userid = 'sple@kh.co.kr') t
+    		order by to_number(pno) desc, to_number(bref) desc, brelevel asc, to_number(brestep)
+;
+    		

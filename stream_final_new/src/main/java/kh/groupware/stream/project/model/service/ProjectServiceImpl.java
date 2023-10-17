@@ -44,7 +44,9 @@ public class ProjectServiceImpl implements ProjectService {
 	
 	@Override
 	public ProjectVo selectOne(PnoPrincipalParam pnoPrincipalParam) {
-		return projectDao.selectOne(pnoPrincipalParam);
+		ProjectVo result = projectDao.selectOne(pnoPrincipalParam);
+		System.out.println("ServiceImpl result :"+result);
+		return result;
 	}
 	
 	@Override
@@ -69,5 +71,12 @@ public class ProjectServiceImpl implements ProjectService {
     public int update(ProjectVo vo) {
     	return projectDao.update(vo);
     }
+	
+	@Override
+	@Transactional
+	public List<ProjectVo> searchProjectList(ProjectVo vo, String userid) {
+		projectDao.selectList(userid);
+		return projectDao.searchProjectList(vo);
+	}
 	
 }

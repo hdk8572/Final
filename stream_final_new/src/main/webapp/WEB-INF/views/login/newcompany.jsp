@@ -68,7 +68,7 @@
 										<button type="button"
 											class="btn btn-lg btn-primary nextButton">다음</button>
 									</div>
-									<input type="hidden" name="password" value="12345"/>
+									<input type="hidden" name="password" value="12345" />
 								</div>
 							</div>
 
@@ -77,7 +77,7 @@
 									<div class="mb-3">
 										<label class="form-label">부서명 입력</label> <input type="hidden"
 											value="D000" name="defaultDeptCode" placeholder="기본부서" />
-										</td> <input type="hidden" value="DefaulDept"
+										</td> <input type="hidden" value="부서미선택"
 											name="defaultDeptName" placeholder="기본부서" />
 										</td>
 										<table>
@@ -123,7 +123,7 @@
 										<label class="form-label">이메일 입력</label>
 										<table>
 											<td><input
-												class="form-control form-control-lg input-email" type="text"
+												class="form-control form-control-lg input-email" type="email"
 												id="input-email" name="ncemail"
 												placeholder="ex) 이메일을 입력하세요. " /></td>
 											<td><button type="button" onclick="addEmailTable()"
@@ -164,6 +164,11 @@
 	</main>
 
 	<!-------------------- Script ----------------------->
+	<!-- 이메일/부서 null값으로 추가불가 -->
+	<script>
+	
+	
+	</script>
 	<script>
 		let currentIndex = 0;
 		showCards(currentIndex);
@@ -212,43 +217,35 @@
 	function checkCname(cname){
 	if(!checkBlank(cname, "회사명을"))
 		return false;
-	var nameToCheck = /^[A-Za-z가-힣]{2,25}$/;
+	var nameToCheck = /^[A-Za-z가-힣\s!@#$%^&*()_+[\]{};':".,<>?\\/-]{2,25}$/;
 	if(!nameToCheck.test(cname)){
 		alert("회사명 형식이 옳지 않습니다.");
 		return false;
 	}
 	return true;
 }
-	function checkCphone(cphone){
-	if(!checkBlank(cphone, "회사 전화번호를"))
-		return false;
-	 const phoneToCheck = cphone.replace(/\D/g, '');
-	  if (phoneToCheck.length < 10 || phoneToCheck.length > 11) {
-	    alert("10-11자 사이의 숫자를 입력해주세요.")
-		  return false;
-	    
-	  }
+	function checkCphone(cphone) {
+	    if (!checkBlank(cphone, "회사 전화번호를"))
+	        return false;
 
-	  if (phoneToCheck.length === 10 && !/^01/.test(phoneToCheck)) {
-		    alert("01로 시작되는 전화번호를 입력해주세요.")
-		  return false;
-	  }
+	    const phoneToCheck = cphone.replace(/\D/g, '');
 
-	  if (phoneToCheck.length === 11 && !/^01/.test(phoneToCheck)) {
-		    alert("01로 시작되는 전화번호를 입력해주세요.")
-		  return false;
-	  }
-	  if (!/^\d+$/.test(phoneToCheck)) {
-		    alert("전화번호 형식이 옳지 않습니다.")
-	    return false;
-	  }
-	  return true;
-	}
-	function checkCaddress (caddress){
-	if(!checkBlank(caddress, "회사주소를")){
-		return false;
-	}
-	return true;
+	    if (phoneToCheck.length !== 10 && phoneToCheck.length !== 11) {
+	        alert("10 또는 11자리의 숫자를 입력해주세요.");
+	        return false;
+	    }
+
+	    if (!/^01[01]/.test(phoneToCheck)) {
+	        alert("010 또는 011로 시작되는 전화번호를 입력해주세요.");
+	        return false;
+	    }
+
+	    if (!/^\d+$/.test(phoneToCheck)) {
+	        alert("전화번호 형식이 올바르지 않습니다.");
+	        return false;
+	    }
+
+	    return true;
 	}
 </script>
 	<!-- Dept Script -->
@@ -256,10 +253,18 @@
 		var dRowCount = 0;
 
 		function addDeptTable() {
+			
+			var inputDept = document.getElementById("input-dept");
+			var inputValue = inputDept.value.trim();
+			
+			if (inputValue === '') {
+		        alert("부서이름을 입력해주세요!");
+		    } else{
+			
 			var table = document.getElementById("addDept");
 			var row = table.insertRow(-1);
 
-			var inputDept = document.getElementById("input-dept");
+			
 			var value = '<input type="hidden" name="deptArr" value="'+inputDept.value+'"/>';
 			value += inputDept.value;
 
@@ -279,7 +284,7 @@
 
 			inputDept.value = "";
 			dRowCount++
-
+		    }
 		}
 		function removeDRow(row) {
 			var table = document.getElementById("addDept");
@@ -293,10 +298,13 @@
 		var eRowCount = 0;
 
 		function addEmailTable() {
+			
+			var inputEmail = document.getElementById("input-email");
+			
 			var table = document.getElementById("addEmail");
 			var row = table.insertRow(-1);
 
-			var inputEmail = document.getElementById("input-email");
+			
 			var value = '<input type="hidden" name="emailArr" value="'+inputEmail.value+'"/>';
 			value += inputEmail.value;
 

@@ -1,5 +1,6 @@
 package kh.groupware.stream.main.model.service;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +42,10 @@ public class MaintaskServiceImpl implements MaintaskService {
 	
 	public List<ProjectVo> TaskSortList(MaintaskSortVo vo){
 		return maintaskDao.TaskSortList(vo);
+	}
+	
+	public MemberSimpleVo findMname(String userid) {
+		return maintaskDao.findMname(userid);
 	}
 	
 	/*

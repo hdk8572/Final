@@ -18,4 +18,6 @@ public interface ProjectService {
     public List<ProjectVo> insertList(ProjectVo vo, String userid);
     public int delete(String pno);
     public int update(ProjectVo vo);
+    
+	public List<ProjectVo> searchProjectList(ProjectVo vo, String userid);
 }

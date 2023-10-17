@@ -224,9 +224,7 @@ public class CalendarVo {
 
 	public void setAttenduseridList(List<MemberSimpleVo> attenduseridList) {
 		this.attenduseridList = attenduseridList;
-	}
-
-
+	}	
 	
 	
 }

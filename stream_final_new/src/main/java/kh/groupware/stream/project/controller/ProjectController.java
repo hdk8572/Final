@@ -31,22 +31,15 @@ public class ProjectController {
 		System.out.println("정상적으로 돌았습니다");
 		return "projectList";
 	}
-
 	
 	@GetMapping("/member/projectOne")
 	@ResponseBody
 	public ProjectVo selectOne(PnoPrincipalParam pnoPrincipalParam) {
+		System.out.println("pnoPrincipalParam :"+pnoPrincipalParam);
 		ProjectVo vo = projectService.selectOne(pnoPrincipalParam);
+		System.out.println("vo :"+vo);
 		return vo;
 	}
-	
-	/*
-	 * @GetMapping("/projectOne/{pno}")
-	 * 
-	 * @ResponseBody public ProjectVo selectOne(@PathVariable("pno") String pno,
-	 * Principal principal) { ProjectVo vo = projectService.selectOne(pno, userid);
-	 * return vo; }
-	 */
 	 
 	@GetMapping("/member/loadList")
 	@ResponseBody
@@ -100,5 +93,14 @@ public class ProjectController {
 		currentVo.setPstatus("숨김");
 		int result = projectService.update(currentVo);
 		return 0;
+	}
+	
+	@GetMapping("/member/serachProjectList")
+	@ResponseBody
+	public List<ProjectVo> search(String keyword, String userid) {
+		ProjectVo pvo = new ProjectVo();
+		pvo.setUserid(userid);
+		pvo.setKeyword(keyword);
+		return projectService.searchProjectList(pvo, keyword);
 	}
 }

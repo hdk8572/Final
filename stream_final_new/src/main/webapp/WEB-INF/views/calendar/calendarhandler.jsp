@@ -48,6 +48,7 @@ function loadCalendarHandler() {
 			
 			events : eventsDataArr
 		 	,
+		 	
 		 	//공휴일
 		 	googleCalendarApiKey : "AIzaSyDcnW6WejpTOCffshGDDb4neIrXVUA1EAE"
 		    , eventSources : [
@@ -58,6 +59,13 @@ function loadCalendarHandler() {
 		            , textColor : "red"
 		        }
 			],
+			
+	/* 		eventClick: function(info) {
+				var event = info.event;
+				if(event.extendedProps.googleCalendarId === 'ko.south_korea#holiday@group.v.calendar.google.com'){
+					return;
+				}
+			}, */
 			
 		 	/* 일정 상세정보를 띄우겠다.*/
 			eventClick: function(info) {
@@ -83,15 +91,12 @@ function loadCalendarHandler() {
 				$("#readcalmodal.modal  #end").html(info.event.endStr);
 				$("#readcalmodal.modal  #smemo").html(info.event.extendedProps.smemo);
 				$("#readcalmodal.modal  #splace").html(info.event.extendedProps.splace);
-				$("#readcalmodal").modal("toggle"); // readcalmodal 띄우는 코드 toggle로 띄운다.
+				$("#readcalmodal").modal("toggle"); 
 				
 				readshowMap(); //일정상세 지도
 			}
 		});
 		calendar.render();
 	}
-	
-	
 }
-
 </script>

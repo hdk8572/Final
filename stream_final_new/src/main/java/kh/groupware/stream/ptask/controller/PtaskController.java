@@ -44,6 +44,7 @@ public class PtaskController {
 
 	@GetMapping("/member/ptasklist")
 	public String ptasklist(Model model, String pno) {
+		System.out.println("pno :"+pno);
 		List<PtaskVo> tlist = ptaskService.pselectList(pno);
 		ProjectVo pname = projectService.sessionPname(pno);
 		model.addAttribute("pno", pno);
@@ -51,6 +52,13 @@ public class PtaskController {
 		model.addAttribute("projectPname", pname);
 		
 		return "project";
+	}
+	
+	@GetMapping("/member/loadPtaskList")
+	@ResponseBody
+	public List<PtaskVo> AjaxSelectList(String pno) {
+		List<PtaskVo> result = ptaskService.pselectList(pno);
+		return result;
 	}
 	
 //	/* upload 시도 */

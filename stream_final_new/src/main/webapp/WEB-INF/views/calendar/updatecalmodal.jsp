@@ -18,7 +18,7 @@
 							<!-- url 때문에 pno필요함 -->
 							<input type="hidden" name="pno" value="${pno}">
 							<!-- TODO 일정번호 -->
-							<input type="hidden" name="sno" value="${sno}">
+							<input type="hidden" id="sno" name="sno" value="${result.sno}"><!-- 오 -->
 							
 							<!-- 제목 -->
 							<input type="text" class="form-control title" id="title" name="title" id="form-content" placeholder="제목을 입력하세요.">
@@ -36,6 +36,9 @@
 								<div class="form-control userid" id="userid"></div>
 								<div class="form-userid" id="form-content" >
 									<!-- 참가자 임시로 넣음 -->
+									<!-- <input type="text" name="attenduseridArr" value="mplsam@kh.co.kr">
+									<input type="text" name="attenduseridArr" value="kh0001@kh.com">
+									<input type="text" name="attenduseridArr" value="kh0002@kh.com">  -->
 									<!-- 참가자 반복 -->
 									<input type="text" id="calmemberinput" placeholder="참가자" list="calmemberlist">
 									<select id="calmemberlist"> <!-- 일단 한 명만 추가해서 insert까지 하기  --> 
@@ -71,6 +74,7 @@
 <!-- 일정 상세 정보 가져오기  -->
 <script>
 	$('#updBtn').on("click", function() {
+		var selectedUpdateTitle = $("#readcalmodal #sno").val(); //수정 모달의 sno값을 읽어온다
 		var selectedUpdateTitle = $("#readcalmodal #title").text();
 		var selectedUpdateStart = $("#readcalmodal #start").text();
 		var selectedUpdateEnd = $("#readcalmodal #end").text();
@@ -79,6 +83,7 @@
 		var selectedUpdateSplace = $("#readcalmodal #splace").text();
 		var selectedUpdateSmemo = $("#readcalmodal #smemo").text();
 		
+		$("#updatecalmodal input[name= 'sno']").val(selectedUpdateTitle);
 		$("#updatecalmodal input[name='title']").val(selectedUpdateTitle);
 		$("#updatecalmodal input[name='start']").val(selectedUpdateStart);
 		$("#updatecalmodal input[name='end']").val(selectedUpdateEnd);
@@ -93,23 +98,15 @@
 
 <!-- 왕 슬픔  -->
 <script>
-	$('#updatecalmodal #updBtn').on("click", function(){
-		//수정할 데이터를 수집한다.
-		var title = $('#title').val();
-		var start = $('#start').val();
-		var end = $('#end').val();
-		var smemo = $('#smemo').val();
+	$('#updatecalmodal #updBtn').on("click", function updatepcal(){
 		var sno = $('#sno').val();
+		console.log(sno);
 		
 		//ajax 요청을 보낸다.
 		$.ajax({
+			url: "${pageContext.request.contextPath}/member/updatepcal", //수정 엔드포인트이다
 			type: 'POST',
-			url: contextPath + "/member/updatepcal", //수정 엔드포인트이다
 			data: {
-				title: title,
-				start: start,
-				end: end,
-				smemo: smemo,
 				sno: sno
 			},
 			
@@ -120,21 +117,17 @@
 					alert('일정이 수정되었습니다.');
 				}else{
 					alert('일정 수정에 실패했습니다.')
+					console.log("updatepcal22에서 오류 발생");
 				}
 			},
-			error: function() {
-				//ajax 요청 실패 시 실행될 코드이다.
-				alert('서버와의 통신 중 오류가 발생했습니다.');
-			}
+			error : function(request, status, error){
+				console.log(request);
+				console.log(status);
+				console.log(error);
+				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				}
 		});
 	})
-</script>
-
-<!-- TODO -->
-<script >
-$('#updBtn').on("click", function() {
-    $('#map-updatemodal').css('display', 'block'); // 예를 들어 이와 같이 표시 설정
-});
 </script>
 
 <!-- 지도 api -->
@@ -142,7 +135,8 @@ $('#updBtn').on("click", function() {
 	var mapContainer_updatemodal = document.getElementById('map-updatemodal'), // 지도를 표시할 div 
 	mapOption_updatemodal = {
 		center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-		level : 3 // 지도의 확대 레벨
+		level : 3, // 지도의 확대 레벨
+		disableDoubleClickZoom: true
 	};
 
 	//showMap 함수 정의
@@ -193,14 +187,6 @@ $('#updBtn').on("click", function() {
 				// 지도를 표시
 			    mapContainer_updatemodal.style.display = 'block';
 			  
-			    
-				/* function relayout() {    
-				    // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
-				    // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다 
-				    // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
-				    map-readmodal.relayout();
-				} */
-				
 				// 마우스 드래그로 지도 이동 막기
 				map3.setDraggable(false);
 				// 마우스 휠로 지도 확대,축소 막기

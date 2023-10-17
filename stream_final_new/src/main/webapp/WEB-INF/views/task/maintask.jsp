@@ -41,21 +41,15 @@
 			<main class="content">
 
 				<div class="container-fluid p-0">
-
 					<div class="h3 mb-3 jm-header">
-						<div>
-							<span>sple@kh.co.kr님의 프로젝트 목록</span> <span id="fullTaskCnt"></span>
-						</div>
+					<c:if test="${findMname!=null }">
+						<span>${findMname.mname }님의 프로젝트 목록</span> <span id="fullTaskCnt"></span>
+					</c:if>
 					</div>
-					<div>
-						<div class="card-body">
-						</div>
-					</div>
-
 					<div class="row">
 						<div class="col-12">
 							<div class="card">
-								<div class="card-body jm-body">
+								<div class="jm-body">
 								<!-- 반복문 안쓴곳 -->
 									<div class="jm-rwap-task jm-grey">
 										<div class="jm-task-title row ">
@@ -63,14 +57,14 @@
 											<div class="col-lg-4 jm-grey-nb">
 												<div class="dropdown">
 													<div class="jm-title" id="tno">
-														<div class="card-subtitle text-muted "
+														<div class="text-muted "
 															data-bs-toggle="dropdown">
 															<span class="jm-cen">업무명</span> <span> <svg
 																	xmlns="http://www.w3.org/2000/svg" width="24"
 																	height="24" viewBox="0 0 24 24" fill="none"
 																	stroke="currentColor" stroke-width="2"
 																	stroke-linecap="round" stroke-linejoin="round"
-																	class="feather feather-chevron-down align-middle me-2">
+																	class="feather feather-chevron-down align-middle">
 																	<polyline points="6 9 12 15 18 9"></polyline></svg>
 															</span>
 														</div>
@@ -87,14 +81,14 @@
 											<div class="jm-drop col-lg-1 jm-grey-nb">
 												<div class="dropdown jm-move" id="tstatus" draggable="true">
 													<div class="jm-title">
-														<div class="card-subtitle text-muted "
+														<div class="text-muted "
 															data-bs-toggle="dropdown">
 															<span class="jm-cen">상태</span> <span> </span>
 															<svg xmlns="http://www.w3.org/2000/svg" width="24"
 																height="24" viewBox="0 0 24 24" fill="none"
 																stroke="currentColor" stroke-width="2"
 																stroke-linecap="round" stroke-linejoin="round"
-																class="feather feather-chevron-down align-middle me-2">
+																class="feather feather-chevron-down align-middle">
 																<polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -110,14 +104,14 @@
 											<div class="jm-drop col-lg-1 jm-grey-nb">
 												<div class="dropdown jm-move" id="tmember" draggable="true">
 													<div class="jm-title">
-														<div class="card-subtitle text-muted "
+														<div class="text-muted "
 															data-bs-toggle="dropdown">
 															<span class="jm-cen">담당자</span>
 															<svg xmlns="http://www.w3.org/2000/svg" width="24"
 																height="24" viewBox="0 0 24 24" fill="none"
 																stroke="currentColor" stroke-width="2"
 																stroke-linecap="round" stroke-linejoin="round"
-																class="feather feather-chevron-down align-middle me-2">
+																class="feather feather-chevron-down align-middle">
 																<polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -134,14 +128,14 @@
 												<div class="dropdown jm-move" id="tstartdate"
 													draggable="true">
 													<div class="jm-title">
-														<div class="card-subtitle text-muted "
+														<div class="text-muted "
 															data-bs-toggle="dropdown">
 															<span class="jm-cen">시작일</span>
 															<svg xmlns="http://www.w3.org/2000/svg" width="24"
 																height="24" viewBox="0 0 24 24" fill="none"
 																stroke="currentColor" stroke-width="2"
 																stroke-linecap="round" stroke-linejoin="round"
-																class="feather feather-chevron-down align-middle me-2">
+																class="feather feather-chevron-down align-middle">
 																<polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -157,14 +151,14 @@
 											<div class="jm-drop  col-lg-1 jm-grey-nb">
 												<div class="dropdown jm-move" id="tenddate" draggable="true">
 													<div class="jm-title">
-														<div class="card-subtitle text-muted "
+														<div class="text-muted "
 															data-bs-toggle="dropdown">
 															<span class="jm-cen">마감일</span>
 															<svg xmlns="http://www.w3.org/2000/svg" width="24"
 																height="24" viewBox="0 0 24 24" fill="none"
 																stroke="currentColor" stroke-width="2"
 																stroke-linecap="round" stroke-linejoin="round"
-																class="feather feather-chevron-down align-middle me-2">
+																class="feather feather-chevron-down align-middle">
 																<polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -180,14 +174,14 @@
 											<div class="jm-drop  col-lg-1 jm-grey-nb">
 												<div class="dropdown jm-move" id="tdate" draggable="true">
 													<div class="jm-title">
-														<div class="card-subtitle text-muted "
+														<div class="text-muted "
 															data-bs-toggle="dropdown">
 															<span class="jm-cen">등록일</span>
 															<svg xmlns="http://www.w3.org/2000/svg" width="24"
 																height="24" viewBox="0 0 24 24" fill="none"
 																stroke="currentColor" stroke-width="2"
 																stroke-linecap="round" stroke-linejoin="round"
-																class="feather feather-chevron-down align-middle me-2">
+																class="feather feather-chevron-down align-middle">
 																<polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -203,14 +197,14 @@
 											<div class="jm-drop  col-lg-1 jm-grey-nb">
 												<div class="dropdown jm-move" id="tno" draggable="true">
 													<div class="jm-title">
-														<div class="card-subtitle text-muted"
+														<div class="text-muted"
 															data-bs-toggle="dropdown">
 															<span class="jm-cen">업무번호</span>
 															<svg xmlns="http://www.w3.org/2000/svg" width="24"
 																height="24" viewBox="0 0 24 24" fill="none"
 																stroke="currentColor" stroke-width="2"
 																stroke-linecap="round" stroke-linejoin="round"
-																class="feather feather-chevron-down align-middle me-2">
+																class="feather feather-chevron-down align-middle">
 																<polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -225,7 +219,7 @@
 											</div>
 											<div class="dropdown col-lg-auto">
 												<div class="jm-title" id="empty">
-													<div class="card-subtitle text-muted"></div>
+													<div class="text-muted"></div>
 												</div>
 											</div>
 										</div>
@@ -240,7 +234,7 @@
 																width="24" height="24" viewBox="0 0 24 24" fill="none"
 																stroke="currentColor" stroke-width="2"
 																stroke-linecap="round" stroke-linejoin="round"
-																class="feather feather-play align-middle me-2 jm-rotate">
+																class="feather feather-play align-middle jm-rotate">
 																<polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
 														</span> <span class="jm-project-title">${project.pname }</span> <span
 															class="jm-project-task-count">(${project.maintaskList.size() })</span>
@@ -263,9 +257,9 @@
 																		</c:forEach> ${task.ttitle}
 																		</span>
 																		<c:if test="${task.brelevel == 0 }">
-																			<button class="jm-inner-task-button" onclick="innerTaskInputHandler(this);">업무추가</button>
+																			<button class="jm-inner-task-button jm-hidden-btn" onclick="innerTaskInputHandler(this);">업무추가</button>
 																		</c:if>
-																		<button class="jm-tp jm-task-info" onclick="taskDetailButtonClickTestHandler(this);">자세히 보기</button>
+																		<button class="jm-tp jm-task-info jm-hidden-btn" onclick="taskDetailButtonClickTestHandler(this);">자세히 보기</button>
 																		<div class="jm-hidden">
 																			<input type="hidden" name="pno" value="${project.pno}">
 																			<input type="hidden" name="tno" value="${task.tno }">
@@ -403,7 +397,7 @@
 							width="24" height="24" viewBox="0 0 24 24" fill="none"
 							stroke="currentColor" stroke-width="2"
 							stroke-linecap="round" stroke-linejoin="round"
-							class="feather feather-play align-middle me-2 jm-rotate">
+							class="feather feather-play align-middle  jm-rotate">
 							<polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
 					</span> <span class="jm-project-title">\${project.pname }</span> <span
 						class="jm-project-task-count">(\${project.maintaskList.length })</span>
@@ -411,7 +405,7 @@
 						action="${pageContext.request.contextPath }/member/ptasklist"
 						method="get">
 						<input type="hidden" name="pno" value="\${project.pno}">
-						<button class="jm-tp">바로가기</button>
+						<button class="jm-tp jm-hidden-btn">바로가기</button>
 					</form>
 				</div>
 			</div>
@@ -437,11 +431,11 @@
 					`
 							if(task.brelevel ==0){
 		htmlList+=`
-										<button class="jm-inner-task-button" onclick="innerTaskInputHandler(this);">업무추가</button>
+										<button class="jm-inner-task-button jm-hidden-btn" onclick="innerTaskInputHandler(this);">업무추가</button>
 					`
 							}
 		htmlList+=`
-									<button class="jm-tp jm-task-info" onclick="taskDetailButtonClickTestHandler(this);">자세히 보기</button>
+									<button class="jm-tp jm-task-info jm-hidden-btn" onclick="taskDetailButtonClickTestHandler(this);">자세히 보기</button>
 									<div class="jm-hidden">
 										<input type="hidden" name="pno" value="\${project.pno}">
 										<input type="hidden" name="tno" value="\${task.tno }">
@@ -523,7 +517,20 @@
 		}
 	
 		$('#taskContentUI').html(htmlList)
+		titleHoverHandler()
 	}
+	</script>
+	<script>
+	function titleHoverHandler(){
+		$(".jm-title-ttitle").hover(()=>{
+			//$(event.target).find(".jm-hidden-btn").addClass("active");
+			$(event.target).find(".jm-hidden-btn").css("visibility", "hidden");
+			$(event.target).find(".jm-hidden-btn").css("visibility", "visible");
+		},()=>{
+			$(event.target).find(".jm-hidden-btn").css("visibility", "hidden");
+			//$(event.target).find(".jm-hidden-btn").removeClass("active");
+		})
+		}
 	</script>
 </body>
 

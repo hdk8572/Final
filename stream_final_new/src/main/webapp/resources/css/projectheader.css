@@ -10,19 +10,12 @@
 	height: 50px;
 	border-radius: 10px;
 }
-/*  .project-color-area{
-	display: inline-block;
-	vertical-align: middle;
-	cursor: pointer;
-	size: 30px;
-}  */
+
 .project-detail-header{
-	position: relative;
 	min-width: 750px;
 	height: 60px;
-	padding: 25px 17px;
+	padding: 10px 15px;	
 	display: flex;
-	top: -10px;
 }
 .project-header-group{
 	position: relative;

@@ -52,9 +52,15 @@
 
 					<h1 class="h3 mb-3">
 						<span>${principal.username}님의 프로젝트 목록</span>
-						 
+						<!-- <form>
+							<div class="search">
+								<input name="keyword" type="text" placeholder="검색어를 입력해주세요.">
+							</div>
+							<button>검색하기</button>
+						</form> -->
 						<span><button class="btn btn-primary addProject" id="myBtn"	data-bs-toggle="modal" data-bs-target="#addProjectModal">프로젝트 추가+</button></span>
 						<svg id="hideBtn" xmlns="http://www.w3.org/2000/svg" width="24"	height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus-circle align-middle me-2 hideView"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+						<input class="form-control searchBar" name="keyword" type="text" id="searchProjectListHandler" placeholder="검색 - 프로젝트명을 입력해주세요.">
 					</h1>
 
 					<%@ include file="/WEB-INF/views/addProjectModal.jsp"%>
@@ -124,6 +130,7 @@
 		       ['view', ['fullscreen', 'codeview', 'help']]
 		     ]
 		});
+		
 		
 	}); 
 		
@@ -229,6 +236,32 @@
 	    $(".frm.select").click(selectOption);  // stream.js -> abc();
 	    $("#updateBtn").click(doUpdateProject);
 	}
+	
+	$("#searchProjectListHandler").keydown(function(event) {
+		if(event.keyCode == 13) {
+			event.preventDefault();
+			SerachProjectList();			
+			$(".form-control.searchBar").val("");
+		} else {
+			null;
+		}
+	});
+	
+	function SerachProjectList() {
+		console.log("useridJs :"+useridJs);
+		$.ajax({
+			url: "${pageContext.request.contextPath}/member/serachProjectList",
+			type: "get",
+			data: {keyword: $("#searchProjectListHandler").val(), userid: useridJs},
+			dataType: "json",
+			success: makeView,
+			error: function() {
+				console.log("검색 실패");
+			}
+		})
+	}
+	
+
 	
 /*  	function listDelete($thisEle) {
  		console.log($thisEle.parents("[name=pno]").val());

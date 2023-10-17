@@ -1,5 +1,6 @@
 package kh.groupware.stream.main.model.service;
 
+import java.security.Principal;
 import java.util.List;
 
 import kh.groupware.stream.main.model.dto.MaintaskSortVo;
@@ -13,4 +14,5 @@ public interface MaintaskService {
 	public ProjectVo insertInnerTask(PtaskVo vo);
 	public List<MemberSimpleVo> projectMemberList(String pno);
 	public List<ProjectVo> TaskSortList(MaintaskSortVo vo);
+	public MemberSimpleVo findMname(String userid);
 }

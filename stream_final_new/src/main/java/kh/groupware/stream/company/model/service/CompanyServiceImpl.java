@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kh.groupware.stream.company.model.dao.CompanyDao;
 import kh.groupware.stream.company.model.vo.CompanyInsertParam;
+import kh.groupware.stream.company.model.vo.DeptVo;
 import kh.groupware.stream.member.model.dao.MemberDao;
 
 
@@ -45,6 +46,11 @@ public class CompanyServiceImpl implements CompanyService {
 	public String selectCcode(String cname) {
 		String result = companyDao.selectCcode(cname);
 		return result;
+	}
+	
+	//회사코드로 부서찾기
+	public List<DeptVo> deptList(String ccode){
+		return companyDao.deptList(ccode);
 	}
 
 	

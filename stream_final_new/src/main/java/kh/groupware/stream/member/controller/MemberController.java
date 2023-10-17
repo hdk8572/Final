@@ -120,7 +120,7 @@ public class MemberController {
 				ra.addFlashAttribute("alertmsg", "회원정보 수정에 성공했습니다.");
 
 		}
-		return "redirect:/projectlist";
+		return "redirect:/member/projectlist";
 	}
 	
 	@ExceptionHandler

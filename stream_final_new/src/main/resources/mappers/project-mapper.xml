@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="project">
-  
+	 
+	<select id="selectList" resultType="ProjectVo">
+		select mname, pstatus, mrank, pmember userid, deptname, pno, pname, pcontent, paccess, pdate, to_char(PSTARTDATE, 'yyyy-mm-dd') PSTARTDATE, to_char(PENDDATE, 'yyyy-mm-dd') PENDDATE, pcolor, pstatus, ROWNUM PROW
+	    from(
+	        select mname, mrank, userid, deptno, ccode from users where userid = #{userid}) users
+	    join dept dept using(deptno, ccode)
+	    join (select pno, ppr.userid pmaster, pname, pcontent, paccess, pdate, pstartdate, penddate, pcolor, pstatus, jj.userid pmember
+	    from project ppr
+	    join (select mp.pno, userid
+	            from project pr
+	            join member_project mp using(userid)
+	            group by (mp.pno, userid)
+	            ) jj using(pno)) on (userid = pmember)
+	    where PSTATUS IN ('미진행', '진행', '보류')
+	</select>
+
+  <!--
 	<select id="selectList" resultType="ProjectVo">
 		SELECT PNO, USERID, PNAME, PCONTENT, PACCESS, PDATE, to_char(PSTARTDATE, 'yyyy-mm-dd') PSTARTDATE, to_char(PENDDATE, 'yyyy-mm-dd') PENDDATE, PSTATUS, DEPTNO, DEPTNAME, MNAME, MRANK, ROWNUM PROW
 		FROM (SELECT DEPTNO, DEPTNAME, USERID, MNAME, MRANK FROM USERS JOIN DEPT USING(DEPTNO, CCODE))
@@ -9,13 +25,21 @@
 		WHERE PSTATUS IN ('미진행', '진행', '보류')
 		AND USERID = #{userid}
 	</select>
-	
+  -->
+  	
 	<select id="selectHide" resultType="ProjectVo">
-		SELECT PNO, USERID, PNAME, PCONTENT, PACCESS, PDATE, to_char(PSTARTDATE, 'yyyy-mm-dd') PSTARTDATE, to_char(PENDDATE, 'yyyy-mm-dd') PENDDATE, PSTATUS, DEPTNO, DEPTNAME, MNAME, MRANK, ROWNUM PROW
-		FROM (SELECT DEPTNO, DEPTNAME, USERID, MNAME, MRANK FROM USERS JOIN DEPT USING(DEPTNO, CCODE))
-		JOIN PROJECT USING(USERID)
-		WHERE PSTATUS IN ('숨김')
-		AND USERID = #{userid}
+		select mname, pstatus, mrank, pmember userid, deptname, pno, pname, pcontent, paccess, pdate, to_char(PSTARTDATE, 'yyyy-mm-dd') PSTARTDATE, to_char(PENDDATE, 'yyyy-mm-dd') PENDDATE, pcolor, pstatus, ROWNUM PROW
+	    from(
+	        select mname, mrank, userid, deptno, ccode from users where userid = #{userid}) users
+	    join dept dept using(deptno, ccode)
+	    join (select pno, ppr.userid pmaster, pname, pcontent, paccess, pdate, pstartdate, penddate, pcolor, pstatus, jj.userid pmember
+	    from project ppr
+	    join (select mp.pno, userid
+	            from project pr
+	            join member_project mp using(userid)
+	            group by (mp.pno, userid)
+	            ) jj using(pno)) on (userid = pmember)
+	    where PSTATUS IN ('숨김')
 	</select>
 	
 	<select id="sessionPname" resultType="ProjectVo">
@@ -26,11 +50,28 @@
 	
 	
 	<select id="selectOne" resultType="ProjectVo">
+		select mname, pstatus, mrank, pmember userid, deptname, pno, pname, pcontent, paccess, pdate, to_char(PSTARTDATE, 'yyyy-mm-dd') PSTARTDATE, to_char(PENDDATE, 'yyyy-mm-dd') PENDDATE, pcolor, pstatus, ROWNUM PROW
+	    from(
+	        select mname, mrank, userid, deptno, ccode from users where userid = #{userid}) users
+	    join dept dept using(deptno, ccode)
+	    join (select pno, ppr.userid pmaster, pname, pcontent, paccess, pdate, pstartdate, penddate, pcolor, pstatus, jj.userid pmember
+	    from project ppr
+	    join (select mp.pno, userid
+	            from project pr
+	            join member_project mp using(userid)
+	            group by (mp.pno, userid)
+	            ) jj using(pno)) on (userid = pmember)
+	    where PNO = #{pno}
+	</select>
+	
+	<!--  
+	<select id="selectOne" resultType="ProjectVo">
 		SELECT PNO, USERID, PNAME, PCONTENT, PACCESS, PDATE, to_char(PSTARTDATE, 'yyyy-mm-dd') PSTARTDATE, to_char(PENDDATE, 'yyyy-mm-dd') PENDDATE, PSTATUS
 		FROM PROJECT
 		WHERE PNO = #{pno}
 		AND USERID = #{userid}
 	</select>
+	-->
 	 
 	<insert id="insertList" parameterType="ProjectVo">
 		INSERT INTO PROJECT (PNO, USERID, PNAME, PCONTENT, PACCESS, PSTARTDATE, PENDDATE, PSTATUS)
@@ -45,5 +86,21 @@
 		UPDATE PROJECT SET PNAME=#{pname}, pcontent=#{pcontent}, PSTATUS=#{pstatus}, PSTARTDATE=#{pstartdate}, PENDDATE=#{penddate}
 		WHERE PNO=#{pno}
 	</update>
+	
+	<select id="searchProjectList" parameterType="ProjectVo" resultType="ProjectVo">
+		select mname, pstatus, mrank, pmember userid, deptname, pno, pname, pcontent, paccess, pdate, to_char(PSTARTDATE, 'yyyy-mm-dd') PSTARTDATE, to_char(PENDDATE, 'yyyy-mm-dd') PENDDATE, pcolor, pstatus, ROWNUM PROW
+	    from(
+	        select mname, mrank, userid, deptno, ccode from users where userid = #{userid}) users
+	    join dept dept using(deptno, ccode)
+	    join (select pno, ppr.userid pmaster, pname, pcontent, paccess, pdate, pstartdate, penddate, pcolor, pstatus, jj.userid pmember
+	    from project ppr
+	    join (select mp.pno, userid
+	            from project pr
+	            join member_project mp using(userid)
+	            group by (mp.pno, userid)
+	            ) jj using(pno)) on (userid = pmember)
+	    where PSTATUS IN ('미진행', '진행', '보류')
+		AND PNAME LIKE '%' || #{keyword} || '%'
+	</select>
 	
 </mapper>

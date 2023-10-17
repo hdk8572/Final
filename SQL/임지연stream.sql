@@ -24,6 +24,11 @@ insert into MEMBER_PROJECT (pno, userid) values ('1', 'sple@kh.co.kr');
 insert into MEMBER_PROJECT (pno, userid) values ('1', 'mplsam@kh.co.kr');
 commit;
 
+        UPDATE SCHEDULE SET 
+		STITLE='테스트'
+		WHERE SNO='27';
+
+
  select userid, ( select mname from users tu where tm.userid=tu.userid ) mname from MEMBER_PROJECT 
 tm where pno='1' ;
 
@@ -64,3 +69,5 @@ as
 select s.*, u.mname, CCODE, DEPTNO
 from schedule s join users u on (s.userid = u.userid)
 ;
+
+
