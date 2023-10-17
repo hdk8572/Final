@@ -1,5 +1,7 @@
 package kh.groupware.stream.chat.controller;
 
+import java.security.Principal;
+
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
@@ -21,10 +23,12 @@ public class StompChatController {
     //stompConfig에서 설정한 applicationDestinationPrefixes와 @MessageMapping 경로가 병합됨
     //"/pub/chat/enter"
     @MessageMapping(value = "/chat/enter")
-    public void enter(ChatMessageVo message) {
+    public void enter(ChatMessageVo message,Principal principal) {
     	message.setMessage( "님이 채팅방에 참여하였습니다.");
+    	String userId = principal.getName();
+    	chatDao.findWriter(userId).getmName();
         template.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
-        System.out.println(message);
+        System.out.println(chatDao.findWriter(userId).getmName()+"dddddddddd");
     }
 
     @MessageMapping(value = "/chat/message")

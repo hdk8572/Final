@@ -60,7 +60,7 @@
 											src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 											class="avatar img-fluid rounded me-1" alt="Charles Hall"
 											style="border-radius: 50% !important;" /> <a
-											class="roomnamelist"
+											class="roomnamelist" 
 											href="<c:url value='/member/room'><c:param name='roomId' value='${room.roomId}' /></c:url>"
 											style="display: inline-block;padding:15px ;width: 320px; overflow: hidden; white-space: nowrap; text-decoration: none;">${room.roomName}</a>
 										</li>
@@ -106,18 +106,30 @@
         $(document).ready(function(){
             var roomName1 = "${roomName1}";
             var member = "${member}";
-            
+            $("input[roomName='roomName']").on("focusout", function() {
+                var roomName = $(this).val();
+                if(!roomName){
+                    alert("Please provide a room name.");
+                }
+            });
             $(".btn-create").on("click", function (e){
                 e.preventDefault();
 					
                 var roomName = $("input[roomName='roomName']").val();
-               
+
                 var member = $("input[member='member']").val(); 
+                if (!roomName) { 
+                    alert("방 제목을 입력하세요.");
+                    return; 
+                }
 				
-                
+
             });
+            
             console.log(member+"member확인");	
+            console.log(roomName1+"roomName1확인");	
         });
+
     	$("#s_chat_list").click(function() {
     		$("#s_menu_box2").css('display', 'block');
     		$("#s_menu_box1").css('display', 'none');
