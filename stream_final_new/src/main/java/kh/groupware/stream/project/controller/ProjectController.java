@@ -31,7 +31,6 @@ public class ProjectController {
 		System.out.println("정상적으로 돌았습니다");
 		return "projectList";
 	}
-
 	
 	@GetMapping("/member/projectOne")
 	@ResponseBody

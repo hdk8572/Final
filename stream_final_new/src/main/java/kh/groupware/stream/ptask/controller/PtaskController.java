@@ -54,6 +54,13 @@ public class PtaskController {
 		return "project";
 	}
 	
+	@GetMapping("/member/loadPtaskList")
+	@ResponseBody
+	public List<PtaskVo> AjaxSelectList(String pno) {
+		List<PtaskVo> result = ptaskService.pselectList(pno);
+		return result;
+	}
+	
 //	/* upload 시도 */
 //	@PostMapping("/insertPtask")
 //	@Transactional

@@ -35,4 +35,6 @@
 .form-control.searchBar {
 	display: inline-flex;
     width: 15%;
+    border: 0;
+   
 }

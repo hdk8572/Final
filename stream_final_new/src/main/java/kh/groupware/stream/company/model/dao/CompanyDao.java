@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kh.groupware.stream.company.model.vo.CompanyInsertParam;
+import kh.groupware.stream.company.model.vo.DeptVo;
 
 @Repository("companyDao")
 public class CompanyDao {
@@ -28,24 +29,31 @@ public class CompanyDao {
 	public int newDept(CompanyInsertParam cvo) {
 		return sqlSession.insert("department.newDept", cvo);
 	}
-	//회사회원가입 3: USERS insert
-	public int newUsers (CompanyInsertParam cvo) {
+
+	// 회사회원가입 3: USERS insert
+	public int newUsers(CompanyInsertParam cvo) {
 		return sqlSession.insert("member.newUsers", cvo);
 	}
-	//회사회원가입 4: USERS Company Id insert
-	public int newCompanyId (CompanyInsertParam cvo) {
+
+	// 회사회원가입 4: USERS Company Id insert
+	public int newCompanyId(CompanyInsertParam cvo) {
 		return sqlSession.insert("member.newCompanyId", cvo);
 	}
-	
+
 	public String selectCcode(String cname) {
 		return sqlSession.selectOne("member.selectCcode", cname);
 	}
 
+	// 회사코드로 부서찾기
+	public List<DeptVo> deptList(String ccode) {
+		return sqlSession.selectList("department.deptList", ccode);
+	}
+
 	/*
 	 * // 로그인시 부서조회 public String selectOne(CompanyVo cvo) { return
-	 * sqlSession.selectOne("company.selectOne", cvo); }
-	 * //회사회원가입 1: COMPANY insert public int newCompany(CompanyVo cvo) { return
-	 * sqlSession.insert("company.newCompany", cvo); } 
+	 * sqlSession.selectOne("company.selectOne", cvo); } //회사회원가입 1: COMPANY insert
+	 * public int newCompany(CompanyVo cvo) { return
+	 * sqlSession.insert("company.newCompany", cvo); }
 	 */
 
 }

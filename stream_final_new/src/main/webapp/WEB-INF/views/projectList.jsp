@@ -241,7 +241,7 @@
 		if(event.keyCode == 13) {
 			event.preventDefault();
 			SerachProjectList();			
-			$(".form-control.replyInput").val("");
+			$(".form-control.searchBar").val("");
 		} else {
 			null;
 		}

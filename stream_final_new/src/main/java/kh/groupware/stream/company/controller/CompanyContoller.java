@@ -26,7 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kh.groupware.stream.company.model.service.CompanyService;
 import kh.groupware.stream.company.model.vo.CompanyInsertParam;
 import kh.groupware.stream.company.model.vo.CompanyVo;
-import kh.groupware.stream.dept.model.vo.DeptVo;
+import kh.groupware.stream.company.model.vo.DeptVo;
 
 @Controller
 public class CompanyContoller {
@@ -48,7 +48,7 @@ public class CompanyContoller {
 
 	@PostMapping("/newcompany")
 	public String newCompany(CompanyInsertParam cvo, RedirectAttributes ra) {
-		
+
 		if (cvo.getEmailArr() == null || cvo.getEmailArr().equals("")) {
 			ra.addFlashAttribute("alertmsg", "최소 한개의 이메일을 등록해주세요!");
 			return "redirect:/newcompany";
@@ -80,18 +80,17 @@ public class CompanyContoller {
 	public String emailSend() {
 		return "/company/emailsend";
 	}
-	
+
 	// 회사 사원초대(추가)
 	@PostMapping("/company/emailsend")
 	public String inviteMember(CompanyInsertParam cvo, RedirectAttributes ra, Principal principal) {
 		String cname = principal.getName();
 		String ccode = companyService.selectCcode(cname);
-		
+
 		cvo.setCcode(ccode);
 		System.out.println("[jy] cvo.getCcode(): " + cvo.getCcode());
 		System.out.println("[jy] cvo.getDefaultDeptCode(): " + cvo.getDefaultDeptCode());
-		
-		
+
 		if (cvo.getEmailArr() == null || cvo.getEmailArr().equals("")) {
 			ra.addFlashAttribute("alertmsg", "최소 한개의 이메일을 등록해주세요!");
 			return "redirect:/company/emailsend";
@@ -113,8 +112,17 @@ public class CompanyContoller {
 				e.printStackTrace();
 			}
 		}
-		ra.addFlashAttribute("alertmsg", "회사등록에 성공하였습니다. 문자로 회사 가입정보를 보내드렸습니다 확인해주세요!");
-		return "redirect:/";
+		ra.addFlashAttribute("alertmsg", "성공적으로 초대되었습니다.");
+		return "redirect:/company/emailsend";
+	}
+
+	// 회사코드로 부서찾기
+	@PostMapping("/deptlist")
+	@ResponseBody
+	public List<DeptVo> deptList(String ccode) {
+		List<DeptVo> deptList = companyService.deptList(ccode);
+		// model.addAttribute("deptList", DeptService.deptList(ccode));
+		return deptList;
 	}
 //
 //	@PostMapping(value = "/mailsend")

@@ -26,7 +26,7 @@ public class ChatController {
 	  @GetMapping("/chatlist") public String selectchat(Model model) { return
 	  "/chatting/chattest";
 	  
-	  }
+	  } 
 	@GetMapping("/chat1")
 	public String chatGETTest() {
 		System.out.println("@ChatController, chat GET()");

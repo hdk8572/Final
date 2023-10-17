@@ -1,4 +1,4 @@
-package kh.groupware.stream.dept.model.vo;
+package kh.groupware.stream.company.model.vo;
 
 import org.springframework.stereotype.Component;
 

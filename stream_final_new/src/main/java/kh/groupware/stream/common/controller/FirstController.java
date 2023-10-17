@@ -1,4 +1,4 @@
-package kh.groupware.stream.first.controller;
+package kh.groupware.stream.common.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
