@@ -25,17 +25,24 @@
 	
 	<!-- 프로젝트, 업무 뿌리기 -->
 	<select id="projectNameList" resultMap="maintaskVoMap" parameterType="string">
+	select (select pname from project where pno=t.pno) pname, 
+       (select mname from users where userid='sple@kh.co.kr') mname,
+        pno, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
+    	from
+    	(select tno, pno, userid, tmember, ttitle, tcontent, tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel
+    		from task where tmember = 'sple@kh.co.kr' or userid = 'sple@kh.co.kr') t
+    		order by to_number(pno) desc, to_number(bref) desc, brelevel asc, to_number(brestep)
+	</select>
+<!-- 
 		select (select pname from project where pno=t.pno) pname, pno, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
     		from
     		(select tno, pno, userid, tmember, ttitle, tcontent, tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel
     			from task where tmember = #{userid} or userid = #{userid}) t
     		order by to_number(pno) desc, to_number(bref) desc, brelevel asc, to_number(brestep) asc
-	</select>
-
-	 
+ -->	 
 	<!-- 프로젝트 기준 화면 뿌리기 -->
 	<select id="projectOneTaskList" resultMap="maintaskVoMap" parameterType="string">
-		select pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
+		select mname, pname, pno, p.userid, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
     		from project p right join (select * from task t where pno=#{pno}) t using (pno)
     		where tmember = #{userid} or t.userid=#{userid} 
     		order by to_number(pno) desc, to_number(bref) desc, brelevel asc, 
@@ -67,6 +74,9 @@
    			where BRESTEP > (SELECT BRESTEP FROM task WHERE tno = #{tno})
         	and BREF = (select bref from task where tno = #{tno})
 	</update>
+	<select id="selectMname" resultType="MemberSimpleVo">
+		select userid, mname from users where userid=#{userid}
+	</select>
 	
 	<!-- 하위업무 추가시 담당자 리스트용. -->
 	<select id="memberProjectselectOne" resultType="MemberSimpleVo">

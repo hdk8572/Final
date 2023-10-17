@@ -42,7 +42,9 @@
 
 				<div class="container-fluid p-0">
 					<div class="h3 mb-3 jm-header">
-						<span>${principal.username}님의 프로젝트 목록</span> <span id="fullTaskCnt"></span>
+					<c:if test="${findMname!=null }">
+						<span>${findMname.mname }님의 프로젝트 목록</span> <span id="fullTaskCnt"></span>
+					</c:if>
 					</div>
 					<div class="row">
 						<div class="col-12">
@@ -55,14 +57,14 @@
 											<div class="col-lg-4 jm-grey-nb">
 												<div class="dropdown">
 													<div class="jm-title" id="tno">
-														<div class="card-subtitle text-muted "
+														<div class="text-muted "
 															data-bs-toggle="dropdown">
 															<span class="jm-cen">업무명</span> <span> <svg
 																	xmlns="http://www.w3.org/2000/svg" width="24"
 																	height="24" viewBox="0 0 24 24" fill="none"
 																	stroke="currentColor" stroke-width="2"
 																	stroke-linecap="round" stroke-linejoin="round"
-																	class="feather feather-chevron-down align-middle me-2">
+																	class="feather feather-chevron-down align-middle">
 																	<polyline points="6 9 12 15 18 9"></polyline></svg>
 															</span>
 														</div>
@@ -79,14 +81,14 @@
 											<div class="jm-drop col-lg-1 jm-grey-nb">
 												<div class="dropdown jm-move" id="tstatus" draggable="true">
 													<div class="jm-title">
-														<div class="card-subtitle text-muted "
+														<div class="text-muted "
 															data-bs-toggle="dropdown">
 															<span class="jm-cen">상태</span> <span> </span>
 															<svg xmlns="http://www.w3.org/2000/svg" width="24"
 																height="24" viewBox="0 0 24 24" fill="none"
 																stroke="currentColor" stroke-width="2"
 																stroke-linecap="round" stroke-linejoin="round"
-																class="feather feather-chevron-down align-middle me-2">
+																class="feather feather-chevron-down align-middle">
 																<polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -102,14 +104,14 @@
 											<div class="jm-drop col-lg-1 jm-grey-nb">
 												<div class="dropdown jm-move" id="tmember" draggable="true">
 													<div class="jm-title">
-														<div class="card-subtitle text-muted "
+														<div class="text-muted "
 															data-bs-toggle="dropdown">
 															<span class="jm-cen">담당자</span>
 															<svg xmlns="http://www.w3.org/2000/svg" width="24"
 																height="24" viewBox="0 0 24 24" fill="none"
 																stroke="currentColor" stroke-width="2"
 																stroke-linecap="round" stroke-linejoin="round"
-																class="feather feather-chevron-down align-middle me-2">
+																class="feather feather-chevron-down align-middle">
 																<polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -126,14 +128,14 @@
 												<div class="dropdown jm-move" id="tstartdate"
 													draggable="true">
 													<div class="jm-title">
-														<div class="card-subtitle text-muted "
+														<div class="text-muted "
 															data-bs-toggle="dropdown">
 															<span class="jm-cen">시작일</span>
 															<svg xmlns="http://www.w3.org/2000/svg" width="24"
 																height="24" viewBox="0 0 24 24" fill="none"
 																stroke="currentColor" stroke-width="2"
 																stroke-linecap="round" stroke-linejoin="round"
-																class="feather feather-chevron-down align-middle me-2">
+																class="feather feather-chevron-down align-middle">
 																<polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -149,14 +151,14 @@
 											<div class="jm-drop  col-lg-1 jm-grey-nb">
 												<div class="dropdown jm-move" id="tenddate" draggable="true">
 													<div class="jm-title">
-														<div class="card-subtitle text-muted "
+														<div class="text-muted "
 															data-bs-toggle="dropdown">
 															<span class="jm-cen">마감일</span>
 															<svg xmlns="http://www.w3.org/2000/svg" width="24"
 																height="24" viewBox="0 0 24 24" fill="none"
 																stroke="currentColor" stroke-width="2"
 																stroke-linecap="round" stroke-linejoin="round"
-																class="feather feather-chevron-down align-middle me-2">
+																class="feather feather-chevron-down align-middle">
 																<polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -172,14 +174,14 @@
 											<div class="jm-drop  col-lg-1 jm-grey-nb">
 												<div class="dropdown jm-move" id="tdate" draggable="true">
 													<div class="jm-title">
-														<div class="card-subtitle text-muted "
+														<div class="text-muted "
 															data-bs-toggle="dropdown">
 															<span class="jm-cen">등록일</span>
 															<svg xmlns="http://www.w3.org/2000/svg" width="24"
 																height="24" viewBox="0 0 24 24" fill="none"
 																stroke="currentColor" stroke-width="2"
 																stroke-linecap="round" stroke-linejoin="round"
-																class="feather feather-chevron-down align-middle me-2">
+																class="feather feather-chevron-down align-middle">
 																<polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -195,14 +197,14 @@
 											<div class="jm-drop  col-lg-1 jm-grey-nb">
 												<div class="dropdown jm-move" id="tno" draggable="true">
 													<div class="jm-title">
-														<div class="card-subtitle text-muted"
+														<div class="text-muted"
 															data-bs-toggle="dropdown">
 															<span class="jm-cen">업무번호</span>
 															<svg xmlns="http://www.w3.org/2000/svg" width="24"
 																height="24" viewBox="0 0 24 24" fill="none"
 																stroke="currentColor" stroke-width="2"
 																stroke-linecap="round" stroke-linejoin="round"
-																class="feather feather-chevron-down align-middle me-2">
+																class="feather feather-chevron-down align-middle">
 																<polyline points="6 9 12 15 18 9"></polyline></svg>
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
@@ -217,7 +219,7 @@
 											</div>
 											<div class="dropdown col-lg-auto">
 												<div class="jm-title" id="empty">
-													<div class="card-subtitle text-muted"></div>
+													<div class="text-muted"></div>
 												</div>
 											</div>
 										</div>
@@ -232,7 +234,7 @@
 																width="24" height="24" viewBox="0 0 24 24" fill="none"
 																stroke="currentColor" stroke-width="2"
 																stroke-linecap="round" stroke-linejoin="round"
-																class="feather feather-play align-middle me-2 jm-rotate">
+																class="feather feather-play align-middle jm-rotate">
 																<polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
 														</span> <span class="jm-project-title">${project.pname }</span> <span
 															class="jm-project-task-count">(${project.maintaskList.size() })</span>
@@ -395,7 +397,7 @@
 							width="24" height="24" viewBox="0 0 24 24" fill="none"
 							stroke="currentColor" stroke-width="2"
 							stroke-linecap="round" stroke-linejoin="round"
-							class="feather feather-play align-middle me-2 jm-rotate">
+							class="feather feather-play align-middle  jm-rotate">
 							<polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
 					</span> <span class="jm-project-title">\${project.pname }</span> <span
 						class="jm-project-task-count">(\${project.maintaskList.length })</span>
@@ -521,10 +523,12 @@
 	<script>
 	function titleHoverHandler(){
 		$(".jm-title-ttitle").hover(()=>{
+			//$(event.target).find(".jm-hidden-btn").addClass("active");
 			$(event.target).find(".jm-hidden-btn").css("visibility", "hidden");
 			$(event.target).find(".jm-hidden-btn").css("visibility", "visible");
 		},()=>{
 			$(event.target).find(".jm-hidden-btn").css("visibility", "hidden");
+			//$(event.target).find(".jm-hidden-btn").removeClass("active");
 		})
 		}
 	</script>

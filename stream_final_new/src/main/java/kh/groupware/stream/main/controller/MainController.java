@@ -32,6 +32,7 @@ public class MainController {
 	public String maintask(Model model, Principal principal) {
 		String userid = principal.getName();
 		model.addAttribute("projectList", maintastService.projectNameList(userid));
+		model.addAttribute("findMname", maintastService.findMname(userid));
 		return "task/maintask";
 	}
 	

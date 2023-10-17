@@ -1,7 +1,6 @@
 package kh.groupware.stream.main.model.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +37,9 @@ public class MaintaskDao {
 	
 	public List<ProjectVo> TaskSortList(MaintaskSortVo vo) {
 		return sqlSession.selectList("mainTask.taskSortedList", vo);
+	}
+	
+	public MemberSimpleVo findMname(String userid) {
+		return sqlSession.selectOne("mainTask.selectMname", userid);
 	}
 }
