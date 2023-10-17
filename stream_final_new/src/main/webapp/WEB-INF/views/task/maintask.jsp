@@ -255,9 +255,9 @@
 																		</c:forEach> ${task.ttitle}
 																		</span>
 																		<c:if test="${task.brelevel == 0 }">
-																			<button class="jm-inner-task-button" onclick="innerTaskInputHandler(this);">업무추가</button>
+																			<button class="jm-inner-task-button jm-hidden-btn" onclick="innerTaskInputHandler(this);">업무추가</button>
 																		</c:if>
-																		<button class="jm-tp jm-task-info" onclick="taskDetailButtonClickTestHandler(this);">자세히 보기</button>
+																		<button class="jm-tp jm-task-info jm-hidden-btn" onclick="taskDetailButtonClickTestHandler(this);">자세히 보기</button>
 																		<div class="jm-hidden">
 																			<input type="hidden" name="pno" value="${project.pno}">
 																			<input type="hidden" name="tno" value="${task.tno }">
@@ -403,7 +403,7 @@
 						action="${pageContext.request.contextPath }/member/ptasklist"
 						method="get">
 						<input type="hidden" name="pno" value="\${project.pno}">
-						<button class="jm-tp">바로가기</button>
+						<button class="jm-tp jm-hidden-btn">바로가기</button>
 					</form>
 				</div>
 			</div>
@@ -429,11 +429,11 @@
 					`
 							if(task.brelevel ==0){
 		htmlList+=`
-										<button class="jm-inner-task-button" onclick="innerTaskInputHandler(this);">업무추가</button>
+										<button class="jm-inner-task-button jm-hidden-btn" onclick="innerTaskInputHandler(this);">업무추가</button>
 					`
 							}
 		htmlList+=`
-									<button class="jm-tp jm-task-info" onclick="taskDetailButtonClickTestHandler(this);">자세히 보기</button>
+									<button class="jm-tp jm-task-info jm-hidden-btn" onclick="taskDetailButtonClickTestHandler(this);">자세히 보기</button>
 									<div class="jm-hidden">
 										<input type="hidden" name="pno" value="\${project.pno}">
 										<input type="hidden" name="tno" value="\${task.tno }">
@@ -516,6 +516,13 @@
 	
 		$('#taskContentUI').html(htmlList)
 	}
+	</script>
+	<script>
+		$(".jm-title-ttitle").hover(()=>{
+			$(event.target).find(".jm-hidden-btn").css("visibility", "visible");
+		},()=>{
+			$(event.target).find(".jm-hidden-btn").css("visibility", "hidden");
+		})
 	</script>
 </body>
 

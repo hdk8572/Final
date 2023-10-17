@@ -130,3 +130,6 @@ div.jm-task-title{
 .dropdown-item>button{
 	z-index: -1;
 }
+.jm-hidden-btn{
+	visibility: hidden;
+}
