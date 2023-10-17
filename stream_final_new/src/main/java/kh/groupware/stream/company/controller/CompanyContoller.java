@@ -113,8 +113,8 @@ public class CompanyContoller {
 				e.printStackTrace();
 			}
 		}
-		ra.addFlashAttribute("alertmsg", "회사등록에 성공하였습니다. 문자로 회사 가입정보를 보내드렸습니다 확인해주세요!");
-		return "redirect:/";
+		ra.addFlashAttribute("alertmsg", "성공적으로 초대되었습니다.");
+		return "redirect:/company/emailsend";
 	}
 //
 //	@PostMapping(value = "/mailsend")

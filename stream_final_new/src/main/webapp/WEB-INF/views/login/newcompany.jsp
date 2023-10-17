@@ -68,7 +68,7 @@
 										<button type="button"
 											class="btn btn-lg btn-primary nextButton">다음</button>
 									</div>
-									<input type="hidden" name="password" value="12345"/>
+									<input type="hidden" name="password" value="12345" />
 								</div>
 							</div>
 
@@ -164,6 +164,11 @@
 	</main>
 
 	<!-------------------- Script ----------------------->
+	<!-- 이메일/부서 null값으로 추가불가 -->
+	<script>
+	
+	
+	</script>
 	<script>
 		let currentIndex = 0;
 		showCards(currentIndex);
@@ -256,10 +261,18 @@
 		var dRowCount = 0;
 
 		function addDeptTable() {
+			
+			var inputDept = document.getElementById("input-dept");
+			var inputValue = inputDept.value.trim();
+			
+			if (inputValue === '') {
+		        alert("부서이름을 입력해주세요!");
+		    } else{
+			
 			var table = document.getElementById("addDept");
 			var row = table.insertRow(-1);
 
-			var inputDept = document.getElementById("input-dept");
+			
 			var value = '<input type="hidden" name="deptArr" value="'+inputDept.value+'"/>';
 			value += inputDept.value;
 
@@ -279,7 +292,7 @@
 
 			inputDept.value = "";
 			dRowCount++
-
+		    }
 		}
 		function removeDRow(row) {
 			var table = document.getElementById("addDept");
@@ -293,10 +306,13 @@
 		var eRowCount = 0;
 
 		function addEmailTable() {
+			
+			var inputEmail = document.getElementById("input-email");
+			
 			var table = document.getElementById("addEmail");
 			var row = table.insertRow(-1);
 
-			var inputEmail = document.getElementById("input-email");
+			
 			var value = '<input type="hidden" name="emailArr" value="'+inputEmail.value+'"/>';
 			value += inputEmail.value;
 
