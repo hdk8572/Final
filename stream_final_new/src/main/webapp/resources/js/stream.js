@@ -1,7 +1,7 @@
 function selectOption(e){
 	targetPno = $(this).children("[name=pno]").val(); // 중요하다
-	console.log(event.target);
-	console.log(targetPno); 
+//	console.log(event.target);
+//	console.log(targetPno); 
 	if($(e.target).hasClass("dropdown-btn-update")) {
 		goUpdateForm(targetPno);
 		
@@ -15,9 +15,6 @@ function selectOption(e){
 
 function goUpdateForm(pno) {
 	$("#updateProjectModal").modal("toggle");
-	console.log("userid :"+useridJs);
-	console.log("pno :"+pno);
-	console.log($("#updateProjectModal").find('input [name=userid]').val());
 	
 	$.ajax({
 	 	url: contextPath+"/member/projectOne",
@@ -25,7 +22,7 @@ function goUpdateForm(pno) {
 	 	data: {pno:pno, userid:useridJs},
 	 	dataType: "json",
 	 	success: function(result){
-	 		console.log(result.userid);
+	 		// console.log(result.userid);
 			$("#updateProjectModal [name=pno]").val(result.pno);
 			$("#updateProjectModal [name=pname]").val(result.pname);
 			$("#updateProjectModal [name=pcontent]").val(result.pcontent);
