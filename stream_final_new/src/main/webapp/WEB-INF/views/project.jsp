@@ -145,7 +145,7 @@
 					<main class="content" id="content-calendar">
 						<div class="tabtitle">
 							<span class="text-tab">캘린더</span>
-							<button class="btn btn-primary addcal" id="myBtn" data-bs-toggle="modal" data-bs-target="#addcalmodal" onclick="getMemberProjectListHandler(this)">+일정추가</button>
+							<button class="btn btn-primary addcal" id="myBtn" type="reset" data-bs-toggle="modal" data-bs-target="#addcalmodal" onclick="getMemberProjectListHandler(this)">+일정추가</button>
 						</div>
 						<div class="container-fluid p-0">
 							<!-- 내용  -->

@@ -137,7 +137,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 		       ['view', ['fullscreen', 'codeview', 'help']]
 		     ]
 		});
-		/* $("#summernote-updatecalmodal").summernote({					
+/* 		 $("#summernote-updatecalmodal").summernote({					
 		   placeholder: '내용을 작성해주세요.', 
 		     tabsize: 2,
 		     height: 120,
@@ -150,6 +150,6 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 		       ['insert'  ['link', 'picture', 'video'] ],
 		       ['view', ['fullscreen', 'codeview', 'help']]
 		     ]
-		}); */
+		});  */
 	});
 </script>

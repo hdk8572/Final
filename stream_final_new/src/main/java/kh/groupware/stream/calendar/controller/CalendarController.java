@@ -112,21 +112,22 @@ public class CalendarController {
 		}
 		System.out.println("aaaa :" + cal);
 		calendarService.insert(cal);
-		return "redirect:pcal?sno="+cal.getSno();
+		return "redirect:/member/ptasklist?pno="+cal.getPno();
+
 	}
 	
 	//캘린더 수정
 	@PostMapping("/member/updatepcal")
 	@ResponseBody
-	public int update(CalendarVo cal) {
-		int result = calendarService.update(cal);
+	public int update(Model model, String sno) {
+		int result = calendarService.update(sno);
 		return result;
 	}
 
 	//캘린더 삭제
 	@PostMapping("/member/deletepcal")
 	@ResponseBody
-	public int delete(@RequestParam(name = "sno") String sno) {
+	public int delete(String sno) {
 	    return calendarService.delete(sno);
 	}
 	

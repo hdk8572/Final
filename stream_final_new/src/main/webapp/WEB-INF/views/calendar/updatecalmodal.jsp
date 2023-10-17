@@ -18,7 +18,7 @@
 							<!-- url 때문에 pno필요함 -->
 							<input type="hidden" name="pno" value="${pno}">
 							<!-- TODO 일정번호 -->
-							<input type="hidden" name="sno" value="${sno}">
+							<input type="hidden" id="sno" name="sno" value="${result.sno}"><!-- 오 -->
 							
 							<!-- 제목 -->
 							<input type="text" class="form-control title" id="title" name="title" id="form-content" placeholder="제목을 입력하세요.">
@@ -74,6 +74,7 @@
 <!-- 일정 상세 정보 가져오기  -->
 <script>
 	$('#updBtn').on("click", function() {
+		var selectedUpdateTitle = $("#readcalmodal #sno").val(); //수정 모달의 sno값을 읽어온다
 		var selectedUpdateTitle = $("#readcalmodal #title").text();
 		var selectedUpdateStart = $("#readcalmodal #start").text();
 		var selectedUpdateEnd = $("#readcalmodal #end").text();
@@ -82,6 +83,7 @@
 		var selectedUpdateSplace = $("#readcalmodal #splace").text();
 		var selectedUpdateSmemo = $("#readcalmodal #smemo").text();
 		
+		$("#updatecalmodal input[name= 'sno']").val(selectedUpdateTitle);
 		$("#updatecalmodal input[name='title']").val(selectedUpdateTitle);
 		$("#updatecalmodal input[name='start']").val(selectedUpdateStart);
 		$("#updatecalmodal input[name='end']").val(selectedUpdateEnd);
@@ -96,24 +98,15 @@
 
 <!-- 왕 슬픔  -->
 <script>
-	$('#updatecalmodal #updBtn').on("click", function(){
-		//수정할 데이터를 수집한다.
-		var title = $('#title').val();
-		var start = $('#start').val();
-		var end = $('#end').val();
-		var smemo = $('#smemo').val();
+	$('#updatecalmodal #updBtn').on("click", function updatepcal(){
 		var sno = $('#sno').val();
 		console.log(sno);
 		
 		//ajax 요청을 보낸다.
 		$.ajax({
-			type: 'POST',
 			url: "${pageContext.request.contextPath}/member/updatepcal", //수정 엔드포인트이다
+			type: 'POST',
 			data: {
-				title: title,
-				start: start,
-				end: end,
-				smemo: smemo,
 				sno: sno
 			},
 			
@@ -124,11 +117,13 @@
 					alert('일정이 수정되었습니다.');
 				}else{
 					alert('일정 수정에 실패했습니다.')
+					console.log("updatepcal22에서 오류 발생");
 				}
 			},
 			error: function() {
 				//ajax 요청 실패 시 실행될 코드이다.
 				alert('서버와의 통신 중 오류가 발생했습니다.');
+				console.log("updatepcal에서 오류 발생");
 			}
 		});
 	})

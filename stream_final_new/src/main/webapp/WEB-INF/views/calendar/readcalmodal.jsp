@@ -15,7 +15,7 @@
 			 		<form id="readcalmodal">
 				    	<div class="card">
 				    		<!-- TODO 일정번호 -->
-				    		<input type="hidden" name="sno">
+				    		<input type="hidden" id="sno" name="sno">
 							<div class="card-header" id="readcalmodal-header">
 							<!-- 작성자 -->
 							<div id="userid"></div>
