@@ -77,7 +77,7 @@
 									<div class="mb-3">
 										<label class="form-label">부서명 입력</label> <input type="hidden"
 											value="D000" name="defaultDeptCode" placeholder="기본부서" />
-										</td> <input type="hidden" value="DefaulDept"
+										</td> <input type="hidden" value="부서미선택"
 											name="defaultDeptName" placeholder="기본부서" />
 										</td>
 										<table>
