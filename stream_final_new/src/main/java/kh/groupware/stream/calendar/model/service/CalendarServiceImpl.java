@@ -49,7 +49,6 @@ public class CalendarServiceImpl implements CalendarService {
 	public int insert(CalendarVo cal) {
 		int result = 0;
 		result += calendarDao.insert(cal);
-		System.out.println("selectKey ");
 		System.out.println(cal);
 		
 		/*

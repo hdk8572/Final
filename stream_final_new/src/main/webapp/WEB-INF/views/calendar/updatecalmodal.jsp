@@ -103,11 +103,12 @@
 		var end = $('#end').val();
 		var smemo = $('#smemo').val();
 		var sno = $('#sno').val();
+		console.log(sno);
 		
 		//ajax 요청을 보낸다.
 		$.ajax({
 			type: 'POST',
-			url: contextPath + "/member/updatepcal", //수정 엔드포인트이다
+			url: "${pageContext.request.contextPath}/member/updatepcal", //수정 엔드포인트이다
 			data: {
 				title: title,
 				start: start,
@@ -132,13 +133,6 @@
 		});
 	})
 </script>
-
-<!-- TODO 뜨는데? 상관없는 코드인듯-->
-<!-- <script >
-$('#updBtn').on("click", function() {
-    $('#map-updatemodal').css('display', 'block'); // 예를 들어 이와 같이 표시 설정
-});
-</script> -->
 
 <!-- 지도 api -->
 <script>

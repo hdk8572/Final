@@ -56,14 +56,6 @@ public class CalendarController {
 	}
 	
 	//캘린더 전체 조회 //달력에 표시할 모든 일정 목록을 가져오는 역할을 한다.
-//	@GetMapping({"/pcalselectlist", "/pcalselectlist/{pno}"}) //1번처럼 들어올 수도 있고 2번처럼 들어올 수도 있다. //{}중괄호를 치고 번호를 적는 것임
-//	@ResponseBody
-//	public String calSelectList(@PathVariable(name = "pno", required = false) String pno) { //String pno->pno값을 들고올 수도 있는데(null값이 있을 수도 있음) 안 들고올 수도 있으니깐 앞에 저렇게 적어줌.required = false->꼭 pno가 있지 않을 수도 있어 
-//		List<CalendarVo> calendarList = null;
-//		calendarList = calendarService.selectList(pno);
-//		return new Gson().toJson(calendarList);	//캘린터 정보를 DB에서 조회한 후 JSON 형식으로 클라이언트에게 반환하는 것이다.
-//	}
-	//캘린더 전체 조회 //달력에 표시할 모든 일정 목록을 가져오는 역할을 한다.
 	@GetMapping({"/member/pcalselectlist"})
 	@ResponseBody
 	public String calSelectList(CalendarParamVo paramvo) { //String pno->pno값을 들고올 수도 있는데(null값이 있을 수도 있음) 안 들고올 수도 있으니깐 앞에 저렇게 적어줌.required = false->꼭 pno가 있지 않을 수도 있어 
@@ -71,7 +63,6 @@ public class CalendarController {
 		calendarList = calendarService.selectList(paramvo);
 		return new Gson().toJson(calendarList);	//캘린터 정보를 DB에서 조회한 후 JSON 형식으로 클라이언트에게 반환하는 것이다.
 	}
-	
 	
 	//캘린더 일정 상세 조회
 	@GetMapping("/member/pcalselectone")
@@ -89,8 +80,9 @@ public class CalendarController {
 		return new Gson().toJson(calendarService.memberProjectList(param));
 	}//짧게 쓰는 방법임
 
+	
 	/*
-	//강사님이 알려주신 코드
+	//강사님이 알려주신 코드 못 씀
 	//캘린더 등록
 	@PostMapping("/insertpcal")
 	public String insert(Model model, CalendarInsertParamVo cal) {
@@ -102,11 +94,9 @@ public class CalendarController {
 	}
 	*/
 	
-	
 	//캘린더 등록 
 	@PostMapping("/member/insertpcal")
 	public String insert(Model model, CalendarVo cal) {
-		
 		
 //CalendarVo [sno=, userid=mplsam@kh.co.kr, mname=null, pno=1, splace=삼성동, smemo=<p>와우</p><p>영한 변환 잘됨</p>, start=2023-10-17, end=2023-10-19, title=aaa, color=null, attenduseridArr=null, attenduseridList=null]
 		if(cal.getAttenduseridArr() != null && cal.getAttenduseridArr().length > 0) {
@@ -125,7 +115,6 @@ public class CalendarController {
 		return "redirect:pcal?sno="+cal.getSno();
 	}
 	
-	
 	//캘린더 수정
 	@PostMapping("/member/updatepcal")
 	@ResponseBody
@@ -134,13 +123,11 @@ public class CalendarController {
 		return result;
 	}
 
-	
 	//캘린더 삭제
 	@PostMapping("/member/deletepcal")
 	@ResponseBody
 	public int delete(@RequestParam(name = "sno") String sno) {
 	    return calendarService.delete(sno);
 	}
-	
 	
 }

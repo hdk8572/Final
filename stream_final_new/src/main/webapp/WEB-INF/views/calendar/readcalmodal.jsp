@@ -77,7 +77,7 @@
 			//ajax
 			$.ajax({
 				type: 'POST',
-				url: contextPath + "/member/deletepcal",
+				url: "${pageContext.request.contextPath}/member/deletepcal",
 				data:{sno:sno},
 				success: function(response){
 					if(response === 1) {
