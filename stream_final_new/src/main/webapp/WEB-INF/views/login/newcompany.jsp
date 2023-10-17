@@ -123,7 +123,7 @@
 										<label class="form-label">이메일 입력</label>
 										<table>
 											<td><input
-												class="form-control form-control-lg input-email" type="text"
+												class="form-control form-control-lg input-email" type="email"
 												id="input-email" name="ncemail"
 												placeholder="ex) 이메일을 입력하세요. " /></td>
 											<td><button type="button" onclick="addEmailTable()"
@@ -217,43 +217,35 @@
 	function checkCname(cname){
 	if(!checkBlank(cname, "회사명을"))
 		return false;
-	var nameToCheck = /^[A-Za-z가-힣]{2,25}$/;
+	var nameToCheck = /^[A-Za-z가-힣\s!@#$%^&*()_+[\]{};':".,<>?\\/-]{2,25}$/;
 	if(!nameToCheck.test(cname)){
 		alert("회사명 형식이 옳지 않습니다.");
 		return false;
 	}
 	return true;
 }
-	function checkCphone(cphone){
-	if(!checkBlank(cphone, "회사 전화번호를"))
-		return false;
-	 const phoneToCheck = cphone.replace(/\D/g, '');
-	  if (phoneToCheck.length < 10 || phoneToCheck.length > 11) {
-	    alert("10-11자 사이의 숫자를 입력해주세요.")
-		  return false;
-	    
-	  }
+	function checkCphone(cphone) {
+	    if (!checkBlank(cphone, "회사 전화번호를"))
+	        return false;
 
-	  if (phoneToCheck.length === 10 && !/^01/.test(phoneToCheck)) {
-		    alert("01로 시작되는 전화번호를 입력해주세요.")
-		  return false;
-	  }
+	    const phoneToCheck = cphone.replace(/\D/g, '');
 
-	  if (phoneToCheck.length === 11 && !/^01/.test(phoneToCheck)) {
-		    alert("01로 시작되는 전화번호를 입력해주세요.")
-		  return false;
-	  }
-	  if (!/^\d+$/.test(phoneToCheck)) {
-		    alert("전화번호 형식이 옳지 않습니다.")
-	    return false;
-	  }
-	  return true;
-	}
-	function checkCaddress (caddress){
-	if(!checkBlank(caddress, "회사주소를")){
-		return false;
-	}
-	return true;
+	    if (phoneToCheck.length !== 10 && phoneToCheck.length !== 11) {
+	        alert("10 또는 11자리의 숫자를 입력해주세요.");
+	        return false;
+	    }
+
+	    if (!/^01[01]/.test(phoneToCheck)) {
+	        alert("010 또는 011로 시작되는 전화번호를 입력해주세요.");
+	        return false;
+	    }
+
+	    if (!/^\d+$/.test(phoneToCheck)) {
+	        alert("전화번호 형식이 올바르지 않습니다.");
+	        return false;
+	    }
+
+	    return true;
 	}
 </script>
 	<!-- Dept Script -->
