@@ -33,7 +33,7 @@ SELECT SNO, USERID, mname, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, '
 				= #{pno})
 			</when>
 			<otherwise>
-				in (select pno from member_project where  userid=#{userid})
+				in (select pno from member_project where  userid=#{userid}))
 			</otherwise>
 		</choose>
 		left join task using(pno,userid) 

@@ -120,11 +120,12 @@
 					console.log("updatepcal22에서 오류 발생");
 				}
 			},
-			error: function() {
-				//ajax 요청 실패 시 실행될 코드이다.
-				alert('서버와의 통신 중 오류가 발생했습니다.');
-				console.log("updatepcal에서 오류 발생");
-			}
+			error : function(request, status, error){
+				console.log(request);
+				console.log(status);
+				console.log(error);
+				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				}
 		});
 	})
 </script>
