@@ -351,7 +351,7 @@ listHtml += `
 																			<input type="hidden" name="tcontent" value="default">
 																			<input type="hidden" name="pno" value="${project.pno}">
 																			<input type="hidden" name="userid" value="${principal_username}"> <!-- 로그인 세션 받아서 등록 -->
-																			<button type="button" onclick="innerTaskaddListHandler(this)">추가하기</button>
+																			<button type="button" onclick="jmRegExp(this); innerTaskaddListHandler(this)">추가하기</button>
 																		</div>
 																	</div>
 																</form>

@@ -490,7 +490,7 @@
 											<input type="hidden" name="pno" value="\${project.pno}">
 											<!-- 로그인 세션 받아서 등록 -->
 											<input type="hidden" name="userid" value="\${principal_username}">
-											<button type="button" onclick="innerTaskaddListHandler(this);">추가하기</button>
+											<button type="button" onclick="jmRegExp(this); innerTaskaddListHandler(this);">추가하기</button>
 										</div>
 									</div>
 								</form>
@@ -567,15 +567,17 @@
 		var ttitleValue = $(eTargetTtitle).val();	
 		console.log(ttitleValue);	//input 입력값
 		
-		var eTargetTstartdate = $(eTarget1).siblings('jm-tiltie-tstartdate').find('input[name=tstartdate]')[0];
-		var tstartdateValue = $(eTargetTstartdate).val();
+		var eTargetTstartdate = $(eTarget1).siblings('.jm-title-tstartdate').find('input[name=tstartdate]')[0];
+		console.log(eTargetTstartdate);
+		var tstartdateValue = $(eTargetTstartdate).val();	//input[name=tstartdate].val
 		console.log(tstartdateValue);
 		
-		var eTargetTenddate = $(eTarget1).siblings('jm-tiltie-tenddate').find('input[name=tenddate]')[0];
-		var tendDateValue = $(eTargetTenddate).val();
+		var eTargetTenddate = $(eTarget1).siblings('.jm-title-tenddate').find('input[name=tenddate]')[0];
+		console.log(eTargetTenddate);
+		var tendDateValue = $(eTargetTenddate).val();	//input[name=tenddate].val
 		console.log(tendDateValue);
 		
-		var regTtitleValue = /^(?=[\s\S]{1,40}$)[a-zA-Zㅁ-ㅎ가-힣0-9!@#$%^&*()_+{}\[\]:;<>,.?~\\-\s]+$/;
+		var regTtitleValue = /^(?:(?:[\p{Hangul}]{1,13}|[A-Za-z]{1,40}|[!@#$%^&*()_+]{1,13}|\d{1,40}| ){1,40})$/;
 		
 		
 		if(ttitleValue==""){
@@ -589,7 +591,6 @@
 			$(eTargetTtitle).focus();
 			return false;
 		}
-		
 		if(!tstartdateValue){
 			alert("시작 날자를 지정해 주세요");
 			return false;
@@ -598,7 +599,6 @@
 			alert("마감 날자를 지정해 주세요");
 			return false;
 		}
-		
 	}
 </script>
 </body>
