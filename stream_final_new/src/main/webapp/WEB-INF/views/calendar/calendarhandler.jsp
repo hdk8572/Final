@@ -10,9 +10,9 @@ function loadCalendarHandler() {
 	$.ajax({
 		//동기 async : false, 
 		url: '${pageContext.request.contextPath}/member/pcalselectlist'	
-		,data: { startdate : '2023-09-12', pno: '${pno}', userid:'${principal.username}' }
+		,data: { startdate : '2023-09-12', pno: '${pno}', userid:'${principal.username}' } //pcalselectlist로 정보보냄
 		,dataType : "json"
-		,success: function(result){	//요청이 성공적으로 완료될 때 실행할 콜백 함수를 정의
+		,success: function(result){	//요청이 성공적으로 완료될 때 실행할 콜백 함수를 정의 //console에 정보를 뿌림
 				 console.log(result);  // result == event Data Arr //서버에서 반환된 데이터를 담고 있는 매개변수이다.
 				 makeFullCalendar(result);	//받은 데이터를 이용하여 makeFullCalendar 함수를 호출한다.
 		}
@@ -89,6 +89,7 @@ function loadCalendarHandler() {
 				console.log(info.event.id);
 				
 				//캘린더 api에 있는 거 말고 내가 추가한 것들은 extendedProps를 써줘야 한다.(api)
+				
 				$("#readcalmodal.modal  #sno").val(info.event.extendedProps.sno);
 				$("#readcalmodal.modal  #title").html(info.event.title); 
 				$("#readcalmodal.modal  #userid").html(info.event.extendedProps.userid); 
