@@ -18,7 +18,7 @@
 							<!-- TODO 일정번호 -->
 							<input type="hidden" name="sno" value="${sno}">
 							<!-- 제목 -->
-							<input type="text" class="form-control title" name="title" id="form-content title" placeholder="제목을 입력하세요.">
+							<input type="text" class="form-control title" name="title" id="form-content title" placeholder="제목을 입력하세요." required="required">
 							
 							<!-- 날짜 -->
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar align-middle me-2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
@@ -32,10 +32,7 @@
 								<!-- 작성자 -->
 									<input class="form-control userid" type="text" name="userid" value="${principal.username }" readonly>
 								<div class="form-userid" id="form-content" >
-									<!-- 참가자 임시로 넣음 -->
-									<!-- <input type="text" name="attenduseridArr" value="mplsam@kh.co.kr">
-									<input type="text" name="attenduseridArr" value="kh0001@kh.com">
-									<input type="text" name="attenduseridArr" value="kh0002@kh.com">  -->
+								
 									<!-- 참가자 반복 -->
 									<div id="attenduserid-wrap">
 									<!-- 

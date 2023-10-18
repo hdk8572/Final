@@ -17,6 +17,10 @@ public class MemberSimpleVo {
 		this.userid = userid;
 		this.mname = mname;
 	}
+	
+	public MemberSimpleVo() {
+		super();
+	}
 
 	public String getUserid() {
 		return userid;
