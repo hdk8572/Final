@@ -254,9 +254,7 @@
 																	<div class="jm-title-ttitle col-lg-4 jm-grey">
 																		<span class="jm-margin-left"> 
 																		<c:forEach begin="1"	end="${task.brelevel }">
-																			<span>&#8618;</span>
-																		</c:forEach>${task.ttitle}
-																		</span>
+																			<span>&#8618;</span></c:forEach>${task.ttitle}</span>
 																		<c:if test="${task.brelevel == 0 }">
 																			<button class="jm-inner-task-button jm-hidden-btn" onclick="innerTaskInputHandler(this); DateInputCheckHandler(this);">업무추가</button>
 																		</c:if>
@@ -320,7 +318,7 @@
 																				<input type="hidden" name="pno" value="${project.pno}">
 																				<!-- 로그인 세션 받아서 등록 -->
 																				<input type="hidden" name="userid" value="${principal.username}">
-																				<button type="button" onclick="jmRegExp(this); innerTaskaddListHandler(this)">추가하기</button>
+																				<button type="button" onclick="innerTaskaddListHandler(this)">추가하기</button>
 																			</div>
 																		</div>
 																	</form>
@@ -491,7 +489,7 @@
 											<input type="hidden" name="pno" value="\${project.pno}">
 											<!-- 로그인 세션 받아서 등록 -->
 											<input type="hidden" name="userid" value="\${principal_username}">
-											<button type="button" onclick="jmRegExp(this); innerTaskaddListHandler(this);">추가하기</button>
+											<button type="button" onclick="innerTaskaddListHandler(this);">추가하기</button>
 										</div>
 									</div>
 								</form>
@@ -578,7 +576,7 @@
 		var tendDateValue = $(eTargetTenddate).val();	//input[name=tenddate].val
 		console.log(tendDateValue);
 		
-		var regTtitleValue = /^(?:(?:[\p{Hangul}]{1,13}|[A-Za-z]{1,40}|[!@#$%^&*()_+]{1,13}|\d{1,40}| ){1,40})$/;
+		var regTtitleValue = /^(?:(?:[ㄱ-ㅎ가-힣]{1,13}|[A-Za-z]{1,40}|[!@#$%^&*()_+]{1,13}|\d{1,40}| ){1,40})$/;
 		
 		
 		if(ttitleValue==""){
@@ -600,6 +598,8 @@
 			alert("마감 날자를 지정해 주세요");
 			return false;
 		}
+		
+		return true;
 	}
 </script>
 </body>
