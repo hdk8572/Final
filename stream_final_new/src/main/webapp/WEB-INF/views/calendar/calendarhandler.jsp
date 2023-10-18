@@ -10,9 +10,9 @@ function loadCalendarHandler() {
 	$.ajax({
 		//동기 async : false, 
 		url: '${pageContext.request.contextPath}/member/pcalselectlist'	
-		,data: { startdate : '2023-09-12', pno: '${pno}', userid:'${principal.username}' ,sno: '${sno}'}//sno 안들고옴 
+		,data: { startdate : '2023-09-12', pno: '${pno}', userid:'${principal.username}' } //pcalselectlist로 정보보냄
 		,dataType : "json"
-		,success: function(result){	//요청이 성공적으로 완료될 때 실행할 콜백 함수를 정의
+		,success: function(result){	//요청이 성공적으로 완료될 때 실행할 콜백 함수를 정의 //console에 정보를 뿌림
 				 console.log(result);  // result == event Data Arr //서버에서 반환된 데이터를 담고 있는 매개변수이다.
 				 makeFullCalendar(result);	//받은 데이터를 이용하여 makeFullCalendar 함수를 호출한다.
 		}
@@ -71,8 +71,11 @@ function loadCalendarHandler() {
 			eventClick: function(info) {
 				console.log(info.event.title);
 				var event = info.event; //fullcalendar 이벤트 객체의 일부
-				//작성자!!!!임 (다른사람도 적은 일정들)
-				console.log(info.event.extendedProps.sno);
+				
+				
+				console.log(info.event.extendedProps.sno); //sno 찍어보기
+				/* var abc = $('#sno').val();
+				console.log(abc); */
 				
 				//참가자 list
 				var htmlval = ''; //그리고 여기도 sno로 채워짐
@@ -85,17 +88,18 @@ function loadCalendarHandler() {
 				console.log("info.event.id!!!!!!!");
 				console.log(info.event.id);
 				
-				$("#readcalmodal.modal  #sno").val(info.event.sno);
-				$("#readcalmodal.modal  #title").html(info.event.title); //띄우려는 모달이랑 이름 맞춰야한다.
-				$("#readcalmodal.modal  #userid").html(info.event.extendedProps.userid); //extendedProps -> api에서 가져옴, 값을 띄우는 걸 도와줌
+				//캘린더 api에 있는 거 말고 내가 추가한 것들은 extendedProps를 써줘야 한다.(api)
+				
+				$("#readcalmodal.modal  #sno").val(info.event.extendedProps.sno);
+				$("#readcalmodal.modal  #title").html(info.event.title); 
+				$("#readcalmodal.modal  #userid").html(info.event.extendedProps.userid); 
 				$("#readcalmodal.modal  #start").html(info.event.startStr);
 				$("#readcalmodal.modal  #end").html(info.event.endStr);
 				$("#readcalmodal.modal  #smemo").html(info.event.extendedProps.smemo);
 				$("#readcalmodal.modal  #splace").html(info.event.extendedProps.splace);
 				$("#readcalmodal").modal("toggle"); 
 				console.log(sno);
-				var abc = $('#sno').val();//찍어봐라
-				console.log(abc);
+				
 				readshowMap(); //일정상세 지도
 			}
 		});

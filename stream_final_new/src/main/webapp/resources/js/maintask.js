@@ -27,6 +27,7 @@ function loadedHandler(){
 	titleHoverHandler();
 	
 	
+	
 }
 
 function dragStart(e){
@@ -121,6 +122,7 @@ afterInsertInputHandler=(event)=>{
 }
 
 innerTaskInputHandler=(thisElement)=>{
+	console.log("==innerTaskInputHadler==")
 	const a1 = thisElement;	//button
 	console.log(this);   // window  
 	console.log(thisElement);  
@@ -146,8 +148,16 @@ boxOutHandler=(event)=>{
 			console.log("영역외");
 			console.log(a1);
 			$(".jm-innerTaskInput").removeClass('row active');
+			console.log($('.addInnerTask'));
+			var size = $('.addInnerTask').length;
+			console.log(size);
+			var i = 0;
+			for(i=0;i<size;i++){
+			$('.addInnerTask')[i].reset();
+	}
 		}
 	}
+	
 }
 
 function getProjectMemberList(thisElement){
@@ -201,6 +211,7 @@ ttileCheckHandler=(event)=>{
 	console.log(a1);
 }
 
+
 function innerTaskaddListHandler (data) {
 //const pathname = "/" + window.location.pathname.split("/")[1] + "/";
 //const origin = window.location.origin;
@@ -247,13 +258,13 @@ console.log(project.mname);
 														<span>
 															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
 															 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-															  class="feather feather-play align-middle me-2 jm-rotate"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+															  class="feather feather-play align-middle jm-rotate"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
 														</span>
 														<span class="jm-project-title">${project.pname }</span> 
 														<span class="jm-project-task-count">(${project.maintaskList.length})</span>
 														<form class="jm-dn" action="${contextPath}/ptasklist" method="get">
 															<input type="hidden" name="pno" value="${project.pno}" >
-															<button class="jm-tp jm-hidden-btn">바로가기</button>
+															<button class="jm-tp">바로가기</button>
 														</form>
 													</div>
 												</div>
@@ -265,14 +276,13 @@ console.log(project.mname);
 	for (var idx = 0; idx < project.maintaskList.length; idx++) {
 
 		const task = project.maintaskList[idx];
-		console.log(task);
 listHtml += `
 															<li class="plusplus row" id="taskNo_${task.tno}">
 																<div class="jm-title-ttitle col-lg-4 jm-grey">
-																	<span>
+																	<span class="jm-margin-left">
 			`;
 		for(var i=0; i<task.brelevel; i++) {
-listHtml +=															"&#8618;";
+listHtml +=															"<span>&#8618;</span>"
 		}
 listHtml +=															task.ttitle;
 listHtml += `
@@ -280,7 +290,7 @@ listHtml += `
 			`;
 		if(task.brelevel == 0) {
 listHtml += `
-																	<button class="jm-inner-task-button jm-hidden-btn" onclick="innerTaskInputHandler(this)">업무추가</button>
+																	<button class="jm-inner-task-button jm-hidden-btn" onclick="innerTaskInputHandler(this); DateInputCheckHandler(this);">업무추가</button>
 			`; 
 		}
 listHtml += `
@@ -301,18 +311,16 @@ listHtml += `
 																<form class="addInnerTask" id="taskInputNo_${task.tno}">
 																	<div class="jm-innerTaskInput jm-hidden">
 																		<div class="jm-title-ttitle col-lg-4 jm-grey">
-																			<input type="text" placeholder="하위업무명을 입력하세요" name="ttitle" required="required">
+																			<input class="jm-input-length jm-margin-left" type="text" placeholder="하위업무명을 입력하세요" name="ttitle" required="required">
 																		</div>
 																		<div class="jm-title-tstatus col-lg-1 jm-grey">
-																			<span>
-																				<select class= "form-select mb-3 selectCategory ml-2 " name="tstatus">
-																					<option value="요청" class="status request" selected="selected">요청</option>
-																				    <option value="진행" class="status progress">진행</option>
-																				    <option value="피드백" class="status feedback">피드백</option>
-																				    <option value="완료" class="status complete">완료</option>
-																				    <option value="보류" class="status remain">보류</option>
-																				</select>
-																			</span>
+																			<select class= "mb-3 selectCategory ml-2 " name="tstatus">
+																				<option value="요청" class="status request" selected="selected">요청</option>
+																				<option value="진행" class="status progress">진행</option>
+																				<option value="피드백" class="status feedback">피드백</option>
+																				<option value="완료" class="status complete">완료</option>
+																				<option value="보류" class="status remain">보류</option>
+																			</select>
 																		</div>
 																		<div class="jm-title-tmember col-lg-1 jm-grey">
 																			<select name="tmember" id="tmember_select_pno_${project.pno }">
@@ -343,7 +351,7 @@ listHtml += `
 																			<input type="hidden" name="tcontent" value="default">
 																			<input type="hidden" name="pno" value="${project.pno}">
 																			<input type="hidden" name="userid" value="${principal_username}"> <!-- 로그인 세션 받아서 등록 -->
-																			<button type="button" onclick="innerTaskaddListHandler()">추가하기</button>
+																			<button type="button" onclick="jmRegExp(this); innerTaskaddListHandler(this)">추가하기</button>
 																		</div>
 																	</div>
 																</form>

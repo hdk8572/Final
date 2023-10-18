@@ -45,10 +45,6 @@
 	<!-- SummerNote CDN -->
 	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 	
-
-
-	
-	
 </head>
 
 <body>
@@ -68,13 +64,13 @@
 					</div>
 				</div>
 				<div class="w3-bar tabBar" >
-					<button class="w3-bar-item w3" onclick="openTab('Tab2')" data-tabmenu="Tab2" >업무</button>
-					<button class="w3-bar-item w3" onclick="openTab('Tab3')" data-tabmenu="Tab3">캘린더</button>
-					<button class="w3-bar-item w3" onclick="openTab('Tab1')" data-tabmenu="Tab1" >피드</button>
+					<button class="w3-bar-item w3" onclick="openTab('TabTask')" data-tabmenu="TabTask" >업무</button>
+					<button class="w3-bar-item w3" onclick="openTab('TabCalendar')" data-tabmenu="TabCalendar">캘린더</button>
+					<button class="w3-bar-item w3" onclick="openTab('TabPheed')" data-tabmenu="TabPheed" >피드</button>
 				</div>
 
 				<!-- 피드 탭 -->
-				<div id="Tab1" class="w3-container tab ptab" >
+				<div id="TabPheed" class="w3-container tab ptab" >
 					<main class="content">
 						<div class="tabtitle">
 							<span class="text-tab">피드</span>
@@ -88,7 +84,7 @@
 				</div>
 
 				<!-- 업무 탭 [Task]-->
-				<div id="Tab2" class="w3-container tab ptab">
+				<div id="TabTask" class="w3-container tab ptab">
 					<main class="content">
 						<div class="tabtitle">
 							<span class="text-tab">업무</span>
@@ -141,7 +137,7 @@
 				</div>
 
 				<!-- 캘린더 탭 -->
-				<div id="Tab3" class="w3-container tab ptab">
+				<div id="TabCalendar" class="w3-container tab ptab">
 					<main class="content" id="content-calendar">
 						<div class="tabtitle">
 							<span class="text-tab">캘린더</span>
@@ -173,8 +169,6 @@
 	const useridJs = "${principal.username}";
 	const ptaskPno = $(".container-fluid.p-0").find("input[name=pno]").val();
 	
-	// openTab('Tab2');   // 로딩되고 나서 처음 업무가 보이도록 함.
-	
 	/* 상단 탭바 위치 이동*/
 	function openTab(tabName) {
 	  var i;
@@ -190,9 +184,9 @@
 	  });
 	  
 	  document.getElementById(tabName).style.display = "block";
-	  if(tabName == "Tab3"){
+	  if(tabName == "TabCalendar"){
 		  loadCalendarHandler();
-	  } else if(tabName == "Tab2") {
+	  } else if(tabName == "TabTask") {
 		  loadPtaskList();
 	  }
 	}
@@ -212,7 +206,13 @@
 		       ['view', ['fullscreen', 'codeview', 'help']]
 		     ]
 		});
-		openTab('Tab2');
+		// 로딩되고 나서 처음 // 업무가 보이도록 함.  // 만약 calendar 설정되어있다면 calendar가 보이도록함.
+		var tabmenu = "${projectTabs}";
+		if(tabmenu == "TabCalendar"){
+			openTab('TabCalendar');
+		} else {
+			openTab('TabTask');
+		}
 		mouseEvent();
 		$(this).find(".detailProject").click(detailProject);
 		

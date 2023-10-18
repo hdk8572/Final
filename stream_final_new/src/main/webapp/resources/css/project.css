@@ -43,7 +43,7 @@
 }
 
 .text-tab {
-	position: absolute; 
+	/* position: absolute; */ /* 임지 */
 	font-size: 1.53125rem;
 }
 

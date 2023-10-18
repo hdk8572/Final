@@ -69,7 +69,6 @@ public class CalendarController {
 	public String calSelectOne(Model model, String sno) { 
 		CalendarVo cal = calendarService.selectOne(sno);
 		model.addAttribute("cal", cal);
-		System.out.println("dddd :" + sno);
 		return new Gson().toJson(cal); //화면에 뿌릴 것을 return해야함
 	}
 	
@@ -96,9 +95,9 @@ public class CalendarController {
 	*/
 	
 	//캘린더 등록 
+	//탭 jsp에서 필요하니깐 redurectAttributes를 써준다.
 	@PostMapping("/member/insertpcal")
-	public String insert(Model model, CalendarVo cal) {
-		
+	public String insert(Model model, CalendarVo cal, RedirectAttributes rttr) {
 //CalendarVo [sno=, userid=mplsam@kh.co.kr, mname=null, pno=1, splace=삼성동, smemo=<p>와우</p><p>영한 변환 잘됨</p>, start=2023-10-17, end=2023-10-19, title=aaa, color=null, attenduseridArr=null, attenduseridList=null]
 		if(cal.getAttenduseridArr() != null && cal.getAttenduseridArr().length > 0) {
 			List<String> attenduseridArr = Arrays.asList(cal.getAttenduseridArr());
@@ -113,15 +112,15 @@ public class CalendarController {
 		}
 		System.out.println("aaaa :" + cal);
 		calendarService.insert(cal);
-		return "redirect:/member/ptasklist?pno="+cal.getPno();
-
+		rttr.addFlashAttribute("projectTabs", "TabCalendar"); //projectTabs에 tabcalendar를 채워서 간다.
+		return "redirect:/member/ptasklist?pno=" + cal.getPno();
 	}
 	
 	//캘린더 수정
 	@PostMapping("/member/updatepcal")
 	@ResponseBody
-	public int update(Model model, String sno) {
-		int result = calendarService.update(sno);
+	public int update(Model model, CalendarVo cal) {
+		int result = calendarService.update(cal);
 		return result;
 	}
 

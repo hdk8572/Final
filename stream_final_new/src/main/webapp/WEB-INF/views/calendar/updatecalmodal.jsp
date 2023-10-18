@@ -13,12 +13,12 @@
 					<div class="card-header pcalTitle">
 						<h2 class="pcalTitle"><b>일정 수정</b></h2>
 					</div>
-						<form action="${pageContext.request.contextPath}/member/updatepcal" method="post">
+						<form action="${pageContext.request.contextPath}/member/updatepcal" method="post" id="frm-updatecal">
 							<!-- 일정번호 프로젝트번호 -->
 							<!-- url 때문에 pno필요함 -->
-				<%-- 			<input type="hidden" name="pno" value="${pno}"> --%>
+							<%--<input type="hidden" name="pno" value="${pno}"> --%>
 							<!-- TODO 일정번호 -->
-							<input type="hidden" id="sno" name="sno" value="${sno}"><!-- 오 -->
+							<input type="hidden" id="sno" name="sno"><!-- 오 -->
 							
 							<!-- 제목 -->
 							<input type="text" class="form-control title" id="title" name="title" id="form-content" placeholder="제목을 입력하세요.">
@@ -41,7 +41,7 @@
 									<input type="text" name="attenduseridArr" value="kh0002@kh.com">  -->
 									<!-- 참가자 반복 -->
 									<input type="text" id="calmemberinput" placeholder="참가자" list="calmemberlist">
-									<select id="calmemberlist"> <!-- 일단 한 명만 추가해서 insert까지 하기  --> 
+									<select id="calmemberlist">
 									</select>
 								</div>
 							</div>
@@ -73,8 +73,8 @@
 
 <!-- 일정 상세 정보 가져오기  -->
 <script>
-	$('#updBtn').on("click", function() {
-		var selectedUpdateSno= $("#readcalmodal #sno").text(); //수정 모달의 sno값을 읽어온다
+	$('#readupdBtn').on("click", function() {
+		var selectedUpdateSno= $("#readcalmodal #sno").val(); //수정 모달의 sno값을 읽어온다
 		var selectedUpdateTitle = $("#readcalmodal #title").text();
 		var selectedUpdateStart = $("#readcalmodal #start").text();
 		var selectedUpdateEnd = $("#readcalmodal #end").text();
@@ -98,16 +98,57 @@
 
 <!-- 왕 슬픔  -->
 <script>
+	$('#updatecalmodal #updBtn').on("click", function(){
+		console.log($("#frm-updatecal").serialize());
+		
+		//ajax 요청을 보낸다.
+		$.ajax({
+			url: "${pageContext.request.contextPath}/member/updatepcal", //수정 엔드포인트이다
+			type: 'POST',
+			data: $("#frm-updatecal").serialize(),			
+			success: function(response){
+				console.log(response);
+				//수정이 성공하면 실행될 코드
+				if(response === 1) {
+					//수정이 성공했을 때
+					alert('일정이 수정되었습니다.');
+				}else{
+					alert('일정 수정에 실패했습니다.')
+					console.log("updatepcal22에서 오류 발생");
+				}
+			},
+			error : function(request, status, error){
+				console.log(request);
+				console.log(status);
+				console.log(error);
+				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				}
+		});
+	})
+</script>
+<!-- <script>
 	$('#updatecalmodal #updBtn').on("click", function updatepcal(){
-		var sno = $('#sno').val();
+		var sno = $('#sno').val(); //val
+		var title = $('#title').text();
+		var start = $('#start').val();
+		var end = $('#end').val();
+		var smemo = $('#smemo').text();
 		console.log(sno);
+		console.log(title);
+		console.log(start);
+		console.log(end);
+		console.log(smemo);
 		
 		//ajax 요청을 보낸다.
 		$.ajax({
 			url: "${pageContext.request.contextPath}/member/updatepcal", //수정 엔드포인트이다
 			type: 'POST',
 			data: {
-				sno: sno
+				sno: sno,
+				title: title,
+				start: start,
+				end: end,
+				smemo:smemo
 			},
 			
 			success: function(response){
@@ -128,7 +169,7 @@
 				}
 		});
 	})
-</script>
+</script> -->
 
 <!-- 지도 api -->
 <script>
