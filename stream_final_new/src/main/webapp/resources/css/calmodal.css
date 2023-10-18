@@ -66,9 +66,7 @@
 /* 모달 공통 */
 
 /* add */
-.form-control.userid {
-	width: 30%;
-}
+
 .userid-img{
 	margin-bottom: 15px;
 	margin-right: 0.4rem;
@@ -85,8 +83,26 @@
 .map-hidden {
   display: none;
 }
-/* read+kakao 지도 */
-#map-readmodal{
 
-} 
+/* 참가자 */
 
+.form-calmemberlist{
+	background-color: #f5f7fb;
+	width: 70%;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+	
+}
+.form-control-userid {
+	width: 30%;
+	line-height: 30px;
+	word-wrap: break-word;
+    background-clip: border-box;
+    background-color: #fff;
+    border: 0 solid transparent;
+    border-radius: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    position: relative;
+}

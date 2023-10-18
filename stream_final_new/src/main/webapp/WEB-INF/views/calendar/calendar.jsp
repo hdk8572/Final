@@ -46,7 +46,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 	    if(checkSameUserId == false){  //등록된 적 없는 사원일 경우 추가
 		    var htmlVal='';
 		    htmlVal+='<div class="attenduserid-item">';
-		    htmlVal+='<input type="text" class="form-control userid" placeholder="참가자" readonly value="'+selectedText+'">';
+		    htmlVal+='<input type="text" class="form-control-userid" placeholder="참가자" readonly value="'+selectedText+'">';
 		    htmlVal+='<input type="hidden" name="attenduseridArr" value="'+selectedValue+'" >';
 		    htmlVal+='</div">';
 		    
@@ -137,7 +137,8 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 		       ['view', ['fullscreen', 'codeview', 'help']]
 		     ]
 		});
-/* 		 $("#summernote-updatecalmodal").summernote({					
+		/*
+ 		 $("#summernote-updatecalmodal").summernote({					
 		   placeholder: '내용을 작성해주세요.', 
 		     tabsize: 2,
 		     height: 120,
@@ -150,6 +151,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 		       ['insert'  ['link', 'picture', 'video'] ],
 		       ['view', ['fullscreen', 'codeview', 'help']]
 		     ]
-		});  */
+		}); 
+		*/
 	});
 </script>

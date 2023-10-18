@@ -7,18 +7,21 @@
 <div id="readcalmodal" class="modal project right fade" aria-labelledby="myModalLabel">
 	<div class="modal-dialog pcal">
 	  <!-- Modal content -->
-		<div class="modal-content pcal">
-		  	<div class="modal-header pcal">
+		<div class="modal-content pcal"> 
+		  	<div class="modal-header-pcal"> <!-- 수정함 -->
 		  		<span class="read-close" data-bs-dismiss="modal" aria-label="Close">&times;</span>
 		  	</div>
-			 	<div class="modal-body">
+			 	<div class="modal-body-pcal">
 			 		<form id="readcalmodal">
 				    	<div class="card">
 				    		<!-- TODO 일정번호 -->
 				    		<input type="hidden" id="sno" name="sno">
-							<div class="card-header" id="readcalmodal-header">
-							<!-- 작성자 -->
-							<div id="userid"></div>
+							<div class="card-header pcalTitle" id="readcalmodal-header">
+							
+							<!-- 일정 제목 -->
+								<h2 class="pcalTitle"><b>일정 상세</b></h2>
+							<!-- 작성자 코드 수정하기-->
+							<!-- <div id="userid"></div> -->
 							<div class="read-dropdown-grop">
 								<div class="btn-dropdown-toggle" id="read-dropdown" data-bs-toggle="dropdown">
 									<svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical me-2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
@@ -31,18 +34,18 @@
 							</div>
 							<div class="card-body">
 								<!-- 제목 -->
-								<div class="stitle" id="title"></div>
+								<div class="form-control stitle" id="title"></div>
 								
 								<!-- 날짜 -->
-								<div class="d-flex align-items-center" id="form-date-readsvg">
+								<div class="d-flex align-items-center">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar align-middle me-2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-									<div class="form-read date" id="start"></div>  <div class="form-read date" id="end"></div>
+									<div class="form-date-read" id="start"></div>  <div class="form-date-read" id="end"></div>
 								</div>
 								
 								<!-- 참석자  -->
-								<div class="d-flex align-items-center" class="form-read">
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r= "4"></circle></svg>
-									<div  id="attenduseridList"></div>
+								<div class="d-flex align-items-center">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+									<div id="attenduseridList"></div>
 								</div>
 								
 								<!-- 지도 -->
@@ -53,15 +56,15 @@
 									<div class="map" id="map-readmodal"></div>
 								
 								<!-- 내용 -->
-								<div class="form-control " id="smemo"></div>
+								<div class="form-control smemo " id="smemo"></div>
 									
 								<!-- 댓글 -->
-								<div class="d-flex align-items-center" >
+							<!-- 	<div class="d-flex align-items-center" >
 									<div class="comment-box">
 										<input type="text" class="form-control comment" placeholder="Input">
 										<input type="submit" class="c-btn" value="등록">
 									</div>
-								</div>
+								</div> -->
 							</div>
 						</div>
 					</form>
@@ -70,11 +73,10 @@
 	 </div>
 </div> 
 
-<!-- TODO 왕 슬픔 -->
 <script>
 	$('#dltBtn').on("click", function(){
 		
-		if(confirm('정말로 삭제할거냐?')) {
+		if(confirm('정말로 삭제하시겠습니까?')) {
 			var sno =$('#sno').val();
 			
 			//ajax
@@ -85,6 +87,7 @@
 				success: function(response){
 					if(response === 1) {
 						alert('일정이 삭제되었습니다.')
+						$('#readcalmodal').modal('hide');
 					}else{
 						alert('일정 삭제에 실패했습니다.');
 					}
