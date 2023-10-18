@@ -157,3 +157,9 @@ div.jm-task-title{
 .jm-input-length{
 	width: 80%
 }
+.jm-margin-left{
+	margin-left: 23px;
+}
+.jm-margin-left>span{
+	margin-left: 10px;
+}

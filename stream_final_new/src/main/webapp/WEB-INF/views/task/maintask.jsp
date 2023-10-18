@@ -252,9 +252,10 @@
 															<c:forEach items="${project.maintaskList }" var="task">
 																<li class="plusplus row jm-task-line" id="taskNo_${task.tno}">
 																	<div class="jm-title-ttitle col-lg-4 jm-grey">
-																		<span> <c:forEach begin="1"	end="${task.brelevel }">
-																			&#8618;
-																		</c:forEach> ${task.ttitle}
+																		<span class="jm-margin-left"> 
+																		<c:forEach begin="1"	end="${task.brelevel }">
+																			<span>&#8618;</span>
+																		</c:forEach>${task.ttitle}
 																		</span>
 																		<c:if test="${task.brelevel == 0 }">
 																			<button class="jm-inner-task-button jm-hidden-btn" onclick="innerTaskInputHandler(this); DateInputCheckHandler(this);">업무추가</button>
@@ -276,7 +277,7 @@
 																	<form class="addInnerTask" id="taskInputNo_${task.tno}">
 																		<div class="jm-innerTaskInput jm-hidden">
 																			<div class="jm-title-ttitle col-lg-4 jm-grey">
-																				<input type="text" class="jm-input-length" placeholder="하위업무명을 입력하세요"
+																				<input type="text" class="jm-input-length jm-margin-left" placeholder="하위업무명을 입력하세요"
 																					name="ttitle" required="required">
 																			</div>
 																			<div class="jm-title-tstatus col-lg-1 jm-grey">
@@ -412,11 +413,11 @@
 		htmlList+=`
 							<li class="plusplus row jm-task-line" id="taskNo_\${task.tno}">
 								<div class="jm-title-ttitle col-lg-4 jm-grey">
-									<span>
+									<span class="jm-margin-left">
 		`;
 							for(var lv=0; lv<task.brelevel; lv++){
 		htmlList+=`
-										&#8618;
+										<span>&#8618;</span>
 					`
 							}
 		htmlList+=`
@@ -446,7 +447,7 @@
 								<form class="addInnerTask" id="taskInputNo_\${task.tno}">
 									<div class="jm-innerTaskInput jm-hidden">
 										<div class="jm-title-ttitle col-lg-4 jm-grey">
-											<input type="text" placeholder="하위업무명을 입력하세요"
+											<input class="jm-input-length jm-margin-left " type="text" placeholder="하위업무명을 입력하세요"
 												name="ttitle" required="required">
 										</div>
 										<div class="jm-title-tstatus col-lg-1 jm-grey">

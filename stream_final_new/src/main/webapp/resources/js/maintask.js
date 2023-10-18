@@ -279,10 +279,10 @@ console.log(project.mname);
 listHtml += `
 															<li class="plusplus row" id="taskNo_${task.tno}">
 																<div class="jm-title-ttitle col-lg-4 jm-grey">
-																	<span>
+																	<span class="jm-margin-left">
 			`;
 		for(var i=0; i<task.brelevel; i++) {
-listHtml +=															"&#8618;";
+listHtml +=															"<span>&#8618;</span>"
 		}
 listHtml +=															task.ttitle;
 listHtml += `
@@ -311,7 +311,7 @@ listHtml += `
 																<form class="addInnerTask" id="taskInputNo_${task.tno}">
 																	<div class="jm-innerTaskInput jm-hidden">
 																		<div class="jm-title-ttitle col-lg-4 jm-grey">
-																			<input type="text" placeholder="하위업무명을 입력하세요" name="ttitle" required="required">
+																			<input class="jm-input-length jm-margin-left" type="text" placeholder="하위업무명을 입력하세요" name="ttitle" required="required">
 																		</div>
 																		<div class="jm-title-tstatus col-lg-1 jm-grey">
 																			<select class= "mb-3 selectCategory ml-2 " name="tstatus">
