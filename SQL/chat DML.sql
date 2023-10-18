@@ -186,6 +186,7 @@ DROP SEQUENCE chat_sequence;
 create SEQUENCE chat_sequence
 start with 1
 INCREMENT by 1;
+
 SELECT * FROM CHATROOM  ;
 SELECT * FROM CHATROOM  JOIN chatmember USING(USERID) WHERE USERID='sample@kh.co.kr';
 
@@ -198,6 +199,7 @@ WHERE USERID='sple@kh.co.kr';
 
 SELECT * FROM CHATROOM join chatmessage using(roomid) where roomid='30';
 
+select * from users;
 
 select *
 from(select *
@@ -339,7 +341,7 @@ DELETE FROM chatmessage;
 
 
 
-
+select * from users;
 SELECT *FROM chatmessage;
 select * from chatroom;
 select * from chatmember;
@@ -360,6 +362,14 @@ select * from chatmember;
 INSERT INTO CHATROOM (ROOMID,ROOMNAME) VALUES (chat_sequence.NEXTVAL,'roomname확인123');
 INSERT INTO CHATROOM (ROOMID,ROOMNAME,USERID) VALUES (chat_sequence.NEXTVAL,'roomname확인2','sple@kh.co.kr');
 DELETE FROM CHATROOM;
-
+select * from chatmember;
+select * from chatroom;
+INSERT INTO CHATMEMBER (ROOMID, USERID) SELECT (SELECT MAX(ROOMid) FROM chatROOM)AS ROOMID, 'sple@kh.co.kr' FROM DUAL;
 select ROOMID,MNAME,MESSAGE,CDATE from CHATMESSAGE join users USING(userId) WHERE ROOMID = '21' ORDER BY CDATE ASC;
+SELECT MAX(ROOMid) FROM chatROOM ;
+INSERT INTO CHATMEMBER (ROOMID, USERID)SELECT (SELECT MAX(ROOMid) FROM chatROOM)AS ROOMID, 'sple@kh.co.kr' FROM DUAL;
+
+
+INSERT INTO CHATROOM (ROOMID,USERID,ROOMNAME) VALUES (chat_sequence.NEXTVAL,'sple@kh.co.kr','채팅방1');
+INSERT INTO CHATROOM (ROOMID,USERID,ROOMNAME) VALUES ((SELECT MAX(ROOMid) FROM chatROOM),'sple@kh.co.kr','채팅방1');
 commit;

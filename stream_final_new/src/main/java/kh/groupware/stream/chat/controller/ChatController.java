@@ -75,12 +75,13 @@ public class ChatController {
 //	    	log.info("# Create Chat Room, roomName: " + roomName + ", userId: " + userId);
 		String userId = principal.getName();
 		String[] sizes = request.getParameterValues("member");
+		service.AddChatRoom(roomName, userId);
 		if(sizes != null) {
 			for(String size : sizes) {
-				service.memberInsert(size); 
-				service.AddChatRoom(roomName, size);
+				service.memberInsert(size); 			
 			}
 		}
+		
 		rttr.addFlashAttribute("roomName1", roomName);
 		rttr.addFlashAttribute("member", sizes);	
 		return "redirect:/member/rooms";

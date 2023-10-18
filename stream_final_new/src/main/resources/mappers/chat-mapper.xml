@@ -19,6 +19,12 @@
 	<insert id="chatInsert" parameterType="ChatRoomVo">
 		INSERT INTO CHATROOM (ROOMID,USERID,ROOMNAME) VALUES (chat_sequence.NEXTVAL,#{userId},#{roomName})
 	</insert>
+	<!-- 채팅방 멤버 추가 -->
+	<insert id="memberInsert" parameterType="ChatRoomVo">
+		<!-- INSERT INTO CHATMEMBER VALUES ((SELECT MAX(ROOMID) ROOMID FROM CHATROOM),#{userId} ) -->
+		INSERT INTO CHATMEMBER (ROOMID, USERID)
+SELECT (SELECT MAX(ROOMid) FROM chatROOM)AS ROOMID, #{userId} FROM DUAL
+	</insert>
 	
 	
 	<!-- 만든 채팅방 전체 리스트 조회 +마지막 작성대화 -->
@@ -43,12 +49,6 @@ WHERE chatmember.userid=#{userId}
 		SELECT * FROM CHATROOM WHERE USERID=#{userId}
 		<!-- SELECT * FROM CHATROOM JOIN CHATROOM USING(USERID)  WHERE USERID=#{userId}  -->
 	</select>
-	<!-- 채팅방 멤버 추가 -->
-	<insert id="memberInsert" parameterType="ChatRoomVo">
-		<!-- INSERT INTO CHATMEMBER VALUES ((SELECT MAX(ROOMID) ROOMID FROM CHATROOM),#{userId} ) -->
-		INSERT INTO CHATMEMBER (ROOMID, USERID)
-SELECT (SELECT MAX(ROOMid) FROM chatROOM)AS ROOMID, #{userId} FROM DUAL
-	</insert>
 	
 	
 	<!-- 해당 채팅방 진입 selectone (추가!!) 채팅방 진입하면 -->

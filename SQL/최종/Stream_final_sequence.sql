@@ -26,3 +26,7 @@ INCREMENT BY 1;
 CREATE SEQUENCE replyrno_sequence
 START WITH 1
 INCREMENT BY 1;
+
+create SEQUENCE chat_sequence
+start with 1
+INCREMENT by 1;
