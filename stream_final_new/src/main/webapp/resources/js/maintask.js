@@ -27,6 +27,7 @@ function loadedHandler(){
 	titleHoverHandler();
 	
 	
+	
 }
 
 function dragStart(e){
@@ -121,6 +122,7 @@ afterInsertInputHandler=(event)=>{
 }
 
 innerTaskInputHandler=(thisElement)=>{
+	console.log("==innerTaskInputHadler==")
 	const a1 = thisElement;	//button
 	console.log(this);   // window  
 	console.log(thisElement);  
@@ -247,13 +249,13 @@ console.log(project.mname);
 														<span>
 															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
 															 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-															  class="feather feather-play align-middle me-2 jm-rotate"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+															  class="feather feather-play align-middle jm-rotate"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
 														</span>
 														<span class="jm-project-title">${project.pname }</span> 
 														<span class="jm-project-task-count">(${project.maintaskList.length})</span>
 														<form class="jm-dn" action="${contextPath}/ptasklist" method="get">
 															<input type="hidden" name="pno" value="${project.pno}" >
-															<button class="jm-tp jm-hidden-btn">바로가기</button>
+															<button class="jm-tp">바로가기</button>
 														</form>
 													</div>
 												</div>
@@ -280,7 +282,7 @@ listHtml += `
 			`;
 		if(task.brelevel == 0) {
 listHtml += `
-																	<button class="jm-inner-task-button jm-hidden-btn" onclick="innerTaskInputHandler(this)">업무추가</button>
+																	<button class="jm-inner-task-button jm-hidden-btn" onclick="innerTaskInputHandler(this); DateInputCheckHandler(this);">업무추가</button>
 			`; 
 		}
 listHtml += `

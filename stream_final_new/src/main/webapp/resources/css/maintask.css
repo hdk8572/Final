@@ -150,3 +150,8 @@ div.jm-task-title{
 	height: 40px;
 	background-color: #E8E8E8;
 }
+.jm-date-input-layer{
+	min-width:inherit;
+	width: 114px;
+	padding: 0;
+}

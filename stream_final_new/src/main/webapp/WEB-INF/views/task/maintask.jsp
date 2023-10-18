@@ -257,7 +257,7 @@
 																		</c:forEach> ${task.ttitle}
 																		</span>
 																		<c:if test="${task.brelevel == 0 }">
-																			<button class="jm-inner-task-button jm-hidden-btn" onclick="innerTaskInputHandler(this);">업무추가</button>
+																			<button class="jm-inner-task-button jm-hidden-btn" onclick="innerTaskInputHandler(this); DateInputCheckHandler(this);">업무추가</button>
 																		</c:if>
 																		<button class="jm-tp jm-task-info jm-hidden-btn" onclick="taskDetailButtonClickTestHandler(this);">자세히 보기</button>
 																		<div class="jm-hidden">
@@ -281,7 +281,7 @@
 																			</div>
 																			<div class="jm-title-tstatus col-lg-1 jm-grey">
 																				<span> <select
-																					class="form-select mb-3 selectCategory ml-2 "
+																					class="mb-3 selectCategory ml-2 "
 																					name="tstatus">
 																						<option value="요청" class="status request"
 																							selected="selected">요청</option>
@@ -303,7 +303,7 @@
 																				<div data-bs-toggle="dropdown">
 																					<button class="btn btn-secondary">시작일</button>
 																				</div>
-																				<div class="mini-pop dropdown-menu dropdown-menu-end">
+																				<div class="mini-pop jm-date-input-layer dropdown-menu dropdown-menu-end">
 																					<input type="date" name="tstartdate">
 																				</div>
 																			</div>
@@ -312,7 +312,7 @@
 																				<div data-bs-toggle="dropdown">
 																					<button class="btn btn-secondary">마감일</button>
 																				</div>
-																				<div class="mini-pop dropdown-menu dropdown-menu-end">
+																				<div class="mini-pop jm-date-input-layer dropdown-menu dropdown-menu-end">
 																					<input type="date" name="tenddate">
 																				</div>
 																			</div>
@@ -405,7 +405,7 @@
 						action="${pageContext.request.contextPath }/member/ptasklist"
 						method="get">
 						<input type="hidden" name="pno" value="\${project.pno}">
-						<button class="jm-tp jm-hidden-btn">바로가기</button>
+						<button class="jm-tp">바로가기</button>
 					</form>
 				</div>
 			</div>
@@ -431,7 +431,7 @@
 					`
 							if(task.brelevel ==0){
 		htmlList+=`
-										<button class="jm-inner-task-button jm-hidden-btn" onclick="innerTaskInputHandler(this);">업무추가</button>
+										<button class="jm-inner-task-button jm-hidden-btn" onclick="innerTaskInputHandler(this); DateInputCheckHandler(this);">업무추가</button>
 					`
 							}
 		htmlList+=`
@@ -532,6 +532,41 @@
 		})
 		}
 	</script>
+	<script>
+	DateInputCheckHandler=(thisElement)=>{
+		console.log("===DateInputCheckHandler===")
+		console.log(thisElement);
+		var dateA1 = $(thisElement).closest('li').next().children('form')[0].id;
+		console.log(dateA1);
+		var dateA2 = "#"+dateA1;
+		console.log(dateA2);
+		var startDateInput = $(dateA2).find('input[name=tstartdate]')[0];
+		var endDateInput = $(dateA2).find('input[name=tenddate]')[0];
+		console.log(startDateInput);
+		console.log(endDateInput);
+		
+			startDateInput.addEventListener('change', function() {
+				console.log(startDateInput.value);
+			compareDates();
+		});
+		
+			endDateInput.addEventListener('change', function() {
+				console.log(endDateInput.value);
+			compareDates();
+		});
+	
+		function compareDates() {
+			var startDate = new Date(startDateInput.value);
+			var endDate = new Date(endDateInput.value);
+			
+			if(endDate < startDate) {
+				alert("입력한 종료일이 시작일보다 이전입니다. 올바른 날짜를 선택해 주세요.");
+				
+				endDateInput.value = ''; //종료일 입력필드 초기화
+			}
+		} 
+	}
+</script>
 </body>
 
 </html>
