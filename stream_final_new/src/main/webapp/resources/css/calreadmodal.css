@@ -34,7 +34,13 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+#read-dropdown > svg {
+	 cursor: pointer;
+}
 /* The Close Button */
+
+
 
 /* dropdown-btn */
 .card-header #userid{
@@ -91,7 +97,9 @@
 
 /* 공간 확보 */
 
-.form-read-date{
-	margin-bottom: 1.5rem;
-	width: 15%;
+.form-read{
+	margin-bottom: 1rem;
+	/* width: 40%; */
+	padding-left: 1rem;
 }
+

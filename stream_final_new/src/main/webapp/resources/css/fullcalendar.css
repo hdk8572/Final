@@ -41,11 +41,23 @@
     outline: 0;
     float: right;
 }
+/* 버튼 */
+.fc-prev-button.fc-button.fc-button-primary{
+	border-radius: 20px;
+	padding: 7px 18px;
+}
+.fc-next-button.fc-button.fc-button-primary{
+	border-radius: 20px;
+	padding: 7px 18px;
+}
 /* 캘린더 위 header!! */
 
 /* 캘린더 */
 .fc-daygrid a{
 	color: #000000;
+}
+.fc-today-button.fc-button.fc-button-primary {
+	cursor: pointer;
 }
 
 .content-cal{
@@ -57,4 +69,8 @@
 }
 .fc-icon.fc-icon-chevron-left::before {
     font-family: inherit;  /* 부모 요소 폰트 스타일을 적용시킴 */
+}
+/* 이거안됨 TODO */
+.fc-toolbar-title{
+   	cursor: pointer;
 }
