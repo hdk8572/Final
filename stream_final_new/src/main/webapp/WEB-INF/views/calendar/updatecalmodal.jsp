@@ -13,7 +13,7 @@
 					<div class="card-header pcalTitle">
 						<h2 class="pcalTitle"><b>일정 수정</b></h2>
 					</div>
-						<form action="${pageContext.request.contextPath}/member/updatepcal" method="post">
+						<form action="${pageContext.request.contextPath}/member/updatepcal" method="post" id="frm-updatecal">
 							<!-- 일정번호 프로젝트번호 -->
 							<!-- url 때문에 pno필요함 -->
 							<%--<input type="hidden" name="pno" value="${pno}"> --%>
@@ -98,12 +98,14 @@
 
 <!-- 왕 슬픔  -->
 <script>
-	$('#updatecalmodal #updBtn').on("click", function updatepcal(){
+	$('#updatecalmodal #updBtn').on("click", function(){
+		console.log($("#frm-updatecal").serialize());
+		
 		//ajax 요청을 보낸다.
 		$.ajax({
 			url: "${pageContext.request.contextPath}/member/updatepcal", //수정 엔드포인트이다
 			type: 'POST',
-			data: $("#readcalmodal").serialize(),			
+			data: $("#frm-updatecal").serialize(),			
 			success: function(response){
 				console.log(response);
 				//수정이 성공하면 실행될 코드
