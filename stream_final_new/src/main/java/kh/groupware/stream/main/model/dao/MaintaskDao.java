@@ -46,14 +46,19 @@ public class MaintaskDao {
 		return sqlSession.selectOne("mainTask.selectMname", userid);
 	}
 
-	// 회사 참가자 전체 조회 - 황대경
+	// 회사 소속 멤버 전체 조회 - 황대경
 	public List<MemberSimpleVo> companyMemberList(String userid) {
 		return sqlSession.selectList("mainTask.companyMemberList", userid);
 	}
+	
+	// 프로젝트의 현재 참가자 조회 - 황대경
+	public List<MemberSimpleVo> currentMemberList(String pno) {
+		return sqlSession.selectList("mainTask.currentMemberList", pno);
+	}
 
 	// 회사 참가자 1명 조회 - 황대경
-	public MemberSimpleVo selectOneMember(String userid) {
-		return sqlSession.selectOne("mainTask.companyMemberOne", userid);
-	}
+//	public MemberSimpleVo selectOneMember(String userid) {
+//		return sqlSession.selectOne("mainTask.companyMemberOne", userid);
+//	}
 
 }

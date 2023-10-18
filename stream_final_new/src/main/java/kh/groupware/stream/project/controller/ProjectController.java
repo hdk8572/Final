@@ -111,19 +111,26 @@ public class ProjectController {
 		return projectService.searchProjectList(pvo, keyword);
 	}
 	
-	// 회사 멤버 전체 조회
+	// 회사 소속 멤버 전체 조회 (addProjectModal 클릭 시)
 	@GetMapping("/member/getCompanyMemberList")
 	@ResponseBody
 	public List<MemberSimpleVo> getCompanyMemberList(String userid) {
 		return maintastService.companyMemberList(userid);
 	}
+
+	// 프로젝트 참여 멤버 전체 조회 (Update)
+	@GetMapping("/member/getCurrentMemberList")
+	@ResponseBody
+	public List<MemberSimpleVo> currentMemberList(String pno) {
+		return maintastService.currentMemberList(pno);
+	}
 	
 	// 회사 멤버 1명 조회
-	@GetMapping("/member/selectOneMember")
-	@ResponseBody
-	public MemberSimpleVo selectOneMember(String userid) {
-		return maintastService.selectOneMember(userid);
-	}
+//	@GetMapping("/member/getCompanyMemberList")
+//	@ResponseBody
+//	public MemberSimpleVo selectOneMember(String userid) {
+//		return maintastService.selectOneMember(userid);
+//	}
 	
 	// 회사 멤버 선택 시 추가
 //	@GetMapping("/member/addCompanyMemberList")

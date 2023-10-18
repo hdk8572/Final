@@ -104,29 +104,27 @@
 		});	
 	}
 	
- 	function selectOption() {
- 	    var selectedOption = $("select[name=addpstatus] option:selected").text();
+ 	function selectOption() { // 추가+ 버튼을 누르면 실행되는 메서드
+ 	    /*  
+ 		var selectedOption = $("select[name=addpstatus] option:selected").text();
  	    $("#valuePstatus").val(selectedOption);
+ 	   */
  	    $.ajax({
  	    	url:"${pageContext.request.contextPath}/member/getCompanyMemberList",
  	    	// data : principal -controller
  	    	data: {userid: useridJs},
  	    	type: "get",
  	    	dataType: "json",
- 	    	success: makeMemberView,
+ 	    	success: function(data) {
+ 	    		makeMemberView(data);
+ 	    	},
  	    	error: function() {	
 				alert("selectOption에서 에러났습니다.");
 			}
  	    });
 	}
- 	/*
- 	function updateOption() {
- 	    var updatedOption = $("select[name=updatepstatus] option:selected").text();
- 	    $("#valuePstatus").val(updatedOption);
- 	   	console.log($("#valuePstatus").val(updatedOption));
-	}
-	*/
-	function makeMemberView(data) {
+ 	
+	function makeMemberView(data) { // 회사 소속인 참가자 리스트 조회
 		var memberListHtml = "";
 		/* memberListHtml += '<select class="form-select mb-3 selectCategory ml-2" name="mname">'; */
 		memberListHtml += '<option value="" selected>참가자선택</option>';
@@ -139,20 +137,19 @@
 		/* memberListHtml += '</select>'; */
 	    $("#companyMember").html(memberListHtml);
 	    /* $("#companyMember select[name=mname] option:eq(0)").prop("selected", true); */
-	    
 	    $(".form-select.mb-3.addProject.selectedMember").change(memberSelect);
 	}
 	
 	
 	
- 	function memberSelect() {
+ 	function memberSelect() { // 중복 조회 (유효성검사) 
  		var selectedVal = $(".form-select.mb-3.addProject.selectedMember").val();
- 		console.log("선택한 selectedVal :"+selectedVal);
+ 		// console.log("선택한 selectedVal :"+selectedVal); 삭제하자
  		//$(".form-select.mb-3.addProject.selectedMember").val(selectedVal);
- 		var checkAddedUserId = false;
+ 		var checkAddedUserId = false;													
  		$(".comanyMember").each(function(idx, thisElement){
  			var addeduserid = $(thisElement).children("span").data("addmemberuserid");
- 			console.log(addeduserid);
+ 			// console.log(addeduserid);  삭제하자 
  			if(addeduserid == selectedVal){
  				checkAddedUserId = true;
 		 		return;
@@ -161,38 +158,9 @@
  		if(!checkAddedUserId){ // 
 			memberadded(selectedVal);
  		}
- 		/*
- 		$.ajax({
- 			url:"${pageContext.request.contextPath}/member/addCompanyMemberList",
- 			type: "post",	
- 			data: {userid: selectedVal},
- 			dataType: "json",
- 			success: function() {
- 				console.log("성공");
- 			},
- 	    	error: function() {	
-				alert("addCompanyMemberList에서 에러났습니다.");
-			}
- 		});
- 		  */
- 		  /*
- 		$.ajax({
- 			url:"${pageContext.request.contextPath}/member/selectOneMember",
- 			type: "get",
- 			data: {userid: selectedVal},
- 			dataType: "json",
- 			success: function(data) {
- 				console.log("선택된 data.userid :"+data.userid);
- 				memberadded(data);
- 			},
- 	    	error: function() {	
-				alert("selectOneMember에서 에러났습니다.");
-			}
- 		});
- 		 */
  	}
  	
- 	function memberadded() {
+ 	function memberadded() { // 참가자 클릭시 참가자 등록
 		var selectedVal = $(".form-select.mb-3.addProject.selectedMember option:checked").val();
 		var addedmember = $(".form-select.mb-3.addProject.selectedMember option:checked").text();
 		var memberaddedHtml = "";
@@ -203,7 +171,6 @@
 					<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-delete align-middle me-2'><path d='M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z'></path><line x1='18' y1='9' x2='12' y2='15'></line><line x1='12' y1='9' x2='8' y2='15'></line></svg>
 				</div>
 				`;
-		/* memberListHtml += '</select>'; */
 	    $(".selected-rightPart.card").append(memberaddedHtml);
  	}
  	

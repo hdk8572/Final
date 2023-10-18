@@ -96,6 +96,7 @@
 	/* listAndHide 버튼 이미지 */
 	const minusImg = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus-circle align-middle me-2"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg>';
 	const plusImg = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle align-middle me-2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>';
+	const deleteImg = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg>'
 </script>
 <script>
 	$(document).ready(function (){
@@ -266,6 +267,7 @@
 		targetPno = $(this).children("[name=pno]").val(); // 중요하다
 		if($(e.target).hasClass("dropdown-btn-update")) {
 			goUpdateForm(targetPno);
+			updateMemberList();
 		} else if($(e.target).hasClass("dropdown-btn-hide")){
 			hideProject(targetPno, $(this));
 				
@@ -290,7 +292,6 @@
 				$("#updateProjectModal [name=pcontent]").val(result.pcontent);
 				$("#updateProjectModal [name=pstartdate]").val(result.pstartdate);
 				$("#updateProjectModal [name=penddate]").val(result.penddate);
-				$("#updateProjectModal [name=mname]").text(result.mname);
 				$('#updateProjectModal select[name=addpstatus]').val(result.pstatus).attr("selected",true);
 		 	},
 		 	error:function(){

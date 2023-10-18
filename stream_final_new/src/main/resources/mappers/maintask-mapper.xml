@@ -70,13 +70,22 @@
 		WHERE CCODE = (SELECT CCODE FROM USERS WHERE USERID = #{userid})
 	</select>
 	
+	<!-- 프로젝트의 현재 참가자 조회 -->
+	<select id="currentMemberList" resultType="MemberSimpleVo">
+		SELECT PNO, USERID, MNAME, MRANK
+		FROM MEMBER_PROJECT
+		    JOIN USERS USING(USERID)
+		WHERE pno = #{pno}
+	</select>
+
 	<!-- 회사 참가자 1명 조회 - 황대경 -->
+	<!--  
 	<select id="companyMemberOne" resultType="MemberSimpleVo">
 		SELECT USERID, MNAME, MRANK
         FROM USERS
         WHERE USERID = #{userid}
 	</select>
-	
+	-->
 	<!-- 하위업무 추가시 담당자 리스트용. -->
 	<select id="memberProjectselectOne" resultType="MemberSimpleVo">
 		select userid, mname
