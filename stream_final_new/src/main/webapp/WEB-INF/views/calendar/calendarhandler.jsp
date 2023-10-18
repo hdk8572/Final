@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <!-- 달력을 구성  -->
 <script>
+let calendar;  // 풀캘린더 객체 전체 
+let eventClick_defId = 0; // 풀캘린더 클린된 event의 고유 id
+
 function loadCalendarHandler() {
 	const calendarEl = document.getElementById('calendar'); //calender라는 id를 가진 요소를 찾아 calendarEl 변수에 할당한다. 이건 fullcalendar를 표시할 컨테이너이다.
 	
@@ -25,7 +28,7 @@ function loadCalendarHandler() {
 	});
 	
 	function makeFullCalendar ( eventsDataArr ){	//makeFullCalendar 이 함수는 ajax 요청에서 받은 이벤트 데이터 배열 eventDataArr을 인자로 받는다.
-		var calendar = new FullCalendar.Calendar(calendarEl, {
+		calendar = new FullCalendar.Calendar(calendarEl, {
 			height: '900px',  // 캘린더 칸 높이 설정(이거 안하고 more 코드 작성하면 칸 크기가 중구난방임)
 	        expandRows: true, // 화면에 맞게 높이 재설정
 			headerToolbar : { // 헤더에 표시할 툴 바
@@ -85,8 +88,10 @@ function loadCalendarHandler() {
 				$("#readcalmodal.modal  #attenduseridList").html(htmlval); //여기서 sno가 들어옴
 				
 				//TODO 찍어봐라
-				console.log("info.event.id!!!!!!!");
-				console.log(info.event.id);
+				console.log("info.event 구분짓는 id는 defId !!!!!!!");
+				console.log(info.event.id);  //아무값도 없음.
+				console.log(info.event._def.defId);
+				eventClick_defId = info.event._def.defId;   // 전역변수 eventClick_defId에 캘린더의 고유 id를 저장해두고.. 수정이나 삭제시 적용
 				
 				//캘린더 api에 있는 거 말고 내가 추가한 것들은 extendedProps를 써줘야 한다.(api)
 				

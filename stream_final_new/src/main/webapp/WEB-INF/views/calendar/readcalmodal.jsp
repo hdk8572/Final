@@ -88,6 +88,12 @@
 					}else{
 						alert('일정 삭제에 실패했습니다.');
 					}
+					if(eventClick_defId != 0){  // eventClick시 클릭된 event를 찾아서 삭제
+						calendar.getEvents().forEach(function(evt) {
+				            if (evt._def.defId == eventClick_defId) evt.remove();
+				      });
+					}
+					// 모달창 닫기
 				},
 				error: function() {
 					alert('서버와의 통신 중 오류가 발생했습니다.');

@@ -96,7 +96,6 @@
 	});
 </script>
 
-<!-- 왕 슬픔  -->
 <script>
 	$('#updatecalmodal #updBtn').on("click", function(){
 		console.log($("#frm-updatecal").serialize());
@@ -126,50 +125,6 @@
 		});
 	})
 </script>
-<!-- <script>
-	$('#updatecalmodal #updBtn').on("click", function updatepcal(){
-		var sno = $('#sno').val(); //val
-		var title = $('#title').text();
-		var start = $('#start').val();
-		var end = $('#end').val();
-		var smemo = $('#smemo').text();
-		console.log(sno);
-		console.log(title);
-		console.log(start);
-		console.log(end);
-		console.log(smemo);
-		
-		//ajax 요청을 보낸다.
-		$.ajax({
-			url: "${pageContext.request.contextPath}/member/updatepcal", //수정 엔드포인트이다
-			type: 'POST',
-			data: {
-				sno: sno,
-				title: title,
-				start: start,
-				end: end,
-				smemo:smemo
-			},
-			
-			success: function(response){
-				//수정이 성공하면 실행될 코드
-				if(response === 1) {
-					//수정이 성공했을 때
-					alert('일정이 수정되었습니다.');
-				}else{
-					alert('일정 수정에 실패했습니다.')
-					console.log("updatepcal22에서 오류 발생");
-				}
-			},
-			error : function(request, status, error){
-				console.log(request);
-				console.log(status);
-				console.log(error);
-				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-				}
-		});
-	})
-</script> -->
 
 <!-- 지도 api -->
 <script>
