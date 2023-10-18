@@ -60,6 +60,8 @@ public class ChatController {
 		mv.addObject("viewChat", service.ViewChat(roomId));
 		mv.addObject("name", service.findWriter(userId));
 		mv.setViewName("chatting/room");
+		System.out.println(service.findWriter(userId)+"확인");
+		
 		return mv;
 	}
 

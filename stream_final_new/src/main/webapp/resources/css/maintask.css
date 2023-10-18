@@ -51,7 +51,6 @@ div.jm-box-project-title{
 	z-index: -5;
 }
 .jm-grey{
-	
 	border-left: solid #D3D3D3 1px;
 	border-bottom: solid #D3D3D3 1px;
 	border-top: solid #D3D3D3 1px;
@@ -149,4 +148,12 @@ div.jm-task-title{
 .projectNo>div{
 	height: 40px;
 	background-color: #E8E8E8;
+}
+.jm-date-input-layer{
+	min-width:inherit;
+	width: 114px;
+	padding: 0;
+}
+.jm-input-length{
+	width: 80%
 }
