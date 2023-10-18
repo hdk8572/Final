@@ -8,44 +8,49 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="${pageContext.request.contextPath}/css/chat.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-<style>
-.alert-secondary{
-	color: green;
-}
-.alert-warning{
-	color: pink;
-}
-
-</style>
-
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-
-	<div class="container">
+<body style="margin: 0px">
+	<div class="container" style="margin :0px; height: 630px">
 		<div class="col-6">
-			<h1>${room.roomName}</h1>
+			<div class="col-7"><b>stream</b> [${room.roomName}]</div>
 		</div>
-		<div>
-			<div id="msgArea" class="col-6" >
-						<c:forEach items="${viewChat}" var="item">
+		<div class='chatscroll'>
+			<div id="msgArea" class="col-6">
+
+				<c:forEach items="${viewChat}" var="item">
+					<c:choose>
+						<c:when test="${item.mName eq name.mName}">
 							<div class='alert alert-secondary'>
-								<b> ${item.mName}: ${item.message} </b>
+								<div class='chatbox1'>
+									<div class=namebox1>${item.mName} </div>
+									<div class=msgbox1>${item.message}</div>
+								</div>
 							</div>
-						</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<div class='alert-warning'>
+								<div class='chatbox2'>
+									<p>${item.mName} </p>
+									<div class=msgbox2>${item.message}</div>
+								</div>
+							</div>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
 			</div>
-			<div class="input-group mb-3">
-				<input type="text" id="msg" class="form-control">
-				<div class="input-group-append">
-					<button class="btn btn-outline-secondary" id="button-send">전송</button>
+		</div>
+		<div class="input-group mb-3">
+			<div class="input-group-append">
+				<textarea id="msg" class="form-control"></textarea>
+					<button class="btn btn-outline-secondary" id="button-send">전송</button>					
 				</div>
 			</div>
-		</div>
-		<div class="col-6"></div>
 	</div>
 
 	<script>
@@ -66,18 +71,24 @@
 
 				stomp.subscribe("/sub/chat/room/" + roomId, function(chat) {
 					var content = JSON.parse(chat.body);
-					var userId = content.userId; //name 출력하는 곳
+					var name = content.mName; //stomp에서 보내는 mName 
+					var userId = content.userId;//현재 채팅방에서 치는사람 id
 					var message = content.message;
 					var str = '';
-					
 					if (username === userId) {
 						str = "<div class='alert alert-secondary'>";
-						str += "<b>" + userId + " : " + message + "</b>";
+						str += "<div class='chatbox1'>";
+						str += "<div class=namebox1>"+ userId + "</div>";
+						str += "<div class=msgbox1>" + message + "</div>"
+						str += "</div>";
 						str += "</div>";
 						$("#msgArea").append(str);
 					} else {
 						str += "<div class='alert alert-warning'>";
-						str += "<b>" + userId + " : " + message + "</b>";
+						str += "<div class='chatbox2'>";
+						str += "<p>"+ userId + "</p>";
+						str += "<div class=msgbox2>" + message + "</div>"
+						str += "</div>";
 						str += "</div>";
 						$("#msgArea").append(str);
 					}
@@ -88,7 +99,7 @@
 					stomp.send('/pub/chat/message', {}, JSON.stringify({
 						roomId : roomId,
 						message : msg.value,
-						userId : username
+						userId : username,
 					}));
 					msg.value = '';
 				});

@@ -1,7 +1,11 @@
 package kh.groupware.stream.chat.controller;
 
+import java.lang.ProcessBuilder.Redirect;
+import java.net.http.HttpRequest;
 import java.security.Principal;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -66,14 +70,19 @@ public class ChatController {
 	}
 
 	@PostMapping(value = "/member/room")
-	public String create(@RequestParam String roomName, @RequestParam String member, Principal principal,
-			RedirectAttributes rttr) {
+	public String create(@RequestParam String roomName, @RequestParam String[] member, Principal principal,
+			RedirectAttributes rttr,HttpServletRequest request) {
 //	    	log.info("# Create Chat Room, roomName: " + roomName + ", userId: " + userId);
 		String userId = principal.getName();
-		service.AddChatRoom(roomName, userId);
-		service.memberInsert(member);
+		String[] sizes = request.getParameterValues("member");
+		if(sizes != null) {
+			for(String size : sizes) {
+				service.memberInsert(size); 
+				service.AddChatRoom(roomName, size);
+			}
+		}
 		rttr.addFlashAttribute("roomName1", roomName);
-		rttr.addFlashAttribute("member", member);
+		rttr.addFlashAttribute("member", sizes);	
 		return "redirect:/member/rooms";
 	}
 
