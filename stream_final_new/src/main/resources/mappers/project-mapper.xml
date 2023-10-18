@@ -73,9 +73,14 @@
 	</select>
 	-->
 	 
-	<insert id="insertList" parameterType="ProjectVo">
-		INSERT INTO PROJECT (PNO, USERID, PNAME, PCONTENT, PACCESS, PSTARTDATE, PENDDATE, PSTATUS)
-		VALUES (project_sequence.NEXTVAL, #{userid}, #{pname}, #{pcontent}, #{paccess}, #{pstartdate}, #{penddate}, #{pstatus})
+	<insert id="insertList" parameterType="ProjectInsertParamVo">
+		INSERT ALL 
+			INTO PROJECT (PNO, USERID, PNAME, PCONTENT, PACCESS, PSTARTDATE, PENDDATE, PSTATUS)
+			VALUES (project_sequence.NEXTVAL, #{userid}, #{pname}, #{pcontent}, #{paccess}, #{pstartdate}, #{penddate}, #{pstatus})
+		  <foreach collection="memberProjectArr" item="memberuserid">
+			INTO MEMBER_PROJECT(PNO, USERID)		values (project_sequence.NEXTVAL, #{memberuserid} )
+		  </foreach>
+		SELECT * FROM DUAL
 	</insert>
 	 
 	<delete id="deleteList" parameterType="ProjectVo">
@@ -101,6 +106,10 @@
 	            ) jj using(pno)) on (userid = pmember)
 	    where PSTATUS IN ('미진행', '진행', '보류')
 		AND PNAME LIKE '%' || #{keyword} || '%'
+	</select>
+	
+	<select id="selectMname" resultType="MemberSimpleVo">
+		select userid, mname, ccode from users where userid=#{userid}
 	</select>
 	
 </mapper>

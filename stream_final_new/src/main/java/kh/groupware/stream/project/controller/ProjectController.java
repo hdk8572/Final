@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kh.groupware.stream.main.model.service.MaintaskService;
+import kh.groupware.stream.member.model.vo.MemberSimpleVo;
 import kh.groupware.stream.project.model.service.ProjectService;
 import kh.groupware.stream.project.model.vo.PnoPrincipalParam;
+import kh.groupware.stream.project.model.vo.ProjectInsertParamVo;
 import kh.groupware.stream.project.model.vo.ProjectVo;
 import lombok.experimental.PackagePrivate;
 
@@ -25,6 +28,9 @@ public class ProjectController {
 
 	@Autowired
 	private ProjectService projectService;
+	
+	@Autowired
+	private MaintaskService maintastService;
 
 	@GetMapping("/member/projectlist")
 	public String main() {
@@ -47,6 +53,7 @@ public class ProjectController {
 		System.out.println("loadList 돌았습니다");
 		session.setAttribute("projectPname", pname);
 		String userid = principal.getName();
+		//MemberSimpleVo mvo = maintastService.findMname(userid);
 		List<ProjectVo> list = projectService.selectList(userid);
 		return list;
 	}
@@ -62,9 +69,9 @@ public class ProjectController {
 
 	@PostMapping("/member/projectInsert")
 	@ResponseBody
-	public List<ProjectVo> insert(ProjectVo vo, Principal principal) {
-		String userid = principal.getName();
-		List<ProjectVo> add = projectService.insertList(vo, userid);
+	public List<ProjectVo> insert(ProjectInsertParamVo vo) {
+		//String userid = principal.getName();
+		List<ProjectVo> add = projectService.insertList(vo);
 		return add;
 	}
 
@@ -103,4 +110,26 @@ public class ProjectController {
 		pvo.setKeyword(keyword);
 		return projectService.searchProjectList(pvo, keyword);
 	}
+	
+	// 회사 멤버 전체 조회
+	@GetMapping("/member/getCompanyMemberList")
+	@ResponseBody
+	public List<MemberSimpleVo> getCompanyMemberList(String userid) {
+		return maintastService.companyMemberList(userid);
+	}
+	
+	// 회사 멤버 1명 조회
+	@GetMapping("/member/selectOneMember")
+	@ResponseBody
+	public MemberSimpleVo selectOneMember(String userid) {
+		return maintastService.selectOneMember(userid);
+	}
+	
+	// 회사 멤버 선택 시 추가
+//	@GetMapping("/member/addCompanyMemberList")
+//	@ResponseBody
+//	public  getCompanyMemberList(String userid) {
+//		
+//	}
+//	
 }

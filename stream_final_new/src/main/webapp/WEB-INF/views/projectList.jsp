@@ -51,7 +51,7 @@
 				<div class="container-fluid p-0">
 
 					<h1 class="h3 mb-3">
-						<span>${principal.username}님의 프로젝트 목록</span>
+						<span>${aa.ccode}님의 프로젝트 목록</span>
 						<!-- <form>
 							<div class="search">
 								<input name="keyword" type="text" placeholder="검색어를 입력해주세요.">
@@ -186,30 +186,30 @@
 	    
 	        `;
 	    for(var i=0;i<data.length;i++){
-			var ul = data[i];
+			var projectOne = data[i];
 			listHtml+=`
-	        	<div class="col-sm-6 list-card" data-pno="\${ul.pno}" >
+	        	<div class="col-sm-6 list-card" data-pno="\${projectOne.pno}" >
 		            <div class="card">
 		                <form class="frm select" action="${pageContext.request.contextPath}/member/ptasklist" method="get">
-		                    <input type="hidden" name="pno"  value="\${ul.pno}">
+		                    <input type="hidden" name="pno"  value="\${projectOne.pno}">
 		                    <div class="card-body list">
 	                    </form>
 	                        <div class="row">
 	                            <div class="col mt-0">
 	                                <h5 class="card-title">
-	                                    <span>\${ul.deptName}</span>: <span>\${ul.mname}</span><span> \${ul.mrank}</span>님
+	                                    <span>\${projectOne.deptName}</span>: <span>\${projectOne.mname}</span><span> \${projectOne.mrank}</span>님
 	                                </h5>
 	                            </div>
 	                            
 	                            <div class="col-auto">
 	                                <div class="stat text-primary">
-	                                    \${ul.prow}
+	                                    \${projectOne.prow}
 	                                </div>	
 	                            </div>
 	                        </div>
-	                        <h1 class="mt-1 mb-3" data-pname="\${ul.pname}">\${ul.pname}</h1>
+	                        <h1 class="mt-1 mb-3" data-pname="\${projectOne.pname}">\${projectOne.pname}</h1>
 	                        <div class="mb-0" >
-	                            <span class="text-muted" data-pstatus="\${ul.pstatus}">\${ul.pstatus}</span>
+	                            <span class="text-muted" data-pstatus="\${projectOne.pstatus}">\${projectOne.pstatus}</span>
 								<div class="dropdown-option" >
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
 			                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"

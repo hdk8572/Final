@@ -2,12 +2,22 @@ package kh.groupware.stream.member.model.vo;
 
 //참석자의 간단한 정보를 나타내는 클래스이다.
 public class MemberSimpleVo {
+
 	private String userid;
 	private String mname;
+	private String mrank;
+
 	@Override
 	public String toString() {
-		return "MemberSimpleVo [userid=" + userid + ", mname=" + mname + "]";
+		return "MemberSimpleVo [userid=" + userid + ", mname=" + mname + ", mrank=" + mrank + "]";
 	}
+
+	public MemberSimpleVo(String userid, String mname) {
+		super();
+		this.userid = userid;
+		this.mname = mname;
+	}
+
 	public String getUserid() {
 		return userid;
 	}
@@ -21,5 +31,12 @@ public class MemberSimpleVo {
 		this.mname = mname;
 	}
 
+	public String getMrank() {
+		return mrank;
+	}
+
+	public void setMrank(String mrank) {
+		this.mrank = mrank;
+	}
 	
 }

@@ -58,8 +58,23 @@
    			where BRESTEP > (SELECT BRESTEP FROM task WHERE tno = #{tno})
         	and BREF = (select bref from task where tno = #{tno})
 	</update>
+	
 	<select id="selectMname" resultType="MemberSimpleVo">
 		select userid, mname from users where userid=#{userid}
+	</select>
+	
+	
+	<!-- 회사 참가자 전체 조회 - 황대경 -->
+	<select id="companyMemberList" resultType="MemberSimpleVo">
+		SELECT USERID, MNAME, MRANK FROM USERS
+		WHERE CCODE = (SELECT CCODE FROM USERS WHERE USERID = #{userid})
+	</select>
+	
+	<!-- 회사 참가자 1명 조회 - 황대경 -->
+	<select id="companyMemberOne" resultType="MemberSimpleVo">
+		SELECT USERID, MNAME, MRANK
+        FROM USERS
+        WHERE USERID = #{userid}
 	</select>
 	
 	<!-- 하위업무 추가시 담당자 리스트용. -->

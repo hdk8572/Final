@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kh.groupware.stream.project.model.vo.PnoPrincipalParam;
+import kh.groupware.stream.project.model.vo.ProjectInsertParamVo;
 import kh.groupware.stream.project.model.vo.ProjectVo;
 
 @Repository
@@ -38,7 +39,7 @@ public class ProjectDao {
 		return sqlSession.selectOne("project.sessionPname", pno);
 	}
 	
-	public int insertList(ProjectVo vo) {
+	public int insertList(ProjectInsertParamVo vo) {
 		return sqlSession.insert("project.insertList", vo);
 	}
 	

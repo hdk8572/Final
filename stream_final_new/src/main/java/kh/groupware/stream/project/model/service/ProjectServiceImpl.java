@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kh.groupware.stream.project.model.dao.ProjectDao;
 import kh.groupware.stream.project.model.vo.PnoPrincipalParam;
+import kh.groupware.stream.project.model.vo.ProjectInsertParamVo;
 import kh.groupware.stream.project.model.vo.ProjectVo;
 import kh.groupware.stream.ptask.model.dao.PtaskDao;
 
@@ -51,10 +52,10 @@ public class ProjectServiceImpl implements ProjectService {
 	
 	@Override
 	@Transactional
-    public List<ProjectVo> insertList(ProjectVo vo, String userid) {
+    public List<ProjectVo> insertList(ProjectInsertParamVo vo) {
         int result = projectDao.insertList(vo);
         if (result > 0) {
-            return projectDao.selectList(userid); // DB에 삽입 후 리스트를 다시 조회하여 반환합니다.
+            return projectDao.selectList(vo.getUserid()); // DB에 삽입 후 리스트를 다시 조회하여 반환합니다.
         } else {
         	return null;
         }

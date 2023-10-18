@@ -12,6 +12,10 @@
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+.form-select.member {
+	margin-bottom: 1rem !important;
+}
+
 /* Modal Content/Box */
 .modal-content {
   background-color: #f5f7fb;
@@ -217,6 +221,32 @@
 	
 }
 
+.wrap-selected {
+	display: flex;
+}
+
+.selected-leftPart {
+	width: 30%;
+}
+
+.selected-rightPart {
+    width: 70%;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.selected-rightPart.card {
+	background-color: #f5f7fb;
+}
+
+.comanyMember {
+	height: 30px;
+    line-height: 30px;
+}
+
+.comanyMember > span {
+	margin-left: 1rem;
+}
 
 /* updateProjectModal */
 
