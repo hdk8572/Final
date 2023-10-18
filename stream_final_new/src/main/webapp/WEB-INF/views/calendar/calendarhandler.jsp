@@ -10,7 +10,7 @@ function loadCalendarHandler() {
 	$.ajax({
 		//동기 async : false, 
 		url: '${pageContext.request.contextPath}/member/pcalselectlist'	
-		,data: { startdate : '2023-09-12', pno: '${pno}', userid:'${principal.username}'} 
+		,data: { startdate : '2023-09-12', pno: '${pno}', userid:'${principal.username}' ,sno: '${sno}'}//sno 안들고옴 
 		,dataType : "json"
 		,success: function(result){	//요청이 성공적으로 완료될 때 실행할 콜백 함수를 정의
 				 console.log(result);  // result == event Data Arr //서버에서 반환된 데이터를 담고 있는 매개변수이다.
@@ -85,6 +85,7 @@ function loadCalendarHandler() {
 				console.log("info.event.id!!!!!!!");
 				console.log(info.event.id);
 				
+				$("#readcalmodal.modal  #sno").val(info.event.sno);
 				$("#readcalmodal.modal  #title").html(info.event.title); //띄우려는 모달이랑 이름 맞춰야한다.
 				$("#readcalmodal.modal  #userid").html(info.event.extendedProps.userid); //extendedProps -> api에서 가져옴, 값을 띄우는 걸 도와줌
 				$("#readcalmodal.modal  #start").html(info.event.startStr);
@@ -92,7 +93,9 @@ function loadCalendarHandler() {
 				$("#readcalmodal.modal  #smemo").html(info.event.extendedProps.smemo);
 				$("#readcalmodal.modal  #splace").html(info.event.extendedProps.splace);
 				$("#readcalmodal").modal("toggle"); 
-				
+				console.log(sno);
+				var abc = $('#sno').val();//찍어봐라
+				console.log(abc);
 				readshowMap(); //일정상세 지도
 			}
 		});
