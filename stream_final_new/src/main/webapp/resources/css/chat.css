@@ -1,0 +1,102 @@
+@charset "UTF-8";
+.col-6{
+	margin: 0px;
+	height: 70px;	
+}
+.col-7{
+	background-color: #049e5e;
+	height: 70px;
+	font-size: 1.3em;
+	padding: 18px;
+	color: white;
+}
+.input-group{
+	background-color: #f5f7fb;
+}
+.input-group-append{
+	position: relative;
+    display: inline-block;
+}
+.input-group-append textarea{
+	margin:9px;
+    height: 80px;
+    width: 424px;
+    border: 1px solid #aeafb3;
+    border-radius: 7px;
+    resize: none;
+}
+.btn-outline-secondary{
+	position: absolute;
+    right: 0;
+    top: 0;
+    height: 67px;
+    margin: 18px 16px;
+    width: 70px;
+    background-color: #049e5e;
+    border: 1px solid #049e5e;
+    color: white;
+    border-radius: 8px;
+}
+.avatar{
+	width: 40px;
+	top:10px;
+	position: relative;
+	margin: 0 5px;
+}
+.namebox1{
+	font-size:0.8em;
+	color: black;
+	float: right;
+	padding:  0 0 0 358px;
+}
+.namebox2{
+	font-size:0.8em;
+	color: black;
+	float: left; 
+	padding:  0 359px 0 0px;
+}
+p{
+	margin: 0px;
+	font-size: 0.8em;
+}
+.alert-secondary{
+	float: right;
+	width: 100%;
+}
+.alert-warning{
+	float : left;
+	width: 100%;
+	margin: 8px;
+}
+.msgbox1{
+	float: right;
+	position: relative;
+	max-width: calc(100% - 64px);
+	background-color: #049e5e;
+	color:white;
+	border-radius: 3px;
+	margin: 2px 10px;
+	padding: 10px;
+}
+.msgbox2{
+	float: left;
+	position: relative;
+	max-width: calc(100% - 64px);
+	background-color:white;
+	color:black;
+	border-radius: 3px;
+	margin: 2px 10px;
+	padding: 10px;
+	border: solid 1px #dce3f1;
+}
+.namebox{
+	font-size:0.8em;
+	float: right;
+	position: relative;
+}
+.chatscroll{
+	height: 470px; 
+	overflow-y: scroll;
+	overflow-x: hidden;
+	background-color: #f5f7fb;
+}

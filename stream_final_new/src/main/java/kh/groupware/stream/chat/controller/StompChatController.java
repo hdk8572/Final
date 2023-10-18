@@ -24,9 +24,9 @@ public class StompChatController {
     //"/pub/chat/enter"
     @MessageMapping(value = "/chat/enter")//서버에서 보내주는 컨트롤러
     public void enter(ChatMessageVo message,Principal principal) {
-    	message.setMessage( "님이 채팅방에 참여하였습니다.");
     	String userId = principal.getName();
-    	chatDao.findWriter(userId).getmName();//해당 세션의 username
+    	message.setMessage(chatDao.findWriter(userId).getmName() +"님이 채팅방에 참여하였습니다.");
+    	message.setmName(chatDao.findWriter(userId).getmName());
         template.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
         System.out.println(chatDao.findWriter(userId).getmName()+"username확인");
         System.out.println(message);

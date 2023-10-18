@@ -33,9 +33,11 @@ WHERE (m.roomid, m.cdate) IN (
 )
 	</select> -->
 	<select id="findAllRooms" resultMap="chatRoomMap">
-<!-- 	SELECT * FROM CHATMEMBER JOIN CHATROOM USING(ROOMID)
-WHERE chatmember.userid=#{userId} OR CHATROOM.USERID=#{userId} -->
-	select * from chatroom
+SELECT DISTINCT *
+FROM CHATMEMBER
+JOIN CHATROOM USING(ROOMID)
+WHERE chatmember.userid=#{userId}
+	<!-- select * from chatroom -->
 	</select>
 	<select id="findRooms" resultMap="chatRoomMap">
 		SELECT * FROM CHATROOM WHERE USERID=#{userId}
@@ -56,7 +58,7 @@ SELECT (SELECT MAX(ROOMid) FROM chatROOM)AS ROOMID, #{userId} FROM DUAL
 	
 	<!-- 메세지 입력시 db저장 -->
 	<insert id="messageInsert" parameterType="ChatMessageVo">
-		INSERT INTO CHATMESSAGE (USERID,MESSAGE,ROOMID,cDate) VALUES (#{userId},#{message},#{roomId},SYSTIMESTAMP)
+		INSERT INTO CHATMESSAGE (USERID,MESSAGE,ROOMID,cDate,mName) VALUES (#{userId},#{message},#{roomId},SYSTIMESTAMP,(SELECT MNAME FROM USERS WHERE USERID=#{userId}))
 	</insert>
 	
 	<!-- 해당 채팅방에서의 대화 내용 보기 -->
@@ -66,7 +68,7 @@ SELECT (SELECT MAX(ROOMid) FROM chatROOM)AS ROOMID, #{userId} FROM DUAL
 	
 	<!-- 대화 내역 보기 -->
 	<select id="viewChat" resultMap="chatMessageMap">
-		select ROOMID,MNAME,MESSAGE,CDATE from CHATMESSAGE join users USING(userId) WHERE ROOMID = #{roomId} ORDER BY CDATE ASC
+		select ROOMID,USERID,C.MNAME,MESSAGE,CDATE from CHATMESSAGE C join users USING(userId) WHERE ROOMID = #{roomId} ORDER BY CDATE ASC
 	</select>
 	
 	<!-- 대화상대 리스트 -->
