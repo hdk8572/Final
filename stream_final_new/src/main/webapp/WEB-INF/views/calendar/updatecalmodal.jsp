@@ -16,9 +16,9 @@
 						<form action="${pageContext.request.contextPath}/member/updatepcal" method="post">
 							<!-- 일정번호 프로젝트번호 -->
 							<!-- url 때문에 pno필요함 -->
-							<input type="hidden" name="pno" value="${pno}">
+				<%-- 			<input type="hidden" name="pno" value="${pno}"> --%>
 							<!-- TODO 일정번호 -->
-							<input type="hidden" id="sno" name="sno" value="${result.sno}"><!-- 오 -->
+							<input type="hidden" id="sno" name="sno" value="${sno}"><!-- 오 -->
 							
 							<!-- 제목 -->
 							<input type="text" class="form-control title" id="title" name="title" id="form-content" placeholder="제목을 입력하세요.">
@@ -74,7 +74,7 @@
 <!-- 일정 상세 정보 가져오기  -->
 <script>
 	$('#updBtn').on("click", function() {
-		var selectedUpdateTitle = $("#readcalmodal #sno").val(); //수정 모달의 sno값을 읽어온다
+		var selectedUpdateSno= $("#readcalmodal #sno").text(); //수정 모달의 sno값을 읽어온다
 		var selectedUpdateTitle = $("#readcalmodal #title").text();
 		var selectedUpdateStart = $("#readcalmodal #start").text();
 		var selectedUpdateEnd = $("#readcalmodal #end").text();
@@ -82,8 +82,8 @@
 		/* var selectedUpdateUserid = $("#readcalmodal #attenduseridList").text(); */
 		var selectedUpdateSplace = $("#readcalmodal #splace").text();
 		var selectedUpdateSmemo = $("#readcalmodal #smemo").text();
-		
-		$("#updatecalmodal input[name= 'sno']").val(selectedUpdateTitle);
+		console.log(selectedUpdateSno);
+		$("#updatecalmodal input[name= 'sno']").val(selectedUpdateSno);
 		$("#updatecalmodal input[name='title']").val(selectedUpdateTitle);
 		$("#updatecalmodal input[name='start']").val(selectedUpdateStart);
 		$("#updatecalmodal input[name='end']").val(selectedUpdateEnd);

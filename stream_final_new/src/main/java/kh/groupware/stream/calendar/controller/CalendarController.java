@@ -69,7 +69,8 @@ public class CalendarController {
 	public String calSelectOne(Model model, String sno) { 
 		CalendarVo cal = calendarService.selectOne(sno);
 		model.addAttribute("cal", cal);
-		return "calendar"; //화면에 뿌릴 것을 return해야함
+		System.out.println("dddd :" + sno);
+		return new Gson().toJson(cal); //화면에 뿌릴 것을 return해야함
 	}
 	
 	//작성자도 포함

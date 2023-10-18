@@ -280,6 +280,7 @@ WHERE chatmember.userid='mplsam@kh.co.kr';
 
 SELECT *
 FROM chatroom;
+del
 JOIN chatmember USING(roomid)
 WHERE chatmember.userid='mplsam@kh.co.kr' OR chatroom.USERID='mplsam@kh.co.kr';
 SELECT MAX(ROOMid) ROOMid FROM chatROOM;
@@ -299,8 +300,15 @@ SELECT (SELECT MAX(ROOMid) FROM chatROOM), 'spam@kh.co.kr' FROM DUAL
 UNION ALL
 SELECT (SELECT MAX(ROOMid) FROM chatROOM), 'mplsam@kh.co.kr' FROM DUAL;
 
+DELETE FROM CHATROOM;
+DELETE FROM chatmember;
+DELETE FROM chatmessage;
 
-SELECT *FROM CHATROOM;
+
+
+
+SELECT *FROM chatmessage;
+select * from chatroom;
 select * from chatmember;
 select * from chatmessage;
 
