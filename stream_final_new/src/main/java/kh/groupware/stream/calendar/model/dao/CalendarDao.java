@@ -44,8 +44,8 @@ public class CalendarDao {
 	}
 	
 	//캘린더 수정
-	public int update(String sno) {
-		return sqlSession.update("calendar.update", sno);
+	public int update(CalendarVo cal) {
+		return sqlSession.update("calendar.update", cal);
 	}
 	
 	//캘린더 삭제

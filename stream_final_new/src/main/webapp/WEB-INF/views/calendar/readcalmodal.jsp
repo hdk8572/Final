@@ -21,10 +21,10 @@
 							<div id="userid"></div>
 							<div class="read-dropdown-grop">
 								<div class="btn-dropdown-toggle" id="read-dropdown" data-bs-toggle="dropdown">
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical me-2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+									<svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical me-2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
 								</div>
 								<ul class="dropdown-menu" id="read-dropdown-menu">
-									     <li><a class="dropdown-item" href="#" id="updBtn" data-bs-toggle="modal" data-bs-target="#updatecalmodal">수정</a></li>
+									     <li><a class="dropdown-item" href="#" id="readupdBtn" data-bs-toggle="modal" data-bs-target="#updatecalmodal">수정</a></li>
 									<li><a class="dropdown-item" id="dltBtn" href="#"> 삭제</a></li>
 								</ul>
 					  		</div>
@@ -36,11 +36,14 @@
 								<!-- 날짜 -->
 								<div class="d-flex align-items-center" id="form-date-readsvg">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar align-middle me-2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-									<div class="form-read-date" id="start"></div>  <div class="form-read-date" id="end"></div>
+									<div class="form-read date" id="start"></div>  <div class="form-read date" id="end"></div>
 								</div>
 								
 								<!-- 참석자  -->
-								<div id="attenduseridList"></div>
+								<div class="d-flex align-items-center" class="form-read">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r= "4"></circle></svg>
+									<div  id="attenduseridList"></div>
+								</div>
 								
 								<!-- 지도 -->
 								<div class="d-flex align-items-center">

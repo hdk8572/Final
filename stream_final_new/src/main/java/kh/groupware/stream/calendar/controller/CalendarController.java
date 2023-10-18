@@ -69,7 +69,6 @@ public class CalendarController {
 	public String calSelectOne(Model model, String sno) { 
 		CalendarVo cal = calendarService.selectOne(sno);
 		model.addAttribute("cal", cal);
-		System.out.println("dddd :" + sno);
 		return new Gson().toJson(cal); //화면에 뿌릴 것을 return해야함
 	}
 	
@@ -120,8 +119,9 @@ public class CalendarController {
 	//캘린더 수정
 	@PostMapping("/member/updatepcal")
 	@ResponseBody
-	public int update(Model model, String sno) {
-		int result = calendarService.update(sno);
+	public int update(CalendarVo cal) {
+		int result = calendarService.update(cal);
+		System.out.println("ffff :" + cal);
 		return result;
 	}
 
