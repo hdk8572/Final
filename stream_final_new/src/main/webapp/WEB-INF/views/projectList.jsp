@@ -51,7 +51,7 @@
 				<div class="container-fluid p-0">
 
 					<h1 class="h3 mb-3">
-						<span>${aa.ccode}님의 프로젝트 목록</span>
+						<span id="userName">${aa.ccode}님의 프로젝트 목록</span>
 						<!-- <form>
 							<div class="search">
 								<input name="keyword" type="text" placeholder="검색어를 입력해주세요.">
@@ -64,7 +64,7 @@
 					</h1>
 
 					<%@ include file="/WEB-INF/views/addProjectModal.jsp"%>
-					<%@ include file="/WEB-INF/views/updateProjectModal.jsp"%>
+					<%@ include file="/WEB-INF/views/updateProjectModal2.jsp"%>
 
 					<div class="row">
 						<div class="col-xl-6 col-xxl-5 d-flex">
@@ -83,7 +83,6 @@
 </body>
 
 <!-------------------- Script ----------------------->
-<script src="${pageContext.request.contextPath}/js/stream.js"></script>
 <script src="${pageContext.request.contextPath}/js/modal.js"></script>
 <script src="${pageContext.request.contextPath}/js/app.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
@@ -203,7 +202,7 @@
 	                            
 	                            <div class="col-auto">
 	                                <div class="stat text-primary">
-	                                    \${projectOne.prow}
+	                                    \${projectOne.countMember}명
 	                                </div>	
 	                            </div>
 	                        </div>
@@ -254,14 +253,96 @@
 			type: "get",
 			data: {keyword: $("#searchProjectListHandler").val(), userid: useridJs},
 			dataType: "json",
-			success: makeView,
+			success: function(result) {
+				makeView(result);
+			},
 			error: function() {
 				console.log("검색 실패");
 			}
 		})
 	}
-	
 
+	function selectOption(e){
+		targetPno = $(this).children("[name=pno]").val(); // 중요하다
+		if($(e.target).hasClass("dropdown-btn-update")) {
+			goUpdateForm(targetPno);
+		} else if($(e.target).hasClass("dropdown-btn-hide")){
+			hideProject(targetPno, $(this));
+				
+		} else {
+			$(this).submit();
+		}
+	}
+	
+	function goUpdateForm(pno) {
+		$("#updateProjectModal").modal("toggle");
+		
+		$.ajax({
+		 	url: contextPath+"/member/projectOne",
+		 	type: "get",
+		 	data: {pno:pno, userid:useridJs},
+		 	async : false,
+		 	dataType: "json",
+		 	success: function(result){
+		 		console.log(result.pstatus);
+				$("#updateProjectModal [name=pno]").val(result.pno);
+				$("#updateProjectModal [name=pname]").val(result.pname);
+				$("#updateProjectModal [name=pcontent]").val(result.pcontent);
+				$("#updateProjectModal [name=pstartdate]").val(result.pstartdate);
+				$("#updateProjectModal [name=penddate]").val(result.penddate);
+				$("#updateProjectModal [name=mname]").text(result.mname);
+				$('#updateProjectModal select[name=addpstatus]').val(result.pstatus).attr("selected",true);
+		 	},
+		 	error:function(){
+				console.log("goUpdateForm에서 에러 발생");
+			}
+		 	
+		 });
+	}
+	
+	function doUpdateProject() {
+	 	$.ajax ({
+			url: contextPath+"/member/doUpdateProject",
+			type: "get",
+			data: $("#infoProject").serialize(),
+			success: function(result) {
+				console.log(result);
+				if(result>0){
+					if(result.pstatus == "숨김") {
+						location.href=contextPath+"/member/projectlist";
+						$thisElement.closest(".col-sm-6.list-card[data-pno]").remove();
+					} else {
+						location.href=contextPath+"/member/projectlist";
+					}
+				
+				} else {
+					alert("ek");
+				}		
+			},
+			error: function() {
+				console.log("doUpdateProject에서 오류 발생");
+			}
+		});	
+	}
+
+	function hideProject($thisElement) {
+	    //var pstatus = $thisElement.closest(".list-card").find(".text-muted").attr("data-pstatus");// 엄청 중요합니다.
+	    var pno = $thisElement;
+	    $.ajax ({
+	    	url: contextPath+"/member/doUpdateProject.direct",
+	    	type: "get",
+	    	data: {pno:pno, userid:useridJs},
+			dataType: "json",
+			success: function(result) {
+				console.log("hide 다녀왔습니다");
+				location.href=contextPath+"/member/projectlist";
+			},
+			error: function() {
+				console.log("doUpdateProject.direct에서 오류 발생");
+			}
+	    });
+	} 
+		
 	
 /*  	function listDelete($thisEle) {
  		console.log($thisEle.parents("[name=pno]").val());

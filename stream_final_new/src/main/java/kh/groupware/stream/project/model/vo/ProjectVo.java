@@ -19,6 +19,7 @@ public class ProjectVo {
 	private String pstartdate;
 	private String penddate;
 	private String prow; // 함수 Vo에 없음
+	private String countMember; // 함수 Vo에 없음
 	private String pstatus;
 	
 	private String type;
@@ -38,20 +39,20 @@ public class ProjectVo {
 // 정렬용
 	private List<MaintaskSortVo> maintaskSortList;
 
+
 	@Override
 	public String toString() {
-		return "ProjectVo [pno=" + pno + ", userid=" + userid + ", pname=" + pname + ", pcontent=" + pcontent
+		return "ProjectVo [pno=" + pno + ", userid=" + userid + ", pname=" + pname + ", pcontent=" + "CLOB"
 				+ ", paccess=" + paccess + ", pdate=" + pdate + ", pstartdate=" + pstartdate + ", penddate=" + penddate
-				+ ", prow=" + prow + ", pstatus=" + pstatus + ", type=" + type + ", keyword=" + keyword + ", deptno="
-				+ deptno + ", mname=" + mname + ", mrank=" + mrank + ", deptName=" + deptName + ", maintaskList="
-				+ maintaskList + ", memberProjectList=" + memberProjectList + ", maintaskSortList=" + maintaskSortList
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+				+ ", prow=" + prow + ", countMember=" + countMember + ", pstatus=" + pstatus + ", type=" + type
+				+ ", keyword=" + keyword + ", deptno=" + deptno + ", mname=" + mname + ", mrank=" + mrank
+				+ ", deptName=" + deptName + ", maintaskList=" + maintaskList + ", memberProjectList="
+				+ memberProjectList + ", maintaskSortList=" + maintaskSortList + "]";
 	}
 
 	public ProjectVo(String pno, String userid, String pname, String pcontent, String paccess, String pdate,
-			String pstartdate, String penddate, String prow, String pstatus, String type, String keyword, String deptno,
-			String mname, String mrank, String deptName, List<MaintaskDto> maintaskList,
+			String pstartdate, String penddate, String prow, String countMember, String pstatus, String type,
+			String keyword, String deptno, String mname, String mrank, String deptName, List<MaintaskDto> maintaskList,
 			List<MemberSimpleVo> memberProjectList, List<MaintaskSortVo> maintaskSortList) {
 		super();
 		this.pno = pno;
@@ -63,6 +64,7 @@ public class ProjectVo {
 		this.pstartdate = pstartdate;
 		this.penddate = penddate;
 		this.prow = prow;
+		this.countMember = countMember;
 		this.pstatus = pstatus;
 		this.type = type;
 		this.keyword = keyword;
@@ -74,6 +76,8 @@ public class ProjectVo {
 		this.memberProjectList = memberProjectList;
 		this.maintaskSortList = maintaskSortList;
 	}
+
+
 
 	public ProjectVo() {
 		super();
@@ -231,4 +235,12 @@ public class ProjectVo {
 		this.maintaskSortList = maintaskSortList;
 	}
 
+	public String getCountMember() {
+		return countMember;
+	}
+
+	public void setCountMember(String countMember) {
+		this.countMember = countMember;
+	}
+	
 }

@@ -1,7 +1,6 @@
+/*
 function selectOption(e){
 	targetPno = $(this).children("[name=pno]").val(); // 중요하다
-//	console.log(event.target);
-//	console.log(targetPno); 
 	if($(e.target).hasClass("dropdown-btn-update")) {
 		goUpdateForm(targetPno);
 		
@@ -12,6 +11,7 @@ function selectOption(e){
 		$(this).submit();
 	}
 }
+
 
 function goUpdateForm(pno) {
 	$("#updateProjectModal").modal("toggle");
@@ -37,6 +37,7 @@ function goUpdateForm(pno) {
 	 	
 	 });
 }
+
 
 function doUpdateProject() {
  	$.ajax ({
@@ -81,5 +82,5 @@ function hideProject($thisElement) {
     });
 } 
 
-
+*/
 
