@@ -122,6 +122,9 @@ afterInsertInputHandler=(event)=>{
 }
 
 innerTaskInputHandler=(thisElement)=>{
+
+	
+	
 	console.log("==innerTaskInputHadler==")
 	const a1 = thisElement;	//button
 	console.log(this);   // window  
@@ -213,6 +216,12 @@ ttileCheckHandler=(event)=>{
 
 
 function innerTaskaddListHandler (data) {
+
+if(jmRegExp(data) == false){
+		return;
+	} 
+
+
 //const pathname = "/" + window.location.pathname.split("/")[1] + "/";
 //const origin = window.location.origin;
 //const contextPath = origin + pathname;
