@@ -276,35 +276,29 @@
 																	<form class="addInnerTask" id="taskInputNo_${task.tno}">
 																		<div class="jm-innerTaskInput jm-hidden">
 																			<div class="jm-title-ttitle col-lg-4 jm-grey">
-																				<input type="text" placeholder="하위업무명을 입력하세요"
+																				<input type="text" class="jm-input-length" placeholder="하위업무명을 입력하세요"
 																					name="ttitle" required="required">
 																			</div>
 																			<div class="jm-title-tstatus col-lg-1 jm-grey">
-																				<span> <select
-																					class="mb-3 selectCategory ml-2 "
-																					name="tstatus">
-																						<option value="요청" class="status request"
-																							selected="selected">요청</option>
-																						<option value="진행" class="status progress">진행</option>
-																						<option value="피드백" class="status feedback">피드백</option>
-																						<option value="완료" class="status complete">완료</option>
-																						<option value="보류" class="status remain">보류</option>
+																				<select class="mb-3 selectCategory ml-2 "name="tstatus">
+																					<option value="요청" class="status request" selected="selected">요청</option>
+																					<option value="진행" class="status progress">진행</option>
+																					<option value="피드백" class="status feedback">피드백</option>
+																					<option value="완료" class="status complete">완료</option>
+																					<option value="보류" class="status remain">보류</option>
 																				</select>
-																				</span>
 																			</div>
 																			<div class="jm-title-tmember col-lg-1 jm-grey">
-																				<span>
-																					<select name="tmember" id="tmember_select_pno_${project.pno }"><!-- TMEMBERLIST ttttt -->
+																				<select name="tmember" id="tmember_select_pno_${project.pno }"><!-- TMEMBERLIST ttttt -->
 																					
-																					</select>
-																				</span>
+																				</select>
 																			</div>
 																			<div class="dropdown jm-title-tstartdate col-lg-1 jm-grey">
 																				<div data-bs-toggle="dropdown">
 																					<button class="btn btn-secondary">시작일</button>
 																				</div>
 																				<div class="mini-pop jm-date-input-layer dropdown-menu dropdown-menu-end">
-																					<input type="date" name="tstartdate">
+																					<input type="date" name="tstartdate" required="required">
 																				</div>
 																			</div>
 																			<div
@@ -313,7 +307,7 @@
 																					<button class="btn btn-secondary">마감일</button>
 																				</div>
 																				<div class="mini-pop jm-date-input-layer dropdown-menu dropdown-menu-end">
-																					<input type="date" name="tenddate">
+																					<input type="date" name="tenddate" required="required">
 																				</div>
 																			</div>
 																			<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">
@@ -325,7 +319,7 @@
 																				<input type="hidden" name="pno" value="${project.pno}">
 																				<!-- 로그인 세션 받아서 등록 -->
 																				<input type="hidden" name="userid" value="${principal.username}">
-																				<button type="button" onclick="innerTaskaddListHandler(this);">추가하기</button>
+																				<button type="button" onclick="jmRegExp(this); innerTaskaddListHandler(this)">추가하기</button>
 																			</div>
 																		</div>
 																	</form>
@@ -456,24 +450,19 @@
 												name="ttitle" required="required">
 										</div>
 										<div class="jm-title-tstatus col-lg-1 jm-grey">
-											<span> <select
-												class="form-select mb-3 selectCategory ml-2 "
-												name="tstatus">
-													<option value="요청" class="status request"
-														selected="selected">요청</option>
+											<select class="mb-3 selectCategory ml-2" name="tstatus">
+													<option value="요청" class="status request" selected="selected">요청</option>
 													<option value="진행" class="status progress">진행</option>
 													<option value="피드백" class="status feedback">피드백</option>
 													<option value="완료" class="status complete">완료</option>
 													<option value="보류" class="status remain">보류</option>
 											</select>
-											</span>
+											
 										</div>
 										<div class="jm-title-tmember col-lg-1 jm-grey">
-											<span>
 												<select name="tmember" id="tmember_select_pno_\${project.pno }"><!-- TMEMBERLIST ttttt -->
 												
 												</select>
-											</span>
 										</div>
 										<div class="dropdown jm-title-tstartdate col-lg-1 jm-grey">
 											<div data-bs-toggle="dropdown">
@@ -565,6 +554,51 @@
 				endDateInput.value = ''; //종료일 입력필드 초기화
 			}
 		} 
+	}
+</script>
+<script>
+	jmRegExp=(thisElement)=>{
+		console.log("===정규표현식===");
+		console.log(thisElement);	//추가하기 버튼
+		var eTarget1 = $(thisElement).parent();	
+		console.log(eTarget1);
+		var eTargetTtitle = $(eTarget1).siblings('.jm-title-ttitle').find('input[name=ttitle]')[0];
+		console.log(eTargetTtitle);	//	input [name=ttitle]
+		var ttitleValue = $(eTargetTtitle).val();	
+		console.log(ttitleValue);	//input 입력값
+		
+		var eTargetTstartdate = $(eTarget1).siblings('jm-tiltie-tstartdate').find('input[name=tstartdate]')[0];
+		var tstartdateValue = $(eTargetTstartdate).val();
+		console.log(tstartdateValue);
+		
+		var eTargetTenddate = $(eTarget1).siblings('jm-tiltie-tenddate').find('input[name=tenddate]')[0];
+		var tendDateValue = $(eTargetTenddate).val();
+		console.log(tendDateValue);
+		
+		var regTtitleValue = /^(?=[\s\S]{1,40}$)[a-zA-Zㅁ-ㅎ가-힣0-9!@#$%^&*()_+{}\[\]:;<>,.?~\\-\s]+$/;
+		
+		
+		if(ttitleValue==""){
+			alert("업무명을 입력해 주세요.")
+			
+			$(eTargetTtitle).focus();
+			return false;
+		}else if(!regTtitleValue.test(ttitleValue)){
+			alert("업무명은 한글 13자(띄어쓰기 포함), 영어, 숫자, 특수문자 40자(띄어쓰기 포함) 까지 입력 가능합니다.")
+			eTargetTtitle.value="";
+			$(eTargetTtitle).focus();
+			return false;
+		}
+		
+		if(!tstartdateValue){
+			alert("시작 날자를 지정해 주세요");
+			return false;
+		}
+		if(!tendDateValue){
+			alert("마감 날자를 지정해 주세요");
+			return false;
+		}
+		
 	}
 </script>
 </body>

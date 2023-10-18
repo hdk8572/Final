@@ -148,8 +148,16 @@ boxOutHandler=(event)=>{
 			console.log("영역외");
 			console.log(a1);
 			$(".jm-innerTaskInput").removeClass('row active');
+			console.log($('.addInnerTask'));
+			var size = $('.addInnerTask').length;
+			console.log(size);
+			var i = 0;
+			for(i=0;i<size;i++){
+			$('.addInnerTask')[i].reset();
+	}
 		}
 	}
+	
 }
 
 function getProjectMemberList(thisElement){
@@ -202,6 +210,7 @@ ttileCheckHandler=(event)=>{
 	var a1 = event.target;
 	console.log(a1);
 }
+
 
 function innerTaskaddListHandler (data) {
 //const pathname = "/" + window.location.pathname.split("/")[1] + "/";
@@ -267,7 +276,6 @@ console.log(project.mname);
 	for (var idx = 0; idx < project.maintaskList.length; idx++) {
 
 		const task = project.maintaskList[idx];
-		console.log(task);
 listHtml += `
 															<li class="plusplus row" id="taskNo_${task.tno}">
 																<div class="jm-title-ttitle col-lg-4 jm-grey">
@@ -306,15 +314,13 @@ listHtml += `
 																			<input type="text" placeholder="하위업무명을 입력하세요" name="ttitle" required="required">
 																		</div>
 																		<div class="jm-title-tstatus col-lg-1 jm-grey">
-																			<span>
-																				<select class= "form-select mb-3 selectCategory ml-2 " name="tstatus">
-																					<option value="요청" class="status request" selected="selected">요청</option>
-																				    <option value="진행" class="status progress">진행</option>
-																				    <option value="피드백" class="status feedback">피드백</option>
-																				    <option value="완료" class="status complete">완료</option>
-																				    <option value="보류" class="status remain">보류</option>
-																				</select>
-																			</span>
+																			<select class= "mb-3 selectCategory ml-2 " name="tstatus">
+																				<option value="요청" class="status request" selected="selected">요청</option>
+																				<option value="진행" class="status progress">진행</option>
+																				<option value="피드백" class="status feedback">피드백</option>
+																				<option value="완료" class="status complete">완료</option>
+																				<option value="보류" class="status remain">보류</option>
+																			</select>
 																		</div>
 																		<div class="jm-title-tmember col-lg-1 jm-grey">
 																			<select name="tmember" id="tmember_select_pno_${project.pno }">
@@ -345,7 +351,7 @@ listHtml += `
 																			<input type="hidden" name="tcontent" value="default">
 																			<input type="hidden" name="pno" value="${project.pno}">
 																			<input type="hidden" name="userid" value="${principal_username}"> <!-- 로그인 세션 받아서 등록 -->
-																			<button type="button" onclick="innerTaskaddListHandler()">추가하기</button>
+																			<button type="button" onclick="innerTaskaddListHandler(this)">추가하기</button>
 																		</div>
 																	</div>
 																</form>
