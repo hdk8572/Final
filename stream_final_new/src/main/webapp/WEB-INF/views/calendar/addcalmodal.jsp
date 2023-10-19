@@ -63,7 +63,7 @@
 								
 							<!-- 내용  -->
 							<div id="form-content">
-								<textarea class="form-control smemo" id="summernote-addcalmodal" rows="5" name="smemo"></textarea>
+								<textarea class="smemo" id="summernote-addcalmodal" rows="5" name="smemo"></textarea>
 						    </div>
 						    
 						    <!-- 등록 취소 버튼 -->
