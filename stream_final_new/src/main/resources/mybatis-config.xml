@@ -11,7 +11,6 @@
 		<typeAlias type="kh.groupware.stream.member.model.vo.MemberVo" alias="MemberVo"/>
 		<typeAlias type="kh.groupware.stream.member.model.vo.MyPageVo" alias="MyPageVo"/>
 		<typeAlias type="kh.groupware.stream.company.model.vo.CompanyVo" alias="CompanyVo"/>
-		<typeAlias type="kh.groupware.stream.email.model.vo.EmailVo" alias="EmailVo"/>
 		<typeAlias type="kh.groupware.stream.attend.model.vo.AttendVo" alias="AttendVo"/>
 		<typeAlias type="kh.groupware.stream.company.model.vo.DeptVo" alias="DeptVo"/>
 		
