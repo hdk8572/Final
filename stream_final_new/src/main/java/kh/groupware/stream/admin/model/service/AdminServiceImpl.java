@@ -17,7 +17,7 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	private AdminDao adminDao;
 	
-	public List<AdminVo> cnt(){
+	public AdminVo cnt(){
 		return adminDao.cnt();
 	}
 	

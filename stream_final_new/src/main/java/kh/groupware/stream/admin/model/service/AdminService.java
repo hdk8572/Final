@@ -10,6 +10,6 @@ import kh.groupware.stream.ptask.model.vo.PtaskVo;
 
 public interface AdminService {
 	
-	public List<AdminVo> cnt();
+	public AdminVo cnt();
 
 }

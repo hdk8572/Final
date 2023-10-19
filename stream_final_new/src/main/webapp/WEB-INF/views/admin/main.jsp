@@ -28,23 +28,26 @@
 		<div class="main">
 			<main class="content">
 				<h1>hello admin!</h1>
-				<c:forEach items="${CNT }" var="cnt">
+				<c:choose>
+					<c:when test="${CNT != null }">
 				<div>
 					<span>지금까지 stream 그룹웨어를 </span>
-					<span>${cnt.ccnt }</span>
+					<span>${CNT.ccnt }</span>
 					<span> 개 회사에서 이용 하고 있으며</span>
 				</div>
 				<div>
 					<span>stream을 이용하여 진행된 프로젝트는 총 </span>
-					<span>${cnt.pcnt }</span>
+					<span>${CNT.pcnt }</span>
 					<span> 개이고</span>
 				</div>
 				<div>
 					<span>진행된 업무 개수는 모두 </span>
-					<span>${cnt.tcnt }</span>
+					<span>${CNT.tcnt }</span>
 					<span> 개 입니다.</span>
 				</div>
-				</c:forEach>
+					</c:when>
+				</c:choose>
+				
 			</main>
 		</div>
 	</div>
