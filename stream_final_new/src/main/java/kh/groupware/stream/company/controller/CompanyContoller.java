@@ -72,7 +72,7 @@ public class CompanyContoller {
 			}
 		}
 		ra.addFlashAttribute("alertmsg",
-				"회사등록에 성공하였습니다. \n 회사아이디: " + cvo.getCcode() + "@stream.com \n 회사 비밀번호: 1234");
+				"회사등록에 성공하였습니다.\n회사아이디: " + cvo.getCcode() + "@stream.com\n회사 비밀번호: 1234");
 		return "redirect:/";
 	}
 
