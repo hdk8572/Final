@@ -297,9 +297,9 @@
 	}
 	
 	function detailProject() {
-		targetTno = $(this).closest("tr").find("input[name=tno]").val();
-		targetPno = $(this).closest("tr").find("input[name=pno]").val();
-		targetRno = $(this).closest("tr").find("input[name=rno]").val();
+		var targetTno = $(this).closest("tr").find("input[name=tno]").val();
+		var targetPno = $(this).closest("tr").find("input[name=pno]").val();
+		var targetRno = $(this).closest("tr").find("input[name=rno]").val();
 		$("#detailProjectModal").modal("toggle");
 		
 		$.ajax({
@@ -317,7 +317,7 @@
 		 		$(".wrap-card .tenddate").val(result.tenddate);
 		 		$(".wrap-card [name=tno]").val(result.tno);
 		 		$(".wrap-card [name=pno]").val(result.pno);
-		 		replyLoadList();
+		 		replyLoadList(targetTno);
 		 	},
 		 	error: function() {
 		 		console.log("detailProject에서 오류 발생");
