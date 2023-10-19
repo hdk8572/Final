@@ -25,8 +25,9 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 		String msg;
 		
 		if(authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_A"))) {
-			response.sendRedirect("admin/main");
 			msg = "반갑습니다. 관리자님";
+			request.getSession().setAttribute("msg", msg);
+			response.sendRedirect("admin/main");
 		}else if(authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_C"))) {
 			msg = "Stream에 성공적으로 로그인하셨습니다.";
 			request.getSession().setAttribute("msg", msg);

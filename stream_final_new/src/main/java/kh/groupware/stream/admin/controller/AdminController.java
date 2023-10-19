@@ -1,5 +1,7 @@
 package kh.groupware.stream.admin.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +18,16 @@ public class AdminController {
 	
 	
 	@GetMapping("/admin/main")
-	public String adminPage(Model model, PagingVo vo, String nowPage, String cntPerPage) {
+	public String adminPage(Model model, PagingVo vo, String nowPage, String cntPerPage, HttpSession session) {
+		
+		//지영코드 - 확인하시고 문제없으시면 이 주석 지워주세요
+		String msg = (String)session.getAttribute("msg");
+		session.removeAttribute("msg");
+		if(msg!= null) {
+			model.addAttribute("alertmsg", msg);
+		}
+		
+		
 		model.addAttribute("CNT", adminService.cnt());
 		
 		model.addAttribute("companyList", adminService.companyList());

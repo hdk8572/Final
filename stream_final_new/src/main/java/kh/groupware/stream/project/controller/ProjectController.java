@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,30 +29,38 @@ public class ProjectController {
 
 	@Autowired
 	private ProjectService projectService;
-	
+
 	@Autowired
 	private MaintaskService maintastService;
 
 	@GetMapping("/member/projectlist")
-	public String main() {
+	public String main(Model model, HttpSession session) {
+
+		// 지영코드 - 확인하시고 문제없으시면 이 주석 지워주세요
+		String msg = (String) session.getAttribute("msg");
+		session.removeAttribute("msg");
+		if (msg != null) {
+			model.addAttribute("alertmsg", msg);
+		}
+
 		System.out.println("정상적으로 돌았습니다");
 		return "projectList";
 	}
-	
+
 	@GetMapping("/member/projectOne")
 	@ResponseBody
 	public ProjectVo selectOne(PnoPrincipalParam pnoPrincipalParam) {
 		ProjectVo vo = projectService.selectOne(pnoPrincipalParam);
 		return vo;
 	}
-	 
+
 	@GetMapping("/member/loadList")
 	@ResponseBody
 	public List<ProjectVo> loadList(Principal principal, String pname, String pno, HttpSession session) {
 		System.out.println("loadList 돌았습니다");
 		session.setAttribute("projectPname", pname);
 		String userid = principal.getName();
-		//MemberSimpleVo mvo = maintastService.findMname(userid);
+		// MemberSimpleVo mvo = maintastService.findMname(userid);
 //		ProjectVo infoList = projectService.selectProjectInfo(pno);
 		List<ProjectVo> list = projectService.selectList(userid);
 		return list;
@@ -69,7 +78,7 @@ public class ProjectController {
 	@PostMapping("/member/projectInsert")
 	@ResponseBody
 	public List<ProjectVo> insert(ProjectInsertParamVo vo) {
-		//String userid = principal.getName();
+		// String userid = principal.getName();
 		List<ProjectVo> add = projectService.insertList(vo);
 		return add;
 	}
@@ -100,7 +109,7 @@ public class ProjectController {
 		int result = projectService.update(currentVo);
 		return 0;
 	}
-	
+
 	@GetMapping("/member/serachProjectList")
 	@ResponseBody
 	public List<ProjectVo> search(String keyword, String userid) {
@@ -109,7 +118,7 @@ public class ProjectController {
 		pvo.setKeyword(keyword);
 		return projectService.searchProjectList(pvo, keyword);
 	}
-	
+
 	// 회사 소속 멤버 전체 조회 (addProjectModal 클릭 시)
 	@GetMapping("/member/getCompanyMemberList")
 	@ResponseBody
@@ -123,14 +132,14 @@ public class ProjectController {
 	public List<MemberSimpleVo> currentMemberList(String pno) {
 		return maintastService.currentMemberList(pno);
 	}
-	
+
 	// 회사 멤버 1명 조회
 //	@GetMapping("/member/getCompanyMemberList")
 //	@ResponseBody
 //	public MemberSimpleVo selectOneMember(String userid) {
 //		return maintastService.selectOneMember(userid);
 //	}
-	
+
 	// 회사 멤버 선택 시 추가
 //	@GetMapping("/member/addCompanyMemberList")
 //	@ResponseBody
