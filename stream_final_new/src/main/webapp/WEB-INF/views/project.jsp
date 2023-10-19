@@ -8,11 +8,9 @@
  	<meta charset="utf-8">
 	<meta name="author" content="Stream">
 
-	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
-
 	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
 
-	<title>Stream - Final Project</title>
+<title>Stream - 업무도 흐름이다!</title>
 	
 	<!--  Calendar CSS -->
 	<link href="${pageContext.request.contextPath }/css/calreadmodal.css" rel="stylesheet">

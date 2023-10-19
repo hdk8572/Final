@@ -13,7 +13,7 @@
 	<!-- <intercept-url pattern="/login" access="!isAuthenticated()"/> <intercept-url 
 		pattern="/**" access="isAuthenticated()"/> -->
 	<!-- <intercept-url pattern="/newmember" access="isAnonymous()" /> -->
-		
+
 	<http auto-config="true" use-expressions="true">
 
 		<csrf disabled="true" />
@@ -23,6 +23,7 @@
 			access="hasRole('ROLE_M')" />
 		<intercept-url pattern="/company/**"
 			access="hasRole('ROLE_C')" />
+		<intercept-url pattern="/showmypage" access="hasAnyRole('ROLE_C', 'ROLE_M')" />
 		<intercept-url pattern="/**" access="permitAll" />
 
 

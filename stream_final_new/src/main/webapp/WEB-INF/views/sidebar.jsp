@@ -68,7 +68,7 @@
 					<li class="sidebar-item"><a class="sidebar-link"
 						href="${pageContext.request.contextPath}/company/emailsend"><i
 							class="align-middle me-2" data-feather="users"></i> <span
-							class="align-middle">직원 초대</span> </a></li>
+							class="align-middle">사원 초대</span> </a></li>
 				</c:if>
 			</c:forEach>
 		</ul>

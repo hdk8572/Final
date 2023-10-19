@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>채팅방</title>
+<title>Stream - 업무도 흐름이다!</title>
 <style>
 .jstalktheme
 {

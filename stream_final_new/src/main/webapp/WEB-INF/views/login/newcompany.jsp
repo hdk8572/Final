@@ -8,12 +8,11 @@
 <meta charset="utf-8">
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
 <link rel="canonical"
 	href="https://demo-basic.adminkit.io/pages-sign-up.html" />
 
-<title>기업 가입</title>
+<title>Stream - 업무도 흐름이다!</title>
 
 <!-- Bootstrap Css -->
 <link href="${pageContext.request.contextPath}/css/streamapp.css"
@@ -246,7 +245,7 @@
 			}
 
 			if (!/^\d+$/.test(phoneToCheck)) {
-				alert("전화번호 형식이 올바르지 않습니다.");
+				alert("전화번호 형식이 옳지 않습니다.");
 				return false;
 			}
 

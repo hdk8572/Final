@@ -13,8 +13,8 @@
 		<ul class="sidebar-nav">
 			<li class="sidebar-item active"><a class="sidebar-link"
 				href="index.html"> <i class="align-middle"
-					data-feather="sliders"></i> <span class="align-middle">내
-						프로젝트</span>
+					data-feather="sliders"></i> <span class="align-middle">
+					내프로젝트</span>
 			</a></li>
 
 			<li class="sidebar-header">모아보기</li>

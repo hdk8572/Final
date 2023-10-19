@@ -13,7 +13,7 @@
 <meta name="description"
 	content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
 
-<title>회원 가입</title>
+<title>Stream - 업무도 흐름이다!</title>
 
 <!-- Bootstrap Css -->
 <link href="${pageContext.request.contextPath}/css/streamapp.css"
@@ -154,7 +154,7 @@
 				return false;
 			var idToCheck = /[A-Za-z0-9_]{1,25}+@[A-Za-z0-9]+\.[A-Za-z]{2,4}(\.[A-Za-z]{2})?$/;
 			if (!idToCheck.test(userid)) {
-				alert("이메일형식이 옳지 않습니다!");
+				alert("이메일형식이 옳지 않습니다.");
 				Account.userid.value = "";
 				Account.userid.focus();
 				return false;
@@ -173,7 +173,7 @@
 			}
 			var pwdToCheck =/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,15}$/;
 				if (!pwdToCheck.test(userpwd)){
-					alert("비밀번호는 대소문자와 영어를 포함한 8-15자로 작성해주세요.");
+					alert("비밀번호는 대소문자와 기호를 포함한 8-15자로 작성해주세요.");
 					Account.userpwd.value="";
 					Account.userpwd.focus();
 					return false;

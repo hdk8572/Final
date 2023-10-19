@@ -81,7 +81,7 @@ public class MemberController {
 	}
 
 	// 마이페이지
-	@GetMapping("/member/showmypage")
+	@GetMapping("/showmypage")
 	@ResponseBody
 	public MyPageVo showMyPage(String userid) {
 		MyPageVo showMyPage = memberService.showMyPage(userid);

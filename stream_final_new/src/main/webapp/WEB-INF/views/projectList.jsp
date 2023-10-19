@@ -11,12 +11,10 @@
 <meta charset="utf-8">
 <meta name="author" content="Stream">
 
-<link rel="shortcut icon" href="img/icons/icon-48x48.png" /> <!-- 로고 결정 요망 -->
-
 <!-- Tab bar -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<title>Stream - Final Project</title>
+<title>Stream - 업무도 흐름이다!</title>
 
 <!-- Bootstrap CSS -->
 <link href="${pageContext.request.contextPath}/css/streamapp.css"	rel="stylesheet">

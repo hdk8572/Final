@@ -3,7 +3,7 @@ pageEncoding="UTF-8"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Stream - 업무도 흐름이다!</title>
 </head>
 <body>
 <div id="one">
