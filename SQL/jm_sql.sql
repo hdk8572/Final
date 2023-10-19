@@ -506,3 +506,91 @@ select pname, pstatus, pno, tno, t.userid, tmember, ttitle, tstatus, to_char(tda
         
         ;
         
+select mname, userid from users;
+
+select pno, tno, userid, tmember
+    from task
+    where tmember = 'sple@kh.co.kr';
+    
+select pname, pstatus, pno, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') 
+tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, 
+tno, bref, brestep, brelevel from (select tno, pno, userid, tmember, ttitle, tcontent, tstatus, 
+tdate, tstartdate, tenddate, bref, brestep, brelevel from task where tmember = 'sple@kh.co.kr' 
+or userid = 'sple@kh.co.kr') t join project using(pno) where pstatus in ('미진행', '진행', '보류') 
+order by to_number(pno) desc, to_number(bref) desc, brelevel asc, to_number(brestep) asc ;
+
+
+
+select j.userid, pr.userid attend, pno
+    from project j
+    join member_project pr using(pno)
+    order by to_number(pno) asc
+;
+select pno, userid attenduser
+    from member_project
+    where userid='sple@kh.co.kr'
+;
+select userid, attenduser, pno
+from project j
+join (select pno, userid attenduser
+            from member_project
+            where userid='sple@kh.co.kr')
+            using (pno)
+;
+--create view v_u_member_project
+--as
+--select PNO, USERID, MNAME, CCODE, DEPTNO
+--from member_project join users using(userid)
+
+--create view  v_p_member_project
+select pno, pmaster, mname, ccode, deptno
+    from v_u_member_project vv
+    join (select userid pmaster, attenduser userid, pno
+                from project j
+                            join (select pno, userid attenduser
+                                    from member_project
+                                        where userid='sple@kh.co.kr')
+                                        using (pno)) jj
+    using(pno, userid)
+    
+    join (select userid, mname, mrank, deptno, deptname, ccode
+            from users 
+            join dept using(ccode, deptno)
+            where userid='sple@kh.co.kr')
+    using(userid, mname, ccode, deptno)
+   
+    order by to_number(pno) asc
+;
+
+select userid, mname, mrank from users;
+select deptno, deptname, ccode from dept;
+
+select userid, mname, mrank, deptno, deptname, ccode
+    from users 
+    join dept using(ccode, deptno)
+    where userid='sple@kh.co.kr'
+    ;
+    
+select count(distinct(ccode)) ccnt, count(distinct(pno)) pcnt, count(distinct(tno)) tcnt
+    from company c
+    left join users u using (ccode)
+    left join project p using (userid)
+    left join task t using (pno);
+    
+    select count(ccode) from company;
+    
+select ccode, cname, cphone, caddress from company where ccode not in 'C000' order by ccode asc;
+
+select count(distinct(ccode)) ccnt, count(distinct(pno)) pcnt, count(distinct(tno)) tcnt
+    from company c
+    left join users u using (ccode)
+    left join project p using (userid)
+    left join task t using (pno)
+    where ccode not in 'C000'
+;
+select rn, ccode, cname, cphone, caddress
+    from (select rownum rn, ccode,cname,cphone, caddress
+                from (select ccode, cname, cphone, caddress 
+                            from company where ccode not in'C000' order by ccode asc) a )
+  
+    ;

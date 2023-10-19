@@ -60,6 +60,12 @@
 					<div>
 						<span>====회사 리스트====</span>
 					</div>
+					<select id="cntPerPage" name="sel" onchange="selChange()">
+						<option value="5"
+							<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄 보기</option>
+						<option value="10"
+							<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄 보기</option>
+					</select>
 					<table>
 						<thead>
 							<tr>
@@ -81,14 +87,22 @@
 						</tbody>
 					</table>
 					<div>
-						<c:forEach begin="${paging.startPage }" end="${paging.endPage }"
-							var="p">
+					<c:if test="${paging.startPage != 1 }">
+						<a href="${pageContext.request.contextPath }/admin/main?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+					</c:if>
+						<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
 							<c:choose>
 								<c:when test="${p==paging.nowPage }">
 									<b>${p }</b>
 								</c:when>
+								<c:when test="${p != paging.nowPage }">
+									<a href="${pageContext.request.contextPath }/admin/main?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+								</c:when>
 							</c:choose>
 						</c:forEach>
+						<c:if test="${paging.endPage != paging.lastPage}">
+							<a href="${pageContext.request.contextPath }/admin/main?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+						</c:if>
 					</div>
 				</div>
 

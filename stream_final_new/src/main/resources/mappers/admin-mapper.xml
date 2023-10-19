@@ -13,7 +13,7 @@
 
 <!-- 회사 수 출력 -->
 <select id="countCompany" resultType="int">
-	select count(*) from company
+	select count(*) from company where ccode not in 'C000'
 </select>
 
 <select id="clistPaging" resultType="CompanyVo">
