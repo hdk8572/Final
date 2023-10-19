@@ -64,7 +64,7 @@
 												<div class="mb-3">
 
 													<label class="form-label">ID</label> <input
-														class="form-control form-control-lg" type="text"
+														class="form-control form-control-lg" type="email"
 														name="userid" placeholder="이메일을 입력해주세요."
 														required="required" />
 												</div>
@@ -73,14 +73,6 @@
 														class="form-control form-control-lg" type="password"
 														name="password" placeholder="비밀번호를 입력해주세요."
 														required="required" />
-
-												</div>
-												<div>
-													<label class="form-check"> <input
-														class="form-check-input" type="checkbox"
-														value="remember-me" name="remember-me" checked> <span
-														class="form-check-label"> 자동 로그인 </span>
-													</label>
 												</div>
 												<div class="text-center mt-3">
 													<!-- <a href="index.html" class="btn btn-lg btn-primary">로그인</a>-->

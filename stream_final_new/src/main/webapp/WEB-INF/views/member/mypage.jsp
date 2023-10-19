@@ -47,7 +47,7 @@
 						<div class="myPageTitle">마이페이지 수정</div>
 						<!--회원가입 form/ name= 회원가입 id= checkAll -->
 						<form id="frmNewMember"
-							action="${pageContext.request.contextPath}/editmypage"
+							action="${pageContext.request.contextPath}/member/editmypage"
 							name="Account" method="post" onsubmit="return checkAll();">
 							<div class="mb-3">
 								<label class="form-label">아이디</label> <input
