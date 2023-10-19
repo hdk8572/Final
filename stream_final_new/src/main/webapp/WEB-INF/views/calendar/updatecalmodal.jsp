@@ -6,7 +6,6 @@
 		<!-- Modal content -->
 		<div class="pcal modal-container">
 			<div class="modal-header-pcal"></div>
-				
 			<div class="modal-body-pcal">
 				<div class="card pcal">
 					<div class="card-body pcal">
@@ -14,24 +13,47 @@
 						<h2 class="pcalTitle"><b>일정 수정</b></h2>
 					</div>
 						<form action="${pageContext.request.contextPath}/member/updatepcal" method="post" id="frm-updatecal">
-							<!-- 일정번호 프로젝트번호 -->
-							<!-- url 때문에 pno필요함 -->
+							<!-- 일정번호 프로젝트번호  url 때문에 pno필요함 -->
 							<%--<input type="hidden" name="pno" value="${pno}"> --%>
 							<!-- TODO 일정번호 -->
-							<input type="hidden" id="sno" name="sno"><!-- 오 -->
+							<input type="hidden" id="sno" name="sno">
 							
 							<!-- 제목 -->
 							<input type="text" class="form-control title" id="title" name="title" id="form-content" placeholder="제목을 입력하세요." required="required">
 						
 							<!-- 날짜 -->
+							
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar align-middle me-2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
 							<input type="date" class="form-date" id="start" name="start" required="required"> ~ <input type="date" class="form-date" id="end" name="end" required="required"> <!-- s -->
-						
+							
+							
 							<!-- 참석자  -->
-							<div class="d-flex align-items-center">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+							 <div class="d-flex align-items-center">
+							 <div class="d-flex align-items-center">
+								<div class="userid-img">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r= "4"></circle></svg>
+									<!-- 작성자 -->
+									<input class="form-control userid" type="hidden" name="userid" value="${principal.username }" readonly>
+								</div>
+									<!-- 참가자 -->
+									<select class=" form-select mb-3 " id="calmemberlist" >
+										<option value="">참가자 추가</option>
+									</select>
+									</div>
+									<div class="form-readcalmemberlist card" id="form-content" >
+									<!-- 참가자 반복 -->
+									<div id="attenduserid-wrap">
+									<!-- 
+										<div class="attenduserid-item">
+											<input type="text" placeholder="참가자" readonly>
+											<input type="hidden"  name="attenduseridArr">
+										</div>
+									 -->	
+									</div>
+								</div>
 								<div id="attenduseridList"></div>
 							</div>
+							
 					
 							<!-- 지도 -->
 							<div class="d-flex align-items-center">

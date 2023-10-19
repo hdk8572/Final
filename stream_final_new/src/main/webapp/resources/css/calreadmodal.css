@@ -113,3 +113,11 @@
 }
 /* 일정상세 제목 */
 
+/* 참가자 */
+#attenduseridList{
+	display: flex;
+}
+
+#attenduseridList > div{
+	margin-right: 10px;
+}

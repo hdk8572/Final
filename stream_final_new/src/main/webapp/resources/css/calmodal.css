@@ -115,3 +115,23 @@
 .attenduserid-item{
 	line-height: 30px;
 }
+
+/* 수정 참가자 */
+#attenduseridList{
+	display: flex;
+}
+
+#attenduseridList > div{
+	margin-right: 10px;
+}
+.form-readcalmemberlist.card{
+	background-color: #f5f7fb;
+}
+.form-readcalmemberlist{
+	background-color: #f5f7fb;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+/* 수정 참가자 */
+
+/* 참가자 */
