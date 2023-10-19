@@ -28,7 +28,7 @@ public class PagingVo {
 		super();
 	}
 
-	public PagingVo(int nowPage, int total, int cntPerPage) {
+	public PagingVo( int total, int nowPage, int cntPerPage) {
 		setNowPage(nowPage);
 		setCntPerPage(cntPerPage);
 		setTotal(total);

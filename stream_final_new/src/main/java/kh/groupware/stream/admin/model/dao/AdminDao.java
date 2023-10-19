@@ -27,7 +27,7 @@ public class AdminDao {
 		return sqlSession.selectOne("admin.countCompany");
 	}
 	public List<CompanyVo> pagingCompanyList(PagingVo vo){
-		return sqlSession.selectList("admin.clistPaging");
+		return sqlSession.selectList("admin.clistPaging", vo);
 	}
 	
 	

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<%@ include file="/WEB-INF/views/setvariable.jsp"%>
 <meta charset="UTF-8">
 
 <link rel="shortcut icon">
@@ -80,7 +80,7 @@
 								<tr>
 									<td>${companyList.ccode }</td>
 									<td>${companyList.cname }</td>
-									<td>$[companyList.cphone]</td>
+									<td>${companyList.cphone }</td>
 									<td>${companyList.caddress }</td>
 								</tr>
 							</c:forEach>
@@ -109,5 +109,12 @@
 			</main>
 		</div>
 	</div>
+	<script>
+		function selChange(){
+			var sel = $('#cntPerPage').val();
+			console.log(sel);
+			location.href=contextPath+"/admin/main?nowPage=${paging.nowPage}&cntPerPage="+sel;
+		}
+	</script>
 </body>
 </html>
