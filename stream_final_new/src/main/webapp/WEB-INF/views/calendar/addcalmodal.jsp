@@ -81,8 +81,7 @@
 
 <script>
 
-//지도 초기화!!!
-
+//addcalmodal 초기화!!!
 	function resetcalmodal(){
 		var kakaoaddmap = document.getElementById('map');
 		kakaoaddmap.innerHTML =''; //지도를 비운다.

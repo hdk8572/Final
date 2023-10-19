@@ -28,7 +28,7 @@
 								<input type="date" class="form-date" id="start" name="start" required="required"> ~ <input type="date" class="form-date" id="end" name="end" required="required"> <!-- s -->
 							
 							
-							<!-- 작성자&참석자 -->
+							<!-- 작성자&참석자 TODO-->
 							 <div class="d-flex align-items-center" id="form-content">
 							 <div class="d-flex align-items-center">
 								<div class="userid-img">
@@ -79,15 +79,15 @@
 	</div>
 </div>
 
-<!-- 일정 상세 정보 가져오기  -->
+<!-- 일정 상세 정보 가져오기 참가자TODO -->
 <script>
 	$('#readupdBtn').on("click", function() {
-		var selectedUpdateSno= $("#readcalmodal #sno").val(); //수정 모달의 sno값을 읽어온다
+		var selectedUpdateSno= $("#readcalmodal #sno").val(); //수정 모달의 sno값을 읽어온다.(읽어옴)
 		var selectedUpdateTitle = $("#readcalmodal #title").text();
 		var selectedUpdateStart = $("#readcalmodal #start").text();
 		var selectedUpdateEnd = $("#readcalmodal #end").text();
 		var selectedUpdateUserid = $("#readcalmodal #userid").text();
-		/* var selectedUpdateUserid = $("#readcalmodal #attenduseridList").text(); */
+		var selectedUpdateUseridList = $("#readcalmodal #attenduseridList").text();
 		var selectedUpdateSplace = $("#readcalmodal #splace").text();
 		var selectedUpdateSmemo = $("#readcalmodal #smemo").text();
 		console.log(selectedUpdateSno);
@@ -95,9 +95,9 @@
 		$("#updatecalmodal input[name='title']").val(selectedUpdateTitle);
 		$("#updatecalmodal input[name='start']").val(selectedUpdateStart);
 		$("#updatecalmodal input[name='end']").val(selectedUpdateEnd);
-		/* $("#updatecalmodal input[name='attenduseridList']").val(selectedUpdateUserid); */
 		$("#updatecalmodal textarea[name='smemo']").val(selectedUpdateSmemo);
-		
+		console.log(selectedUpdateUseridList);
+		$('#updatecalmodal #attenduseridList').val(selectedUpdateUseridList);
 		$('#updatecalmodal #userid').text(selectedUpdateUserid);
 		$('#updatecalmodal #splace').text(selectedUpdateSplace);
 		 updateshowMap(); 

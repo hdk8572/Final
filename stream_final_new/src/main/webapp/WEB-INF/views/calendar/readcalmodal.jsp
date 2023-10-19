@@ -87,7 +87,7 @@
 				success: function(response){
 					if(response === 1) {
 						alert('일정이 삭제되었습니다.')
-						$('#readcalmodal').modal('hide');
+						$('#readcalmodal').modal('hide');// 모달창 닫기
 					}else{
 						alert('일정 삭제에 실패했습니다.');
 					}
@@ -96,7 +96,6 @@
 				            if (evt._def.defId == eventClick_defId) evt.remove();
 				      });
 					}
-					// 모달창 닫기
 				},
 				error: function() {
 					alert('서버와의 통신 중 오류가 발생했습니다.');
