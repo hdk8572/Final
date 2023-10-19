@@ -53,10 +53,10 @@ public class MemberController {
 			ra.addFlashAttribute("alertmsg", "존재하지 않는 정보입니다. 링크를 전달받은 이메일 주소를 입력해주세요.");
 			return "redirect:/newmember";
 
-		} else if (ccodeCheck == 0){
+		} else if (ccodeCheck == 0) {
 			ra.addFlashAttribute("alertmsg", "회사코드를 잘못 입력하셨습니다.");
 			return "redirect:/newmember";
-			
+
 		} else {
 
 			mvo.setPassword(bCryptPasswordEncoder.encode(mvo.getPassword()));
@@ -75,9 +75,14 @@ public class MemberController {
 
 	// 로그인이동창
 	@GetMapping("/login")
-	public ModelAndView login(ModelAndView mv) {
-		mv.setViewName("/login/login");
-		return mv;
+	public String login(Model model
+			, HttpSession session) {
+		String msg = (String)session.getAttribute("msg");
+		session.removeAttribute("msg");
+		if(msg != null) {
+			model.addAttribute("alertmsg", msg);
+		}
+		return "login/login";
 	}
 
 	// 마이페이지
@@ -95,7 +100,7 @@ public class MemberController {
 		System.out.println("[jy] mvo: " + mvo);
 		return "member/mypage";
 	}
-	
+
 	// 마이페이지 정보수정
 	@PostMapping("/member/editmypage")
 	public String editMyPage(MemberVo mvo, RedirectAttributes ra) {
@@ -122,11 +127,11 @@ public class MemberController {
 		}
 		return "redirect:/member/projectlist";
 	}
-	
+
 	@ExceptionHandler
 	public String exception(RedirectAttributes ra) {
 		ra.addFlashAttribute("alertmsg", "오류가 발생하여 메인페이지로 이동합니다.");
 		return "redirect:/";
 	}
-	
+
 }
