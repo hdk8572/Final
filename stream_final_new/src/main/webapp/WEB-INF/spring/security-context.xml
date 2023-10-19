@@ -27,7 +27,7 @@
 
 
 		<form-login login-page="/login" username-parameter="userid"
-			password-parameter="password" default-target-url="/link"
+			password-parameter="password" default-target-url="/"
 			authentication-success-handler-ref="loginSuccessHandler"
 			authentication-failure-url="/login" />
 		<logout logout-url="/logout" logout-success-url="/main" />
