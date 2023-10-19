@@ -22,50 +22,27 @@
 							
 							<!-- 제목 -->
 							<input type="text" class="form-control title" id="title" name="title" id="form-content" placeholder="제목을 입력하세요." required="required">
-							
+						
 							<!-- 날짜 -->
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar align-middle me-2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-								<input type="date" class="form-date" id="start" name="start" required="required"> ~ <input type="date" class="form-date" id="end" name="end" required="required"> <!-- s -->
-							
-							
-							<!-- 작성자&참석자 TODO-->
-							 <div class="d-flex align-items-center" id="form-content">
-							 <div class="d-flex align-items-center">
-								<div class="userid-img">
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r= "4"></circle></svg>
-									<!-- 작성자 -->
-									<input class="form-control userid" type="hidden" name="userid" value="${principal.username }" readonly>
-								</div>
-									<!-- 참가자 -->
-									<select class=" form-select mb-3 " id="calmemberlist" >
-										<option value="">참가자 추가</option>
-									</select>
-									</div>
-									<div class="form-calmemberlist" id="form-content" >
-									<!-- 참가자 반복 -->
-									<div id="attenduserid-wrap">
-									<!-- 
-										<div class="attenduserid-item">
-											<input type="text" placeholder="참가자" readonly>
-											<input type="hidden"  name="attenduseridArr">
-										</div>
-									 -->	
-									</div>
-								</div>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar align-middle me-2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+							<input type="date" class="form-date" id="start" name="start" required="required"> ~ <input type="date" class="form-date" id="end" name="end" required="required"> <!-- s -->
+						
+							<!-- 참석자  -->
+							<div class="d-flex align-items-center">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+								<div id="attenduseridList"></div>
 							</div>
-							
+					
 							<!-- 지도 -->
-								<div class="d-flex align-items-center">
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin align-middle me-2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-									<div class= "form-control place" id="splace"></div>
-								</div>
-									<div class="map" id="map-updatemodal"></div>
-							
+							<div class="d-flex align-items-center">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin align-middle me-2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+								<div class= "form-control place" id="splace"></div>
+							</div>
+								<div class="map" id="map-updatemodal"></div>
+						
 							<!-- 내용  -->
-							<div id="form-content">
-								<textarea class="form-control smemo" id="summernote-updatecalmodal" name="smemo"></textarea>
-						    </div>
-							
+						<!-- 	<div id="form-content"> -->
+								<textarea class=" smemo" id="summernote-updatecalmodal" name="smemo"></textarea>
 							<!-- 등록 취소 버튼 -->
 							<div align="center">
 								<button  type="button" id="updBtn" class="btn btn-primary" >수정</button>
@@ -79,7 +56,7 @@
 	</div>
 </div>
 
-<!-- 일정 상세 정보 가져오기 참가자TODO -->
+<!-- 일정 상세 정보 가져오기 -->
 <script>
 	$('#readupdBtn').on("click", function() {
 		var selectedUpdateSno= $("#readcalmodal #sno").val(); //수정 모달의 sno값을 읽어온다.(읽어옴)
@@ -95,9 +72,10 @@
 		$("#updatecalmodal input[name='title']").val(selectedUpdateTitle);
 		$("#updatecalmodal input[name='start']").val(selectedUpdateStart);
 		$("#updatecalmodal input[name='end']").val(selectedUpdateEnd);
-		$("#updatecalmodal textarea[name='smemo']").val(selectedUpdateSmemo);
 		console.log(selectedUpdateUseridList);
-		$('#updatecalmodal #attenduseridList').val(selectedUpdateUseridList);
+		/* $("#updatecalmodal textarea[name='smemo']").val(selectedUpdateSmemo); */
+		$("#updatecalmodal #summernote-updatecalmodal").text(selectedUpdateSmemo);
+		$('#updatecalmodal #attenduseridList').text(selectedUpdateUseridList);
 		$('#updatecalmodal #userid').text(selectedUpdateUserid);
 		$('#updatecalmodal #splace').text(selectedUpdateSplace);
 		 updateshowMap(); 
