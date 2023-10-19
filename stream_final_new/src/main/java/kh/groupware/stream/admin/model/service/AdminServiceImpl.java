@@ -7,9 +7,8 @@ import org.springframework.stereotype.Service;
 
 import kh.groupware.stream.admin.model.dao.AdminDao;
 import kh.groupware.stream.admin.model.vo.AdminVo;
+import kh.groupware.stream.admin.model.vo.PagingVo;
 import kh.groupware.stream.company.model.vo.CompanyVo;
-import kh.groupware.stream.project.model.vo.ProjectVo;
-import kh.groupware.stream.ptask.model.vo.PtaskVo;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -19,6 +18,15 @@ public class AdminServiceImpl implements AdminService {
 	
 	public AdminVo cnt(){
 		return adminDao.cnt();
+	}
+	public List<CompanyVo> companyList(){
+		return adminDao.companyList();
+	}
+	public int countCompany() {
+		return adminDao.countCompany();
+	}
+	public List<CompanyVo> pagingCompanyList(PagingVo vo){
+		return adminDao.pagingCompanyList(vo);
 	}
 	
 

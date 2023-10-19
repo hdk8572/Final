@@ -27,7 +27,8 @@
 		<typeAlias type="kh.groupware.stream.reply.model.vo.ReplyVo" alias="ReplyVo"/>
 		<typeAlias type="kh.groupware.stream.files.model.vo.FileVo" alias="FileVo"/>
 
-		<typeAlias type="kh.groupware.stream.main.model.dto.MaintaskSortVo" alias="MaintaskSortVo"/>		
+		<typeAlias type="kh.groupware.stream.main.model.dto.MaintaskSortVo" alias="MaintaskSortVo"/>	
+		<typeAlias type="kh.groupware.stream.admin.model.vo.PagingVo" alias="PagingVo"/>	
 
 	</typeAliases>
 	

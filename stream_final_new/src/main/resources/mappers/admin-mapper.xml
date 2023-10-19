@@ -8,5 +8,23 @@
     left join users u using (ccode)
     left join project p using (userid)
     left join task t using (pno)
+    where ccode not in 'C000'
+</select>
+
+<!-- 회사 수 출력 -->
+<select id="countCompany" resultType="int">
+	select count(*) from company
+</select>
+
+<select id="clistPaging" resultType="CompanyVo">
+	select rn, ccode, cname, cphone, caddress
+    from (select rownum rn, ccode,cname,cphone, caddress
+                from (select ccode, cname, cphone, caddress 
+                            from company where ccode not in'C000' order by ccode asc) a )
+    where rn between #{start} and #{end}
+</select>
+
+<select id="clist" resultType="CompanyVo">
+	select ccode, cname, cphone, caddress from company where ccode not in 'C000' order by ccode asc
 </select>
 </mapper>
