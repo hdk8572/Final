@@ -53,6 +53,11 @@ public class CalendarDao {
 		return sqlSession.delete("calendar.delete",sno);
 	}
 	
+	//끼인 캘린더 삭제
+	public int deletemember(String sno) {
+		return sqlSession.delete("calendar.deletemember",sno);
+	}
+	
 	// 프로젝트에 참여중인 회원인지 확인함.
 	public int isAttendedProject(Map<String, String> map) {
 		return sqlSession.selectOne("calendar.isAttendedProject",map);

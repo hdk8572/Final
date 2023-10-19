@@ -40,7 +40,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 	    	if(selectedValue == itemValue){
 	    		alert("이미 참석자에 등록된 사원입니다.");
 	    		checkSameUserId = true;
-	    		return;
+	    		return false;
 	    	}
 	    });
 	    if(checkSameUserId == false){  //등록된 적 없는 사원일 경우 추가
