@@ -27,7 +27,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 		}else if(authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_C"))) {
 			response.sendRedirect("company/main");
 		}else {
-			response.sendRedirect("link"); //TODO projectlist로 가야함 "/member/projectlist"
+			response.sendRedirect("/"); //TODO projectlist로 가야함 "/member/projectlist"
 		}
 	}
 
