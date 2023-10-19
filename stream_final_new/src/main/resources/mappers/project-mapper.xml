@@ -3,32 +3,34 @@
 <mapper namespace="project">
 	 
 	<select id="selectList" resultType="ProjectVo">
-		select tp.pno, tp.pname, tp.pstatus, tp.paccess
-		 , tp.userid, vud.mname, vud.mrank, vud.deptname
-		 , (select count(*) from member_project where pno= tp.pno) as countmember
-		 from (
-		    select * from project 
-		    where (userid= #{userid} or pno in (select pno from member_project where userid=#{userid}))
-		        and PSTATUS IN ('미진행', '진행', '보류')
-		        and PACCESS IN ('ACCESS')
-		 ) tp
-		        join V_U_DEPT vud        on tp.userid = vud.userid
-		order by to_number(pno) desc
+		SELECT TP.PNO, TP.PNAME, TP.PSTATUS, TP.PACCESS
+		, TP.USERID, VUD.MNAME, VUD.MRANK, VUD.DEPTNAME
+		, (SELECT COUNT(*) FROM MEMBER_PROJECT WHERE PNO= TP.PNO) AS COUNTMEMBER
+		FROM (
+		SELECT * FROM PROJECT
+		WHERE (USERID= #{USERID} OR PNO IN (SELECT PNO FROM MEMBER_PROJECT WHERE
+		USERID=#{USERID}))
+		AND PSTATUS IN ('미진행', '진행', '보류')
+		AND PACCESS IN ('ACCESS')
+		) TP
+		JOIN V_U_DEPT VUD ON TP.USERID = VUD.USERID
+		ORDER BY TO_NUMBER(PNO) DESC
 	</select>
   	
 	<select id="selectHide" resultType="ProjectVo">
-		select tp.pno, tp.pname, tp.pstatus, tp.paccess
-		 , tp.userid, vud.mname, vud.mrank, vud.deptname
-		 , (select count(*) from member_project where pno= tp.pno) as countmember
-		 from (
-		    select * from project 
-		    where (userid=#{userid} or pno in (select pno from member_project where userid=#{userid}))
-		        and PSTATUS IN ('숨김')
-		        and PACCESS IN ('ACCESS')
-		 ) tp
-		        join V_U_DEPT vud        on tp.userid = vud.userid
-		order by to_number(pno) desc
-			</select>
+		SELECT TP.PNO, TP.PNAME, TP.PSTATUS, TP.PACCESS
+		, TP.USERID, VUD.MNAME, VUD.MRANK, VUD.DEPTNAME
+		, (SELECT COUNT(*) FROM MEMBER_PROJECT WHERE PNO= TP.PNO) AS COUNTMEMBER
+		FROM (
+		SELECT * FROM PROJECT
+		WHERE (USERID= #{USERID} OR PNO IN (SELECT PNO FROM MEMBER_PROJECT WHERE
+		USERID=#{USERID}))
+		AND PSTATUS IN ('숨김')
+		AND PACCESS IN ('ACCESS')
+		) TP
+		JOIN V_U_DEPT VUD ON TP.USERID = VUD.USERID
+		ORDER BY TO_NUMBER(PNO) DESC
+	</select>
 	
 	<select id="sessionPname" resultType="ProjectVo">
 		SELECT PNO, PNAME
@@ -76,8 +78,14 @@
 	</delete>
 	 
 	<update id="updateList" parameterType="ProjectVo">
+		
+        UPDATE PROJECT	SET PNAME=#{pname}, pcontent=#{pcontent}, PSTATUS=#{pstatus}, PSTARTDATE=#{pstartdate}, PENDDATE=#{penddate}
+        WHERE PNO = #{pno}
+		
+	<!--  
 		UPDATE PROJECT SET PNAME=#{pname}, pcontent=#{pcontent}, PSTATUS=#{pstatus}, PSTARTDATE=#{pstartdate}, PENDDATE=#{penddate}
 		WHERE PNO=#{pno}
+	-->
 	</update>
 	
 	<select id="searchProjectList" parameterType="ProjectVo" resultType="ProjectVo">

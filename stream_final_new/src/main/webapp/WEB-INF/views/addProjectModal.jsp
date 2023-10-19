@@ -80,7 +80,7 @@
 	$("#btn-submit").click(addList);
 	$("#myBtn").click(selectOption);
     $("select[name=addpstatus]").change(selectOption);
-    $("select[name=updatepstatus]").change(updateOption);
+    /* $("select[name=updatepstatus]").change(updateOption); */
     
 	function addList () {
 //		var data = myEditor.getData();

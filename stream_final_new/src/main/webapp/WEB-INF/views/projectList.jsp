@@ -296,23 +296,23 @@
 				$("#updateProjectModal [name=pstartdate]").val(result.pstartdate);
 				$("#updateProjectModal [name=penddate]").val(result.penddate);
 				$('#updateProjectModal select[name=addpstatus]').val(result.pstatus).attr("selected",true);
-				
-				$("#updateStatus").change(function(){
-					var asd = $("#updateStatus").val();
-					console.log(asd);
-				});
-				
-				
-				/* 참가자 리스트 뽑기 */
+				$("input[name=pstatus]").val(result.pstatus);		// 선택된 pStatus 조회 1-1
 		 	},
 		 	error:function(){
 				console.log("goUpdateForm에서 에러 발생");
 			}
 		 	
 		 });
+		
+		$("#updateStatus").change(function(){
+			var changedPstatus = $("#updateStatus").val();
+			$("input[name=pstatus]").val(changedPstatus);
+		});
+		
 	}
 	
 	function doUpdateProject() {
+		console.log("업데이트 실행");
 	 	$.ajax ({
 			url: contextPath+"/member/doUpdateProject",
 			type: "get",
