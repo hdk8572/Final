@@ -130,10 +130,9 @@
 		});
 		
 		$('.modal').on('hidden.bs.modal', function (e) {
+			var resett1 = $(this).find('form')[0].reset();
 			$(this).find('form')[0].reset();
 			$("#summernote").summernote('code', "");				// addProjectModal 닫을 시 summernote 값 초기화
-			
-			
 		});
 		
 	}); 

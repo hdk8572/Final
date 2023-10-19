@@ -196,7 +196,7 @@
  			if(addeduserid == selectedVal){
  				checkAddedUserId = true;
  				console.log("중복이라 추가 안했습니다.");
-		 		return;
+ 				return false;
  			}
  		});
  		if(!checkAddedUserId){ // 
