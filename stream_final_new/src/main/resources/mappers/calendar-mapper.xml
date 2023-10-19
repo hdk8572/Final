@@ -96,8 +96,14 @@ SELECT SNO, USERID, mname, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, '
 	</update>
 
 	<!-- 캘린더 삭제 --> <!-- TODO -->
-	<delete id="delete" parameterType="CalendarVo">
+	<delete id="delete" parameterType="String">
 		DELETE FROM SCHEDULE
+		WHERE SNO=#{sno}
+	</delete>
+	
+	<!-- 캘린더 삭제 --> <!-- TODO -->
+	<delete id="deletemember" parameterType="String">
+		DELETE FROM MEMBER_SCHEDULE
 		WHERE SNO=#{sno}
 	</delete>
 

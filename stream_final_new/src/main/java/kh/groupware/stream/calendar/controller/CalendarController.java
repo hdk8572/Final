@@ -127,10 +127,9 @@ public class CalendarController {
 
 	//캘린더 삭제
 	  @PostMapping("/member/deletepcal")
-	  
 	  @ResponseBody
-	  public int delete(String sno) { return
-	  calendarService.delete(sno); 
+	  public int delete(String sno) { 
+		  return calendarService.delete(sno); 
 	  }
 	 
 	/*
