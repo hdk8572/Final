@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<script>
 //console.log(contextPath);
 window.onload=loadedHandler;
 
@@ -83,6 +87,7 @@ taskDetailButtonClickTestHandler=(thisButton)=>{
 	console.log(b1);
 	var targetTno = $(a1).next().find("input[name=tno]").val();
 	var targetPno = $(a1).next().find("input[name=pno]").val();
+	console.log("===taskDetail Target===")
 	console.log(targetTno);
 	console.log(targetPno);
 	$("#detailProjectModal").modal("toggle");
@@ -99,7 +104,12 @@ taskDetailButtonClickTestHandler=(thisButton)=>{
 		 		$(".wrap-card .userid").html(result.userid);
 		 		$(".wrap-card .tstartdate").val(result.tstartdate);
 		 		$(".wrap-card .tenddate").val(result.tenddate);
-		 		replyLoadList();
+		 		$(".wrap-card input[name=pno]").val(result.pno);
+		 		$(".wrap-card input[name=tno]").val(result.tno);
+		 		console.log(result);
+		 		console.log(result.tno);
+		 		targetTno = result.tno;
+		 		replyLoadList(targetTno);
 		 	},
 		 	error: function() {
 		 		console.log("detailProject에서 오류 발생");
@@ -203,7 +213,7 @@ function showProjectMemberView(data, htmlTarget){
 		var listHtml = "";
 		for (var i=0; i<data.length; i++){
 			var mname = data[i];
-			listHtml += `<option value="${mname.userid}">${mname.mname}</option>`; //data를 뿌리고 그걸 option에다가 넣어줌 //value=userid
+			listHtml += `<option value="\${mname.userid}">\${mname.mname}</option>`; //data를 뿌리고 그걸 option에다가 넣어줌 //value=userid
 		}
 		$(htmlTarget).html(listHtml);
 }
@@ -270,10 +280,10 @@ console.log(project.mname);
 															 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
 															  class="feather feather-play align-middle jm-rotate"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
 														</span>
-														<span class="jm-project-title">${project.pname }</span> 
-														<span class="jm-project-task-count">(${project.maintaskList.length})</span>
+														<span class="jm-project-title">\${project.pname }</span> 
+														<span class="jm-project-task-count">(\${project.maintaskList.length})</span>
 														<form class="jm-dn" action="${contextPath}/ptasklist" method="get">
-															<input type="hidden" name="pno" value="${project.pno}" >
+															<input type="hidden" name="pno" value="\${project.pno}" >
 															<button class="jm-tp">바로가기</button>
 														</form>
 													</div>
@@ -287,7 +297,7 @@ console.log(project.mname);
 
 		const task = project.maintaskList[idx];
 listHtml += `
-															<li class="plusplus row" id="taskNo_${task.tno}">
+															<li class="plusplus row" id="taskNo_\${task.tno}">
 																<div class="jm-title-ttitle col-lg-4 jm-grey">
 																	<span class="jm-margin-left">
 			`;
@@ -306,19 +316,19 @@ listHtml += `
 listHtml += `
 																	<button class="jm-tp jm-task-info jm-hidden-btn" onclick="taskDetailButtonClickTestHandler(this);">자세히 보기</button>
 																	<div class="jm-hidden">
-																			<input type="hidden" name="pno" value="${project.pno}">
-																			<input type="hidden" name="tno" value="${task.tno }">
+																			<input type="hidden" name="pno" value="\${project.pno}">
+																			<input type="hidden" name="tno" value="\${task.tno }">
 																	</div>
 																</div>
-																<div class="jm-title-tstatus col-lg-1 jm-grey">${task.tstatus }</div>
-																<div class="jm-title-tmember col-lg-1 jm-grey">${task.tmember }</div>
-																<div class="jm-title-tstartdate col-lg-1 jm-grey">${task.tstartdate }</div>
-																<div class="jm-title-tenddate col-lg-1 jm-grey">${task.tenddate }</div>
-																<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">${task.tdate }</div>
-																<div class="jm-title-tno col-lg-1 jm-grey jm-gr">${task.tno }</div>
+																<div class="jm-title-tstatus col-lg-1 jm-grey">\${task.tstatus }</div>
+																<div class="jm-title-tmember col-lg-1 jm-grey">\${task.tmember }</div>
+																<div class="jm-title-tstartdate col-lg-1 jm-grey">\${task.tstartdate }</div>
+																<div class="jm-title-tenddate col-lg-1 jm-grey">\${task.tenddate }</div>
+																<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">\${task.tdate }</div>
+																<div class="jm-title-tno col-lg-1 jm-grey jm-gr">\${task.tno }</div>
 															</li>
 															<li class="jm-ajax-InnertaskIn">
-																<form class="addInnerTask" id="taskInputNo_${task.tno}">
+																<form class="addInnerTask" id="taskInputNo_\${task.tno}">
 																	<div class="jm-innerTaskInput jm-hidden">
 																		<div class="jm-title-ttitle col-lg-4 jm-grey">
 																			<input class="jm-input-length jm-margin-left" type="text" placeholder="하위업무명을 입력하세요" name="ttitle" required="required">
@@ -333,7 +343,7 @@ listHtml += `
 																			</select>
 																		</div>
 																		<div class="jm-title-tmember col-lg-1 jm-grey">
-																			<select name="tmember" id="tmember_select_pno_${project.pno }">
+																			<select name="tmember" id="tmember_select_pno_\${project.pno }">
 
 																			</select>
 																		</div>
@@ -357,10 +367,10 @@ listHtml += `
 																			<div class="innerTdate"></div>
 																		</div>
 																		<div class="jm-title-tno col-lg-1 jm-grey jm-gr">
-																			<input type="hidden" name ="tno" value="${task.tno}">
+																			<input type="hidden" name ="tno" value="\${task.tno}">
 																			<input type="hidden" name="tcontent" value="default">
-																			<input type="hidden" name="pno" value="${project.pno}">
-																			<input type="hidden" name="userid" value="${principal_username}"> <!-- 로그인 세션 받아서 등록 -->
+																			<input type="hidden" name="pno" value="\${project.pno}">
+																			<input type="hidden" name="userid" value="\${principal_username}"> <!-- 로그인 세션 받아서 등록 -->
 																			<button type="button" onclick="jmRegExp(this); innerTaskaddListHandler(this)">추가하기</button>
 																		</div>
 																	</div>
@@ -381,4 +391,4 @@ listHtml += `
 		titleHoverHandler()
 }
 
-
+</script>

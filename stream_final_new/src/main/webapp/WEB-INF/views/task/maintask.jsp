@@ -333,15 +333,15 @@
 						</div>
 					</div>
 				</div>
-				<%@ include file="/WEB-INF/views/detailptaskmodal.jsp"%>
 			</main>
 		</div>
 	</div>
-	
 	<%@include file="/WEB-INF/views/footer.jsp"%>
-	
+	<%@include file="/WEB-INF/views/task/maintaskscript.jsp" %>
+	<%-- <%@ include file="/WEB-INF/views/detailptaskmodal.jsp"%> --%>
+	<%@include file="/WEB-INF/views/task/maintasktaskdetailmodal.jsp" %>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
-	<script src="${pageContext.request.contextPath}/js/maintask.js"></script>
+	<%-- <script src="${pageContext.request.contextPath}/js/maintask.js"></script> --%>
 	
 	<script>
 		taskSortHandler=()=>{
@@ -416,8 +416,7 @@
 										<span>&#8618;</span>
 					`
 							}
-		htmlList+=`
-									\${task.ttitle}
+		htmlList+=`\${task.ttitle}
 									</span>
 					`
 							if(task.brelevel ==0){
@@ -510,7 +509,7 @@
 	function titleHoverHandler(){
 		$(".jm-title-ttitle").hover(()=>{
 			//$(event.target).find(".jm-hidden-btn").addClass("active");
-			$(event.target).find(".jm-hidden-btn").css("visibility", "hidden");
+			$(".jm-hidden-btn").css("visibility", "hidden");
 			$(event.target).find(".jm-hidden-btn").css("visibility", "visible");
 		},()=>{
 			$(event.target).find(".jm-hidden-btn").css("visibility", "hidden");
@@ -600,6 +599,7 @@
 		return true;
 	}
 </script>
+
 </body>
 
 </html>

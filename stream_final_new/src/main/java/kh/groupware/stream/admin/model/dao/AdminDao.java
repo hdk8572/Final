@@ -14,7 +14,7 @@ public class AdminDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<AdminVo> cnt(){
-		return sqlSession.selectList("admin.cnt");
+	public AdminVo cnt(){
+		return sqlSession.selectOne("admin.cnt");
 	}
 }

@@ -24,6 +24,7 @@ public class ReplyController {
 	@ResponseBody
 	public List<ReplyVo> selectList(String tno) {
 		List<ReplyVo> vo = replyService.selectList(tno);
+		System.out.println("====================="+tno);
 		return vo; 
 	}
 
