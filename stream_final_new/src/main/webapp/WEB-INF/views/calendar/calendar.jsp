@@ -140,7 +140,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 		});
 
 		$("#summernote-updatecalmodal").summernote({					
-		   placeholder: ' 작성해주세요.', 
+			 placeholder: '내용을 작성해주세요.',
 		     tabsize: 2,
 		     height: 120,
 		     toolbar: [
@@ -149,7 +149,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 		       ['color', ['color']],
 		       ['para', ['ul', 'ol', 'paragraph']],
 		       ['table', ['table']],
-		       ['insert'   ['link', 'picture', 'video']  ],
+		       ['insert' /* ['link', 'picture', 'video'] */],
 		       ['view', ['fullscreen', 'codeview', 'help']]
 		     ]
 		}); 

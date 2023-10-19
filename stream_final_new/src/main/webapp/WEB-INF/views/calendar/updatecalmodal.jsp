@@ -41,8 +41,10 @@
 								<div class="map" id="map-updatemodal"></div>
 						
 							<!-- 내용  -->
-						<!-- 	<div id="form-content"> -->
-								<textarea class=" smemo" id="summernote-updatecalmodal" name="smemo"></textarea>
+							<div id="form-content">
+								<textarea class="form-control smemo" id="summernote-updatecalmodal" rows="5" name="smemo"></textarea>
+						    </div>
+						    
 							<!-- 등록 취소 버튼 -->
 							<div align="center">
 								<button  type="button" id="updBtn" class="btn btn-primary" >수정</button>
@@ -66,7 +68,7 @@
 		var selectedUpdateUserid = $("#readcalmodal #userid").text();
 		var selectedUpdateUseridList = $("#readcalmodal #attenduseridList").text();
 		var selectedUpdateSplace = $("#readcalmodal #splace").text();
-		var selectedUpdateSmemo = $("#readcalmodal #smemo").text();
+		var selectedUpdateSmemo = $("#readcalmodal #smemo").html(); //<p>태그 다 가져와야함 html사용!
 		console.log(selectedUpdateSno);
 		$("#updatecalmodal input[name= 'sno']").val(selectedUpdateSno);
 		$("#updatecalmodal input[name='title']").val(selectedUpdateTitle);
@@ -74,7 +76,7 @@
 		$("#updatecalmodal input[name='end']").val(selectedUpdateEnd);
 		console.log(selectedUpdateUseridList);
 		/* $("#updatecalmodal textarea[name='smemo']").val(selectedUpdateSmemo); */
-		$("#updatecalmodal #summernote-updatecalmodal").text(selectedUpdateSmemo);
+		$("#summernote-updatecalmodal").summernote("code" ,selectedUpdateSmemo);
 		$('#updatecalmodal #attenduseridList').text(selectedUpdateUseridList);
 		$('#updatecalmodal #userid').text(selectedUpdateUserid);
 		$('#updatecalmodal #splace').text(selectedUpdateSplace);
