@@ -297,6 +297,13 @@
 				$("#updateProjectModal [name=pstartdate]").val(result.pstartdate);
 				$("#updateProjectModal [name=penddate]").val(result.penddate);
 				$('#updateProjectModal select[name=addpstatus]').val(result.pstatus).attr("selected",true);
+				
+				$("#updateStatus").change(function(){
+					var asd = $("#updateStatus").val();
+					console.log(asd);
+				});
+				
+				
 				/* 참가자 리스트 뽑기 */
 		 	},
 		 	error:function(){

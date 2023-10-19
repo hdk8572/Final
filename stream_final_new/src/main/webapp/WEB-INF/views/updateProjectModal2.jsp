@@ -20,7 +20,7 @@
 							<div class="selected-leftPart">
 								<div class="d-flex align-items-center">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock align-middle me-2"><circle cx="12" cy="12 " r="10 "></circle><polyline points="12 6 12 12 16 14 "></polyline></svg>
-									<!-- <input type="hidden" id="valuePstatus" name="pstatus"> js - selectOption() -->
+									<input type="hidden" id="valuePstatus" name="pstatus"> <!-- js - selectOption() -->
 									<select class="form-select mb-3 addProject" id="updateStatus" name="addpstatus">
 									  <option class="status request" value="미진행">미진행</option>
 									  <option class="status progress" value="진행">진행</option>
@@ -98,11 +98,11 @@
 /*  
 	$("select[id=updateStatus]").change(updateOption);
 
-	function updateOption() {
+ 	function updateOption() {
  	    var updatedOption = $("select[id=updateStatus] option:selected").text();
  	    console.log(updatedOption);
  	    $("#updateStatus").val(updatedOption);
-	}
+	} 
 */
 </script>
 <script>
@@ -138,12 +138,12 @@
 	    });
 		    
 	}
-	/*  	
+ 	/*   	
 		function updateOption() {
 		    var updatedOption = $("select[name=updatepstatus] option:selected").text();
 		    $("#valuePstatus").val(updatedOption);
 		   	console.log($("#valuePstatus").val(updatedOption));
-	}
+		}
 	*/
 	
 	function makeUpdateMemberView(data) {										 // 회사 소속인 참가자 리스트 조회
@@ -171,12 +171,16 @@
 			currentListHtml+=`
 				<div class='comanyMember'>
 					<input type="hidden" name="memberProjectArr" value="\${currentMember.userid}"> 	
-					<span data-addmemberuserid='\${currentMember.mname}'>\${currentMember.mname}\${currentMember.mrank}님</span>
+					<span data-addmemberuserid='\${currentMember.userid}'>\${currentMember.mname}\${currentMember.mrank}님</span>
 					<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-delete align-middle me-2'><path d='M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z'></path><line x1='18' y1='9' x2='12' y2='15'></line><line x1='12' y1='9' x2='8' y2='15'></line></svg>
 				</div>
 			`;
 		}
 		$(".selected-rightPart.card.updateProject").html(currentListHtml);
+		
+		$(".feather.feather-delete.align-middle.me-2").click(function() {		// 현재 참여중인 참가자 삭제
+	 		$(this).closest(".comanyMember").remove();
+	 	});
 	}
 	
  	function updateMemberSelect() { // 중복 조회 (유효성검사) 
@@ -184,10 +188,11 @@
  		var selectedVal = $(".form-select.mb-3.updateProject.selectedMember").val();
  		// console.log("선택한 selectedVal :"+selectedVal); 삭제하자
  		//$(".form-select.mb-3.addProject.selectedMember").val(selectedVal);
- 		var checkAddedUserId = false;													
+ 		var checkAddedUserId = false;	
  		$(".comanyMember").each(function(idx, thisElement){
  			var addeduserid = $(thisElement).children("span").data("addmemberuserid");
- 			// console.log(addeduserid);  삭제하자 
+ 			console.log("addeduserid :"+addeduserid);
+ 			console.log("selectedVal :"+selectedVal);
  			if(addeduserid == selectedVal){
  				checkAddedUserId = true;
  				console.log("중복이라 추가 안했습니다.");
@@ -207,11 +212,14 @@
 			memberaddedHtml+=`
 				<div class='comanyMember'>
 					<input type="hidden" name="memberProjectArr" value="\${selectedVal}"> 
-					<span data-addmemberuserid='\${selectedVal}'>\${addedmember}</span>
+					<span data-currememberuserid='\${selectedVal}'>\${addedmember}</span>
 					<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-delete align-middle me-2'><path d='M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z'></path><line x1='18' y1='9' x2='12' y2='15'></line><line x1='12' y1='9' x2='8' y2='15'></line></svg>
 				</div>
 				`;
 	    $(".selected-rightPart.card.updateProject").append(memberaddedHtml);
+		$(".feather.feather-delete.align-middle.me-2").click(function() {		// 등록된 참가자 삭제
+	 		$(this).closest(".comanyMember").remove();
+	 	});
  	}
 	
 
