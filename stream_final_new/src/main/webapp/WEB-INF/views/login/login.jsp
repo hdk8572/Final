@@ -23,7 +23,8 @@
 <title>Stream - 업무도 흐름이다!</title>
 
 <!-- Bootstrap Css -->
-<link href="${pageContext.request.contextPath}/css/streamapp.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/streamapp.css"
+	rel="stylesheet">
 <!-- Login Css -->
 <link href="${pageContext.request.contextPath}/css/login.css"
 	rel="stylesheet">
@@ -37,6 +38,7 @@
 </head>
 
 <body>
+	<%@ include file="/WEB-INF/views/alertmsg.jsp"%>
 	<main class="d-flex w-100">
 		<div class="container d-flex flex-column">
 			<div class="row vh-100">
@@ -49,7 +51,7 @@
 						</div>
 
 						<div>
-						
+
 
 							<div class="card">
 								<div class="card-body">

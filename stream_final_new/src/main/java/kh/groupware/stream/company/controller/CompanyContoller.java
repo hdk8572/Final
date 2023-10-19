@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -39,6 +40,16 @@ public class CompanyContoller {
 
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	@GetMapping("/company/main")
+	public String companyMain(Model model, HttpSession session) {
+		String msg = (String)session.getAttribute("msg");
+		session.removeAttribute("msg");
+		if(msg != null) {
+			model.addAttribute("alertmsg", msg);
+		}
+		return "/company/main";
+	}
 
 	@GetMapping("/newcompany")
 	public ModelAndView showNewCompany(ModelAndView mv) {
