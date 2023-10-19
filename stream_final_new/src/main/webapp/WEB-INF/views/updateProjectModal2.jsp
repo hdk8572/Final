@@ -44,7 +44,7 @@
 									</select>
 								</div>
 							</div>
-							<div class="selected-rightPart card">
+							<div class="selected-rightPart card updateProject">
 							<!--  
 								<div class="comanyMember">1</div>
 								<div class="comanyMember">2</div>
@@ -122,30 +122,32 @@
 			alert("getCompanyMemberList에서 에러났습니다.");
 		}
 	    });	
-/*  		
+  		
 	    $.ajax({
 	    	url:"${pageContext.request.contextPath}/member/getCurrentMemberList",
 	    	data: {pno: $("input[name=pno]").val()},
 	    	type: "get",
-	    	async : false,
 	    	dataType: "json",
 	    	success: function(data) {
+	    		console.log("멤버 불르는 과정 진행");
 	    		makeCurrentMemberView(data);
 	    	},
 	    	error: function() {	
 			alert("updateModal - getCurrentMemberList에서 에러났습니다.");
 		}
 	    });
-*/		    
+		    
 	}
-		/*
+	/*  	
 		function updateOption() {
 		    var updatedOption = $("select[name=updatepstatus] option:selected").text();
 		    $("#valuePstatus").val(updatedOption);
 		   	console.log($("#valuePstatus").val(updatedOption));
 	}
 	*/
+	
 	function makeUpdateMemberView(data) {										 // 회사 소속인 참가자 리스트 조회
+		console.log("멤버 불르는 HTML 진행");
 		var memberListHtml = "";
 		/* memberListHtml += '<select class="form-select mb-3 selectCategory ml-2" name="mname">'; */
 		memberListHtml += '<option value="" selected>참가자선택</option>';
@@ -159,7 +161,7 @@
 	    $("#updateCompanyMember").html(memberListHtml);
 	    /* $("#companyMember select[name=mname] option:eq(0)").prop("selected", true); */
 	    
-	    $(".form-select.mb-3.updateProject.selectedMember").change(memberSelect);
+	    $(".form-select.mb-3.updateProject.selectedMember").change(updateMemberSelect);
 	}
 	
 	function makeCurrentMemberView(data) {										// 현재 참여중인 참가자 리스트 조회
@@ -169,15 +171,16 @@
 			currentListHtml+=`
 				<div class='comanyMember'>
 					<input type="hidden" name="memberProjectArr" value="\${currentMember.userid}"> 	
-					<span data-addmemberuserid='\${currentMember.mname}'>\${currentMember.mrank}</span>
+					<span data-addmemberuserid='\${currentMember.mname}'>\${currentMember.mname}\${currentMember.mrank}님</span>
 					<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-delete align-middle me-2'><path d='M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z'></path><line x1='18' y1='9' x2='12' y2='15'></line><line x1='12' y1='9' x2='8' y2='15'></line></svg>
 				</div>
 			`;
 		}
-		$("#selected-rightPart.card").html(currentListHtml);
+		$(".selected-rightPart.card.updateProject").html(currentListHtml);
 	}
 	
- 	function memberSelect() { // 중복 조회 (유효성검사) 
+ 	function updateMemberSelect() { // 중복 조회 (유효성검사) 
+ 		console.log("updateMemberSelect 실행했습니다.");
  		var selectedVal = $(".form-select.mb-3.updateProject.selectedMember").val();
  		// console.log("선택한 selectedVal :"+selectedVal); 삭제하자
  		//$(".form-select.mb-3.addProject.selectedMember").val(selectedVal);
@@ -187,11 +190,13 @@
  			// console.log(addeduserid);  삭제하자 
  			if(addeduserid == selectedVal){
  				checkAddedUserId = true;
+ 				console.log("중복이라 추가 안했습니다.");
 		 		return;
  			}
  		});
  		if(!checkAddedUserId){ // 
 			updateMemberadded(selectedVal);
+			console.log("중복이 아니여서 추가했습니다.");
  		}
  	}
  	
@@ -206,7 +211,7 @@
 					<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-delete align-middle me-2'><path d='M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z'></path><line x1='18' y1='9' x2='12' y2='15'></line><line x1='12' y1='9' x2='8' y2='15'></line></svg>
 				</div>
 				`;
-	    $(".selected-rightPart.card").append(memberaddedHtml);
+	    $(".selected-rightPart.card.updateProject").append(memberaddedHtml);
  	}
 	
 

@@ -28,6 +28,12 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectDao.selectList(userid);
 	}
 	
+	// 프로젝트의 작성자
+//	@Override
+//	public ProjectVo selectProjectInfo(String pno) {
+//		return projectDao.selectProjectInfo(pno);
+//	}
+	
 	@Override
 	public ProjectVo sessionPname(String pno) {
 		return projectDao.sessionPname(pno);

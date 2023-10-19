@@ -41,19 +41,18 @@ public class ProjectController {
 	@GetMapping("/member/projectOne")
 	@ResponseBody
 	public ProjectVo selectOne(PnoPrincipalParam pnoPrincipalParam) {
-		System.out.println("pnoPrincipalParam :"+pnoPrincipalParam);
 		ProjectVo vo = projectService.selectOne(pnoPrincipalParam);
-		System.out.println("vo :"+vo);
 		return vo;
 	}
 	 
 	@GetMapping("/member/loadList")
 	@ResponseBody
-	public List<ProjectVo> loadList(Principal principal, String pname, HttpSession session) {
+	public List<ProjectVo> loadList(Principal principal, String pname, String pno, HttpSession session) {
 		System.out.println("loadList 돌았습니다");
 		session.setAttribute("projectPname", pname);
 		String userid = principal.getName();
 		//MemberSimpleVo mvo = maintastService.findMname(userid);
+//		ProjectVo infoList = projectService.selectProjectInfo(pno);
 		List<ProjectVo> list = projectService.selectList(userid);
 		return list;
 	}

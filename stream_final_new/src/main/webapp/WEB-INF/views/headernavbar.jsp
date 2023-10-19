@@ -129,7 +129,7 @@
 					data-feather="settings"></i></a> <a
 				class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
 				data-bs-toggle="dropdown"> <img
-					src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
+					src="http://res.cloudinary.com/dup9irkxd/image/upload/v1697690025/w7gnxu4m9tqd2xlj07xu.jpg"
 					class="avatar img-fluid rounded me-1" alt="Charles Hall"
 					border-radius: 50% !important /> <span class="text-dark">사용자</span>
 			</a>
@@ -286,7 +286,9 @@
 												.text(data.mphone);
 										$('.mp-content[data-field="deptname"]')
 												.text(data.deptname);
-
+										// $("#userName").text(data.mname);
+										
+										
 										modal('mypage-modal');
 									},
 									error : function(error) {

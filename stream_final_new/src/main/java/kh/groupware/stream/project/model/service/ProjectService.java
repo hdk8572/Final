@@ -9,6 +9,9 @@ import kh.groupware.stream.project.model.vo.ProjectVo;
 public interface ProjectService {
 	
 	public List<ProjectVo> selectList(String userid);
+
+	// 프로젝트의 작성자
+//	public ProjectVo selectProjectInfo(String pno);
 	public List<ProjectVo> selectHide(String userid);
 	
 	public ProjectVo sessionPname(String pno);
