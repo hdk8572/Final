@@ -46,7 +46,7 @@
 							<p class="lead">기업 정보를 입력 후 그룹웨어 Stream을 이용해보세요!</p>
 						</div>
 						<form action="${pageContext.request.contextPath}/newcompany"
-							method="post" name="Company" onsubmit="return checkAll();">
+							method="post" name="Company">
 							<div class="card cards">
 								<div class="m-sm-4 ccard">
 									<div class="mb-3">
@@ -66,7 +66,7 @@
 									</div>
 									<div class="text-center mt-3">
 										<button type="button"
-											class="btn btn-lg btn-primary nextButton">다음</button>
+											class="btn btn-lg btn-primary nextButton" id="checkall">다음</button>
 									</div>
 									<input type="hidden" name="password" value="12345" />
 								</div>
@@ -77,8 +77,8 @@
 									<div class="mb-3">
 										<label class="form-label">부서명 입력</label> <input type="hidden"
 											value="D000" name="defaultDeptCode" placeholder="기본부서" />
-										</td> <input type="hidden" value="부서미선택"
-											name="defaultDeptName" placeholder="기본부서" />
+										</td> <input type="hidden" value="부서미선택" name="defaultDeptName"
+											placeholder="기본부서" />
 										</td>
 										<table>
 											<td><input class="form-control form-control-lg"
@@ -110,7 +110,7 @@
 									</div>
 									<div class="text-center mt-3">
 										<button type="button"
-											class="btn btn-lg btn-primary prevButton">이전</button>
+											class="btn btn-lg btn-primary prevButton" id="returnpg">이전</button>
 										<button type="button"
 											class="btn btn-lg btn-primary nextButton">다음</button>
 									</div>
@@ -123,8 +123,8 @@
 										<label class="form-label">이메일 입력</label>
 										<table>
 											<td><input
-												class="form-control form-control-lg input-email" type="email"
-												id="input-email" name="ncemail"
+												class="form-control form-control-lg input-email"
+												type="email" id="input-email" name="ncemail"
 												placeholder="ex) 이메일을 입력하세요. " /></td>
 											<td><button type="button" onclick="addEmailTable()"
 													class="btn btn-lg btn-primary">추가</button></td>
@@ -166,10 +166,6 @@
 	<!-------------------- Script ----------------------->
 	<!-- 이메일/부서 null값으로 추가불가 -->
 	<script>
-	
-	
-	</script>
-	<script>
 		let currentIndex = 0;
 		showCards(currentIndex);
 
@@ -195,96 +191,116 @@
 
 	<!-- 회사가입 항목체크 -->
 	<script>
-	function checkAll(){
-		if(!checkCname(Company.cname.value)){
-			return false;
-		}else if(!checkCphone(Company.cphone.value)){
-			return false;
-		} else if(!checkCaddress(Company.caddress.value)){
-			return false;
+		$(document).ready(function() {
+			$("#checkall").click(function(event) {
+				if (!checkAll()) {
+					$("#returnpg").click();
+				}
+			});
+
+			function checkAll() {
+				if (!checkCname(Company.cname.value)) {
+					return false;
+				} else if (!checkCphone(Company.cphone.value)) {
+					return false;
+				} else if (!checkCaddress(Company.caddress.value)) {
+					return false;
+				}
+				return true;
+			}
+
+		});
+
+		function checkBlank(value, dataName) {
+			if (value == "") {
+				alert(dataName + " 입력해주세요!");
+				return false;
+			}
+			return true;
 		}
-		return true;
+
+		function checkCname(cname) {
+			if (!checkBlank(cname, "회사명을"))
+				return false;
+			var nameToCheck = /^[A-Za-z가-힣0-9\s!@#$%^&*()_+[\]{};':".,<>?\\/-]{2,25}$/;
+			if (!nameToCheck.test(cname)) {
+				alert("회사명 형식이 옳지 않습니다.");
+				return false;
+			}
+			return true;
 		}
-		
-	function checkBlank(value, dataName){
-	if (value == ""){
-		alert(dataName + " 입력해주세요!");
-		return false;
-	}
-	return true;
-	}
+		function checkCphone(cphone) {
+			if (!checkBlank(cphone, "회사 전화번호를"))
+				return false;
 
-	function checkCname(cname){
-	if(!checkBlank(cname, "회사명을"))
-		return false;
-	var nameToCheck = /^[A-Za-z가-힣\s!@#$%^&*()_+[\]{};':".,<>?\\/-]{2,25}$/;
-	if(!nameToCheck.test(cname)){
-		alert("회사명 형식이 옳지 않습니다.");
-		return false;
-	}
-	return true;
-}
-	function checkCphone(cphone) {
-	    if (!checkBlank(cphone, "회사 전화번호를"))
-	        return false;
+			const phoneToCheck = cphone.replace(/\D/g, '');
 
-	    const phoneToCheck = cphone.replace(/\D/g, '');
+			if (phoneToCheck.length !== 10 && phoneToCheck.length !== 11) {
+				alert("10 또는 11자리의 숫자를 입력해주세요.");
+				return false;
+			}
 
-	    if (phoneToCheck.length !== 10 && phoneToCheck.length !== 11) {
-	        alert("10 또는 11자리의 숫자를 입력해주세요.");
-	        return false;
-	    }
+			if (!/^01[01]/.test(phoneToCheck)) {
+				alert("010 또는 011로 시작되는 전화번호를 입력해주세요.");
+				return false;
+			}
 
-	    if (!/^01[01]/.test(phoneToCheck)) {
-	        alert("010 또는 011로 시작되는 전화번호를 입력해주세요.");
-	        return false;
-	    }
+			if (!/^\d+$/.test(phoneToCheck)) {
+				alert("전화번호 형식이 올바르지 않습니다.");
+				return false;
+			}
 
-	    if (!/^\d+$/.test(phoneToCheck)) {
-	        alert("전화번호 형식이 올바르지 않습니다.");
-	        return false;
-	    }
+			return true;
+		}
 
-	    return true;
-	}
-</script>
+		function checkCaddress(caddress) {
+			var addressToCheck = /^[A-Za-z가-힣0-9\s!@#$%^&*()_+[\]{};':".,<>?\\/-]{1,100}$/;
+			if (!addressToCheck.test(caddress)) {
+				alert("회사 주소가 너무 깁니다.");
+				return false;
+			}
+			return true;
+
+		}
+	</script>
+
+
 	<!-- Dept Script -->
 	<script>
 		var dRowCount = 0;
 
 		function addDeptTable() {
-			
+
 			var inputDept = document.getElementById("input-dept");
 			var inputValue = inputDept.value.trim();
-			
+
 			if (inputValue === '') {
-		        alert("부서이름을 입력해주세요!");
-		    } else{
-			
-			var table = document.getElementById("addDept");
-			var row = table.insertRow(-1);
+				alert("부서이름을 입력해주세요!");
+			} else {
 
-			
-			var value = '<input type="hidden" name="deptArr" value="'+inputDept.value+'"/>';
-			value += inputDept.value;
+				var table = document.getElementById("addDept");
+				var row = table.insertRow(-1);
 
-			var cell1 = row.insertCell(0)
-			cell1.innerHTML = dRowCount + 1;
+				var value = '<input type="hidden" name="deptArr" value="'+inputDept.value+'"/>';
+				value += inputDept.value;
 
-			var cell2 = row.insertCell(1);
-			cell2.innerHTML = value;
+				var cell1 = row.insertCell(0)
+				cell1.innerHTML = dRowCount + 1;
 
-			var cell3 = row.insertCell(2);
-			cell3.innerHTML = "삭제";
-			cell3.classList.add("delete-text");
+				var cell2 = row.insertCell(1);
+				cell2.innerHTML = value;
 
-			cell3.onclick = function() {
-				removeDRow(row);
-			};
+				var cell3 = row.insertCell(2);
+				cell3.innerHTML = "삭제";
+				cell3.classList.add("delete-text");
 
-			inputDept.value = "";
-			dRowCount++
-		    }
+				cell3.onclick = function() {
+					removeDRow(row);
+				};
+
+				inputDept.value = "";
+				dRowCount++
+			}
 		}
 		function removeDRow(row) {
 			var table = document.getElementById("addDept");
@@ -298,33 +314,38 @@
 		var eRowCount = 0;
 
 		function addEmailTable() {
-			
+
 			var inputEmail = document.getElementById("input-email");
-			
-			var table = document.getElementById("addEmail");
-			var row = table.insertRow(-1);
+			var inputValue = inputEmail.value.trim();
 
-			
-			var value = '<input type="hidden" name="emailArr" value="'+inputEmail.value+'"/>';
-			value += inputEmail.value;
+			if (inputValue === '') {
+				alert("이메일을 입력해주세요!");
+			} else {
 
-			var cell1 = row.insertCell(0)
-			cell1.innerHTML = eRowCount + 1;
+				var table = document.getElementById("addEmail");
+				var row = table.insertRow(-1);
 
-			var cell2 = row.insertCell(1);
-			cell2.innerHTML = value;
+				var value = '<input type="hidden" name="emailArr" value="'+inputEmail.value+'"/>';
+				value += inputEmail.value;
 
-			var cell3 = row.insertCell(2);
-			cell3.innerHTML = "삭제";
-			cell3.classList.add("delete-text");
+				var cell1 = row.insertCell(0)
+				cell1.innerHTML = eRowCount + 1;
 
-			cell3.onclick = function() {
-				removeERow(row);
-			};
+				var cell2 = row.insertCell(1);
+				cell2.innerHTML = value;
 
-			inputEmail.value = "";
-			eRowCount++
+				var cell3 = row.insertCell(2);
+				cell3.innerHTML = "삭제";
+				cell3.classList.add("delete-text");
 
+				cell3.onclick = function() {
+					removeERow(row);
+				};
+
+				inputEmail.value = "";
+				eRowCount++
+
+			}
 		}
 		function removeERow(row) {
 			var table = document.getElementById("addEmail");

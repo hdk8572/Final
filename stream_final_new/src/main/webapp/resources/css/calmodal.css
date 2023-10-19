@@ -106,3 +106,12 @@
     min-width: 0;
     position: relative;
 }
+.form-calmemberlist.card{
+	background-color: #f5f7fb;
+}
+.attenduserid-item > div{
+	margin-left: 1rem;
+}
+.attenduserid-item{
+	line-height: 30px;
+}

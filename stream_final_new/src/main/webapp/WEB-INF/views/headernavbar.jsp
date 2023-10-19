@@ -262,7 +262,7 @@
 					function() {
 						$
 								.ajax({
-									url : '${pageContext.request.contextPath}/showmypage',
+									url : '${pageContext.request.contextPath}/member/showmypage',
 									method : 'GET',
 									data : {
 										userid : '${principal.username}'
@@ -297,7 +297,7 @@
 					});
 
 	$("#editmypage").click(function() {
-		var url = "${pageContext.request.contextPath}/editmypage";
+		var url = "${pageContext.request.contextPath}/member/editmypage";
 		window.location.href = url;
 	});
 </script>

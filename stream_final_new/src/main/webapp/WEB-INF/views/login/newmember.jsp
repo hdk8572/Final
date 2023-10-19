@@ -152,9 +152,9 @@
 		function checkUserid(userid) {
 			if (!checkBlank(userid, "아이디를"))
 				return false;
-			var idToCheck = /^[A-Za-z0-9_]+@[A-Za-z0-9]+\.[A-Za-z]{2,4}(\.[A-Za-z]{2})?$/;
+			var idToCheck = /[A-Za-z0-9_]{1,25}+@[A-Za-z0-9]+\.[A-Za-z]{2,4}(\.[A-Za-z]{2})?$/;
 			if (!idToCheck.test(userid)) {
-				alert("아이디는 이메일 형식으로 입력해주세요!");
+				alert("이메일형식이 옳지 않습니다!");
 				Account.userid.value = "";
 				Account.userid.focus();
 				return false;
@@ -168,8 +168,16 @@
 			if (userpwd != pwdcheck) {
 				alert("비밀번호가 일치하지 않습니다.");
 				Account.pwdcheck.value = "";
+				Account.pwdcheck.focus();
 				return false;
 			}
+			var pwdToCheck =/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,15}$/;
+				if (!pwdToCheck.test(userpwd)){
+					alert("비밀번호는 대소문자와 영어를 포함한 8-15자로 작성해주세요.");
+					Account.userpwd.value="";
+					Account.userpwd.focus();
+					return false;
+				}
 			return true;
 		}
 
@@ -181,6 +189,8 @@
 			var nameToCheck = /^[A-Za-z가-힣]{2,15}$/;
 			if (!nameToCheck.test(username)) {
 				alert("이름 형식이 옳지 않습니다.");
+				Account.username.value=""
+				Account.username.focus();
 				return false;
 			}
 			return true;
