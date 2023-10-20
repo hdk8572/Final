@@ -91,10 +91,14 @@
 
 			var inputEmail = document.getElementById("input-email");
 			var inputValue = inputEmail.value.trim();
-
+			var emailToCheck = /[A-Za-z0-9_]{1,25}+@[A-Za-z0-9]+\.[A-Za-z]{2,4}(\.[A-Za-z]{2})?$/;
+			
 			if (inputValue === '') {
 				alert("이메일을 입력해주세요!");
-			} else {
+			} else if (!emailToCheck.test(inputValue)){
+				alert("이메일형식이 옳지 않습니다.")};
+				
+			}else{
 
 				var table = document.getElementById("addEmail");
 				var row = table.insertRow(-1);
@@ -126,6 +130,16 @@
 			eRowCount--;
 		}
 	</script>
+
+	<!-- Enter키 제어 스크립트 -->
+	<script>
+		document.addEventListener('keydown', function(event) {
+			if (event.key === "Enter") {
+				event.preventDefault();
+			}
+		});
+	</script>
+
 </body>
 <!-------------------- Script ----------------------->
 <script src="${pageContext.request.contextPath}/js/stream.js"></script>

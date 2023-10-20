@@ -353,6 +353,15 @@
 		}
 	</script>
 
+	<!-- Enter키 제어 스크립트 -->
+	<script>
+		document.addEventListener('keydown', function(event) {
+			if (event.key === "Enter") {
+				event.preventDefault(); 
+			}
+		});
+	</script>
+
 
 
 	<script src="js/app.js"></script>

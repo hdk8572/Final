@@ -23,27 +23,33 @@
 			access="hasRole('ROLE_M')" />
 		<intercept-url pattern="/company/**"
 			access="hasRole('ROLE_C')" />
-		<intercept-url pattern="/showmypage" access="hasAnyRole('ROLE_C', 'ROLE_M')" />
+		<intercept-url pattern="/showmypage"
+			access="hasAnyRole('ROLE_C', 'ROLE_M')" />
 		<intercept-url pattern="/**" access="permitAll" />
 
+		<access-denied-handler
+			error-page="/accessdenied" />
 
 		<form-login login-page="/login" username-parameter="userid"
 			password-parameter="password" default-target-url="/"
 			authentication-success-handler-ref="loginSuccessHandler"
-			
 			authentication-failure-handler-ref="loginFailureHandler" />
-		<logout logout-url="/logout" logout-success-url="/main" />
+
+		<logout success-handler-ref="logoutHandler" invalidate-session="false" logout-url="/logout"/>
 
 	</http>
-
+	<beans:bean
+		class="kh.groupware.stream.common.controller.LogoutHandler"
+		id="logoutHandler" />
 	<beans:bean
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"
 		id="BCryptPasswordEncoder"></beans:bean>
 	<beans:bean
 		class="kh.groupware.stream.common.controller.LoginSuccessHandler"
 		id="loginSuccessHandler" />
-		<beans:bean class="kh.groupware.stream.common.controller.LoginFailureHandler" id="loginFailureHandler"/>
-
+	<beans:bean
+		class="kh.groupware.stream.common.controller.LoginFailureHandler"
+		id="loginFailureHandler" />
 	<!-- DB에서 정보를 가져와서 비교를 위한 정보 -->
 	<jdbc-user-service data-source-ref="dataSource"
 		id="userService"
@@ -52,12 +58,10 @@
 
 	<!-- 실질적으로 계정정보 비교 -->
 	<authentication-manager>
-
 		<authentication-provider
 			user-service-ref="userService">
 			<password-encoder ref="BCryptPasswordEncoder" />
 		</authentication-provider>
-
 	</authentication-manager>
 
 
