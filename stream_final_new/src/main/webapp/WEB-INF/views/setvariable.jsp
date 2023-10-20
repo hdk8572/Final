@@ -6,9 +6,3 @@
 <script>
 	const principal_username = "${principal.username }"; /*js file 용 - principal_username 변수 지정 */
 </script>
-<script>
-	var alertmsg = "${alertmsg}";
-	if(alertmsg){
-		alert(alertmsg);
-	}
-</script>
