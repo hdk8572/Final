@@ -40,7 +40,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 	    	if(selectedValue == itemValue){
 	    		alert("이미 참석자에 등록된 사원입니다.");
 	    		checkSameUserId = true;
-	    		return;
+	    		return false;
 	    	}
 	    });
 	    if(checkSameUserId == false){  //등록된 적 없는 사원일 경우 추가
@@ -123,6 +123,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 <!-- 위즈윅 - summerNote	 -->
 <script>
 	$(document).ready(function (){
+
 		$("#summernote-addcalmodal").summernote({					
 		     placeholder: '내용을 작성해주세요.',
 		     tabsize: 2,
@@ -137,9 +138,9 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 		       ['view', ['fullscreen', 'codeview', 'help']]
 		     ]
 		});
-		/*
- 		 $("#summernote-updatecalmodal").summernote({					
-		   placeholder: '내용을 작성해주세요.', 
+
+		$("#summernote-updatecalmodal").summernote({					
+			 placeholder: '내용을 작성해주세요.',
 		     tabsize: 2,
 		     height: 120,
 		     toolbar: [
@@ -148,10 +149,10 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 		       ['color', ['color']],
 		       ['para', ['ul', 'ol', 'paragraph']],
 		       ['table', ['table']],
-		       ['insert'  ['link', 'picture', 'video'] ],
+		       ['insert' /* ['link', 'picture', 'video'] */],
 		       ['view', ['fullscreen', 'codeview', 'help']]
 		     ]
 		}); 
-		*/
+		
 	});
 </script>

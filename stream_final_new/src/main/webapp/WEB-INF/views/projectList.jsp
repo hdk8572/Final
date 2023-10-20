@@ -11,12 +11,10 @@
 <meta charset="utf-8">
 <meta name="author" content="Stream">
 
-<link rel="shortcut icon" href="img/icons/icon-48x48.png" /> <!-- 로고 결정 요망 -->
-
 <!-- Tab bar -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<title>Stream - Final Project</title>
+<title>Stream - 업무도 흐름이다!</title>
 
 <!-- Bootstrap CSS -->
 <link href="${pageContext.request.contextPath}/css/streamapp.css"	rel="stylesheet">
@@ -113,7 +111,7 @@
 		       ['para', ['ul', 'ol', 'paragraph']],
 		       ['table', ['table']],
 		       ['insert' /* ['link', 'picture', 'video'] */],
-		       ['view', ['fullscreen', 'codeview', 'help']]
+		       ['view', ['codeview'/* , 'fullscreen', 'help' */]]
 		     ]
 		});
 		$("#summernote-update").summernote({				//  위즈윅 - summerNote		
@@ -127,10 +125,15 @@
 		       ['para', ['ul', 'ol', 'paragraph']],
 		       ['table', ['table']],
 		       ['insert' /* ['link', 'picture', 'video'] */],
-		       ['view', ['fullscreen', 'codeview', 'help']]
+		       ['view', ['codeview'/* , 'fullscreen', 'help' */]]
 		     ]
 		});
 		
+		$('.modal').on('hidden.bs.modal', function (e) {
+			var resett1 = $(this).find('form')[0].reset();
+			$(this).find('form')[0].reset();
+			$("#summernote").summernote('code', "");				// addProjectModal 닫을 시 summernote 값 초기화
+		});
 		
 	}); 
 		
@@ -197,13 +200,13 @@
 	                        <div class="row">
 	                            <div class="col mt-0">
 	                                <h5 class="card-title">
-	                                    <span>\${projectOne.deptName}</span>: <span>\${projectOne.mname}</span><span> \${projectOne.mrank}</span>님
+	                                    <span>\${projectOne.deptname}</span>: <span>\${projectOne.mname}</span><span> \${projectOne.mrank}</span>님
 	                                </h5>
 	                            </div>
 	                            
 	                            <div class="col-auto">
 	                                <div class="stat text-primary">
-	                                    \${projectOne.countMember}명
+	                                    \${projectOne.countmember}명
 	                                </div>	
 	                            </div>
 	                        </div>
@@ -289,19 +292,27 @@
 		 		console.log(result.pstatus);
 				$("#updateProjectModal [name=pno]").val(result.pno);
 				$("#updateProjectModal [name=pname]").val(result.pname);
-				$("#updateProjectModal [name=pcontent]").val(result.pcontent);
+				$('#summernote-update').summernote('code', result.pcontent);	// updateProjectModal 닫을 시 summernote 기존 입력값 부여
 				$("#updateProjectModal [name=pstartdate]").val(result.pstartdate);
 				$("#updateProjectModal [name=penddate]").val(result.penddate);
 				$('#updateProjectModal select[name=addpstatus]').val(result.pstatus).attr("selected",true);
+				$("input[name=pstatus]").val(result.pstatus);		// 선택된 pStatus 조회 1-1
 		 	},
 		 	error:function(){
 				console.log("goUpdateForm에서 에러 발생");
 			}
 		 	
 		 });
+		
+		$("#updateStatus").change(function(){
+			var changedPstatus = $("#updateStatus").val();
+			$("input[name=pstatus]").val(changedPstatus);
+		});
+		
 	}
 	
 	function doUpdateProject() {
+		console.log("업데이트 실행");
 	 	$.ajax ({
 			url: contextPath+"/member/doUpdateProject",
 			type: "get",
@@ -343,7 +354,8 @@
 			}
 	    });
 	} 
-		
+	
+
 	
 /*  	function listDelete($thisEle) {
  		console.log($thisEle.parents("[name=pno]").val());

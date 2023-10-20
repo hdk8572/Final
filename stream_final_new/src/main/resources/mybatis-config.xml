@@ -11,7 +11,6 @@
 		<typeAlias type="kh.groupware.stream.member.model.vo.MemberVo" alias="MemberVo"/>
 		<typeAlias type="kh.groupware.stream.member.model.vo.MyPageVo" alias="MyPageVo"/>
 		<typeAlias type="kh.groupware.stream.company.model.vo.CompanyVo" alias="CompanyVo"/>
-		<typeAlias type="kh.groupware.stream.email.model.vo.EmailVo" alias="EmailVo"/>
 		<typeAlias type="kh.groupware.stream.attend.model.vo.AttendVo" alias="AttendVo"/>
 		<typeAlias type="kh.groupware.stream.company.model.vo.DeptVo" alias="DeptVo"/>
 		
@@ -28,7 +27,8 @@
 		<typeAlias type="kh.groupware.stream.reply.model.vo.ReplyVo" alias="ReplyVo"/>
 		<typeAlias type="kh.groupware.stream.files.model.vo.FileVo" alias="FileVo"/>
 
-		<typeAlias type="kh.groupware.stream.main.model.dto.MaintaskSortVo" alias="MaintaskSortVo"/>		
+		<typeAlias type="kh.groupware.stream.main.model.dto.MaintaskSortVo" alias="MaintaskSortVo"/>	
+		<typeAlias type="kh.groupware.stream.admin.model.vo.PagingVo" alias="PagingVo"/>	
 
 	</typeAliases>
 	

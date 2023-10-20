@@ -14,12 +14,10 @@
 <meta charset="utf-8">
 <meta name="author" content="Stream">
 
-<link rel="shortcut icon" href="img/icons/icon-48x48.png" /> <!-- 로고 결정 요망 -->
-
 <!-- 부트스트랩 -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<title>Stream - Final Project</title>
+<title>Stream - 업무도 흐름이다!</title>
 
 <link href="${pageContext.request.contextPath }/css/streamapp.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/css/maintask.css" rel="stylesheet">
@@ -335,15 +333,15 @@
 						</div>
 					</div>
 				</div>
-				<%@ include file="/WEB-INF/views/detailptaskmodal.jsp"%>
 			</main>
 		</div>
 	</div>
-	
 	<%@include file="/WEB-INF/views/footer.jsp"%>
-	
+	<%@include file="/WEB-INF/views/task/maintaskscript.jsp" %>
+	<%-- <%@ include file="/WEB-INF/views/detailptaskmodal.jsp"%> --%>
+	<%@include file="/WEB-INF/views/task/maintasktaskdetailmodal.jsp" %>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
-	<script src="${pageContext.request.contextPath}/js/maintask.js"></script>
+	<%-- <script src="${pageContext.request.contextPath}/js/maintask.js"></script> --%>
 	
 	<script>
 		taskSortHandler=()=>{
@@ -418,8 +416,7 @@
 										<span>&#8618;</span>
 					`
 							}
-		htmlList+=`
-									\${task.ttitle}
+		htmlList+=`\${task.ttitle}
 									</span>
 					`
 							if(task.brelevel ==0){
@@ -512,7 +509,7 @@
 	function titleHoverHandler(){
 		$(".jm-title-ttitle").hover(()=>{
 			//$(event.target).find(".jm-hidden-btn").addClass("active");
-			$(event.target).find(".jm-hidden-btn").css("visibility", "hidden");
+			$(".jm-hidden-btn").css("visibility", "hidden");
 			$(event.target).find(".jm-hidden-btn").css("visibility", "visible");
 		},()=>{
 			$(event.target).find(".jm-hidden-btn").css("visibility", "hidden");
@@ -602,6 +599,7 @@
 		return true;
 	}
 </script>
+
 </body>
 
 </html>

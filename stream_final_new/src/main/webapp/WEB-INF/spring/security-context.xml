@@ -13,7 +13,7 @@
 	<!-- <intercept-url pattern="/login" access="!isAuthenticated()"/> <intercept-url 
 		pattern="/**" access="isAuthenticated()"/> -->
 	<!-- <intercept-url pattern="/newmember" access="isAnonymous()" /> -->
-		
+
 	<http auto-config="true" use-expressions="true">
 
 		<csrf disabled="true" />
@@ -23,13 +23,15 @@
 			access="hasRole('ROLE_M')" />
 		<intercept-url pattern="/company/**"
 			access="hasRole('ROLE_C')" />
+		<intercept-url pattern="/showmypage" access="hasAnyRole('ROLE_C', 'ROLE_M')" />
 		<intercept-url pattern="/**" access="permitAll" />
 
 
 		<form-login login-page="/login" username-parameter="userid"
-			password-parameter="password" default-target-url="/link"
+			password-parameter="password" default-target-url="/"
 			authentication-success-handler-ref="loginSuccessHandler"
-			authentication-failure-url="/login" />
+			
+			authentication-failure-handler-ref="loginFailureHandler" />
 		<logout logout-url="/logout" logout-success-url="/main" />
 
 	</http>
@@ -40,6 +42,7 @@
 	<beans:bean
 		class="kh.groupware.stream.common.controller.LoginSuccessHandler"
 		id="loginSuccessHandler" />
+		<beans:bean class="kh.groupware.stream.common.controller.LoginFailureHandler" id="loginFailureHandler"/>
 
 	<!-- DB에서 정보를 가져와서 비교를 위한 정보 -->
 	<jdbc-user-service data-source-ref="dataSource"

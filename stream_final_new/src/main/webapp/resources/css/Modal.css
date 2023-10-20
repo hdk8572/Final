@@ -16,6 +16,10 @@
 	margin-bottom: 1rem !important;
 }
 
+.feather.feather-delete.align-middle.me-2 {
+	cursor:pointer;
+}
+
 /* Modal Content/Box */
 .modal-content {
   background-color: #f5f7fb;
@@ -237,11 +241,17 @@
 
 .selected-rightPart.card {
 	background-color: #f5f7fb;
+	display: flex;
+	height: 90px;
+	display: inline-table;
+	overflow: scroll;
 }
 
 .comanyMember {
 	height: 30px;
     line-height: 30px;
+    width: 50%;
+    display: inline-block;
 }
 
 .comanyMember > span {
@@ -298,6 +308,27 @@ form {
 }
 
 /* detailptaskmodal */
+
+.card-header.detailPtaskTitle {
+	display: flex;
+}
+
+.detailPtaskTitle-title {
+	width: 50%;
+}
+
+.detailPtaskTitle-dropdown-group {
+	width: 50%;	
+}
+
+.detailPtaskTitle-title  {
+	font-size: 1.53125rem;
+}
+
+.dropdown-menu.detailPtask {
+	transform: translate3d(635px, 41px, 0px) !important;
+}
+
 .card-body.detailPtaskTitle {
 	cursor: auto;	
 }

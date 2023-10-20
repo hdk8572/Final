@@ -13,7 +13,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Stream - 업무도 흐름이다!</title>
 </head>
 <body style="margin: 0px">
 	<div class="container" style="margin :0px; height: 630px">

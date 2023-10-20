@@ -13,18 +13,9 @@
 				<div class="wrap-card">
 					<div class="card-body detailPtaskTitle">
 						<div class="card-header detailPtaskTitle">
-							<div class="detailPtaskTitle-title ">
+							<h2 class="detailPtaskTitle">
 								<b>프로젝트 상세 조회</b>
-							</div>
-							<div class="detailPtaskTitle-dropdown-group">
-								<div class="btn-dropdown-toggle" id="read-dropdown" data-bs-toggle="dropdown">
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical me-2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
-								</div>
-								<ul class="dropdown-menu detailPtask"> <!-- id="read-dropdown-menu" -->
-									<li><a class="dropdown-item">수정</a></li>
-									<li><a class="dropdown-item">삭제</a></li>
-								</ul>
-					  		</div>
+							</h2>
 						</div>
 						<div class="card-body detailPtaskTitle">
 							<form>
@@ -42,15 +33,15 @@
 									<div class=""></div>
 								</div>
 								<div class="form-control detail-content input tcontent"></div>
-								<input type="hidden" name="pno">
-								<input type="hidden" name="tno">
+								<input type="hidden" name="pno" >
+								<input type="hidden" name="tno" >
 							</form>
 							<div>
 								<form class="wrap-reply" action="${pageContext.request.contextPath}/doUpload" method="post" enctype="multipart/form-data">
 									<div class="reply-input">
 										<input type="text" class="form-control replyInput" name="rcontent" placeholder="댓글을 입력해주세요 - Enter 클릭 시 입력됩니다.">
 										<input type="file" class="fileUpload">
-										<input type="hidden" name="tno">
+										<input type="hidden" name="tno" >
 										<input type="hidden" name="userid" value="${principal.username}">
 									</div>
 									<div class="replyList">

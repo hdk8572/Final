@@ -13,23 +13,23 @@ public class ProjectVo {
 	private String pno;
 	private String userid;
 	private String pname;
-	private String pcontent;
 	private String paccess;
+	private String prow;
+	private String countmember;
+	private String pstatus;
+
+	private String pcontent;
 	private String pdate;
 	private String pstartdate;
 	private String penddate;
-	private String prow; // 함수 Vo에 없음
-	private String countMember; // 함수 Vo에 없음
-	private String pstatus;
 	
 	private String type;
 	private String keyword;
 
-// deptVo + usersVo	
 	private String deptno;
 	private String mname;
 	private String mrank;
-	private String deptName;
+	private String deptname;
 
 //taskVo
 	private List<MaintaskDto> maintaskList;
@@ -39,48 +39,14 @@ public class ProjectVo {
 // 정렬용
 	private List<MaintaskSortVo> maintaskSortList;
 
-
 	@Override
 	public String toString() {
-		return "ProjectVo [pno=" + pno + ", userid=" + userid + ", pname=" + pname + ", pcontent=" + "CLOB"
-				+ ", paccess=" + paccess + ", pdate=" + pdate + ", pstartdate=" + pstartdate + ", penddate=" + penddate
-				+ ", prow=" + prow + ", countMember=" + countMember + ", pstatus=" + pstatus + ", type=" + type
-				+ ", keyword=" + keyword + ", deptno=" + deptno + ", mname=" + mname + ", mrank=" + mrank
-				+ ", deptName=" + deptName + ", maintaskList=" + maintaskList + ", memberProjectList="
-				+ memberProjectList + ", maintaskSortList=" + maintaskSortList + "]";
-	}
-
-	public ProjectVo(String pno, String userid, String pname, String pcontent, String paccess, String pdate,
-			String pstartdate, String penddate, String prow, String countMember, String pstatus, String type,
-			String keyword, String deptno, String mname, String mrank, String deptName, List<MaintaskDto> maintaskList,
-			List<MemberSimpleVo> memberProjectList, List<MaintaskSortVo> maintaskSortList) {
-		super();
-		this.pno = pno;
-		this.userid = userid;
-		this.pname = pname;
-		this.pcontent = pcontent;
-		this.paccess = paccess;
-		this.pdate = pdate;
-		this.pstartdate = pstartdate;
-		this.penddate = penddate;
-		this.prow = prow;
-		this.countMember = countMember;
-		this.pstatus = pstatus;
-		this.type = type;
-		this.keyword = keyword;
-		this.deptno = deptno;
-		this.mname = mname;
-		this.mrank = mrank;
-		this.deptName = deptName;
-		this.maintaskList = maintaskList;
-		this.memberProjectList = memberProjectList;
-		this.maintaskSortList = maintaskSortList;
-	}
-
-
-
-	public ProjectVo() {
-		super();
+		return "ProjectVo [pno=" + pno + ", userid=" + userid + ", pname=" + pname + ", paccess=" + paccess + ", prow="
+				+ prow + ", countmember=" + countmember + ", pstatus=" + pstatus + ", pcontent=" + "CLOB" + ", pdate="
+				+ pdate + ", pstartdate=" + pstartdate + ", penddate=" + penddate + ", type=" + type + ", keyword="
+				+ keyword + ", deptno=" + deptno + ", mname=" + mname + ", mrank=" + mrank + ", deptname=" + deptname
+				+ ", maintaskList=" + maintaskList + ", memberProjectList=" + memberProjectList + ", maintaskSortList="
+				+ maintaskSortList + "]";
 	}
 
 	public String getPno() {
@@ -107,20 +73,44 @@ public class ProjectVo {
 		this.pname = pname;
 	}
 
-	public String getPcontent() {
-		return pcontent;
-	}
-
-	public void setPcontent(String pcontent) {
-		this.pcontent = pcontent;
-	}
-
 	public String getPaccess() {
 		return paccess;
 	}
 
 	public void setPaccess(String paccess) {
 		this.paccess = paccess;
+	}
+
+	public String getProw() {
+		return prow;
+	}
+
+	public void setProw(String prow) {
+		this.prow = prow;
+	}
+
+	public String getCountmember() {
+		return countmember;
+	}
+
+	public void setCountmember(String countmember) {
+		this.countmember = countmember;
+	}
+
+	public String getPstatus() {
+		return pstatus;
+	}
+
+	public void setPstatus(String pstatus) {
+		this.pstatus = pstatus;
+	}
+
+	public String getPcontent() {
+		return pcontent;
+	}
+
+	public void setPcontent(String pcontent) {
+		this.pcontent = pcontent;
 	}
 
 	public String getPdate() {
@@ -145,22 +135,6 @@ public class ProjectVo {
 
 	public void setPenddate(String penddate) {
 		this.penddate = penddate;
-	}
-
-	public String getProw() {
-		return prow;
-	}
-
-	public void setProw(String prow) {
-		this.prow = prow;
-	}
-
-	public String getPstatus() {
-		return pstatus;
-	}
-
-	public void setPstatus(String pstatus) {
-		this.pstatus = pstatus;
 	}
 
 	public String getType() {
@@ -203,12 +177,12 @@ public class ProjectVo {
 		this.mrank = mrank;
 	}
 
-	public String getDeptName() {
-		return deptName;
+	public String getDeptname() {
+		return deptname;
 	}
 
-	public void setDeptName(String deptName) {
-		this.deptName = deptName;
+	public void setDeptname(String deptname) {
+		this.deptname = deptname;
 	}
 
 	public List<MaintaskDto> getMaintaskList() {
@@ -234,13 +208,4 @@ public class ProjectVo {
 	public void setMaintaskSortList(List<MaintaskSortVo> maintaskSortList) {
 		this.maintaskSortList = maintaskSortList;
 	}
-
-	public String getCountMember() {
-		return countMember;
-	}
-
-	public void setCountMember(String countMember) {
-		this.countMember = countMember;
-	}
-	
 }

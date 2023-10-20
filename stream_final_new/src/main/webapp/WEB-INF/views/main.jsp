@@ -12,8 +12,7 @@
 <meta name="description"
 	content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
 
-
-<title>로그인</title>
+<title>Stream - 업무도 흐름이다!</title>
 
 <!-- Bootstrap Css -->
 <link href="${pageContext.request.contextPath}/css/streamapp.css" rel="stylesheet">

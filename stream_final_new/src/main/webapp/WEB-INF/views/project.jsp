@@ -8,11 +8,9 @@
  	<meta charset="utf-8">
 	<meta name="author" content="Stream">
 
-	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
-
 	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
 
-	<title>Stream - Final Project</title>
+<title>Stream - 업무도 흐름이다!</title>
 	
 	<!--  Calendar CSS -->
 	<link href="${pageContext.request.contextPath }/css/calreadmodal.css" rel="stylesheet">
@@ -297,9 +295,9 @@
 	}
 	
 	function detailProject() {
-		targetTno = $(this).closest("tr").find("input[name=tno]").val();
-		targetPno = $(this).closest("tr").find("input[name=pno]").val();
-		targetRno = $(this).closest("tr").find("input[name=rno]").val();
+		var targetTno = $(this).closest("tr").find("input[name=tno]").val();
+		var targetPno = $(this).closest("tr").find("input[name=pno]").val();
+		var targetRno = $(this).closest("tr").find("input[name=rno]").val();
 		$("#detailProjectModal").modal("toggle");
 		
 		$.ajax({
@@ -317,7 +315,7 @@
 		 		$(".wrap-card .tenddate").val(result.tenddate);
 		 		$(".wrap-card [name=tno]").val(result.tno);
 		 		$(".wrap-card [name=pno]").val(result.pno);
-		 		replyLoadList();
+		 		replyLoadList(targetTno);
 		 	},
 		 	error: function() {
 		 		console.log("detailProject에서 오류 발생");

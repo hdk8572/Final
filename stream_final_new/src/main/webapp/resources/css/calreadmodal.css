@@ -37,6 +37,10 @@
 
 #read-dropdown > svg {
 	 cursor: pointer;
+	 float: right;
+}
+#read-dropdown-grop{
+	
 }
 /* The Close Button */
 
@@ -46,9 +50,6 @@
 .card-header #userid{
 	float: left;
 }
-#read-dropdown {
-	margin-left: 98%;
-} 
 .dropdown-menu.show{
 	min-width: 0;
 }
@@ -77,10 +78,6 @@
     bottom: 8px;
 }
 
-.card-header.ptaskTitle {
-	padding: 1rem 0rem;
-}
-
 .stitle{
 	border-bottom: 1px solid #80808038;
 	padding-bottom: 10px;
@@ -97,9 +94,30 @@
 
 /* 공간 확보 */
 
-.form-date-read{
+.form-read{
 	margin-bottom: 1rem;
 	/* width: 40%; */
 	padding-left: 1rem;
 }
 
+/* 일정상세 제목 */
+.pcalTitle{
+	width: 100%;
+}
+.readcalmodal-header{
+	display: flex;
+	background-color: #fff;
+    border-bottom: 0 solid transparent;
+    margin-bottom: 0;
+    padding: 1rem 0.2rem 0rem 1.5rem;
+}
+/* 일정상세 제목 */
+
+/* 참가자 */
+#attenduseridList{
+	display: flex;
+}
+
+#attenduseridList > div{
+	margin-right: 10px;
+}

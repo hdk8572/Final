@@ -67,11 +67,6 @@
 
 /* add */
 
-.userid-img{
-	margin-bottom: 15px;
-	margin-right: 0.4rem;
-}
-
 /* add+kakao 지도 */
 .map{
 	width: 90%;
@@ -86,13 +81,11 @@
 
 /* 참가자 */
 
-.form-calmemberlist{
-	background-color: #f5f7fb;
-	width: 70%;
-    margin-left: 1rem;
-    margin-bottom: 1rem;
-	
+.calmemberlist-img{
+	margin-bottom: 15px;
+	margin-right: 0.4rem;
 }
+
 .form-control-userid {
 	width: 30%;
 	line-height: 30px;
@@ -106,3 +99,42 @@
     min-width: 0;
     position: relative;
 }
+.form-calmemberlist{
+	
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+.form-calmemberlist.card{
+	width:500%; /* TODO */
+	background-color: #f5f7fb;
+    display: flex;
+    height: 90px;
+    display: inline-table;
+    overflow: scroll;
+}
+.attenduserid-item > div{
+	margin-left: 1rem;
+}
+.attenduserid-item{
+	line-height: 30px;
+}
+
+/* 수정 참가자 */
+#attenduseridList{
+	display: flex;
+}
+
+#attenduseridList > div{
+	margin-right: 10px;
+}
+.form-readcalmemberlist.card{
+	background-color: #f5f7fb;
+}
+.form-readcalmemberlist{
+	background-color: #f5f7fb;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+/* 수정 참가자 */
+
+/* 참가자 */

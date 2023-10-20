@@ -88,16 +88,29 @@ SELECT SNO, USERID, mname, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, '
 	</insert>
 
 
-	<!-- 캘린더 수정 --> <!-- 작성자,지도 수정x, 참가자는 보류 -->
+	<!-- 캘린더 수정 -->
 	<update id="update" parameterType="CalendarVo">
 		UPDATE SCHEDULE SET 
 		STITLE=#{title}, SSTART=#{start}, SEND=#{end}, SMEMO=#{smemo}
 		WHERE SNO=#{sno}
 	</update>
+	
+	<!-- 참가자 있을 때 캘린더 수정  --> <!-- TODO  -->
+<!-- 	<update id="updatemember" parameterType="CalendarVo">
+		UPDATE MEMBER_SCHEDULE SET 
+		ATTENDUSERID =#{attenduserid.
+		WHERE SNO=#{sno}
+	</update> -->
 
-	<!-- 캘린더 삭제 --> <!-- TODO -->
-	<delete id="delete" parameterType="CalendarVo">
+	<!-- 캘린더 삭제 --> 
+	<delete id="delete" parameterType="String">
 		DELETE FROM SCHEDULE
+		WHERE SNO=#{sno}
+	</delete>
+	
+	<!-- 참가자 있을 때 캘린더 삭제 --> 
+	<delete id="deletemember" parameterType="String">
+		DELETE FROM MEMBER_SCHEDULE
 		WHERE SNO=#{sno}
 	</delete>
 

@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Stream - 업무도 흐름이다!</title>
 
 <!-- Bootstrap Css -->
 <link href="${pageContext.request.contextPath}/css/streamapp.css"
@@ -34,14 +34,13 @@
 
 </head>
 <body>
+	<%@ include file="/WEB-INF/views/alertmsg.jsp"%>
 	<div class="wrapper">
-
 		<%@ include file="/WEB-INF/views/sidebar.jsp"%>
 		<div class="main">
 			<%@ include file="/WEB-INF/views/headernavbar.jsp"%>
 			<main class="content">
-				<div class="container-fluid p-0">
-				</div>
+				<div class="container-fluid p-0"></div>
 			</main>
 		</div>
 	</div>

@@ -66,12 +66,16 @@ public class CalendarServiceImpl implements CalendarService {
 	public int update(CalendarVo cal) {
 		return calendarDao.update(cal);
 	}
-	//캘린더 삭제
-	@Override
-	public int delete(String sno) {
-		return calendarDao.delete(sno);
-	}
 	
+	//캘린더 삭제
+	//insert는 all을 써서 1개 delete는 dao두 개 deleteAll이 없기 때문에!
+	@Override
+	@Transactional
+	public int delete(String sno) {
+		calendarDao.deletemember(sno);
+		return 	calendarDao.delete(sno);
+
+	}
 
 
 

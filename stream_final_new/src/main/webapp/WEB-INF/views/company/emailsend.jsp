@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Stream - 업무도 흐름이다!</title>
 
 <!-- Bootstrap Css -->
 <link href="${pageContext.request.contextPath}/css/streamapp.css"
@@ -88,30 +88,37 @@
 		var eRowCount = 0;
 
 		function addEmailTable() {
-			var table = document.getElementById("addEmail");
-			var row = table.insertRow(-1);
 
 			var inputEmail = document.getElementById("input-email");
-			var value = '<input type="hidden" name="emailArr" value="'+inputEmail.value+'"/>';
-			value += inputEmail.value;
+			var inputValue = inputEmail.value.trim();
 
-			var cell1 = row.insertCell(0)
-			cell1.innerHTML = eRowCount + 1;
+			if (inputValue === '') {
+				alert("이메일을 입력해주세요!");
+			} else {
 
-			var cell2 = row.insertCell(1);
-			cell2.innerHTML = value;
+				var table = document.getElementById("addEmail");
+				var row = table.insertRow(-1);
 
-			var cell3 = row.insertCell(2);
-			cell3.innerHTML = "삭제";
-			cell3.classList.add("delete-text");
+				var value = '<input type="hidden" name="emailArr" value="'+inputEmail.value+'"/>';
+				value += inputEmail.value;
 
-			cell3.onclick = function() {
-				removeERow(row);
-			};
+				var cell1 = row.insertCell(0)
+				cell1.innerHTML = eRowCount + 1;
 
-			inputEmail.value = "";
-			eRowCount++
+				var cell2 = row.insertCell(1);
+				cell2.innerHTML = value;
 
+				var cell3 = row.insertCell(2);
+				cell3.innerHTML = "삭제";
+				cell3.classList.add("delete-text");
+
+				cell3.onclick = function() {
+					removeERow(row);
+				};
+
+				inputEmail.value = "";
+				eRowCount++
+			}
 		}
 		function removeERow(row) {
 			var table = document.getElementById("addEmail");

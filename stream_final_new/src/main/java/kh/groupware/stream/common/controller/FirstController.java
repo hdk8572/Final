@@ -18,14 +18,14 @@ public class FirstController {
 		mv.setViewName("main-modal");
 		return mv;
 	}
-	@GetMapping("/link")
-	public String link() {
-		return "link";
-	}
-	@GetMapping("/company/main")
-	public String cmain() {
-		return "company/main";
-	}
+//	@GetMapping("/link")
+//	public String link() {
+//		return "link";
+//	}
+//	@GetMapping("/company/main")
+//	public String cmain() {
+//		return "company/main";
+//	}
 //	@GetMapping("/admin/main")
 //	public String amain() {
 //		return "admin/main";

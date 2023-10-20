@@ -16,15 +16,15 @@
 	content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
 <link rel="canonical"
 	href="https://demo-basic.adminkit.io/pages-sign-in.html" />
 
-<title>로그인</title>
+<title>Stream - 업무도 흐름이다!</title>
 
 <!-- Bootstrap Css -->
-<link href="${pageContext.request.contextPath}/css/streamapp.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/streamapp.css"
+	rel="stylesheet">
 <!-- Login Css -->
 <link href="${pageContext.request.contextPath}/css/login.css"
 	rel="stylesheet">
@@ -38,6 +38,7 @@
 </head>
 
 <body>
+	<%@ include file="/WEB-INF/views/alertmsg.jsp"%>
 	<main class="d-flex w-100">
 		<div class="container d-flex flex-column">
 			<div class="row vh-100">
@@ -50,7 +51,7 @@
 						</div>
 
 						<div>
-						
+
 
 							<div class="card">
 								<div class="card-body">
@@ -64,7 +65,7 @@
 												<div class="mb-3">
 
 													<label class="form-label">ID</label> <input
-														class="form-control form-control-lg" type="text"
+														class="form-control form-control-lg" type="email"
 														name="userid" placeholder="이메일을 입력해주세요."
 														required="required" />
 												</div>
@@ -73,14 +74,6 @@
 														class="form-control form-control-lg" type="password"
 														name="password" placeholder="비밀번호를 입력해주세요."
 														required="required" />
-
-												</div>
-												<div>
-													<label class="form-check"> <input
-														class="form-check-input" type="checkbox"
-														value="remember-me" name="remember-me" checked> <span
-														class="form-check-label"> 자동 로그인 </span>
-													</label>
 												</div>
 												<div class="text-center mt-3">
 													<!-- <a href="index.html" class="btn btn-lg btn-primary">로그인</a>-->

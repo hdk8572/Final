@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Stream - chatroom</title>
+<title>Stream - 업무도 흐름이다!</title>
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link
 	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
@@ -35,7 +35,6 @@
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
 	<section>

@@ -25,9 +25,8 @@
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock align-middle me-2"><circle cx="12" cy= "12 " r= "10 "></circle><polyline points= "12 6 12 12 16 14 "></polyline></svg>
 									<input type="hidden" id="valuePstatus" name="pstatus"> <!-- js - selectOption() -->
 									<select class= "form-select mb-3 addProject" name="addpstatus">
-									  <option class="status request" value="요청" selected="selected">미진행</option>
+									<option class="status request" value="미진행">미진행</option>
 									  <option class="status progress" value="진행">진행</option>
-									  <!-- <option class="status complete" value="완료">숨김</option> -->
 									  <option class="status remain" value="보류">보류</option>
 									</select>					
 								</div>
@@ -45,7 +44,7 @@
 									</select>
 								</div>
 							</div>
-							<div class="selected-rightPart card">
+							<div class="selected-rightPart card addproject">
 							<!--  
 								<div class="comanyMember">1</div>
 								<div class="comanyMember">2</div>
@@ -81,7 +80,7 @@
 	$("#btn-submit").click(addList);
 	$("#myBtn").click(selectOption);
     $("select[name=addpstatus]").change(selectOption);
-    //$("select[name=updatepstatus]").change(updateOption);
+    /* $("select[name=updatepstatus]").change(updateOption); */
     
 	function addList () {
 //		var data = myEditor.getData();
@@ -105,13 +104,12 @@
 	}
 	
  	function selectOption() { // 추가+ 버튼을 누르면 실행되는 메서드
- 	    /*  
- 		var selectedOption = $("select[name=addpstatus] option:selected").text();
- 	    $("#valuePstatus").val(selectedOption);
- 	   */
+ 	    
+ 		var selectedOption = $("select[name=addpstatus] option:selected").val();
+ 		console.log("selectedOption :"+selectedOption);
+		$("#valuePstatus").val(selectedOption);
  	    $.ajax({
  	    	url:"${pageContext.request.contextPath}/member/getCompanyMemberList",
- 	    	// data : principal -controller
  	    	data: {userid: useridJs},
  	    	type: "get",
  	    	dataType: "json",
@@ -138,6 +136,7 @@
 	    $("#companyMember").html(memberListHtml);
 	    /* $("#companyMember select[name=mname] option:eq(0)").prop("selected", true); */
 	    $(".form-select.mb-3.addProject.selectedMember").change(memberSelect);
+	    
 	}
 	
 	
@@ -145,24 +144,28 @@
  	function memberSelect() { // 중복 조회 (유효성검사) 
  		var selectedVal = $(".form-select.mb-3.addProject.selectedMember").val();
  		// console.log("선택한 selectedVal :"+selectedVal); 삭제하자
- 		//$(".form-select.mb-3.addProject.selectedMember").val(selectedVal);
+ 		$(".form-select.mb-3.addProject.selectedMember").val(selectedVal);
  		var checkAddedUserId = false;													
  		$(".comanyMember").each(function(idx, thisElement){
  			var addeduserid = $(thisElement).children("span").data("addmemberuserid");
  			// console.log(addeduserid);  삭제하자 
  			if(addeduserid == selectedVal){
  				checkAddedUserId = true;
-		 		return;
+ 				console.log("중복이라 추가 안했습니다.");
+ 				return false;
  			}
  		});
  		if(!checkAddedUserId){ // 
-			memberadded(selectedVal);
+ 			memberAdded(selectedVal);
+			console.log("중복이 아니여서 추가했습니다.");
  		}
  	}
  	
- 	function memberadded() { // 참가자 클릭시 참가자 등록
+ 	function memberAdded() { // 참가자 클릭시 참가자 등록
 		var selectedVal = $(".form-select.mb-3.addProject.selectedMember option:checked").val();
 		var addedmember = $(".form-select.mb-3.addProject.selectedMember option:checked").text();
+		console.log("selectedVal :"+selectedVal);
+		console.log("addedmember :"+addedmember);
 		var memberaddedHtml = "";
 			memberaddedHtml+=`
 				<div class='comanyMember'>
@@ -171,8 +174,15 @@
 					<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-delete align-middle me-2'><path d='M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z'></path><line x1='18' y1='9' x2='12' y2='15'></line><line x1='12' y1='9' x2='8' y2='15'></line></svg>
 				</div>
 				`;
-	    $(".selected-rightPart.card").append(memberaddedHtml);
+	    $(".selected-rightPart.card.addproject").append(memberaddedHtml);
+	    
+		$(".feather.feather-delete.align-middle.me-2").click(function() {
+	 		console.log("삭제");
+	 		$(this).closest(".comanyMember").remove();
+	 	});
  	}
+ 	
+ 
  	
  	
 </script>

@@ -9,8 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Stream - Final Project</title>	
-<!-- <title>채팅</title> -->
+<title>Stream - 업무도 흐름이다!</title>
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
 	<link rel="canonical" href="https://demo-basic.adminkit.io/" />

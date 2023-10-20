@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -39,6 +40,16 @@ public class CompanyContoller {
 
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	@GetMapping("/company/main")
+	public String companyMain(Model model, HttpSession session) {
+		String msg = (String)session.getAttribute("msg");
+		session.removeAttribute("msg");
+		if(msg != null) {
+			model.addAttribute("alertmsg", msg);
+		}
+		return "/company/main";
+	}
 
 	@GetMapping("/newcompany")
 	public ModelAndView showNewCompany(ModelAndView mv) {
@@ -62,8 +73,8 @@ public class CompanyContoller {
 
 					mailHelper.setTo(email); // for문으로 아이디 받음
 					mailHelper.setSubject("업무협업툴 Stream으로 여러분을 초대합니다!"); // Stream으로 여러분을 초대합니다!
-					mailHelper.setText("다음 Url에 접속하셔서 " + "회원가입을 진행해주세요!" + "※회원가입시 본 이메일을 전송받은 이메일을 입력해주셔야합니다※"
-							+ "회사코드: " + cvo.getCcode() + "http://127.0.0.1:8090/stream/newmember");
+					mailHelper.setText("다음 Url에 접속하셔서 회원가입을 진행해주세요! \n ※회원가입시 본 이메일을 전송받은 이메일을 입력해주셔야합니다※ \n 회사코드: "
+							+ cvo.getCcode() + "\n http://127.0.0.1:8090/stream/newmember");
 
 					mailSender.send(mail);
 				}
@@ -71,7 +82,8 @@ public class CompanyContoller {
 				e.printStackTrace();
 			}
 		}
-		ra.addFlashAttribute("alertmsg", "회사등록에 성공하였습니다. 문자로 회사 가입정보를 보내드렸습니다 확인해주세요!");
+		ra.addFlashAttribute("alertmsg",
+				"회사등록에 성공하였습니다.\n회사아이디: " + cvo.getCcode() + "@stream.com\n회사 비밀번호: 1234");
 		return "redirect:/";
 	}
 
@@ -103,8 +115,8 @@ public class CompanyContoller {
 
 					mailHelper.setTo(email); // for문으로 아이디 받음
 					mailHelper.setSubject("업무협업툴 Stream으로 여러분을 초대합니다!"); // Stream으로 여러분을 초대합니다!
-					mailHelper.setText("다음 Url에 접속하셔서 " + "회원가입을 진행해주세요!" + "※회원가입시 본 이메일을 전송받은 이메일을 입력해주셔야합니다※"
-							+ "회사코드: " + cvo.getCcode() + "http://127.0.0.1:8090/stream/newmember");
+					mailHelper.setText("다음 Url에 접속하셔서 회원가입을 진행해주세요! \n ※회원가입시 본 이메일을 전송받은 이메일을 입력해주셔야합니다※ \n 회사코드: "
+							+ cvo.getCcode() + "\n http://127.0.0.1:8090/stream/newmember");
 
 					mailSender.send(mail);
 				}

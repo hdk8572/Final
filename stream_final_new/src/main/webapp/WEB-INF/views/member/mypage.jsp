@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Stream - 업무도 흐름이다!</title>
 
 <!-- Bootstrap Css -->
 <link href="${pageContext.request.contextPath}/css/streamapp.css"
@@ -47,7 +47,7 @@
 						<div class="myPageTitle">마이페이지 수정</div>
 						<!--회원가입 form/ name= 회원가입 id= checkAll -->
 						<form id="frmNewMember"
-							action="${pageContext.request.contextPath}/editmypage"
+							action="${pageContext.request.contextPath}/member/editmypage"
 							name="Account" method="post" onsubmit="return checkAll();">
 							<div class="mb-3">
 								<label class="form-label">아이디</label> <input
@@ -78,8 +78,8 @@
 								<div class="mb-3">
 									<label class="form-label">Company Code</label> <input
 										class="form-control form-control-lg" type="text" name="ccode"
-										placeholder="${mvo.ccode }" value="${mvo.ccode}" readonly /> <small>
-										<a href="#" class="ccodeToDept">부서조회</a>
+										placeholder="${mvo.ccode }" value="${mvo.ccode}" readonly />
+									<small> <a href="#" class="ccodeToDept">부서조회</a>
 
 									</small>
 								</div>
@@ -146,19 +146,29 @@
 
 	//비밀번호, 비밀번호 재입력 확인
 	function checkUserpwd(userpwd, pwdcheck) {
-		if (userpwd != pwdcheck) {
-			alert("비밀번호가 일치하지 않습니다.");
-			Account.pwdcheck.value = "";
-			return false;
+			if (userpwd != pwdcheck) {
+				alert("비밀번호가 일치하지 않습니다.");
+				Account.pwdcheck.value = "";
+				Account.pwdcheck.focus();
+				return false;
+			}
+			var pwdToCheck =/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,15}$/;
+				if (!pwdToCheck.test(userpwd)){
+					alert("비밀번호는 대소문자와 영어를 포함한 8-15자로 작성해주세요.");
+					Account.userpwd.value="";
+					Account.userpwd.focus();
+					return false;
+				}
+			return true;
 		}
-		return true;
-	}
 
 	//직급확인
 	function checkUserrank(userrank) {
-		var rankToCheck = /^[가-힣]{2,4}$/;
+		var rankToCheck = /^[가-힣]{2,20}$/;
 		if (!rankToCheck.test(userrank)) {
 			alert("직급 형식이 옳지 않습니다.");
+			Account.userrank.value="";
+			Account.userrank.focus();
 			return false;
 		}
 		return true;
@@ -200,18 +210,20 @@
 			  return true;
 			}
 	//이름 확인
-	function checkUsername(username) {
-		if (!checkBlank(username, "이름을")) {
-			return false;
-		}
-		var nameToCheck = /^[가-힣]{2,15}$/;
-		if (!nameToCheck.test(username)) {
-			alert("이름 형식이 옳지 않습니다.");
-			return false;
-		}
-		return true;
+		function checkUsername(username) {
+			if (!checkBlank(username, "이름을")) {
+				return false;
+			}
+			var nameToCheck = /^[A-Za-z가-힣]{2,15}$/;
+			if (!nameToCheck.test(username)) {
+				alert("이름 형식이 옳지 않습니다.");
+				Account.username.value=""
+				Account.username.focus();
+				return false;
+			}
+			return true;
 
-	}
+		}
 
 </script>
 

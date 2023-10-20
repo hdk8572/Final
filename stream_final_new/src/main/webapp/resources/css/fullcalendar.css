@@ -45,11 +45,16 @@
 .fc-prev-button.fc-button.fc-button-primary{
 	border-radius: 20px;
 	padding: 7px 18px;
+	background-color: #009B77;
+	border-color: transparent;
 }
 .fc-next-button.fc-button.fc-button-primary{
 	border-radius: 20px;
 	padding: 7px 18px;
+	background-color: #009B77;
+	border-color: transparent;
 }
+
 /* 캘린더 위 header!! */
 
 /* 캘린더 */

@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 
+import kh.groupware.stream.calendar.model.dao.CalendarDao;
 import kh.groupware.stream.calendar.model.service.CalendarService;
 import kh.groupware.stream.calendar.model.vo.CalendarParamVo;
 import kh.groupware.stream.calendar.model.vo.CalendarVo;
@@ -66,9 +67,9 @@ public class CalendarController {
 	
 	//캘린더 일정 상세 조회
 	@GetMapping("/member/pcalselectone")
-	public String calSelectOne(Model model, String sno) { 
+	@ResponseBody
+	public String calSelectOne(String sno) { 
 		CalendarVo cal = calendarService.selectOne(sno);
-		model.addAttribute("cal", cal);
 		return new Gson().toJson(cal); //화면에 뿌릴 것을 return해야함
 	}
 	
@@ -125,10 +126,18 @@ public class CalendarController {
 	}
 
 	//캘린더 삭제
-	@PostMapping("/member/deletepcal")
-	@ResponseBody
-	public int delete(String sno) {
-	    return calendarService.delete(sno);
-	}
-	
+	  @PostMapping("/member/deletepcal")
+	  @ResponseBody
+	  public int delete(String sno) { 
+		  return calendarService.delete(sno); 
+	  }
+	 
+	/*
+	 * @PostMapping("/member/deletepcal")
+	 * 
+	 * @ResponseBody public int delete(String sno) { int result1 = 0; int result2 =
+	 * 0;
+	 * 
+	 * if(result > 0) { result2 = CalendarDao.d(sno); } }
+	 */
 }
