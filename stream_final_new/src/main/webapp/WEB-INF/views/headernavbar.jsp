@@ -103,22 +103,21 @@
 						<a id="load">더보기</a>
 					</div>
 				</div></li>
-			<%-- 			<c:forEach items="${principal.authorities}" var="authority">
+<%-- 			<c:forEach items="${principal.authorities}" var="authority">
 				<c:if test="${authority.authority eq '[ROLE_M]'}"> --%>
-			<div class="container">
-				<div class="sidesheet"></div>
-				<button id="popup"
-					style="background: none; border: none; padding: 0; margin: 0;">
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-						viewBox="0 0 24 24" fill="none" stroke="currentColor"
-						stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-						class="feather feather-message-square align-middle me-2">
+					<div class="container" style="top: 7px">
+						<div class="sidesheet"></div>
+						<button id="popup" style="background: none; border: none; padding: 0; margin: 0;">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+								viewBox="0 0 24 24" fill="none" stroke="currentColor"
+								stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+								class="feather feather-message-square align-middle me-2">
        						 <path
-							d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+									d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
     						</svg>
-				</button>
-			</div>
-			<%-- 				</c:if>
+						</button>
+					</div>
+<%-- 				</c:if>
 			</c:forEach>
 
  --%>
@@ -129,21 +128,23 @@
 					data-feather="settings"></i></a> <a
 				class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
 				data-bs-toggle="dropdown"> <img
-					src="http://res.cloudinary.com/dup9irkxd/image/upload/v1697690025/w7gnxu4m9tqd2xlj07xu.jpg"
+					src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 					class="avatar img-fluid rounded me-1" alt="Charles Hall"
 					border-radius: 50% !important /> <span class="text-dark">사용자</span>
 			</a>
 
 				<div class="dropdown-menu dropdown-menu-end">
 					<a class="dropdown-item" href="#" id="mypage-open"><i
-						class="align-middle me-1" data-feather="user"></i> My Profile</a>
+						class="align-middle me-1" data-feather="user"></i> 내 프로필</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="index.html"><i
-						class="align-middle me-1" data-feather="settings"></i> Settings</a>
+					<a class="dropdown-item" href="index.html"> <i
+						class="align-middle me-1" data-feather="settings"></i> 환경 설정
+					</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item"
-						href="${pageContext.request.contextPath}/logout"><i
-						class="align-middle me-2" data-feather="log-out"></i> Log-Out</a>
+						href="${pageContext.request.contextPath}/logout"> <i
+						class="align-middle me-2" data-feather="log-out"></i> Log out
+					</a>
 				</div></li>
 		</ul>
 	</div>
@@ -199,8 +200,7 @@
 		var popupButton = document.getElementById("popup");
 		popupButton.onclick = function() {
 			var jsPopup = window
-					.open("/stream/member/rooms", null,
-							"width=450, height=650, resizable=no, scrollbars=no,toolbars=no, menubar=no");
+					.open("/stream/member/rooms",null,"width=450, height=650, resizable=no, scrollbars=no,toolbars=no, menubar=no");
 
 		};
 	};
@@ -286,9 +286,7 @@
 												.text(data.mphone);
 										$('.mp-content[data-field="deptname"]')
 												.text(data.deptname);
-										// $("#userName").text(data.mname);
-										
-										
+
 										modal('mypage-modal');
 									},
 									error : function(error) {
@@ -299,7 +297,7 @@
 					});
 
 	$("#editmypage").click(function() {
-		var url = "${pageContext.request.contextPath}/member/editmypage";
+		var url = "${pageContext.request.contextPath}/editmypage";
 		window.location.href = url;
 	});
 </script>

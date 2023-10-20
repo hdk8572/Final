@@ -306,8 +306,17 @@ select roomid,roomname,userid from chatroom  join chatmember  using(roomid);
 SELECT * FROM CHATMEMBER JOIN CHATROOM USING(ROOMID)
 WHERE chatmember.userid='mplsam@kh.co.kr' OR CHATROOM.USERID='mplsam@kh.co.kr';
 
+SELECT userId, mName, ccode
+FROM users
+WHERE userId = 'mplsam@kh.co.kr' AND ccode = ccode;
 
+SELECT userId, mName, ccode
+FROM users
+WHERE userId = 'admin@stream.com' OR ccode = (SELECT ccode FROM users WHERE userId = 'admin@stream.com');
 
+select * from users;
+select userId,mName,ccode from users where userId='mplsam@kh.co.kr';
+select * from users;
 SELECT roomid, roomname, chatmember.userid AS userid
 FROM chatroom
 JOIN chatmember USING(roomid)
@@ -364,11 +373,51 @@ INSERT INTO CHATROOM (ROOMID,ROOMNAME,USERID) VALUES (chat_sequence.NEXTVAL,'roo
 DELETE FROM CHATROOM;
 select * from chatmember;
 select * from chatroom;
+select * from chatmessage;
+SELECT c.roomid, m.userid, m.message, m.cdate, c.roomname
+		FROM chatroom c
+		JOIN chatmessage m ON c.roomid = m.roomid
+		WHERE (m.roomid, m.cdate) IN (
+		  SELECT roomid, MAX(cdate)
+		  FROM chatmessage;
+SELECT m.roomid, m.userid, message, m.cdate 
+FROM chatmember c
+JOIN chatmessage m ON c.roomid = m.roomid 
+
+ORDER BY m.cdate DESC;  
+SELECT m.roomid, m.userid, message, MAX(m.cdate) AS max_cdate
+FROM chatmember c
+JOIN chatmessage m ON c.roomid = m.roomid
+GROUP BY m.roomid, m.userid, message
+ORDER BY max_cdate DESC;
+select * from 
+users;
+SELECT roomid,max(cdate)
+FROM chatmessage
+group by roomid; 
+
+SELECT roomid, userid, message, MAX(cdate) AS cdate, mname
+FROM chatmessage
+GROUP BY roomid, userid, message, mname;
+
+select * from chatmessage
+order by cdate desc;
+
+
+select * from chatmessage
+
+
+select roomid,userid,message,cdate,mname from chatmessage;
+SELECT DISTINCT *
+		FROM CHATMEMBER
+		JOIN CHATROOM USING(ROOMID)
+		WHERE chatmember.userid='sple@kh.co.kr';
+        
 INSERT INTO CHATMEMBER (ROOMID, USERID) SELECT (SELECT MAX(ROOMid) FROM chatROOM)AS ROOMID, 'sple@kh.co.kr' FROM DUAL;
 select ROOMID,MNAME,MESSAGE,CDATE from CHATMESSAGE join users USING(userId) WHERE ROOMID = '21' ORDER BY CDATE ASC;
 SELECT MAX(ROOMid) FROM chatROOM ;
 INSERT INTO CHATMEMBER (ROOMID, USERID)SELECT (SELECT MAX(ROOMid) FROM chatROOM)AS ROOMID, 'sple@kh.co.kr' FROM DUAL;
-
+select * from chatmessage;
 
 INSERT INTO CHATROOM (ROOMID,USERID,ROOMNAME) VALUES (chat_sequence.NEXTVAL,'sple@kh.co.kr','채팅방1');
 INSERT INTO CHATROOM (ROOMID,USERID,ROOMNAME) VALUES ((SELECT MAX(ROOMid) FROM chatROOM),'sple@kh.co.kr','채팅방1');

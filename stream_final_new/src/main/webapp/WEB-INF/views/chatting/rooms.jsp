@@ -88,7 +88,7 @@
 								<c:forEach var="viewMemmber" items="${viewMemmber}">
 									<li style="border-bottom: solid 2px gray; padding:  0 0 5px">
 									<input type="checkbox" class="check_btn" name="member" value="${viewMemmber.userId}" style="margin: 10px" >									
-										<label for="check_btn_${viewMember.userId}"><span>${viewMemmber.userId}</span></label>
+										<label for="check_btn_${viewMember.userId}"><span>${viewMemmber.mname}</span></label>
 									</li>
 								</c:forEach>
 							</div>
@@ -105,22 +105,18 @@
         $(document).ready(function(){
             var roomName1 = "${roomName1}";
             var member = "${member}";
-            $("input[roomName='roomName']").on("focusout", function() {
-                var roomName = $(this).val();
-                if(!roomName){
-                    alert("Please provide a room name.");
-                }
-            });
+
             $(".btn-create").on("click", function (e){
                 e.preventDefault();
 					
                 var roomName = $("input[roomName='roomName']").val();
-
-                var member = $("input[member='member']").val(); 
-                if (!roomName) { 
+                if (!roomName) {
                     alert("방 제목을 입력하세요.");
-                    return; 
-                }
+                  } else {
+
+                  }
+                var member = $("input[member='member']").val(); 
+                
 				
 
             });

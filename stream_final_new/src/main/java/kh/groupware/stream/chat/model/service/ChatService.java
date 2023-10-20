@@ -18,7 +18,7 @@ public interface ChatService {
 	List<ChatRoomVo> findRooms(String userId);
 	int AddChatRoom(String roomName,String userId);
 	ChatRoomVo findRoomById(String roomId);
-	List<ChatRoomVo> ViewMember();
+	List<ChatRoomVo> ViewMember(String userId);
 	ChatRoomVo findWriter(String userId);
 	ChatRoomVo lastMessage(String roomId);
 	int memberInsert(String userId);

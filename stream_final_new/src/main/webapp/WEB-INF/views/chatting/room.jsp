@@ -25,10 +25,10 @@
 
 				<c:forEach items="${viewChat}" var="item">
 					<c:choose>
-						<c:when test="${item.mName eq name.mName}">
+						<c:when test="${item.mname eq name.mname}">
 							<div class='alert alert-secondary'>
 								<div class='chatbox1'>
-									<div class=namebox1>${item.mName} </div>
+									<div class=namebox1>${item.mname} </div>
 									<div class=msgbox1>${item.message}</div>
 								</div>
 							</div>
@@ -36,7 +36,7 @@
 						<c:otherwise>
 							<div class='alert-warning'>
 								<div class='chatbox2'>
-									<p>${item.mName} </p>
+									<p>${item.mname} </p>
 									<div class=msgbox2>${item.message}</div>
 								</div>
 							</div>
@@ -47,7 +47,7 @@
 		</div>
 		<div class="input-group mb-3">
 			<div class="input-group-append">
-				<textarea id="msg" class="form-control"></textarea>
+				<textarea id="msg" class="form-control" maxlength="100" placeholder="메세지를 입력하세요."></textarea>
 					<button class="btn btn-outline-secondary" id="button-send">전송</button>					
 				</div>
 			</div>
@@ -60,7 +60,7 @@
 			var roomId = "${room.roomId}";
 			var username = "${principal.username}";  //현재 로그인 사용자
 			var roomname = "${room.roomName}"; 			
-			var user = "${name.mName}";
+			var user = "${name.mname}";
 			
 			console.log(mainId + ", " + roomId + ", " + username+", "+roomname+",");		
 			var sockJs = new SockJS("/stream/stomp/chat");
@@ -71,14 +71,14 @@
 
 				stomp.subscribe("/sub/chat/room/" + roomId, function(chat) {
 					var content = JSON.parse(chat.body);
-					var name = content.mName; //stomp에서 보내는 mName 
+					var name = content.mname; 		//stomp에서 보내는 mname 
 					var userId = content.userId;//현재 채팅방에서 치는사람 id
 					var message = content.message;
 					var str = '';
 					if (username === userId) {
 						str = "<div class='alert alert-secondary'>";
 						str += "<div class='chatbox1'>";
-						str += "<div class=namebox1>"+ userId + "</div>";
+						str += "<div class=namebox1>"+ name + "</div>";
 						str += "<div class=msgbox1>" + message + "</div>"
 						str += "</div>";
 						str += "</div>";
@@ -86,7 +86,7 @@
 					} else {
 						str += "<div class='alert alert-warning'>";
 						str += "<div class='chatbox2'>";
-						str += "<p>"+ userId + "</p>";
+						str += "<p>"+ name + "</p>";
 						str += "<div class=msgbox2>" + message + "</div>"
 						str += "</div>";
 						str += "</div>";
@@ -99,7 +99,8 @@
 					stomp.send('/pub/chat/message', {}, JSON.stringify({
 						roomId : roomId,
 						message : msg.value,
-						userId : username,
+						userId : username
+
 					}));
 					msg.value = '';
 				});
