@@ -594,3 +594,66 @@ select rn, ccode, cname, cphone, caddress
                             from company where ccode not in'C000' order by ccode asc) a )
   
     ;
+    
+select pname, pstatus, pno, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
+    	from	
+    		(select tno, pno, userid, tmember, ttitle, tcontent, tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel
+        		from task where tmember = 'sple@kh.co.kr' or userid = 'sple@kh.co.kr') t
+    	join project using(pno)
+        where pstatus in ('미진행', '진행', '보류')
+    	order by to_number(pno) desc, to_number(bref) desc, brelevel asc, to_number(brestep) asc
+;
+select t.userid, t.tmember, mname from task t
+--    join users using(userid)
+    join users u on(u.userid=t.tmember)
+;
+select pname, pstatus, pno, ut.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel, mname
+    	from ( select tno, pno, t.userid, tmember, ttitle, tcontent, tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel, mname
+                    from task t
+                    join users u on(u.userid=t.tmember)
+                    where tmember = 'sple@kh.co.kr' or t.userid = 'sple@kh.co.kr') ut
+        join project using(pno)
+        where pstatus in ('미진행', '진행', '보류')
+    	order by to_number(pno) desc, to_number(bref) desc, brelevel asc, to_number(brestep) asc
+ ;
+ 
+ 
+select (select pname from project where pno=t.pno) pname, pno, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
+    	from (select pno, userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel 
+                    from task where pno=47 and tmember ='sple@kh.co.kr' or userid='sple@kh.co.kr' ) t
+    	order by to_number(pno) desc, to_number(bref) desc, brelevel asc, 
+        to_number(brestep) asc
+;
+select userid, mname from users where userid='sple@kh.co.kr';
+
+select pname, pstatus, pno, ut.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel, mname
+    	from ( select tno, pno, t.userid, tmember, ttitle, tcontent, tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel, mname
+                    from task t
+                    join users u on(u.userid=t.tmember)
+                    where tmember = 'sple@kh.co.kr' or t.userid = 'sple@kh.co.kr') ut
+        join project using(pno)
+        where pstatus in ('미진행', '진행', '보류')
+    	order by to_number(pno) desc, to_number(bref) desc, brelevel asc, to_number(brestep) asc;
+        
+select (select pname from project where pno=t.pno) pname, pno, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
+    	from (select pno, userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel 
+                    from task where pno=47 and tmember ='sple@kh.co.kr' or userid='sple@kh.co.kr' ) t
+    	order by to_number(pno) desc, to_number(bref) desc, brelevel asc, 
+        to_number(brestep) asc;
+        
+select pname, pstatus, pno, ut.userid, tmember, ttitle, 
+tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, 
+to_char(tstartdate, 'yyyy-mm-dd') tstartdate, 
+to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel, mname      
+from ( select tno, pno, t.userid, tmember, ttitle, tcontent, 
+tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel, mname
+from task t                     
+join users u on(u.userid=t.tmember)                     
+where tmember = ? or t.userid = #{userid) )ut   
+
+
+select (select pname from project where pno=t.pno) pname, pno, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
+    	from (select pno, userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel 
+                    from task where pno=#{pno} and tmember = 'sple@kh.co.kr' or userid= 'sple@kh.co.kr' ) t
+    	order by to_number(pno) desc, to_number(bref) desc, brelevel asc, 
+        to_number(brestep) asc

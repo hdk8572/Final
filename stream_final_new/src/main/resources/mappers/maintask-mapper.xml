@@ -25,11 +25,12 @@
 	
 	<!-- 프로젝트, 업무 뿌리기 -->
 	<select id="projectNameList" resultMap="maintaskVoMap" parameterType="string">
-	select pname, pstatus, pno, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
-    	from	
-    		(select tno, pno, userid, tmember, ttitle, tcontent, tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel
-        		from task where tmember = #{userid} or userid = #{userid}) t
-    	join project using(pno)
+	select pname, pstatus, pno, ut.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel, mname
+    	from ( select tno, pno, t.userid, tmember, ttitle, tcontent, tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel, mname
+                    from task t
+                    join users u on(u.userid=t.tmember)
+                    where tmember = #{userid} or t.userid = #{userid} )ut
+        join project using(pno)
         where pstatus in ('미진행', '진행', '보류')
     	order by to_number(pno) desc, to_number(bref) desc, brelevel asc, to_number(brestep) asc
 	</select>
@@ -37,7 +38,7 @@
 	<select id="projectOneTaskList" resultMap="maintaskVoMap" parameterType="string">
 		select (select pname from project where pno=t.pno) pname, pno, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
     	from (select pno, userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel 
-                    from task where pno=${pno} and tmember = #{userid} or userid= #{userid} ) t
+                    from task where pno=#{pno} and tmember = #{userid}  ) t
     	order by to_number(pno) desc, to_number(bref) desc, brelevel asc, 
         to_number(brestep) asc
 	</select>
@@ -95,11 +96,12 @@
 	</select>
 	
 	<select id="taskSortedList" resultMap="maintaskVoMap" parameterType="string">
-		select pname, pstatus, pno, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
-    	from	
-    		(select tno, pno, userid, tmember, ttitle, tcontent, tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel
-        		from task where tmember = #{userid} or userid = #{userid}) t
-    	join project using(pno)
+		select pname, pstatus, pno, ut.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel, mname
+    	from ( select tno, pno, t.userid, tmember, ttitle, tcontent, tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel, mname
+                    from task t
+                    join users u on(u.userid=t.tmember)
+                    where tmember = #{userid} or t.userid = #{userid}) ut
+        join project using(pno)
         where pstatus in ('미진행', '진행', '보류')
     	order by to_number(pno) desc, to_number(bref) desc, brelevel asc,
     	<choose>

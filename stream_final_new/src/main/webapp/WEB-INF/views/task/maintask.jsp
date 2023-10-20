@@ -10,6 +10,7 @@
 <head>
 
 <%@ include file="/WEB-INF/views/setvariable.jsp"%>
+<%@ include file="/WEB-INF/views/alertmsg.jsp" %>
 
 <meta charset="utf-8">
 <meta name="author" content="Stream">
@@ -52,7 +53,7 @@
 									<div class="jm-rwap-task jm-grey">
 										<div class="jm-task-title row ">
 											<!-- dropdown -->
-											<div class="col-lg-4 jm-grey-nb">
+											<div class="jm-col-a jm-grey-nb">
 												<div class="dropdown">
 													<div class="jm-title" id="tno">
 														<div class="text-muted "
@@ -76,7 +77,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="jm-drop col-lg-1 jm-grey-nb">
+											<div class="jm-drop jm-col-b jm-grey-nb">
 												<div class="dropdown jm-move" id="tstatus" draggable="true">
 													<div class="jm-title">
 														<div class="text-muted "
@@ -99,7 +100,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="jm-drop col-lg-1 jm-grey-nb">
+											<div class="jm-drop jm-col-b jm-grey-nb">
 												<div class="dropdown jm-move" id="tmember" draggable="true">
 													<div class="jm-title">
 														<div class="text-muted "
@@ -122,7 +123,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="jm-drop col-lg-1 jm-grey-nb">
+											<div class="jm-drop jm-col-b jm-grey-nb">
 												<div class="dropdown jm-move" id="tstartdate"
 													draggable="true">
 													<div class="jm-title">
@@ -146,7 +147,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="jm-drop  col-lg-1 jm-grey-nb">
+											<div class="jm-drop  jm-col-b jm-grey-nb">
 												<div class="dropdown jm-move" id="tenddate" draggable="true">
 													<div class="jm-title">
 														<div class="text-muted "
@@ -169,7 +170,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="jm-drop  col-lg-1 jm-grey-nb">
+											<div class="jm-drop  jm-col-b jm-grey-nb">
 												<div class="dropdown jm-move" id="tdate" draggable="true">
 													<div class="jm-title">
 														<div class="text-muted "
@@ -192,7 +193,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="jm-drop  col-lg-1 jm-grey-nb">
+											<div class="jm-drop  jm-col-b jm-grey-nb">
 												<div class="dropdown jm-move" id="tno" draggable="true">
 													<div class="jm-title">
 														<div class="text-muted"
@@ -215,14 +216,8 @@
 													</div>
 												</div>
 											</div>
-											<div class="dropdown col-lg-auto">
-												<div class="jm-title" id="empty">
-													<div class="text-muted"></div>
-												</div>
-											</div>
 										</div>
 									</div>
-									
 									<ul id="taskContentUI">
 										<c:forEach items="${projectList }" var="project">
 											<li class="projectNo" id="projectNo_${project.pno }">
@@ -249,7 +244,7 @@
 														<ul class="jm-serction-task-title">
 															<c:forEach items="${project.maintaskList }" var="task">
 																<li class="plusplus row jm-task-line" id="taskNo_${task.tno}">
-																	<div class="jm-title-ttitle col-lg-4 jm-grey">
+																	<div class="jm-title-ttitle jm-col-a jm-grey">
 																		<span class="jm-margin-left"> 
 																		<c:forEach begin="1"	end="${task.brelevel }">
 																			<span>&#8618;</span></c:forEach>${task.ttitle}</span>
@@ -262,21 +257,21 @@
 																			<input type="hidden" name="tno" value="${task.tno }">
 																		</div>
 																	</div>
-																	<div class="jm-title-tstatus col-lg-1 jm-grey">${task.tstatus }</div>
-																	<div class="jm-title-tmember col-lg-1 jm-grey">${task.tmember }</div>
-																	<div class="jm-title-tstartdate col-lg-1 jm-grey">${task.tstartdate }</div>
-																	<div class="jm-title-tenddate col-lg-1 jm-grey">${task.tenddate }</div>
-																	<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">${task.tdate }</div>
-																	<div class="jm-title-tno col-lg-1 jm-grey jm-gr">${task.tno }</div>
+																	<div class="jm-title-tstatus jm-col-b jm-grey">${task.tstatus }</div>
+																	<div class="jm-title-tmember jm-col-b jm-grey">${project.mname }</div>
+																	<div class="jm-title-tstartdate jm-col-b jm-grey">${task.tstartdate }</div>
+																	<div class="jm-title-tenddate jm-col-b jm-grey">${task.tenddate }</div>
+																	<div class="jm-title-tdate jm-col-b jm-grey jm-gr">${task.tdate }</div>
+																	<div class="jm-title-tno jm-col-b jm-grey jm-gr">${task.tno }</div>
 																</li>
 																<li class="jm-ajax-InnertaskIn">
 																	<form class="addInnerTask" id="taskInputNo_${task.tno}">
 																		<div class="jm-innerTaskInput jm-hidden">
-																			<div class="jm-title-ttitle col-lg-4 jm-grey">
+																			<div class="jm-title-ttitle jm-col-a jm-grey">
 																				<input type="text" class="jm-input-length jm-margin-left" placeholder="하위업무명을 입력하세요"
 																					name="ttitle" required="required">
 																			</div>
-																			<div class="jm-title-tstatus col-lg-1 jm-grey">
+																			<div class="jm-title-tstatus jm-col-b jm-grey">
 																				<select class="mb-3 selectCategory ml-2 "name="tstatus">
 																					<option value="요청" class="status request" selected="selected">요청</option>
 																					<option value="진행" class="status progress">진행</option>
@@ -285,12 +280,12 @@
 																					<option value="보류" class="status remain">보류</option>
 																				</select>
 																			</div>
-																			<div class="jm-title-tmember col-lg-1 jm-grey">
+																			<div class="jm-title-tmember jm-col-b jm-grey">
 																				<select name="tmember" id="tmember_select_pno_${project.pno }"><!-- TMEMBERLIST ttttt -->
 																					
 																				</select>
 																			</div>
-																			<div class="dropdown jm-title-tstartdate col-lg-1 jm-grey">
+																			<div class="dropdown jm-title-tstartdate jm-col-b jm-grey">
 																				<div data-bs-toggle="dropdown">
 																					<button class="btn btn-secondary">시작일</button>
 																				</div>
@@ -299,7 +294,7 @@
 																				</div>
 																			</div>
 																			<div
-																				class="dropdown jm-title-tenddate col-lg-1 jm-grey">
+																				class="dropdown jm-title-tenddate jm-col-b jm-grey">
 																				<div data-bs-toggle="dropdown">
 																					<button class="btn btn-secondary">마감일</button>
 																				</div>
@@ -307,10 +302,10 @@
 																					<input type="date" name="tenddate" required="required">
 																				</div>
 																			</div>
-																			<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">
+																			<div class="jm-title-tdate jm-col-b jm-grey jm-gr">
 																				<div class="innerTdate"></div>
 																			</div>
-																			<div class="jm-title-tno col-lg-1 jm-grey jm-gr">
+																			<div class="jm-title-tno jm-col-b jm-grey jm-gr">
 																				<input type="hidden" name="tno" value="${task.tno}">
 																				<input type="hidden" name="tcontent" value="default">
 																				<input type="hidden" name="pno" value="${project.pno}">
@@ -408,7 +403,7 @@
 						const task = project.maintaskList[t];
 		htmlList+=`
 							<li class="plusplus row jm-task-line" id="taskNo_\${task.tno}">
-								<div class="jm-title-ttitle col-lg-4 jm-grey">
+								<div class="jm-title-ttitle jm-col-a jm-grey">
 									<span class="jm-margin-left">
 		`;
 							for(var lv=0; lv<task.brelevel; lv++){
@@ -431,21 +426,21 @@
 										<input type="hidden" name="tno" value="\${task.tno }">
 									</div>
 								</div>
-								<div class="jm-title-tstatus col-lg-1 jm-grey">\${task.tstatus }</div>
-								<div class="jm-title-tmember col-lg-1 jm-grey">\${task.tmember }</div>
-								<div class="jm-title-tstartdate col-lg-1 jm-grey">\${task.tstartdate }</div>
-								<div class="jm-title-tenddate col-lg-1 jm-grey">\${task.tenddate }</div>
-								<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">\${task.tdate }</div>
-								<div class="jm-title-tno col-lg-1 jm-grey jm-gr">\${task.tno }</div>
+								<div class="jm-title-tstatus jm-col-b jm-grey">\${task.tstatus }</div>
+								<div class="jm-title-tmember jm-col-b jm-grey">\${project.mname }</div>
+								<div class="jm-title-tstartdate jm-col-b jm-grey">\${task.tstartdate }</div>
+								<div class="jm-title-tenddate jm-col-b jm-grey">\${task.tenddate }</div>
+								<div class="jm-title-tdate jm-col-b jm-grey jm-gr">\${task.tdate }</div>
+								<div class="jm-title-tno jm-col-b jm-grey jm-gr">\${task.tno }</div>
 							</li>
 							<li class="jm-ajax-InnertaskIn">
 								<form class="addInnerTask" id="taskInputNo_\${task.tno}">
 									<div class="jm-innerTaskInput jm-hidden">
-										<div class="jm-title-ttitle col-lg-4 jm-grey">
+										<div class="jm-title-ttitle jm-col-a jm-grey">
 											<input class="jm-input-length jm-margin-left " type="text" placeholder="하위업무명을 입력하세요"
 												name="ttitle" required="required">
 										</div>
-										<div class="jm-title-tstatus col-lg-1 jm-grey">
+										<div class="jm-title-tstatus jm-col-b jm-grey">
 											<select class="mb-3 selectCategory ml-2" name="tstatus">
 													<option value="요청" class="status request" selected="selected">요청</option>
 													<option value="진행" class="status progress">진행</option>
@@ -455,12 +450,12 @@
 											</select>
 											
 										</div>
-										<div class="jm-title-tmember col-lg-1 jm-grey">
+										<div class="jm-title-tmember jm-col-b jm-grey">
 												<select name="tmember" id="tmember_select_pno_\${project.pno }"><!-- TMEMBERLIST ttttt -->
 												
 												</select>
 										</div>
-										<div class="dropdown jm-title-tstartdate col-lg-1 jm-grey">
+										<div class="dropdown jm-title-tstartdate jm-col-b jm-grey">
 											<div data-bs-toggle="dropdown">
 												<button class="btn btn-secondary">시작일</button>
 											</div>
@@ -469,7 +464,7 @@
 											</div>
 										</div>
 										<div
-											class="dropdown jm-title-tenddate col-lg-1 jm-grey">
+											class="dropdown jm-title-tenddate jm-col-b jm-grey">
 											<div data-bs-toggle="dropdown">
 												<button class="btn btn-secondary">마감일</button>
 											</div>
@@ -477,10 +472,10 @@
 												<input type="date" name="tenddate">
 											</div>
 										</div>
-										<div class="jm-title-tdate col-lg-1 jm-grey jm-gr">
+										<div class="jm-title-tdate jm-col-b jm-grey jm-gr">
 											<div class="innerTdate"></div>
 										</div>
-										<div class="jm-title-tno col-lg-1 jm-grey jm-gr">
+										<div class="jm-title-tno jm-col-b jm-grey jm-gr">
 											<input type="hidden" name="tno" value="\${task.tno}">
 											<input type="hidden" name="tcontent" value="default">
 											<input type="hidden" name="pno" value="\${project.pno}">

@@ -167,3 +167,11 @@ div.jm-task-title{
     height: 300px;
     margin-bottom: 1.5rem;
 }
+.jm-col-a{
+	flex: 0 0 auto;
+	width: 40%
+}
+.jm-col-b{
+	flex: 0 0 auto;
+	width: 10%
+}

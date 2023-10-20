@@ -17,10 +17,9 @@
 
 <title>Stream - 업무도 흐름이다!</title>
 
-<link href="${pageContext.request.contextPath }/css/streamapp.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath }/css/maintask.css"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/streamapp.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/maintask.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/Modal.css" rel="stylesheet">
 
 <!-- 폰트 -->
 <link
@@ -40,6 +39,7 @@
 		<div class="main">
 			<main class="content">
 				<h1>hello admin!</h1>
+				<!-- 간단 통계 -->
 				<div>
 					<c:if test="${CNT != null }">
 						<div>
@@ -56,6 +56,7 @@
 						</div>
 					</c:if>
 				</div>
+				<!-- 회사 리스트 -->
 				<div>
 					<div>
 						<span>====회사 리스트====</span>
@@ -78,7 +79,7 @@
 						<tbody>
 							<c:forEach items="${viewAll }" var="companyList">
 								<tr>
-									<td>${companyList.ccode }</td>
+									<td data-bs-toggle="modal" data-bs-target="#detailCompanyModal" onclick="companyDetailModalHandler(this)">${companyList.ccode }</td>
 									<td>${companyList.cname }</td>
 									<td>${companyList.cphone }</td>
 									<td>${companyList.caddress }</td>
@@ -105,16 +106,47 @@
 						</c:if>
 					</div>
 				</div>
+				<div></div>
 
 			</main>
 		</div>
 	</div>
+	<%@include file="/WEB-INF/views/admin/admincompanymodal.jsp" %>
+	<script src="${pageContext.request.contextPath}/js/app.js"></script>
 	<script>
 		function selChange(){
 			var sel = $('#cntPerPage').val();
 			console.log(sel);
 			location.href=contextPath+"/admin/main?nowPage=${paging.nowPage}&cntPerPage="+sel;
 		}
+	</script>
+	<script>
+	/*
+	companyDetailModalHandler=(thisButton)=>{
+		console.log(thisButton);
+		
+		$("#detailProjectModal").modal("toggle");
+		
+		$.ajax({
+			 	url: contextPath+"/member/ptaskselectOne",
+			 	type: "get",
+			 	dataType: "json",
+			 	data: {tno: targetTno, pno: targetPno},
+			 	success: function(result){
+			 		$(".wrap-card .tcontent").html(result.tcontent);
+			 		$(".wrap-card .ttitle").html(result.ttitle);
+			 		$(".wrap-card .tstatus").html(result.tstatus);
+			 		$(".wrap-card .userid").html(result.userid);
+			 		$(".wrap-card .tstartdate").val(result.tstartdate);
+			 		$(".wrap-card .tenddate").val(result.tenddate);
+			 		replyLoadList();
+			 	},
+			 	error: function() {
+			 		console.log("detailProject에서 오류 발생");
+			 	}
+			});
+	}
+	*/
 	</script>
 </body>
 </html>
