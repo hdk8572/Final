@@ -36,7 +36,6 @@ public class ProjectController {
 	@GetMapping("/member/projectlist")
 	public String main(Model model, HttpSession session) {
 
-		// 지영코드 - 확인하시고 문제없으시면 이 주석 지워주세요
 		String msg = (String) session.getAttribute("msg");
 		session.removeAttribute("msg");
 		if (msg != null) {

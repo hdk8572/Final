@@ -17,16 +17,16 @@
 							<a class="text-muted" href="https://adminkit.io/" target="_blank">황대경</a>
 						</li>
 						<li class="list-inline-item">
-							<a class="text-muted" href="https://adminkit.io/" target="_blank">이지영</a>
+							<a class="text-muted" href="https://github.com/jiyoung4868" target="_blank">이지영</a>
 						</li>
 						<li class="list-inline-item">
-							<a class="text-muted" href="https://adminkit.io/" target="_blank">박준모</a>
+							<a class="text-muted" href="https://github.com/JMo0001" target="_blank">박준모</a>
 						</li>
 						<li class="list-inline-item">
-							<a class="text-muted" href="https://adminkit.io/" target="_blank">김민성</a>
+							<a class="text-muted" href="https://github.com/alstjd0930" target="_blank">김민성</a>
 						</li>
 						<li class="list-inline-item">
-							<a class="text-muted" href="https://adminkit.io/" target="_blank">이지영</a>
+							<a class="text-muted" href="https://github.com/JMo0001" target="_blank">임지연</a>
 						</li>
 					</ul>
 				</div>
