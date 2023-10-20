@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kh.groupware.stream.main.model.dao.MaintaskDao;
 import kh.groupware.stream.project.model.dao.ProjectDao;
 import kh.groupware.stream.project.model.vo.PnoPrincipalParam;
 import kh.groupware.stream.project.model.vo.ProjectInsertParamVo;
@@ -22,6 +23,9 @@ public class ProjectServiceImpl implements ProjectService {
 
 	@Autowired
 	private PtaskDao ptaskdao;
+	
+	@Autowired
+	private MaintaskDao maintaskDao;
 	
 	@Override
 	public List<ProjectVo> selectList(String userid) {
@@ -75,9 +79,17 @@ public class ProjectServiceImpl implements ProjectService {
     }
     
 	@Override
-    public int update(ProjectVo vo) {
-    	return projectDao.update(vo);
+	@Transactional
+    public int update(ProjectInsertParamVo vo) {
+		int result = projectDao.update(vo);
+		maintaskDao.deleteAllCurrentMember(vo.getPno());
+    	projectDao.insertMemberProjectForUpdate(vo);
+    	return result;
     }
+	@Override
+	public int updateHide(PnoPrincipalParam vo) {
+		return projectDao.updateHide(vo);
+	}
 	
 	@Override
 	@Transactional
@@ -85,5 +97,6 @@ public class ProjectServiceImpl implements ProjectService {
 		projectDao.selectList(userid);
 		return projectDao.searchProjectList(vo);
 	}
+
 	
 }

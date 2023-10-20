@@ -50,6 +50,8 @@ public class ProjectController {
 	@GetMapping("/member/projectOne")
 	@ResponseBody
 	public ProjectVo selectOne(PnoPrincipalParam pnoPrincipalParam) {
+		System.out.println("진입했습니다.");
+		System.out.println("PROJECT ONE pnoPrincipalParam :" +pnoPrincipalParam );
 		ProjectVo vo = projectService.selectOne(pnoPrincipalParam);
 		return vo;
 	}
@@ -95,19 +97,19 @@ public class ProjectController {
 
 	@GetMapping("/member/doUpdateProject")
 	@ResponseBody
-	public int update(ProjectVo vo) {
+	public int update(ProjectInsertParamVo vo) {
 		int result = projectService.update(vo);
 		return result;
 	}
 
-	@GetMapping("/member/doUpdateProject.direct")
+	@GetMapping("/member/doUpdateProjectHide")
 	@ResponseBody
 	public int updateBtn(PnoPrincipalParam pnoPrincipalParam) {
-		ProjectVo currentVo = projectService.selectOne(pnoPrincipalParam);
-		System.out.println(currentVo);
-		currentVo.setPstatus("숨김");
-		int result = projectService.update(currentVo);
-		return 0;
+//		ProjectVo currentVo = projectService.selectOne(pnoPrincipalParam);
+//		System.out.println(currentVo);
+//		currentVo.setPstatus("숨김");
+		int result = projectService.updateHide(pnoPrincipalParam);
+		return result;
 	}
 
 	@GetMapping("/member/serachProjectList")
@@ -131,6 +133,15 @@ public class ProjectController {
 	@ResponseBody
 	public List<MemberSimpleVo> currentMemberList(String pno) {
 		return maintastService.currentMemberList(pno);
+	}
+	
+	@PostMapping("/member/deleteAllCurrentMember")
+	@ResponseBody
+	public int deleteAllCurrentMember(String pno) {
+		System.out.println("Delete pno :"+pno);
+		int result = maintastService.deleteAllCurrentMember(pno);
+		System.out.println("Delete result :"+result);
+		return result;
 	}
 
 	// 회사 멤버 1명 조회

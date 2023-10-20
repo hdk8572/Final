@@ -129,7 +129,6 @@
 	    	type: "get",
 	    	dataType: "json",
 	    	success: function(data) {
-	    		console.log("멤버 불르는 과정 진행");
 	    		makeCurrentMemberView(data);
 	    	},
 	    	error: function() {	
@@ -147,7 +146,6 @@
 	*/
 	
 	function makeUpdateMemberView(data) {										 // 회사 소속인 참가자 리스트 조회
-		console.log("멤버 불르는 HTML 진행");
 		var memberListHtml = "";
 		/* memberListHtml += '<select class="form-select mb-3 selectCategory ml-2" name="mname">'; */
 		memberListHtml += '<option value="" selected>참가자선택</option>';

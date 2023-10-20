@@ -57,14 +57,19 @@ public class MaintaskServiceImpl implements MaintaskService {
 	}
 	*/
 	
-	// 회사 소속 멤버 전체 조회 - 황대경
+	// 회사 소속 멤버 전체 조회(참가자) - 황대경
 	public List<MemberSimpleVo> companyMemberList(String userid) {
 		return maintaskDao.companyMemberList(userid);
 	}
 
-	// 프로젝트의 현재 참가자 조회 - 황대경
+	// 프로젝트의 현재 참가자 조회(참가자) - 황대경
 	public List<MemberSimpleVo> currentMemberList(String pno) {
 		return maintaskDao.currentMemberList(pno);
+	}
+	
+	// 프로젝트의 현재 참가자 전체 삭제(참가자) - 황대경
+	public int deleteAllCurrentMember(String pno) {
+		return maintaskDao.deleteAllCurrentMember(pno);
 	}
 	
 	// 회사 참가자 1명 조회 - 황대경

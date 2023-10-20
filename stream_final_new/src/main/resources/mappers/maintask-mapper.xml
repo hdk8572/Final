@@ -78,6 +78,12 @@
 		    JOIN USERS USING(USERID)
 		WHERE pno = #{pno}
 	</select>
+	
+	<!-- 프로젝트의 현재 참가자 전체 삭제 - 황대경 -->
+	<delete id="deleteAllCurrentMember" parameterType="MemberSimpleVo">
+		DELETE FROM MEMBER_PROJECT 
+		WHERE PNO = #{pno}
+	</delete>
 
 	<!-- 회사 참가자 1명 조회 - 황대경 -->
 	<!--  

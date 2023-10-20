@@ -40,18 +40,18 @@
 	
 	
 	<select id="selectOne" resultType="ProjectVo">
-		select mname, pstatus, mrank, pmember userid, deptname, pno, pname, pcontent, paccess, pdate, to_char(PSTARTDATE, 'yyyy-mm-dd') PSTARTDATE, to_char(PENDDATE, 'yyyy-mm-dd') PENDDATE, pcolor, ROWNUM PROW
-	    from(
-	        select mname, mrank, userid, deptno, ccode from users where userid = #{userid}) users
-	    join dept dept using(deptno, ccode)
-	    join (select pno, ppr.userid pmaster, pname, pcontent, paccess, pdate, pstartdate, penddate, pcolor, pstatus, jj.userid pmember
-	    from project ppr
-	    join (select mp.pno, userid
-	            from project pr
-	            join member_project mp using(userid)
-	            group by (mp.pno, userid)
-	            ) jj using(pno)) on (userid = pmember)
-	    where PNO = #{pno}
+   		SELECT TP.PNO, TP.PNAME, TP.PSTATUS, TP.PACCESS
+		, TP.USERID, VUD.MNAME, VUD.MRANK, VUD.DEPTNAME
+		, PCONTENT, PDATE, TO_CHAR(PSTARTDATE, 'yyyy-mm-dd') PSTARTDATE, TO_CHAR(PENDDATE, 'yyyy-mm-dd') PENDDATE, PCOLOR
+		, (SELECT COUNT(*) FROM MEMBER_PROJECT WHERE PNO= TP.PNO) AS COUNTMEMBER
+		FROM (
+		SELECT * FROM PROJECT
+		WHERE (USERID= #{userid} and pno = #{pno})
+		AND PSTATUS IN ('미진행', '진행', '보류')
+		AND PACCESS IN ('ACCESS')
+		) TP
+		JOIN V_U_DEPT VUD ON TP.USERID = VUD.USERID
+		ORDER BY TO_NUMBER(PNO) DESC
 	</select>
 	
 	<!--  
@@ -63,7 +63,7 @@
 	</select>
 	-->
 	 
-	<!-- 프로젝트에 참여할 멤버 추가 -->
+	<!-- 프로젝트 + 참여할 멤버 추가 -->
 	<insert id="insertList" parameterType="ProjectInsertParamVo">
 		INSERT ALL 
 			INTO PROJECT (PNO, USERID, PNAME, PCONTENT, PACCESS, PSTARTDATE, PENDDATE, PSTATUS)
@@ -74,19 +74,24 @@
 		SELECT * FROM DUAL
 	</insert>
 	 
-	<delete id="deleteList" parameterType="ProjectVo">
-		DELETE FROM PROJECT WHERE PNO = #{pno} 
-	</delete>
-	 
-	<update id="updateList" parameterType="ProjectVo">
-		
+	<!-- 참여할 멤버 추가 -->
+	<insert id="insertMemberProjectForUpdate" parameterType="ProjectInsertParamVo">
+	  <foreach collection="memberProjectArr" item="memberuserid" open="INSERT ALL " close="SELECT * FROM DUAL">
+		INTO MEMBER_PROJECT(PNO, USERID) values (#{pno}, #{memberuserid} )
+	  </foreach>
+	</insert>
+	
+	<update id="updateList" parameterType="ProjectInsertParamVo">
         UPDATE PROJECT	SET PNAME=#{pname}, pcontent=#{pcontent}, PSTATUS=#{pstatus}, PSTARTDATE=#{pstartdate}, PENDDATE=#{penddate}
         WHERE PNO = #{pno}
-		
 	<!--  
 		UPDATE PROJECT SET PNAME=#{pname}, pcontent=#{pcontent}, PSTATUS=#{pstatus}, PSTARTDATE=#{pstartdate}, PENDDATE=#{penddate}
 		WHERE PNO=#{pno}
 	-->
+	</update>
+	<update id="updateHide"  parameterType="PnoPrincipalParam">
+		UPDATE PROJECT	SET  PSTATUS='숨김'
+        WHERE PNO = #{pno}
 	</update>
 	
 	<select id="searchProjectList" parameterType="ProjectVo" resultType="ProjectVo">

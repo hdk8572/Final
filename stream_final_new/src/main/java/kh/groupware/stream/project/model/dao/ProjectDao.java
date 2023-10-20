@@ -47,13 +47,19 @@ public class ProjectDao {
 	public int insertList(ProjectInsertParamVo vo) {
 		return sqlSession.insert("project.insertList", vo);
 	}
+	public int insertMemberProjectForUpdate(ProjectInsertParamVo vo) {
+		return sqlSession.insert("project.insertMemberProjectForUpdate", vo);
+	}
 	
 	public int deleteList(String pno) {
 		return sqlSession.delete("project.deleteList", pno);
 	}
 	
-	public int update(ProjectVo vo) {
+	public int update(ProjectInsertParamVo vo) {
 		return sqlSession.update("project.updateList", vo);
+	}
+	public int updateHide(PnoPrincipalParam vo) {
+		return sqlSession.update("project.updateHide", vo);
 	}
 	
 	public List<ProjectVo> searchProjectList(ProjectVo vo) {

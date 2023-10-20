@@ -11,19 +11,19 @@ import kh.groupware.stream.member.model.vo.MemberSimpleVo;
 @Component
 public class ProjectInsertParamVo {
 //	ProjectInsertParamVo
-	private String pno;  // 0  sequence
+	private String pno;  // 0  sequence   // update pk  // delete
 	private String userid;  // 
-	private String pname; // 
-	private String pcontent;//
-	private String paccess; //
+	private String pname; //  // update 
+	private String pcontent;// // update
+	private String paccess; //// update
 	private String pdate;  // sysdate
-	private String pstartdate;  // 
-	private String penddate;  // 
-	private String pstatus; //
+	private String pstartdate;  // // update
+	private String penddate;  // // update
+	private String pstatus; //// update
 	// addpstatus??
 	// mname x
 	
-	private String[] memberProjectArr;//
+	private String[] memberProjectArr;// // update
 	
 	private List<String> memberProjectList;  // TODO
 

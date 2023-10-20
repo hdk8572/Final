@@ -248,8 +248,7 @@
 			event.preventDefault();
 			SerachProjectList();			
 			$(".form-control.searchBar").val("");
-		} else {
-			null;
+		} else { 			null;
 		}
 	});
 	
@@ -272,7 +271,6 @@
 	function selectOption(e){
 		targetPno = $(this).children("[name=pno]").val(); // 중요하다
 		var writerUserid = $(this).find("[name=userid]").val();
-		console.log(writerUserid);
 		if($(e.target).hasClass("dropdown-btn-update")) {
 				
 			if('${principal.username}' != writerUserid) {
@@ -280,10 +278,8 @@
 				return null; 
 			} else {
 				goUpdateForm(targetPno);
-				console.log("업데이트 창 돌입");
 			}
 				updateMemberList();
-				console.log("멤버 업데이트 수행");
 		} else if($(e.target).hasClass("dropdown-btn-hide")){
 			
 			if('${principal.username}' != writerUserid) {
@@ -299,6 +295,8 @@
 	
 	function goUpdateForm(pno) {
 		$("#updateProjectModal").modal("toggle");
+		console.log("pno :"+pno);
+		console.log("useridJs :"+useridJs);
 		
 		$.ajax({
 		 	url: contextPath+"/member/projectOne",
@@ -307,7 +305,7 @@
 		 	async : false,
 		 	dataType: "json",
 		 	success: function(result){
-		 		console.log(result.pstatus);
+		 		console.log("불러왔습니다.");
 				$("#updateProjectModal [name=pno]").val(result.pno);
 				$("#updateProjectModal [name=pname]").val(result.pname);
 				$('#summernote-update').summernote('code', result.pcontent);	// updateProjectModal 닫을 시 summernote 기존 입력값 부여
@@ -321,10 +319,7 @@
 			}
 		 	
 		 });
-		
-		
-		
-		
+		console.log("불러왔습니다2.");
 		$("#updateStatus").change(function(){
 			var changedPstatus = $("#updateStatus").val();
 			$("input[name=pstatus]").val(changedPstatus);
@@ -337,17 +332,11 @@
 	 	$.ajax ({
 			url: contextPath+"/member/doUpdateProject",
 			type: "get",
+			async: false,
 			data: $("#infoProject").serialize(),
-			success: function(result) {
-				console.log(result);
-				if(result>0){
-					if(result.pstatus == "숨김") {
-						location.href=contextPath+"/member/projectlist";
-						$thisElement.closest(".col-sm-6.list-card[data-pno]").remove();
-					} else {
-						location.href=contextPath+"/member/projectlist";
-					}
-				
+			success: function(result) {  // result int type 
+				if(result > 0){
+					location.href=contextPath+"/member/projectlist";
 				} else {
 					alert("ek");
 				}		
@@ -356,13 +345,31 @@
 				console.log("doUpdateProject에서 오류 발생");
 			}
 		});	
+	 	//deleteAllCurrentMember();
 	}
-
+	/* 
+	function deleteAllCurrentMember() {	
+		console.log("멤버 삭제 실행"); 
+		$.ajax ({
+		 	url: "${pageContext.request.contextPath}/member/deleteAllCurrentMember",
+		 	type: "post",
+		 	data: {pno: pno},
+		 	dataType: "json",
+		 	success: function(){
+		 		console.log("삭제했습니다.");
+		 	},
+		 	error:function(){
+				console.log("deleteAllCurrentMember에서 에러 발생");
+			}
+		});
+		console.log("삭제했습니다2.");
+	}
+ */
 	function hideProject($thisElement) {
 	    //var pstatus = $thisElement.closest(".list-card").find(".text-muted").attr("data-pstatus");// 엄청 중요합니다.
 	    var pno = $thisElement;
 	    $.ajax ({
-	    	url: contextPath+"/member/doUpdateProject.direct",
+	    	url: contextPath+"/member/doUpdateProjectHide",
 	    	type: "get",
 	    	data: {pno:pno, userid:useridJs},
 			dataType: "json",
