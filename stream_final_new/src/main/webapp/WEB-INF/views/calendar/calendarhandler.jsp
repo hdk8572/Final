@@ -87,9 +87,8 @@ function loadCalendarHandler() {
 				
 				//TODO 찍어봐라
 				console.log("info.event 구분짓는 id는 defId !!!!!!!");
-				console.log(info.event.id);  //아무값도 없음.
 				console.log(info.event._def.defId);
-				eventClick_defId = info.event._def.defId;   // 전역변수 eventClick_defId에 캘린더의 고유 id를 저장해두고.. 수정이나 삭제시 적용
+				eventClick_defId = info.event._def.defId;   // 전역변수 eventClick_defId에 캘린더의 고유 id를 저장해두고.. 수정이나 삭제시 적용 //선택한 이벤트에 클릭 이벤트 적용
 				
 				//캘린더 api에 있는 거 말고 내가 추가한 것들은 extendedProps를 써줘야 한다.(api)
 				
