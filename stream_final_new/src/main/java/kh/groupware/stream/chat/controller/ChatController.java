@@ -27,32 +27,17 @@ public class ChatController {
 	private ChatService service;
 
 	
-	  @GetMapping("/chatlist") public String selectchat(Model model) { return
-	  "/chatting/chattest";
+	  @GetMapping("/member/arm") public String selectchat(Model model) { return
+	  "/chatting/arm";
 	  
 	  } 
-	@GetMapping("/chat1")
-	public String chatGETTest() {
-		System.out.println("@ChatController, chat GET()");
-
-		return "chat1";
-	}
-
-//	@GetMapping(value = "/rooms")
-//	public ModelAndView rooms(ModelAndView mv, Principal principal, Model model) throws Exception {
-//		String userId = principal.getName();
-//		mv.setViewName("chatting/rooms");
-//		mv.addObject("list", service.findAllRooms(userId));
-//		model.addAttribute("viewMemmber", service.ViewMember());
-//		return mv;
-//	}
 
 	@GetMapping(value = "/member/rooms")
 	public ModelAndView rooms(ModelAndView mv, Principal principal) throws Exception {
 		String userId = principal.getName();
 		mv.setViewName("chatting/rooms");
 		mv.addObject("list", service.findAllRooms(userId));
-		mv.addObject("viewMemmber", service.ViewMember());
+		mv.addObject("viewMemmber", service.ViewMember(userId));
 		return mv;
 	}
 
@@ -75,6 +60,7 @@ public class ChatController {
 //	    	log.info("# Create Chat Room, roomName: " + roomName + ", userId: " + userId);
 		String userId = principal.getName();
 		String[] sizes = request.getParameterValues("member");
+		
 		service.AddChatRoom(roomName, userId);
 		if(sizes != null) {
 			for(String size : sizes) {

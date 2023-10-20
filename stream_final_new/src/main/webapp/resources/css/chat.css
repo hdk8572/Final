@@ -19,17 +19,18 @@
 }
 .input-group-append textarea{
 	margin:9px;
-    height: 80px;
-    width: 424px;
+    height: 65px;
+    width: 408px;
     border: 1px solid #aeafb3;
     border-radius: 7px;
     resize: none;
+    padding: 10px
 }
 .btn-outline-secondary{
 	position: absolute;
     right: 0;
     top: 0;
-    height: 67px;
+    height: 70px;
     margin: 18px 16px;
     width: 70px;
     background-color: #049e5e;

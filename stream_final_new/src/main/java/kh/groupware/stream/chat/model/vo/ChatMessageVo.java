@@ -8,12 +8,12 @@ public class ChatMessageVo {
 	private String userId;
 	private String message;
 	private String cDate;
-	private String mName;
+	private String mname;
 	private String roomName;
 	@Override
 	public String toString() {
 		return "ChatMessageVo [roomId=" + roomId + ", userId=" + userId + ", message=" + message + ", cDate=" + cDate
-				+ ", mName=" + mName + ", roomName=" + roomName + "]";
+				+ ", mname=" + mname + ", roomName=" + roomName + "]";
 	}
 	public String getRoomId() {
 		return roomId;
@@ -39,11 +39,12 @@ public class ChatMessageVo {
 	public void setcDate(String cDate) {
 		this.cDate = cDate;
 	}
-	public String getmName() {
-		return mName;
+
+	public String getMname() {
+		return mname;
 	}
-	public void setmName(String mName) {
-		this.mName = mName;
+	public void setMname(String mname) {
+		this.mname = mname;
 	}
 	public String getRoomName() {
 		return roomName;

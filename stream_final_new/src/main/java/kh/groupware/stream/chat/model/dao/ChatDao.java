@@ -47,8 +47,8 @@ public class ChatDao {
 	 public ChatRoomVo lastMessage(String roomId) {
 	        return sqlSession.selectOne("chat.lastMessage", roomId);
 	  }
-	public List<ChatRoomVo> ViewMember(){
-			return sqlSession.selectList("chat.viewMember");
+	public List<ChatRoomVo> ViewMember(String userId){
+			return sqlSession.selectList("chat.viewMember",userId);
 	}
 	public ChatRoomVo findWriter(String userId){
 		return sqlSession.selectOne("chat.findWriter",userId);

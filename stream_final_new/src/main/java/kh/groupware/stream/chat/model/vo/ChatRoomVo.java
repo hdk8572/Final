@@ -11,7 +11,7 @@ public class ChatRoomVo {
 	private String roomId;
 	private String roomName;
 	private String userId;	//작성자
-	private String mName;
+	private String mname;
 	private List<WebSocketSession> sessions = new ArrayList<>();
 	
 	public static ChatRoomVo create(String roomName,String userId) {
@@ -30,7 +30,7 @@ public class ChatRoomVo {
 
 	@Override
 	public String toString() {
-		return "ChatRoomVo [roomId=" + roomId + ", roomName=" + roomName + ", userId=" + userId + ", mName=" + mName
+		return "ChatRoomVo [roomId=" + roomId + ", roomName=" + roomName + ", userId=" + userId + ", mname=" + mname
 				+ ", sessions=" + sessions + "]";
 	}
 
@@ -57,15 +57,14 @@ public class ChatRoomVo {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-
-	public String getmName() {
-		return mName;
+	
+	public String getMname() {
+		return mname;
 	}
-
-	public void setmName(String mName) {
-		this.mName = mName;
+	public void setMname(String mname) {
+		this.mname = mname;
 	}
-
+	
 	public List<WebSocketSession> getSessions() {
 		return sessions;
 	}

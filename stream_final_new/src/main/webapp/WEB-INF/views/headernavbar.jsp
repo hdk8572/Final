@@ -105,7 +105,7 @@
 				</div></li>
 <%-- 			<c:forEach items="${principal.authorities}" var="authority">
 				<c:if test="${authority.authority eq '[ROLE_M]'}"> --%>
-					<div class="container">
+					<div class="container" style="top: 7px">
 						<div class="sidesheet"></div>
 						<button id="popup" style="background: none; border: none; padding: 0; margin: 0;">
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
