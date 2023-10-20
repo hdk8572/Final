@@ -28,27 +28,15 @@ public class StompChatController {
     	message.setMessage(chatDao.findWriter(userId).getMname() +"님이 채팅방에 참여하였습니다.");
     	message.setMname(chatDao.findWriter(userId).getMname());
         template.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
-        System.out.println(chatDao.findWriter(userId).getMname()+"username확인");
-        System.out.println(message);
     }
     @MessageMapping(value = "/chat/message")
     public void message(ChatMessageVo message,Principal principal){
     	String userId = principal.getName(); 
     	chatDao.MessageInsert(message);
-    	message.setMname(userId);
+    	message.setMname(chatDao.findWriter(userId).getMname());
+    	System.out.println(message+"===========");
         template.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);      
     }
-    @MessageMapping(value = "/arm/message")
-    public void arm(ChatMessageVo message,Principal principal){
-    	String userId = principal.getName(); 
-    	chatDao.MessageInsert(message);
-    	message.setMname(userId);
-        template.convertAndSend("/sub/arm/" + message.getRoomId(), message);      
-    	message.setMessage(chatDao.findWriter(userId).getMname() +"님이 채팅방에 참여하였습니다.");
-    	message.setMname(chatDao.findWriter(userId).getMname());
-        template.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
-        System.out.println(chatDao.findWriter(userId).getMname()+"username확인");
-        System.out.println(message);
-    }
+
 
 }

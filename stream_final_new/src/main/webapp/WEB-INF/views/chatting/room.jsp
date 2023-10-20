@@ -18,7 +18,9 @@
 <body style="margin: 0px">
 	<div class="container" style="margin :0px; height: 630px">
 		<div class="col-6">
-			<div class="col-7"><b>stream</b> [${room.roomName}]</div>
+			<div class="col-7"><b>stream</b> [${room.roomName}]
+				<a class="back" href="${pageContext.request.contextPath}/member/rooms">돌아가기</a>
+			</div>
 		</div>
 		<div class='chatscroll'>
 			<div id="msgArea" class="col-6">
@@ -99,15 +101,16 @@
 					stomp.send('/pub/chat/message', {}, JSON.stringify({
 						roomId : roomId,
 						message : msg.value,
-						userId : username
-
+						userId : username,
+						mname : name
 					}));
 					msg.value = '';
 				});
 				
 				stomp.send('/pub/chat/enter', {}, JSON.stringify({
 					roomId : roomId,
-					userId : username
+					userId : username,
+					mname : name
 				}));
 			});
 		});

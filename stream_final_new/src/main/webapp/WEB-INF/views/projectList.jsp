@@ -49,7 +49,7 @@
 				<div class="container-fluid p-0">
 
 					<h1 class="h3 mb-3">
-						<span id="userName">${aa.ccode}님의 프로젝트 목록</span>
+						<span id="userName">${principal.username}님의 프로젝트 목록</span>
 						<!-- <form>
 							<div class="search">
 								<input name="keyword" type="text" placeholder="검색어를 입력해주세요.">
@@ -62,7 +62,7 @@
 					</h1>
 
 					<%@ include file="/WEB-INF/views/addProjectModal.jsp"%>
-					<%@ include file="/WEB-INF/views/updateProjectModal2.jsp"%>
+					<%@ include file="/WEB-INF/views/updateProjectModal.jsp"%>
 
 					<div class="row">
 						<div class="col-xl-6 col-xxl-5 d-flex">
@@ -195,6 +195,7 @@
 		            <div class="card">
 		                <form class="frm select" action="${pageContext.request.contextPath}/member/ptasklist" method="get">
 		                    <input type="hidden" name="pno"  value="\${projectOne.pno}">
+		                    <input type="hidden" name="userid"  value="\${projectOne.userid}">
 		                    <div class="card-body list">
 	                    </form>
 	                        <div class="row">
@@ -237,7 +238,10 @@
 				}
 	    $("#wrap-list").html(listHtml);
 	    $(".frm.select").click(selectOption);  // stream.js -> abc();
-	    $("#updateBtn").click(doUpdateProject);
+	    $("#updateBtn").click(function() {
+	    	doUpdateProject();
+	    });
+	    //writerUserid = $(".frm.select [name=userid]").val();
 	}
 	
 	$("#searchProjectListHandler").keydown(function(event) {
@@ -268,12 +272,27 @@
 
 	function selectOption(e){
 		targetPno = $(this).children("[name=pno]").val(); // 중요하다
+		var writerUserid = $(this).find("[name=userid]").val();
+		console.log(writerUserid);
 		if($(e.target).hasClass("dropdown-btn-update")) {
-			goUpdateForm(targetPno);
-			updateMemberList();
-		} else if($(e.target).hasClass("dropdown-btn-hide")){
-			hideProject(targetPno, $(this));
 				
+			if('${principal.username}' != writerUserid) {
+				alert("작성자만 수정할 수 있습니다.");
+				return null; 
+			} else {
+				goUpdateForm(targetPno);
+				console.log("업데이트 창 돌입");
+			}
+				updateMemberList();
+				console.log("멤버 업데이트 수행");
+		} else if($(e.target).hasClass("dropdown-btn-hide")){
+			
+			if('${principal.username}' != writerUserid) {
+				alert("작성자만 숨길 수 있습니다.");
+				return null; 
+			} else {
+				hideProject(targetPno, $(this));
+			}
 		} else {
 			$(this).submit();
 		}
@@ -303,6 +322,9 @@
 			}
 		 	
 		 });
+		
+		
+		
 		
 		$("#updateStatus").change(function(){
 			var changedPstatus = $("#updateStatus").val();

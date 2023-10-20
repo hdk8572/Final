@@ -13,114 +13,7 @@
 		class="hamburger align-self-center"></i>
 	</a>
 	<div class="navbar-collapse collapse">
-		<ul class="navbar-nav navbar-align">
-			<li class="nav-item dropdown"><a
-				class="nav-icon dropdown-toggle" href="#" id="alertsDropdown"
-				data-bs-toggle="dropdown">
-					<div class="position-relative">
-						<i class="align-middle" data-feather="bell"></i> <span
-							class="indicator">4</span>
-					</div>
-			</a>
-				<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
-					aria-labelledby="alertsDropdown">
-					<div class="dropdown-menu-header">알림</div>
-					<div class="list-group">
-						<div class="a1">
-							<a href="#" class="list-group-item">
-								<div class="row g-0 align-items-center">
-									<div class="col-2">
-
-										<img
-											src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
-											class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
-
-									</div>
-									<div class="col-10 ps-2">
-										<div class="text-dark">프로젝트명</div>
-										<div class="text-muted small mt-1">ㅁㅁㅁ님의 일정 등록</div>
-										<div class="text-muted small mt-1">안녕</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						<div class="a1">
-							<a href="#" class="list-group-item">
-								<div class="row g-0 align-items-center">
-									<div class="col-2">
-
-										<img
-											src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
-											class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
-
-									</div>
-									<div class="col-10 ps-2">
-										<div class="text-dark">프로젝트명</div>
-										<div class="text-muted small mt-1">ㅁㅁㅁ님의 일정 등록</div>
-										<div class="text-muted small mt-1">안녕</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						<div class="a1">
-							<a href="#" class="list-group-item">
-								<div class="row g-0 align-items-center">
-									<div class="col-2">
-
-										<img
-											src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
-											class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
-
-									</div>
-									<div class="col-10 ps-2">
-										<div class="text-dark">프로젝트명</div>
-										<div class="text-muted small mt-1">ㅁㅁㅁ님의 일정 등록</div>
-										<div class="text-muted small mt-1">안녕</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						<div class="a1">
-							<a href="#" class="list-group-item">
-								<div class="row g-0 align-items-center">
-									<div class="col-2">
-
-										<img
-											src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
-											class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
-
-									</div>
-									<div class="col-10 ps-2">
-										<div class="text-dark">프로젝트명</div>
-										<div class="text-muted small mt-1">ㅁㅁㅁ님의 일정 등록</div>
-										<div class="text-muted small mt-1">안녕</div>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div>
-					<div class="dropdown-menu-footer">
-						<a id="load">더보기</a>
-					</div>
-				</div></li>
-<%-- 			<c:forEach items="${principal.authorities}" var="authority">
-				<c:if test="${authority.authority eq '[ROLE_M]'}"> --%>
-					<div class="container" style="top: 7px">
-						<div class="sidesheet"></div>
-						<button id="popup" style="background: none; border: none; padding: 0; margin: 0;">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-								viewBox="0 0 24 24" fill="none" stroke="currentColor"
-								stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-								class="feather feather-message-square align-middle me-2">
-       						 <path
-									d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-    						</svg>
-						</button>
-					</div>
-<%-- 				</c:if>
-			</c:forEach>
-
- --%>
+		<ul class="navbar-nav navbar-align">				
 
 			<li class="nav-item dropdown"><a
 				class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
@@ -195,16 +88,6 @@
 
 
 
-<script>
-	window.onload = function() {
-		var popupButton = document.getElementById("popup");
-		popupButton.onclick = function() {
-			var jsPopup = window
-					.open("/stream/member/rooms",null,"width=450, height=650, resizable=no, scrollbars=no,toolbars=no, menubar=no");
-
-		};
-	};
-</script>
 <script>
 	function modal(id) {
 		var zIndex = 9999;

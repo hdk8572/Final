@@ -27,10 +27,6 @@ public class ChatController {
 	private ChatService service;
 
 	
-	  @GetMapping("/member/arm") public String selectchat(Model model) { return
-	  "/chatting/arm";
-	  
-	  } 
 
 	@GetMapping(value = "/member/rooms")
 	public ModelAndView rooms(ModelAndView mv, Principal principal) throws Exception {
