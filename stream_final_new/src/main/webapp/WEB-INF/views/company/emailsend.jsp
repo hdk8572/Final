@@ -91,15 +91,10 @@
 
 			var inputEmail = document.getElementById("input-email");
 			var inputValue = inputEmail.value.trim();
-			var emailToCheck = /[A-Za-z0-9_]{1,25}+@[A-Za-z0-9]+\.[A-Za-z]{2,4}(\.[A-Za-z]{2})?$/;
 			
-			if (inputValue === '') {
+			if (inputValue === ''){
 				alert("이메일을 입력해주세요!");
-			} else if (!emailToCheck.test(inputValue)){
-				alert("이메일형식이 옳지 않습니다.")};
-				
-			}else{
-
+			} else if(inputValue.length <= 45 && /^[A-Za-z0-9_]+@[A-Za-z0-9]+\.[A-Za-z]{2,4}(\.[A-Za-z]{2})?$/.test(inputValue)){
 				var table = document.getElementById("addEmail");
 				var row = table.insertRow(-1);
 
@@ -122,6 +117,8 @@
 
 				inputEmail.value = "";
 				eRowCount++
+			} else {
+				alert("이메일형식이 옳지 않습니다.");
 			}
 		}
 		function removeERow(row) {

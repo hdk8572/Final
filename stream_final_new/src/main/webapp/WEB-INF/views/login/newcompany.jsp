@@ -235,12 +235,12 @@
 			const phoneToCheck = cphone.replace(/\D/g, '');
 
 			if (phoneToCheck.length !== 10 && phoneToCheck.length !== 11) {
-				alert("10 또는 11자리의 숫자를 입력해주세요.");
+				alert("전화번호는 10 또는 11자리의 숫자를 입력해주세요.");
 				return false;
 			}
 
 			if (!/^01[01]/.test(phoneToCheck)) {
-				alert("010 또는 011로 시작되는 전화번호를 입력해주세요.");
+				alert("전화번호는 010 또는 011로 시작되는 전화번호를 입력해주세요.");
 				return false;
 			}
 
@@ -255,7 +255,7 @@
 		function checkCaddress(caddress) {
 			var addressToCheck = /^[A-Za-z가-힣0-9\s!@#$%^&*()_+[\]{};':".,<>?\\/-]{1,100}$/;
 			if (!addressToCheck.test(caddress)) {
-				alert("회사 주소가 너무 깁니다.");
+				alert("회사 주소 형식이 옳지 않습니다.");
 				return false;
 			}
 			return true;
@@ -275,7 +275,8 @@
 
 			if (inputValue === '') {
 				alert("부서이름을 입력해주세요!");
-			} else {
+			} else if (inputValue.length <= 25
+					&& /^[가-힣a-zA-Z0-9]*$/.test(inputValue)) {
 
 				var table = document.getElementById("addDept");
 				var row = table.insertRow(-1);
@@ -299,6 +300,8 @@
 
 				inputDept.value = "";
 				dRowCount++
+			} else {
+				alert("부서 형식이 옳지 않습니다.")
 			}
 		}
 		function removeDRow(row) {
@@ -319,8 +322,9 @@
 
 			if (inputValue === '') {
 				alert("이메일을 입력해주세요!");
-			} else {
-
+			} else if (inputValue.length <= 50
+					&& /^[A-Za-z0-9_]+@[A-Za-z0-9]+\.[A-Za-z]{2,4}(\.[A-Za-z]{2})?$/
+							.test(inputValue)) {
 				var table = document.getElementById("addEmail");
 				var row = table.insertRow(-1);
 
@@ -343,7 +347,8 @@
 
 				inputEmail.value = "";
 				eRowCount++
-
+			} else {
+				alert("이메일형식이 옳지 않습니다.");
 			}
 		}
 		function removeERow(row) {
@@ -357,7 +362,7 @@
 	<script>
 		document.addEventListener('keydown', function(event) {
 			if (event.key === "Enter") {
-				event.preventDefault(); 
+				event.preventDefault();
 			}
 		});
 	</script>

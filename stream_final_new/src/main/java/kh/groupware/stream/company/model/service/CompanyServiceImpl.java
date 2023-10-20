@@ -49,6 +49,7 @@ public class CompanyServiceImpl implements CompanyService {
 	}
 	
 	//회사코드로 부서찾기
+	@Override
 	public List<DeptVo> deptList(String ccode){
 		return companyDao.deptList(ccode);
 	}

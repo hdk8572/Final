@@ -98,7 +98,7 @@
 										<div>
 											<label class="form-check"> <input
 												class="form-check-input" type="checkbox" value="agree"
-												name="agree"> <span class="agree-label"> (필수)
+												name="agree"> <span class="agree-label"> (선택)
 													서비스 이용약관, 개인정보처리방침을 확인하였고, 이에 동의합니다. </span>
 											</label>
 										</div>
@@ -126,6 +126,9 @@
 	<script>
 		// 회원가입 항목체크
 		function checkAll() {
+			var agreementCheckbox = document
+					.querySelector('input[name="agree"]');
+
 			if (!checkUserid(Account.userid.value)) {
 				return false;
 			} else if (!checkUserpwd(Account.userpwd.value,
@@ -135,10 +138,12 @@
 				return false;
 			} else if (!checkDept(Account.deptdrop.value)) {
 				return false;
+			} else if (!agreementCheckbox.checked) {
+				alert('이용약관 및 개인정보처리방침에 동의해야 합니다.');
+				return false;
 			}
-			return true;
-		}
 
+		}
 		//빈칸 누락 확인
 		function checkBlank(value, dataName) {
 			if (value == "") {
@@ -152,8 +157,7 @@
 		function checkUserid(userid) {
 			if (!checkBlank(userid, "아이디를"))
 				return false;
-			var idToCheck = /[A-Za-z0-9_]{1,25}+@[A-Za-z0-9]+\.[A-Za-z]{2,4}(\.[A-Za-z]{2})?$/;
-			if (!idToCheck.test(userid)) {
+			if (userid.length >= 45) {
 				alert("이메일형식이 옳지 않습니다.");
 				Account.userid.value = "";
 				Account.userid.focus();
@@ -171,13 +175,13 @@
 				Account.pwdcheck.focus();
 				return false;
 			}
-			var pwdToCheck =/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,15}$/;
-				if (!pwdToCheck.test(userpwd)){
-					alert("비밀번호는 대소문자와 기호를 포함한 8-15자로 작성해주세요.");
-					Account.userpwd.value="";
-					Account.userpwd.focus();
-					return false;
-				}
+			var pwdToCheck = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,15}$/;
+			if (!pwdToCheck.test(userpwd)) {
+				alert("비밀번호는 대소문자와 기호를 포함한 8-15자로 작성해주세요.");
+				Account.userpwd.value = "";
+				Account.userpwd.focus();
+				return false;
+			}
 			return true;
 		}
 
@@ -189,7 +193,7 @@
 			var nameToCheck = /^[A-Za-z가-힣]{2,15}$/;
 			if (!nameToCheck.test(username)) {
 				alert("이름 형식이 옳지 않습니다.");
-				Account.username.value=""
+				Account.username.value = ""
 				Account.username.focus();
 				return false;
 			}
@@ -226,30 +230,31 @@
 			});
 
 			function deptView(data) {
-				if(data == null || data == ""){
+				if (data == null || data == "") {
+					var listHtml = "";
+					listHtml += `<option selected>해당하는 부서가 없습니다</option>`;
+					$("#deptdrop").html(listHtml);
+					return;
+				} else
+					console.log("성공하였습니다")
 				var listHtml = "";
-				listHtml += `<option selected>해당하는 부서가 없습니다</option>`;
+
+				for (var i = 0; i < data.length; i++) {
+					var deptName = data[i];
+					listHtml += `<option value="\${deptName.deptno}">\${deptName.deptname}</option>`;
+				}
 				$("#deptdrop").html(listHtml);
-				return;
-			} else
-			console.log("성공하였습니다")
-			var listHtml = "";
-	
-			for (var i = 0; i < data.length; i++) {
-				var deptName = data[i];
-				listHtml += `<option value="\${deptName.deptno}">\${deptName.deptname}</option>`;
 			}
-			$("#deptdrop").html(listHtml);
+			function deptError(request, status, error) {
+				console.log(request);
+				console.log(status);
+				console.log(error);
+				alert("code: " + request.status + "\n" + "message: "
+						+ request.responseText + "\n" + "error: " + error);
+			}
 		}
-		function deptError(request, status, error) {
-			console.log(request);
-			console.log(status);
-			console.log(error);
-			alert("code: " + request.status + "\n" + "message: "
-					+ request.responseText + "\n" + "error: " + error);
-		}}
 	</script>
-	
+
 
 
 

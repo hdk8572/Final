@@ -40,12 +40,12 @@ public class CompanyContoller {
 
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
-	
+
 	@GetMapping("/company/main")
 	public String companyMain(Model model, HttpSession session) {
-		String msg = (String)session.getAttribute("msg");
+		String msg = (String) session.getAttribute("msg");
 		session.removeAttribute("msg");
-		if(msg != null) {
+		if (msg != null) {
 			model.addAttribute("alertmsg", msg);
 		}
 		return "/company/main";
@@ -60,7 +60,10 @@ public class CompanyContoller {
 	@PostMapping("/newcompany")
 	public String newCompany(CompanyInsertParam cvo, RedirectAttributes ra) {
 
-		if (cvo.getEmailArr() == null || cvo.getEmailArr().equals("")) {
+		if (cvo.getDeptArr() == null || cvo.getDeptArr().equals("")) {
+			ra.addFlashAttribute("alertmsg", "최소 한개의 부서를 등록해주세요!");
+			return "redirect:/newcompany";
+		} else if (cvo.getEmailArr() == null || cvo.getEmailArr().equals("")) {
 			ra.addFlashAttribute("alertmsg", "최소 한개의 이메일을 등록해주세요!");
 			return "redirect:/newcompany";
 		} else {
@@ -82,8 +85,7 @@ public class CompanyContoller {
 				e.printStackTrace();
 			}
 		}
-		ra.addFlashAttribute("alertmsg",
-				"회사등록에 성공하였습니다.\n회사아이디: " + cvo.getCcode() + "@stream.com\n회사 비밀번호: 1234");
+		ra.addFlashAttribute("alertmsg", "회사등록에 성공하였습니다.\n회사아이디: " + cvo.getCcode() + "@stream.com\n회사 비밀번호: 1234");
 		return "redirect:/";
 	}
 
