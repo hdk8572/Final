@@ -32,7 +32,7 @@ public class CalendarController {
 	@Autowired 
 	private CalendarService calendarService;
 	
-	@GetMapping({"/member/pcal", "/member/pcal/{pno}"})
+	@GetMapping({"/member/pcal", "/member/pcal/{pno}"})//TODO url에 치고 들어가는 코드가 필요한가?
 	public ModelAndView selectList(ModelAndView mv, @PathVariable(name = "pno", required = false) String pno
 			, Principal principal
 			, RedirectAttributes rttr
@@ -81,7 +81,6 @@ public class CalendarController {
 		return new Gson().toJson(calendarService.memberProjectList(param));
 	}//짧게 쓰는 방법임
 
-	
 	/*
 	//강사님이 알려주신 코드 못 씀
 	//캘린더 등록
@@ -96,10 +95,9 @@ public class CalendarController {
 	*/
 	
 	//캘린더 등록 
-	//탭 jsp에서 필요하니깐 redurectAttributes를 써준다.
+	//탭 jsp에서 필요하니깐 RedirectAttributes를 써준다.
 	@PostMapping("/member/insertpcal")
 	public String insert(Model model, CalendarVo cal, RedirectAttributes rttr) {
-//CalendarVo [sno=, userid=mplsam@kh.co.kr, mname=null, pno=1, splace=삼성동, smemo=<p>와우</p><p>영한 변환 잘됨</p>, start=2023-10-17, end=2023-10-19, title=aaa, color=null, attenduseridArr=null, attenduseridList=null]
 		if(cal.getAttenduseridArr() != null && cal.getAttenduseridArr().length > 0) {
 			List<String> attenduseridArr = Arrays.asList(cal.getAttenduseridArr());
 			List<MemberSimpleVo> attenduseridList= new ArrayList<MemberSimpleVo>();
@@ -131,13 +129,4 @@ public class CalendarController {
 	  public int delete(String sno) { 
 		  return calendarService.delete(sno); 
 	  }
-	 
-	/*
-	 * @PostMapping("/member/deletepcal")
-	 * 
-	 * @ResponseBody public int delete(String sno) { int result1 = 0; int result2 =
-	 * 0;
-	 * 
-	 * if(result > 0) { result2 = CalendarDao.d(sno); } }
-	 */
 }

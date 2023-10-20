@@ -114,7 +114,6 @@ SELECT SNO, USERID, mname, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, '
 		WHERE SNO=#{sno}
 	</delete>
 
-	
 	<!-- 프로젝트에 참여중인 회원인지 확인 -->
 	<select id="isAttendedProject" resultType="_int" parameterType="map">
 	select count(*) cnt from member_project where pno=#{pno} and userid=#{userid}

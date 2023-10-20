@@ -74,6 +74,8 @@
 	    $(this).find(".reply-btn").css("visibility", "hidden");
 	});
 	
+	
+	
 function replyLoadList(targetTno) {
 	console.log(targetTno);
 	$.ajax({
@@ -154,6 +156,8 @@ function makeReplyList(data) {
 		
 		<!--- 댓글 수정 기능 --->
 		$(".form-control.updateInputReply").keydown(function(event) {
+			
+			var targetTno = $("input[name=tno]").val();
 			if(event.keyCode == 13) {
 				/* event.preventDefault(); */
 				var targetRcontentUpdate = $(this).closest(".d-flex.align-items-start").find("#updateReplyInput").val();
@@ -164,10 +168,10 @@ function makeReplyList(data) {
 						url: "${pageContext.request.contextPath}/member/doUpdateReply",
 						type: "post",
 						dataType: "json",
-						data: {rno: targetRno, rcontent: targetRcontentUpdate},
+						data: {rno: targetRno, rcontent: targetRcontentUpdate, tno:targetTno},
 						success: function(result) {
 							alert("수정됬습니다.");	
-							replyLoadList();
+							replyLoadList(targetTno);
 						},
 						error: function() {
 							alert("수정 작업을 취소했습니다.");
@@ -204,8 +208,10 @@ function makeReplyList(data) {
 	
 	<!--- 댓글 삭제 기능 --->
 	$(document).on("click", ".replyDeleteBtn", function() {
+		var targetTno = $("input[name=tno]").val();
 		var targetRno = $(this).closest(".d-flex.align-items-start").find("input[name=rno]").val();
-		console.log(targetRno);
+		console.log("targetTno :"+targetTno);
+		console.log("targetRno :"+targetRno);
 		var confirm_val = confirm("댓글을 삭제하시겠습니까?");
 		if(confirm_val == true){
 		    <!--- 확인 or yes 버튼을 눌렀을 때 실행 될 함수 구현 --->
@@ -213,9 +219,9 @@ function makeReplyList(data) {
 				url: "${pageContext.request.contextPath}/member/doDeleteReply",
 				type: "post",
 				dataType: "json",
-				data: {rno: targetRno},
+				data: {rno: targetRno, tno:targetTno},
 				success: function(result) {
-					replyLoadList();
+					replyLoadList(targetTno);
 				},
 				error: function() {
 					alert("doDeleteReply에서 에러났습니다.");
