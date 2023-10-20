@@ -63,6 +63,7 @@
 	</select>
 	-->
 	 
+	<!-- 프로젝트에 참여할 멤버 추가 -->
 	<insert id="insertList" parameterType="ProjectInsertParamVo">
 		INSERT ALL 
 			INTO PROJECT (PNO, USERID, PNAME, PCONTENT, PACCESS, PSTARTDATE, PENDDATE, PSTATUS)
