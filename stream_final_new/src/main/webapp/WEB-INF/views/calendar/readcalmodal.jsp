@@ -48,12 +48,13 @@
 								<!-- 참석자  -->
 								<div class="d-flex align-items-center">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-									<div class="form-read" id="attenduseridList"></div>
+									<div class="form-readcal" id="attenduseridList"></div>
 								</div>
+								
 								<!-- 지도 -->
 								<div class="d-flex align-items-center">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin align-middle me-2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-									<div class= "form-control place" id="splace"></div>
+									<div class="form-control place" id="splace"></div>
 								</div>
 									<div class="map" id="map-readmodal"></div>
 									
@@ -68,8 +69,8 @@
 	 </div>
 </div>
  
-<!-- 참석자 svg 안 사라짐 TODO  -->
-<script>
+<!-- 참석자 svg 안 사라짐 TODO   -->
+<!-- <script>
 	document.addEventListener("DOMContentLoaded", function(){
 		var attenduseridList = document.querySelector(".form-read");
 		var attendSvg = document.querySelector(".feather.feather-user.align-middle.me-2");
@@ -82,7 +83,7 @@
 		}
 	});
 </script>
-
+ -->
 <!-- read 일정 수정 삭제 코드 -->
 <script>
 	$('#dltBtn').on("click", function(){

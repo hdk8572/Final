@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 모달 -->
+<%@ include file="/WEB-INF/views/alertmsg.jsp"%>
 <div id="addcalmodal" class="modal">
 	<div class="modal-dialog pcal">
 		<!-- Modal content -->
@@ -80,13 +81,29 @@
 </div>
 
 <script>
+	function calendartitleLength() {
+		var titleField = document.getElementById("title");
+		var titleValue = titleField.value;
+		
+		if(titleValue.length > 20) {
+			alert("제목은 20자 이내여야 합니다.");
+		}
+	}
+	document.getElementById("title").addEventListener("input", calendartitleLength);
+</script>
+
+
+
+
+<script>
 //addcalmodal 초기화!!!
 	function resetcalmodal(){
 		var kakaoaddmap = document.getElementById('map');
 		kakaoaddmap.innerHTML =''; //지도를 비운다.
 		$('.map-hidden').css("display", 'none'); //지도 맵
 		$('#addcalmodal #splace').val(''); //지도 이름
-		
+		$('#addcalmodal #summernote-addcalmodal').summernote('code', '') //내용
+		//참가자
 		$('#addcalmodal .title').val(''); //제목
 		$('#addcalmodal #start').val(''); //시작일
 		$('#addcalmodal #end').val(''); //종료일

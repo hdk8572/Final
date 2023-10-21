@@ -55,7 +55,7 @@
 							<!-- 지도 -->
 							<div class="d-flex align-items-center">
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin align-middle me-2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-								<div class= "form-control place" id="splace"></div>
+								<div class="form-control place" id="splace"></div>
 							</div>
 								<div class="map" id="map-updatemodal"></div>
 						
@@ -78,7 +78,7 @@
 
 <!-- 일정 상세 정보 가져오기 -->
 <script>
-	$('#readupdBtn').on("click", function() {
+	$('#update-calButton').on("click", function() {
 		var selectedUpdateSno= $("#readcalmodal #sno").val(); //수정 모달의 sno값을 읽어온다.(읽어옴)
 		var selectedUpdateTitle = $("#readcalmodal #title").text();
 		var selectedUpdateStart = $("#readcalmodal #start").text();

@@ -79,19 +79,17 @@
   display: none;
 }
 
-/* 참가자 */
-
+/* add참가자 */
 .calmemberlist-img{
 	margin-bottom: 15px;
 	margin-right: 0.4rem;
 }
 
 .form-control-userid {
-	width: 30%;
 	line-height: 30px;
 	word-wrap: break-word;
     background-clip: border-box;
-    background-color: #fff;
+    background-color: transparent;
     border: 0 solid transparent;
     border-radius: 0.25rem;
     display: flex;
@@ -100,9 +98,8 @@
     position: relative;
 }
 .form-calmemberlist{
-	
-    margin-left: 1rem;
-    margin-bottom: 1rem;
+	margin-left: 1rem;
+	margin-bottom: 1rem;
 }
 .form-calmemberlist.card{
 	width:500%; /* TODO */
@@ -115,9 +112,15 @@
 .attenduserid-item > div{
 	margin-left: 1rem;
 }
-.attenduserid-item{
-	line-height: 30px;
+#attenduserid-wrap{
+	 display: inline-block;
+	  margin-left: 10px;
 }
+.attenduserid-item {
+	width:20%;
+    display: inline-block;
+}
+/* add참가자 */
 
 /* 수정 참가자 */
 #attenduseridList{

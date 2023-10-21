@@ -73,7 +73,6 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 								</div>
 							</div>
 						</div>
-	
 						<%@ include file="/WEB-INF/views/calendar/readcalmodal.jsp" %>
 					 </div>
 				</main>
