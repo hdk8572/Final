@@ -58,7 +58,7 @@
 								</div>
 							</div>
 							<div class="map-hidden" id="form-content">
-								<%@ include file="/WEB-INF/views/kakaomap.jsp"%>
+								<%@ include file="/WEB-INF/views/calendar/kakaomap.jsp"%>
 							</div>
 								
 							<!-- 내용  -->
@@ -80,7 +80,6 @@
 </div>
 
 <script>
-
 //addcalmodal 초기화!!!
 	function resetcalmodal(){
 		var kakaoaddmap = document.getElementById('map');

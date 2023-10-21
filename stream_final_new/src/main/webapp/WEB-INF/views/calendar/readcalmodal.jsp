@@ -8,7 +8,7 @@
 	<div class="modal-dialog pcal">
 	  <!-- Modal content -->
 		<div class="modal-content pcal"> 
-		  	<div class="modal-header-pcal"> <!-- 수정함 -->
+		  	<div class="modal-header-pcal"> 
 		  		<span class="read-close" data-bs-dismiss="modal" aria-label="Close">&times;</span>
 		  	</div>
 			 	<div class="modal-body-pcal">
@@ -26,16 +26,14 @@
 									<svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical me-2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
 								</div>
 								<ul class="dropdown-menu" id="read-dropdown-menu">
-									     <li><a class="dropdown-item" href="#" id="readupdBtn" data-bs-toggle="modal" data-bs-target="#updatecalmodal">수정</a></li>
-									<li><a class="dropdown-item" id="dltBtn" href="#"> 삭제</a></li>
+									<li><a class="dropdown-item" id="update-calButton" data-bs-toggle="modal" data-bs-target="#updatecalmodal">수정</a></li>
+									<li><a class="dropdown-item" id="delete-calButton"> 삭제</a></li>
 								</ul>
 					  		</div>
 							</div>
 							
 							<!-- 작성자 코드 수정하기-->
 							<!-- <div id="userid"></div> -->
-							
-							
 							
 							<div class="card-body">
 								<!-- 제목 -->
@@ -52,32 +50,40 @@
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
 									<div class="form-read" id="attenduseridList"></div>
 								</div>
-								
 								<!-- 지도 -->
 								<div class="d-flex align-items-center">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin align-middle me-2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
 									<div class= "form-control place" id="splace"></div>
 								</div>
 									<div class="map" id="map-readmodal"></div>
-								
+									
 								<!-- 내용 -->
 								<div class="form-control smemo " id="smemo"></div>
 									
-								<!-- 댓글 -->
-							<!-- 	<div class="d-flex align-items-center" >
-									<div class="comment-box">
-										<input type="text" class="form-control comment" placeholder="Input">
-										<input type="submit" class="c-btn" value="등록">
-									</div>
-								</div> -->
 							</div>
 						</div>
 					</form>
 				</div>
 		  </div>
 	 </div>
-</div> 
+</div>
+ 
+<!-- 참석자 svg 안 사라짐 TODO  -->
+<script>
+	document.addEventListener("DOMContentLoaded", function(){
+		var attenduseridList = document.querySelector(".form-read");
+		var attendSvg = document.querySelector(".feather.feather-user.align-middle.me-2");
+		
+		if (!attenduseridList || attenduseridList.innerHTML.trim() === "" ) {
+			/* var userIdSvg = document.querySelector(".feather.feather-user.align-middle.me-2"); */
+			if (attendSvg) {
+				attendSvg.style.display = "none";
+			}
+		}
+	});
+</script>
 
+<!-- read 일정 수정 삭제 코드 -->
 <script>
 	$('#dltBtn').on("click", function(){
 		
@@ -111,6 +117,7 @@
 </script>
 
 <!-- 지도 api -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=200d239f8c4b9f3e0d914ec332ddfe21&libraries=services"></script>
 <script>
 	var mapContainer_readmodal = document.getElementById('map-readmodal'), // 지도를 표시할 div 
 	mapOption_readmodal = {

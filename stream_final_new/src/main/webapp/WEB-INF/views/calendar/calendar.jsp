@@ -18,6 +18,8 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 			</div>
 		</div>
 		
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=200d239f8c4b9f3e0d914ec332ddfe21&libraries=services"></script>
+
 <%@ include file="/WEB-INF/views/calendar/addcalmodal.jsp" %>
 <%@ include file="/WEB-INF/views/calendar/readcalmodal.jsp" %>
 <%@ include file="/WEB-INF/views/calendar/updatecalmodal.jsp" %>
@@ -94,6 +96,8 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 	}
 </script>
 
+
+
 <!-- 날짜 시작일-종료일  -->
 <script>
 	//id='start','end'
@@ -123,7 +127,8 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 <!-- 위즈윅 - summerNote	 -->
 <script>
 	$(document).ready(function (){
-
+		
+		//addcalmodal
 		$("#summernote-addcalmodal").summernote({					
 		     placeholder: '내용을 작성해주세요.',
 		     tabsize: 2,
@@ -138,7 +143,8 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 		       ['view', ['fullscreen', 'codeview', 'help']]
 		     ]
 		});
-
+		
+		//updatecalmodal 
 		$("#summernote-updatecalmodal").summernote({					
 			 placeholder: '내용을 작성해주세요.',
 		     tabsize: 2,
