@@ -84,15 +84,15 @@ public class ProjectController {
 		return add;
 	}
 
-	@GetMapping("/member/deleteList.ajax")
-	@ResponseBody
-	public Map<String, Object> delete(String pno) {
-		int deletedLists = projectService.delete(pno);
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("result", deletedLists);
-		map.put("pno", pno);
-		return map;
-	}
+//	@GetMapping("/member/deleteList.ajax")
+//	@ResponseBody
+//	public Map<String, Object> delete(String pno) {
+//		int deletedLists = projectService.delete(pno);
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("result", deletedLists);
+//		map.put("pno", pno);
+//		return map;
+//	}
 
 	@GetMapping("/member/doUpdateProject")
 	@ResponseBody
@@ -120,13 +120,13 @@ public class ProjectController {
 		return projectService.searchProjectList(pvo, keyword);
 	}
 
-	// 회사 소속 멤버 전체 조회 (addProjectModal 클릭 시)
+	// 회사 소속 멤버 전체 조회 (addProjectModal 클릭 시 조회)
 	@GetMapping("/member/getCompanyMemberList")
 	@ResponseBody
 	public List<MemberSimpleVo> getCompanyMemberList(String userid) {
 		return maintastService.companyMemberList(userid);
 	}
-
+	
 	// 프로젝트 참여 멤버 전체 조회 (Update)
 	@GetMapping("/member/getCurrentMemberList")
 	@ResponseBody
