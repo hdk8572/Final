@@ -22,6 +22,11 @@
 					href="${pageContext.request.contextPath}/company/main"
 					class="sidebar-brand-new">Stream</a></span>
 			</c:if>
+			<c:if test="${authority.authority eq 'ROLE_A'}">
+				<span class="align-brand-middle"><a
+					href="${pageContext.request.contextPath}/admin/main"
+					class="sidebar-brand-new">Stream</a></span>
+			</c:if>
 		</c:forEach>
 
 		<ul class="sidebar-nav">
@@ -80,6 +85,14 @@
 						href="${pageContext.request.contextPath}/company/emailsend"><i
 							class="align-middle me-2" data-feather="users"></i> <span
 							class="align-middle">사원 초대</span> </a></li>
+				</c:if>
+				<c:if test="${authority.authority eq 'ROLE_A' }">
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="${pageContext.request.contextPath}/logout">
+							<i class="align-middle me-2" data-feather="users"></i>
+							<span class="align-middle">로그아웃</span> 
+						</a>
+					</li>
 				</c:if>
 			</c:forEach>
 		</ul>
