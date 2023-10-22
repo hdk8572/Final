@@ -93,8 +93,12 @@
 }
 
 /* 공간 확보 */
+.form-read.date{
+	margin-bottom: 1rem;
+	padding-left: 1rem;
+}
 
-.form-read{
+.form-readcal{
 	margin-bottom: 1rem;
 	/* width: 40%; */
 	padding-left: 1rem;

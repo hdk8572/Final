@@ -1,14 +1,19 @@
 package kh.groupware.stream.admin.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.groupware.stream.admin.model.service.AdminService;
+import kh.groupware.stream.admin.model.vo.AdminVo;
 import kh.groupware.stream.admin.model.vo.PagingVo;
 
 @Controller
@@ -50,4 +55,20 @@ public class AdminController {
 		return "admin/main";
 	}
 	
+	@PostMapping("/admin/showcompanydetail")
+	@ResponseBody
+	public List<AdminVo> showCompanyDetail(String ccode){
+		List<AdminVo> adminVolist = adminService.showCompanyDetail(ccode);
+		return adminVolist;
+		
+	}
+	
+	@PostMapping("/admin/makepiechart")
+	@ResponseBody
+	public List<AdminVo> makePikeChart(String ccode){
+		List<AdminVo> voListforPieChart = adminService.makePieChart(ccode);
+		return voListforPieChart;
+	}
+	
+
 }

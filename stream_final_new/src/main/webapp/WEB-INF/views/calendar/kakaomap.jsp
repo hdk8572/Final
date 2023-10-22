@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+
+
 		<div class="map" id="map"></div>
-
-
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=200d239f8c4b9f3e0d914ec332ddfe21&libraries=services"></script>
-
+		
 <script>
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption = {

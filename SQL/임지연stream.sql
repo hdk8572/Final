@@ -16,6 +16,9 @@ select * from schedule;
 select * from users;
 select * from project;
 select * from MEMBER_PROJECT;
+select * from V_U_SCHEDULE;
+select * from V_U_MEMBER_SCHEDULE;
+select * from V_U_MEMBER_PROJECT;
 
 
 insert into MEMBER_PROJECT (pno, userid) values ('1', 'kh0001@kh.com');
@@ -69,5 +72,18 @@ as
 select s.*, u.mname, CCODE, DEPTNO
 from schedule s join users u on (s.userid = u.userid)
 ;
+desc users;
+  CREATE OR REPLACE FORCE VIEW V_U_MEMBER_SCHEDULE
+  AS 
+select SNO, ATTENDUSERID USERID, MNAME as ATTENDNAME, CCODE, DEPTNO
+, mrank as ATTENDmrank
+, deptname deptname
+from member_schedule 
+join users on (ATTENDUSERID = USERID);
+
+commit;
+select SNO, ATTENDUSERID, MNAME as ATTENDNAME, CCODE, DEPTNO, mrank
+from member_schedule 
+join users on (ATTENDUSERID = USERID);
 
 

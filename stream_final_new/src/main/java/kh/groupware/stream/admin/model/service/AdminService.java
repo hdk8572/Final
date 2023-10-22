@@ -16,4 +16,7 @@ public interface AdminService {
 	public int countCompany(); 
 	public List<CompanyVo> pagingCompanyList(PagingVo vo);
 
+	public List<AdminVo> showCompanyDetail(String ccode);
+	
+	public List<AdminVo> makePieChart(String ccode);
 }

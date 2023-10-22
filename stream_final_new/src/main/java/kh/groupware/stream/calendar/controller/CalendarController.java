@@ -32,26 +32,28 @@ public class CalendarController {
 	@Autowired 
 	private CalendarService calendarService;
 	
-	@GetMapping({"/member/pcal", "/member/pcal/{pno}"})//TODO url에 치고 들어가는 코드가 필요한가?
-	public ModelAndView selectList(ModelAndView mv, @PathVariable(name = "pno", required = false) String pno
+//	@GetMapping({"/member/pcal", "/member/pcal/{pno}"})//TODO url에 치고 들어가는 코드가 필요한가?
+//	public ModelAndView selectList(ModelAndView mv, @PathVariable(name = "pno", required = false) String pno
+
+	@GetMapping({"/member/pcal"})
+	public ModelAndView selectList(ModelAndView mv
 			, Principal principal
 			, RedirectAttributes rttr
 			) {
-		
-		if(pno != null) {
-			Map<String, String> map = new HashMap<String, String>();
-			map.put("pno", pno);
-			map.put("userid", principal.getName());
-			// 해당 프로젝트에 참여여부 확인
-			int result = calendarService.isAttendedProject(map);
-			if(result < 1) {
-				// 해당 프로젝트에 참여하고 있지 않은 회원으로 프로젝트 리스트 화면으로 이동하게 함.
-				rttr.addFlashAttribute("alertmsg", "소속된 프로젝트를 선택하세요.");
-				mv.setViewName("redirect:/member/projectlist");
-				return mv;
-			}
-		}
-		mv.addObject("pno", pno);
+//		if(pno != null) {
+//			Map<String, String> map = new HashMap<String, String>();
+//			map.put("pno", pno);
+//			map.put("userid", principal.getName());
+//			// 해당 프로젝트에 참여여부 확인
+//			int result = calendarService.isAttendedProject(map);
+//			if(result < 1) {
+//				// 해당 프로젝트에 참여하고 있지 않은 회원으로 프로젝트 리스트 화면으로 이동하게 함.
+//				rttr.addFlashAttribute("alertmsg", "소속된 프로젝트를 선택하세요.");
+//				mv.setViewName("redirect:/member/projectlist");
+//				return mv;
+//			}
+//		}
+//		mv.addObject("pno", pno);
 		mv.setViewName("calendar/projectcalendar");
 		return mv;
 	}

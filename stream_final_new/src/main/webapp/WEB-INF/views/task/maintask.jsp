@@ -55,7 +55,7 @@
 											<!-- dropdown -->
 											<div class="jm-col-a jm-grey-nb">
 												<div class="dropdown">
-													<div class="jm-title" id="tno">
+													<div class="jm-title" id="ttitle">
 														<div class="text-muted "
 															data-bs-toggle="dropdown">
 															<span class="jm-cen">업무명</span> <span> <svg
@@ -257,12 +257,12 @@
 																			<input type="hidden" name="tno" value="${task.tno }">
 																		</div>
 																	</div>
-																	<div class="jm-title-tstatus jm-col-b jm-grey">${task.tstatus }</div>
-																	<div class="jm-title-tmember jm-col-b jm-grey">${project.mname }</div>
-																	<div class="jm-title-tstartdate jm-col-b jm-grey">${task.tstartdate }</div>
-																	<div class="jm-title-tenddate jm-col-b jm-grey">${task.tenddate }</div>
-																	<div class="jm-title-tdate jm-col-b jm-grey jm-gr">${task.tdate }</div>
-																	<div class="jm-title-tno jm-col-b jm-grey jm-gr">${task.tno }</div>
+																	<div class="jm-title-tstatus jm-col-b jm-grey jm-cenalign"><span>${task.tstatus }</span></div>
+																	<div class="jm-title-tmember jm-col-b jm-grey jm-cenalign"><span>${project.mname }</span></div>
+																	<div class="jm-title-tstartdate jm-col-b jm-grey jm-cenalign"><span>${task.tstartdate }</span></div>
+																	<div class="jm-title-tenddate jm-col-b jm-grey jm-cenalign"><span>${task.tenddate }</span></div>
+																	<div class="jm-title-tdate jm-col-b jm-grey jm-gr jm-cenalign"><span>${task.tdate }</span></div>
+																	<div class="jm-title-tno jm-col-b jm-grey jm-gr jm-cenalign"><span>${task.tno }</span></div>
 																</li>
 																<li class="jm-ajax-InnertaskIn">
 																	<form class="addInnerTask" id="taskInputNo_${task.tno}">
@@ -271,8 +271,8 @@
 																				<input type="text" class="jm-input-length jm-margin-left" placeholder="하위업무명을 입력하세요"
 																					name="ttitle" required="required">
 																			</div>
-																			<div class="jm-title-tstatus jm-col-b jm-grey">
-																				<select class="mb-3 selectCategory ml-2 "name="tstatus">
+																			<div class="jm-title-tstatus jm-col-b jm-grey jm-cenalign">
+																				<select class="selectCategory ml-2 "name="tstatus">
 																					<option value="요청" class="status request" selected="selected">요청</option>
 																					<option value="진행" class="status progress">진행</option>
 																					<option value="피드백" class="status feedback">피드백</option>
@@ -280,12 +280,12 @@
 																					<option value="보류" class="status remain">보류</option>
 																				</select>
 																			</div>
-																			<div class="jm-title-tmember jm-col-b jm-grey">
+																			<div class="jm-title-tmember jm-col-b jm-grey jm-cenalign">
 																				<select name="tmember" id="tmember_select_pno_${project.pno }"><!-- TMEMBERLIST ttttt -->
 																					
 																				</select>
 																			</div>
-																			<div class="dropdown jm-title-tstartdate jm-col-b jm-grey">
+																			<div class="dropdown jm-title-tstartdate jm-col-b jm-grey jm-cenalign">
 																				<div data-bs-toggle="dropdown">
 																					<button class="btn btn-secondary">시작일</button>
 																				</div>
@@ -293,8 +293,7 @@
 																					<input type="date" name="tstartdate" required="required">
 																				</div>
 																			</div>
-																			<div
-																				class="dropdown jm-title-tenddate jm-col-b jm-grey">
+																			<div class="dropdown jm-title-tenddate jm-col-b jm-grey jm-cenalign">
 																				<div data-bs-toggle="dropdown">
 																					<button class="btn btn-secondary">마감일</button>
 																				</div>
@@ -302,10 +301,10 @@
 																					<input type="date" name="tenddate" required="required">
 																				</div>
 																			</div>
-																			<div class="jm-title-tdate jm-col-b jm-grey jm-gr">
-																				<div class="innerTdate"></div>
+																			<div class="jm-title-tdate jm-col-b jm-grey jm-gr jm-cenalign">
+																				<div class="innerTdate "></div>
 																			</div>
-																			<div class="jm-title-tno jm-col-b jm-grey jm-gr">
+																			<div class="jm-title-tno jm-col-b jm-grey jm-gr jm-cenalign">
 																				<input type="hidden" name="tno" value="${task.tno}">
 																				<input type="hidden" name="tcontent" value="default">
 																				<input type="hidden" name="pno" value="${project.pno}">
@@ -341,9 +340,10 @@
 	<script>
 		taskSortHandler=()=>{
 			var e1 = event.target;
-			console.log(e1);
+			console.log("[JM]===taskSortHandler===")
+			console.log("[JM]"+e1);
 			var e2 = $(e1).data("ordertype");
-			console.log(e2);
+			console.log("[JM]"+e2);
 			
 			$.ajax({
 				type:"post",
@@ -355,7 +355,6 @@
 				dataType: "json",
 				url: contextPath+"/member/sort",
 				success:function(data){
-					console.log(data);
 					sortMakeView(data)
 					},
 				error : function(request, status, error){
@@ -370,6 +369,7 @@
 	</script>
 	<script>
 	sortMakeView=(data)=>{
+		console.log("[JM]===sortMakeView===")
 		console.log(data);
 		
 		var htmlList="";
@@ -426,12 +426,12 @@
 										<input type="hidden" name="tno" value="\${task.tno }">
 									</div>
 								</div>
-								<div class="jm-title-tstatus jm-col-b jm-grey">\${task.tstatus }</div>
-								<div class="jm-title-tmember jm-col-b jm-grey">\${project.mname }</div>
-								<div class="jm-title-tstartdate jm-col-b jm-grey">\${task.tstartdate }</div>
-								<div class="jm-title-tenddate jm-col-b jm-grey">\${task.tenddate }</div>
-								<div class="jm-title-tdate jm-col-b jm-grey jm-gr">\${task.tdate }</div>
-								<div class="jm-title-tno jm-col-b jm-grey jm-gr">\${task.tno }</div>
+								<div class="jm-title-tstatus jm-col-b jm-grey jm-cenalign"><span>\${task.tstatus }</span></div>
+								<div class="jm-title-tmember jm-col-b jm-grey jm-cenalign"><span>\${project.mname }</span></div>
+								<div class="jm-title-tstartdate jm-col-b jm-grey jm-cenalign"><span>\${task.tstartdate }</span></div>
+								<div class="jm-title-tenddate jm-col-b jm-grey jm-cenalign"><span>\${task.tenddate }</span></div>
+								<div class="jm-title-tdate jm-col-b jm-grey jm-gr jm-cenalign"><span>\${task.tdate }</span></div>
+								<div class="jm-title-tno jm-col-b jm-grey jm-gr jm-cenalign"><span>\${task.tno }</span></div>
 							</li>
 							<li class="jm-ajax-InnertaskIn">
 								<form class="addInnerTask" id="taskInputNo_\${task.tno}">
@@ -440,8 +440,8 @@
 											<input class="jm-input-length jm-margin-left " type="text" placeholder="하위업무명을 입력하세요"
 												name="ttitle" required="required">
 										</div>
-										<div class="jm-title-tstatus jm-col-b jm-grey">
-											<select class="mb-3 selectCategory ml-2" name="tstatus">
+										<div class="jm-title-tstatus jm-col-b jm-grey jm-cenalign">
+											<select class="selectCategory ml-2" name="tstatus">
 													<option value="요청" class="status request" selected="selected">요청</option>
 													<option value="진행" class="status progress">진행</option>
 													<option value="피드백" class="status feedback">피드백</option>
@@ -450,12 +450,12 @@
 											</select>
 											
 										</div>
-										<div class="jm-title-tmember jm-col-b jm-grey">
+										<div class="jm-title-tmember jm-col-b jm-grey jm-cenalign">
 												<select name="tmember" id="tmember_select_pno_\${project.pno }"><!-- TMEMBERLIST ttttt -->
 												
 												</select>
 										</div>
-										<div class="dropdown jm-title-tstartdate jm-col-b jm-grey">
+										<div class="dropdown jm-title-tstartdate jm-col-b jm-grey jm-cenalign">
 											<div data-bs-toggle="dropdown">
 												<button class="btn btn-secondary">시작일</button>
 											</div>
@@ -463,19 +463,18 @@
 												<input type="date" name="tstartdate">
 											</div>
 										</div>
-										<div
-											class="dropdown jm-title-tenddate jm-col-b jm-grey">
+										<div class="dropdown jm-title-tenddate jm-col-b jm-grey jm-cenalign">
 											<div data-bs-toggle="dropdown">
 												<button class="btn btn-secondary">마감일</button>
 											</div>
-											<div class="mini-pop dropdown-menu dropdown-menu-end">
+											<div class="mini-pop dropdown-menu dropdown-menu-end ">
 												<input type="date" name="tenddate">
 											</div>
 										</div>
-										<div class="jm-title-tdate jm-col-b jm-grey jm-gr">
-											<div class="innerTdate"></div>
+										<div class="jm-title-tdate jm-col-b jm-grey jm-gr ">
+											<div class="innerTdate jm-cenalign"></div>
 										</div>
-										<div class="jm-title-tno jm-col-b jm-grey jm-gr">
+										<div class="jm-title-tno jm-col-b jm-grey jm-gr jm-cenalign">
 											<input type="hidden" name="tno" value="\${task.tno}">
 											<input type="hidden" name="tcontent" value="default">
 											<input type="hidden" name="pno" value="\${project.pno}">
@@ -514,24 +513,24 @@
 	</script>
 	<script>
 	DateInputCheckHandler=(thisElement)=>{
-		console.log("===DateInputCheckHandler===")
-		console.log(thisElement);
+		console.log("===[JM]DateInputCheckHandler===")
+		console.log("[JM]"+thisElement);
 		var dateA1 = $(thisElement).closest('li').next().children('form')[0].id;
-		console.log(dateA1);
+		console.log("[JM]"+dateA1);
 		var dateA2 = "#"+dateA1;
-		console.log(dateA2);
+		console.log("[JM]"+dateA2);
 		var startDateInput = $(dateA2).find('input[name=tstartdate]')[0];
 		var endDateInput = $(dateA2).find('input[name=tenddate]')[0];
-		console.log(startDateInput);
-		console.log(endDateInput);
+		console.log("[JM]"+startDateInput);
+		console.log("[JM]"+endDateInput);
 		
 			startDateInput.addEventListener('change', function() {
-				console.log(startDateInput.value);
+				console.log("[JM]"+startDateInput.value);
 			compareDates();
 		});
 		
 			endDateInput.addEventListener('change', function() {
-				console.log(endDateInput.value);
+				console.log("[JM]"+endDateInput.value);
 			compareDates();
 		});
 	
@@ -549,24 +548,24 @@
 </script>
 <script>
 	jmRegExp=(thisElement)=>{
-		console.log("===정규표현식===");
-		console.log(thisElement);	//추가하기 버튼
+		console.log("[JM]===정규표현식===");
+		console.log("[JM]"+thisElement);	//추가하기 버튼
 		var eTarget1 = $(thisElement).parent();	
-		console.log(eTarget1);
+		console.log("[JM]"+eTarget1);
 		var eTargetTtitle = $(eTarget1).siblings('.jm-title-ttitle').find('input[name=ttitle]')[0];
-		console.log(eTargetTtitle);	//	input [name=ttitle]
+		console.log("[JM]"+eTargetTtitle);	//	input [name=ttitle]
 		var ttitleValue = $(eTargetTtitle).val();	
-		console.log(ttitleValue);	//input 입력값
+		console.log("[JM]"+ttitleValue);	//input 입력값
 		
 		var eTargetTstartdate = $(eTarget1).siblings('.jm-title-tstartdate').find('input[name=tstartdate]')[0];
-		console.log(eTargetTstartdate);
+		console.log("[JM]"+eTargetTstartdate);
 		var tstartdateValue = $(eTargetTstartdate).val();	//input[name=tstartdate].val
-		console.log(tstartdateValue);
+		console.log("[JM]"+tstartdateValue);
 		
 		var eTargetTenddate = $(eTarget1).siblings('.jm-title-tenddate').find('input[name=tenddate]')[0];
-		console.log(eTargetTenddate);
+		console.log("[JM]"+eTargetTenddate);
 		var tendDateValue = $(eTargetTenddate).val();	//input[name=tenddate].val
-		console.log(tendDateValue);
+		console.log("[JM]"+tendDateValue);
 		
 		var regTtitleValue = /^(?:(?:[ㄱ-ㅎ가-힣]{1,13}|[A-Za-z]{1,40}|[!@#$%^&*()_+]{1,13}|\d{1,40}| ){1,40})$/;
 		

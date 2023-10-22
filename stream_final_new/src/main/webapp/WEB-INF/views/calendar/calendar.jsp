@@ -9,20 +9,25 @@ let logined_userid="${principal.username}"; /* 로그인! */
 let calendar_pno="${pno}"; /* 프로젝트 번호! */
 </script>
 
-		<div class="card-header">
-			<!-- 캘린더  -->
-			<div id="croot">
-				<div class="ccard-body px-4">
-					<div id="calendar"></div>
-				</div>
+	<div class="card-header">
+		<!-- 캘린더  -->
+		<div id="croot">
+			<div class="ccard-body px-4">
+				<div id="calendar"></div>
 			</div>
 		</div>
-		
+	</div>
+
+<!-- 지도 script 이건 위에 있어야 함-->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=200d239f8c4b9f3e0d914ec332ddfe21&libraries=services"></script>
+
+
 <%@ include file="/WEB-INF/views/calendar/addcalmodal.jsp" %>
 <%@ include file="/WEB-INF/views/calendar/readcalmodal.jsp" %>
 <%@ include file="/WEB-INF/views/calendar/updatecalmodal.jsp" %>
 <!-- 달력을 구성  -->
 <%@ include file="/WEB-INF/views/calendar/calendarhandler.jsp" %>
+
 
 <!-- 참가자들을 input에 추가한다. -->
 <script>
@@ -47,6 +52,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 		    var htmlVal='';
 		    htmlVal+='<div class="attenduserid-item">';
 		    htmlVal+='<input type="text" class="form-control-userid" placeholder="참가자" readonly value="'+selectedText+'">';
+		    htmlVal+='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg>';
 		    htmlVal+='<input type="hidden" name="attenduseridArr" value="'+selectedValue+'" >';
 		    htmlVal+='</div">';
 		    
@@ -94,6 +100,8 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 	}
 </script>
 
+
+
 <!-- 날짜 시작일-종료일  -->
 <script>
 	//id='start','end'
@@ -123,7 +131,8 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 <!-- 위즈윅 - summerNote	 -->
 <script>
 	$(document).ready(function (){
-
+		
+		//addcalmodal
 		$("#summernote-addcalmodal").summernote({					
 		     placeholder: '내용을 작성해주세요.',
 		     tabsize: 2,
@@ -138,7 +147,8 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 		       ['view', ['fullscreen', 'codeview', 'help']]
 		     ]
 		});
-
+		
+		//updatecalmodal 
 		$("#summernote-updatecalmodal").summernote({					
 			 placeholder: '내용을 작성해주세요.',
 		     tabsize: 2,
