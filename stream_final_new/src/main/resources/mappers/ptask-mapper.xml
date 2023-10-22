@@ -9,6 +9,16 @@
 	</select>
 
 	<select id="ProjectSelectOne" resultType="PtaskVo">
+		SELECT tno,  pno, T.userid, tmember, ttitle, tcontent, tstatus, MNAME
+			, to_char(tdate, 'yyyy-mm-dd') tdate
+			, to_char(tstartdate, 'yyyy-mm-dd') tstartdate
+			, to_char(tenddate, 'yyyy-mm-dd') tenddate
+			, bref, brelevel, brestep
+		FROM TASK T
+            JOIN USERS U ON (T.TMEMBER = U.USERID)
+		WHERE PNO= #{pno}
+			AND TSTATUS IN ('미진행', '진행', '보류')
+	<!--  
 		SELECT tno,  pno, userid, tmember, ttitle, tcontent, tstatus
 			, to_char(tdate, 'yyyy-mm-dd') tdate
 			, to_char(tstartdate, 'yyyy-mm-dd') tstartdate
@@ -17,6 +27,7 @@
 		FROM TASK
 		WHERE PNO=#{PNO}
 			AND TSTATUS IN ('미진행', '진행', '보류')
+	-->
 	</select>
 		
 	<select id="ProjectSelectOneInner" resultType="PtaskVo" parameterType="map">

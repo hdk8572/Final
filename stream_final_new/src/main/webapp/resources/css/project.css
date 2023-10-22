@@ -108,3 +108,36 @@
 .feather-delete {
 	color: #aea8ca;
 }
+
+.d-none.d-xl-table-cell.mname,
+.d-none.d-xl-table-cell.tstatus,
+.d-none.d-xl-table-cell.tdate,
+.d-none.d-xl-table-cell.tstartdate,
+.d-none.d-xl-table-cell.tenddate {
+	width: 10%;
+}
+
+.d-none.d-xl-table-cell.ttitle,
+.d-none.d-xl-table-cell.mname,
+.d-none.d-xl-table-cell.tstatus,
+.d-none.d-xl-table-cell.tdate,
+.d-none.d-xl-table-cell.tstartdate,
+.d-none.d-xl-table-cell.tenddate {
+	text-align: center;
+}
+.d-none.d-xl-table-cell.tenddate {
+	padding-right: 50px;
+}
+
+.listOne > td:nth-child(2),
+.listOne > td:nth-child(5),
+.listOne > td:nth-child(6),
+.listOne > td:nth-child(7),
+.listOne > td:nth-child(8),
+.listOne > td:nth-child(9) {
+	text-align: center;
+}
+
+.listOne > td:nth-child(1) {
+	padding-left: 2%;
+}

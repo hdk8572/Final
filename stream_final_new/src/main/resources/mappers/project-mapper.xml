@@ -84,18 +84,6 @@
 	</delete>
 	
 	<select id="searchProjectList" parameterType="ProjectVo" resultType="ProjectVo">
-<!-- 		SELECT u.mname, pr.pstatus, u.mrank, pr.pmember AS userid, d.deptname, pr.pno, pr.pname, pr.pcontent, pr.paccess, pr.pdate, TO_CHAR(pr.PSTARTDATE, 'yyyy-mm-dd') PSTARTDATE, TO_CHAR(pr.PENDDATE, 'yyyy-mm-dd') PENDDATE, pr.pcolor, pr.pstatus as project_status, ROWNUM PROW , c.member_count as countMember
-		FROM (SELECT mname, mrank, userid , deptno , ccode FROM users WHERE userid = #{userid}) u
-				JOIN dept d ON (u.deptno = d.deptno AND u.ccode = d.ccode)
-				JOIN (SELECT ppr.*, jj.userid AS pmember FROM project ppr
-						JOIN (SELECT mp.pno ,userid  
-								FROM project pr JOIN member_project mp USING(userid)
-								GROUP BY (mp.pno ,userid)) jj ON (ppr.pno = jj.PNO)
-		WHERE PSTATUS IN ('미진행', '진행', '보류') AND PNAME LIKE '%' || #{keyword} || '%') pr ON (u.userid = pmember)
-					LEFT JOIN (SELECT pno,COUNT(userid) AS member_count 
-								FROM member_project 
-								GROUP BY pno) c ON c.PNO=pr.PNO -->
-								
 		SELECT TP.PNO, TP.PNAME, TP.PSTATUS, TP.PACCESS
 		, TP.USERID, VUD.MNAME, VUD.MRANK, VUD.DEPTNAME
 		, (SELECT COUNT(*) FROM MEMBER_PROJECT WHERE PNO= TP.PNO) AS COUNTMEMBER

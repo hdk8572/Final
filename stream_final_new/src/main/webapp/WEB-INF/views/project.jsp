@@ -96,12 +96,12 @@
 							<table class="table table-hover my-0">
 								<tbody>
 								<tr>
-									<th class="d-none d-xl-table-cell">업무명</th>
-									<th class="d-none d-xl-table-cell">담당자</th>
-									<th class="d-none d-xl-table-cell">진행도</th>
-									<th class="d-none d-xl-table-cell">작성일</th>
-									<th class="d-none d-xl-table-cell">시작일</th>
-									<th class="d-none d-xl-table-cell">마감일</th>
+									<th class="d-none d-xl-table-cell ttitle">업무명</th>
+									<th class="d-none d-xl-table-cell mname">담당자</th>
+									<th class="d-none d-xl-table-cell tstatus">진행도</th>
+									<th class="d-none d-xl-table-cell tdate">작성일</th>
+									<th class="d-none d-xl-table-cell tstartdate">시작일</th>
+									<th class="d-none d-xl-table-cell tenddate">마감일</th>
 								</tr>
 								</tbody>
 								<tbody class="wrap-PtaskList">
@@ -276,7 +276,7 @@
 			pTaskListHtml+=`
 	        	<tr class="listOne">
 					<td>\${pl.ttitle}<button type="button" class="detailProject">상세내용</button></td>
-					<td>\${pl.tmember}</td>
+					<td>\${pl.mname}</td>
 					<%-- <td>${tlist.tstatus}</td> --%>
 					<input type="hidden" id="updateTstatus" >
 //					\${pl.tstatus}

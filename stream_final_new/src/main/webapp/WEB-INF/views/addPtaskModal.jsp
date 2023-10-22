@@ -30,7 +30,8 @@
 							</svg>
 						<!--<input type="text" class= "form-control manager ml-2" name="tmember" placeholder= "담당자">-->
 							<select class="form-select mb-3 selectCategory ml-2" name="tmember" id="taskmember">
-								<!-- 프로젝트 리스트 -->
+								<!-- 프로젝트 리스트 0-->
+								<option value="placeholder">담당자 선택</option>
 							</select>
 							<input type="file" class= "btn btn-primary fileUploadBtn" name="upload" >
 						</div>
@@ -83,11 +84,11 @@
 	}
 		
 	function makeTaskMemberView(data) { // 회사 소속인 참가자 리스트 조회
+		
 		var memberTaskListHtml = "";
-		/* memberListHtml += '<select class="form-select mb-3 selectCategory ml-2" name="mname">'; */
-		memberTaskListHtml += '<option value="" selected>담당자 선택</option>';
-	    for(var i=0;i<data.length;i++){
-			var memberOne = data[i];
+			memberTaskListHtml += '<option value="placeholder" selected>담당자 선택</option>';
+	    	for(var i=0;i<data.length;i++){
+				var memberOne = data[i];
 			memberTaskListHtml+=`
 				<option value="\${memberOne.userid}">\${memberOne.mname}\${memberOne.mrank}님</option>
 				`;
