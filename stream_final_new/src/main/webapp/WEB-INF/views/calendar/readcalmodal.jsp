@@ -20,7 +20,8 @@
 				    		<!-- 일정 제목 -->
 							<div class="readcalmodal-header">
 								<h2 class="pcalTitle"><b>일정 상세</b></h2>
-								<!-- 수정&삭제 버튼 -->
+								
+							<!-- 수정&삭제 버튼 -->
 							<div class="read-dropdown-grop">
 								<div class="btn-dropdown-toggle" id="read-dropdown" data-bs-toggle="dropdown">
 									<svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical me-2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
@@ -33,7 +34,7 @@
 							</div>
 							
 							<!-- 작성자 코드 수정하기-->
-							<!-- <div id="userid"></div> -->
+							<div id="userid"></div>
 							
 							<div class="card-body">
 								<!-- 제목 -->
@@ -84,11 +85,34 @@
 	});
 </script>
  -->
+ 
+<!-- 작성자만 수정,삭제 가능하도록  -->
+<!-- <script>
+	document.addEventListener("DOMContentLoaded", function() {
+		var writerUserid ='${mname.userid}';
+	
+		document.addEventListener("click", function(event) {
+			if(event.target.classList.contains("update-calButton")) {
+				if('${principal.username}' !== writerUserid) {
+					alert("작성자만 수정할 수 있습니다.");
+					event.preventDefault();
+				}
+			}
+			if(event.target.classList.contains("delete-calButton")) {
+				if('${principal.username}' !== writerUserid) {
+					alert("작성자만 삭제할 수 있습니다.");
+					event.preventDefault();
+				}
+			}
+		});
+	});
+</script> -->
+
 <!-- read 일정 수정 삭제 코드 -->
 <script>
 	$('#dltBtn').on("click", function(){
 		
-		if(confirm('정말로 삭제하시겠습니까?')) {
+		if(confirm('글을 삭제하시겠습니까?')) {
 			var sno =$('#sno').val();
 			
 			//ajax

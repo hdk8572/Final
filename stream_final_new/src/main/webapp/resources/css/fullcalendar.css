@@ -55,6 +55,15 @@
 	border-color: transparent;
 }
 
+/* TODO background-color: #FCB92C; */
+.fc .fc-button-primary:disabled  {
+    color: #fff !important;
+    color: var(--fc-button-text-color, #fff)!important;
+    background-color:  #FCB92C !important;
+    background-color: var(--fc-button-bg-color,  #FCB92C)!important;
+    border-color:  #FCB92C;!important;
+    border-color: var(--fc-button-border-color,  #FCB92C)!important;
+}
 /* 캘린더 위 header!! */
 
 /* 캘린더 */

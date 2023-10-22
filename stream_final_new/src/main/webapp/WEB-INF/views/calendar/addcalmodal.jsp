@@ -20,7 +20,7 @@
 							<input type="hidden" name="sno" value="${sno}">
 							
 							<!-- 제목 -->
-							<input type="text" class="form-control title" name="title" id="form-content title" placeholder="제목을 입력하세요." required="required">
+							<input type="text" class="form-control title" name="title" id="title" placeholder="제목을 입력하세요." required="required">
 							
 							<!-- 날짜 -->
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar align-middle me-2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
@@ -79,18 +79,24 @@
 		</div>
 	</div>
 </div>
-<!-- 
+ 
 <script>
-	function calendartitleLength() {
-		var titleField = document.getElementById("title");
-		var titleValue = titleField.value;
+	document.addEventListener("DOMContentLoaded", function() {
 		
-		if(titleValue.length > 20) {
-			alert("제목은 20자 이내여야 합니다.");
+		//title 요소 찾기
+		var addTitle= document.getElementById("title");
+
+		function calendartitleLength() {
+			var titleValue = addTitle.value;
+		
+			if(titleValue.length > 30) {
+				alert("제목은 30자 이내여야 합니다.");
+			}
 		}
-	}
-	document.getElementById("title").addEventListener("input", calendartitleLength);
-</script> -->
+		
+		addTitle.addEventListener("input", calendartitleLength);
+	});
+</script> 
 
 
 
@@ -109,7 +115,6 @@
 		/* $('#addcalmodal #calmemberlist').text(''); //참가자 */
 
 		$('#addcalmodal .attenduserid-item').text(''); 
-		
 		
 		$('#addcalmodal #summernote-addcalmodal').summernote('code', '') //내용
 		$('#addcalmodal .title').val(''); //제목

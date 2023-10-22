@@ -21,12 +21,12 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 <!-- 지도 script 이건 위에 있어야 함-->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=200d239f8c4b9f3e0d914ec332ddfe21&libraries=services"></script>
 
+<!-- 달력을 구성  -->
+<%@ include file="/WEB-INF/views/calendar/calendarhandler.jsp" %>
 
 <%@ include file="/WEB-INF/views/calendar/addcalmodal.jsp" %>
 <%@ include file="/WEB-INF/views/calendar/readcalmodal.jsp" %>
 <%@ include file="/WEB-INF/views/calendar/updatecalmodal.jsp" %>
-<!-- 달력을 구성  -->
-<%@ include file="/WEB-INF/views/calendar/calendarhandler.jsp" %>
 
 
 <!-- 참가자들을 input에 추가한다. -->
@@ -112,6 +112,8 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 	});
 </script>
 -->
+
+
 
 <!-- 날짜 시작일-종료일  -->
 <script>
