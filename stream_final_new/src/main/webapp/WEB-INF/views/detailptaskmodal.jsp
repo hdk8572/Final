@@ -17,14 +17,24 @@
 								<b>프로젝트 상세 조회</b>
 							</div>
 							<div class="detailPtaskTitle-dropdown-group">
+							<div class="dropdown">
+							    <svg xmlns="http://www.w3.org/2000/svg" id="read-dropdown detailPtask" data-bs-toggle="dropdown" class="feather feather-more-vertical align-middle me-2 detailPtask" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+							  <ul class="dropdown-menu">
+							    <li><a class="dropdown-item update" href="#">수정</a></li>
+							    <li><a class="dropdown-item hide" href="#">삭제</a></li>
+							  </ul>
+							</div>
+							<!--  
 								<div class="btn-dropdown-toggle" id="read-dropdown" data-bs-toggle="dropdown">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical me-2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
 								</div>
-								<ul class="dropdown-menu detailPtask"> <!-- id="read-dropdown-menu" -->
+								<ul class="dropdown-menu detailPtask">
 									<li><a class="dropdown-item">수정</a></li>
 									<li><a class="dropdown-item">삭제</a></li>
 								</ul>
+							-->
 					  		</div>
+					  		
 						</div>
 						<div class="card-body detailPtaskTitle">
 							<form>
@@ -229,6 +239,29 @@ function makeReplyList(data) {
 			replyLoadList();
 		}
 	});
+	
+	$(document).on('click', '.dropdown-item.hide', function() {
+		var targetTno = $(".wrap-reply input[name=tno]").val();
+		console.log("삭제할 놈 : "+ targetTno);
+		var confirm_val = confirm("삭제하시겠습니까?");
+		if(confirm_val == true){
+		    <!--- 확인 or yes 버튼을 눌렀을 때 실행 될 함수 구현 --->
+			$.ajax({
+				url: "${pageContext.request.contextPath}/member/updateTstatusHide",
+				type: "post",
+				data: {tno: targetTno},
+				dataType: "json",
+				success: function() {
+					loadPtaskList();
+					$('#detailProjectModal').modal('hide');
+				},
+				error: function(error) {
+					console.log("updateTstatusHide 실패");
+				}
+			});
+		}else if(confirm_val == false){
+		}
+});
 	
 </script>
 

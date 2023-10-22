@@ -371,3 +371,10 @@ form {
     top: -15px;
     left: 200px;
 }
+
+.feather.feather-more-vertical.align-middle.me-2.detailPtask {
+	position: absolute;
+    right: 0px;
+    cursor: pointer;
+    color: black;
+}

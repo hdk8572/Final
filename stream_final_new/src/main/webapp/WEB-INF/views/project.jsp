@@ -215,7 +215,8 @@
 		}
 		
 		$(document).on('click', '.deletePtask', updatePtaskHide);
-		$(this).find(".detailProject").click(detailProject);
+		$(document).on('click', '.detailProject', detailProject);
+		//$(this).find(".detailProject").click(detailProject);
 	}); 
 	
 	</script>

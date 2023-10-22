@@ -18,11 +18,9 @@
 						<div class="d-flex align-items-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock align-middle me-2"><circle cx="12" cy= "12 " r= "10 "></circle><polyline points= "12 6 12 12 16 14 "></polyline></svg>
 							<select class= "form-select mb-3 selectCategory ml-2 " name="tstatus">
-							  <option class="status request" selected="selected">요청</option>
-							  <option class="status progress">진행</option>
-							  <option class="status feedback">피드백</option>
-							  <option class="status complete">완료</option>
-							  <option class="status remain">보류</option>
+							<option class="status request" value="미진행" name="미진행" selected>미진행</option>
+							<option class="status progress" value="진행" name="진행">진행</option>
+							<option class="status remain" value="보류" name="보류">보류</option>
 							</select>					
 						</div>
 						<div class="d-flex align-items-center">
