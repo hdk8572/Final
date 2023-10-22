@@ -96,6 +96,7 @@
     flex-direction: column;
     min-width: 0;
     position: relative;
+    width: 100%;
 }
 .form-calmemberlist{
 	margin-left: 1rem;

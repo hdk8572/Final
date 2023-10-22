@@ -102,8 +102,16 @@
 		kakaoaddmap.innerHTML =''; //지도를 비운다.
 		$('.map-hidden').css("display", 'none'); //지도 맵
 		$('#addcalmodal #splace').val(''); //지도 이름
+		
+		//되는데 오류뜸
+		/* $('#addcalmodal #form-content').text(''); */ 
+		/* $('#addcalmodal .form-calmemberlist.card').text(''); */
+		/* $('#addcalmodal #calmemberlist').text(''); //참가자 */
+
+		$('#addcalmodal .attenduserid-item').text(''); 
+		
+		
 		$('#addcalmodal #summernote-addcalmodal').summernote('code', '') //내용
-		//참가자
 		$('#addcalmodal .title').val(''); //제목
 		$('#addcalmodal #start').val(''); //시작일
 		$('#addcalmodal #end').val(''); //종료일

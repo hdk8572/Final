@@ -95,12 +95,12 @@ SELECT SNO, USERID, mname, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, '
 		WHERE SNO=#{sno}
 	</update>
 	
-	<!-- 참가자 있을 때 캘린더 수정  --> <!-- TODO  -->
-<!-- 	<update id="updatemember" parameterType="CalendarVo">
-		UPDATE MEMBER_SCHEDULE SET 
-		ATTENDUSERID =#{attenduserid.
-		WHERE SNO=#{sno}
-	</update> -->
+	<!-- 참가자 수정TODO -->
+	<update id="updateMember" parameterType="CalendarVo">
+		UPDATE Member_SCHEDULE SET
+		ATTENDUSERID =#{attenduserid}
+		WHERE SNO =#{sno}
+	</update>
 
 	<!-- 캘린더 삭제 --> 
 	<delete id="delete" parameterType="String">

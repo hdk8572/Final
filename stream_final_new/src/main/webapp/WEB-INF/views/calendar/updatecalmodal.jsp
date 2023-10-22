@@ -35,12 +35,12 @@
 								 </div>
 							
 								 <!-- 참가자 -->
-								 <select class="form-select calmemberlist mb-3" id="calmemberlist" >
+								 <select class="form-select calmemberlist mb-3" id="updatecalmemberlist" >
 								 	 <option value="">참가자 추가</option>
 								 </select>
 								 <div class="form-calmemberlist  card" id="form-content" >
 									 <!-- 참가자 반복 -->
-									 <div id="attenduserid-wrap">
+									 <div id="updatedAttendees">
 										 <!-- 
 											 <div class="attenduserid-item">
 												 <input type="text" placeholder="참가자" readonly>
@@ -75,31 +75,105 @@
 			</div>
 		</div>
 	</div>
-
+</div>
 <!-- 일정 상세 정보 가져오기 -->
 <script>
 	$('#update-calButton').on("click", function() {
-		var selectedUpdateSno= $("#readcalmodal #sno").val(); //수정 모달의 sno값을 읽어온다.(읽어옴)
+		var selectedUpdateSno= $("#readcalmodal #sno").val(); //sno읽어옴
 		var selectedUpdateTitle = $("#readcalmodal #title").text();
 		var selectedUpdateStart = $("#readcalmodal #start").text();
 		var selectedUpdateEnd = $("#readcalmodal #end").text();
 		var selectedUpdateUserid = $("#readcalmodal #userid").text();
-		var selectedUpdateUseridList = $("#readcalmodal #attenduseridList").text();
+		var selectedUpdateUseridList = $("#readcalmodal .attenduseridList").text(); //참가자
 		var selectedUpdateSplace = $("#readcalmodal #splace").text();
 		var selectedUpdateSmemo = $("#readcalmodal #smemo").html(); //<p>태그 다 가져와야함 html사용!
-		console.log(selectedUpdateSno);
+		console.log(selectedUpdateUseridList);
+		
 		$("#updatecalmodal input[name= 'sno']").val(selectedUpdateSno);
 		$("#updatecalmodal input[name='title']").val(selectedUpdateTitle);
 		$("#updatecalmodal input[name='start']").val(selectedUpdateStart);
 		$("#updatecalmodal input[name='end']").val(selectedUpdateEnd);
+		
 		console.log(selectedUpdateUseridList);
-		/* $("#updatecalmodal textarea[name='smemo']").val(selectedUpdateSmemo); */
-		$("#summernote-updatecalmodal").summernote("code" ,selectedUpdateSmemo);
-		$('#updatecalmodal #attenduseridList').text(selectedUpdateUseridList);
+		$('#updatecalmodal .attenduserid-item').text(selectedUpdateUseridList); //참가자
+		$("#summernote-updatecalmodal").summernote("code" ,selectedUpdateSmemo); //썸머노트
 		$('#updatecalmodal #userid').text(selectedUpdateUserid);
 		$('#updatecalmodal #splace').text(selectedUpdateSplace);
 		 updateshowMap(); 
 	});
+</script>
+
+
+<!-- 참가자들을 input에 추가한다. -->
+<script>
+	document.getElementById("updatecalmemberlist").addEventListener("change", function() {
+		if(this.selectedIndex == 0){
+			return;
+		}
+	    var selectedText = this.options[this.selectedText].text;
+	    var selectedValue = this.options[this.selectedValue].value;
+	    //document.getElementById("calmemberinput").value = selectedValue; // 하나가 아니기때문에 id = "calmemberinput" 안됨
+		var updateCheckUserId = false;
+	    $(".updateattenduserid-item").each(function(idx, updateItem){
+	    	updateValue = $(thisItem).children("[name=update-attenduseridArr]").val();
+	    	console.log(updateValue);
+	    	if(selectedValue == updateValue){
+	    		alert("이미 참석자에 등록된 사원입니다.");
+	    		updateCheckUserId = true;
+	    		return false;
+	    	}
+	    });
+	    if(updateCheckUserId == false){  //등록된 적 없는 사원일 경우 추가
+		    var htmlVal='';
+		    htmlVal+='<div class="updateattenduserid-item">';
+		    htmlVal+='<input type="text" class="form-control-updateUserid" placeholder="참가자" readonly value="'+selectedText+'">';
+		    htmlVal+='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg>';
+		    htmlVal+='<input type="hidden" name="update-attenduseridArr" value="'+selectedValue+'" >';
+		    htmlVal+='</div>';
+		    
+		    //attenduserid-wrap
+		    $("#updatedAttendees").append(htmlVal);
+	    }
+	});
+</script>
+
+<!-- 참가자 list select option  -->
+<script>
+	function updateMemberProjectListHandler(thisElement){
+		console.log("calendar_pno: "+calendar_pno);
+		console.log("logined_userid: "+logined_userid);
+		$.ajax({
+			url:'${pageContext.request.contextPath}/member/memberProjectList',
+			type:"post",
+			data : {
+				pno : calendar_pno,
+				userid : logined_userid
+			},
+			dataType: "json",
+			success:updateMemberView,
+			error:updateMemberError
+		});
+	}
+	function updateMemberView(updateData){
+		console.log(updateData)
+		console.log("성공하였습니다.")
+		var updateListHtml = '<option value="">참가자 추가</option>';
+		for (var i=0; i<updateData.length; i++){
+			var mname = updateData[i];
+			updateListHtml += `<option value="\${mname.userid}">\${mname.mname}</option>`; //data를 뿌리고 그걸 option에다가 넣어줌 //value=userid
+		}
+		$("#updatecalmemberlist").html(updateListHtml);
+	}
+	function updateMemberError(request, status, error){
+		console.log("오류발생!!!!!!!!!!!");
+		console.log(request);
+		console.log(status);
+		console.log(error);
+		
+		var updateListHtml = '<option value="">참가자 추가</option>';
+		updateListHtml += `<option selected>해당하는 이름이 없습니다.</option>`;
+		$("#updatecalmemberlist").html(updateListHtml);
+	}
 </script>
 
 <script>
@@ -117,6 +191,7 @@
 				if(response === 1) {
 					//수정이 성공했을 때
 					alert('일정이 수정되었습니다.');
+					$('#updatecalmodal').modal('hide');// 모달창 닫기
 				}else{
 					alert('일정 수정에 실패했습니다.')
 					console.log("updatepcal22에서 오류 발생");

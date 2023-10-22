@@ -86,6 +86,7 @@
 .form-control#smemo{
 	border: 1px solid #ced4da;
 	height: 150px;
+	overflow-y: scroll;
 }
 
 .form-control.comment {

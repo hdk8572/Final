@@ -54,7 +54,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 		    htmlVal+='<input type="text" class="form-control-userid" placeholder="참가자" readonly value="'+selectedText+'">';
 		    htmlVal+='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg>';
 		    htmlVal+='<input type="hidden" name="attenduseridArr" value="'+selectedValue+'" >';
-		    htmlVal+='</div">';
+		    htmlVal+='</div>';
 		    
 		    $("#attenduserid-wrap").append(htmlVal);
 	    }
@@ -64,7 +64,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 <!-- 참가자 list select option  -->
 <script>
 	function getMemberProjectListHandler(thisElement){
-		console.log("calendar_pno: "+calendar_pno);
+		console.log("살려줘calendar_pno: "+calendar_pno);
 		console.log("logined_userid: "+logined_userid);
 		$.ajax({
 			url:'${pageContext.request.contextPath}/member/memberProjectList',
@@ -78,6 +78,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 			error:memberError
 		});
 	}
+	
 	function memberView(data){
 		console.log(data)
 		console.log("성공하였습니다.")
@@ -100,7 +101,17 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 	}
 </script>
 
-
+<!-- 일정 내용 크기 조절TODO
+<script>
+	const contentArea = document.getElementById('smemo');
+	
+	contentArea.addEventListener('input', function(){
+		this.style.height = '150px'; //초기 높이로 설정
+		
+		this.style.height = this.scrollHeight + 'px';
+	});
+</script>
+-->
 
 <!-- 날짜 시작일-종료일  -->
 <script>
