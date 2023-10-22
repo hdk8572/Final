@@ -27,4 +27,31 @@
 <select id="clist" resultType="CompanyVo">
 	select ccode, cname, cphone, caddress from company where ccode not in 'C000' order by ccode asc
 </select>
+
+<select id="showCompanyDetail" resultType="AdminVo">
+	SELECT
+        C.CCODE AS ccode,
+        C.CNAME AS cname,
+        D.DEPTNO AS deptno,
+        D.DEPTNAME AS deptname,
+        COUNT(U.USERID) AS ucnt,
+        COUNT(DISTINCT P.PNO) AS pcnt,
+        COUNT(DISTINCT T.TNO) AS tcnt
+    FROM COMPANY C
+    JOIN DEPT D ON C.CCODE = D.CCODE
+    LEFT JOIN USERS U ON D.DEPTNO = U.DEPTNO AND D.CCODE = U.CCODE
+    LEFT JOIN PROJECT P ON U.USERID = P.USERID
+    LEFT JOIN TASK T ON P.PNO = T.PNO
+    WHERE C.CCODE = #{ccode}
+    GROUP BY C.CCODE, C.CNAME, D.DEPTNO, D.DEPTNAME
+</select>
+
+<select id="makePieChart" resultType="AdminVo">
+	select pstatus, count(pno) countforpiechart
+    from project
+    join users using(userid)
+    where ccode=#{ccode}
+    group by pstatus
+    order by pstatus asc
+</select>
 </mapper>

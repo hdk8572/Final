@@ -67,7 +67,11 @@ div.jm-box-project-title{
 	/*background:#b6cbcb;*/
 	top: 30%;
 	left: 5%
-	
+}
+#ttitle{
+	position:relative;
+	width: 30%;
+	left: 37%;
 }
 
 div.jm-task-title{
@@ -155,7 +159,8 @@ div.jm-task-title{
 	padding: 0;
 }
 .jm-input-length{
-	width: 80%
+	width: 80%;
+	margin-top: .3rem
 }
 .jm-margin-left{
 	margin-left: 23px;
@@ -174,4 +179,16 @@ div.jm-task-title{
 .jm-col-b{
 	flex: 0 0 auto;
 	width: 10%
+}
+.jm-cenalign{
+	text-align: center;
+}
+.jm-cenalign>button{
+	margin-top:0.15rem;
+}
+.jm-cenalign>select{
+	margin-top: 0.3rem;
+}
+.jm-cenalign>div{
+	margin-top: 0.1rem;
 }

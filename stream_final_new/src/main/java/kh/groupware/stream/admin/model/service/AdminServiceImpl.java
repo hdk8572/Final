@@ -28,6 +28,10 @@ public class AdminServiceImpl implements AdminService {
 	public List<CompanyVo> pagingCompanyList(PagingVo vo){
 		return adminDao.pagingCompanyList(vo);
 	}
-	
-
+	public List<AdminVo> showCompanyDetail(String ccode){
+		return adminDao.showCompanyDetail(ccode);
+	}
+	public List<AdminVo> makePieChart(String ccode){
+		return adminDao.makePieChart(ccode);
+	}
 }

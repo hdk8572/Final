@@ -29,6 +29,11 @@ public class AdminDao {
 	public List<CompanyVo> pagingCompanyList(PagingVo vo){
 		return sqlSession.selectList("admin.clistPaging", vo);
 	}
-	
+	public List<AdminVo> showCompanyDetail(String ccode){
+		return sqlSession.selectList("admin.showCompanyDetail", ccode);
+	}
+	public List<AdminVo> makePieChart(String ccode){
+		return sqlSession.selectList("admin.makePieChart", ccode);
+	}
 	
 }

@@ -1,0 +1,25 @@
+.jm-companydetail>ul{
+	display: flex;
+	padding: 0;
+}
+.admin-cen{
+	text-align: center;
+}
+.admin-pointer{
+	cursor: pointer;
+}
+.admin-flex{
+	display: flex;
+}
+canvas{
+	margin-top: 50px;
+}
+table{
+	border: 1px solid;
+}
+table>thead{
+	text-align: center;
+}
+table td{
+	padding-left: 15px;
+}

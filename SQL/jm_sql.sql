@@ -641,19 +641,124 @@ select (select pname from project where pno=t.pno) pname, pno, t.userid, tmember
     	order by to_number(pno) desc, to_number(bref) desc, brelevel asc, 
         to_number(brestep) asc;
         
-select pname, pstatus, pno, ut.userid, tmember, ttitle, 
-tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, 
-to_char(tstartdate, 'yyyy-mm-dd') tstartdate, 
-to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel, mname      
-from ( select tno, pno, t.userid, tmember, ttitle, tcontent, 
-tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel, mname
-from task t                     
-join users u on(u.userid=t.tmember)                     
-where tmember = ? or t.userid = #{userid) )ut   
-
-
 select (select pname from project where pno=t.pno) pname, pno, t.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel
     	from (select pno, userid, tmember, ttitle, tstatus, tdate, tstartdate, tenddate, tno, bref, brestep, brelevel 
-                    from task where pno=#{pno} and tmember = 'sple@kh.co.kr' or userid= 'sple@kh.co.kr' ) t
+                    from task where pno=47 and tmember = 'sple@kh.co.kr' ) t
     	order by to_number(pno) desc, to_number(bref) desc, brelevel asc, 
         to_number(brestep) asc
+;
+
+select ccode, cname from company;
+select deptname, ccode from dept;
+
+select (select count(pno) from project) cntpno, 
+        (select count(tno) from task) cnttno, 
+        (select count(userid) from users) cntuid
+    from dual
+    ;
+
+select deptno, deptname, userid, mname
+    from users join dept using(deptno, ccode)
+    where ccode='C001'
+    order by deptno asc
+;
+
+select deptname, userid
+    from dept 
+    join users using(deptno, ccode)
+    where ccode='C001';
+    
+select ccode, pno 
+    from project
+    join users using(userid)
+    where ccode='C001'
+    ;
+    
+select count(pno)over(partition by ccode), CCODE
+    from project
+    join users using(userid)
+    where ccode='C001'
+    ;
+
+select count(tno)over(partition by pno), pno
+    from task
+    order by to_number(pno)
+;
+select pno
+    from (select pno from project join users using (userid) where ccode='C001')
+    
+   
+;
+WITH CompanyInfo AS (
+    SELECT
+        C.CCODE AS "회사코드",
+        C.CNAME AS "회사명",
+        D.DEPTNO AS "부서번호",
+        D.DEPTNAME AS "부서명",
+        COUNT(U.USERID) AS "인원수",
+        COUNT(DISTINCT P.PNO) AS "프로젝트수",
+        COUNT(DISTINCT T.TNO) AS "작업수"
+    FROM COMPANY C
+    JOIN DEPT D ON C.CCODE = D.CCODE
+    LEFT JOIN USERS U ON D.DEPTNO = U.DEPTNO AND D.CCODE = U.CCODE
+    LEFT JOIN PROJECT P ON U.USERID = P.USERID
+    LEFT JOIN TASK T ON P.PNO = T.PNO
+    WHERE C.CCODE = 'C001'
+    GROUP BY C.CCODE, C.CNAME, D.DEPTNO, D.DEPTNAME
+)
+SELECT
+    "회사코드",
+    "회사명",
+    "부서번호",
+    "부서명",
+    "인원수",
+    "프로젝트수",
+    "작업수",
+    SUM("프로젝트수") OVER () AS "프로젝트수_전체",
+    SUM("작업수") OVER () AS "작업수_전체"
+FROM CompanyInfo;
+
+SELECT
+    C.CCODE AS "회사코드",
+    C.CNAME AS "회사명",
+    D.DEPTNO AS "부서번호",
+    D.DEPTNAME AS "부서명",
+    COUNT(U.USERID) AS "인원수",
+    COUNT(DISTINCT P.PNO) AS "프로젝트수",
+    COUNT(DISTINCT T.TNO) AS "작업수"
+FROM COMPANY C
+JOIN DEPT D ON C.CCODE = D.CCODE
+LEFT JOIN USERS U ON D.DEPTNO = U.DEPTNO AND D.CCODE = U.CCODE
+LEFT JOIN PROJECT P ON U.USERID = P.USERID
+LEFT JOIN TASK T ON P.PNO = T.PNO
+WHERE C.CCODE = 'C001'
+GROUP BY C.CCODE, C.CNAME, D.DEPTNO, D.DEPTNAME;
+
+
+SELECT
+        C.CCODE AS ccode,
+        C.CNAME AS cname,
+        D.DEPTNO AS deptno,
+        D.DEPTNAME AS deptname,
+        COUNT(U.USERID) AS ucnt,
+        COUNT(DISTINCT P.PNO) AS pcnt,
+        COUNT(DISTINCT T.TNO) AS tcnt
+    FROM COMPANY C
+    JOIN DEPT D ON C.CCODE = D.CCODE
+    LEFT JOIN USERS U ON D.DEPTNO = U.DEPTNO AND D.CCODE = U.CCODE
+    LEFT JOIN PROJECT P ON U.USERID = P.USERID
+    LEFT JOIN TASK T ON P.PNO = T.PNO
+    WHERE C.CCODE = 'C001'
+    GROUP BY C.CCODE, C.CNAME, D.DEPTNO, D.DEPTNAME
+;
+
+
+select pdate, pname from project join users using(userid) where ccode='C001';
+select pno, pstatus from project join users using(userid) where ccode='C001' ;
+
+
+select pstatus, count(pno) piecount
+    from project
+    join users using(userid)
+    where ccode='C001'
+    group by pstatus;
