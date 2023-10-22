@@ -37,7 +37,12 @@
 
 
 					<li class="sidebar-header">모아보기</li>
-
+					<li class="sidebar-item"><a class="sidebar-link"
+						 href="${pageContext.request.contextPath}/member/info"><svg xmlns="http://www.w3.org/2000/svg"
+						 width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+						  class="feather feather-info align-middle me-2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line>
+						  <line x1="12" y1="8" x2="12.01" y2="8"></line></svg><span
+							class="align-middle">공지사항</span> </a></li>
 					<li class="sidebar-item"><a class="sidebar-link"
 						href="${pageContext.request.contextPath}/member/maintask"> <i
 							class="align-middle" data-feather="square"></i> <span
@@ -66,13 +71,7 @@
 					<li class="sidebar-item"><a class="sidebar-link" id="popup"><svg xmlns="http://www.w3.org/2000/svg" 
 						width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
 						class="feather feather-message-square align-middle me-2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span
-							class="align-middle">채팅</span> </a></li>		
-					<li class="sidebar-item"><a class="sidebar-link"
-						 href="${pageContext.request.contextPath}/member/info"><svg xmlns="http://www.w3.org/2000/svg"
-						 width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-						  class="feather feather-info align-middle me-2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line>
-						  <line x1="12" y1="8" x2="12.01" y2="8"></line></svg><span
-							class="align-middle">공지사항</span> </a></li>
+							class="align-middle">채팅</span> </a></li>						
 					
 				</c:if>
 				<c:if test="${authority.authority eq 'ROLE_C' }">

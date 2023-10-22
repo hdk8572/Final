@@ -75,7 +75,7 @@
 	<select id="viewMember" resultMap="chatRoomMap">
 	SELECT userId, mname
 	FROM users
-	WHERE userId = #{userId} OR ccode = (SELECT ccode FROM users WHERE userId = #{userId})
+	WHERE (userId = #{userId} or ccode = (SELECT ccode FROM users WHERE userId = #{userId})) and enabled =1
 	</select>
 	
 	<select id="findWriter" resultMap="chatRoomMap">

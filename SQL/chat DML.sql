@@ -85,10 +85,20 @@ from chatmessage
 join users USING(userid)
 where roomid = '1';
 
+
+
+
+
+
+
 INSERT INTO CHATMEMBER (ROOMID, USERID)
 SELECT (SELECT MAX(ROOMid) FROM chatROOM), 'spam@kh.co.kr' FROM DUAL;
-
-
+SELECT ccode,userId, mname
+	FROM users
+	WHERE (userId = 'orinog330@gmail.com' or ccode = (SELECT ccode FROM users WHERE userId = 'orinog330@gmail.com')) and enabled =1;
+    SELECT ccode,userId, mname
+	FROM users
+	WHERE userId = 'orinog330@gmail.com' or ccode = (SELECT ccode FROM users WHERE userId = 'orinog330@gmail.com');
 select *
 from users;
 select *
@@ -421,4 +431,80 @@ select * from chatmessage;
 
 INSERT INTO CHATROOM (ROOMID,USERID,ROOMNAME) VALUES (chat_sequence.NEXTVAL,'sple@kh.co.kr','채팅방1');
 INSERT INTO CHATROOM (ROOMID,USERID,ROOMNAME) VALUES ((SELECT MAX(ROOMid) FROM chatROOM),'sple@kh.co.kr','채팅방1');
+
+-----------------------------------------------
+select mname from users where userid='sple@kh.co.kr';
+select * 
+from info;
+select * from users;
+drop SEQUENCE info_sequence;
+CREATE SEQUENCE info_sequence
+START WITH 1
+INCREMENT BY 1;
+SELECT info.ino, info.itext, info.userid, info.idate, info.ititle, users.mname AS iwriter
+FROM info
+JOIN users ON info.userid = users.userId
+WHERE info.userid = 'admin@stream.com';
+SELECT ino, itext, info.userid, idate,ititle, users.mname AS iwriter
+		FROM info
+		JOIN users ON info.userid = users.userId
+		WHERE info.userid = 'sple@kh.co.kr';
+
+--인서트 번호 시퀀스 날짜 자동 해당 세션 아이디로 --
+INSERT INTO info (ino, itext, userid, idate, ititle, iwriter)
+SELECT info_sequence.NEXTVAL, '공지내용', 'sample@kh.co.kr', TO_TIMESTAMP(TO_CHAR(SYSTIMESTAMP, 'YYYY-MM-DD HH24:MI'), 'YYYY-MM-DD HH24:MI'), '공지제목', mname
+FROM users
+WHERE userid = 'sample@kh.co.kr';
+insert into info (ino,itext , userid, idate,ititle, iwriter) values (info_sequence.NEXTVAL,'공지내용','sple@kh.co.kr',TO_CHAR(SYSTIMESTAMP, 'yy/MM/dd HH24:MI'),'공지제목','sple@kh.co.kr');
+insert into info (ino,itext , userid, idate,ititle, iwriter) values (info_sequence.NEXTVAL,'공지내용','admin@stream.com',TO_CHAR(SYSTIMESTAMP, 'yy/MM/dd HH24:MI'),'공지제목','admin@stream.com');
+insert into info (ino,itext , userid, idate,ititle, iwriter) values (info_sequence.NEXTVAL,'공지내용','fffll@ctest.co.kr',TO_CHAR(SYSTIMESTAMP, 'yy/MM/dd HH24:MI'),'공지제목','fffll@ctest.co.kr');
+insert into info (ino,itext , userid, idate,ititle, iwriter) values (info_sequence.NEXTVAL,'공지내용','sample@kh.co.kr',TO_TIMESTAMP(TO_CHAR(SYSTIMESTAMP, 'YYYY-MM-DD HH24:MI'),'공지제목','');
+INSERT INTO info (ino, itext, userid, idate, ititle, iwriter)
+VALUES (info_sequence.NEXTVAL, 'rrr', 'sple@kh.co.kr',DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i'), '공지제목', 'sple@kh.co.kr');
+INSERT INTO info (ino, itext, userid, idate, ititle, iwriter)
+VALUES (info_sequence.NEXTVAL, '공지내용', 'sple@kh.co.kr', 
+        TO_CHAR(SYSTIMESTAMP, 'YY/MM/DD HH24:MI'), '공지제목', 'sple@kh.co.kr');
+select count(*) from info;
+select * 
+from( select rownum rn, a.*
+        from(
+             select *
+             from info
+             order by seq desc
+             )
+             )
+where rn between 1 and 5;
+
+--리스트
+SELECT ino, userid, idate, ititle, iwriter, ccode,mname
+FROM info
+JOIN users USING (userid)
+WHERE ccode = (SELECT ccode FROM users WHERE userid = 'sple@kh.co.kr');
+select * from info join users using(userid);
+--공지 상세
+select *
+from info
+where ino='1';
+
+--공지삭제
+delete from info where ino='4';
+--공지 검색
+SELECT ino, userid, idate, ititle, mname, ccode
+FROM info
+JOIN users USING (userid)
+WHERE ccode = (SELECT ccode FROM users WHERE userid = 'sple@kh.co.kr') ;
+
+--공지수정 UPDATE [테이블] SET [열] = '변경할값' WHERE [조건]
+update info set idate=TO_CHAR(SYSTIMESTAMP, 'DD/MM/YY HH24:MI'),ititle='수정1',itext='수정' where ino='3';
+select count(*) from info JOIN users USING (userid) WHERE ccode = (SELECT ccode FROM users WHERE userid = 'sple@kh.co.kr');
+select *
+    from (select rownum rn, *
+                from (select *
+                            from info where ccode not in'C000' order by ccode asc) a )
+    where rn between #{start} and #{end};
+SELECT ino, userid, idate, ititle, iwriter
+FROM info
+JOIN users USING (userid)
+WHERE ccode = (SELECT ccode FROM users WHERE userid = 'sple@kh.co.kr')
+AND (ititle = 'ㅇㅇㅇㅇ' OR iwriter = '');
 commit;

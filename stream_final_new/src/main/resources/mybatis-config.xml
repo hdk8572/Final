@@ -27,10 +27,11 @@
 		<typeAlias type="kh.groupware.stream.admin.model.vo.AdminVo" alias="AdminVo"/>
 		<typeAlias type="kh.groupware.stream.reply.model.vo.ReplyVo" alias="ReplyVo"/>
 		<typeAlias type="kh.groupware.stream.files.model.vo.FileVo" alias="FileVo"/>
-
+		
 		<typeAlias type="kh.groupware.stream.main.model.dto.MaintaskSortVo" alias="MaintaskSortVo"/>	
 		<typeAlias type="kh.groupware.stream.admin.model.vo.PagingVo" alias="PagingVo"/>	
-
+		<typeAlias type="kh.groupware.stream.info.model.vo.InfoVo" alias="InfoVo"/>	
+		<typeAlias type="kh.groupware.stream.info.model.vo.InfoPageVo" alias="PageVo"/>
 	</typeAliases>
 	
 	<mappers>
@@ -47,6 +48,7 @@
 		<mapper resource="mappers/admin-mapper.xml"/>
 		<mapper resource="mappers/reply-mapper.xml"/>
 		<mapper resource="mappers/file-mapper.xml"/>
+		<mapper resource="mappers/info-mapper.xml"/>
 	</mappers>	
 	
 </configuration>

@@ -58,9 +58,8 @@
 											style="display: flex; align-items: center;"><img
 											src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 											class="avatar img-fluid rounded me-1" alt="Charles Hall"
-											style="border-radius: 50% !important;" /> <a
-											class="roomnamelist" 
-											href="<c:url value='/member/room'><c:param name='roomId' value='${room.roomId}' /></c:url>"
+											style="border-radius: 50% !important;" /> 
+											<a class="roomnamelist" href="<c:url value='/member/room'><c:param name='roomId' value='${room.roomId}' /></c:url>"
 											style="display: inline-block;padding:15px ;width: 320px; overflow: hidden; white-space: nowrap; text-decoration: none;">${room.roomName}</a>
 										</li>
 									</div>
@@ -94,50 +93,44 @@
 							</div>
 						</div>
 					</div>
-					<button class="btn btn-secondary" style="margin: 20px 0 0 0; position: relative; left: 140px;background-color: #009b77">개설하기</button>
+					<button class="btn-create" style="margin: 20px 0 0 0; position: relative; left: 150px;background-color: #009b77; border: solid #009b77;
+	border-radius: 6px; padding: 5px;color:white;font-size:0.8em">개설하기</button>
 					</form>
 				</div>
 			</div>
 		</article>
 	</section>	
 	<script>
-     
-        $(document).ready(function(){
-            var roomName1 = "${roomName1}";
-            var member = "${member}";
+	$(document).ready(function(){
+	    var roomName1 = "${roomName1}";
+	    var member = "${member}";
 
-            $(".btn-create").on("click", function (e){
-                e.preventDefault();
-					
-                var roomName = $("input[roomName='roomName']").val();
-                if (!roomName) {
-                    alert("방 제목을 입력하세요.");
-                  } else {
-
-                  }
-                var member = $("input[member='member']").val(); 
-                
-				
-
-            });
-            
-            console.log(member+"member확인");	
-            console.log(roomName1+"roomName1확인");	
-        });
+	    $(".btn-create").on("click", function (e){
+	        var roomName = $("input[name='roomName']").val(); // 이름 속성을 "roomName"으로 변경
+	        var member = $("input[name='member']:checked").length;
+	        if (!roomName) {
+	            e.preventDefault(); // 방 제목이 입력되지 않았을 때 폼 제출을 막음
+	            alert("방 제목을 입력하세요.");
+	        }else{
+	        	if (member === 0) {
+		            e.preventDefault();
+		            alert("채팅 상대를 선택하세요.");
+		        }
+	        }
+	        
+	    });
+	});
 
     	$("#s_chat_list").click(function() {
     		$("#s_menu_box2").css('display', 'block');
     		$("#s_menu_box1").css('display', 'none');
     		$("#s_chat_list").attr('class', 'btn btn-primary');
     		$("#s_emp_list").attr('class', 'btn btn-light');
-    		$("#s_chat_list").css('border', '1px solid #0d6efd');
-    		$("#s_emp_list").css('border', '1px solid');
     	});
     	
     	// 채팅 리스트에 있는 대화방 리스트 클릭했을 때
     	$(".s_chat_box").click(function() {
     		$(".s_chat_box").css('color', 'black');
-    		$(this).css('color', 'rgb(13, 110, 253)');
     	});
     	
     	// 사원목록 클릭했을 때
@@ -146,10 +139,15 @@
     		$("#s_menu_box2").css('display', 'none');
     		$("#s_emp_list").attr('class', 'btn btn-primary');
     		$("#s_chat_list").attr('class', 'btn btn-light');
-    		$("#s_emp_list").css('border', '1px solid #0d6efd');
-    		$("#s_chat_list").css('border', '1px solid');
     	});
+    	function showAlert(message) {
+    	    var alertBox = $("<div>").text(message).addClass("alert-box");
+    	    $("body").append(alertBox);
 
+    	    setTimeout(function() {
+    	        alertBox.remove();
+    	    }, 3000);
+    	}
     </script>
 </body>
 </html>

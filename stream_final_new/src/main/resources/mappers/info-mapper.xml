@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="info">
+	<resultMap type="InfoVo" id="infoMap">
+		<result property="ino" column="ino"/>
+		<result property="itext" column="itext"/>
+		<result property="userId" column="userid"/>
+		<result property="idate" column="idate"/>
+		<result property="ititle" column="ititle"/>
+		<result property="iwriter" column="iwriter"/>
+		<result property="mname" column="mname"/>
+	</resultMap>
+	<insert id="infoInsert" parameterType="InfoVo">
+		
+		INSERT INTO info (ino, itext, userid, idate, ititle, iwriter)
+		SELECT info_sequence.NEXTVAL,#{itext},#{userId}, TO_CHAR(SYSTIMESTAMP, 'DD/MM/YY HH24:MI:SS'), #{ititle}, mname
+		FROM users
+		WHERE userid = #{userId}
+	</insert>
+	<select id="infoList" resultMap="infoMap">
+		SELECT ino, userid, idate, ititle, iwriter
+    		FROM info
+    		JOIN users USING (userid)
+    		WHERE ccode = (SELECT ccode FROM users WHERE userid = #{userId})
+    
+	</select>
+	<select id="infoOne" resultMap="infoMap">
+		select * from info where ino=#{ino}	
+	</select>
+	<delete id="infoDelete" parameterType="InfoVo">
+		delete from info where ino=#{ino}	
+	</delete>
+	<update id="infoUpdate" parameterType="InfoVo">
+		update info set idate=TO_CHAR(SYSTIMESTAMP, 'yy/MM/dd HH24:MI:SS'),ititle=#{ititle},itext=#{itext} where ino=#{ino}	
+	</update>
+	<select id="infoCnt" resultMap="infoMap">
+		select count(*) from info JOIN users USING (userid) WHERE ccode = (SELECT ccode FROM users WHERE userid = #{userId})
+	</select>
+	<select id="infowriter" resultMap="infoMap">
+		select mname from users where userid=#{userId}
+	</select>
+	<select id="infosearch" resultMap="infoMap">
+	SELECT ino, userid, idate, ititle, iwriter
+	FROM info
+	JOIN users USING (userid)
+	WHERE ccode = (SELECT ccode FROM users WHERE userid = #{userId})
+	AND (ititle = #{ititle} OR iwriter = #{iwriter})
+	</select>
+	<select id="countInfo" resultType="int">
+		select count(*) from info
+	</select>
+	<select id="selectInfo" resultType="PageVo"> 
+	select *
+from (
+    select rownum rn, i.*
+    from (
+        select *
+        from info
+        order by seq desc
+    ) i
+)
+where rn between #{start} and #{end}
+	</select>
+	
+	
+</mapper>

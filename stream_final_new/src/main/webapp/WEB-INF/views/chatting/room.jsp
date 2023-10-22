@@ -18,8 +18,8 @@
 <body style="margin: 0px">
 	<div class="container" style="margin :0px; height: 630px">
 		<div class="col-6">
-			<div class="col-7"><b>stream</b> [${room.roomName}]
-				<a class="back" href="${pageContext.request.contextPath}/member/rooms">돌아가기</a>
+			<div class="col-7"><b>stream[${room.roomName}]</b> 
+				<a class="back" href="${pageContext.request.contextPath}/member/rooms">채팅리스트</a>
 			</div>
 		</div>
 		<div class='chatscroll'>

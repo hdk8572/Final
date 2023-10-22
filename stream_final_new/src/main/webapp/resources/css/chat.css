@@ -3,7 +3,15 @@
 	margin: 0px;
 	height: 70px;	
 }
+
+
+
+
+
+
 .col-7{
+	display: flex;
+	justify-content:space-between;
 	background-color: #049e5e;
 	height: 70px;
 	font-size: 1.3em;
@@ -11,10 +19,9 @@
 	color: white;
 }
 .back{
-	position: relative;
-	left: 180px;
 	font-size: 0.7em;
 	text-decoration: none;
+	color: white;
 }
 .input-group{
 	background-color: #f5f7fb;
