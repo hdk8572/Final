@@ -378,3 +378,7 @@ form {
     cursor: pointer;
     color: black;
 }
+
+.form-control.ttitle {
+	contenteditable = 'true';
+}

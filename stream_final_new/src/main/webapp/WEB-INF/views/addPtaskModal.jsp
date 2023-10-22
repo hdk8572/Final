@@ -17,10 +17,11 @@
 						<input type="text" class="form-control title" name="ttitle" placeholder="제목을 입력하세요.">
 						<div class="d-flex align-items-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock align-middle me-2"><circle cx="12" cy= "12 " r= "10 "></circle><polyline points= "12 6 12 12 16 14 "></polyline></svg>
-							<select class= "form-select mb-3 selectCategory ml-2 " name="tstatus">
-							<option class="status request" value="미진행" name="미진행" selected>미진행</option>
-							<option class="status progress" value="진행" name="진행">진행</option>
-							<option class="status remain" value="보류" name="보류">보류</option>
+							<input type="hidden" name="tstatus">
+							<select class= "form-select mb-3 selectCategory ml-2" name="selectedTstatus">
+								<option class="status request" value="미진행" name="미진행">미진행</option>
+								<option class="status progress" value="진행" name="진행">진행</option>
+								<option class="status remain" value="보류" name="보류">보류</option>
 							</select>					
 						</div>
 						<div class="d-flex align-items-center">
@@ -52,3 +53,47 @@
 	</div>
 </div>
 
+<script>
+
+	function selectOptionPtask() { // 추가+ 버튼을 누르면 실행되는 메서드
+		    
+			$("input[name=tstatus]").val("미진행");	
+	
+			$("select[name=selectedTstatus]").change(function() {
+				var selectedOption = $("select[name=selectedTstatus] option:selected").val();
+				$("input[name=tstatus]").val(selectedOption);
+			});
+			
+		    $.ajax({
+		    	url:"${pageContext.request.contextPath}/member/getCompanyMemberList",
+		    	data: {userid: useridJs},
+		    	type: "get",
+		    	dataType: "json",
+		    	success: function(data) {
+		    		//makeMemberView(data);
+		    		console.log("성공");
+		    	},
+		    	error: function() {	
+				alert("selectOption에서 에러났습니다.");
+			}
+		    });
+	}
+		
+	function makeMemberView(data) { // 회사 소속인 참가자 리스트 조회
+		var memberListHtml = "";
+		/* memberListHtml += '<select class="form-select mb-3 selectCategory ml-2" name="mname">'; */
+		memberListHtml += '<option value="" selected>참가자선택</option>';
+	    for(var i=0;i<data.length;i++){
+			var memberOne = data[i];
+			memberListHtml+=`
+				<option value="\${memberOne.userid}">\${memberOne.mname}\${memberOne.mrank}님</option>
+				`;
+	    }
+		/* memberListHtml += '</select>'; */
+	    $("#companyMember").html(memberListHtml);
+	    /* $("#companyMember select[name=mname] option:eq(0)").prop("selected", true); */
+	    $(".form-select.mb-3.addProject.selectedMember").change(memberSelect);
+	    
+	}
+
+</script>

@@ -191,6 +191,11 @@
 	  }
 	}
 	
+	$(".modal.ptask").on("show.bs.modal", function() {
+		/* addPtaskModal 오픈 시 실행되는 function 리스트 */
+		selectOptionPtask();
+	});
+	
 	$(document).ready(function() {
 		$("#summernote").summernote({				//  위즈윅 - summerNote		
 		     placeholder: '프로젝트 설명을 입력해주세요.',
@@ -333,18 +338,24 @@
 	function updatePtaskHide() {
 		var targetTno = $(this).closest("tr").find("input[name=tno]").val();
 		console.log(targetTno);
-		$.ajax({
-			url: "${pageContext.request.contextPath}/member/updateTstatusHide",
-			type: "post",
-			data: {tno: targetTno},
-			dataType: "json",
-			success: function() {
-				loadPtaskList();
-			},
-			error: function(error) {
-				console.log("updateTstatusHide 실패");
-			}
-		});
+		
+		var confirm_val = confirm("삭제하시겠습니까?");
+		if(confirm_val == true){
+		    <!--- 확인 or yes 버튼을 눌렀을 때 실행 될 함수 구현 --->
+		    $.ajax({
+				url: "${pageContext.request.contextPath}/member/updateTstatusHide",
+				type: "post",
+				data: {tno: targetTno},
+				dataType: "json",
+				success: function() {
+					loadPtaskList();
+				},
+				error: function(error) {
+					console.log("updateTstatusHide 실패");
+				}
+			});
+		}else if(confirm_val == false){
+		}
 		
 	}
 
