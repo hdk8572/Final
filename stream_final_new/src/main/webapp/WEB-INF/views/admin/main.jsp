@@ -35,14 +35,15 @@
 <body>
 	<%@ include file="/WEB-INF/views/alertmsg.jsp"%>
 	<div class="wrapper">
+	<%@ include file="/WEB-INF/views/sidebar.jsp"%>
 		<div class="main">
 		<%@ include file="/WEB-INF/views/headernavbar.jsp"%>
-			<main class="content ">
+			<main class="content admin-main">
 				<h1>hello admin!</h1>
 				<br><br>
 				<div  class="admin-flex">
 				<!-- 간단 통계 -->
-					<div class="admin-maintext">
+					<div class="admin-maintext col-lg-5">
 						<c:if test="${CNT != null }">
 							<div>
 								<span>지금까지 stream 그룹웨어를 </span> <span>${CNT.ccnt }</span> <span>
@@ -59,7 +60,7 @@
 						</c:if>
 					</div>
 					<!-- 회사 리스트 -->
-					<div class="admin-ctable">
+					<div class="admin-ctable col-lg-5">
 						<div>
 							<select id="cntPerPage" name="sel" onchange="selChange()">
 								<option value="5"
@@ -107,6 +108,9 @@
 							</div>
 						</div>
 					</div>
+				</div>
+				<div>
+					<h1>아아아</h1>
 				</div>
 			</main>
 		</div>

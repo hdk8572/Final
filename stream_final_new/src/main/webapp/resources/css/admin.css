@@ -1,3 +1,7 @@
+.admin-main{
+	background-color: #f5fbf5;
+}
+
 .jm-companydetail>ul{
 	display: flex;
 	padding: 0;
@@ -15,11 +19,23 @@ canvas{
 	margin-top: 50px;
 }
 table{
-	border: 1px solid;
+	border: 2px solid white;
+	width: 100%;
 }
 table>thead{
 	text-align: center;
+	border: 2px solid white;
+}
+table th,td{
+	background-color: #96D4D4;
 }
 table td{
 	padding-left: 15px;
+}
+table td,th {
+	 border: 2px solid white;
+}
+table .admin-pointer:hover{
+	background-color: #009b77;
+	color: white;
 }
