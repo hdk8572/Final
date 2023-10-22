@@ -121,12 +121,12 @@
 	<script>
 		function selChange(){
 			var sel = $('#cntPerPage').val();
-			console.log(sel);
 			location.href=contextPath+"/admin/main?nowPage=${paging.nowPage}&cntPerPage="+sel;
 		}
 	</script>
 	<script>
 	companyDetailModalHandler=(thisButton)=>{
+		console.log("[JM]===companyDetailModalHandler===");
 		console.log(thisButton);
 		var targetCcode = $(thisButton).data("ccode");
 		console.log(targetCcode);
@@ -209,6 +209,7 @@
 	</script>
 	<script>
 	makeModalPieChart=(data)=>{
+		console.log("[JM]===makeModalPieChart===");
 		console.log(data);
 		$.ajax({
 			 	url: contextPath+"/admin/makepiechart",
@@ -239,6 +240,7 @@
 	</script>
 	<script>
 	chartPie=(result)=>{
+		console.log("[JM]===chartPie===")
 		console.log(result);
 		var Arr1 = new Array()
 		for(ps=0;ps<result.length;ps++){

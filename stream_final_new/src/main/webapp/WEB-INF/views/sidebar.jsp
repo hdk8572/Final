@@ -121,13 +121,21 @@
 			"color" : "#009b77"
 		});
 	});
-	window.onload = function() {
+	popupclickHandler=()=>{
+		var jsPopup = window
+		.open("/stream/member/rooms",null,"width=450, height=650, resizable=no, scrollbars=no,toolbars=no, menubar=no");
+
+	}
+	$("#popup").on("click", popupclickHandler)
+	
+	/* 관리자, 회사 페이지 오류떄문에 임시 수정 하였습니다. [JM] */
+	/* window.onload = function() {
 		var popupButton = document.getElementById("popup");
 		popupButton.onclick = function() {
 			var jsPopup = window
 					.open("/stream/member/rooms",null,"width=450, height=650, resizable=no, scrollbars=no,toolbars=no, menubar=no");
 
 		};
-	};
+	}; */
 </script>
 

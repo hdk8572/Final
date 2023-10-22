@@ -42,7 +42,6 @@
 							</div>
 							<hr>
 							<div class="admin-chart-pie">
-								
 							</div>
 						</div>
 					</div>
