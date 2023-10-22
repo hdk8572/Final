@@ -79,7 +79,7 @@
 		</div>
 	</div>
 </div>
-
+<!-- 
 <script>
 	function calendartitleLength() {
 		var titleField = document.getElementById("title");
@@ -90,7 +90,7 @@
 		}
 	}
 	document.getElementById("title").addEventListener("input", calendartitleLength);
-</script>
+</script> -->
 
 
 
