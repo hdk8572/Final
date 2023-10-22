@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -63,16 +64,17 @@ public class CalendarController {
 	//캘린더 전체 조회 
 	@GetMapping({"/member/pcalselectlist"})
 	@ResponseBody
-	public String calSelectList(CalendarParamVo paramvo, HttpSession session) { 
+	public String calSelectList(String pno, CalendarParamVo paramvo, HttpSession session) throws Exception { 
 		List<CalendarVo> calendarList = null;
 		calendarList = calendarService.selectList(paramvo);
+		session.setAttribute("selectedPno", pno);
 		return new Gson().toJson(calendarList);	
 	}
 	
 	//캘린더 일정 상세 조회
 	@GetMapping("/member/pcalselectone")
 	@ResponseBody
-	public String calSelectOne(String sno) { 
+	public String calSelectOne(String sno) throws Exception { 
 		CalendarVo cal = calendarService.selectOne(sno);
 		return new Gson().toJson(cal); //화면에 뿌릴 것을 return해야함
 	}
@@ -81,7 +83,7 @@ public class CalendarController {
 	//참석자 후보 조회 -  MemberProject 조회
 	@GetMapping("/member/memberProjectList")
 	@ResponseBody
-	public String memberProjectList(CalendarParamVo param) {
+	public String memberProjectList(CalendarParamVo param) throws Exception{
 		return new Gson().toJson(calendarService.memberProjectList(param));
 	}//짧게 쓰는 방법임
 
@@ -101,7 +103,7 @@ public class CalendarController {
 	//캘린더 등록 
 	//탭 jsp에서 필요하니깐 RedirectAttributes를 써준다.
 	@PostMapping("/member/insertpcal")
-	public String insert(Model model, CalendarVo cal, RedirectAttributes rttr) {
+	public String insert(Model model, CalendarVo cal, RedirectAttributes rttr) throws Exception {
 		if(cal.getAttenduseridArr() != null && cal.getAttenduseridArr().length > 0) {
 			List<String> attenduseridArr = Arrays.asList(cal.getAttenduseridArr());
 			List<MemberSimpleVo> attenduseridList= new ArrayList<MemberSimpleVo>();
@@ -122,15 +124,48 @@ public class CalendarController {
 	//캘린더 수정
 	@PostMapping("/member/updatepcal")
 	@ResponseBody
-	public int update(Model model, CalendarVo cal) {
+	public int update(Model model, CalendarVo cal) throws Exception {
 		int result = calendarService.update(cal);
 		return result;
 	}
 
 	//캘린더 삭제
-	  @PostMapping("/member/deletepcal")
-	  @ResponseBody
-	  public int delete(String sno) { 
-		  return calendarService.delete(sno); 
-	  }
+	@PostMapping("/member/deletepcal")
+	@ResponseBody
+	public int delete(String sno) throws Exception { 
+		return calendarService.delete(sno); 
+	}
+	
+	// 예외처리
+	@ExceptionHandler
+	private ModelAndView exceptionHandler(Exception e, RedirectAttributes rttr, HttpSession session) {
+	    e.printStackTrace();
+	    ModelAndView mv = new ModelAndView();
+	    rttr.addFlashAttribute("projectTabs", "TabCalendar");
+
+	    if (session.getAttribute("selectedPno") != null) {
+	    	mv.setViewName("redirect:/member/ptasklist?pno=" + session.getAttribute("selectedPno")); // 사용자가 선택한 프로젝트로 리디렉션
+	    }else {
+	    	mv.setViewName("redirect:/member/projectlist?"); 
+	    }
+
+	    return mv;
+	}
+	
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 }

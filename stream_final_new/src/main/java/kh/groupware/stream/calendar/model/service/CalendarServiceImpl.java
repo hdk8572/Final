@@ -22,31 +22,25 @@ public class CalendarServiceImpl implements CalendarService {
 	
 	//캘린더 조회
 	@Override
-	public List<CalendarVo> selectList(CalendarParamVo paramvo) {
+	public List<CalendarVo> selectList(CalendarParamVo paramvo)throws Exception {
 		return calendarDao.selectList(paramvo);
 	}
 	//캘린더 일정 상세 조회
 	@Override
-	public CalendarVo selectOne(String sno) { 
+	public CalendarVo selectOne(String sno)throws Exception { 
 		return calendarDao.selectOne(sno);
 	}
 	
 	//참석자 list
 	@Override
-	public List<MemberSimpleVo> memberProjectList(CalendarParamVo pno) {
+	public List<MemberSimpleVo> memberProjectList(CalendarParamVo pno)throws Exception {
 		return calendarDao.memberProjectList(pno);
-	}
-	
-	// 프로젝트에 참여중인 회원인지 확인함.
-	@Override
-	public int isAttendedProject(Map<String, String> map) {
-		return calendarDao.isAttendedProject(map);
 	}
 	
 	//캘린더 등록 //insert:캘린더 정보를 db에 추가 //insertMember:참가자 정보를 db에 추가
 	//override밑에 Transactional주석처리
 	@Override
-	public int insert(CalendarVo cal) {
+	public int insert(CalendarVo cal) throws Exception{
 		int result = 0;
 		result += calendarDao.insert(cal);
 		System.out.println(cal);
@@ -63,7 +57,7 @@ public class CalendarServiceImpl implements CalendarService {
 
 	//캘린더 수정
 	@Override
-	public int update(CalendarVo cal) {
+	public int update(CalendarVo cal) throws Exception{
 		return calendarDao.update(cal);
 	}
 	
@@ -71,12 +65,16 @@ public class CalendarServiceImpl implements CalendarService {
 	//insert는 all을 써서 1개 delete는 dao두 개 deleteAll이 없기 때문에!
 	@Override
 	@Transactional
-	public int delete(String sno) {
+	public int delete(String sno)throws Exception {
 		calendarDao.deletemember(sno);
 		return 	calendarDao.delete(sno);
-
 	}
-
+	
+	// 프로젝트에 참여중인 회원인지 확인함.
+	@Override
+	public int isAttendedProject(Map<String, String> map) {
+		return calendarDao.isAttendedProject(map);
+	}
 
 
 }
