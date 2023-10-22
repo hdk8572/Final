@@ -276,8 +276,7 @@
 			pTaskListHtml+=`
 	        	<tr class="listOne">
 					<td>\${pl.ttitle}<button type="button" class="detailProject">상세내용</button></td>
-					<td>\${pl.mname}</td>
-					<%-- <td>${tlist.tstatus}</td> --%>
+					<td>\${pl.mname} \${pl.mrank}</td>
 					<input type="hidden" id="updateTstatus" >
 //					\${pl.tstatus}
 					<input type="hidden" id="currentTstatus" value="\${pl.tstatus}" >

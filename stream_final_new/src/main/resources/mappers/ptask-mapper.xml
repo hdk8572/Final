@@ -9,7 +9,7 @@
 	</select>
 
 	<select id="ProjectSelectOne" resultType="PtaskVo">
-		SELECT tno,  pno, T.userid, tmember, ttitle, tcontent, tstatus, MNAME
+		SELECT tno,  pno, T.userid, tmember, ttitle, tcontent, tstatus, MNAME, mrank
 			, to_char(tdate, 'yyyy-mm-dd') tdate
 			, to_char(tstartdate, 'yyyy-mm-dd') tstartdate
 			, to_char(tenddate, 'yyyy-mm-dd') tenddate

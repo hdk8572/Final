@@ -39,12 +39,12 @@
 						<div class="card-body detailPtaskTitle">
 							<form>
 								<div class="form-control ttitle"></div>
-								<div class="d-flex align-items-center">
+								<div class="d-flex align-items-center first">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock align-middle me-2"><circle cx="12" cy= "12 " r= "10 "></circle><polyline points= "12 6 12 12 16 14 "></polyline>
 									</svg>
 									<div class= "form-control manager ml-2 tstatus"></div>					
 								</div>
-								<div class="d-flex align-items-center">
+								<div class="d-flex align-items-center second">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2">
 									  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r= "4"/>
 									</svg>
@@ -179,16 +179,15 @@ function makeReplyList(data) {
 						dataType: "json",
 						data: {rno: targetRno, rcontent: targetRcontentUpdate, tno:targetTno},
 						success: function(result) {
-							alert("수정됬습니다.");	
 							replyLoadList(targetTno);
 						},
 						error: function() {
-							alert("수정 작업을 취소했습니다.");
+							alert("doUpdateReply에서 에러 발생");
 						}
 					});
 				}else if(confirm_val == false){
 					alert("수정 작업을 취소했습니다.");
-					replyLoadList();
+					replyLoadList(targetTno);
 				}
 			} else {
 				null;
@@ -236,7 +235,7 @@ function makeReplyList(data) {
 				}
 			});
 		}else if(confirm_val == false){
-			replyLoadList();
+			replyLoadList(targetTno);
 		}
 	});
 	
@@ -263,6 +262,49 @@ function makeReplyList(data) {
 		}
 });
 	
+</script>
+<script>
+	
+	$(".dropdown-item.update").on("click", updateFunction);
+	
+	// <수정> 눌렀을 때 수정창으로 변경
+	function updateFunction() {
+		$(".form-control.ttitle").attr("contenteditable", "true");
+		$(".form-control.detail-content.input.tcontent").attr("contenteditable", "true");
+		$(".d-flex.align-items-center.first").remove();
+		$(".d-flex.align-items-center.second").remove();
+		
+		tstatusHtml ="";
+		tstatusHtml += `
+			<div class="d-flex align-items-center">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock align-middle me-2"><circle cx="12" cy="12 " r="10 "></circle><polyline points="12 6 12 12 16 14 "></polyline></svg>
+				<input type="hidden" name="tstatus" value="미진행">
+				<select class="form-select mb-3 selectCategory ml-2" name="selectedTstatus">
+					<option class="status request" value="미진행" name="미진행">미진행</option>
+					<option class="status progress" value="진행" name="진행">진행</option>
+					<option class="status remain" value="보류" name="보류">보류</option>
+				</select>					
+			</div>
+			`;
+			
+		tmemberHtml ="";
+		tmemberHtml += `
+			<div class="d-flex align-items-center">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2">
+				  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
+				</svg>
+				<select class="form-select mb-3 selectCategory ml-2" name="tmember" id="taskmember"><option value="placeholder" selected="">담당자 선택</option>
+				</select>
+			</div>
+			`;
+		
+		$(".form-control.ttitle").after(tmemberHtml);
+		$(".form-control.ttitle").after(tstatusHtml);
+		
+		
+	}
+	
+
 </script>
 
 <!-- 모달 -->

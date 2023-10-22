@@ -18,6 +18,7 @@ public class PtaskVo {
 	private String tstartdate;
 	private String tenddate;
 	private String mname;
+	private String mrank;
 	
 	//하위 업무 추가를 위한 컬럼
 	private String bref;	//bref=tno : 원본글
@@ -36,9 +37,9 @@ public class PtaskVo {
 	public String toString() {
 		return "PtaskVo [tno=" + tno + ", pno=" + pno + ", userid=" + userid + ", tmember=" + tmember + ", ttitle="
 				+ ttitle + ", tcontent=" + "CLOB" + ", tstatus=" + tstatus + ", tdate=" + tdate + ", tstartdate="
-				+ tstartdate + ", tenddate=" + tenddate + ", mname=" + mname + ", bref=" + bref + ", brelevel="
-				+ brelevel + ", brestep=" + brestep + ", tcnt=" + tcnt + ", ordertype=" + ordertype + ", filevo="
-				+ filevo + "]";
+				+ tstartdate + ", tenddate=" + tenddate + ", mname=" + mname + ", mrank=" + mrank + ", bref=" + bref
+				+ ", brelevel=" + brelevel + ", brestep=" + brestep + ", tcnt=" + tcnt + ", ordertype=" + ordertype
+				+ ", filevo=" + filevo + "]";
 	}
 
 	public String getTno() {
@@ -121,6 +122,22 @@ public class PtaskVo {
 		this.tenddate = tenddate;
 	}
 
+	public String getMname() {
+		return mname;
+	}
+
+	public void setMname(String mname) {
+		this.mname = mname;
+	}
+
+	public String getMrank() {
+		return mrank;
+	}
+
+	public void setMrank(String mrank) {
+		this.mrank = mrank;
+	}
+
 	public String getBref() {
 		return bref;
 	}
@@ -168,16 +185,5 @@ public class PtaskVo {
 	public void setFilevo(FileVo filevo) {
 		this.filevo = filevo;
 	}
-
-	public String getmname() {
-		return mname;
-	}
-
-	public void setmname(String mname) {
-		this.mname = mname;
-	}
-	
-	
-
 }
 
