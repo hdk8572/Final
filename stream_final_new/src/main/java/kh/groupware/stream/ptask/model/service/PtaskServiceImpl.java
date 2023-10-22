@@ -48,8 +48,8 @@ public class PtaskServiceImpl implements PtaskService {
 	} 
 	
 	@Override
-    public int deleteTask(String pno) {
-    	return ptaskDao.deleteTask(pno);
+    public int updateHide(String tno) {
+    	return ptaskDao.updateHide(tno);
     }
 	
 	@Override

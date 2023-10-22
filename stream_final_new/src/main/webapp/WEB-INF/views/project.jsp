@@ -167,6 +167,8 @@
 	const useridJs = "${principal.username}";
 	const ptaskPno = $(".container-fluid.p-0").find("input[name=pno]").val();
 	
+
+	
 	/* 상단 탭바 위치 이동*/
 	function openTab(tabName) {
 	  var i;
@@ -211,9 +213,9 @@
 		} else {
 			openTab('TabTask');
 		}
-		mouseEvent();
-		$(this).find(".detailProject").click(detailProject);
 		
+		$(document).on('click', '.deletePtask', updatePtaskHide);
+		$(this).find(".detailProject").click(detailProject);
 	}); 
 	
 	</script>
@@ -222,13 +224,15 @@
 		$(".listOne").hover(
 			function(){
 				$(".detailProject").css("visibility", "hidden");
+				$(".deletePtask").css("visibility", "hidden");
 				$(this).find(".detailProject").css("visibility", "visible");
-						
+				$(this).find(".deletePtask").css("visibility", "visible");
 		},
 			function(){
-				$(".detailProject").css("visibility", "hidden");				
+				$(".deletePtask").css("visibility", "hidden");				
 			}
 		);
+		
 	}
 	
 	
@@ -253,6 +257,7 @@
 			}
 		});
 		console.log("loadPtaskList 실행");
+		mouseEvent(); 
 	}
 	
 	function makePtaskList(data) {
@@ -272,16 +277,16 @@
 					<input type="hidden" id="currentTstatus" value="\${pl.tstatus}" >
 					<td>
 						<select class="status setting" name="tstatus" id="updateTstatus_\${i}">
-							<option class="status request" value="요청" name="요청" selected>요청</option>
-							<option class="status progress" value="진행" name="요청">진행</option>
-							<option class="status feedback" value="피드백" name="요청">피드백</option>
-							<option class="status complete" value="완료" name="요청">완료</option>
-							<option class="status remain" value="보류" name="요청">보류</option>
+							<option class="status request" value="미진행" name="미진행" selected>미진행</option>
+							<option class="status progress" value="진행" name="진행">진행</option>
+							<option class="status remain" value="보류" name="보류">보류</option>
 						</select>
 					</td>
 					<td>\${pl.tdate}</td>
 					<td>\${pl.tstartdate}</td>
-					<td>\${pl.tenddate}</td>
+					<td>\${pl.tenddate}
+						<button type="button" class="deletePtask"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg></button>
+					</td>
 					<input type="hidden" name="tno" value="\${pl.tno}">
 					<input type="hidden" name="pno" value="\${pl.pno}">
 				</tr>`;
@@ -323,6 +328,27 @@
 		});
 		
 	}
+	
+	function updatePtaskHide() {
+		var targetTno = $(this).closest("tr").find("input[name=tno]").val();
+		console.log(targetTno);
+		$.ajax({
+			url: "${pageContext.request.contextPath}/member/updateTstatusHide",
+			type: "post",
+			data: {tno: targetTno},
+			dataType: "json",
+			success: function() {
+				loadPtaskList();
+			},
+			error: function(error) {
+				console.log("updateTstatusHide 실패");
+			}
+		});
+		
+	}
+
+	
+	
 	</script>
 	<script>
 	$("select[id=updateTstatus]").change(updateOption);

@@ -140,4 +140,10 @@ public class PtaskController {
 		return ptaskService.update(pnoTnoParam);
 	}
 	
+	@PostMapping("/member/updateTstatusHide")
+	@ResponseBody
+	public int deletePtask(String tno) {
+		return ptaskService.updateHide(tno);
+	}
+	
 }

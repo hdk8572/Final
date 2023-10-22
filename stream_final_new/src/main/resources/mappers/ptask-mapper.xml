@@ -5,6 +5,7 @@
 	<select id="selectList" resultType="PtaskVo">
 		SELECT * 
 		FROM TASK
+		WHERE TSTATUS IN ('미진행', '진행', '보류')
 	</select>
 
 	<select id="ProjectSelectOne" resultType="PtaskVo">
@@ -15,6 +16,7 @@
 			, bref, brelevel, brestep
 		FROM TASK
 		WHERE PNO=#{PNO}
+			AND TSTATUS IN ('미진행', '진행', '보류')
 	</select>
 		
 	<select id="ProjectSelectOneInner" resultType="PtaskVo" parameterType="map">
@@ -36,13 +38,19 @@
 			VALUES (#{tno}, #{pno}, #{userid}, #{tmember}, #{ttitle}, #{tcontent}, #{tstatus}, #{tstartdate}, #{tenddate}, #{tno}, '0', '0')
 	</insert>
 
-	<delete id="deleteTask" parameterType="PtaskVo">
-		DELETE FROM TASK WHERE PNO = #(pno)
+	<delete id="deleteTask" parameterType="String">
+		DELETE FROM TASK 
+		WHERE TNO = #{tno}
   	</delete>
   	
 	<update id="updatePtask" parameterType="ProjectVo">
 		UPDATE TASK SET TNO=#{tno}, PNO=#{pno}, USERID=#{userid}, TMEMBER=#{tmember}, TTITLE=#{ttitle}, TCONTENT=#{tcontent}, TDATE=#{tdate}, TSTARTDATE=#{tstartdate}, TENDDATE=#{tenddate}, BREF=#{bref}, BRESTEP=#{brestep}, BRELEVEL=#{brelevel}
 		WHERE PNO=#{pno} and TNO=#{tno}
+	</update>
+	
+	<update id="updatePtaskHide" parameterType="ProjectVo">
+		UPDATE TASK SET tstatus = '숨김'
+		WHERE TNO=#{tno}
 	</update>
 
 </mapper>

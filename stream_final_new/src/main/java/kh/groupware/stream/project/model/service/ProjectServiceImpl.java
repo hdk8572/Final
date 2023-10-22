@@ -71,12 +71,12 @@ public class ProjectServiceImpl implements ProjectService {
         }
     }
     
-	@Override
-    @Transactional
-    public int delete(String pno) {
-    	ptaskdao.deleteTask(pno);
-    	return projectDao.deleteList(pno);
-    }
+//	@Override
+//    @Transactional
+//    public int delete(String pno) {
+//    	ptaskdao.deleteTask(pno);
+//    	return projectDao.deleteList(pno);
+//    }
     
 	@Override
 	@Transactional
