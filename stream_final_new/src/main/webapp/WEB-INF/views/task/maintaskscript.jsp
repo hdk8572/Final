@@ -7,12 +7,12 @@ window.onload=loadedHandler;
 
 function loadedHandler(){
 	//div 드래그
-	$(".jm-move").on("dragstart", dragStart);
+	/* $(".jm-move").on("dragstart", dragStart);
 	$(".jm-move").on("drag", dragging);
 	$(".jm-drop").on("dragenter", dragEnter);
 	$(".jm-drop").on("dragover", allowDrop);
 	$(".jm-drop").on("drop", drop);
-	$(".jm-move").on("dragend", dragEnd );
+	$(".jm-move").on("dragend", dragEnd ); */
 	
 	//업무리스드 열고 닫기
 	$(".jm-box-project-title").on("click", titleClickHandler);
@@ -33,8 +33,8 @@ function loadedHandler(){
 	
 	
 }
-
-function dragStart(e){
+/* 드래그 관련함수 */
+/* function dragStart(e){
 	console.log(this.id);
 	console.log(e.target.id);
 	event.dataTransfer.setData("abc", event.target.id);
@@ -64,9 +64,10 @@ function drop(e){
 }
 function dragEnd(e){
 	console.log("드래그 종료");
-}
+} */
 
 titleClickHandler=(event)=>{
+	console.log("[JM]===titleClickHandler===")
 	const a1 = event.target;
 	console.log(event.target);
 	
@@ -81,13 +82,14 @@ titleClickHandler=(event)=>{
 } 
 
 taskDetailButtonClickTestHandler=(thisButton)=>{
+	console.log("[JM]===taskDetailButtonClickTestHandler===")
 	var a1 = thisButton
 	console.log(a1);
 	var b1 = $(a1).closest('li')[0].id;
 	console.log(b1);
 	var targetTno = $(a1).next().find("input[name=tno]").val();
 	var targetPno = $(a1).next().find("input[name=pno]").val();
-	console.log("===taskDetail Target===")
+	console.log("[JM]===taskDetail Target===")
 	console.log(targetTno);
 	console.log(targetPno);
 	$("#detailProjectModal").modal("toggle");
@@ -124,19 +126,15 @@ functionDateHandler=(e)=>{
 	var day = ('0' + today.getDate()).slice(-2);
 	
 	var dateString = year + '-' + month  + '-' + day;
-	console.log(dateString);
 	$(".innerTdate").html("<span>"+dateString+"</span>");
 }
 
-afterInsertInputHandler=(event)=>{
-	console.log(event.target);
-}
 
 innerTaskInputHandler=(thisElement)=>{
 
 	
 	
-	console.log("==innerTaskInputHadler==")
+	console.log("[JM]==innerTaskInputHadler==")
 	const a1 = thisElement;	//button
 	console.log(this);   // window  
 	console.log(thisElement);  
@@ -144,7 +142,6 @@ innerTaskInputHandler=(thisElement)=>{
 	console.log($(a1).closest('li').next());
 	var a2 = $(a1).closest('li').next().children('form')[0].id;	
 	console.log(a2);	//taskInputNo_{tno}
-	console.log("==========================");
 	var a3 = '#'+a2;	//#taskInputNo_{tno}	
 	console.log(a3);
 	$(a3).find(".jm-innerTaskInput").addClass('row active');
@@ -159,12 +156,8 @@ boxOutHandler=(event)=>{
 			&& !$(a1).hasClass("jm-inner-task-button")
 			&& !$(a1).parents('div').hasClass("jm-innerTaskInput")
 			){
-			console.log("영역외");
-			console.log(a1);
 			$(".jm-innerTaskInput").removeClass('row active');
-			console.log($('.addInnerTask'));
 			var size = $('.addInnerTask').length;
-			console.log(size);
 			var i = 0;
 			for(i=0;i<size;i++){
 			$('.addInnerTask')[i].reset();
@@ -175,6 +168,7 @@ boxOutHandler=(event)=>{
 }
 
 function getProjectMemberList(thisElement){
+	console.log("[JM]===getProjectMemberList===")
 	var a1 = thisElement;
 	console.log(a1);
 	var a2 = $(a1).closest('li').next().find('select[name=tmember]')[0].id;
@@ -207,6 +201,7 @@ function getProjectMemberList(thisElement){
 		});
 	}
 function showProjectMemberView(data, htmlTarget){
+	console.log("[JM]===showProjectMemberView===")
 		console.log(data)
 		console.log("성공하였습니다.")
 		console.log(data[0]);
@@ -220,18 +215,17 @@ function showProjectMemberView(data, htmlTarget){
 
 
 ttileCheckHandler=(event)=>{
-	console.log("submit 눌렸다."+event.target);
+	console.log("[JM]===ttileCheckHandler==="")
 	var a1 = event.target;
 	console.log(a1);
 }
 
 
 function innerTaskaddListHandler (data) {
-
 if(jmRegExp(data) == false){
 		return;
 	} 
-
+console.log("[JM]===innerTaskaddListHandler==="")
 
 //const pathname = "/" + window.location.pathname.split("/")[1] + "/";
 //const origin = window.location.origin;

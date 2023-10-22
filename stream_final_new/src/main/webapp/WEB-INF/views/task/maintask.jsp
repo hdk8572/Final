@@ -340,9 +340,10 @@
 	<script>
 		taskSortHandler=()=>{
 			var e1 = event.target;
-			console.log(e1);
+			console.log("[JM]===taskSortHandler===")
+			console.log("[JM]"+e1);
 			var e2 = $(e1).data("ordertype");
-			console.log(e2);
+			console.log("[JM]"+e2);
 			
 			$.ajax({
 				type:"post",
@@ -354,7 +355,6 @@
 				dataType: "json",
 				url: contextPath+"/member/sort",
 				success:function(data){
-					console.log(data);
 					sortMakeView(data)
 					},
 				error : function(request, status, error){
@@ -369,6 +369,7 @@
 	</script>
 	<script>
 	sortMakeView=(data)=>{
+		console.log("[JM]===sortMakeView===")
 		console.log(data);
 		
 		var htmlList="";
@@ -512,24 +513,24 @@
 	</script>
 	<script>
 	DateInputCheckHandler=(thisElement)=>{
-		console.log("===DateInputCheckHandler===")
-		console.log(thisElement);
+		console.log("===[JM]DateInputCheckHandler===")
+		console.log("[JM]"+thisElement);
 		var dateA1 = $(thisElement).closest('li').next().children('form')[0].id;
-		console.log(dateA1);
+		console.log("[JM]"+dateA1);
 		var dateA2 = "#"+dateA1;
-		console.log(dateA2);
+		console.log("[JM]"+dateA2);
 		var startDateInput = $(dateA2).find('input[name=tstartdate]')[0];
 		var endDateInput = $(dateA2).find('input[name=tenddate]')[0];
-		console.log(startDateInput);
-		console.log(endDateInput);
+		console.log("[JM]"+startDateInput);
+		console.log("[JM]"+endDateInput);
 		
 			startDateInput.addEventListener('change', function() {
-				console.log(startDateInput.value);
+				console.log("[JM]"+startDateInput.value);
 			compareDates();
 		});
 		
 			endDateInput.addEventListener('change', function() {
-				console.log(endDateInput.value);
+				console.log("[JM]"+endDateInput.value);
 			compareDates();
 		});
 	
@@ -547,24 +548,24 @@
 </script>
 <script>
 	jmRegExp=(thisElement)=>{
-		console.log("===정규표현식===");
-		console.log(thisElement);	//추가하기 버튼
+		console.log("[JM]===정규표현식===");
+		console.log("[JM]"+thisElement);	//추가하기 버튼
 		var eTarget1 = $(thisElement).parent();	
-		console.log(eTarget1);
+		console.log("[JM]"+eTarget1);
 		var eTargetTtitle = $(eTarget1).siblings('.jm-title-ttitle').find('input[name=ttitle]')[0];
-		console.log(eTargetTtitle);	//	input [name=ttitle]
+		console.log("[JM]"+eTargetTtitle);	//	input [name=ttitle]
 		var ttitleValue = $(eTargetTtitle).val();	
-		console.log(ttitleValue);	//input 입력값
+		console.log("[JM]"+ttitleValue);	//input 입력값
 		
 		var eTargetTstartdate = $(eTarget1).siblings('.jm-title-tstartdate').find('input[name=tstartdate]')[0];
-		console.log(eTargetTstartdate);
+		console.log("[JM]"+eTargetTstartdate);
 		var tstartdateValue = $(eTargetTstartdate).val();	//input[name=tstartdate].val
-		console.log(tstartdateValue);
+		console.log("[JM]"+tstartdateValue);
 		
 		var eTargetTenddate = $(eTarget1).siblings('.jm-title-tenddate').find('input[name=tenddate]')[0];
-		console.log(eTargetTenddate);
+		console.log("[JM]"+eTargetTenddate);
 		var tendDateValue = $(eTargetTenddate).val();	//input[name=tenddate].val
-		console.log(tendDateValue);
+		console.log("[JM]"+tendDateValue);
 		
 		var regTtitleValue = /^(?:(?:[ㄱ-ㅎ가-힣]{1,13}|[A-Za-z]{1,40}|[!@#$%^&*()_+]{1,13}|\d{1,40}| ){1,40})$/;
 		
