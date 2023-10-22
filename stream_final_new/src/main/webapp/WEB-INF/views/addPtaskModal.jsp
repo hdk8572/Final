@@ -28,7 +28,10 @@
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2">
 							  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r= "4"></circle>
 							</svg>
-							<input type="text" class= "form-control manager ml-2" name="tmember" placeholder= "담당자">
+						<!--<input type="text" class= "form-control manager ml-2" name="tmember" placeholder= "담당자">-->
+							<select class="form-select mb-3 selectCategory ml-2" name="tmember" id="taskmember">
+								<!-- 프로젝트 리스트 -->
+							</select>
 							<input type="file" class= "btn btn-primary fileUploadBtn" name="upload" >
 						</div>
 						<textarea class="form-control input" id="summernote" rows="10" name="tcontent" placeholder="내용을 입력해주세요"></textarea>
@@ -63,14 +66,14 @@
 				var selectedOption = $("select[name=selectedTstatus] option:selected").val();
 				$("input[name=tstatus]").val(selectedOption);
 			});
-			
+			console.log(useridJs);
 		    $.ajax({
-		    	url:"${pageContext.request.contextPath}/member/getCompanyMemberList",
-		    	data: {userid: useridJs},
+		    	url:"${pageContext.request.contextPath}/member/getCurrentMemberList",
+		    	data: {pno: $("input[name=pno]").val()},
 		    	type: "get",
 		    	dataType: "json",
 		    	success: function(data) {
-		    		//makeMemberView(data);
+		    		makeTaskMemberView(data);
 		    		console.log("성공");
 		    	},
 		    	error: function() {	
@@ -79,20 +82,20 @@
 		    });
 	}
 		
-	function makeMemberView(data) { // 회사 소속인 참가자 리스트 조회
-		var memberListHtml = "";
+	function makeTaskMemberView(data) { // 회사 소속인 참가자 리스트 조회
+		var memberTaskListHtml = "";
 		/* memberListHtml += '<select class="form-select mb-3 selectCategory ml-2" name="mname">'; */
-		memberListHtml += '<option value="" selected>참가자선택</option>';
+		memberTaskListHtml += '<option value="" selected>담당자 선택</option>';
 	    for(var i=0;i<data.length;i++){
 			var memberOne = data[i];
-			memberListHtml+=`
+			memberTaskListHtml+=`
 				<option value="\${memberOne.userid}">\${memberOne.mname}\${memberOne.mrank}님</option>
 				`;
 	    }
 		/* memberListHtml += '</select>'; */
-	    $("#companyMember").html(memberListHtml);
+	    $("#taskmember").html(memberTaskListHtml);
 	    /* $("#companyMember select[name=mname] option:eq(0)").prop("selected", true); */
-	    $(".form-select.mb-3.addProject.selectedMember").change(memberSelect);
+	    // $(".form-select.mb-3.addProject.selectedMember").change(memberSelect);
 	    
 	}
 
