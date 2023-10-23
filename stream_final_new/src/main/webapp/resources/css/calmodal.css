@@ -116,6 +116,7 @@
 #attenduserid-wrap{
 	 display: inline-block;
 	  margin-left: 10px;
+	  width: 80%;
 }
 .attenduserid-item {
 	width:20%;

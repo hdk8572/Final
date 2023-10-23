@@ -34,7 +34,7 @@
 							</div>
 							
 							<!-- 작성자 코드 수정하기-->
-							<div id="userid"></div>
+							<!-- <div id="userid"></div> -->
 							
 							<div class="card-body">
 								<!-- 제목 -->
@@ -110,15 +110,15 @@
 
 <!-- read 일정 수정 삭제 코드 -->
 <script>
-	$('#dltBtn').on("click", function(){
+	$('#delete-calButton').on("click", function(){
 		
 		if(confirm('글을 삭제하시겠습니까?')) {
 			var sno =$('#sno').val();
 			
 			//ajax
 			$.ajax({
-				type: 'POST',
 				url: "${pageContext.request.contextPath}/member/deletepcal",
+				type: 'POST',
 				data:{sno:sno},
 				success: function(response){
 					if(response === 1) {

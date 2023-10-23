@@ -81,7 +81,8 @@
 		</div>
 	</div>
 </div>
- 
+
+<!-- 제목 유효성검사  -->
 <script>
 	document.addEventListener("DOMContentLoaded", function() {
 		
@@ -95,13 +96,9 @@
 				alert("제목은 30자 이내여야 합니다.");
 			}
 		}
-		
 		addTitle.addEventListener("input", calendartitleLength);
 	});
 </script> 
-
-
-
 
 <script>
 //addcalmodal 초기화!!!
