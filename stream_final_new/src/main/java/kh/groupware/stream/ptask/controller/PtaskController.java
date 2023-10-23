@@ -134,16 +134,28 @@ public class PtaskController {
 		return ptaskService.selectOneInner(pnoTnoParam);
 	}
 	
+	@GetMapping("/member/updateDetailProject")
+	@ResponseBody
+	public int updateModal(PtaskVo vo) {
+		return ptaskService.update(vo);
+	}
+	
 	@GetMapping("/member/updateTstatus")
 	@ResponseBody
-	public int updateTstatus(PnoTnoParam pnoTnoParam) {
-		return ptaskService.update(pnoTnoParam);
+	public int updateTstatus(PtaskVo vo) {
+		return ptaskService.update(vo);
 	}
 	
 	@PostMapping("/member/updateTstatusHide")
 	@ResponseBody
 	public int deletePtask(String tno) {
 		return ptaskService.updateHide(tno);
+	}
+	
+	@PostMapping("/member/deleteTask")
+	@ResponseBody
+	public int deleteTask(String tno) {
+		return ptaskService.deleteTask(tno);
 	}
 	
 }

@@ -168,6 +168,11 @@
 	const ptaskPno = $(".container-fluid.p-0").find("input[name=pno]").val();
 	
 
+	$('.modal').on('hidden.bs.modal', function (e) {
+		var resett1 = $(this).find('form')[0].reset();
+		$(this).find('form')[0].reset();
+		$("#summernote").summernote('code', "");				// Project.jsp에 있는 모든 모달 닫을 시 summernote 값 초기화
+	});
 	
 	/* 상단 탭바 위치 이동*/
 	function openTab(tabName) {
@@ -320,11 +325,13 @@
 		 		$(".wrap-card .tcontent").html(result.tcontent);
 		 		$(".wrap-card .ttitle").html(result.ttitle);
 		 		$(".wrap-card .tstatus").html(result.tstatus);
-		 		$(".wrap-card .userid").html(result.userid);
-		 		$(".wrap-card .tstartdate").val(result.tstartdate);
-		 		$(".wrap-card .tenddate").val(result.tenddate);
+		 		$(".wrap-card .mname").text(result.mname+" "+result.mrank);
+		 		$(".wrap-card .mname").val(result.tmember);
+		 		$(".wrap-card [name=tstartdate]").val(result.tstartdate);
+		 		$(".wrap-card [name=tenddate]").val(result.tenddate);
 		 		$(".wrap-card [name=tno]").val(result.tno);
 		 		$(".wrap-card [name=pno]").val(result.pno);
+		 		$(".wrap-card [name=userid]").val(result.userid);
 		 		replyLoadList(targetTno);
 		 	},
 		 	error: function() {
@@ -342,7 +349,7 @@
 		if(confirm_val == true){
 		    <!--- 확인 or yes 버튼을 눌렀을 때 실행 될 함수 구현 --->
 		    $.ajax({
-				url: "${pageContext.request.contextPath}/member/updateTstatusHide",
+				url: "${pageContext.request.contextPath}/member/deleteTask",
 				type: "post",
 				data: {tno: targetTno},
 				dataType: "json",

@@ -67,6 +67,7 @@
 /* Date */
 .form-date {
 	width: 45%;
+	margin-bottom: 0;
 }
 
 /* Project */
@@ -399,7 +400,11 @@ form {
     outline: 0;
 }
 
+.d-flex {
+	display: flex;
+}
+
 .d-flex.align-items-center.first.new,
 .d-flex.align-items-center.second.new {
-	display: none;
+	display: none ;
 }

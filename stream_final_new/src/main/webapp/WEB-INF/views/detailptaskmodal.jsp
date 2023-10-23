@@ -40,23 +40,44 @@
 					  		
 						</div>
 						<div class="card-body detailPtaskTitle">
-							<form>
+							<form class="Wrap-info">
 								<div class="form-control ttitle"></div>
-								<input type="hidden" name=tstatus>
+								<input type="hidden" name="tstatus">
 								<div class="d-flex align-items-center first exist">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock align-middle me-2"><circle cx="12" cy= "12 " r= "10 "></circle><polyline points= "12 6 12 12 16 14 "></polyline>
 									</svg>
 									<div class= "form-control manager ml-2 tstatus"></div>					
 								</div>
-								<input type="hidden" name=tmember>
-								<div class="d-flex align-items-center second exist">
+								<div class="d-flex align-items-center first new">	<!-- new -->
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock align-middle me-2"><circle cx="12" cy="12 " r="10 "></circle><polyline points="12 6 12 12 16 14 "></polyline></svg>
+									<select class="form-select mb-3 selectCategory ml-2" id="updatePtaskTstatus" name="selectedTstatus">
+										<option class="status request" value="미진행" name="미진행" >미진행</option>
+										<option class="status progress" value="진행" name="진행">진행</option>
+										<option class="status remain" value="보류" name="보류">보류</option>
+									</select>					
+								</div>
+								<input type="hidden" name="tmember">
+								<div class="d-flex align-items-center second exist">	 <!-- exist -->
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2">
 									  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r= "4"/>
 									</svg>
-									<div class= "form-control manager ml-2 userid"></div>
+									<div class= "form-control manager ml-2 mname">
+									</div>
 									<div class=""></div>
 								</div>
+								<div class="d-flex align-items-center second new">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2">
+									  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
+									</svg>
+									<select class="form-select mb-3 selectCategory ml-2" id="updateTaskMember">
+									</select>
+								</div>
 								<div class="form-control detail-content input tcontent"></div>
+								<div class="form-control">
+									<input type="date" class="form-date" name="tstartdate" required="required" readonly>
+									~
+									<input type="date" class="form-date" name="tenddate" required="required" readonly>
+								</div>
 								<input type="hidden" name="pno">
 								<input type="hidden" name="tno">
 							</form>
@@ -65,7 +86,7 @@
 									<div class="reply-input">
 										<input type="text" class="form-control replyInput" name="rcontent" placeholder="댓글을 입력해주세요 - Enter 클릭 시 입력됩니다.">
 										<input type="hidden" name="tno">
-										<input type="hidden" name="userid" value="${principal.username}">
+										<input type="hidden" name="userid">
 									</div>
 									<div class="replyList">
 									</div>
@@ -273,51 +294,40 @@ function makeReplyList(data) {
 	$(".dropdown-item.update").on("click", updateFunction);
 	$(".btn.btn-primary.updatePtask").on("click", applyEditFunction);
 	
-	$(document).ready(function() {
-		var currentTstatus = $(".form-control.manager ml-2.tstatus").text();
-		console.log("currentTstatus :"+currentTstatus);
-	});
+	
+	
 	
 	// <수정> 눌렀을 때 수정창으로 변경
 	function updateFunction() {
-			
-		
-		
+		var currentTstatus = $(".form-control.manager.ml-2.tstatus").text();
+		console.log("currentTstatus :"+currentTstatus);
+
+
 		$(".btn.btn-primary.updatePtask").css("visibility", "visible");
-		
+
+		$(".d-flex.align-items-center.first.exist").css("display", "none");
+		$(".d-flex.align-items-center.second.exist").css("display", "none");
 		$(".form-control.ttitle").attr("contenteditable", "true");
 		$(".form-control.detail-content.input.tcontent").attr("contenteditable", "true");
-		/////////////입력된 것을 읽기
-		$(".d-flex.align-items-center.first").remove();
-		$(".d-flex.align-items-center.second").remove();
+		$(".d-flex.align-items-center.first.new").css("display", "flex");
+		$(".d-flex.align-items-center.second.new").css("display", "flex");
+		$(".Wrap-info input[name=tstartdate]").prop("readonly", false);
+		$(".Wrap-info input[name=tenddate]").prop("readonly", false);
+	
+		$("#updatePtaskTstatus").val(currentTstatus).prop("selected", true);		// 입력된 것을 읽기
+		$("input[name=tstatus]").val(currentTstatus);
 		
-		tstatusHtml ="";
-		tstatusHtml += `
-			<div class="d-flex align-items-center first new">
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock align-middle me-2"><circle cx="12" cy="12 " r="10 "></circle><polyline points="12 6 12 12 16 14 "></polyline></svg>
-				<input type="hidden" name="tstatus" value="미진행">
-				<select class="form-select mb-3 selectCategory ml-2" name="selectedTstatus">
-					<option class="status request" value="미진행" name="미진행" >미진행</option>
-					<option class="status progress" value="진행" name="진행">진행</option>
-					<option class="status remain" value="보류" name="보류">보류</option>
-				</select>					
-			</div>
-			`;
-			
-		tmemberHtml ="";
-		tmemberHtml += `
-			<div class="d-flex align-items-center second new">
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2">
-				  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
-				</svg>
-				<select class="form-select mb-3 selectCategory ml-2" name="tmember" id="updateTaskMember"><option value="placeholder" selected="">담당자 선택</option>
-				</select>
-			</div>
-			`;
+
+
+		$("select[id=updatePtaskTstatus]").change(function() {
+			var changedTstatus =$("#updatePtaskTstatus option:selected").val();
+			$("input[name=tstatus]").val(changedTstatus);
+		});		
 		
-		$(".form-control.ttitle").after(tmemberHtml);
-		$(".form-control.ttitle").after(tstatusHtml);
-		///////////////prop("selected", true);
+		$("select[id=updateTaskMember]").change(function() {
+			var changedTaskMember = $("#updateTaskMember option:selected").val();
+			$("input[name=tmember]").val(changedTaskMember);
+		});
 		
 	    $.ajax({
 	    	url:"${pageContext.request.contextPath}/member/getCurrentMemberList",
@@ -335,10 +345,11 @@ function makeReplyList(data) {
 		
 	}
 	
+	
+	
 	function updateTaskMemberView(data) { // 회사 소속인 참가자 리스트 조회
 		
 		var memberUpdateTaskListHtml = "";
-		memberUpdateTaskListHtml += '<option value="placeholder" selected>담당자 선택</option>';
 	    	for(var i=0;i<data.length;i++){
 				var memberOne = data[i];
 				memberUpdateTaskListHtml+=`
@@ -346,53 +357,90 @@ function makeReplyList(data) {
 				`;
 	    }
 	    $("#updateTaskMember").html(memberUpdateTaskListHtml);
-	    
+		var currentTmember = $(".form-control.manager.ml-2.mname").val();
+		console.log("currentTmember :"+currentTmember);
+		
+		$("#updateTaskMember").val(currentTmember).prop("selected", true);
+		$("#updatePtaskTstatus option:selected").val(currentTmember);
 	}
 	
 	function applyEditFunction() {
+		var changedTstatus = $(".Wrap-info input[name=tstatus]").val();
+	    console.log("changedTstatus :"+changedTstatus);
+	    var changedTmember = $(".Wrap-info input[name=tmember]").val();
+	    console.log("changedTmember :"+changedTmember);
+	    
+		$(".form-control.ttitle").attr("contenteditable", "false");
+		$(".form-control.detail-content.input.tcontent").attr("contenteditable", "false");
+		$(".d-flex.align-items-center.first.new").css("display", "none");
+		$(".d-flex.align-items-center.second.new").css("display", "none");
+		$(".d-flex.align-items-center.first.exist").css("display", "flex");
+		$(".d-flex.align-items-center.second.exist").css("display", "flex");
+		$(".Wrap-info input[name=tstartdate]").attr("readonly", true);
+		$(".Wrap-info input[name=tenddate]").attr("readonly", false);
+		
 		
 		var confirm_val = confirm("수정 하시겠습니까?");
 		if(confirm_val == true){
 		    <!--- 확인 or yes 버튼을 눌렀을 때 실행 될 함수 구현 --->
-			$(".form-control.ttitle").attr("contenteditable", "false");
-			$(".form-control.detail-content.input.tcontent").attr("contenteditable", "false");
-			$(".d-flex.align-items-center.first.new").remove();
-			$(".d-flex.align-items-center.second.new").remove();
-			 
-		
-			
-			existTstatusHtml ="";
-			existTstatusHtml += `
-				<div class="d-flex align-items-center first exist">
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock align-middle me-2"><circle cx="12" cy= "12 " r= "10 "></circle><polyline points= "12 6 12 12 16 14 "></polyline>
-					</svg>
-					<div class= "form-control manager ml-2 tstatus"></div>					
-				</div>
-				`;
-			
-			existTmemberHtml ="";
-			existTmemberHtml += `
-				<div class="d-flex align-items-center second exist">
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2">
-					  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r= "4"/>
-					</svg>
-					<div class= "form-control manager ml-2 userid"></div>
-					<div class=""></div>
-				</div>
-			`;
-			
-			
-			
-			$(".form-control.ttitle").after(existTstatusHtml);
-			$(".form-control.ttitle").after(existTmemberHtml);
+		    
+			$(".d-flex.align-items-center.first.exist").val(changedTstatus);
+			$(".d-flex.align-items-center.second.exist").val(changedTmember);
 			
 			$(".btn.btn-primary.updatePtask").css("visibility", "hidden");
+			
+			$.ajax({
+				url: "${pageContext.request.contextPath}/member/updateDetailProject",
+				data: "get",
+				dataType: "json",
+				data: {
+					pno: $(".Wrap-info [name=pno]").val(),
+					tno: $(".Wrap-info [name=tno]").val(),
+					tmember: $("input[name=tmember]").val(),
+					ttitle: $(".form-control.ttitle").text(),
+					tcontent: $(".form-control.detail-content.input.tcontent").text(),
+					tstatus: $("input[name=tstatus]").val(),
+					tstartdate: $(".Wrap-info input[name=tstartdate]").val(),
+					tenddate: $(".Wrap-info input[name=tenddate]").val()
+				},
+				success: function() {
+					$("#detailProjectModal").modal("hide");
+					loadPtaskList();		    		
+		    	},
+		    	error: function() {	
+				alert("updateDetailProject에서 에러났습니다.");
+			}
+			});
+			
 		}else if(confirm_val == false){
 		}
 
 	}
-	
 
+	$('#detailProjectModal').on('hidden.bs.modal', function (e) {
+	    // Reset form values
+	    $(this).find("form")[0].reset();
+
+	    // Reset contenteditable fields
+	    $(this).find("[contenteditable=true]").text("");
+
+	    // Reset dropdowns to their first option
+	    $(this).find("select").prop('selectedIndex',0);
+
+	    // Hide the update button again
+	    $(".btn.btn-primary.updatePtask").css("visibility", "hidden");
+
+	    // Switch back to display mode for exist fields and hide new fields 
+		$(".d-flex.align-items-center.first.exist").css("display", "flex");
+		$(".d-flex.align-items-center.second.exist").css("display", "flex");
+		$(".d-flex.align-items-center.first.new").css("display", "none");
+		$(".d-flex.align-items-center.second.new").css("display", "none");
+
+		// Make date inputs readonly again
+		$(".Wrap-info input[name=tstartdate]").prop("readonly", true);
+		$(".Wrap-info input[name=tenddate]").prop("readonly", true);
+	});
+	
 </script>
 
 <!-- 모달 -->

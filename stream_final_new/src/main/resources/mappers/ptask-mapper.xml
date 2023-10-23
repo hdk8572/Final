@@ -31,12 +31,22 @@
 	</select>
 		
 	<select id="ProjectSelectOneInner" resultType="PtaskVo" parameterType="map">
+	<!--  
 		SELECT tno,  pno, userid, tmember, ttitle, tcontent, tstatus
 			, to_char(tdate, 'yyyy-mm-dd') tdate
 			, to_char(tstartdate, 'yyyy-mm-dd') tstartdate
 			, to_char(tenddate, 'yyyy-mm-dd') tenddate
 			, bref, brelevel, brestep 
 		FROM TASK
+		WHERE PNO=#{pno} and TNO=#{tno}
+	-->	
+		SELECT tno,  pno, T.userid, tmember, ttitle, tcontent, tstatus, mname, mrank
+			, to_char(tdate, 'yyyy-mm-dd') tdate
+			, to_char(tstartdate, 'yyyy-mm-dd') tstartdate
+			, to_char(tenddate, 'yyyy-mm-dd') tenddate
+			, bref, brelevel, brestep
+		FROM TASK T
+            JOIN USERS U ON (T.TMEMBER = U.USERID)
 		WHERE PNO=#{pno} and TNO=#{tno}
 	</select>	
 	
@@ -46,7 +56,7 @@
 		</selectKey>
 		INSERT 
 		INTO TASK (TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, tstartdate, tenddate, bref, brelevel, brestep)
-			VALUES (#{tno}, #{pno}, #{userid}, #{tmember}, #{ttitle}, #{tcontent}, #{tstatus}, #{tstartdate}, #{tenddate}, #{tno}, '0', '0')
+		VALUES (#{tno}, #{pno}, #{userid}, #{tmember}, #{ttitle}, #{tcontent}, #{tstatus}, #{tstartdate}, #{tenddate}, #{tno}, '0', '0')
 	</insert>
 
 	<delete id="deleteTask" parameterType="String">
@@ -54,9 +64,14 @@
 		WHERE TNO = #{tno}
   	</delete>
   	
-	<update id="updatePtask" parameterType="ProjectVo">
+	<update id="updatePtask" parameterType="PtaskVo">
+	<!--  
 		UPDATE TASK SET TNO=#{tno}, PNO=#{pno}, USERID=#{userid}, TMEMBER=#{tmember}, TTITLE=#{ttitle}, TCONTENT=#{tcontent}, TDATE=#{tdate}, TSTARTDATE=#{tstartdate}, TENDDATE=#{tenddate}, BREF=#{bref}, BRESTEP=#{brestep}, BRELEVEL=#{brelevel}
 		WHERE PNO=#{pno} and TNO=#{tno}
+	-->
+		UPDATE TASK SET TNO=#{tno}, PNO=#{pno}, TMEMBER=#{tmember}, TTITLE=#{ttitle}, TCONTENT=#{tcontent}, TSTATUS=#{tstatus}, TSTARTDATE=#{tstartdate}, TENDDATE=#{tenddate}
+		WHERE PNO=#{pno} and TNO=#{tno}
+	
 	</update>
 	
 	<update id="updatePtaskHide" parameterType="ProjectVo">

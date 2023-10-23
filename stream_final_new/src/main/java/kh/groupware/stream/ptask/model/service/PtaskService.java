@@ -2,6 +2,7 @@ package kh.groupware.stream.ptask.model.service;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
 
 import kh.groupware.stream.project.model.vo.PnoTnoParam;
 import kh.groupware.stream.project.model.vo.ProjectVo;
@@ -13,6 +14,7 @@ public interface PtaskService {
 	public int insertTask(PtaskVo vo);
     public int updateHide(String tno);
     public PtaskVo selectOneInner(PnoTnoParam pnoTnoParam);
-    public int update(PnoTnoParam pnoTnoParam);
+    public int update(PtaskVo vo);
+	public int deleteTask(String tno);
     
 }

@@ -41,5 +41,5 @@ public class PnoTnoParam {
 	public void setTno(String tno) {
 		this.tno = tno;
 	}
-	
+
 }

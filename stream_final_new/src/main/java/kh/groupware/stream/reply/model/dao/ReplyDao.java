@@ -34,6 +34,10 @@ public class ReplyDao {
 		return sqlSession.delete("reply.deleteReply", rno);
 	}
 	
+	public int deleteReplyAll(String tno) {
+		return sqlSession.delete("reply.deleteReplyAll", tno);
+	}
+	
 }
 
 

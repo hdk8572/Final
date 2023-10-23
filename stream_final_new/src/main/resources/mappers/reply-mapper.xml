@@ -30,6 +30,11 @@
 		WHERE RNO = #{rno}
 	</delete>
 	
+	<delete id="deleteReplyAll" parameterType="ReplyVo">
+		DELETE FROM REPLY
+		WHERE TNO = #{tno}
+	</delete>
+	
 <!-- 	<update id="updateReply" parameterType="ReplyVo">
 		UPDATE REPLY SET RNO=#{rno}, TNO=#{tno}, USERID=#{userid}, RCONTENT=#{rcontent}, RDATE=#{rdate}
 		WHERE RNO=#{rno}

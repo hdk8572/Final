@@ -13,6 +13,7 @@ import kh.groupware.stream.project.model.vo.PnoTnoParam;
 import kh.groupware.stream.project.model.vo.ProjectVo;
 import kh.groupware.stream.ptask.model.dao.PtaskDao;
 import kh.groupware.stream.ptask.model.vo.PtaskVo;
+import kh.groupware.stream.reply.model.dao.ReplyDao;
 
 @Service
 public class PtaskServiceImpl implements PtaskService {
@@ -25,6 +26,9 @@ public class PtaskServiceImpl implements PtaskService {
 	
 	@Autowired
 	private ProjectDao projectDao;
+	
+	@Autowired
+	private ReplyDao replyDao;
 	
 	@Override
 	public List<PtaskVo> pselectList(String pno) {
@@ -58,8 +62,16 @@ public class PtaskServiceImpl implements PtaskService {
 	}
 	
 	@Override
-	public int update(PnoTnoParam pnoTnoParam) {
-		return ptaskDao.update(pnoTnoParam);
+	public int update(PtaskVo vo) {
+		return ptaskDao.update(vo);
+	}
+	
+	@Override
+	@Transactional
+	public int deleteTask(String tno) {
+		replyDao.deleteReplyAll(tno);
+		int result = ptaskDao.deleteTask(tno);
+		return result;
 	}
 	
 }
