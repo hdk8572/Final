@@ -131,6 +131,12 @@
 		    
 		    //attenduserid-wrap
 		    $("#updatedAttendees").append(htmlVal);
+		    
+		 	 //참가자 svg 누르면 삭제됨TODO
+		    /* $(".feather.feather-delete.align-middle.me-2").click(function() {
+		 		console.log("add삭제");
+		 		$(this).closest(".attenduserid-item").remove();
+		 	}); */
 	    }
 	});
 </script>

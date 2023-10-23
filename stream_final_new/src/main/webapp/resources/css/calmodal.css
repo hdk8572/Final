@@ -19,22 +19,7 @@
     background-color: #009b77;
 	border-radius: 10px 10px 0px 0px;
 }
-.card.pcal{
-	word-wrap: break-word;
-    background-clip: border-box;
-    background-color: #fff;
-    border: 0 solid transparent;
-    border-radius: 0.25rem;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    position: relative;
-    height: 100%;
-}
-.card-body.pcal{
-	cursor: auto;
-	height: 100%;
-}
+
 .modal-dialog.pcal {
     position: relative;
     z-index: 5;
@@ -92,34 +77,21 @@
     background-color: transparent;
     border: 0 solid transparent;
     border-radius: 0.25rem;
-    display: flex;
     flex-direction: column;
     min-width: 0;
     position: relative;
-    width: 100%;
 }
 .form-calmemberlist{
 	margin-left: 1rem;
 	margin-bottom: 1rem;
 }
-.form-calmemberlist.card{
-	width:500%; /* TODO */
-	background-color: #f5f7fb;
-    display: flex;
-    height: 90px;
-    display: inline-table;
-    overflow: scroll;
-}
+
 .attenduserid-item > div{
 	margin-left: 1rem;
 }
-#attenduserid-wrap{
-	 display: inline-block;
-	  margin-left: 10px;
-	  width: 80%;
-}
+
 .attenduserid-item {
-	width:20%;
+	width:50%;
     display: inline-block;
 }
 /* add참가자 */
@@ -143,3 +115,16 @@
 /* 수정 참가자 */
 
 /* 참가자 */
+
+
+
+
+
+
+
+
+
+
+
+
+

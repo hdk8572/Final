@@ -15,7 +15,10 @@
 .form-select.member {
 	margin-bottom: 1rem !important;
 }
-
+.feather.feather{
+	vertical-align: middle !important;
+    color: #009b77;
+}
 .feather.feather-delete.align-middle.me-2 {
 	cursor:pointer;
 }

@@ -46,12 +46,20 @@ SELECT SNO, USERID, mname, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, '
 	</select>
 	
 	<!-- 프로젝트의 멤버들 조회 --> 
-	<select id="memberProjectList" resultType="MemberSimpleVo">
+<!-- 	<select id="memberProjectList" resultType="MemberSimpleVo">
 		select userid, (select mname from users tu where tm.userid=tu.userid ) mname 
 		from MEMBER_PROJECT tm 		
 		where pno=#{pno}
 	</select>
-	
+	 -->
+
+	<!-- 프로젝트의 멤버들 조회2 --> 
+	<select id="memberProjectList" resultType="MemberSimpleVo">
+		SELECT PNO, USERID, MNAME, MRANK
+		FROM MEMBER_PROJECT
+		JOIN USERS USING(USERID)
+		WHERE pno = #{pno}
+	</select>
 
 	<!-- 일정 등록 과 끼인테이블 등록 selectKey사용 -->
 	<!-- 	

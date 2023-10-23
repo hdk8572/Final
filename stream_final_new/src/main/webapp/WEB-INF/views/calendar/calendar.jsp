@@ -58,11 +58,11 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 		    
 		    $("#attenduserid-wrap").append(htmlVal);
 		    
-		    /* TODO 삭제안ㄷㅁ 
-		    $(".attenduserid-item").on("click", ".feather.feather-user.align-middle.me-2",(function() {
-		    	$(this).closest(".attenduserid-item").remove();
-		    }); 
-		    */
+		    //참가자 svg 누르면 삭제됨
+		    $(".feather.feather-delete.align-middle.me-2").click(function() {
+		 		console.log("add삭제");
+		 		$(this).closest(".attenduserid-item").remove();
+		 	});
 	    }
 	});
 </script>

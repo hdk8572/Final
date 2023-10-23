@@ -19,7 +19,7 @@
         if (key === 'Enter') { 
             event.preventDefault(); // 폼 제출을 막음
             
-            $('.map-hidden').css("display", 'block');
+            $('.map-hidden').css("display", 'block'); //class에서 id로 바꿈
             showMap(); // 지도를 표시하는 함수 호출
         }
     };

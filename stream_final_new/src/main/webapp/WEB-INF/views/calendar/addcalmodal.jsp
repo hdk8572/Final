@@ -27,43 +27,39 @@
 							<input type="date" class="form-date" id="start" name="start" required="required"> ~ <input type="date" class="form-date" id="end" name="end" required="required"> <!-- s -->
 							
 							<!-- 작성자&참석자 -->
-							<div>
-								<div class="d-flex align-items-center">
-								<!-- 작성자 -->
-									<input class="form-control userid" type="hidden" name="userid" value="${principal.username }" readonly>
-										<div class="calmemberlist-img">
+							<div class="wrap-selected"><!-- 이거 걸면 안 나온다. -->
+								<div class="selected-leftPart">
+									<div class="d-flex align-items-center">
+										<!-- 작성자 -->
+										<input class="form-control userid" type="hidden" name="userid" value="${principal.username }" readonly>
 										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r= "4"></circle></svg>
+										
+										<!-- 참가자 -->
+										<select class="form-select mb-3 calmemberlist" id="calmemberlist" >
+											<option value="">참가자 추가</option>
+										</select>
 									</div>
-									
-									<!-- 참가자 -->
-									<select class="form-select calmemberlist mb-3" id="calmemberlist" >
-										<option value="">참가자 추가</option>
-									</select>
-									<div class="form-calmemberlist card" id="form-content" >
-										<!-- 참가자 반복 -->
-										<div id="attenduserid-wrap">
-											<!-- 
-												<div class="attenduserid-item">
-													<input type="text" placeholder="참가자" readonly>
-													<input type="hidden"  name="attenduseridArr">
-												</div>
-											 -->	
-										</div>
-									</div>
-								</div>
-								
-								<!-- 지도 -->
-								<div>
+									<!-- 장소 이름 -->
 									<div class="d-flex align-items-center">
 										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin align-middle me-2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-										<input type= "text" class= "form-control place" id="splace" name="splace" placeholder= "장소를 입력하세요." onkeydown="searchOnEnter(event)">
+										<input type= "text" class= "form-control addplace" id="splace" name="splace" placeholder= "장소를 입력하세요." onkeydown="searchOnEnter(event)">
 									</div>
 								</div>
-								<div class="map-hidden" id="form-content">
-									<%@ include file="/WEB-INF/views/calendar/kakaomap.jsp"%>
+								<!-- 참가자 반복 -->
+								<div  id="attenduserid-wrap" class="selected-rightPart card addcalendar">
+									<!-- 
+										<div class="attenduserid-item">
+											<input type="text" placeholder="참가자" readonly>
+											<input type="hidden"  name="attenduseridArr">
+										</div>
+									 -->	
 								</div>
 							</div>
-								
+							<!-- 지도 -->
+							<div class="map-hidden">
+								<%@ include file="/WEB-INF/views/calendar/kakaomap.jsp"%>
+							</div>
+							
 							<!-- 내용  -->
 							<div id="form-content">
 								<textarea class="smemo" id="summernote-addcalmodal" rows="5" name="smemo"></textarea>
