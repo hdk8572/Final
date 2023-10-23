@@ -12,7 +12,7 @@ public class ChatRoomVo {
 	private String roomName;
 	private String userId;	//작성자
 	private String mname;
-	private List<WebSocketSession> sessions = new ArrayList<>();
+	private Integer sessions;
 	
 	public static ChatRoomVo create(String roomName,String userId) {
 		ChatRoomVo room = new ChatRoomVo();
@@ -64,14 +64,14 @@ public class ChatRoomVo {
 	public void setMname(String mname) {
 		this.mname = mname;
 	}
-	
-	public List<WebSocketSession> getSessions() {
+	public Integer getSessions() {
 		return sessions;
 	}
-
-	public void setSessions(List<WebSocketSession> sessions) {
+	public void setSessions(Integer sessions) {
 		this.sessions = sessions;
 	}
+	
+	
 
 	
 

@@ -53,4 +53,7 @@ public class ChatDao {
 	public ChatRoomVo findWriter(String userId){
 		return sqlSession.selectOne("chat.findWriter",userId);
 	}
+	public List<ChatRoomVo> findname() {
+		return sqlSession.selectList("chat.findname");
+	}
 }

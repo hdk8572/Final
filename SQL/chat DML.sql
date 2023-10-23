@@ -412,8 +412,8 @@ GROUP BY roomid, userid, message, mname;
 
 select * from chatmessage
 order by cdate desc;
-
-
+select * from chatroom where userId;
+select * from chatmember;
 select * from chatmessage
 
 
@@ -431,7 +431,10 @@ select * from chatmessage;
 
 INSERT INTO CHATROOM (ROOMID,USERID,ROOMNAME) VALUES (chat_sequence.NEXTVAL,'sple@kh.co.kr','채팅방1');
 INSERT INTO CHATROOM (ROOMID,USERID,ROOMNAME) VALUES ((SELECT MAX(ROOMid) FROM chatROOM),'sple@kh.co.kr','채팅방1');
+SELECT * FROM CHATROOM;
 
+INSERT INTO CHATROOM (ROOMID, USERID, ROOMNAME, MNAME)
+VALUES (chat_sequence.NEXTVAL, 'sple@kh.co.kr', '?', (SELECT MNAME FROM USERS WHERE USERID ='sple@kh.co.kr'));
 -----------------------------------------------
 select mname from users where userid='sple@kh.co.kr';
 select * 
@@ -485,7 +488,12 @@ select * from info join users using(userid);
 select *
 from info
 where ino='1';
-
+select * from chatroom;
+select * from chatmember;
+delete from chatroom;
+delete from chatmember;
+delete from chatmessage;
+select * from chatroom;
 --공지삭제
 delete from info where ino='4';
 --공지 검색
@@ -493,10 +501,12 @@ SELECT ino, userid, idate, ititle, mname, ccode
 FROM info
 JOIN users USING (userid)
 WHERE ccode = (SELECT ccode FROM users WHERE userid = 'sple@kh.co.kr') ;
-
+select userId,mname from chatroom join users using (userid);
 --공지수정 UPDATE [테이블] SET [열] = '변경할값' WHERE [조건]
 update info set idate=TO_CHAR(SYSTIMESTAMP, 'DD/MM/YY HH24:MI'),ititle='수정1',itext='수정' where ino='3';
 select count(*) from info JOIN users USING (userid) WHERE ccode = (SELECT ccode FROM users WHERE userid = 'sple@kh.co.kr');
+select count (*) from chatmember where roomid='17';
+select * from chatmember;
 select *
     from (select rownum rn, *
                 from (select *
@@ -507,4 +517,10 @@ FROM info
 JOIN users USING (userid)
 WHERE ccode = (SELECT ccode FROM users WHERE userid = 'sple@kh.co.kr')
 AND (ititle = 'ㅇㅇㅇㅇ' OR iwriter = '');
+select userId,mname from chatroom join users using (userid);
+select *
+	from (select rownum rn, i.*
+			from (select *
+					from info order by ino desc) i);
+select * from users;	
 commit;

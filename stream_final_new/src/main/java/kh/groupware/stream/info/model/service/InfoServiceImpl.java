@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kh.groupware.stream.info.model.dao.InfoDao;
+import kh.groupware.stream.info.model.vo.InfoPageVo;
 import kh.groupware.stream.info.model.vo.InfoVo;
 
 @Service
@@ -48,6 +49,16 @@ public class InfoServiceImpl implements InfoService{
 	public List<InfoVo> InfoSearch(String userId, String ititle, String iwriter) {
 	
 		return dao.InfoSearch(userId, ititle, iwriter);
+	}
+
+	@Override
+	public int CountInfo() {
+		return dao.CountInfo();
+	}
+
+	@Override
+	public List<InfoVo> PagingInfo(InfoPageVo vo) {
+		return dao.PagingInfo(vo);
 	}
 
 //	@Override

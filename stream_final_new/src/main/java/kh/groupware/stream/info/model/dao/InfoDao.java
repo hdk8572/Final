@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kh.groupware.stream.info.model.vo.InfoPageVo;
 import kh.groupware.stream.info.model.vo.InfoVo;
 
 
@@ -44,5 +45,11 @@ public class InfoDao {
 	    paramMap.put("ititle", ititle);
 	    paramMap.put("iwriter", iwriter);
 	    return sqlSession.selectList("info.infosearch", paramMap);
+	}
+	public int CountInfo() {
+		return sqlSession.selectOne("info.countInfo");
+	}
+	public List<InfoVo> PagingInfo(InfoPageVo vo){
+		return sqlSession.selectList("info.selectInfo",vo);
 	}
 }

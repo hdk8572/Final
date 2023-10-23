@@ -49,17 +49,12 @@
 	<select id="countInfo" resultType="int">
 		select count(*) from info
 	</select>
-	<select id="selectInfo" resultType="PageVo"> 
+	<select id="selectInfo" resultMap="infoMap">
 	select *
-from (
-    select rownum rn, i.*
-    from (
-        select *
-        from info
-        order by seq desc
-    ) i
-)
-where rn between #{start} and #{end}
+	from (select rownum rn, i.*
+			from (select *
+					from info order by ino desc) i)
+	where rn between #{start} and #{end}
 	</select>
 	
 	

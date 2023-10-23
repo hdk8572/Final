@@ -17,7 +17,8 @@
 	
 	<!-- 채팅방 만들기 -->
 	<insert id="chatInsert" parameterType="ChatRoomVo">
-		INSERT INTO CHATROOM (ROOMID,USERID,ROOMNAME) VALUES (chat_sequence.NEXTVAL,#{userId},#{roomName})
+		INSERT INTO CHATROOM (ROOMID, USERID, ROOMNAME, MNAME)
+VALUES (chat_sequence.NEXTVAL, #{userId}, #{roomName}, (SELECT MNAME FROM USERS WHERE USERID = #{userId}))
 	</insert>
 	<!-- 채팅방 멤버 추가 -->
 	<insert id="memberInsert" parameterType="ChatRoomVo">
@@ -53,7 +54,7 @@
 	
 	<!-- 해당 채팅방 진입 selectone (추가!!) 채팅방 진입하면 -->
 	<select id="findRoomById" resultMap="chatRoomMap">
-		SELECT ROOMID,ROOMNAME,MNAME,USERID FROM CHATROOM JOIN USERS USING(USERID) WHERE ROOMID=#{roomId}
+		SELECT ROOMID,ROOMNAME,USERID FROM CHATROOM JOIN USERS USING(USERID) WHERE ROOMID=#{roomId}
 	</select>
 	
 	<!-- 메세지 입력시 db저장 -->
@@ -81,7 +82,9 @@
 	<select id="findWriter" resultMap="chatRoomMap">
 		select mname from users where userid=#{userId}
 	</select>
-
+	<select id="findname" resultMap="chatRoomMap">
+		select userId,mname from chatroom join users using (userid)
+	</select>
 	<select id="lastMessage" resultMap="chatRoomMap">
 	select roomid, message, cdate
 	from

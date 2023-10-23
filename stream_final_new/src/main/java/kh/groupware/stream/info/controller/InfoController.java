@@ -4,9 +4,11 @@ import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.groupware.stream.info.model.service.InfoService;
+import kh.groupware.stream.info.model.vo.InfoPageVo;
 import kh.groupware.stream.info.model.vo.InfoVo;
 
 @Controller
@@ -24,26 +27,27 @@ public class InfoController {
 	
 	
 	@GetMapping("/member/info")
-	public ModelAndView info(ModelAndView mv, Principal principal,
-	                        @RequestParam(name = "select_search", required = false) String selectSearch,
-	                        @RequestParam(name = "search_bar", required = false) String searchBar) {
+	public ModelAndView info(ModelAndView mv, Principal principal,InfoPageVo vo,
+	                    
+	                        @RequestParam(value="nowPage", required=false)String nowPage, 
+	            			@RequestParam(value="cntPerPage", required=false)String cntPerPage,
+	            			HttpSession session) {
 	    String userId = principal.getName();
-	    System.out.println(selectSearch + "," + searchBar + " selectSearch 선택옵션 searchBar 값");
-
-	    List<InfoVo> searchResults;
-	    if ("ititle".equals(selectSearch) && searchBar != null) {
-	        searchResults = service.InfoSearch(userId, searchBar, selectSearch);
-	    } else if ("iwriter".equals(selectSearch) && searchBar != null) {
-	        searchResults = service.InfoSearch(userId, selectSearch, searchBar);
-	    } else {
-	        searchResults = service.InfoList(userId);
-	    }
 	    
-	    if (searchResults.isEmpty()) {
-	
-	        mv.addObject("noSearchResult", "검색 결과가 없습니다.");
-	    }
-	    mv.addObject("list", searchResults);
+
+	    
+	    int total = service.CountInfo();
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "10";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "10";
+		}
+		vo = new InfoPageVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		mv.addObject("paging", vo);
+		mv.addObject("viewAll", service.PagingInfo(vo));
 	    mv.setViewName("info/main");
 	    return mv;
 	}

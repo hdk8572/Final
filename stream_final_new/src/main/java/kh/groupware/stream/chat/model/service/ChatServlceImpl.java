@@ -55,5 +55,10 @@ public class ChatServlceImpl implements ChatService{
 	public int memberInsert(String userId) {
 		return dao.memberInsert(userId);
 	}
+	@Override
+	public  List<ChatRoomVo> findname() {
+		
+		return dao.findname();
+	}
 
 }

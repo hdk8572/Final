@@ -38,6 +38,7 @@
 </head>
 <body>
 	<section>
+	
 		<article style="float: left;">
 			<div id="s_sub_menu_box">
 				<div id="s_sub_menu">
@@ -53,13 +54,10 @@
 							<ul style="list-style: none;padding: 0">
 								<c:forEach var="room" items="${list}">
 									<div class="room-link">
-
+										
 										<li class="roomlist"
-											style="display: flex; align-items: center;"><img
-											src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
-											class="avatar img-fluid rounded me-1" alt="Charles Hall"
-											style="border-radius: 50% !important;" /> 
-											<a class="roomnamelist" href="<c:url value='/member/room'><c:param name='roomId' value='${room.roomId}' /></c:url>"
+											style="display: flex; align-items: center;">
+									<div class="stat text-primary" style="font-size: small; background-color: #009b77;color: white;">${room.mname}</div>	<a class="roomnamelist" href="<c:url value='/member/room'><c:param name='roomId' value='${room.roomId}' /></c:url>"
 											style="display: inline-block;padding:15px ;width: 320px; overflow: hidden; white-space: nowrap; text-decoration: none;">${room.roomName}</a>
 										</li>
 									</div>
@@ -104,7 +102,6 @@
 	$(document).ready(function(){
 	    var roomName1 = "${roomName1}";
 	    var member = "${member}";
-
 	    $(".btn-create").on("click", function (e){
 	        var roomName = $("input[name='roomName']").val(); // 이름 속성을 "roomName"으로 변경
 	        var member = $("input[name='member']:checked").length;

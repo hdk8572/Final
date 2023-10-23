@@ -32,13 +32,12 @@
 					<h1 class="page-header">글읽기</h1>
 				</div>
 				<hr>
-
 				<input type="hidden" id="y_emp_dCode" value="">
 			</div>
 			<form action="/stream/member/info"  method="get">
     <button type="submit" class="btn btn-secondary" id="y_btn_back" style="margin: 30px 20px 10px;">목록</button>
-	</form>
-
+			</form>
+			<input type="hidden" name="ino" value="${info.userId}">
 			<input id="y_hid_title" name="y_hid_title" type="hidden"
 				value="${readBoard.board_title }"> <input id="y_hid_content"
 				name="y_hid_content" type="hidden"
@@ -71,11 +70,22 @@
 					</table>
 
 					<input type="hidden" name="ino" value="${info.ino}">
-					<button type="submit" class="btn btn-primary">수정</button>
+					<button type="submit" class="btn btn-primary" id="updateButton">수정</button>
 			</form>
 		</div>
 	</div>
-	</div>
+
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
+	<script>
+	document.getElementById('updateButton').addEventListener('click', function (event) {
+        var infoUserId = '${info.userId}';
+        var currentUserId = '${principal.username}';
+        
+        if (infoUserId !== currentUserId) {
+            event.preventDefault(); // 폼 제출을 막음
+            alert('작성자만 수정할 수 있습니다.');
+        }
+    });
+	</script>
 </body>
 </html>
