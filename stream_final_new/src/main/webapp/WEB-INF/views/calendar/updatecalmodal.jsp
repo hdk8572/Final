@@ -93,7 +93,7 @@
 		$("#updatecalmodal input[name='end']").val(selectedUpdateEnd);
 		
 		console.log("selectedUpdateUseridList" +selectedUpdateUseridList);
-		$('#updatecalmodal .attenduserid-item').text(selectedUpdateUseridList); //참가자
+		$('#updatecalmodal .updateattenduserid-item').text(selectedUpdateUseridList); //참가자
 		$("#summernote-updatecalmodal").summernote("code" ,selectedUpdateSmemo); //썸머노트
 		$('#updatecalmodal #userid').text(selectedUpdateUserid);
 		$('#updatecalmodal #splace').text(selectedUpdateSplace);
@@ -112,7 +112,7 @@
 	    //document.getElementById("calmemberinput").value = selectedValue; // 하나가 아니기때문에 id = "calmemberinput" 안됨
 		var updateCheckUserId = false;
 	    $(".updateattenduserid-item").each(function(idx, updateItem){
-	    	updateValue = $(thisItem).children("[name=update-attenduseridArr]").val();
+	    	updateValue = $(thisItem).children("[name=updateAttenduseridArr]").val();
 	    	console.log(updateValue);
 	    	if(selectedValue == updateValue){
 	    		alert("이미 참석자에 등록된 사원입니다.");
@@ -125,7 +125,7 @@
 		    htmlVal+='<div class="updateattenduserid-item">';
 		    htmlVal+='<input type="text" class="form-control-updateUserid" placeholder="참가자" readonly value="'+selectedText+'">';
 		    htmlVal+='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg>';
-		    htmlVal+='<input type="hidden" name="update-attenduseridArr" value="'+selectedValue+'" >';
+		    htmlVal+='<input type="hidden" name="updateAttenduseridArr" value="'+selectedValue+'" >';
 		    htmlVal+='</div>';
 		    
 		    //attenduserid-wrap
