@@ -117,8 +117,11 @@
 /* 참가자 */
 
 
-
-
+/* 날짜부분 svg */
+.feather.feather-calendar.align-middle{
+	margin-right: 0.1rem;
+	width: 15px;
+}
 
 
 
