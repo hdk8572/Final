@@ -15,6 +15,9 @@
 						<div class="card-header detailPtaskTitle">
 							<div class="detailPtaskTitle-title ">
 								<b>프로젝트 상세 조회</b>
+								<div>
+									<button class="btn btn-primary updatePtask">수정</button>
+								</div>
 							</div>
 							<div class="detailPtaskTitle-dropdown-group">
 							<div class="dropdown">
@@ -39,12 +42,14 @@
 						<div class="card-body detailPtaskTitle">
 							<form>
 								<div class="form-control ttitle"></div>
-								<div class="d-flex align-items-center first">
+								<input type="hidden" name=tstatus>
+								<div class="d-flex align-items-center first exist">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock align-middle me-2"><circle cx="12" cy= "12 " r= "10 "></circle><polyline points= "12 6 12 12 16 14 "></polyline>
 									</svg>
 									<div class= "form-control manager ml-2 tstatus"></div>					
 								</div>
-								<div class="d-flex align-items-center second">
+								<input type="hidden" name=tmember>
+								<div class="d-flex align-items-center second exist">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2">
 									  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r= "4"/>
 									</svg>
@@ -266,21 +271,33 @@ function makeReplyList(data) {
 <script>
 	
 	$(".dropdown-item.update").on("click", updateFunction);
+	$(".btn.btn-primary.updatePtask").on("click", applyEditFunction);
+	
+	$(document).ready(function() {
+		var currentTstatus = $(".form-control.manager ml-2.tstatus").text();
+		console.log("currentTstatus :"+currentTstatus);
+	});
 	
 	// <수정> 눌렀을 때 수정창으로 변경
 	function updateFunction() {
+			
+		
+		
+		$(".btn.btn-primary.updatePtask").css("visibility", "visible");
+		
 		$(".form-control.ttitle").attr("contenteditable", "true");
 		$(".form-control.detail-content.input.tcontent").attr("contenteditable", "true");
+		/////////////입력된 것을 읽기
 		$(".d-flex.align-items-center.first").remove();
 		$(".d-flex.align-items-center.second").remove();
 		
 		tstatusHtml ="";
 		tstatusHtml += `
-			<div class="d-flex align-items-center">
+			<div class="d-flex align-items-center first new">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock align-middle me-2"><circle cx="12" cy="12 " r="10 "></circle><polyline points="12 6 12 12 16 14 "></polyline></svg>
 				<input type="hidden" name="tstatus" value="미진행">
 				<select class="form-select mb-3 selectCategory ml-2" name="selectedTstatus">
-					<option class="status request" value="미진행" name="미진행">미진행</option>
+					<option class="status request" value="미진행" name="미진행" >미진행</option>
 					<option class="status progress" value="진행" name="진행">진행</option>
 					<option class="status remain" value="보류" name="보류">보류</option>
 				</select>					
@@ -289,19 +306,90 @@ function makeReplyList(data) {
 			
 		tmemberHtml ="";
 		tmemberHtml += `
-			<div class="d-flex align-items-center">
+			<div class="d-flex align-items-center second new">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2">
 				  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
 				</svg>
-				<select class="form-select mb-3 selectCategory ml-2" name="tmember" id="taskmember"><option value="placeholder" selected="">담당자 선택</option>
+				<select class="form-select mb-3 selectCategory ml-2" name="tmember" id="updateTaskMember"><option value="placeholder" selected="">담당자 선택</option>
 				</select>
 			</div>
 			`;
 		
 		$(".form-control.ttitle").after(tmemberHtml);
 		$(".form-control.ttitle").after(tstatusHtml);
+		///////////////prop("selected", true);
 		
+	    $.ajax({
+	    	url:"${pageContext.request.contextPath}/member/getCurrentMemberList",
+	    	data: {pno: $("input[name=pno]").val()},
+	    	type: "get",
+	    	dataType: "json",
+	    	success: function(data) {
+	    		updateTaskMemberView(data);
+	    		console.log("성공");
+	    	},
+	    	error: function() {	
+			alert("selectOption에서 에러났습니다.");
+		}
+	    });
 		
+	}
+	
+	function updateTaskMemberView(data) { // 회사 소속인 참가자 리스트 조회
+		
+		var memberUpdateTaskListHtml = "";
+		memberUpdateTaskListHtml += '<option value="placeholder" selected>담당자 선택</option>';
+	    	for(var i=0;i<data.length;i++){
+				var memberOne = data[i];
+				memberUpdateTaskListHtml+=`
+				<option value="\${memberOne.userid}">\${memberOne.mname}\${memberOne.mrank}님</option>
+				`;
+	    }
+	    $("#updateTaskMember").html(memberUpdateTaskListHtml);
+	    
+	}
+	
+	function applyEditFunction() {
+		
+		var confirm_val = confirm("수정 하시겠습니까?");
+		if(confirm_val == true){
+		    <!--- 확인 or yes 버튼을 눌렀을 때 실행 될 함수 구현 --->
+			$(".form-control.ttitle").attr("contenteditable", "false");
+			$(".form-control.detail-content.input.tcontent").attr("contenteditable", "false");
+			$(".d-flex.align-items-center.first.new").remove();
+			$(".d-flex.align-items-center.second.new").remove();
+			 
+		
+			
+			existTstatusHtml ="";
+			existTstatusHtml += `
+				<div class="d-flex align-items-center first exist">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock align-middle me-2"><circle cx="12" cy= "12 " r= "10 "></circle><polyline points= "12 6 12 12 16 14 "></polyline>
+					</svg>
+					<div class= "form-control manager ml-2 tstatus"></div>					
+				</div>
+				`;
+			
+			existTmemberHtml ="";
+			existTmemberHtml += `
+				<div class="d-flex align-items-center second exist">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2">
+					  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r= "4"/>
+					</svg>
+					<div class= "form-control manager ml-2 userid"></div>
+					<div class=""></div>
+				</div>
+			`;
+			
+			
+			
+			$(".form-control.ttitle").after(existTstatusHtml);
+			$(".form-control.ttitle").after(existTmemberHtml);
+			
+			$(".btn.btn-primary.updatePtask").css("visibility", "hidden");
+		}else if(confirm_val == false){
+		}
+
 	}
 	
 

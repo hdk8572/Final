@@ -38,7 +38,7 @@
 								 <select class="form-select calmemberlist mb-3" id="updatecalmemberlist" >
 								 	 <option value="">참가자 추가</option>
 								 </select>
-								 <div class="form-calmemberlist  card" id="form-content" >
+								 <div class="form-calmemberlist card" id="form-content" >
 									 <!-- 참가자 반복 -->
 									 <div id="updatedAttendees">
 										 <!-- 
@@ -84,17 +84,16 @@
 		var selectedUpdateStart = $("#readcalmodal #start").text();
 		var selectedUpdateEnd = $("#readcalmodal #end").text();
 		var selectedUpdateUserid = $("#readcalmodal #userid").text();
-		var selectedUpdateUseridList = $("#readcalmodal .attenduseridList").text(); //참가자
+		var selectedUpdateUseridList = $("#readcalmodal .attenduserid-item").text(); //참가자
 		var selectedUpdateSplace = $("#readcalmodal #splace").text();
 		var selectedUpdateSmemo = $("#readcalmodal #smemo").html(); //<p>태그 다 가져와야함 html사용!
-		console.log(selectedUpdateUseridList);
 		
 		$("#updatecalmodal input[name= 'sno']").val(selectedUpdateSno);
 		$("#updatecalmodal input[name='title']").val(selectedUpdateTitle);
 		$("#updatecalmodal input[name='start']").val(selectedUpdateStart);
 		$("#updatecalmodal input[name='end']").val(selectedUpdateEnd);
 		
-		console.log(selectedUpdateUseridList);
+		console.log("selectedUpdateUseridList" +selectedUpdateUseridList);
 		$('#updatecalmodal .attenduserid-item').text(selectedUpdateUseridList); //참가자
 		$("#summernote-updatecalmodal").summernote("code" ,selectedUpdateSmemo); //썸머노트
 		$('#updatecalmodal #userid').text(selectedUpdateUserid);
@@ -102,7 +101,6 @@
 		 updateshowMap(); 
 	});
 </script>
-
 
 <!-- 참가자들을 input에 추가한다. -->
 <script>
@@ -137,7 +135,7 @@
 	});
 </script>
 
-<!-- 참가자 list select option  -->
+<!-- 참가자 list select option //updatedAttendees -->
 <script>
 	function updateMemberProjectListHandler(thisElement){
 		console.log("calendar_pno: "+calendar_pno);
@@ -147,9 +145,9 @@
 			type:"post",
 			data : {
 				pno : calendar_pno,
-				userid : logined_userid
+				userid : logined_userid//전달이 되나?
 			},
-			dataType: "json",
+			dataType: "json", //json으로 형식의 응답을 제공하냐
 			success:updateMemberView,
 			error:updateMemberError
 		});
