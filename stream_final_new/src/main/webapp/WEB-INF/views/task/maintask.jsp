@@ -332,8 +332,8 @@
 	</div>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 	<%@include file="/WEB-INF/views/task/maintaskscript.jsp" %>
+	<%@include file="/WEB-INF/views/task/maintaskscript.jsp" %>
 	<%-- <%@ include file="/WEB-INF/views/detailptaskmodal.jsp"%> --%>
-	<%@include file="/WEB-INF/views/task/maintasktaskdetailmodal.jsp" %>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
 	<%-- <script src="${pageContext.request.contextPath}/js/maintask.js"></script> --%>
 	

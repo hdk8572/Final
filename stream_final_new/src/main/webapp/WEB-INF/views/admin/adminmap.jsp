@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <title>아아아</title>
-    
-</head>
-<body>
-    <h1>아아아아아</h1>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-    <!-- 지도 담을 영역 -->
-    <div id="map" style="width:500px;height:400px;"></div>
+   	<!-- 지도 담을 영역 -->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=200d239f8c4b9f3e0d914ec332ddfe21&libraries=services"></script>
     <!-- 지도 그릴 API -->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=200d239f8c4b9f3e0d914ec332ddfe21"></script>
     <!-- 지도 그리는 코드 -->
     <script>
-        var container = $("#map")[0]; //지도를 담을 영역의 DOM 레퍼런스
+        var container = $(".admin-map")[0]; //지도를 담을 영역의 DOM 레퍼런스
+        console.log(container);
         var options = { //지도를 생성할 때 필요한 기본 옵션
 	    center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
 	    level: 3 //지도의 레벨(확대, 축소 정도)
@@ -38,12 +28,4 @@
             }
         }
     </script>
-    <script>
-        var a1 = 'taskNo_62'
-        var a2 = "'#"+a1+"'";
-        console.log(a2);
-    </script>
-    
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=200d239f8c4b9f3e0d914ec332ddfe21&libraries=services,clusterer,drawing"></script>
-</body>
-</html>
