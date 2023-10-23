@@ -127,14 +127,14 @@
 								</tr>
 								<tr>
 									<th class="admin-border-t-and-b">버스</th>
-									<td class="admin-border-t-and-b">역삼역.포스코P&S타워 정류장 지선 146 / 740 / 341 / 360 간선 1100 / 1700 / 2000 / 7007 / 8001</td>
+									<td class="admin-border-t-and-b">역삼역.포스코P&S타워 정류장<br><img alt="지선" src="/stream/img/icons/busB.jpg"> 146 / 740 / 341 / 360<br><img alt="간선" src="/stream/img/icons/busR.jpg"> 1100 / 1700 / 2000 / 7007 / 8001</td>
 								</tr>
 								<tr>
 									<th class="admin-border-bottom">지하철</th>
 									<td class="admin-border-bottom">지하철 2호선 역삼역 3번출구 100m</td>
 								</tr>
 								<tr>
-									<td colspan="2">
+									<td colspan="2" class="admin-map-padding">
 										<div class="admin-map"></div>
 									</td>
 								</tr>

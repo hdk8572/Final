@@ -1,7 +1,12 @@
 .admin-main{
 	background-color: #f5fbf5;
 }
-
+.admin-maintext{
+	padding-left: 2rem;
+}
+.admin-maintext span{
+	font-size: 1.25em;
+}
 .jm-companydetail>ul{
 	display: flex;
 	padding: 0;
@@ -49,7 +54,12 @@ canvas{
 	width: 100px;
 }
 .admin-maptable td{
+	padding-left:2rem;
 	background: white;
+	text-align: left;
+}
+.admin-maptable .admin-map-padding{
+	padding: 2px;
 }
 .admin-map{
 	height: 400px;
