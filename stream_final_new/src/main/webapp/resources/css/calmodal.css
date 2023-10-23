@@ -70,6 +70,34 @@
 	margin-right: 0.4rem;
 }
 
+
+.attenduserid-item {
+	height: 30px;
+    line-height: 30px;
+    width: 50%;
+    display: inline-block;	
+}
+/* TODO 참가자 테두리 부분*/
+.attenduserid-item > .form-control-userid{
+	margin-left: 1rem;
+	width: 30%;
+	 border: 0 solid transparent;
+	  background-color: transparent;
+	  border: none;
+}
+.attenduserid-item > .form-control-updateUserid{
+	margin-left: 1rem;
+	width: 30%;
+	 border: 0 solid transparent;
+	  background-color: transparent;
+	  border: none;
+}
+/* input 테두리 제거 */
+input:focus {
+    outline: none; /* 초점 시 테두리 제거 */
+}
+
+/* 
 .form-control-userid {
 	line-height: 30px;
 	word-wrap: break-word;
@@ -80,7 +108,8 @@
     flex-direction: column;
     min-width: 0;
     position: relative;
-}
+} */
+
 .form-calmemberlist{
 	margin-left: 1rem;
 	margin-bottom: 1rem;
@@ -90,10 +119,6 @@
 	margin-left: 1rem;
 }
 
-.attenduserid-item {
-	width:50%;
-    display: inline-block;
-}
 /* add참가자 */
 
 /* 수정 참가자 */
@@ -123,7 +148,10 @@
 	width: 15px;
 }
 
+.form-date.calendar{
+	margin-bottom: 1rem;
 
+}
 
 
 

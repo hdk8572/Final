@@ -93,18 +93,14 @@
 .form-control.comment {
 	width: 70%;
 }
+.form-date.calendar-read{
+	margin-bottom: 1rem;
+	width:20%;
+	padding-left: 1.6rem;
+}
 
 /* 공간 확보 */
-.form-read.date{
-	margin-bottom: 1rem;
-	padding-left: 1rem;
-}
 
-.form-readcal{
-	margin-bottom: 1rem;
-	/* width: 40%; */
-	padding-left: 1rem;
-}
 
 /* 일정상세 제목 */
 .pcalTitle{
@@ -126,4 +122,9 @@
 
 #attenduseridList > div{
 	margin-right: 10px;
+}
+.form-readcal{
+	margin-bottom: 1rem;
+	/* width: 40%; */
+	padding-left: 1rem;
 }

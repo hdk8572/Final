@@ -83,7 +83,7 @@ function loadCalendarHandler() {
 				//참가자 list
 				var htmlval = ''; //그리고 여기도 sno로 채워짐
 				for(var i=0; i<info.event.extendedProps.attenduseridList.length; i++){
-					htmlval += '<div>'+info.event.extendedProps.attenduseridList[i].mname+'</div>';
+					htmlval += '<div class="attenduseridItem" data-attenduserid="'+info.event.extendedProps.attenduseridList[i].userid+'">'+info.event.extendedProps.attenduseridList[i].mname+'</div>';
 				}
 				$("#readcalmodal.modal  #attenduseridList").html(htmlval); //여기서 sno가 들어옴
 				

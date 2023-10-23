@@ -46,7 +46,8 @@ SELECT SNO, USERID, mname, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, '
 	</select>
 	
 	<!-- 프로젝트의 멤버들 조회 --> 
-<!-- 	<select id="memberProjectList" resultType="MemberSimpleVo">
+	<!-- 	
+		<select id="memberProjectList" resultType="MemberSimpleVo">
 		select userid, (select mname from users tu where tm.userid=tu.userid ) mname 
 		from MEMBER_PROJECT tm 		
 		where pno=#{pno}
