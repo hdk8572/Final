@@ -109,6 +109,36 @@
 	    $(this).find(".reply-btn").css("visibility", "hidden");
 	});
 	
+	$(document).ready(function() {
+	    // 모달 관련 코드
+
+	    // 모달이 닫힐 때 입력한 값 초기화와 이벤트 초기화
+	    $('#detailProjectModal').on('hidden.bs.modal', function (e) {
+	        // Reset form values
+	        $(this).find("form")[0].reset();
+
+	        // Reset contenteditable fields
+	        $(this).find("[contenteditable=true]").text("");
+	        $(this).find("[contenteditable=true]").prop("contenteditable", false);
+
+	        // Reset dropdowns to their first option
+	        $(this).find("select").prop('selectedIndex',0);
+
+	        // Hide the update button again
+	        $(".btn.btn-primary.updatePtask").css("visibility", "hidden");
+
+	        // Switch back to display mode for exist fields and hide new fields 
+		    $(".d-flex.align-items-center.first.exist").css("display", "flex");
+		    $(".d-flex.align-items-center.second.exist").css("display", "flex");
+		    $(".d-flex.align-items-center.first.new").css("display", "none");
+		    $(".d-flex.align-items-center.second.new").css("display", "none");
+
+		    // Make date inputs readonly again
+		    $(".Wrap-info input[name=tstartdate]").prop("readonly", true);
+		    $(".Wrap-info input[name=tenddate]").prop("readonly", true);
+	    });
+
+	});
 	
 	
 function replyLoadList(targetTno) {
@@ -168,6 +198,7 @@ function makeReplyList(data) {
 			null;
 		}
 	});
+	
 	
 	function insertReply() {
 		$.ajax ({
@@ -300,6 +331,7 @@ function makeReplyList(data) {
 	// <수정> 눌렀을 때 수정창으로 변경
 	function updateFunction() {
 		var currentTstatus = $(".form-control.manager.ml-2.tstatus").text();
+		var currentTmember = $(".form-control.manager.ml-2.mname").val();
 		console.log("currentTstatus :"+currentTstatus);
 
 
@@ -317,7 +349,9 @@ function makeReplyList(data) {
 		$("#updatePtaskTstatus").val(currentTstatus).prop("selected", true);		// 입력된 것을 읽기
 		$("input[name=tstatus]").val(currentTstatus);
 		
-
+		$("#updateTaskMember").val(currentTmember).prop("selected", true);
+		$("input[name=tmember]").val(currentTmember);
+		
 
 		$("select[id=updatePtaskTstatus]").change(function() {
 			var changedTstatus =$("#updatePtaskTstatus option:selected").val();
@@ -417,30 +451,6 @@ function makeReplyList(data) {
 
 	}
 
-	$('#detailProjectModal').on('hidden.bs.modal', function (e) {
-	    // Reset form values
-	    $(this).find("form")[0].reset();
-
-	    // Reset contenteditable fields
-	    $(this).find("[contenteditable=true]").text("");
-
-	    // Reset dropdowns to their first option
-	    $(this).find("select").prop('selectedIndex',0);
-
-	    // Hide the update button again
-	    $(".btn.btn-primary.updatePtask").css("visibility", "hidden");
-
-	    // Switch back to display mode for exist fields and hide new fields 
-		$(".d-flex.align-items-center.first.exist").css("display", "flex");
-		$(".d-flex.align-items-center.second.exist").css("display", "flex");
-		$(".d-flex.align-items-center.first.new").css("display", "none");
-		$(".d-flex.align-items-center.second.new").css("display", "none");
-
-		// Make date inputs readonly again
-		$(".Wrap-info input[name=tstartdate]").prop("readonly", true);
-		$(".Wrap-info input[name=tenddate]").prop("readonly", true);
-	});
-	
 </script>
 
 <!-- 모달 -->
