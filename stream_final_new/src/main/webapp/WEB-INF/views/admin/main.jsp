@@ -46,7 +46,7 @@
 					<div class="admin-maintext col-lg-5">
 						<c:if test="${CNT != null }">
 							<div>
-								<span>지금까지 stream 그룹웨어를 </span> <span>${CNT.ccnt }</span> <span>
+								<span>현재 stream 그룹웨어를 </span> <span>${CNT.ccnt }</span> <span>
 									개 회사에서 이용 하고 있으며</span>
 							</div>
 							<div>
@@ -110,12 +110,15 @@
 					</div>
 				</div>
 				<div>
-					<h1>아아아</h1>
+					<div>
+						<h1>오시는 길</h1>
+					</div>
 				</div>
 			</main>
 		</div>
 	</div>
 	<%@include file="/WEB-INF/views/admin/admincompanymodal.jsp" %>
+	<%@include file="/WEB-INF/views/footer.jsp"%>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
 	
 	<script>

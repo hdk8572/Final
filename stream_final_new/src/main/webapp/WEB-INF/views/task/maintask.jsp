@@ -258,7 +258,7 @@
 																		</div>
 																	</div>
 																	<div class="jm-title-tstatus jm-col-b jm-grey jm-cenalign"><span>${task.tstatus }</span></div>
-																	<div class="jm-title-tmember jm-col-b jm-grey jm-cenalign"><span>${project.mname }</span></div>
+																	<div class="jm-title-tmember jm-col-b jm-grey jm-cenalign"><span>${task.mname }</span></div>
 																	<div class="jm-title-tstartdate jm-col-b jm-grey jm-cenalign"><span>${task.tstartdate }</span></div>
 																	<div class="jm-title-tenddate jm-col-b jm-grey jm-cenalign"><span>${task.tenddate }</span></div>
 																	<div class="jm-title-tdate jm-col-b jm-grey jm-gr jm-cenalign"><span>${task.tdate }</span></div>
@@ -427,7 +427,7 @@
 									</div>
 								</div>
 								<div class="jm-title-tstatus jm-col-b jm-grey jm-cenalign"><span>\${task.tstatus }</span></div>
-								<div class="jm-title-tmember jm-col-b jm-grey jm-cenalign"><span>\${project.mname }</span></div>
+								<div class="jm-title-tmember jm-col-b jm-grey jm-cenalign"><span>\${task.mname }</span></div>
 								<div class="jm-title-tstartdate jm-col-b jm-grey jm-cenalign"><span>\${task.tstartdate }</span></div>
 								<div class="jm-title-tenddate jm-col-b jm-grey jm-cenalign"><span>\${task.tenddate }</span></div>
 								<div class="jm-title-tdate jm-col-b jm-grey jm-gr jm-cenalign"><span>\${task.tdate }</span></div>
