@@ -38,6 +38,7 @@
 #read-dropdown > svg {
 	 cursor: pointer;
 	 float: right;
+	 color: black;
 }
 #read-dropdown-grop{
 	

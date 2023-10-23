@@ -15,7 +15,10 @@
 .form-select.member {
 	margin-bottom: 1rem !important;
 }
-
+.feather.feather{
+	vertical-align: middle !important;
+    color: #009b77;
+}
 .feather.feather-delete.align-middle.me-2 {
 	cursor:pointer;
 }
@@ -315,6 +318,7 @@ form {
 
 .detailPtaskTitle-title {
 	width: 50%;
+	display: flex;
 }
 
 .detailPtaskTitle-dropdown-group {
@@ -381,4 +385,21 @@ form {
 
 .form-control.ttitle {
 	contenteditable = 'true';
+}
+
+.btn.btn-primary.updatePtask {
+	visibility: hidden;
+    position: absolute;
+    margin-top: 1px;
+    margin-left: 10px;
+    padding: 6px 16px;
+    width: auto;
+    border: none;
+    display: block;
+    outline: 0;
+}
+
+.d-flex.align-items-center.first.new,
+.d-flex.align-items-center.second.new {
+	display: none;
 }

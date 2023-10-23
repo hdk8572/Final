@@ -21,7 +21,7 @@ function loadedHandler(){
 	//$(".jm-task-info").on("click", taskDetailButtonClickTestHandler);
 	
 	//업무 추가 버튼 from submit 이벤트
-	$(".addInnerTask").on("submit",ttileCheckHandler);
+	$(".addInnerTask").on("submit",ttitleCheckHandler);
 	//ajax 원클릭 변경. 현재 미사용
 	//$(".jm-inner-task-button").on("click", innerTaskInputHandler);
 	//$(".jm-innerTask-insert-button").click(innerTaskaddListHandler);
@@ -214,8 +214,8 @@ function showProjectMemberView(data, htmlTarget){
 }
 
 
-ttileCheckHandler=(event)=>{
-	console.log("[JM]===ttileCheckHandler==="")
+ttitleCheckHandler=(event)=>{
+	console.log("[JM]===ttileCheckHandler===")
 	var a1 = event.target;
 	console.log(a1);
 }
@@ -225,13 +225,12 @@ function innerTaskaddListHandler (data) {
 if(jmRegExp(data) == false){
 		return;
 	} 
-console.log("[JM]===innerTaskaddListHandler==="")
+console.log("[JM]===innerTaskaddListHandler===")
 
 //const pathname = "/" + window.location.pathname.split("/")[1] + "/";
 //const origin = window.location.origin;
 //const contextPath = origin + pathname;
 	console.log("ajax간다");
-	console.log($(this).closest(".addInnerTask").serialize());
 	console.log(event.target);
 	var a1 = event.target;
 	//???
@@ -263,7 +262,7 @@ console.log("[JM]===innerTaskaddListHandler==="")
 const test="100";
 function makeView(project) {
 console.log(project);
-console.log(project.mname);
+console.log(project.pname);
 	    var listHtml = "";
 	    //if(data)
         listHtml += `
@@ -315,7 +314,7 @@ listHtml += `
 																	</div>
 																</div>
 																<div class="jm-title-tstatus jm-col-b jm-grey jm-cenalign"><span>\${task.tstatus }</span></div>
-																<div class="jm-title-tmember jm-col-b jm-grey jm-cenalign"><span>\${project.mname }</span></div>
+																<div class="jm-title-tmember jm-col-b jm-grey jm-cenalign"><span>\${task.mname }</span></div>
 																<div class="jm-title-tstartdate jm-col-b jm-grey jm-cenalign"><span>\${task.tstartdate }</span></div>
 																<div class="jm-title-tenddate jm-col-b jm-grey jm-cenalign"><span>\${task.tenddate }</span></div>
 																<div class="jm-title-tdate jm-col-b jm-grey jm-gr jm-cenalign"><span>\${task.tdate }</span></div>

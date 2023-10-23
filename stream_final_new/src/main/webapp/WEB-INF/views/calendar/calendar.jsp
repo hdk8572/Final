@@ -57,6 +57,12 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 		    htmlVal+='</div>';
 		    
 		    $("#attenduserid-wrap").append(htmlVal);
+		    
+		    //참가자 svg 누르면 삭제됨
+		    $(".feather.feather-delete.align-middle.me-2").click(function() {
+		 		console.log("add삭제");
+		 		$(this).closest(".attenduserid-item").remove();
+		 	});
 	    }
 	});
 </script>
@@ -64,7 +70,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 <!-- 참가자 list select option  -->
 <script>
 	function getMemberProjectListHandler(thisElement){
-		console.log("살려줘calendar_pno: "+calendar_pno);
+		console.log("calendar_pno: "+calendar_pno);
 		console.log("logined_userid: "+logined_userid);
 		$.ajax({
 			url:'${pageContext.request.contextPath}/member/memberProjectList',
@@ -112,8 +118,6 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 	});
 </script>
 -->
-
-
 
 <!-- 날짜 시작일-종료일  -->
 <script>

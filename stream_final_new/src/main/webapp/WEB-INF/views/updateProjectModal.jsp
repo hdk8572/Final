@@ -25,7 +25,7 @@
 									  <option class="status request" value="미진행">미진행</option>
 									  <option class="status progress" value="진행">진행</option>
 									  <option class="status remain" value="보류">보류</option>
-									  <option class="status hide" value="숨김">숨김</option>
+									  <option class="status Hide" value="숨김">숨김</option>
 									</select>					
 								</div>
 								<div class="d-flex align-items-center">

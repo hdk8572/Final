@@ -39,14 +39,14 @@
 		<div class="main">
 		<%@ include file="/WEB-INF/views/headernavbar.jsp"%>
 			<main class="content admin-main">
-				<h1>hello admin!</h1>
+				<h1 class="offset-lg-1">hello admin!</h1>
 				<br><br>
 				<div  class="admin-flex">
 				<!-- 간단 통계 -->
-					<div class="admin-maintext col-lg-5">
+					<div class="admin-maintext col-lg-5 offset-lg-1">
 						<c:if test="${CNT != null }">
 							<div>
-								<span>지금까지 stream 그룹웨어를 </span> <span>${CNT.ccnt }</span> <span>
+								<span>현재 stream 그룹웨어를 </span> <span>${CNT.ccnt }</span> <span>
 									개 회사에서 이용 하고 있으며</span>
 							</div>
 							<div>
@@ -68,7 +68,7 @@
 								<option value="10"
 									<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄 보기</option>
 							</select>
-							<table>
+							<table class="list-table">
 								<thead>
 									<tr>
 										<th>회사 코드</th>
@@ -109,14 +109,46 @@
 						</div>
 					</div>
 				</div>
-				<div>
-					<h1>아아아</h1>
+				<div class="admin-martin-top">
+					<div class="admin-cen">
+						<div>
+							<h1>오시는 길</h1>
+						</div>
+						<div>
+							<h3>Stream&copy; 로 오시는 길입니다.</h3>
+						</div>
+					</div>
+					<div class="admin-cen admin-martin-top">
+						<table class="admin-maptable col-lg-10">
+							<tbody>
+								<tr>
+									<th class="admin-border-top">주소</th>
+									<td class="admin-border-top">서울특별시 강남구 테헤란로 10길 9 그랑프리빌딩 7F (공공데이터 융합 자바개발자 양성과정A23(2)/stream)</td>
+								</tr>
+								<tr>
+									<th class="admin-border-t-and-b">버스</th>
+									<td class="admin-border-t-and-b">역삼역.포스코P&S타워 정류장<br><img alt="지선" src="/stream/img/icons/busB.jpg"> 146 / 740 / 341 / 360<br><img alt="간선" src="/stream/img/icons/busR.jpg"> 1100 / 1700 / 2000 / 7007 / 8001</td>
+								</tr>
+								<tr>
+									<th class="admin-border-bottom">지하철</th>
+									<td class="admin-border-bottom">지하철 2호선 역삼역 3번출구 100m</td>
+								</tr>
+								<tr>
+									<td colspan="2" class="admin-map-padding">
+										<div class="admin-map"></div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</main>
 		</div>
 	</div>
-	<%@include file="/WEB-INF/views/admin/admincompanymodal.jsp" %>
+	<%@include file="/WEB-INF/views/footer.jsp"%>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
+	<%@include file="/WEB-INF/views/admin/admincompanymodal.jsp" %>
+	<%@include file="/WEB-INF/views/admin/adminmap.jsp" %>
 	
 	<script>
 		function selChange(){
