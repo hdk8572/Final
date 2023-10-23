@@ -315,6 +315,7 @@ form {
 
 .detailPtaskTitle-title {
 	width: 50%;
+	display: flex;
 }
 
 .detailPtaskTitle-dropdown-group {
@@ -381,4 +382,21 @@ form {
 
 .form-control.ttitle {
 	contenteditable = 'true';
+}
+
+.btn.btn-primary.updatePtask {
+	visibility: hidden;
+    position: absolute;
+    margin-top: 1px;
+    margin-left: 10px;
+    padding: 6px 16px;
+    width: auto;
+    border: none;
+    display: block;
+    outline: 0;
+}
+
+.d-flex.align-items-center.first.new,
+.d-flex.align-items-center.second.new {
+	display: none;
 }
