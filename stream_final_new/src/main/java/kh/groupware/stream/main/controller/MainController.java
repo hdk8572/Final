@@ -30,7 +30,7 @@ public class MainController {
 	
 	/* 메인페이지 */
 	@GetMapping("/member/maintask")
-	public String maintask(Model model, Principal principal) {
+	public String maintask(Model model, Principal principal) throws Exception {
 		String userid = principal.getName();
 		model.addAttribute("projectList", maintastService.projectNameList(userid));
 		model.addAttribute("findMname", maintastService.findMname(userid));
@@ -40,7 +40,7 @@ public class MainController {
 	/* 하위업무 추가 (ajax) */
 	@PostMapping("/member/innertaskinsert")
 	@ResponseBody
-	public ProjectVo insert(PtaskVo vo){
+	public ProjectVo insert(PtaskVo vo) throws Exception {
 		ProjectVo projectTaskList = maintastService.insertInnerTask(vo);
 		return projectTaskList;
 	}
@@ -48,7 +48,7 @@ public class MainController {
 	/* 하위업무 추가시 사용되는 project_member 리스트 (ajax) */
 	@GetMapping("/member/showprojectmemberlist")
 	@ResponseBody
-	public List<MemberSimpleVo> memberlist(String pno) {
+	public List<MemberSimpleVo> memberlist(String pno) throws Exception {
 		List<MemberSimpleVo> projectMemberList = maintastService.projectMemberList(pno);
 		return projectMemberList;
 	}
@@ -56,27 +56,28 @@ public class MainController {
 	/* 업무 정렬 (ajax) */
 	@PostMapping("/member/sort")
 	@ResponseBody
-	public List<ProjectVo> sort(MaintaskSortVo vo) {
+	public List<ProjectVo> sort(MaintaskSortVo vo) throws Exception {
 		List<ProjectVo> sortList = maintastService.TaskSortList(vo);
 		return sortList;
 	}
-	/*
-	 * Exception 처리하는법
+	
 	@ExceptionHandler
 	private ModelAndView exceptionHandler(Exception e) {
 		e.printStackTrace();
-		HttpSession session;
 		ModelAndView mv = new ModelAndView();
-		if(session.getAttribute("selectedPno")!=null){
-			mv.setViewName("redirect:/xxxx?pno?=");
-		}else {
-			mv.setViewName("redirect:/xxxx");
-		}
-		//pno가 없다. > 마지막 동작의 pno 세션에 저장해서 가지고 다녀야 함.
-		//controller에서 session에 pno 들고다님.
-		//매개인자로 HttpSession session 추가.
-		//session.setAttribute(selectedPno, pno);
+		mv.setViewName("redirect:/member/maintask");
 		return mv;
 	}
-	*/
+	
+	/*
+	 * // Exception 처리하는법
+	 * 
+	 * @ExceptionHandler private ModelAndView exceptionHandler(Exception e) {
+	 * e.printStackTrace(); HttpSession session; ModelAndView mv = new
+	 * ModelAndView(); if(session.getAttribute("selectedPno")!=null){
+	 * mv.setViewName("redirect:/xxxx?pno?="); }else {
+	 * mv.setViewName("redirect:/xxxx"); } //pno가 없다. > 마지막 동작의 pno 세션에 저장해서 가지고 다녀야
+	 * 함. //controller에서 session에 pno 들고다님. //매개인자로 HttpSession session 추가. //
+	 * session.setAttribute(selectedPno, pno); return mv; }
+	 */
 }

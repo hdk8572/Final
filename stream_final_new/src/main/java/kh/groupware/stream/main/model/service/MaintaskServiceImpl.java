@@ -16,18 +16,18 @@ import kh.groupware.stream.project.model.vo.ProjectVo;
 import kh.groupware.stream.ptask.model.vo.PtaskVo;
 
 @Service
-public class MaintaskServiceImpl implements MaintaskService {
+public class MaintaskServiceImpl implements MaintaskService  {
 	
 	@Autowired
 	private MaintaskDao maintaskDao;
 	/* 프로젝트, 업무 전체 목록 조회 */
-	public List<ProjectVo> projectNameList(String userid){
+	public List<ProjectVo> projectNameList(String userid) throws Exception{
 		return maintaskDao.projectNameList(userid);
 	}
 	
 	/* 하위업무 추가 */
 	@Transactional
-	public ProjectVo insertInnerTask(PtaskVo vo) {
+	public ProjectVo insertInnerTask(PtaskVo vo) throws Exception {
 		ProjectVo result = null;
 		int update = maintaskDao.UpdateBeforeInsertInnerTask(vo);
 		int insertResult = maintaskDao.insertInnerTask(vo);
@@ -37,15 +37,15 @@ public class MaintaskServiceImpl implements MaintaskService {
         return result;
 	}
 	/* 하위업무 추가를 위한 프로젝트 참가자 표시 */
-	public List<MemberSimpleVo> projectMemberList(String pno){
+	public List<MemberSimpleVo> projectMemberList(String pno) throws Exception{
 		return maintaskDao.projectMemberList(pno);
 	}
 	/* 업무 정렬버튼 기준 업무 조회 */
-	public List<ProjectVo> TaskSortList(MaintaskSortVo vo){
+	public List<ProjectVo> TaskSortList(MaintaskSortVo vo) throws Exception{
 		return maintaskDao.TaskSortList(vo);
 	}
 	/* 로그인한 유저 이름 조회 */	
-	public MemberSimpleVo findMname(String userid) {
+	public MemberSimpleVo findMname(String userid) throws Exception {
 		return maintaskDao.findMname(userid);
 	}
 	
@@ -59,17 +59,17 @@ public class MaintaskServiceImpl implements MaintaskService {
 	*/
 	
 	// 회사 소속 멤버 전체 조회(참가자) - 황대경
-	public List<MemberSimpleVo> companyMemberList(String userid) {
+	public List<MemberSimpleVo> companyMemberList(String userid) throws Exception {
 		return maintaskDao.companyMemberList(userid);
 	}
 
 	// 프로젝트의 현재 참가자 조회(참가자) - 황대경
-	public List<MemberSimpleVo> currentMemberList(String pno) {
+	public List<MemberSimpleVo> currentMemberList(String pno) throws Exception {
 		return maintaskDao.currentMemberList(pno);
 	}
 	
 	// 프로젝트의 현재 참가자 전체 삭제(참가자) - 황대경
-	public int deleteAllCurrentMember(String pno) {
+	public int deleteAllCurrentMember(String pno) throws Exception {
 		return maintaskDao.deleteAllCurrentMember(pno);
 	}
 	
