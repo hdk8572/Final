@@ -28,6 +28,7 @@ public class MainController {
 //	@Autowired
 //	private PtaskService ptastService;
 	
+	/* 메인페이지 */
 	@GetMapping("/member/maintask")
 	public String maintask(Model model, Principal principal) {
 		String userid = principal.getName();
@@ -35,7 +36,8 @@ public class MainController {
 		model.addAttribute("findMname", maintastService.findMname(userid));
 		return "task/maintask";
 	}
-	
+
+	/* 하위업무 추가 (ajax) */
 	@PostMapping("/member/innertaskinsert")
 	@ResponseBody
 	public ProjectVo insert(PtaskVo vo){
@@ -43,6 +45,7 @@ public class MainController {
 		return projectTaskList;
 	}
 	
+	/* 하위업무 추가시 사용되는 project_member 리스트 (ajax) */
 	@GetMapping("/member/showprojectmemberlist")
 	@ResponseBody
 	public List<MemberSimpleVo> memberlist(String pno) {
@@ -50,6 +53,7 @@ public class MainController {
 		return projectMemberList;
 	}
 	
+	/* 업무 정렬 (ajax) */
 	@PostMapping("/member/sort")
 	@ResponseBody
 	public List<ProjectVo> sort(MaintaskSortVo vo) {

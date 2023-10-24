@@ -20,12 +20,17 @@ public class AttendController {
 	
 	// 출근
 	@PostMapping("/member/attendin")
-	public String attendIn(String userid) {
-		System.out.println("[jy] attendIn userid: " + userid);
+	public String attendIn(AttendVo avo) {
+//		int checkDate = attendService.checkDate(avo);
+//		if (checkDate == 1) {
+//			//update code
+//		} else if 
+		System.out.println("[jy]attendIn2 avo:" + avo);
 		int result = 0;
-		result = attendService.attendIn(userid);
-		return "redirect:/member/attendin";
+		result = attendService.attendIn(avo);
+		return " redirect:/member/attendin";
 	}
+	
 	// 근태리스트
 	@GetMapping("/member/attend")
 	public String attendList(Principal principal) {
@@ -36,4 +41,5 @@ public class AttendController {
 		return "/member/attend";
 		
 	}
+	
 }

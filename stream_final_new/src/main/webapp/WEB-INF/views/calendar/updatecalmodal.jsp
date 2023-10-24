@@ -98,7 +98,13 @@
 		    htmlVal+='<input type="hidden" name="attenduseridArr" value="'+selectedValue+'" >';
 		    htmlVal+='</div>';
 		});	
-	    //attenduserid-wrap
+
+		//read에서 불러 온 참가자 사라질 수 있도록 함
+	    $("#updatecalmodal").on("click", ".feather.feather-delete.align-middle.me-2", function() {
+	        $(this).closest(".attenduserid-item").remove();
+	    });
+	    
+		 
 		$("#updatecalmodal #updatedAttendees").html(htmlVal); //참가자들 input들이 추가됨.
 		console.log("=====");
 		
@@ -149,6 +155,8 @@
 		 		console.log("updateBtn삭제");
 		 		$(this).closest(".attenduserid-item").remove();
 		 	});
+		   
+		    
 	    }
 	});
 </script>
@@ -200,14 +208,17 @@
 		$.ajax({
 			url: "${pageContext.request.contextPath}/member/updatepcal", //수정 엔드포인트이다
 			type: 'POST',
-			data: $("#frm-updatecal").serialize(),			
+			data: $("#frm-updatecal").serialize(),	
 			success: function(response){
 				console.log(response);
 				//수정이 성공하면 실행될 코드
 				if(response === 1) {
 					//수정이 성공했을 때
 					alert('일정이 수정되었습니다.');
-					$('#updatecalmodal').modal('hide');// 모달창 닫기
+					
+					
+					location.reload();
+					$('#updatecalmodal').modal('hide'); // 모달창 닫기
 				}else{
 					alert('일정 수정에 실패했습니다.')
 					console.log("updatepcal22에서 오류 발생");

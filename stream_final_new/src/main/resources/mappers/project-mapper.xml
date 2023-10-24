@@ -4,7 +4,7 @@
 	 
 	<select id="selectList" resultType="ProjectVo">
 		SELECT TP.PNO, TP.PNAME, TP.PSTATUS, TP.PACCESS
-		, TP.USERID, VUD.MNAME, VUD.MRANK, VUD.DEPTNAME
+		, TP.USERID, VUD.MNAME, VUD.MRANK, VUD.DEPTNAME, PCOLOR
 		, (SELECT COUNT(*) FROM MEMBER_PROJECT WHERE PNO= TP.PNO) AS COUNTMEMBER
 		FROM (
 		SELECT * FROM PROJECT
@@ -19,7 +19,7 @@
   	
 	<select id="selectHide" resultType="ProjectVo">
 		SELECT TP.PNO, TP.PNAME, TP.PSTATUS, TP.PACCESS
-		, TP.USERID, VUD.MNAME, VUD.MRANK, VUD.DEPTNAME
+		, TP.USERID, VUD.MNAME, VUD.MRANK, VUD.DEPTNAME, PCOLOR
 		, (SELECT COUNT(*) FROM MEMBER_PROJECT WHERE PNO= TP.PNO) AS COUNTMEMBER
 		FROM (
 		SELECT * FROM PROJECT
@@ -33,14 +33,14 @@
 	</select>
 	
 	<select id="sessionPname" resultType="ProjectVo">
-		SELECT PNO, PNAME
+		SELECT PNO, PNAME, PCOLOR
 		FROM PROJECT
 		WHERE PNO = #{pno}
 	</select>
 	
 	<select id="selectOne" resultType="ProjectVo">
    		SELECT TP.PNO, TP.PNAME, TP.PSTATUS, TP.PACCESS
-		, TP.USERID, VUD.MNAME, VUD.MRANK, VUD.DEPTNAME
+		, TP.USERID, VUD.MNAME, VUD.MRANK, VUD.DEPTNAME, PCOLOR
 		, PCONTENT, PDATE, TO_CHAR(PSTARTDATE, 'yyyy-mm-dd') PSTARTDATE, TO_CHAR(PENDDATE, 'yyyy-mm-dd') PENDDATE, PCOLOR
 		, (SELECT COUNT(*) FROM MEMBER_PROJECT WHERE PNO= TP.PNO) AS COUNTMEMBER
 		FROM (
@@ -55,8 +55,8 @@
 	<!-- 프로젝트 + 참여할 멤버 추가 -->
 	<insert id="insertList" parameterType="ProjectInsertParamVo">
 		INSERT ALL 
-			INTO PROJECT (PNO, USERID, PNAME, PCONTENT, PACCESS, PSTARTDATE, PENDDATE, PSTATUS)
-			VALUES (project_sequence.NEXTVAL, #{userid}, #{pname}, #{pcontent}, #{paccess}, #{pstartdate}, #{penddate}, #{pstatus})
+			INTO PROJECT (PNO, USERID, PNAME, PCONTENT, PACCESS, PSTARTDATE, PENDDATE, PCOLOR, PSTATUS)
+			VALUES (project_sequence.NEXTVAL, #{userid}, #{pname}, #{pcontent}, #{paccess}, #{pstartdate}, #{penddate}, concat('RGB('||ROUND(DBMS_RANDOM.VALUE(200, 255))||' '||ROUND(DBMS_RANDOM.VALUE(0, 255))||' '||ROUND(DBMS_RANDOM.VALUE(0, 255)), ')'),#{pstatus})
 		  <foreach collection="memberProjectArr" item="memberuserid">
 			INTO MEMBER_PROJECT(PNO, USERID)		values (project_sequence.NEXTVAL, #{memberuserid} )
 		  </foreach>

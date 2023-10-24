@@ -124,7 +124,7 @@ public class CalendarController {
 	//캘린더 수정
 	@PostMapping("/member/updatepcal")
 	@ResponseBody
-	public int update(Model model, CalendarVo cal) throws Exception {
+	public int update(CalendarVo cal) throws Exception {
 		int result = calendarService.update(cal);
 		return result;
 	}

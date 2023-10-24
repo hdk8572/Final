@@ -24,7 +24,7 @@
 		</collection>
 	</resultMap>
 	
-	<!-- 프로젝트, 업무 뿌리기 -->
+	<!-- 프로젝트, 업무 조회 -->
 	<select id="projectNameList" resultMap="maintaskVoMap" parameterType="string">
 	select pname, pstatus, pno, ut.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel, mname
     	from ( select tno, pno, t.userid, tmember, ttitle, tcontent, tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel, mname
@@ -35,7 +35,7 @@
         where pstatus in ('미진행', '진행', '보류')
     	order by to_number(pno) desc, to_number(bref) desc, brelevel asc, to_number(brestep) asc
 	</select>
-	<!-- 프로젝트 기준 화면 뿌리기 -->
+	<!-- 하위 업무 추가 후 업데이트 된 프로젝트 기준 목록 조회 -->
 	<select id="projectOneTaskList" resultMap="maintaskVoMap" parameterType="string">
 		select pname, pstatus, pno, ut.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel, mname
     	from ( select tno, pno, t.userid, tmember, ttitle, tcontent, tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel, mname
@@ -63,7 +63,7 @@
    			where BRESTEP > (SELECT BRESTEP FROM task WHERE tno = #{tno})
         	and BREF = (select bref from task where tno = #{tno})
 	</update>
-	
+	<!-- 로그인한 유저 이름 조회 -->
 	<select id="selectMname" resultType="MemberSimpleVo">
 		select userid, mname from users where userid=#{userid}
 	</select>
@@ -104,7 +104,7 @@
 			join users using(userid)
 			where pno=#{pno}
 	</select>
-	
+	<!-- 업무 정렬 기능 -->
 	<select id="taskSortedList" resultMap="maintaskVoMap" parameterType="string">
 		select pname, pstatus, pno, ut.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel, mname
     	from ( select tno, pno, t.userid, tmember, ttitle, tcontent, tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel, mname

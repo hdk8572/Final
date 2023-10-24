@@ -44,16 +44,21 @@ public class CalendarDao {
 	}
 	
 	//캘린더 수정
-	public int update(CalendarVo cal) throws Exception{
-		return sqlSession.update("calendar.update", cal);
+	public int updateCalendar(CalendarVo cal) throws Exception{
+		return sqlSession.update("calendar.updateCalendar", cal);
+	}
+	
+	//참가자 부분 수정
+	public int insertAttenduseridArr(CalendarVo cal) throws Exception{
+		return sqlSession.update("calendar.insertAttenduseridArr", cal);
 	}
 	
 	//캘린더 삭제
-	public int delete(String sno) throws Exception{
-		return sqlSession.delete("calendar.delete",sno);
+	public int deleteCalendar(String sno) throws Exception{
+		return sqlSession.delete("calendar.deleteCalendar",sno);
 	}
 	
-	//끼인 캘린더 삭제
+	//참가자 부분 삭제
 	public int deletemember(String sno) throws Exception{
 		return sqlSession.delete("calendar.deletemember",sno);
 	}

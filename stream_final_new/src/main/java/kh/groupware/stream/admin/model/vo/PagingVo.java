@@ -12,7 +12,7 @@ public class PagingVo {
 	private int lastPage;	//마지막 페이지
 	private int start;		//쿼리용 start
 	private int end;		//쿼리용 end
-	private int cntPage=5;
+	private int cntPage=5;	//페이지별 표시 목록 수
 	
 	
 	

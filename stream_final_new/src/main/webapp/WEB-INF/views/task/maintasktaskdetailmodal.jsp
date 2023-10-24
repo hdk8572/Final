@@ -56,7 +56,6 @@
 	</div>
 </div>
 <script>
-
 	$(document).on("mouseover", ".d-flex.align-items-start", function() {
 	    $(this).find(".reply-btn").css("visibility", "visible");
 	});
@@ -64,6 +63,7 @@
 	$(document).on("mouseout", ".d-flex.align-items-start", function() {
 	    $(this).find(".reply-btn").css("visibility", "hidden");
 	});
+	
 	
 function replyLoadList(targetTno) {
 	console.log(targetTno);

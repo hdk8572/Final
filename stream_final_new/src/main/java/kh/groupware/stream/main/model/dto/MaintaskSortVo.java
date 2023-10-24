@@ -3,10 +3,10 @@ package kh.groupware.stream.main.model.dto;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MaintaskSortVo {
+public class MaintaskSortVo {	//업무 정렬을 위한 Vo
 	
-	private String userid;
-	private String ordertype;
+	private String userid;	//로그인한 사람 id
+	private String ordertype;	// 정렬 순서
 	
 	@Override
 	public String toString() {

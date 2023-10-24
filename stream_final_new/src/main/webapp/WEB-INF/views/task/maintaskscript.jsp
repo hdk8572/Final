@@ -6,21 +6,14 @@
 window.onload=loadedHandler;
 
 function loadedHandler(){
-	//div 드래그
-	/* $(".jm-move").on("dragstart", dragStart);
-	$(".jm-move").on("drag", dragging);
-	$(".jm-drop").on("dragenter", dragEnter);
-	$(".jm-drop").on("dragover", allowDrop);
-	$(".jm-drop").on("drop", drop);
-	$(".jm-move").on("dragend", dragEnd ); */
-	
+
 	//업무리스드 열고 닫기
 	$(".jm-box-project-title").on("click", titleClickHandler);
 	
 	//자세히 보기 클릭 이벤트
 	//$(".jm-task-info").on("click", taskDetailButtonClickTestHandler);
 	
-	//업무 추가 버튼 from submit 이벤트
+	//업무 추가 버튼 form submit 이벤트
 	$(".addInnerTask").on("submit",ttitleCheckHandler);
 	//ajax 원클릭 변경. 현재 미사용
 	//$(".jm-inner-task-button").on("click", innerTaskInputHandler);
@@ -30,42 +23,9 @@ function loadedHandler(){
 	$('html').on("click", boxOutHandler);
 	titleHoverHandler();
 	
-	
-	
 }
-/* 드래그 관련함수 */
-/* function dragStart(e){
-	console.log(this.id);
-	console.log(e.target.id);
-	event.dataTransfer.setData("abc", event.target.id);
-}
-function dragging(e){
-	console.log(this.id);
-	event.dataTransfer.setData("abc", event.target.id);
-}
-function dragEnter(e){
-	console.log(this.id);
-	this.style.border="3px dotted red";
-}
-function allowDrop(e){
-	event.preventDefault();
-	
-}
-function drop(e){
-	event.preventDefault();
-	var data = event.dataTransfer.getData("abc");
-	console.log(data);
-	console.log(event.target);
-	var jTargetElement = $(event.target);
-	console.log(jTargetElement);
-	console.log(jTargetElement.parents(".jm-move"));
-	jTargetElement.parents(".jm-drop").append(document.getElementById(data));
-	//event.target.appendChild(document.getElementById(data));
-}
-function dragEnd(e){
-	console.log("드래그 종료");
-} */
 
+/* 프로젝트 이름 클릭했을시 동작하는 함수 */
 titleClickHandler=(event)=>{
 	console.log("[JM]===titleClickHandler===")
 	const a1 = event.target;
@@ -81,6 +41,7 @@ titleClickHandler=(event)=>{
 	}
 } 
 
+/* 업무 자세히 보기 버튼 누를 경우 동작하는 함수 (modal, ajax 동작)*/
 taskDetailButtonClickTestHandler=(thisButton)=>{
 	console.log("[JM]===taskDetailButtonClickTestHandler===")
 	var a1 = thisButton
@@ -119,6 +80,7 @@ taskDetailButtonClickTestHandler=(thisButton)=>{
 		});
 }
 
+/* 오늘 날자 출력 */
 functionDateHandler=(e)=>{
 	var today = new Date();
 	var year = today.getFullYear();
@@ -129,10 +91,8 @@ functionDateHandler=(e)=>{
 	$(".innerTdate").html("<span>"+dateString+"</span>");
 }
 
-
+/* 하위 업무 추가할 때 동작하는 함수 */
 innerTaskInputHandler=(thisElement)=>{
-
-	
 	
 	console.log("[JM]==innerTaskInputHadler==")
 	const a1 = thisElement;	//button
@@ -149,6 +109,7 @@ innerTaskInputHandler=(thisElement)=>{
 	getProjectMemberList(thisElement);
 }
 
+/* 하위업무 입력박스 외 부분 클릭시 동작하는 함수 */
 boxOutHandler=(event)=>{
 	const a1 = event.target;
 	if( $(".jm-innerTaskInput").hasClass('active') ){
@@ -166,7 +127,7 @@ boxOutHandler=(event)=>{
 	}
 	
 }
-
+/* 프로젝트 참가자들을 구하는 함수 (ajax) */
 function getProjectMemberList(thisElement){
 	console.log("[JM]===getProjectMemberList===")
 	var a1 = thisElement;
@@ -200,6 +161,7 @@ function getProjectMemberList(thisElement){
 			}
 		});
 	}
+/* 프로젝트 참가자들을 구하는 함수 (ajax) */
 function showProjectMemberView(data, htmlTarget){
 	console.log("[JM]===showProjectMemberView===")
 		console.log(data)
@@ -220,7 +182,7 @@ ttitleCheckHandler=(event)=>{
 	console.log(a1);
 }
 
-
+/* 하위 업무 추가를 위한 함수 (ajax) */
 function innerTaskaddListHandler (data) {
 if(jmRegExp(data) == false){
 		return;
@@ -259,7 +221,6 @@ console.log("[JM]===innerTaskaddListHandler===")
 		}
 	});
 }
-const test="100";
 function makeView(project) {
 console.log(project);
 console.log(project.pname);

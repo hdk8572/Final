@@ -40,7 +40,7 @@
 			<main class="content admin-main">
 				<div class="admin-cen">
 				<!-- 간단 통계 -->
-					<div class="admin-maintext col-lg-10 offset-lg-1">
+					<div class="admin-maintext col-lg-8 offset-lg-2">
 						<c:if test="${CNT != null }">
 							<div>
 								<span>현재 stream 그룹웨어를 </span> <span>${CNT.ccnt }</span> <span>
@@ -57,7 +57,7 @@
 						</c:if>
 					</div>
 					<!-- 회사 리스트 -->
-					<div class="admin-ctable col-lg-10 offset-lg-1 admin-margin-top">
+					<div class="admin-ctable col-lg-8 offset-lg-2 admin-margin-top">
 						<div>
 							<select id="cntPerPage" name="sel" onchange="selChange()">
 								<option value="5"
@@ -116,7 +116,7 @@
 						</div>
 					</div>
 					<div class="admin-cen admin-martin-top">
-						<table class="admin-maptable col-lg-10">
+						<table class="admin-maptable col-lg-8">
 							<tbody>
 								<tr>
 									<th class="admin-border-top">주소</th>
