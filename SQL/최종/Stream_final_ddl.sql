@@ -1,6 +1,5 @@
 DROP TABLE "RANK";              --연결없음
 DROP TABLE "ALARM";             --연결없음
-DROP TABLE "SCHEDULE_REPLY";    --끼인테이블
 DROP TABLE "REPLY";             --끼인테이블
 DROP TABLE "FILES";             --끼인테이블
 DROP TABLE "MEMBER_PROJECT";    --끼인테이블      
