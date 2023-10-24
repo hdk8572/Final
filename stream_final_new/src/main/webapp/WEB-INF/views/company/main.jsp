@@ -44,7 +44,6 @@
 			</main>
 		</div>
 	</div>
-
 </body>
 <!-------------------- Script ----------------------->
 <script src="${pageContext.request.contextPath}/js/stream.js"></script>

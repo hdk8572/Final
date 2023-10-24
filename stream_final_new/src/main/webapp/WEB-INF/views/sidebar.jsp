@@ -43,14 +43,18 @@
 
 					<li class="sidebar-header">모아보기</li>
 					<li class="sidebar-item"><a class="sidebar-link"
-						 href="${pageContext.request.contextPath}/member/info"><svg xmlns="http://www.w3.org/2000/svg"
-						 width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-						  class="feather feather-info align-middle me-2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line>
+						href="${pageContext.request.contextPath}/member/info"><svg
+								xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+								viewBox="0 0 24 24" fill="none" stroke="currentColor"
+								stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+								class="feather feather-info align-middle me-2">
+								<circle cx="12" cy="12" r="10"></circle>
+								<line x1="12" y1="16" x2="12" y2="12"></line>
 						  <line x1="12" y1="8" x2="12.01" y2="8"></line></svg><span
 							class="align-middle">공지사항</span> </a></li>
 					<li class="sidebar-item"><a class="sidebar-link"
 						href="${pageContext.request.contextPath}/member/maintask"> <i
-							class="align-middle" data-feather="square"></i> <span
+							class="align-middle" data-feather="align-left"></i> <span
 							class="align-middle">전체업무</span>
 					</a></li>
 
@@ -58,26 +62,19 @@
 						href="${pageContext.request.contextPath}/member/pcal"><i
 							class="align-middle me-2" data-feather="calendar"></i> <span
 							class="align-middle">캘린더</span> </a></li>
-
-					<li class="sidebar-item"><a class="sidebar-link"
-						href="${pageContext.request.contextPath}/#"> <i
-							class="align-middle me-2" data-feather="paperclip"></i> <span
-							class="align-middle">파일함</span>
-					</a></li>
-
-					<li class="sidebar-item"><a class="sidebar-link"
-						href="${pageContext.request.contextPath}/#"> <i
-							class="align-middle" data-feather="align-left"></i> <span
-							class="align-middle">내 게시물</span></a></li>
 					<li class="sidebar-item"><a class="sidebar-link"
 						href="${pageContext.request.contextPath}/member/attend"><i
 							class="align-middle me-2" data-feather="user-check"></i><span
 							class="align-middle">근태관리</span> </a></li>
-					<li class="sidebar-item"><a class="sidebar-link" id="popup"><svg xmlns="http://www.w3.org/2000/svg" 
-						width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
-						class="feather feather-message-square align-middle me-2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span
-							class="align-middle">채팅</span> </a></li>						
-					
+					<li class="sidebar-item"><a class="sidebar-link" id="popup"><svg
+								xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+								viewBox="0 0 24 24" fill="none" stroke="currentColor"
+								stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+								class="feather feather-message-square align-middle me-2">
+								<path
+									d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span
+							class="align-middle">채팅</span> </a></li>
+
 				</c:if>
 				<c:if test="${authority.authority eq 'ROLE_C' }">
 					<li class="sidebar-item"><a class="sidebar-link"
@@ -86,12 +83,11 @@
 							class="align-middle">사원 초대</span> </a></li>
 				</c:if>
 				<c:if test="${authority.authority eq 'ROLE_A' }">
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="${pageContext.request.contextPath}/logout">
-							<i class="align-middle me-2" data-feather="users"></i>
-							<span class="align-middle">로그아웃</span> 
-						</a>
-					</li>
+					<li class="sidebar-item"><a class="sidebar-link"
+						href="${pageContext.request.contextPath}/logout"> <i
+							class="align-middle me-2" data-feather="users"></i> <span
+							class="align-middle">로그아웃</span>
+					</a></li>
 				</c:if>
 			</c:forEach>
 		</ul>

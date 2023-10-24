@@ -1,8 +1,7 @@
-.admin-main{
-	background-color: #f5fbf5;
-}
 .admin-maintext{
 	padding-left: 2rem;
+	background: white;
+	border-radius: 60px;
 }
 .admin-maintext span{
 	font-size: 1.25em;
@@ -26,7 +25,7 @@ canvas{
 	margin-top: 50px;
 }
 .list-table{
-	border: 2px solid white;
+	border: 2px solid #009b77;
 	width: 100%;
 }
 .list-table>thead{
@@ -34,17 +33,17 @@ canvas{
 	border: 2px solid white;
 }
 .list-table th, .list-table td{
-	background-color: #ffffcc;
+	background-color: white;
 }
 .list-table td{
 	padding-left: 15px;
 }
 .list-table td, .list-table th {
-	 border: 2px solid white;
+	 border: 2px solid #009b77;
 }
 .list-table .admin-pointer:hover{
-	background-color: #009b77;
-	color: white;
+	background-color: #f5fbf5;
+	color: black;
 }
 .admin-maptable{
 	margin: auto;
@@ -64,7 +63,7 @@ canvas{
 .admin-map{
 	height: 400px;
 }
-.admin-martin-top{
+.admin-margin-top{
 	margin-top: 50px;
 }
 .admin-border-top{
@@ -76,4 +75,13 @@ canvas{
 .admin-border-t-and-b{
 	border-bottom: 1px solid #dae0e9;
 	border-top: 1px solid #dae0e9;
+}
+.admin-ctable>div{
+	text-align: left;
+}
+#cntPerPage{
+	background-color: white;
+}
+#cntPerPage:hover{
+	background-color: #f5fbf5;
 }

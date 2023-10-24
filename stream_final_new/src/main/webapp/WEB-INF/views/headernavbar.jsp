@@ -180,7 +180,7 @@
 					});
 
 	$("#editmypage").click(function() {
-		var url = "${pageContext.request.contextPath}/editmypage";
+		var url = "${pageContext.request.contextPath}/member/editmypage";
 		window.location.href = url;
 	});
 </script>
