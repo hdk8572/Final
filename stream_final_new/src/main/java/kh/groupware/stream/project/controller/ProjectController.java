@@ -57,9 +57,10 @@ public class ProjectController {
 
 	@GetMapping("/member/loadList")
 	@ResponseBody
-	public List<ProjectVo> loadList(Principal principal, String pname, String pno, HttpSession session) {
+	public List<ProjectVo> loadList(Principal principal, String pname, String pno, String pcolor, HttpSession session) {
 		System.out.println("loadList 돌았습니다");
 		session.setAttribute("projectPname", pname);
+		session.setAttribute("projectPcolor", pcolor);
 		String userid = principal.getName();
 		// MemberSimpleVo mvo = maintastService.findMname(userid);
 //		ProjectVo infoList = projectService.selectProjectInfo(pno);

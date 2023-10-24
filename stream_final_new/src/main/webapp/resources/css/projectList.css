@@ -3,6 +3,11 @@
 	border: 1px, solid, #009b77;	
 }
 
+.stat {
+    background: transparent;
+    border: 1.5px solid #009b77;
+}
+
 .h3.mb-3 > span {
 	margin: 0px, 10px;
 }

@@ -17,6 +17,7 @@ public class ProjectVo {
 	private String prow;
 	private String countmember;
 	private String pstatus;
+	private String pcolor;
 
 	private String pcontent;
 	private String pdate;
@@ -42,11 +43,11 @@ public class ProjectVo {
 	@Override
 	public String toString() {
 		return "ProjectVo [pno=" + pno + ", userid=" + userid + ", pname=" + pname + ", paccess=" + paccess + ", prow="
-				+ prow + ", countmember=" + countmember + ", pstatus=" + pstatus + ", pcontent=" + "CLOB" + ", pdate="
-				+ pdate + ", pstartdate=" + pstartdate + ", penddate=" + penddate + ", type=" + type + ", keyword="
-				+ keyword + ", deptno=" + deptno + ", mname=" + mname + ", mrank=" + mrank + ", deptname=" + deptname
-				+ ", maintaskList=" + maintaskList + ", memberProjectList=" + memberProjectList + ", maintaskSortList="
-				+ maintaskSortList + "]";
+				+ prow + ", countmember=" + countmember + ", pstatus=" + pstatus + ", pcolor=" + pcolor + ", pcontent="
+				+ "CLOB" + ", pdate=" + pdate + ", pstartdate=" + pstartdate + ", penddate=" + penddate + ", type="
+				+ type + ", keyword=" + keyword + ", deptno=" + deptno + ", mname=" + mname + ", mrank=" + mrank
+				+ ", deptname=" + deptname + ", maintaskList=" + maintaskList + ", memberProjectList="
+				+ memberProjectList + ", maintaskSortList=" + maintaskSortList + "]";
 	}
 
 	public String getPno() {
@@ -208,4 +209,14 @@ public class ProjectVo {
 	public void setMaintaskSortList(List<MaintaskSortVo> maintaskSortList) {
 		this.maintaskSortList = maintaskSortList;
 	}
+
+	public String getPcolor() {
+		return pcolor;
+	}
+
+	public void setPcolor(String pcolor) {
+		this.pcolor = pcolor;
+	}
+	
+	
 }

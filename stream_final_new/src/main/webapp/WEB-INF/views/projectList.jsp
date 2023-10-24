@@ -203,9 +203,8 @@
 	                                    <span>\${projectOne.deptname}</span>: <span>\${projectOne.mname}</span><span> \${projectOne.mrank}</span>님
 	                                </h5>
 	                            </div>
-	                            
 	                            <div class="col-auto">
-	                                <div class="stat text-primary">
+	                                <div class="stat text-primary" style='border: 1.5px solid \${projectOne.pcolor}'>
 	                                    \${projectOne.countmember}명
 	                                </div>	
 	                            </div>

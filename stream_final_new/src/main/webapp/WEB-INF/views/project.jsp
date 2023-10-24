@@ -55,7 +55,7 @@
 			<main>
 				<div class="project-detail-header">
 					<div class="testtt">
-						<i id="projectColor" class="project-color color-code-1"></i>
+						<i id="projectColor" class="project-color color-code-1" style="border: 1.5px solid ${projectPname.pcolor};background: ${projectPname.pcolor};"></i>
 					</div>
 					<div class="project-header-group">
 						<h2 style="font-weight: bold;position: relative;left: -12px;">${projectPname.pname}</h2>
