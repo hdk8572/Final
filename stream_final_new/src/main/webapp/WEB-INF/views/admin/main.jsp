@@ -33,17 +33,14 @@
 
 </head>
 <body>
-	<%@ include file="/WEB-INF/views/alertmsg.jsp"%>
 	<div class="wrapper">
 	<%@ include file="/WEB-INF/views/sidebar.jsp"%>
 		<div class="main">
 		<%@ include file="/WEB-INF/views/headernavbar.jsp"%>
 			<main class="content admin-main">
-				<h1 class="offset-lg-1">hello admin!</h1>
-				<br><br>
-				<div  class="admin-flex">
+				<div class="admin-cen">
 				<!-- 간단 통계 -->
-					<div class="admin-maintext col-lg-5 offset-lg-1">
+					<div class="admin-maintext col-lg-10 offset-lg-1">
 						<c:if test="${CNT != null }">
 							<div>
 								<span>현재 stream 그룹웨어를 </span> <span>${CNT.ccnt }</span> <span>
@@ -60,7 +57,7 @@
 						</c:if>
 					</div>
 					<!-- 회사 리스트 -->
-					<div class="admin-ctable col-lg-5">
+					<div class="admin-ctable col-lg-10 offset-lg-1 admin-margin-top">
 						<div>
 							<select id="cntPerPage" name="sel" onchange="selChange()">
 								<option value="5"
@@ -109,7 +106,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="admin-martin-top">
+				<div class="admin-margin-top">
 					<div class="admin-cen">
 						<div>
 							<h1>오시는 길</h1>
