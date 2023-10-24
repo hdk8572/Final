@@ -161,7 +161,7 @@
 
 
 	</main>
-
+	<%@include file="/WEB-INF/views/footer.jsp"%>
 	<!-------------------- Script ----------------------->
 	<!-- 이메일/부서 null값으로 추가불가 -->
 	<script>
