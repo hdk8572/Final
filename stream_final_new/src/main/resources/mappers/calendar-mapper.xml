@@ -45,7 +45,7 @@ SELECT SNO, USERID, mname, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, '
 		from ( select * from schedule WHERE sno = #{sno} ) tbs join member_schedule tbms using(sno)
 	</select>
 	
-	<!-- 프로젝트의 멤버들 조회 --> 
+	<!-- 프로젝트의 멤버들 조회(원래 코드) --> 
 	<!-- 	
 		<select id="memberProjectList" resultType="MemberSimpleVo">
 		select userid, (select mname from users tu where tm.userid=tu.userid ) mname 
@@ -54,7 +54,7 @@ SELECT SNO, USERID, mname, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, '
 	</select>
 	 -->
 
-	<!-- 프로젝트의 멤버들 조회2 --> 
+	<!-- 프로젝트의 멤버들 조회TODO 직급 때문에 근데 직급이 안 뜸 --> 
 	<select id="memberProjectList" resultType="MemberSimpleVo">
 		SELECT PNO, USERID, MNAME, MRANK
 		FROM MEMBER_PROJECT
@@ -89,36 +89,39 @@ SELECT SNO, USERID, mname, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, '
 				VALUES (schedule_sequence.NEXTVAL, #{userid}, #{pno}, #{start}, #{end}, #{smemo}, #{title}, #{splace},'#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'))
 		<if test="attenduseridList != null">
 		<foreach collection="attenduseridList" item="attenduserid">
-		INTO Member_SCHEDULE (SNO, ATTENDUSERID)
+		INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID)
 			VALUES (schedule_sequence.NEXTVAL, #{attenduserid.userid})
 		</foreach>		
 		</if>
 		SELECT * FROM dual
 	</insert>
 
-
 	<!-- 캘린더 수정 -->
-	<update id="update" parameterType="CalendarVo">
+	<update id="updateCalendar" parameterType="CalendarVo">
 		UPDATE SCHEDULE SET 
 		STITLE=#{title}, SSTART=#{start}, SEND=#{end}, SMEMO=#{smemo}
 		WHERE SNO=#{sno}
 	</update>
 	
-	<!-- 참가자 수정TODO -->
-	<update id="updateMember" parameterType="CalendarVo">
-		UPDATE Member_SCHEDULE SET
-		ATTENDUSERID =#{attenduserid}
-		WHERE SNO =#{sno}
-	</update>
+	<insert id="insertAttenduseridArr" parameterType="CalendarVo">
+		<foreach collection="attenduseridArr" item="attenduserid" open="INSERT ALL" close="SELECT * FROM DUAL">
+			INTO MEMBER_SCHEDULE(SNO, ATTENDUSERID) values (#{sno}, #{attenduserid} )
+		</foreach>
+	</insert> 
 
 	<!-- 캘린더 삭제 --> 
-	<delete id="delete" parameterType="String">
+	<delete id="deleteCalendar" parameterType="string">
 		DELETE FROM SCHEDULE
 		WHERE SNO=#{sno}
 	</delete>
 	
+<!-- 	<delete id="deleteAttenduseridArr" parameterType="CalendarVo">
+		DELETE FROM MEMBER_SCHEDULE
+		WHERE SNO=#{sno}
+	</delete> -->
+	
 	<!-- 참가자 있을 때 캘린더 삭제 --> 
-	<delete id="deletemember" parameterType="String">
+	<delete id="deletemember" parameterType="string">
 		DELETE FROM MEMBER_SCHEDULE
 		WHERE SNO=#{sno}
 	</delete>

@@ -57,8 +57,11 @@ public class CalendarServiceImpl implements CalendarService {
 
 	//캘린더 수정
 	@Override
+	@Transactional
 	public int update(CalendarVo cal) throws Exception{
-		return calendarDao.update(cal);
+		calendarDao.deletemember(cal.getSno());
+		calendarDao.insertAttenduseridArr(cal);
+		return calendarDao.updateCalendar(cal);
 	}
 	
 	//캘린더 삭제
@@ -67,7 +70,7 @@ public class CalendarServiceImpl implements CalendarService {
 	@Transactional
 	public int delete(String sno)throws Exception {
 		calendarDao.deletemember(sno);
-		return 	calendarDao.delete(sno);
+		return 	calendarDao.deleteCalendar(sno);
 	}
 	
 	// 프로젝트에 참여중인 회원인지 확인함.
