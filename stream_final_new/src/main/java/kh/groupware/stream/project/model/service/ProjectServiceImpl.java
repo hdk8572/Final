@@ -98,5 +98,11 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectDao.searchProjectList(vo);
 	}
 
+	// 로그인 한 계정 정보 조회 - 황대경
+	@Override
+	public ProjectVo loginUser(String userid) {
+		return projectDao.loginUser(userid);
+	}
+	
 	
 }

@@ -103,4 +103,13 @@
 		select userid, mname, ccode from users where userid=#{userid}
 	</select>
 	
+	<!-- 로그인 한 계정 정보 조회 - 황대경  -->
+	<select id="loingUser" resultType="ProjectVo">
+		SELECT *
+		FROM USERS
+			JOIN DEPT USING (DEPTNO, CCODE)
+		WHERE USERID = #{userid}
+	</select>
+	
+	
 </mapper>

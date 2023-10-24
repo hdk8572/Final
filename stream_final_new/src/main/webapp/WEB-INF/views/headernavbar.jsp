@@ -23,7 +23,8 @@
 				data-bs-toggle="dropdown"> <img
 					src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 					class="avatar img-fluid rounded me-1" alt="Charles Hall"
-					border-radius: 50% !important /> <span class="text-dark">사용자</span>
+					border-radius: 50% !important />
+					<span class="text-dark"></span>
 			</a>
 
 				<div class="dropdown-menu dropdown-menu-end">
@@ -184,5 +185,16 @@
 		window.location.href = url;
 	});
 </script>
-
-
+<script>
+	$.ajax ({
+		url: "${pageContext.request.contextPath}/member/loginUser",
+		type: "get",
+		data: {userid: '${principal.username}'},
+		success: function(result) {
+			$(".text-dark").text(result.mname+" "+result.mrank+"님");
+		},
+		error: function() {
+			console.log("loginUser에서 오류 발생");
+		}
+	});	
+</script>

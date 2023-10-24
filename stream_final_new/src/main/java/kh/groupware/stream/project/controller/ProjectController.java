@@ -143,6 +143,14 @@ public class ProjectController {
 		System.out.println("Delete result :"+result);
 		return result;
 	}
+	
+	// 로그인 한 계정 정보 조회 - 황대경
+	@GetMapping("/member/loginUser")
+	@ResponseBody
+	public ProjectVo loginUser(String userid) {
+		ProjectVo result = projectService.loginUser(userid);
+		return result;
+	}
 
 	// 회사 멤버 1명 조회
 //	@GetMapping("/member/getCompanyMemberList")

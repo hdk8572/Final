@@ -25,4 +25,7 @@ public interface ProjectService {
     
     
 	public List<ProjectVo> searchProjectList(ProjectVo vo, String userid);
+	
+	// 로그인 한 계정 정보 조회 - 황대경
+	public ProjectVo loginUser(String userid);
 }
