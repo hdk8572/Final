@@ -3,13 +3,16 @@
 <mapper namespace="attend">
 
 	<!-- 출근 -->
-	<insert id="attendIn" parameterType="String">
+	<insert id="attendIn" parameterType="AttendVo">
 		INSERT INTO ATTEND (ATDATE,
 		USERID, ATSTATENO, ATINTIME, ATWORKHOUR) VALUES
-		(TO_CHAR(sysdate,
-		'YYYY-MM-DD'), #{userid}, 1, TO_CHAR(sysdate, 'YYYY-MM-DD
+		(#{atdate}, #{userid}, 1, TO_CHAR(sysdate, 'YYYY-MM-DD
 		HH24:MI:SS'), 0)
 	</insert>
+	
+	<select id="dateCheck" parameterType="AttendVo" resultType="_int">
+		SELECT COUNT(*) FROM ATTEND WHERE USERID = #{userid} AND ATDATE = #{atdate}
+	</select>
 
 	<!-- 근태리스트 -->
 	<select id="attendList" parameterType="String" resultType="AttendVo">
