@@ -330,14 +330,15 @@
 			</main>
 		</div>
 	</div>
+	<%@include file="/WEB-INF/views/task/maintasktaskdetailmodal.jsp" %>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
-	<%@include file="/WEB-INF/views/task/maintaskscript.jsp" %>
 	<%@include file="/WEB-INF/views/task/maintaskscript.jsp" %>
 	<%-- <%@ include file="/WEB-INF/views/detailptaskmodal.jsp"%> --%>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
 	<%-- <script src="${pageContext.request.contextPath}/js/maintask.js"></script> --%>
 	
 	<script>
+	/* 업무 정렬을 위한 함수 (ajax) */
 		taskSortHandler=()=>{
 			var e1 = event.target;
 			console.log("[JM]===taskSortHandler===")
@@ -368,6 +369,7 @@
 		$(".jm-order").on("click", taskSortHandler);
 	</script>
 	<script>
+	/* 업무 정렬 */
 	sortMakeView=(data)=>{
 		console.log("[JM]===sortMakeView===")
 		console.log(data);
@@ -500,6 +502,7 @@
 	}
 	</script>
 	<script>
+	/* hover시 숨겨진 버튼 보이게 하는 함수 */
 	function titleHoverHandler(){
 		$(".jm-title-ttitle").hover(()=>{
 			//$(event.target).find(".jm-hidden-btn").addClass("active");
@@ -512,6 +515,7 @@
 		}
 	</script>
 	<script>
+	/* 업무 추가시 날자(시작, 마감) 유효성 검사 */
 	DateInputCheckHandler=(thisElement)=>{
 		console.log("===[JM]DateInputCheckHandler===")
 		console.log("[JM]"+thisElement);
@@ -547,6 +551,7 @@
 	}
 </script>
 <script>
+	/* 업무 추가시 유효성 검사 */
 	jmRegExp=(thisElement)=>{
 		console.log("[JM]===정규표현식===");
 		console.log("[JM]"+thisElement);	//추가하기 버튼

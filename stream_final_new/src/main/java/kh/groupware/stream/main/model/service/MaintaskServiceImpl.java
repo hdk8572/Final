@@ -20,11 +20,12 @@ public class MaintaskServiceImpl implements MaintaskService {
 	
 	@Autowired
 	private MaintaskDao maintaskDao;
-	
+	/* 프로젝트, 업무 전체 목록 조회 */
 	public List<ProjectVo> projectNameList(String userid){
 		return maintaskDao.projectNameList(userid);
 	}
 	
+	/* 하위업무 추가 */
 	@Transactional
 	public ProjectVo insertInnerTask(PtaskVo vo) {
 		ProjectVo result = null;
@@ -35,15 +36,15 @@ public class MaintaskServiceImpl implements MaintaskService {
 		}
         return result;
 	}
-	
+	/* 하위업무 추가를 위한 프로젝트 참가자 표시 */
 	public List<MemberSimpleVo> projectMemberList(String pno){
 		return maintaskDao.projectMemberList(pno);
 	}
-	
+	/* 업무 정렬버튼 기준 업무 조회 */
 	public List<ProjectVo> TaskSortList(MaintaskSortVo vo){
 		return maintaskDao.TaskSortList(vo);
 	}
-	
+	/* 로그인한 유저 이름 조회 */	
 	public MemberSimpleVo findMname(String userid) {
 		return maintaskDao.findMname(userid);
 	}

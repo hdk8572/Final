@@ -17,21 +17,32 @@ public class AdminDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	/* 간단한 통계*/
 	public AdminVo cnt(){
 		return sqlSession.selectOne("admin.cnt");
 	}
+
+	/* 회사 목록 조회 */
 	public List<CompanyVo> companyList(){
 		return sqlSession.selectList("admin.clist");
 	}
+
+	/* 페이징 처리 위한 전체 목록 확인 */
 	public int countCompany() {
 		return sqlSession.selectOne("admin.countCompany");
 	}
+
+	/* 페이징 처리 후 회사 목록 조회 */
 	public List<CompanyVo> pagingCompanyList(PagingVo vo){
 		return sqlSession.selectList("admin.clistPaging", vo);
 	}
+
+	/* 회사 상세 조회 */
 	public List<AdminVo> showCompanyDetail(String ccode){
 		return sqlSession.selectList("admin.showCompanyDetail", ccode);
 	}
+
+	/* 차트 그리기 */
 	public List<AdminVo> makePieChart(String ccode){
 		return sqlSession.selectList("admin.makePieChart", ccode);
 	}

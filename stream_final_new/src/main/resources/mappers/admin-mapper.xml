@@ -15,7 +15,7 @@
 <select id="countCompany" resultType="int">
 	select count(*) from company where ccode not in 'C000'
 </select>
-
+<!-- 페이징 위한 모든 목록 숫자 조회 -->
 <select id="clistPaging" resultType="CompanyVo">
 	select rn, ccode, cname, cphone, caddress
     from (select rownum rn, ccode,cname,cphone, caddress
@@ -23,11 +23,11 @@
                             from company where ccode not in'C000' order by ccode asc) a )
     where rn between #{start} and #{end}
 </select>
-
+<!-- 회사 목록 조회 -->
 <select id="clist" resultType="CompanyVo">
 	select ccode, cname, cphone, caddress from company where ccode not in 'C000' order by ccode asc
 </select>
-
+<!-- 회사 상세 보기 -->
 <select id="showCompanyDetail" resultType="AdminVo">
 	SELECT
         C.CCODE AS ccode,
@@ -45,7 +45,7 @@
     WHERE C.CCODE = #{ccode}
     GROUP BY C.CCODE, C.CNAME, D.DEPTNO, D.DEPTNAME
 </select>
-
+<!-- 차트용 프로젝트 상태별 개수 조회 -->
 <select id="makePieChart" resultType="AdminVo">
 	select pstatus, count(pno) countforpiechart
     from project

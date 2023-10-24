@@ -4,29 +4,18 @@ import java.sql.Date;
 
 import org.springframework.stereotype.Component;
 
-//TNO        NOT NULL VARCHAR2(10)   
-//PNO        NOT NULL VARCHAR2(20)   
-//USERID     NOT NULL VARCHAR2(40)   
-//TMEMBER    NOT NULL VARCHAR2(40)   
-//TCONTENT   NOT NULL VARCHAR2(1200) 
-//TSTATUS    NOT NULL VARCHAR2(10)   
-//TDATE      NOT NULL DATE           
-//tstartdate          DATE           
-//tenddate            DATE           
-
-
 @Component
 public class MaintaskDto {
-	private String tno;
-	private String pno;
-	private String userid;
-	private String tmember;
-	private String ttitle;
-	private String tcontent;
-	private String tstatus;
-	private Date tdate;
-	private Date tstartdate;
-	private Date tenddate;
+	private String tno;	//업무 번호
+	private String pno;	//프로젝트 번호
+	private String userid;	//작성자
+	private String tmember;	//담당자
+	private String ttitle;	//업무 제목
+	private String tcontent;//업무 내용
+	private String tstatus;	//업무 진행 상태
+	private Date tdate;		//작성일
+	private Date tstartdate;//업무 시작일
+	private Date tenddate;	//업무 마감일
 	
 	//하위 업무 추가를 위한 컬럼
 	private String bref;	//bref=tno : 원본글

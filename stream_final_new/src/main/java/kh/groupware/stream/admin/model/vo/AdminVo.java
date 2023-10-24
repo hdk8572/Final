@@ -5,18 +5,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class AdminVo {
 	
-	private String ucnt;
-	private String ccnt;
-	private String pcnt;
-	private String tcnt;
+	private String ucnt;	//사용자 수
+	private String ccnt;	//사용 회사 수
+	private String pcnt;	//프로젝트 수
+	private String tcnt;	//업무 수
 	
-	private String ccode;
-	private String cname;
-	private String deptno;
-	private String deptname;
+	private String ccode;	//회사 코드
+	private String cname;	//회사명
+	private String deptno;	//부서코드
+	private String deptname;//부서명
 	
-	private String pstatus;
-	private String countforpiechart;
+	private String pstatus;	//프로젝트 진행 상태
+	private String countforpiechart;//회사별 프로젝트 숫자 카운트
 	
 	@Override
 	public String toString() {

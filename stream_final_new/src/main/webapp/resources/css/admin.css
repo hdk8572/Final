@@ -80,6 +80,7 @@ canvas{
 	text-align: left;
 }
 #cntPerPage{
+	border-color: #009b77;
 	background-color: white;
 }
 #cntPerPage:hover{

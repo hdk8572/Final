@@ -22,7 +22,7 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 	
-	
+	/* 어드민 페이지 및 페이징 처리*/
 	@GetMapping("/admin/main")
 	public String adminPage(Model model, PagingVo vo, 
 			@RequestParam(value="nowPage", required=false)String nowPage, 
@@ -55,6 +55,7 @@ public class AdminController {
 		return "admin/main";
 	}
 	
+	/* 회사 상세보기 (ajax)*/
 	@PostMapping("/admin/showcompanydetail")
 	@ResponseBody
 	public List<AdminVo> showCompanyDetail(String ccode){
@@ -62,7 +63,8 @@ public class AdminController {
 		return adminVolist;
 		
 	}
-	
+
+	/* 차트 그리기용 (ajax) */
 	@PostMapping("/admin/makepiechart")
 	@ResponseBody
 	public List<AdminVo> makePikeChart(String ccode){
