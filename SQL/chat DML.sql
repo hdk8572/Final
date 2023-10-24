@@ -467,7 +467,12 @@ VALUES (info_sequence.NEXTVAL, 'rrr', 'sple@kh.co.kr',DATE_FORMAT(NOW(), '%Y-%m-
 INSERT INTO info (ino, itext, userid, idate, ititle, iwriter)
 VALUES (info_sequence.NEXTVAL, '공지내용', 'sple@kh.co.kr', 
         TO_CHAR(SYSTIMESTAMP, 'YY/MM/DD HH24:MI'), '공지제목', 'sple@kh.co.kr');
+select * from info;
 select count(*) from info;
+select *
+	from (select rownum rn, i.*
+			from (select *
+					from info order by ino asc) i);
 select * 
 from( select rownum rn, a.*
         from(
