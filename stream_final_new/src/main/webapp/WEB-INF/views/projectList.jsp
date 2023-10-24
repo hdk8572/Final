@@ -100,7 +100,7 @@
 		loadList();									// 화면 리스트 호출 - loadList 컨트롤러
 		
 		$("#summernote").summernote({				//  위즈윅 - summerNote		
-		     placeholder: '프로젝트 설명을 입력해주세요.',
+		     placeholder: '프로젝트 설명을 입력해주세요. - 200글자 제한',
 		     tabsize: 2,
 		     height: 120,
 		     toolbar: [
@@ -114,7 +114,7 @@
 		     ]
 		});
 		$("#summernote-update").summernote({				//  위즈윅 - summerNote		
-		     placeholder: '프로젝트 설명을 입력해주세요.',
+		     placeholder: '프로젝트 설명을 입력해주세요. - 200글자 제한',
 		     tabsize: 2,
 		     height: 120,
 		     toolbar: [
@@ -426,6 +426,7 @@
 		});
  		
 	} */
-	</script>
+</script>
+
 
 </html>

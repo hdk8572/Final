@@ -153,12 +153,12 @@
 
 	</div>
 
-	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
-	<script src="${pageContext.request.contextPath}/js/app.js"></script>
-	<!-- SummerNote CDN -->
-	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/modal.js"></script>
+<script src="${pageContext.request.contextPath}/js/app.js"></script>
+<!-- SummerNote CDN -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
-	<script>
+<script>
 
 	/* ajax 용 - contextPath 변수 지정 */
 	const contextPath = "${pageContext.request.contextPath}";
@@ -203,7 +203,7 @@
 	
 	$(document).ready(function() {
 		$("#summernote").summernote({				//  위즈윅 - summerNote		
-		     placeholder: '프로젝트 설명을 입력해주세요.',
+		     placeholder: '프로젝트 설명을 입력해주세요. - 200글자 제한',
 		     tabsize: 2,
 		     height: 120,
 		     toolbar: [
@@ -229,8 +229,8 @@
 		//$(this).find(".detailProject").click(detailProject);
 	}); 
 	
-	</script>
-	<script>
+</script>
+<script>
 	function mouseEvent() {
 		$(".listOne").hover(
 			function(){
@@ -248,8 +248,8 @@
 	
 	
 	
-	</script>
-	<script>
+</script>
+<script>
 	
 	function loadPtaskList() {
 		$.ajax({
@@ -367,8 +367,8 @@
 
 	
 	
-	</script>
-	<script>
+</script>
+<script>
 	$("select[id=updateTstatus]").change(updateOption);
 
 	function updateOption() {
@@ -377,8 +377,8 @@
  	    console.log(updatedOption);	
  	    $("#updateTstatus").val(updatedOption);
 	}
-	</script>
-	<script>
+</script>
+<script>
 	
 	function selectOption() {
 		$("select[name=tstatus]").load(function() {
@@ -393,6 +393,30 @@
 	
 	
 	
-	</script>
+</script>
+<script>
+//id='start','end'
+		var startDateInput = document.getElementById('start');
+		var endDateInput = document.getElementById('end');
+		
+		startDateInput.addEventListener('change', function() {
+			compareDates();
+		});
+		
+		endDateInput.addEventListener('change', function() {
+			compareDates();
+		});
+		
+		function compareDates() {
+			var startDate = new Date(startDateInput.value);
+			var endDate = new Date(endDateInput.value);
+			
+			if(endDate < startDate) {
+				alert("입력한 종료일이 시작일보다 이전입니다. 올바른 날짜를 선택해 주세요.");
+				
+				endDateInput.value = ''; //종료일 입력필드 초기화
+			}
+		}
+</script>
 </body>
 </html>

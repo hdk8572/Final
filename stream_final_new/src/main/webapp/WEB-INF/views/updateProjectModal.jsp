@@ -15,7 +15,7 @@
 						<h2 class="updateProjectTitle"><b>프로젝트 수정</b></h2>
 					</div>
 						<form id="infoProject">					
-						<input type="text" class="form-control title" name="pname" placeholder="제목을 입력하세요.">
+						<input type="text" class="form-control title" name="pname" placeholder="프로젝트명을 입력해주세요. - 20글자 제한" maxlength="20">
 						<div class="wrap-selected">
 							<div class="selected-leftPart">
 								<div class="d-flex align-items-center">
@@ -79,9 +79,9 @@
 						<input type="hidden" name="userid">
 						<input type="hidden" name="pno">
 						<div class="form-control">
-							<input type="date" id="updateDate" class="form-date" name="pstartdate" required="required">
+							<input type="date" id="startUpdateModal" class="form-date" name="pstartdate" required="required">
 							~
-							<input type="date" id="updateDate" class="form-date" name="penddate" required="required">
+							<input type="date" id="endUpdateModal" class="form-date" name="penddate" required="required">
 						</div>
 						<div align="center">
 							<button class="btn btn-primary" id="updateBtn" type="button">수정</button>
@@ -223,4 +223,43 @@
 	
 
 	
+</script>
+<script>
+
+	$("#updateProjectModal").on("show.bs.modal", function() {
+		//id='start','end'
+		var startDateInput = document.getElementById('startUpdateModal');
+		var endDateInput = document.getElementById('endUpdateModal');
+		
+		startDateInput.addEventListener('change', function() {
+			compareDates();
+		});
+		
+		endDateInput.addEventListener('change', function() {
+			compareDates();
+		});
+		
+		function compareDates() {
+			var startDate = new Date(startDateInput.value);
+			console.log(startDate);
+			var endDate = new Date(endDateInput.value);
+			console.log(endDate);
+			if(endDate < startDate) {
+				alert("입력한 종료일이 시작일보다 이전입니다. 올바른 날짜를 선택해 주세요.");
+				
+				endDateInput.value = ''; //종료일 입력필드 초기화
+			}
+		}
+	});
+	
+	$('#summernote-update').on('summernote.keyup', function() {
+	    var max = 200;
+	    var length = $(this).summernote('code').replace(/<(?:.|\n)*?>/gm, '').length; // HTML 태그를 제외한 순수 텍스트의 글자수를 계산합니다.
+	    if (length > max) {
+	        alert('최대 글자수를 초과하였습니다.'); // 사용자에게 알림을 보냅니다.
+	        $(this).summernote('editor.undo'); // 마지막으로 입력한 내용을 취소(제거)합니다.
+	    }
+	});
+
+
 </script>
