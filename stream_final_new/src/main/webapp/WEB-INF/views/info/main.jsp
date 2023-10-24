@@ -125,7 +125,7 @@
 		//글쓰기 관련 권한  ROLE_C 회사만 가능
 		document.getElementById('y_btn_insert').addEventListener('click', function (event) {
 	       
-			 if ( '${principal.authorities}'.indexOf('ROLE_M') === -1) {
+			 if ( '${principal.authorities}'.indexOf('ROLE_C') === -1) {
 			        $("#y_btn_insert").prop('disabled', true); // 버튼 비활성화
 			        alert('권한이 없습니다.'); // 메시지 표시
 			    }
