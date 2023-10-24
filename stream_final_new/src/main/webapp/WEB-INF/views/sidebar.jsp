@@ -8,7 +8,6 @@
 	<sec:authentication property="principal" var="principal" />
 </sec:authorize>
 
-
 <nav id="sidebar" class="sidebar js-sidebar">
 	<div class="sidebar-content js-simplebar">
 		<c:forEach items="${principal.authorities}" var="authority">
@@ -74,6 +73,11 @@
 								<path
 									d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span
 							class="align-middle">채팅</span> </a></li>
+					<li class="sidebar-item">
+					    <div class="parent d-flex justify-content-center align-items-center text-center">
+					        <div id="time" class="text-light"></div>
+					    </div>
+					</li>
 
 				</c:if>
 				<c:if test="${authority.authority eq 'ROLE_C' }">
@@ -133,4 +137,31 @@
 		};
 	}; */
 </script>
-
+<script>
+	const dpTime = function () {
+	    const now = new Date();
+	    let hours = now.getHours();
+	    let minutes = now.getMinutes();
+	    let seconds = now.getSeconds();
+	    let day = now
+	    let ampm = '';
+	    if (hours > 12) {
+	      hours -= 12;
+	      ampm = '오후 '
+	    } else {
+	      ampm = '오전 '
+	    }
+	    if (hours < 10) {
+	      hours = '0' + hours
+	    }
+	    if (minutes < 10) {
+	      minutes = '0' + minutes
+	    }
+	    if (seconds < 10) {
+	      seconds = '0' + seconds
+	    }
+	    document.querySelector('#time').innerHTML = ampm + hours + ":" + minutes + ":" + seconds
+	  }
+	  
+	  setInterval(dpTime, 1000)  // 1초마다 함수 실행되도록 설정
+</script>
