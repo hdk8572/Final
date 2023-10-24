@@ -38,7 +38,7 @@
     	<table class="y_insert_table">
     		<tr class="y_insert_tr">
     			<td class="y_insert_td">제목</td>
-    			<td class="y_insert_td"><input type="text" class="form-control" id="ititle" name="ititle"></td>
+    			<td class="y_insert_td"><input type="text" class="form-control" id="ititle" name="ititle" maxlength="20"></td>
     		</tr>
 			<tr class="y_insert_tr">
 				<td class="y_insert_td">작성자</td>

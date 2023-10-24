@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<link href="${pageContext.request.contextPath}/css/info.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/streamapp.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 	
@@ -25,7 +25,7 @@
 			<%@ include file="/WEB-INF/views/sidebar.jsp"%>
 			<div class="main">
 				<%@ include file="/WEB-INF/views/headernavbar.jsp"%>
-				<div>
+				<main class="content">
 				<div class="row" style="margin: 0 25px;">
 						<div class="col-lg-12">
 							<h1 class="page-header">공지사항</h1>
@@ -54,19 +54,19 @@
 					<div class="container y_outer_div" style="display: flex; justify-content: center;">
 						<table class="table table-striped table-hover" style="text-align: center;">
 							<tr>
-								<td><div>전체선택</div><input type="checkbox" id="allCheck" name="allCheck"></td>
-								<td width="50%">제목</td>
-								<td>작성자</td>
-								<td>등록일</td>
+								<td><input type="checkbox" id="allCheck" name="allCheck"></td>
+								<td width="50%"><b>제목</b></td>
+								<td><b>작성자</b></td>
+								<td><b>등록일</b></td>
 							</tr>
 							
 		
 							<c:forEach items="${viewAll}" var="i">
-								<tr>
+								<tr class="over">
 									<td><input type="checkbox" id="rowCheck" name="rowCheck"
-											value="${i.ino }"></td>
+											value="${i.ino }"><label for="rowCheck"></label></td>
 									<td class="y_td_no" style="display: none;">${i.ino }</td>
-										<td id="y_td_hover"><a class="infolist"
+										<td id="y_td_hover"><a class="infolist" style="color:black ;"
 											href="<c:url value='/member/info/select'><c:param name='ino' value='${i.ino }'/></c:url>">${i.ititle }</a></td>
 										<td>${i.iwriter }</td>
 										<td>${i.idate }</td>
@@ -108,6 +108,7 @@
 							</c:if>
 						</div>
 						</div>
+						</main>
 					</div>
 				</div>
 			</div>
@@ -123,7 +124,7 @@
 		//글쓰기 관련 권한  ROLE_C 회사만 가능
 		document.getElementById('y_btn_insert').addEventListener('click', function (event) {
 	       
-			 if ( '${principal.authorities}'.indexOf('ROLE_C') === -1) {
+			 if ( '${principal.authorities}'.indexOf('ROLE_M') === -1) {
 			        $("#y_btn_insert").prop('disabled', true); // 버튼 비활성화
 			        alert('권한이 없습니다.'); // 메시지 표시
 			    }
@@ -138,8 +139,8 @@
         }
     });
 
-    // 검색 버튼 클릭 이벤트 처리
-   /*  $("#y_btn_search").click(function () {
+    /* // 검색 버튼 클릭 이벤트 처리
+    $("#y_btn_search").click(function () {
         var valueSelect = $("#select_search option:selected").val();
         var valueInput = $("#search_bar").val();
         if (valueInput === "") {
@@ -158,8 +159,8 @@
                 }
             });
         }
-    });
- */
+    }); */
+
     // "삭제" 버튼 클릭 이벤트 처리
     $("#y_btn_delete").click(function () {
         submitDeleteForm();
@@ -171,7 +172,7 @@
 	    var currentUserId = '${principal.username}';
 	    var userAuthorities = '${principal.authorities}';
 
-	    if (userAuthorities.indexOf('ROLE_C') !== -1) {
+	    if (userAuthorities.indexOf('ROLE_M') !== -1) {
 	        for (var i = 0; i < checkboxes.length; i++) {
 	            selectedInoArray.push(checkboxes[i].value);
 	        }

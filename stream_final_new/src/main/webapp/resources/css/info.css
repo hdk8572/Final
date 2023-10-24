@@ -1,0 +1,16 @@
+@charset "UTF-8";
+input[type=checkbox] {
+
+zoom: 1.5;
+
+}
+#y_td_hover{
+
+	text-align: left;
+}
+tr:nth-child(odd){
+	background-color: white;
+}
+tr:nth-child(even){
+	background-color: #f5f7fb;
+}

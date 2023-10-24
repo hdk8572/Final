@@ -28,14 +28,25 @@ public class InfoController {
 	
 	@GetMapping("/member/info")
 	public ModelAndView info(ModelAndView mv, Principal principal,InfoPageVo vo,
-	                    
+			 				@RequestParam(name = "select_search", required = false) String selectSearch,
+             				@RequestParam(name = "search_bar", required = false) String searchBar,
 	                        @RequestParam(value="nowPage", required=false)String nowPage, 
 	            			@RequestParam(value="cntPerPage", required=false)String cntPerPage,
 	            			HttpSession session) {
 	    String userId = principal.getName();
 	    
-
-	    
+		/*
+		 * List<InfoVo> searchResults; if ("ititle".equals(selectSearch) && searchBar !=
+		 * null) { searchResults = service.InfoSearch(userId, searchBar, selectSearch);
+		 * } else if ("iwriter".equals(selectSearch) && searchBar != null) {
+		 * searchResults = service.InfoSearch(userId, selectSearch, searchBar); } else {
+		 * searchResults = service.InfoList(userId); }
+		 * 
+		 * if (searchResults.isEmpty()) {
+		 * 
+		 * mv.addObject("noSearchResult", "검색 결과가 없습니다."); } mv.addObject("list",
+		 * searchResults);
+		 */
 	    int total = service.CountInfo();
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
@@ -46,6 +57,7 @@ public class InfoController {
 			cntPerPage = "10";
 		}
 		vo = new InfoPageVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		/* mv.addObject("list", vo); */
 		mv.addObject("paging", vo);
 		mv.addObject("viewAll", service.PagingInfo(vo));
 	    mv.setViewName("info/main");
