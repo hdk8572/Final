@@ -13,13 +13,18 @@ public class AttendDao {
 
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	// 출근
-	public int attendIn(String userid) {
-		return sqlSession.insert("attend.attendIn", userid);
+	public int attendIn(AttendVo avo) {
+		return sqlSession.insert("attend.attendIn", avo);
 	}
+
 	// 근태리스트
-	public List<AttendVo> attendList(String userid){
+	public List<AttendVo> attendList(String userid) {
 		return sqlSession.selectList("attend.attendList", userid);
+	}
+
+	public int checkDate(AttendVo avo) {
+		return sqlSession.selectOne("attend.checkDate", avo);
 	}
 }

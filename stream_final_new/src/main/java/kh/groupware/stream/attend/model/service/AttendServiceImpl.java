@@ -15,12 +15,17 @@ public class AttendServiceImpl implements AttendService {
 	private AttendDao attendDao;
 
 	@Override
-	public int attendIn(String userid) {
-		return attendDao.attendIn(userid);
-	}
-	
-	@Override
-	public List<AttendVo> attendList(String userid){
+	public List<AttendVo> attendList(String userid) {
 		return attendDao.attendList(userid);
+	}
+
+	@Override
+	public int attendIn(AttendVo avo) {
+		return attendDao.attendIn(avo);
+	}
+
+	@Override
+	public int checkDate(AttendVo avo) {
+		return attendDao.checkDate(avo);
 	}
 }

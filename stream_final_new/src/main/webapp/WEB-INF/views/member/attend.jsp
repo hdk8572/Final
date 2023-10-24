@@ -52,7 +52,8 @@
 						<button type="button" id="inbtn">출근</button>
 						<button type="button" id="outbtn">퇴근</button>
 						<button type="button" id="earlybtn">조퇴</button>
-						<input type="hidden" id="username" name="userid" value="${principal.username }">
+						<input type="hidden" id="username" name="userid"
+							value="${principal.username }">
 					</div>
 					<table>
 						<thead>
@@ -77,26 +78,29 @@
 <script src="${pageContext.request.contextPath}/js/modal.js"></script>
 <script src="${pageContext.request.contextPath}/js/app.js"></script>
 <script>
-	
-	    // 출근버튼 (inbtn)
-	    $("#inbtn").click(inbtnClickHandler);
-	    
-	    function inbtnClickHandler(){
-	    	$.ajax({
-	    		url: "${pageContext.request.contextPath}/member/attendin",
-	    		type: "post",
-	    		data: {
-	    			userid: $("[name=userid]").val()
-	    		},
-	    		dataType: "json",
-	    		success: console.log("success")
-	    		/* error: (request, status, error) => {
-	    			alert("code: " + request.status + "\n" + "message: "
-	    					+ request.responseText + "\n" + "error: " + error);
-	    		} */
-	    	})
-	    }
-	
+	// 출근버튼 (inbtn)
+	$("#inbtn").click(inbtnClickHandler);
 
+	function inbtnClickHandler() {
+		var currentDate = new Date();
+		var year = currentDate.getFullYear();
+		var month = currentDate.getMonth() + 1;
+		var day = currentDate.getDate();
+		var today = year + "-" + month + "-" + day + "-" + $("[name=userid]").val();
+		$.ajax({
+			url : "${pageContext.request.contextPath}/member/attendin",
+			type : "post",
+			data : {
+				userid : $("[name=userid]").val(),
+				atdate : today
+			},
+			dataType : "json",
+			success : console.log("success")
+		/* error: (request, status, error) => {
+			alert("code: " + request.status + "\n" + "message: "
+					+ request.responseText + "\n" + "error: " + error);
+		} */
+		})
+	}
 </script>
 </html>
