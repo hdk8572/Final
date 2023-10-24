@@ -17,7 +17,7 @@
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Stream - 업무도 흐름이다!</title>
 </head>
 
 <body >
@@ -53,7 +53,7 @@
 					<form id="deleteForm" action="/stream/member/info/delete" method="post">
 					<div class="container y_outer_div" style="display: flex; justify-content: center;">
 						<table class="table table-striped table-hover" style="text-align: center;">
-							<tr>
+							<tr class="head">
 								<td><input type="checkbox" id="allCheck" name="allCheck"></td>
 								<td width="50%"><b>제목</b></td>
 								<td><b>작성자</b></td>
@@ -111,8 +111,9 @@
 						</main>
 					</div>
 				</div>
+				<%@include file="/WEB-INF/views/footer.jsp"%>
 			</div>
-
+		
 		<script src="${pageContext.request.contextPath}/js/app.js"></script>
 		<script>
 	function selChange() {

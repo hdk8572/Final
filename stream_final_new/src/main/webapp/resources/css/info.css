@@ -8,9 +8,33 @@ zoom: 1.5;
 
 	text-align: left;
 }
-tr:nth-child(odd){
+.over:nth-child(odd){
 	background-color: white;
 }
-tr:nth-child(even){
+.over:nth-child(even){
 	background-color: #f5f7fb;
+}
+#deleteForm{
+	margin-top: 50px;
+}
+.head{
+	background-color: #f4f4f4;
+	border: solid 1px;
+}
+.y_insert_td{
+	border-bottom: solid 1px #d0d0d0;
+	border-top: solid 1px #d0d0d0;
+}
+
+.y_insert_td{
+	text-align: center;
+}
+.tablewrapper{
+	margin-left: 70px;
+}
+.y_read{
+	background-color: white;
+	border-bottom: solid 1px #d0d0d0;
+	border-top: solid 1px #d0d0d0;
+	padding: 8px
 }

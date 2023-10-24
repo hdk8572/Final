@@ -13,7 +13,7 @@
 	<insert id="infoInsert" parameterType="InfoVo">
 		
 		INSERT INTO info (ino, itext, userid, idate, ititle, iwriter)
-		SELECT info_sequence.NEXTVAL,#{itext},#{userId}, TO_CHAR(SYSTIMESTAMP, 'DD/MM/YY HH24:MI:SS'), #{ititle}, mname
+		SELECT info_sequence.NEXTVAL,#{itext},#{userId}, TO_CHAR(SYSTIMESTAMP, 'YY/MM/DD HH24:MI:SS'), #{ititle}, mname
 		FROM users
 		WHERE userid = #{userId}
 	</insert>
