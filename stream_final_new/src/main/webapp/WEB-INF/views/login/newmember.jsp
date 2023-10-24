@@ -119,7 +119,9 @@
 			</div>
 		</div>
 
+
 	</main>
+	<%@include file="/WEB-INF/views/footer.jsp"%>
 	<!-------------------- Script ----------------------->
 	<script src="js/app.js"></script>
 

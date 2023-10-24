@@ -91,10 +91,12 @@
 
 			var inputEmail = document.getElementById("input-email");
 			var inputValue = inputEmail.value.trim();
-			
-			if (inputValue === ''){
+
+			if (inputValue === '') {
 				alert("이메일을 입력해주세요!");
-			} else if(inputValue.length <= 45 && /^[A-Za-z0-9_]+@[A-Za-z0-9]+\.[A-Za-z]{2,4}(\.[A-Za-z]{2})?$/.test(inputValue)){
+			} else if (inputValue.length <= 45
+					&& /^[A-Za-z0-9_]+@[A-Za-z0-9]+\.[A-Za-z]{2,4}(\.[A-Za-z]{2})?$/
+							.test(inputValue)) {
 				var table = document.getElementById("addEmail");
 				var row = table.insertRow(-1);
 
@@ -136,7 +138,7 @@
 			}
 		});
 	</script>
-
+	<%@include file="/WEB-INF/views/footer.jsp"%>
 </body>
 <!-------------------- Script ----------------------->
 <script src="${pageContext.request.contextPath}/js/stream.js"></script>

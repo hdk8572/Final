@@ -115,7 +115,7 @@
 			</main>
 		</div>
 	</div>
-
+	<%@include file="/WEB-INF/views/footer.jsp"%>
 </body>
 <!-------------------- Script ----------------------->
 <script>
@@ -129,7 +129,7 @@
 			return false;
 		} else if (!checkPhone(Account.userphone.value)) {
 			return false;
-		} else if (!checkUsername(Account.username.value)){
+		} else if (!checkUsername(Account.username.value)) {
 			return false;
 		}
 		return true;
@@ -146,28 +146,28 @@
 
 	//비밀번호, 비밀번호 재입력 확인
 	function checkUserpwd(userpwd, pwdcheck) {
-			if (userpwd != pwdcheck) {
-				alert("비밀번호가 일치하지 않습니다.");
-				Account.pwdcheck.value = "";
-				Account.pwdcheck.focus();
-				return false;
-			}
-			var pwdToCheck =/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,15}$/;
-				if (!pwdToCheck.test(userpwd)){
-					alert("비밀번호는 대소문자와 영어를 포함한 8-15자로 작성해주세요.");
-					Account.userpwd.value="";
-					Account.userpwd.focus();
-					return false;
-				}
-			return true;
+		if (userpwd != pwdcheck) {
+			alert("비밀번호가 일치하지 않습니다.");
+			Account.pwdcheck.value = "";
+			Account.pwdcheck.focus();
+			return false;
 		}
+		var pwdToCheck = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,15}$/;
+		if (!pwdToCheck.test(userpwd)) {
+			alert("비밀번호는 대소문자와 영어를 포함한 8-15자로 작성해주세요.");
+			Account.userpwd.value = "";
+			Account.userpwd.focus();
+			return false;
+		}
+		return true;
+	}
 
 	//직급확인
 	function checkUserrank(userrank) {
 		var rankToCheck = /^[가-힣]{2,20}$/;
 		if (!rankToCheck.test(userrank)) {
 			alert("직급 형식이 옳지 않습니다.");
-			Account.userrank.value="";
+			Account.userrank.value = "";
 			Account.userrank.focus();
 			return false;
 		}
@@ -184,45 +184,44 @@
 		return true;
 	}
 	//폰번호확인
-		function checkPhone(userphone) {
-			if (!checkBlank(userphone, "전화번호를"))
-				return false;
+	function checkPhone(userphone) {
+		if (!checkBlank(userphone, "전화번호를"))
+			return false;
 
-			const phoneToCheck = userphone.replace(/\D/g, '');
+		const phoneToCheck = userphone.replace(/\D/g, '');
 
-			if (phoneToCheck.length !== 10 && phoneToCheck.length !== 11) {
-				alert("전화번호는 10 또는 11자리의 숫자를 입력해주세요.");
-				return false;
-			}
-
-			if (!/^01[01]/.test(phoneToCheck)) {
-				alert("전화번호는 010 또는 011로 시작되는 전화번호를 입력해주세요.");
-				return false;
-			}
-
-			if (!/^\d+$/.test(phoneToCheck)) {
-				alert("전화번호 형식이 옳지 않습니다.");
-				return false;
-			}
-
-			return true;
+		if (phoneToCheck.length !== 10 && phoneToCheck.length !== 11) {
+			alert("전화번호는 10 또는 11자리의 숫자를 입력해주세요.");
+			return false;
 		}
+
+		if (!/^01[01]/.test(phoneToCheck)) {
+			alert("전화번호는 010 또는 011로 시작되는 전화번호를 입력해주세요.");
+			return false;
+		}
+
+		if (!/^\d+$/.test(phoneToCheck)) {
+			alert("전화번호 형식이 옳지 않습니다.");
+			return false;
+		}
+
+		return true;
+	}
 	//이름 확인
-		function checkUsername(username) {
-			if (!checkBlank(username, "이름을")) {
-				return false;
-			}
-			var nameToCheck = /^[A-Za-z가-힣]{2,15}$/;
-			if (!nameToCheck.test(username)) {
-				alert("이름 형식이 옳지 않습니다.");
-				Account.username.value=""
-				Account.username.focus();
-				return false;
-			}
-			return true;
-
+	function checkUsername(username) {
+		if (!checkBlank(username, "이름을")) {
+			return false;
 		}
+		var nameToCheck = /^[A-Za-z가-힣]{2,15}$/;
+		if (!nameToCheck.test(username)) {
+			alert("이름 형식이 옳지 않습니다.");
+			Account.username.value = ""
+			Account.username.focus();
+			return false;
+		}
+		return true;
 
+	}
 </script>
 
 
@@ -261,12 +260,12 @@
 
 <!-- Enter키 제어 스크립트 -->
 <script>
-		document.addEventListener('keydown', function(event) {
-			if (event.key === "Enter") {
-				event.preventDefault(); 
-			}
-		});
-	</script>
+	document.addEventListener('keydown', function(event) {
+		if (event.key === "Enter") {
+			event.preventDefault();
+		}
+	});
+</script>
 <script src="${pageContext.request.contextPath}/js/stream.js"></script>
 <script src="${pageContext.request.contextPath}/js/modal.js"></script>
 <script src="${pageContext.request.contextPath}/js/app.js"></script>

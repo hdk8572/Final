@@ -14,7 +14,7 @@
 				<div class="col-6 text-end">
 					<ul class="list-inline">
 						<li class="list-inline-item">
-							<a class="text-muted" href="https://adminkit.io/" target="_blank">황대경</a>
+							<a class="text-muted" href="https://github.com/hdk8572" target="_blank">황대경</a>
 						</li>
 						<li class="list-inline-item">
 							<a class="text-muted" href="https://github.com/jiyoung4868" target="_blank">이지영</a>
@@ -26,7 +26,7 @@
 							<a class="text-muted" href="https://github.com/alstjd0930" target="_blank">김민성</a>
 						</li>
 						<li class="list-inline-item">
-							<a class="text-muted" href="https://github.com/JMo0001" target="_blank">임지연</a>
+							<a class="text-muted" href="https://github.com/LIMJIYEON59" target="_blank">임지연</a>
 						</li>
 					</ul>
 				</div>
