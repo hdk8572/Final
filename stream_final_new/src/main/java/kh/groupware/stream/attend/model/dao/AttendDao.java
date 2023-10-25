@@ -23,8 +23,18 @@ public class AttendDao {
 	public List<AttendVo> attendList(String userid) {
 		return sqlSession.selectList("attend.attendList", userid);
 	}
-
+	
+	//퇴근
+	public int attendUpdate(AttendVo avo) {
+		return sqlSession.update("attend.attendUpdate", avo);
+	}
+	
+	//attend 값 중복
 	public int checkDate(AttendVo avo) {
 		return sqlSession.selectOne("attend.checkDate", avo);
+	}
+
+	public int workHour(AttendVo avo) {
+		return sqlSession.update("attend.workHour", avo);
 	}
 }

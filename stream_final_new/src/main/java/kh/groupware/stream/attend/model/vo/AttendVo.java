@@ -20,10 +20,14 @@ public class AttendVo {
 	
 	private String atstate;
 
+	//시간체크용
+	private String attime;
+
 	@Override
 	public String toString() {
 		return "AttendVo [atdate=" + atdate + ", userid=" + userid + ", atstateno=" + atstateno + ", atintime="
-				+ atintime + ", atouttime=" + atouttime + ", atworkhour=" + atworkhour + ", atstate=" + atstate + "]";
+				+ atintime + ", atouttime=" + atouttime + ", atworkhour=" + atworkhour + ", atstate=" + atstate
+				+ ", attime=" + attime + "]";
 	}
 
 	public AttendVo() {
@@ -31,7 +35,7 @@ public class AttendVo {
 	}
 
 	public AttendVo(String atdate, String userid, int atstateno, String atintime, String atouttime, int atworkhour,
-			String atstate) {
+			String atstate, String attime) {
 		super();
 		this.atdate = atdate;
 		this.userid = userid;
@@ -40,6 +44,7 @@ public class AttendVo {
 		this.atouttime = atouttime;
 		this.atworkhour = atworkhour;
 		this.atstate = atstate;
+		this.attime = attime;
 	}
 
 	public String getAtdate() {
@@ -97,9 +102,13 @@ public class AttendVo {
 	public void setAtstate(String atstate) {
 		this.atstate = atstate;
 	}
-	
+
+	public String getAttime() {
+		return attime;
+	}
+
+	public void setAttime(String attime) {
+		this.attime = attime;
+	}
 	
 }
-
-	
-
