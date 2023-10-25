@@ -32,21 +32,10 @@ public class InfoController {
              				@RequestParam(name = "search_bar", required = false) String searchBar,
 	                        @RequestParam(value="nowPage", required=false)String nowPage, 
 	            			@RequestParam(value="cntPerPage", required=false)String cntPerPage,
-	            			HttpSession session) {
+	            			HttpSession session)throws Exception {
 	    String userId = principal.getName();
 	    
-		/*
-		 * List<InfoVo> searchResults; if ("ititle".equals(selectSearch) && searchBar !=
-		 * null) { searchResults = service.InfoSearch(userId, searchBar, selectSearch);
-		 * } else if ("iwriter".equals(selectSearch) && searchBar != null) {
-		 * searchResults = service.InfoSearch(userId, selectSearch, searchBar); } else {
-		 * searchResults = service.InfoList(userId); }
-		 * 
-		 * if (searchResults.isEmpty()) {
-		 * 
-		 * mv.addObject("noSearchResult", "검색 결과가 없습니다."); } mv.addObject("list",
-		 * searchResults);
-		 */
+		
 	    int total = service.CountInfo();
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
@@ -57,14 +46,13 @@ public class InfoController {
 			cntPerPage = "10";
 		}
 		vo = new InfoPageVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		/* mv.addObject("list", vo); */
 		mv.addObject("paging", vo);
 		mv.addObject("viewAll", service.PagingInfo(vo));
 	    mv.setViewName("info/main");
 	    return mv;
 	}
 	@GetMapping("/member/info/insert")
-	public ModelAndView insert(ModelAndView mv,Principal principal) {
+	public ModelAndView insert(ModelAndView mv,Principal principal)throws Exception {
 		String userId = principal.getName();
 		mv.addObject("name",service.InfoWriter(userId));
 		mv.setViewName("info/infoinsert");
@@ -72,7 +60,7 @@ public class InfoController {
 	}
 	@PostMapping(value="/member/info/insert")
 	public String insertdo(ModelAndView mv,Principal principal ,@RequestParam String ititle, @RequestParam String iwriter,
-			 @RequestParam String itext,RedirectAttributes rttr,InfoVo vo) {
+			 @RequestParam String itext,RedirectAttributes rttr,InfoVo vo) throws Exception{
 		String userId = principal.getName();
 		if (ititle.isEmpty() || itext.isEmpty()) {
 	        
@@ -88,14 +76,14 @@ public class InfoController {
 		return "redirect:/member/info";
 	}
 	@GetMapping("/member/info/select")
-	public ModelAndView select(ModelAndView mv,Principal principal,String ino) {
+	public ModelAndView select(ModelAndView mv,Principal principal,String ino)throws Exception {
 		String userId = principal.getName();
 		mv.addObject("info",service.InfoOne(ino));
 		mv.setViewName("info/infoselect");
 		return mv;
 	}
 	@GetMapping("/member/info/update")
-	public ModelAndView update(ModelAndView mv,Principal principal,@RequestParam String ino) {
+	public ModelAndView update(ModelAndView mv,Principal principal,@RequestParam String ino)throws Exception {
 		String userId = principal.getName();
 		mv.addObject("userId",userId);
 		mv.addObject("info",service.InfoOne(ino));
@@ -104,12 +92,11 @@ public class InfoController {
 	}
 	@PostMapping(value="/member/info/update")
 	public String updatedo(ModelAndView mv,Principal principal ,@RequestParam String ino,@RequestParam String ititle, 
-			 @RequestParam String itext,RedirectAttributes rttr,InfoVo vo) {
+			 @RequestParam String itext,RedirectAttributes rttr,InfoVo vo) throws Exception{
 		String userId = principal.getName();
 		vo.setUserId(userId);
 		vo.setItext(itext);
 		vo.setItitle(ititle);
-		System.out.println(vo+"================");
 		service.InfoUpdate(vo);
 		
 		rttr.addFlashAttribute("message", "정보가 업데이트되었습니다.");
@@ -117,7 +104,7 @@ public class InfoController {
 		return "redirect:/member/info";
 	}
 	@PostMapping(value="/member/info/delete")
-	public String deletedo(@RequestParam String[] ino,HttpServletRequest request) {
+	public String deletedo(@RequestParam String[] ino,HttpServletRequest request) throws Exception{
 		String[] sizes = request.getParameterValues("ino");
 		if(sizes != null) {
 			for(String size : sizes) {

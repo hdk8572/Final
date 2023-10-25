@@ -15,11 +15,7 @@ public class ChatDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	/*
-	 * public List<ChatVo> selectuserList(){ return
-	 * sqlSession.selectList("selecuserList"); } public String selectuserOne(){
-	 * return sqlSession.selectOne("selecuserOne"); }
-	 */
+	
 	
 	public int AddChatRoom(String roomName,String userId) {
 		ChatRoomVo room = ChatRoomVo.create(roomName, userId);

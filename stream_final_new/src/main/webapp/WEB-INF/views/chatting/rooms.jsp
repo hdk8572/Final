@@ -23,10 +23,7 @@
 	rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/projectList.css"
 	rel="stylesheet">
-<!-- Modal CSS -->
-<link href="${pageContext.request.contextPath}/css/Modalchat.css"
-	rel="stylesheet">
-<!-- DropDown - Option CSS -->
+
 <link
 	href="${pageContext.request.contextPath}/css/projectList.option.css"
 	rel="stylesheet">
@@ -47,7 +44,7 @@
 					<button id="s_chat_list" class="btn btn-light s_chat_menu">새
 						채팅</button>
 				</div>
-				<!-- 채팅방리스트 -->
+				
 				<div id="s_menu_box1" class="s_menu_box s_scroll">
 					<div class="container">
 						<div>
@@ -57,7 +54,7 @@
 										
 										<li class="roomlist"
 											style="display: flex; align-items: center;">
-									<div class="stat text-primary" style="font-size: small; background-color: #009b77;color: white;">${room.mname}</div>	<a class="roomnamelist" href="<c:url value='/member/room'><c:param name='roomId' value='${room.roomId}' /></c:url>"
+									<div class="stat text-primary" style="font-size: 0.7em; background-color: #009b77;color: white;">${room.mname}</div>	<a class="roomnamelist" href="<c:url value='/member/room'><c:param name='roomId' value='${room.roomId}' /></c:url>"
 											style="display: inline-block;padding:15px ;width: 320px; overflow: hidden; white-space: nowrap; text-decoration: none;">${room.roomName}</a>
 										</li>
 									</div>
@@ -75,7 +72,7 @@
 								<input type="text" name="roomName" class="form-control" placeholder="방 제목을 입력하세요" maxlength="10">
 						</div>
 						<div>
-							<!-- 친구 리스트에서 체크하는 사람 이름 추가될 div박스 -->
+							
 							<div class="s_select_part_tt">
 								대화상대 선택<span id="s_select_part_cnt"></span>
 							</div>
@@ -103,10 +100,10 @@
 	    var roomName1 = "${roomName1}";
 	    var member = "${member}";
 	    $(".btn-create").on("click", function (e){
-	        var roomName = $("input[name='roomName']").val(); // 이름 속성을 "roomName"으로 변경
+	        var roomName = $("input[name='roomName']").val(); 
 	        var member = $("input[name='member']:checked").length;
 	        if (!roomName) {
-	            e.preventDefault(); // 방 제목이 입력되지 않았을 때 폼 제출을 막음
+	            e.preventDefault(); 
 	            alert("방 제목을 입력하세요.");
 	        }else{
 	        	if (member === 0) {
@@ -125,12 +122,11 @@
     		$("#s_emp_list").attr('class', 'btn btn-light');
     	});
     	
-    	// 채팅 리스트에 있는 대화방 리스트 클릭했을 때
+    	
     	$(".s_chat_box").click(function() {
     		$(".s_chat_box").css('color', 'black');
     	});
     	
-    	// 사원목록 클릭했을 때
     	$("#s_emp_list").click(function() {
     		$("#s_menu_box1").css('display', 'block');
     		$("#s_menu_box2").css('display', 'none');

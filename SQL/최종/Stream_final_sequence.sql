@@ -30,3 +30,7 @@ INCREMENT BY 1;
 create SEQUENCE chat_sequence
 start with 1
 INCREMENT by 1;
+
+CREATE SEQUENCE info_sequence
+START WITH 1
+INCREMENT BY 1;

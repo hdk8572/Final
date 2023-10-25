@@ -15,68 +15,44 @@
 		<result property="mname" column="mname"/>
 	</resultMap>
 	
-	<!-- 채팅방 만들기 -->
 	<insert id="chatInsert" parameterType="ChatRoomVo">
 		INSERT INTO CHATROOM (ROOMID, USERID, ROOMNAME, MNAME)
-VALUES (chat_sequence.NEXTVAL, #{userId}, #{roomName}, (SELECT MNAME FROM USERS WHERE USERID = #{userId}))
+		VALUES (chat_sequence.NEXTVAL, #{userId}, #{roomName}, (SELECT MNAME FROM USERS WHERE USERID = #{userId}))
 	</insert>
-	<!-- 채팅방 멤버 추가 -->
 	<insert id="memberInsert" parameterType="ChatRoomVo">
-		<!-- INSERT INTO CHATMEMBER VALUES ((SELECT MAX(ROOMID) ROOMID FROM CHATROOM),#{userId} ) -->
 		INSERT INTO CHATMEMBER (ROOMID, USERID)
 		SELECT (SELECT MAX(ROOMid) FROM chatROOM)AS ROOMID, #{userId} FROM DUAL
 	</insert>
 	
-	
-	<!-- 만든 채팅방 전체 리스트 조회 +마지막 작성대화 -->
-<!-- 	<select id="findAllRooms" resultMap="chatMessageMap">
-		SELECT c.roomid, m.userid, m.message, m.cdate, c.roomname
-		FROM chatroom c
-		JOIN chatmessage m ON c.roomid = m.roomid
-		WHERE (m.roomid, m.cdate) IN (
-		  SELECT roomid, MAX(cdate)
-		  FROM chatmessage
-		  GROUP BY roomid
-		)
-	</select> -->
+
 	<select id="findAllRooms" resultMap="chatRoomMap">
 		SELECT DISTINCT *
 		FROM CHATMEMBER
 		JOIN CHATROOM USING(ROOMID)
 		WHERE chatmember.userid=#{userId}
-	<!-- select * from chatroom -->
+		order by roomid desc
 	</select>
 	<select id="findRooms" resultMap="chatRoomMap">
 		SELECT * FROM CHATROOM WHERE USERID=#{userId}
-		<!-- SELECT * FROM CHATROOM JOIN CHATROOM USING(USERID)  WHERE USERID=#{userId}  -->
 	</select>
 	
 	
-	<!-- 해당 채팅방 진입 selectone (추가!!) 채팅방 진입하면 -->
 	<select id="findRoomById" resultMap="chatRoomMap">
 		SELECT ROOMID,ROOMNAME,USERID FROM CHATROOM JOIN USERS USING(USERID) WHERE ROOMID=#{roomId}
 	</select>
 	
-	<!-- 메세지 입력시 db저장 -->
 	<insert id="messageInsert" parameterType="ChatMessageVo">
 		INSERT INTO CHATMESSAGE (USERID,MESSAGE,ROOMID,cDate,mname) VALUES (#{userId},#{message},#{roomId},SYSTIMESTAMP,(SELECT MNAME FROM USERS WHERE USERID=#{userId}))
 	</insert>
 	
-	<!-- 해당 채팅방에서의 대화 내용 보기 -->
-<!-- 	<select id="viewChat" resultMap="chatMessageMap">
-		SELECT * FROM CHATMESSAGE WHERE ROOMID = #{roomId} ORDER BY CDATE ASC
-	</select> -->
-	
-	<!-- 대화 내역 보기 -->
 	<select id="viewChat" resultMap="chatMessageMap">
 		select ROOMID,USERID,C.MNAME,MESSAGE,CDATE from CHATMESSAGE C join users USING(userId) WHERE ROOMID = #{roomId} ORDER BY CDATE ASC
 	</select>
 	
-	<!-- 대화상대 리스트 -->
 	<select id="viewMember" resultMap="chatRoomMap">
-	SELECT userId, mname
-	FROM users
-	WHERE (userId = #{userId} or ccode = (SELECT ccode FROM users WHERE userId = #{userId})) and enabled =1
+		SELECT userId, mname
+		FROM users
+		WHERE (userId = #{userId} or ccode = (SELECT ccode FROM users WHERE userId = #{userId})) and enabled =1
 	</select>
 	
 	<select id="findWriter" resultMap="chatRoomMap">
@@ -86,15 +62,15 @@ VALUES (chat_sequence.NEXTVAL, #{userId}, #{roomName}, (SELECT MNAME FROM USERS 
 		select userId,mname from chatroom join users using (userid)
 	</select>
 	<select id="lastMessage" resultMap="chatRoomMap">
-	select roomid, message, cdate
-	from
-	(select roomid, roomname, c1.userid roommaster, m1.userid chatter, message,
-	cdate, row_number()over(order by cdate desc) rn
-	from chatroom c1
-	join chatmessage m1 using(roomid)
-	where roomid=#{roomId}
-	)
-	where rn = 1
+		select roomid, message, cdate
+		from
+		(select roomid, roomname, c1.userid roommaster, m1.userid chatter, message,
+			cdate, row_number()over(order by cdate desc) rn
+			from chatroom c1
+			join chatmessage m1 using(roomid)
+			where roomid=#{roomId}
+		)
+		where rn = 1
 	</select>
 
 </mapper>

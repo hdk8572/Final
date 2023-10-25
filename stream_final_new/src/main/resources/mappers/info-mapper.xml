@@ -40,21 +40,21 @@
 		select mname from users where userid=#{userId}
 	</select>
 	<select id="infosearch" resultMap="infoMap">
-	SELECT ino, userid, idate, ititle, iwriter
-	FROM info
-	JOIN users USING (userid)
-	WHERE ccode = (SELECT ccode FROM users WHERE userid = #{userId})
-	AND (ititle = #{ititle} OR iwriter = #{iwriter})
+		SELECT ino, userid, idate, ititle, iwriter
+		FROM info
+		JOIN users USING (userid)
+		WHERE ccode = (SELECT ccode FROM users WHERE userid = #{userId})
+		AND (ititle = #{ititle} OR iwriter = #{iwriter})
 	</select>
 	<select id="countInfo" resultType="int">
 		select count(*) from info
 	</select>
 	<select id="selectInfo" resultMap="infoMap">
-	select *
-	from (select rownum rn, i.*
+		select *
+		from (select rownum rn, i.*
 			from (select *
 					from info order by ino desc) i)
-	where rn between #{start} and #{end}
+		where rn between #{start} and #{end}
 	</select>
 	
 	

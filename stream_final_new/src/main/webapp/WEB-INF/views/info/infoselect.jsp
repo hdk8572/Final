@@ -92,7 +92,7 @@
         var currentUserId = '${principal.username}';
         
         if (infoUserId !== currentUserId) {
-            event.preventDefault(); // 폼 제출을 막음
+            event.preventDefault();
             alert('작성자만 수정할 수 있습니다.');
         }
     });
