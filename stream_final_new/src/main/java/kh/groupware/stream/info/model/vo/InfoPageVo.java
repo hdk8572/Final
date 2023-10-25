@@ -4,14 +4,14 @@ import org.springframework.stereotype.Component;
 
 	@Component
 	public class InfoPageVo {
-		private int nowPage;	//현재페이지
-		private int startPage;	//시작페이지
-		private int endPage;	//끝페이지
-		private int total;		//게시글 총 개수
-		private int cntPerPage;	//페이지당 글 개수
-		private int lastPage;	//마지막 페이지
-		private int start;		//쿼리용 start
-		private int end;		//쿼리용 end
+		private int nowPage;	
+		private int startPage;	
+		private int endPage;	
+		private int total;		
+		private int cntPerPage;	
+		private int lastPage;	
+		private int start;		
+		private int end;		
 		private int cntPage=5;
 		
 		

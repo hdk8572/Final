@@ -75,7 +75,7 @@
 	       ['color', ['color']],
 	       ['para', ['ul', 'ol', 'paragraph']],
 	       ['table', ['table']],
-	       ['insert' /* ['link', 'picture', 'video'] */],
+	       ['insert'],
 	       ['view', ['fullscreen', 'codeview', 'help']]
 	     ]
 	});

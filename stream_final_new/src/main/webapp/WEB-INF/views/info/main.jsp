@@ -70,7 +70,6 @@
 											href="<c:url value='/member/info/select'><c:param name='ino' value='${i.ino }'/></c:url>">${i.ititle }</a></td>
 										<td>${i.iwriter }</td>
 										<td>${i.idate }</td>
-									<%-- <td>${list.cnt }</td> --%>
 								</tr>
 							</c:forEach>
 						</table>
@@ -122,16 +121,14 @@
 	}
 </script>
 		<script>
-		//글쓰기 관련 권한  ROLE_C 회사만 가능
 		document.getElementById('y_btn_insert').addEventListener('click', function (event) {
 	       
 			 if ( '${principal.authorities}'.indexOf('ROLE_C') === -1) {
-			        $("#y_btn_insert").prop('disabled', true); // 버튼 비활성화
-			        alert('권한이 없습니다.'); // 메시지 표시
+			        $("#y_btn_insert").prop('disabled', true);
+			        alert('권한이 없습니다.'); 
 			    }
 	    });
 	$(document).ready(function () {
-    // "전체 선택" 체크박스 클릭 이벤트 처리
     var allCheck = document.getElementById('allCheck');
     allCheck.addEventListener('click', function () {
         var rowCheckboxes = document.querySelectorAll('input[name="rowCheck"]');
@@ -162,7 +159,6 @@
         }
     }); */
 
-    // "삭제" 버튼 클릭 이벤트 처리
     $("#y_btn_delete").click(function () {
         submitDeleteForm();
     });

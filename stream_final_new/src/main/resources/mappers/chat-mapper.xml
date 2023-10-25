@@ -15,14 +15,14 @@
 		<result property="mname" column="mname"/>
 	</resultMap>
 	
-	<!-- 채팅방 만들기 -->
+	
 	<insert id="chatInsert" parameterType="ChatRoomVo">
 		INSERT INTO CHATROOM (ROOMID, USERID, ROOMNAME, MNAME)
 VALUES (chat_sequence.NEXTVAL, #{userId}, #{roomName}, (SELECT MNAME FROM USERS WHERE USERID = #{userId}))
 	</insert>
-	<!-- 채팅방 멤버 추가 -->
+
 	<insert id="memberInsert" parameterType="ChatRoomVo">
-		<!-- INSERT INTO CHATMEMBER VALUES ((SELECT MAX(ROOMID) ROOMID FROM CHATROOM),#{userId} ) -->
+	
 		INSERT INTO CHATMEMBER (ROOMID, USERID)
 		SELECT (SELECT MAX(ROOMid) FROM chatROOM)AS ROOMID, #{userId} FROM DUAL
 	</insert>
@@ -44,35 +44,26 @@ VALUES (chat_sequence.NEXTVAL, #{userId}, #{roomName}, (SELECT MNAME FROM USERS 
 		FROM CHATMEMBER
 		JOIN CHATROOM USING(ROOMID)
 		WHERE chatmember.userid=#{userId}
-	<!-- select * from chatroom -->
 	</select>
 	<select id="findRooms" resultMap="chatRoomMap">
 		SELECT * FROM CHATROOM WHERE USERID=#{userId}
-		<!-- SELECT * FROM CHATROOM JOIN CHATROOM USING(USERID)  WHERE USERID=#{userId}  -->
 	</select>
 	
 	
-	<!-- 해당 채팅방 진입 selectone (추가!!) 채팅방 진입하면 -->
 	<select id="findRoomById" resultMap="chatRoomMap">
 		SELECT ROOMID,ROOMNAME,USERID FROM CHATROOM JOIN USERS USING(USERID) WHERE ROOMID=#{roomId}
 	</select>
 	
-	<!-- 메세지 입력시 db저장 -->
 	<insert id="messageInsert" parameterType="ChatMessageVo">
 		INSERT INTO CHATMESSAGE (USERID,MESSAGE,ROOMID,cDate,mname) VALUES (#{userId},#{message},#{roomId},SYSTIMESTAMP,(SELECT MNAME FROM USERS WHERE USERID=#{userId}))
 	</insert>
 	
-	<!-- 해당 채팅방에서의 대화 내용 보기 -->
-<!-- 	<select id="viewChat" resultMap="chatMessageMap">
-		SELECT * FROM CHATMESSAGE WHERE ROOMID = #{roomId} ORDER BY CDATE ASC
-	</select> -->
-	
-	<!-- 대화 내역 보기 -->
+
 	<select id="viewChat" resultMap="chatMessageMap">
 		select ROOMID,USERID,C.MNAME,MESSAGE,CDATE from CHATMESSAGE C join users USING(userId) WHERE ROOMID = #{roomId} ORDER BY CDATE ASC
 	</select>
 	
-	<!-- 대화상대 리스트 -->
+
 	<select id="viewMember" resultMap="chatRoomMap">
 	SELECT userId, mname
 	FROM users
