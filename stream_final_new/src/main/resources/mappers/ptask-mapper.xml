@@ -6,6 +6,7 @@
 		SELECT * 
 		FROM TASK
 		WHERE TSTATUS IN ('미진행', '진행', '보류')
+        ORDER BY TO_NUMBER(TNO) DESC
 	</select>
 
 	<select id="ProjectSelectOne" resultType="PtaskVo">

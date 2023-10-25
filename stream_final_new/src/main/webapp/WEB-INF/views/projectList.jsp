@@ -63,7 +63,7 @@
 								<option value="작성자">작성자</option>
 								<option value="진행도">진행도</option>
 							</select>
-							<input class="form-control searchBar" name="keyword" type="text" id="searchProjectListHandler" placeholder="검색 - 프로젝트명을 입력해주세요.">
+							<input class="form-control searchBar" name="keyword" type="text" id="searchProjectListHandler" placeholder="키워드를 입력해주세요.">
 						</div>
 					</h1>
 
@@ -206,8 +206,7 @@
 			                <div class="row">
 			                    <div class="col mt-0">
 			                        <h5 class="card-title">
-			                            <span>\${projectOne.deptname}</span>: <span>\${projectOne.mname}</span><span>
-			                                \${projectOne.mrank}</span>님
+			                            <span>\${projectOne.deptname}</span>: <span>\${projectOne.mname}</span></span>님
 			                        </h5>
 			                    </div>
 			                    <div class="col-auto">
@@ -265,9 +264,17 @@
 	    $("#wrap-list").html(listHtml);
 	    $(".frm.select").click(selectOption);  // stream.js -> abc();
 	    $("#updateBtn").click(function() {
+	    	
+	    	/* updateProjectModal 유효성 적용 */
+			if($("#updateProjectModal .form-control.title").val() == "")
+			{alert("프로젝트명을 입력해주세요!");	return}
+			else if($("#updateProjectModal .comanyMember").length == 0)
+			{alert("프로젝트 참가자를 지정해주세요!");	return}
+			else if($("#updateProjectModal #startUpdateModal").val() == "" || $("#endUpdateModal").val() == "")
+			{alert("시작날짜 또는 종료날자를 지정해주세요!");	return}
+	    	
 	    	doUpdateProject();
 	    });
-	    //writerUserid = $(".frm.select [name=userid]").val();
 	}
 
 	
@@ -366,7 +373,10 @@
 	}
 	
 	function doUpdateProject() {
-		console.log("업데이트 실행");
+		console.log("프로젝트 데이터 수정 실행");
+		
+
+    	
 	 	$.ajax ({
 			url: contextPath+"/member/doUpdateProject",
 			type: "get",

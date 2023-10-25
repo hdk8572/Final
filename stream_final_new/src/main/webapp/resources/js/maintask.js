@@ -85,7 +85,7 @@ taskDetailButtonClickTestHandler=(thisButton)=>{
 	var targetPno = $(a1).next().find("input[name=pno]").val();
 	console.log(targetTno);
 	console.log(targetPno);
-	$("#detailProjectModal").modal("toggle");
+	$("#detailPtaskModal").modal("toggle");
 	
 	$.ajax({
 		 	url: contextPath+"/member/ptaskselectOne",

@@ -187,7 +187,7 @@
 		type: "get",
 		data: {userid: '${principal.username}'},
 		success: function(result) {
-			$(".text-dark").text(result.mname+" "+result.mrank+"님");
+			$(".text-dark").text(result.mname+"님");
 		},
 		error: function() {
 			console.log("loginUser에서 오류 발생");

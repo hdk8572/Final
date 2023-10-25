@@ -53,7 +53,7 @@ taskDetailButtonClickTestHandler=(thisButton)=>{
 	console.log("[JM]===taskDetail Target===")
 	console.log(targetTno);
 	console.log(targetPno);
-	$("#detailProjectModal").modal("toggle");
+	$("#detailPtaskModal").modal("toggle");
 	
 	$.ajax({
 		 	url: contextPath+"/member/ptaskselectOne",
