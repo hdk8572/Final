@@ -202,6 +202,7 @@
 	
 	/* 상단 탭바 위치 이동*/
 	function openTab(tabName) {
+		  console.log("########## tabName")
 	  var i;
 	  var x = document.getElementsByClassName("tab");
 	  for (i = 0; i < x.length; i++) {
@@ -216,6 +217,7 @@
 	  
 	  document.getElementById(tabName).style.display = "block";
 	  if(tabName == "TabCalendar"){
+		  console.log("########## TabCalendar")
 		  loadCalendarHandler();
 	  } else if(tabName == "TabTask") {
 		  loadPtaskList();

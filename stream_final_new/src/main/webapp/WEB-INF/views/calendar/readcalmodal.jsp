@@ -27,7 +27,7 @@
 											<svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical me-2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
 										</div>
 										<ul class="dropdown-menu" id="read-dropdown-menu">
-											<li><a class="dropdown-item" id="update-calButton" data-bs-toggle="modal" data-bs-target="#updatecalmodal" onclick="updateMemberProjectListHandler(this)">수정</a></li>
+											<li><a class="dropdown-item" id="update-calButton" onclick="return updateMemberProjectListHandler(this);">수정</a></li>
 											<li><a class="dropdown-item" id="delete-calButton"> 삭제</a></li>
 										</ul>
 							  		</div>
@@ -92,24 +92,20 @@
 	});
 </script>  -->
 
-<script>
+<!-- <script>
 document.addEventListener("DOMContentLoaded", function() {
-    var calwriterUserid = document.getElementById('userid').textContent; // 작성자 id= userid
-
     document.getElementById('update-calButton').addEventListener("click", function() {
+	    var calwriterUserid = document.getElementById('userid').textContent; // 작성자 id= userid
         var currentUserId = '${principal.username}'; // 현재 로그인한 사용자
 
         if ( currentUserId !== calwriterUserid) {
             alert("작성자만 수정할 수 있습니다.");
-  			return null;   
+  			return false;   
         } else {
             $('#updatecalmodal').modal('show');
         }
     });
 });
-</script>
-
-<!-- <script>
 function selectOption(e){
 	targetPno = $(this).children("[name=pno]").val(); // 중요하다
 	var calwriterUserid = $(this).find("[name=userid]").val();
@@ -147,7 +143,7 @@ function selectOption(e){
 	$('#delete-calButton').on("click", function(){
 		
 		if(confirm('글을 삭제하시겠습니까?')) {
-			var sno =$('#sno').val();
+			var sno =$('#sno').val(); 
 			
 			//ajax
 			$.ajax({
@@ -179,6 +175,7 @@ function selectOption(e){
 </script>
 
 <!-- 지도 api -->
+<!-- /pcal map  -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=200d239f8c4b9f3e0d914ec332ddfe21&libraries=services"></script>
 <script>
 	var mapContainer_readmodal = document.getElementById('map-readmodal'), // 지도를 표시할 div 

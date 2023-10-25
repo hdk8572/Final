@@ -109,7 +109,8 @@
 
 <!-- 일정 상세 정보 가져오기 -->
 <script>
-	$('#update-calButton').on("click", function () {
+	//$('#update-calButton').on("click", updateMenuBtnClickHandler);
+	function updateMenuBtnClickHandler () {
 		var selectedUpdateSno= $("#readcalmodal #sno").val(); //sno읽어옴
 		var selectedUpdateTitle = $("#readcalmodal #title").text();
 		var selectedUpdateStart = $("#readcalmodal #start").text();
@@ -146,7 +147,7 @@
 		$('#updatecalmodal #userid').text(selectedUpdateUserid);   // 작성자
 		$('#updatecalmodal #splace').text(selectedUpdateSplace);
 		 updateshowMap(); 
-	});
+	}
 </script>
 
 <!-- 참가자들을 input에 추가한다. -->
@@ -190,6 +191,18 @@
 <!-- 참가자 list select option //updatedAttendees -->
 <script>
 	function updateMemberProjectListHandler(thisElement){
+		
+		var calwriterUserid = $("#readcalmodal #userid").text(); // 작성자 id= userid
+        var currentUserId = '${principal.username}'; // 현재 로그인한 사용자
+
+        if ( currentUserId !== calwriterUserid) {
+            alert("작성자만 수정할 수 있습니다.");
+  			return false;   
+        }
+        $('#readcalmodal').modal('hide');
+        $('#updatecalmodal').modal('show');
+        updateMenuBtnClickHandler();  // 값채우기 , 지도 띄우기
+        
 		console.log("calendar_pno: "+calendar_pno);
 		console.log("logined_userid: "+logined_userid);
 		$.ajax({
@@ -197,9 +210,9 @@
 			type:"get",
 			data : {
 				pno : calendar_pno,
-				userid : logined_userid//전달이 되나?
+				userid : logined_userid
 			},
-			dataType: "json", //json으로 형식의 응답을 제공하냐
+			dataType: "json", 
 			success:updateMemberView,
 			error:updateMemberError
 		});
@@ -230,26 +243,25 @@
 	$('#updatecalmodal #updBtn').on("click", function(){
 		console.log($("#frm-updatecal").serialize());
 		
-		//ajax 요청을 보낸다.
 		$.ajax({
-			url: contextPath+"/member/updatepcal", //수정 엔드포인트이다
+			url: contextPath+"/member/updatepcal", 
 			type: "post",
 			data: $("#frm-updatecal").serialize(),	
-			/* dataType: "json", */ //얘 넣어야 하나?
+			
 			success: function(response){
 				console.log(response);
-				//수정이 성공하면 실행될 코드
+				
 				if(response == "TabCalendar") {
-					//수정이 성공했을 때
+					
 					alert('일정이 수정되었습니다.');
 					
-					$('#updatecalmodal').modal('hide'); // 모달창 닫기
-					/* location.reload(); */
-					/* openTab('TabCalendar'); */
-					// TabCalendar 가 json 형식이 아니라서 오류가 뜬다.
+					$('#updatecalmodal').modal('hide');
+					
+					openTab('TabCalendar');
+					
 				}else{
 					alert('일정 수정에 실패했습니다.')
-					console.log("updatepcal22에서 오류 발생");
+					console.log("updatepcal에서 오류 발생");
 				}
 			},
 			error : function(request, status, error){
