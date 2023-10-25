@@ -162,6 +162,6 @@
 	    }
 	    document.querySelector('#time').innerHTML = ampm + hours + ":" + minutes + ":" + seconds
 	  }
-	  
+	  dpTime();
 	  setInterval(dpTime, 1000)  // 1초마다 함수 실행되도록 설정
 </script>
