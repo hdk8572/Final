@@ -66,4 +66,9 @@ public class ProjectDao {
 		return sqlSession.selectList("project.searchProjectList", vo);
 	}
 	
+	// 로그인 한 계정 정보 조회 - 황대경
+	public ProjectVo loginUser(String userid) {
+		return sqlSession.selectOne("project.loingUser", userid);
+	}
+	
 }

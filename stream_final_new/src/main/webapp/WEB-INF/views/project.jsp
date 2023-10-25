@@ -1,48 +1,65 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html>
 <head>
- 	<meta charset="utf-8">
-	<meta name="author" content="Stream">
+<meta charset="utf-8">
+<meta name="author" content="Stream">
 
-	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
+<link rel="canonical" href="https://demo-basic.adminkit.io/" />
 
 <title>Stream - 업무도 흐름이다!</title>
-	
-	<!--  Calendar CSS -->
-	<link href="${pageContext.request.contextPath }/css/calreadmodal.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath }/css/calmodal.css" rel="stylesheet"> 
-	<link href="${pageContext.request.contextPath }/css/fullcalendar.css" rel="stylesheet">  
-	
-	<!-- fullcalendar css -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
-	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-	<!-- fullcalendar 언어 설정관련 script -->
-	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
-	
-	<!-- Tab bar -->
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	
-	<link href="${pageContext.request.contextPath}/css/streamapp.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/project.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/projectheader.css" rel="stylesheet">
-	
-	<!-- Modal CSS -->
-	<link href="${pageContext.request.contextPath}/css/Modal.css" rel="stylesheet">
-	
-	<!-- fonts -->
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-	
-	<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
-	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-	
-	<!-- SummerNote CDN -->
-	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-	
+
+<!--  Calendar CSS -->
+<link href="${pageContext.request.contextPath }/css/calreadmodal.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/calmodal.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/fullcalendar.css"
+	rel="stylesheet">
+
+<!-- fullcalendar css -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<!-- fullcalendar 언어 설정관련 script -->
+<script
+	src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
+
+<!-- Tab bar -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<link href="${pageContext.request.contextPath}/css/streamapp.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/project.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/projectheader.css"
+	rel="stylesheet">
+
+<!-- Modal CSS -->
+<link href="${pageContext.request.contextPath}/css/Modal.css"
+	rel="stylesheet">
+
+<!-- fonts -->
+<link
+	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+	rel="stylesheet">
+
+<link
+	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
+	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<!-- SummerNote CDN -->
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
+	rel="stylesheet">
+
 </head>
 
 <body>
@@ -55,24 +72,29 @@
 			<main>
 				<div class="project-detail-header">
 					<div class="testtt">
-						<i id="projectColor" class="project-color color-code-1" style="border: 1.5px solid ${projectPname.pcolor};background: ${projectPname.pcolor};"></i>
+						<i id="projectColor" class="project-color color-code-1"
+							style="border: 1.5px solid ${projectPname.pcolor};background: ${projectPname.pcolor};"></i>
 					</div>
 					<div class="project-header-group">
-						<h2 style="font-weight: bold;position: relative;left: -12px;">${projectPname.pname}</h2>
+						<h2 style="font-weight: bold; position: relative; left: -12px;">${projectPname.pname}</h2>
 					</div>
 				</div>
-				<div class="w3-bar tabBar" >
-					<button class="w3-bar-item w3" onclick="openTab('TabTask')" data-tabmenu="TabTask" >업무</button>
-					<button class="w3-bar-item w3" onclick="openTab('TabCalendar')" data-tabmenu="TabCalendar">캘린더</button>
-					<button class="w3-bar-item w3" onclick="openTab('TabPheed')" data-tabmenu="TabPheed" >피드</button>
+				<div class="w3-bar tabBar">
+					<button class="w3-bar-item w3" onclick="openTab('TabTask')"
+						data-tabmenu="TabTask">업무</button>
+					<button class="w3-bar-item w3" onclick="openTab('TabCalendar')"
+						data-tabmenu="TabCalendar">캘린더</button>
+					<button class="w3-bar-item w3" onclick="openTab('TabPheed')"
+						data-tabmenu="TabPheed">피드</button>
 				</div>
 
 				<!-- 피드 탭 -->
-				<div id="TabPheed" class="w3-container tab ptab" >
+				<div id="TabPheed" class="w3-container tab ptab">
 					<main class="content">
 						<div class="tabtitle">
 							<span class="text-tab">피드</span>
-							<button class="btn btn-primary addTaskTab" data-bs-toggle="modal" data-bs-target="#myModal">업무 등록</button>
+							<button class="btn btn-primary addTaskTab" data-bs-toggle="modal"
+								data-bs-target="#myModal">업무 등록</button>
 						</div>
 						<div class="container-fluid p-0">
 							<p>추후 진행</p>
@@ -86,26 +108,27 @@
 					<main class="content">
 						<div class="tabtitle">
 							<span class="text-tab">업무</span>
-							<button class="btn btn-primary addTaskTab" data-bs-toggle="modal" data-bs-target="#myModal">업무 등록</button>
+							<button class="btn btn-primary addTaskTab" data-bs-toggle="modal"
+								data-bs-target="#myModal">업무 등록</button>
 						</div>
-						
+
 						<%@ include file="/WEB-INF/views/addPtaskModal.jsp"%>
 
 						<div class="container-fluid p-0">
 							<input type="hidden" name="pno" value="${pno}">
 							<table class="table table-hover my-0">
 								<tbody>
-								<tr>
-									<th class="d-none d-xl-table-cell ttitle">업무명</th>
-									<th class="d-none d-xl-table-cell mname">담당자</th>
-									<th class="d-none d-xl-table-cell tstatus">진행도</th>
-									<th class="d-none d-xl-table-cell tdate">작성일</th>
-									<th class="d-none d-xl-table-cell tstartdate">시작일</th>
-									<th class="d-none d-xl-table-cell tenddate">마감일</th>
-								</tr>
+									<tr>
+										<th class="d-none d-xl-table-cell ttitle">업무명</th>
+										<th class="d-none d-xl-table-cell mname">담당자</th>
+										<th class="d-none d-xl-table-cell tstatus">진행도</th>
+										<th class="d-none d-xl-table-cell tdate">작성일</th>
+										<th class="d-none d-xl-table-cell tstartdate">시작일</th>
+										<th class="d-none d-xl-table-cell tenddate">마감일</th>
+									</tr>
 								</tbody>
 								<tbody class="wrap-PtaskList">
-								<!--  
+									<!--  
 								<c:forEach items="${tlist}" var="tlist">
 									<tr class="listOne">
 										<td>${tlist.ttitle}<button type="button" class="detailProject">상세내용</button></td>
@@ -130,7 +153,7 @@
 								</tbody>
 							</table>
 							<%@ include file="/WEB-INF/views/detailptaskmodal.jsp"%>
-						</div>	
+						</div>
 					</main>
 				</div>
 
@@ -139,12 +162,14 @@
 					<main class="content" id="content-calendar">
 						<div class="tabtitle">
 							<span class="text-tab">캘린더</span>
-							<button class="btn btn-primary addcal" id="myBtn" type="reset" data-bs-toggle="modal" data-bs-target="#addcalmodal" onclick="getMemberProjectListHandler(this)">+일정추가</button>
+							<button class="btn btn-primary addcal" id="myBtn" type="reset"
+								data-bs-toggle="modal" data-bs-target="#addcalmodal"
+								onclick="getMemberProjectListHandler(this)">+일정추가</button>
 						</div>
 						<div class="container-fluid p-0">
 							<!-- 내용  -->
 							<%@ include file="/WEB-INF/views/calendar/calendar.jsp"%>
-							
+
 						</div>
 					</main>
 				</div>
@@ -156,7 +181,8 @@
 	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
 	<!-- SummerNote CDN -->
-	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
 	<script>
 
@@ -203,7 +229,7 @@
 	
 	$(document).ready(function() {
 		$("#summernote").summernote({				//  위즈윅 - summerNote		
-		     placeholder: '프로젝트 설명을 입력해주세요.',
+		     placeholder: '업무 내용을 입력해주세요. - 200글자 제한',
 		     tabsize: 2,
 		     height: 120,
 		     toolbar: [
@@ -229,7 +255,7 @@
 		//$(this).find(".detailProject").click(detailProject);
 	}); 
 	
-	</script>
+</script>
 	<script>
 	function mouseEvent() {
 		$(".listOne").hover(
@@ -248,7 +274,7 @@
 	
 	
 	
-	</script>
+</script>
 	<script>
 	
 	function loadPtaskList() {
@@ -281,7 +307,7 @@
 			pTaskListHtml+=`
 	        	<tr class="listOne">
 					<td>\${pl.ttitle}<button type="button" class="detailProject">상세내용</button></td>
-					<td>\${pl.mname} \${pl.mrank}</td>
+					<td>\${pl.mname}</td>
 					<input type="hidden" id="updateTstatus" >
 //					\${pl.tstatus}
 					<input type="hidden" id="currentTstatus" value="\${pl.tstatus}" >
@@ -295,7 +321,7 @@
 					<td>\${pl.tdate}</td>
 					<td>\${pl.tstartdate}</td>
 					<td>\${pl.tenddate}
-						<button type="button" class="deletePtask"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg></button>
+						<button type="button" class="deletePtask"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2 deleteBtn"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg></button>
 					</td>
 					<input type="hidden" name="tno" value="\${pl.tno}">
 					<input type="hidden" name="pno" value="\${pl.pno}">
@@ -313,7 +339,7 @@
 		var targetTno = $(this).closest("tr").find("input[name=tno]").val();
 		var targetPno = $(this).closest("tr").find("input[name=pno]").val();
 		var targetRno = $(this).closest("tr").find("input[name=rno]").val();
-		$("#detailProjectModal").modal("toggle");
+		$("#detailPtaskModal").modal("toggle");
 		
 		$.ajax({
 		 	url: "${pageContext.request.contextPath}/member/ptaskselectOne",
@@ -367,7 +393,7 @@
 
 	
 	
-	</script>
+</script>
 	<script>
 	$("select[id=updateTstatus]").change(updateOption);
 
@@ -377,7 +403,7 @@
  	    console.log(updatedOption);	
  	    $("#updateTstatus").val(updatedOption);
 	}
-	</script>
+</script>
 	<script>
 	
 	function selectOption() {
@@ -393,6 +419,30 @@
 	
 	
 	
-	</script>
+</script>
+	<script>
+//id='start','end'
+		var startDateInput = document.getElementById('start');
+		var endDateInput = document.getElementById('end');
+		
+		startDateInput.addEventListener('change', function() {
+			compareDates();
+		});
+		
+		endDateInput.addEventListener('change', function() {
+			compareDates();
+		});
+		
+		function compareDates() {
+			var startDate = new Date(startDateInput.value);
+			var endDate = new Date(endDateInput.value);
+			
+			if(endDate < startDate) {
+				alert("입력한 종료일이 시작일보다 이전입니다. 올바른 날짜를 선택해 주세요.");
+				
+				endDateInput.value = ''; //종료일 입력필드 초기화
+			}
+		}
+</script>
 </body>
 </html>

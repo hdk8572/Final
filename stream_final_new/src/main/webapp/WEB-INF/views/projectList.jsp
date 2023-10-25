@@ -48,7 +48,7 @@
 				<div class="container-fluid p-0">
 
 					<h1 class="h3 mb-3">
-						<span id="userName">${principal.username}님의 프로젝트 목록</span>
+						<span id="userName">a님의 프로젝트 목록</span>
 						<!-- <form>
 							<div class="search">
 								<input name="keyword" type="text" placeholder="검색어를 입력해주세요.">
@@ -57,7 +57,14 @@
 						</form> -->
 						<span><button class="btn btn-primary addProject" id="myBtn"	data-bs-toggle="modal" data-bs-target="#addProjectModal">프로젝트 추가+</button></span>
 						<svg id="hideBtn" xmlns="http://www.w3.org/2000/svg" width="24"	height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus-circle align-middle me-2 hideView"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-						<input class="form-control searchBar" name="keyword" type="text" id="searchProjectListHandler" placeholder="검색 - 프로젝트명을 입력해주세요.">
+						<div class="Wrap-Search">
+							<select class="form-select typeBox" id="typeSelect" name="type">
+								<option value="프로젝트명">프로젝트명</option>
+								<option value="작성자">작성자</option>
+								<option value="진행도">진행도</option>
+							</select>
+							<input class="form-control searchBar" name="keyword" type="text" id="searchProjectListHandler" placeholder="키워드를 입력해주세요.">
+						</div>
 					</h1>
 
 					<%@ include file="/WEB-INF/views/addProjectModal.jsp"%>
@@ -100,7 +107,7 @@
 		loadList();									// 화면 리스트 호출 - loadList 컨트롤러
 		
 		$("#summernote").summernote({				//  위즈윅 - summerNote		
-		     placeholder: '프로젝트 설명을 입력해주세요.',
+		     placeholder: '프로젝트 설명을 입력해주세요. - 200글자 제한',
 		     tabsize: 2,
 		     height: 120,
 		     toolbar: [
@@ -114,7 +121,7 @@
 		     ]
 		});
 		$("#summernote-update").summernote({				//  위즈윅 - summerNote		
-		     placeholder: '프로젝트 설명을 입력해주세요.',
+		     placeholder: '프로젝트 설명을 입력해주세요. - 200글자 제한',
 		     tabsize: 2,
 		     height: 120,
 		     toolbar: [
@@ -199,8 +206,7 @@
 			                <div class="row">
 			                    <div class="col mt-0">
 			                        <h5 class="card-title">
-			                            <span>\${projectOne.deptname}</span>: <span>\${projectOne.mname}</span><span>
-			                                \${projectOne.mrank}</span>님
+			                            <span>\${projectOne.deptname}</span>: <span>\${projectOne.mname}</span></span>님
 			                        </h5>
 			                    </div>
 			                    <div class="col-auto">
@@ -258,26 +264,45 @@
 	    $("#wrap-list").html(listHtml);
 	    $(".frm.select").click(selectOption);  // stream.js -> abc();
 	    $("#updateBtn").click(function() {
+	    	
+	    	/* updateProjectModal 유효성 적용 */
+			if($("#updateProjectModal .form-control.title").val() == "")
+			{alert("프로젝트명을 입력해주세요!");	return}
+			else if($("#updateProjectModal .comanyMember").length == 0)
+			{alert("프로젝트 참가자를 지정해주세요!");	return}
+			else if($("#updateProjectModal #startUpdateModal").val() == "" || $("#endUpdateModal").val() == "")
+			{alert("시작날짜 또는 종료날자를 지정해주세요!");	return}
+	    	
 	    	doUpdateProject();
 	    });
-	    //writerUserid = $(".frm.select [name=userid]").val();
 	}
+
+	
+	$("#typeSelect").on("change", function() {
+		var typeSelect = $("select[name=type]").val();
+		$("select[name=type]").val(typeSelect).attr("selected", true);
+		var resultSelect = $("#typeSelect").val();
+	});
 	
 	$("#searchProjectListHandler").keydown(function(event) {
 		if(event.keyCode == 13) {
 			event.preventDefault();
 			SerachProjectList();			
 			$(".form-control.searchBar").val("");
-		} else { 			null;
+		} else { 		
+			null;
 		}
 	});
 	
 	function SerachProjectList() {
-		console.log("useridJs :"+useridJs);
+		var dataType = $("#typeSelect").val();
+		var dataInput = $("#searchProjectListHandler").val();
+		console.log("dataType:"+dataType);
+		console.log("dataInput:"+dataInput);
 		$.ajax({
 			url: "${pageContext.request.contextPath}/member/serachProjectList",
 			type: "get",
-			data: {keyword: $("#searchProjectListHandler").val(), userid: useridJs},
+			data: {keyword: dataInput, type: dataType, userid: useridJs},
 			dataType: "json",
 			success: function(result) {
 				makeView(result);
@@ -348,7 +373,10 @@
 	}
 	
 	function doUpdateProject() {
-		console.log("업데이트 실행");
+		console.log("프로젝트 데이터 수정 실행");
+		
+
+    	
 	 	$.ajax ({
 			url: contextPath+"/member/doUpdateProject",
 			type: "get",
@@ -403,7 +431,17 @@
 	    });
 	} 
 	
-
+	$.ajax ({
+		url: "${pageContext.request.contextPath}/member/loginUser",
+		type: "get",
+		data: {userid: '${principal.username}'},
+		success: function(result) {
+			$("#userName").text(result.mname+"님의 프로젝트 목록");
+		},
+		error: function() {
+			console.log("ProjectList.jsp - loginUser에서 오류 발생");
+		}
+	});	
 	
 /*  	function listDelete($thisEle) {
  		console.log($thisEle.parents("[name=pno]").val());
@@ -426,6 +464,7 @@
 		});
  		
 	} */
-	</script>
+</script>
+
 
 </html>

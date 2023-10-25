@@ -80,27 +80,61 @@
 	</update>
 
 	<delete id="deleteList" parameterType="ProjectVo">
-		DELETE FROM PROJECT WHERE PNO = #{pno} 
+		DELETE FROM PROJECT
+		WHERE PNO = #{pno} 
 	</delete>
 	
 	<select id="searchProjectList" parameterType="ProjectVo" resultType="ProjectVo">
+	
 		SELECT TP.PNO, TP.PNAME, TP.PSTATUS, TP.PACCESS
-		, TP.USERID, VUD.MNAME, VUD.MRANK, VUD.DEPTNAME
+		, TP.USERID, VUD.MNAME, VUD.MRANK, VUD.DEPTNAME, PCOLOR
 		, (SELECT COUNT(*) FROM MEMBER_PROJECT WHERE PNO= TP.PNO) AS COUNTMEMBER
 		FROM (
 		SELECT * FROM PROJECT
-		WHERE (USERID= #{USERID} OR PNO IN (SELECT PNO FROM MEMBER_PROJECT WHERE
+		WHERE (USERID= #{userid} OR PNO IN (SELECT PNO FROM MEMBER_PROJECT WHERE
 		USERID=#{userid}))
 		AND PSTATUS IN ('미진행', '진행', '보류')
 		AND PACCESS IN ('ACCESS')
-		AND PSTATUS IN ('미진행', '진행', '보류') AND PNAME LIKE '%' || #{keyword} || '%')
+		<if test="type == '프로젝트명'">
+			AND PNAME LIKE '%' || #{keyword} || '%'
+		</if>
+		<if test="type == '진행도'">
+			AND PSTATUS LIKE '%' || #{keyword} || '%'
+		</if>	
+		) TP
+		JOIN V_U_DEPT VUD ON TP.USERID = VUD.USERID
+		<if test="type == '작성자'">
+		WHERE MNAME LIKE '%' || #{keyword} || '%'
+		</if>
+		ORDER BY TO_NUMBER(PNO) DESC
+		<!--  
+		SELECT TP.PNO, TP.PNAME, TP.PSTATUS, TP.PACCESS
+		, TP.USERID, VUD.MNAME, VUD.MRANK, VUD.DEPTNAME, PCOLOR
+		, (SELECT COUNT(*) FROM MEMBER_PROJECT WHERE PNO= TP.PNO) AS COUNTMEMBER
+		FROM (
+		SELECT * FROM PROJECT
+		WHERE (USERID= #{userid} OR PNO IN (SELECT PNO FROM MEMBER_PROJECT WHERE
+		USERID=#{userid}))
+		AND PSTATUS IN ('미진행', '진행', '보류')
+		AND PACCESS IN ('ACCESS')
+        AND PNAME LIKE '%' || #{keyword} || '%'
 		) TP
 		JOIN V_U_DEPT VUD ON TP.USERID = VUD.USERID
 		ORDER BY TO_NUMBER(PNO) DESC
+		-->
 	</select>
 	
 	<select id="selectMname" resultType="MemberSimpleVo">
 		select userid, mname, ccode from users where userid=#{userid}
 	</select>
+	
+	<!-- 로그인 한 계정 정보 조회 - 황대경  -->
+	<select id="loingUser" resultType="ProjectVo">
+		SELECT *
+		FROM USERS
+			JOIN DEPT USING (DEPTNO, CCODE)
+		WHERE USERID = #{userid}
+	</select>
+	
 	
 </mapper>

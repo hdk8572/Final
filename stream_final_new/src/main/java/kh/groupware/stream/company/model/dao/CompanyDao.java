@@ -49,11 +49,5 @@ public class CompanyDao {
 		return sqlSession.selectList("department.deptList", ccode);
 	}
 
-	/*
-	 * // 로그인시 부서조회 public String selectOne(CompanyVo cvo) { return
-	 * sqlSession.selectOne("company.selectOne", cvo); } //회사회원가입 1: COMPANY insert
-	 * public int newCompany(CompanyVo cvo) { return
-	 * sqlSession.insert("company.newCompany", cvo); }
-	 */
 
 }

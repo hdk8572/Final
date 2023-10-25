@@ -10,22 +10,14 @@ public class ReplyVo {
 	public String userid;
 	public String rcontent;
 	public String rdate;
+	public String mname;
 	
 	@Override
 	public String toString() {
 		return "ReplyVo [rno=" + rno + ", tno=" + tno + ", userid=" + userid + ", rcontent=" + rcontent + ", rdate="
-				+ rdate + "]";
+				+ rdate + ", mname=" + mname + "]";
 	}
 
-	public ReplyVo(String rno, String tno, String userid, String rcontent, String rdate) {
-		super();
-		this.rno = rno;
-		this.tno = tno;
-		this.userid = userid;
-		this.rcontent = rcontent;
-		this.rdate = rdate;
-	}
-	
 	public ReplyVo() {
 		super();
 	}
@@ -70,4 +62,11 @@ public class ReplyVo {
 		this.rdate = rdate;
 	}
 
+	public String getMname() {
+		return mname;
+	}
+
+	public void setMname(String mname) {
+		this.mname = mname;
+	}
 }

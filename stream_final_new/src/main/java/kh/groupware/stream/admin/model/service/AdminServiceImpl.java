@@ -17,27 +17,27 @@ public class AdminServiceImpl implements AdminService {
 	private AdminDao adminDao;
 	
 	/* 간단한 통계*/
-	public AdminVo cnt(){
+	public AdminVo cnt() throws Exception{
 		return adminDao.cnt();
 	}
 	/* 회사 목록 조회 */
-	public List<CompanyVo> companyList(){
+	public List<CompanyVo> companyList() throws Exception{
 		return adminDao.companyList();
 	}
 	/* 페이징 처리 위한 전체 목록 확인 */
-	public int countCompany() {
+	public int countCompany() throws Exception {
 		return adminDao.countCompany();
 	}
 	/* 페이징 처리 후 회사 목록 조회 */
-	public List<CompanyVo> pagingCompanyList(PagingVo vo){
+	public List<CompanyVo> pagingCompanyList(PagingVo vo) throws Exception{
 		return adminDao.pagingCompanyList(vo);
 	}
 	/* 회사 상세 조회 */
-	public List<AdminVo> showCompanyDetail(String ccode){
-		return adminDao.showCompanyDetail(ccode);
+	public List<AdminVo> showCompanyDetail(String ccode) throws Exception{
+		return adminDao.showCompanyDetail(ccode); 
 	}
 	/* 차트 그리기 */
-	public List<AdminVo> makePieChart(String ccode){
+	public List<AdminVo> makePieChart(String ccode) throws Exception{
 		return adminDao.makePieChart(ccode);
 	}
 }

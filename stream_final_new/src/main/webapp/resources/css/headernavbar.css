@@ -68,11 +68,11 @@
 }
 
 .text-light {
-	cursor: default;
-  	color: #009b77;
-	font-size: 2rem;
-	letter-spacing: 0rem;
-	font-weight: bold;
+    cursor: default;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 200%;
+    color: #009b77;
 }
 
 .text-light:focus {

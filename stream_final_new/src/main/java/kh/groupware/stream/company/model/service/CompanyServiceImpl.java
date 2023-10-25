@@ -36,12 +36,13 @@ public class CompanyServiceImpl implements CompanyService {
 		return result;
 	}
 
+	//회사 사원초대(추가)
 	@Override
 	public int inviteMember(CompanyInsertParam cvo) {
 		int result = companyDao.newUsers(cvo);
 		return result;
 	}
-
+	
 	@Override
 	public String selectCcode(String cname) {
 		String result = companyDao.selectCcode(cname);
@@ -53,29 +54,4 @@ public class CompanyServiceImpl implements CompanyService {
 	public List<DeptVo> deptList(String ccode){
 		return companyDao.deptList(ccode);
 	}
-
-	
-	
-	
-	
-	/*
-	 * //회사회원가입 2: DEPT insert
-	 * 
-	 * @Override public int newDept (CompanyInsertParam cvo) { return
-	 * companyDao.newDept(cvo); }
-	 */
-	//회사회원가입 3: USERS insert
-//	@Override
-//	public int newUsers (CompanyInsertParam cvo) {
-//		int result = 0;
-//		result = companyDao.newUsers(cvo);
-//		return result;
-//	}
-//	//회사회원가입 4: USERS Company Id insert
-//	@Override
-//	public int newCompanyId (CompanyInsertParam cvo) {
-//		int result = 0;
-//		result = companyDao.newCompanyId(cvo);
-//		return result;
-//	}
 }

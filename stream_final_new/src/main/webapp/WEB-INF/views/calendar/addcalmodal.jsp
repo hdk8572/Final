@@ -5,29 +5,30 @@
 <div id="addcalmodal" class="modal">
 	<div class="modal-dialog pcal">
 		<!-- Modal content -->
-		<div class="pcal modal-container ">
-			<div class="modal-header-pcal"></div>
-			<div class="modal-body-pcal">
+		<div class="modal-container pcal add ">
+			<div class="modal-header-pcal add"></div>
+			<div class="modal-body pcal">
 				<div class="card pcal">
 					<div class="card-body pcal">
 					<div class="card-header pcalTitle">
 						<h2 class="pcalTitle"><b>일정 작성</b></h2>
 					</div>
 						<form class="addcalmodal-frm" action="${pageContext.request.contextPath}/member/insertpcal" method="post">
+							
 							<!-- 일정번호 프로젝트번호  url 때문에 pno필요함 -->
 							<input type="hidden" name="pno" value="${pno}">
 							<!-- TODO 일정번호 -->
 							<input type="hidden" name="sno" value="${sno}">
 							
 							<!-- 제목 -->
-							<input type="text" class="form-control title" name="title" id="title" placeholder="제목을 입력하세요." required="required">
+							<input type="text" class="form-control title" name="title" id="title" placeholder="제목을 입력해주세요. -20글자 제한" required="required">
 							
 							<!-- 날짜 -->
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar align-middle"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
 							<input type="date" class="form-date calendar" id="start" name="start" required="required"> ~ <input type="date" class="form-date calendar" id="end" name="end" required="required"> <!-- s -->
 							
 							<!-- 작성자&참석자 -->
-							<div class="wrap-selected"><!-- 이거 걸면 안 나온다. -->
+							<div class="wrap-selected">
 								<div class="selected-leftPart">
 									<div class="d-flex align-items-center">
 										<!-- 작성자 -->
@@ -82,38 +83,46 @@
 <script>
 	document.addEventListener("DOMContentLoaded", function() {
 		
-		//title 요소 찾기
 		var addTitle= document.getElementById("title");
 
-		function calendartitleLength() {
+		function addCalTitleLength() {
 			var titleValue = addTitle.value;
 		
-			if(titleValue.length > 30) {
-				alert("제목은 30자 이내여야 합니다.");
+			if(titleValue.length > 20) {
+				alert("제목은 20자 이내여야 합니다.");
 			}
 		}
-		addTitle.addEventListener("input", calendartitleLength);
+		addTitle.addEventListener("input", addCalTitleLength);
 	});
 </script> 
 
+<!-- 내용 유효성검사  -->
 <script>
-//addcalmodal 초기화!!!
+	$('#summernote-addcalmodal').on('summernote.keyup', function() {
+		
+		var max = 200;
+		
+		var length = $(this).summernote('code').replace(/<(?:.|\n)*?>/gm, '').length;
+		if(length > max) {
+			alert('최대 글자수를 초과하였습니다.')
+			
+			$(this).summernote('editor.undo');
+		}
+	});
+</script>
+
+<script>
+    //addcalmodal 초기화!!!
 	function resetcalmodal(){
 		var kakaoaddmap = document.getElementById('map');
 		kakaoaddmap.innerHTML =''; //지도를 비운다.
 		$('.map-hidden').css("display", 'none'); //지도 맵
 		$('#addcalmodal #splace').val(''); //지도 이름
-		
-		//되는데 오류뜸
-		/* $('#addcalmodal #form-content').text(''); */ 
-		/* $('#addcalmodal .form-calmemberlist.card').text(''); */
-		/* $('#addcalmodal #calmemberlist').text(''); //참가자 */
 
-		$('#addcalmodal .attenduserid-item').text(''); 
-		
-		$('#addcalmodal #summernote-addcalmodal').summernote('code', '') //내용
 		$('#addcalmodal .title').val(''); //제목
 		$('#addcalmodal #start').val(''); //시작일
 		$('#addcalmodal #end').val(''); //종료일
+		$('#addcalmodal .attenduserid-item').text(''); 
+		$('#addcalmodal #summernote-addcalmodal').summernote('code', '') //내용
 	}
 </script>

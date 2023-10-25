@@ -97,7 +97,7 @@ public class ProjectController {
 
 	@GetMapping("/member/doUpdateProject")
 	@ResponseBody
-	public int update(ProjectInsertParamVo vo) {
+	public int update(ProjectInsertParamVo vo) throws Exception {
 		int result = projectService.update(vo);
 		return result;
 	}
@@ -124,23 +124,31 @@ public class ProjectController {
 	// 회사 소속 멤버 전체 조회 (addProjectModal 클릭 시 조회)
 	@GetMapping("/member/getCompanyMemberList")
 	@ResponseBody
-	public List<MemberSimpleVo> getCompanyMemberList(String userid) {
+	public List<MemberSimpleVo> getCompanyMemberList(String userid) throws Exception {
 		return maintastService.companyMemberList(userid);
 	}
 	
 	// 프로젝트 참여 멤버 전체 조회 (Update)
 	@GetMapping("/member/getCurrentMemberList")
 	@ResponseBody
-	public List<MemberSimpleVo> currentMemberList(String pno) {
+	public List<MemberSimpleVo> currentMemberList(String pno) throws Exception {
 		return maintastService.currentMemberList(pno);
 	}
 	
 	@PostMapping("/member/deleteAllCurrentMember")
 	@ResponseBody
-	public int deleteAllCurrentMember(String pno) {
+	public int deleteAllCurrentMember(String pno) throws Exception {
 		System.out.println("Delete pno :"+pno);
 		int result = maintastService.deleteAllCurrentMember(pno);
 		System.out.println("Delete result :"+result);
+		return result;
+	}
+	
+	// 로그인 한 계정 정보 조회 - 황대경
+	@GetMapping("/member/loginUser")
+	@ResponseBody
+	public ProjectVo loginUser(String userid) {
+		ProjectVo result = projectService.loginUser(userid);
 		return result;
 	}
 

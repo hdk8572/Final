@@ -124,9 +124,13 @@ public class CalendarController {
 	//캘린더 수정
 	@PostMapping("/member/updatepcal")
 	@ResponseBody
-	public int update(CalendarVo cal) throws Exception {
+	public String update(CalendarVo cal) throws Exception {
 		int result = calendarService.update(cal);
-		return result;
+		if(result > 0) {
+			return "TabCalendar";
+		}else {
+			return "0"; 
+		}
 	}
 
 	//캘린더 삭제

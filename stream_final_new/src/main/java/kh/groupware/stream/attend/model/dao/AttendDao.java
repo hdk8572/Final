@@ -14,7 +14,7 @@ public class AttendDao {
 	@Autowired
 	private SqlSession sqlSession;
 
-	// 출근
+	// 근태 출근
 	public int attendIn(AttendVo avo) {
 		return sqlSession.insert("attend.attendIn", avo);
 	}
@@ -23,8 +23,19 @@ public class AttendDao {
 	public List<AttendVo> attendList(String userid) {
 		return sqlSession.selectList("attend.attendList", userid);
 	}
-
+	
+	// 근태 퇴근
+	public int attendUpdate(AttendVo avo) {
+		return sqlSession.update("attend.attendUpdate", avo);
+	}
+	
+	// attend 값 중복
 	public int checkDate(AttendVo avo) {
 		return sqlSession.selectOne("attend.checkDate", avo);
+	}
+
+	// 근무 시간 계산
+	public int workHour(AttendVo avo) {
+		return sqlSession.update("attend.workHour", avo);
 	}
 }

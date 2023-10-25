@@ -23,7 +23,8 @@
 				data-bs-toggle="dropdown"> <img
 					src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 					class="avatar img-fluid rounded me-1" alt="Charles Hall"
-					border-radius: 50% !important /> <span class="text-dark">사용자</span>
+					border-radius: 50% !important />
+					<span class="text-dark"></span>
 			</a>
 
 				<div class="dropdown-menu dropdown-menu-end">
@@ -138,51 +139,58 @@
 		return this;
 	};
 
-	document
-			.getElementById('mypage-open')
-			.addEventListener(
-					'click',
-					function() {
-						$
-								.ajax({
-									url : '${pageContext.request.contextPath}/showmypage',
-									method : 'GET',
-									data : {
-										userid : '${principal.username}'
-									},
-									dataType : 'json',
-									success : function(data) {
-										console.log(data);
-										var mname = data.mname;
-										var cname = data.cname;
-										var mrank = data.mrank;
-										var mphone = data.mphone;
-										var deptname = data.deptname;
+	
+	document.getElementById('mypage-open').addEventListener('click',function() {
+		$.ajax({
+			url : '${pageContext.request.contextPath}/showmypage',
+			method : 'GET',
+			data : {
+				userid : '${principal.username}'
+			},
+			dataType : 'json',
+			success : function(data) {
+				console.log(data);
+				var mname = data.mname;
+				var cname = data.cname;
+				var mrank = data.mrank;
+				var mphone = data.mphone;
+				var deptname = data.deptname;
 
-										$('.mp-content[data-field="mname"]')
-												.text(data.mname);
-										$('.mp-content[data-field="cname"]')
-												.text(data.cname);
-										$('.mp-content[data-field="mrank"]')
-												.text(data.mrank);
-										$('.mp-content[data-field="mphone"]')
-												.text(data.mphone);
-										$('.mp-content[data-field="deptname"]')
-												.text(data.deptname);
+				$('.mp-content[data-field="mname"]')
+						.text(data.mname);
+				$('.mp-content[data-field="cname"]')
+						.text(data.cname);
+				$('.mp-content[data-field="mrank"]')
+						.text(data.mrank);
+				$('.mp-content[data-field="mphone"]')
+						.text(data.mphone);
+				$('.mp-content[data-field="deptname"]')
+						.text(data.deptname);
 
-										modal('mypage-modal');
-									},
-									error : function(error) {
-										console.error('오류발생', error);
-									}
-								});
-						// 모달창 띄우기
-					});
+				modal('mypage-modal');
+			},
+			error : function(error) {
+				console.error('오류발생', error);
+			}
+		});
+		// 모달창 띄우기
+	});
 
 	$("#editmypage").click(function() {
 		var url = "${pageContext.request.contextPath}/member/editmypage";
 		window.location.href = url;
 	});
 </script>
-
-
+<script>
+	$.ajax ({
+		url: "${pageContext.request.contextPath}/member/loginUser",
+		type: "get",
+		data: {userid: '${principal.username}'},
+		success: function(result) {
+			$(".text-dark").text(result.mname+"님");
+		},
+		error: function() {
+			console.log("loginUser에서 오류 발생");
+		}
+	});	
+</script>

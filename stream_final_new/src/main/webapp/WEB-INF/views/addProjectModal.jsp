@@ -18,7 +18,7 @@
 						<h2 class="addProjectTitle"><b>프로젝트 등록</b></h2>
 					</div>
 						<form id="addProject">					
-						<input type="text" class="form-control title" name="pname" placeholder="프로젝트명을 입력해주세요." required="required">
+						<input type="text" class="form-control title" name="pname" placeholder="프로젝트명을 입력해주세요. - 20글자 제한" required="required" maxlength="20">
 						<div class="wrap-selected">
 							<div class="selected-leftPart">
 								<div class="d-flex align-items-center">
@@ -60,12 +60,12 @@
 						<input type="hidden" name="paccess" value="ACCESS"><!-- 세션에서 권한 선택 -->
 						
 						<div class="form-control">
-							<input type="date" class="form-date" name="pstartdate" required="required">
+							<input type="date" class="form-date" id="start" name="pstartdate" required="required">
 							~
-							<input type="date" class="form-date" name="penddate" required="required">
+							<input type="date" class="form-date" id="end" name="penddate" required="required">
 						</div>
 						<div align="center">
-							<button class="btn btn-primary" id="btn-submit" type="submit">추가</button>
+							<button class="btn btn-primary" id="btn-submit" type="button">추가</button>
 							<button class="btn btn-warning" type="reset">취소</button>
 						</div>
 						</form>
@@ -83,13 +83,18 @@
     /* $("select[name=updatepstatus]").change(updateOption); */
     
 	function addList () {
-//		var data = myEditor.getData();
-//		$("[name=pcontent]").val(data);
-		console.log($("[name=mname]").val())
-		console.log($("#addProject").serialize());  // "n1=v1&n2=v2"&pcontent=rkqdfjklfjlddfld   // memberProjectArr=a&memberProjectArr=b
+    	/* addProjectModal 유효성 적용 */
+		if($(".form-control.title").val() == "")
+		{alert("프로젝트명을 입력해주세요!");	return}
+		else if($(".comanyMember").length == 0)
+		{alert("프로젝트 참가자를 지정해주세요!");	return}
+		else if($("#start").val() == "" || $("#end").val() == "")
+		{alert("시작날짜 또는 종료날자를 지정해주세요!");	return}
+		
 		$.ajax ({
 			url: "${pageContext.request.contextPath}/member/projectInsert",
 			type: "post",
+			//async:false,
 			data : $("#addProject").serialize(),
 			dateType: "json",
 			success: function(result){
@@ -101,6 +106,7 @@
 				alert("addList에서 에러났습니다.");
 			}
 		});	
+		$(".comanyMember").remove();
 	}
 	
  	function selectOption() { // 추가+ 버튼을 누르면 실행되는 메서드
@@ -182,9 +188,40 @@
 	 	});
  	}
  	
- 
- 	
- 	
+</script>
+<script>
+//id='start','end'
+		var startDateInput = document.getElementById('start');
+		var endDateInput = document.getElementById('end');
+		
+		startDateInput.addEventListener('change', function() {
+			compareDates();
+		});
+		
+		endDateInput.addEventListener('change', function() {
+			compareDates();
+		});
+		
+		function compareDates() {
+			var startDate = new Date(startDateInput.value);
+			var endDate = new Date(endDateInput.value);
+			
+			if(endDate < startDate) {
+				alert("입력한 종료일이 시작일보다 이전입니다. 올바른 날짜를 선택해 주세요.");
+				
+				endDateInput.value = ''; //종료일 입력필드 초기화
+			}
+		}
+</script>
+<script>
+	$('#summernote').on('summernote.keyup', function() {
+	    var max = 200;
+	    var length = $(this).summernote('code').replace(/<(?:.|\n)*?>/gm, '').length; // HTML 태그를 제외한 순수 텍스트의 글자수를 계산합니다.
+	    if (length > max) {
+	        alert('최대 글자수를 초과하였습니다.'); // 사용자에게 알림을 보냅니다.
+	        $(this).summernote('editor.undo'); // 마지막으로 입력한 내용을 취소(제거)합니다.
+	    }
+	});
 </script>
 
 

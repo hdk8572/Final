@@ -2,11 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="company">
 
-	<!-- 회사회원가입 -->
-	<!-- <select id="insert" parameterType="CompanyVo"> INSERT INTO COMPANY 
-		VALUES ('C04', #{cname}, #{cphone}, #{caddress}, #{cpassword}) </select> -->
-	<!-- TODO!! sequence 만들어서 ccode에 넣기 -->
-
 	<!-- 회사정보 -->
 	<select id="companyInfo" parameterType="String"
 		resultType="CompanyVo">
@@ -27,7 +22,5 @@
 		INSERT INTO COMPANY (CCODE, CNAME, CPHONE, CADDRESS) VALUES
 		(#{ccode}, #{cname}, #{cphone}, #{caddress})
 	</insert>
-	<!-- TODO! 12345 암호화해서 넣어야함 -->
-
 
 </mapper>

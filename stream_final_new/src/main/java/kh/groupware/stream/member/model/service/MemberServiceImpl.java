@@ -30,7 +30,7 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.ccodeCheck(mvo);
 	}
 	
-	// 마이페이지
+	//마이페이지
 	@Override
 	public MyPageVo showMyPage(String userid) {
 		return memberDao.showMyPage(userid); 
@@ -40,15 +40,14 @@ public class MemberServiceImpl implements MemberService {
 	public MyPageVo showEditMyPage(String userid) {
 		return memberDao.showEditMyPage(userid);
 	}
-	// 마이페이지 정보수정
+	//마이페이지 수정1(pwd포함)
 	@Override
 	public int editMyPage(MemberVo mvo) {
 		return memberDao.editMyPage(mvo);
 	}
+	//마이페이지 수정2(pwd미포함)
 	@Override
 	public int editMyPage2(MemberVo mvo) {
 		return memberDao.editMyPage2(mvo);
 	}
-
-
 }

@@ -41,6 +41,7 @@ public class CompanyContoller {
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
 
+	// 회사 메인 페이지
 	@GetMapping("/company/main")
 	public String companyMain(Model model, HttpSession session) {
 		String msg = (String) session.getAttribute("msg");
@@ -51,12 +52,14 @@ public class CompanyContoller {
 		return "/company/main";
 	}
 
+	// 회사 가입 페이지
 	@GetMapping("/newcompany")
 	public ModelAndView showNewCompany(ModelAndView mv) {
 		mv.setViewName("login/newcompany");
 		return mv;
 	}
 
+	// 회사 가입
 	@PostMapping("/newcompany")
 	public String newCompany(CompanyInsertParam cvo, RedirectAttributes ra) {
 
@@ -74,8 +77,8 @@ public class CompanyContoller {
 					MimeMessage mail = mailSender.createMimeMessage();
 					MimeMessageHelper mailHelper = new MimeMessageHelper(mail, "UTF-8");
 
-					mailHelper.setTo(email); // for문으로 아이디 받음
-					mailHelper.setSubject("업무협업툴 Stream으로 여러분을 초대합니다!"); // Stream으로 여러분을 초대합니다!
+					mailHelper.setTo(email);
+					mailHelper.setSubject("업무협업툴 Stream으로 여러분을 초대합니다!");
 					mailHelper.setText("다음 Url에 접속하셔서 회원가입을 진행해주세요! \n ※회원가입시 본 이메일을 전송받은 이메일을 입력해주셔야합니다※ \n 회사코드: "
 							+ cvo.getCcode() + "\n http://127.0.0.1:8090/stream/newmember");
 
@@ -89,9 +92,9 @@ public class CompanyContoller {
 		return "redirect:/";
 	}
 
-	// 회사 사원초대(추가) 화면
+	// 회사 사원초대(추가) 페이지
 	@GetMapping("/company/emailsend")
-	public String emailSend() {
+	public String showEmailSend() {
 		return "/company/emailsend";
 	}
 
@@ -115,8 +118,8 @@ public class CompanyContoller {
 					MimeMessage mail = mailSender.createMimeMessage();
 					MimeMessageHelper mailHelper = new MimeMessageHelper(mail, "UTF-8");
 
-					mailHelper.setTo(email); // for문으로 아이디 받음
-					mailHelper.setSubject("업무협업툴 Stream으로 여러분을 초대합니다!"); // Stream으로 여러분을 초대합니다!
+					mailHelper.setTo(email);
+					mailHelper.setSubject("업무협업툴 Stream으로 여러분을 초대합니다!");
 					mailHelper.setText("다음 Url에 접속하셔서 회원가입을 진행해주세요! \n ※회원가입시 본 이메일을 전송받은 이메일을 입력해주셔야합니다※ \n 회사코드: "
 							+ cvo.getCcode() + "\n http://127.0.0.1:8090/stream/newmember");
 
@@ -135,48 +138,7 @@ public class CompanyContoller {
 	@ResponseBody
 	public List<DeptVo> deptList(String ccode) {
 		List<DeptVo> deptList = companyService.deptList(ccode);
-		// model.addAttribute("deptList", DeptService.deptList(ccode));
 		return deptList;
 	}
-//
-//	@PostMapping(value = "/mailsend")
-//	public String mailSend(@RequestParam("emailArr") String[] emailArr, CompanyInsertParam cvo) throws Exception {
-//		System.out.println("[jy]: cvo " + cvo);
-//		System.out.println("[jy]: emailArr " + emailArr);
-//		try {
-//			for (String email : emailArr) {
-//				MimeMessage mail = mailSender.createMimeMessage();
-//				MimeMessageHelper mailHelper = new MimeMessageHelper(mail, "UTF-8");
-//
-//				mailHelper.setTo(email); // for문으로 아이디 받음
-//				mailHelper.setSubject("업무협업툴 Stream으로 여러분을 초대합니다!"); // Stream으로 여러분을 초대합니다!
-//				mailHelper.setText("다음 Url에 접속하셔서 " + "회원가입을 진행해주세요!" + "회사코드: " + cvo.getCcode());
-//
-//				mailSender.send(mail);
-//			}
-//		} catch (MessagingException e) {
-//			e.printStackTrace();
-//		}
-//		return "/";
-//	}
-}
-/*
- * @PostMapping(value = "/mailsend") public boolean
- * mailSend(@RequestParam("emailArr") String[] emailArr) throws Exception { try
- * { for (String email : emailArr) { MimeMessage mail =
- * mailSender.createMimeMessage(); MimeMessageHelper mailHelper = new
- * MimeMessageHelper(mail, "UTF-8");
- * 
- * mailHelper.setTo("orinog@naver.com"); // for문으로 아이디 받음
- * mailHelper.setSubject("제목입니다1006"); // Stream으로 여러분을 초대합니다!
- * mailHelper.setText("내용입니다");
- * 
- * mailSender.send(mail); } } catch (MessagingException e) {
- * e.printStackTrace(); } return true; }
- */
 
-/*
- * @RequestMapping(value="/newdept", method = RequestMethod.POST) public String
- * newDept(@RequestBody List<DeptVo> deptList) { int result =
- * companyService.newDept(deptList); return "main"; }
- */
+}

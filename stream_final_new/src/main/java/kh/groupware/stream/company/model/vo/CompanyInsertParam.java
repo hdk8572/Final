@@ -15,8 +15,8 @@ public class CompanyInsertParam {
 	private String defaultDeptCode; //기본 Dept 생성
 	private String defaultDeptName;
 	
-	private String[] deptArr; //dept 값 받음
-	private String[] emailArr; //email 값 받음
+	private String[] deptArr; 
+	private String[] emailArr; 
 	
 	private String idx;
 	private String password;

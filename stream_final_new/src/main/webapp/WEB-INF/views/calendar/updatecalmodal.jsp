@@ -4,7 +4,7 @@
 <div id="updatecalmodal" class="modal">
 	<div class="modal-dialog pcal">
 		<!-- Modal content -->
-		<div class="pcal modal-container">
+		<div class="modal-container pcal update">
 			<div class="modal-header-pcal"></div>
 			<div class="modal-body-pcal">
 				<div class="card pcal">
@@ -19,14 +19,14 @@
 							<input type="hidden" id="sno" name="sno">
 							
 							<!-- 제목 -->
-							<input type="text" class="form-control title" id="title" name="title" id="form-content" placeholder="제목을 입력하세요." required="required">
+							<input type="text" class="form-control updatetitle" id="title" name="title" id="form-content" placeholder="제목을 입력하세요." required="required">
 						
 							<!-- 날짜 -->
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar align-middle"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
 							<input type="date" class="form-date calendar" id="start" name="start" required="required"> ~ <input type="date" class="form-date calendar" id="end" name="end" required="required"> <!-- s -->
 							
 							<!-- 작성자&참석자 -->
-							 <div class="wrap-selected">
+							<div class="wrap-selected">
 								 <div class="selected-leftPart">
 									 <div class="d-flex align-items-center">
 										 <!-- 작성자 -->
@@ -46,22 +46,22 @@
 								 </div>
 							     <!-- 참가자 반복 -->
 							     <div id="updatedAttendees" class="selected-rightPart card updatecalendar">
-										 <!-- 
-											 <div class="attenduserid-item">
-												 <input type="text" placeholder="참가자" readonly>
-												 <input type="hidden"  name="attenduseridArr">
-											 </div>
-										  -->	
-									 </div>
-								 </div>
-								 <!-- 지도  -->
-	     						 <div class="map" id="map-updatemodal"></div>
-						
-								<!-- 내용  -->
-								<div id="form-content">
-									<textarea class="form-control smemo" id="summernote-updatecalmodal" rows="5" name="smemo"></textarea>
-							    </div>
-						    
+									 <!-- 
+										 <div class="attenduserid-item">
+											 <input type="text" placeholder="참가자" readonly>
+											 <input type="hidden"  name="attenduseridArr">
+										 </div>
+									  -->	
+								</div>
+							</div>
+							<!-- 지도  -->
+     						<div class="map" id="map-updatemodal"></div>
+					
+							<!-- 내용  -->
+							<div id="form-content">
+								<textarea class="form-control smemo" id="summernote-updatecalmodal" rows="5" name="smemo"></textarea>
+						    </div>
+					    
 							<!-- 등록 취소 버튼 -->
 							<div align="center">
 								<button  type="button" id="updBtn" class="btn btn-primary" >수정</button>
@@ -74,6 +74,37 @@
 		</div>
 	</div>
 </div>
+
+<!-- 제목 유효성검사  -->
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+		
+		//title 요소 찾기
+		var updateTitle= document.querySelector(".form-control.updatetitle");
+
+		function updateCalTitleLength() {
+			var updateTitleValue = updateTitle.value;
+		
+			if(updateTitleValue .length > 20) {
+				alert("제목은 20자 이내여야 합니다.");
+			}
+		}
+		updateTitle.addEventListener("input", updateCalTitleLength);
+	});
+</script> 
+
+<!-- 내용 유효성검사  -->
+<script>
+	$('#summernote-updatecalmodal').on('summernote.keyup', function() {
+		var max = 200;
+		var length = $(this).summernote('code').replace(/<(?:.|\n)*?>/gm, '').length;
+		if(length > max) {
+			alert('최대 글자수를 초과하였습니다.')
+			
+			$(this).summernote('editor.undo');
+		}
+	});
+</script>
 
 
 <!-- 일정 상세 정보 가져오기 -->
@@ -88,7 +119,7 @@
 		var selectedUpdateSmemo = $("#readcalmodal #smemo").html(); //<p>태그 다 가져와야함 html사용!
 	 	var htmlVal='';
 		console.log("=====");
-		$("#readcalmodal .attenduseridItem").each(function(idx, itemElement){  //참가자 div 들...
+		$("#readcalmodal .attenduseridItem").each(function(idx, itemElement){ 
 			var selectedText = $(itemElement).text();
 			var selectedValue = $(itemElement).data("attenduserid");
 			console.log(selectedText+", "+ selectedValue);
@@ -99,12 +130,11 @@
 		    htmlVal+='</div>';
 		});	
 
-		//read에서 불러 온 참가자 사라질 수 있도록 함
+		//read에서 불러 온 참가자 삭제
 	    $("#updatecalmodal").on("click", ".feather.feather-delete.align-middle.me-2", function() {
 	        $(this).closest(".attenduserid-item").remove();
 	    });
 	    
-		 
 		$("#updatecalmodal #updatedAttendees").html(htmlVal); //참가자들 input들이 추가됨.
 		console.log("=====");
 		
@@ -118,7 +148,6 @@
 		 updateshowMap(); 
 	});
 </script>
-
 
 <!-- 참가자들을 input에 추가한다. -->
 <script>
@@ -147,16 +176,13 @@
 		    htmlVal+='<input type="hidden" name="attenduseridArr" value="'+selectedValue+'" >';
 		    htmlVal+='</div>';
 		    
-		    //attenduserid-wrap
 		    $("#updatedAttendees").append(htmlVal);
 		   
-		 	 //참가자 svg 누르면 삭제됨
+		 	 //참가자 삭제
 		    $(".feather.feather-delete.align-middle.me-2.updateBtn").click(function() {
 		 		console.log("updateBtn삭제");
 		 		$(this).closest(".attenduserid-item").remove();
 		 	});
-		   
-		    
 	    }
 	});
 </script>
@@ -206,19 +232,21 @@
 		
 		//ajax 요청을 보낸다.
 		$.ajax({
-			url: "${pageContext.request.contextPath}/member/updatepcal", //수정 엔드포인트이다
-			type: 'POST',
+			url: contextPath+"/member/updatepcal", //수정 엔드포인트이다
+			type: "post",
 			data: $("#frm-updatecal").serialize(),	
+			/* dataType: "json", */ //얘 넣어야 하나?
 			success: function(response){
 				console.log(response);
 				//수정이 성공하면 실행될 코드
-				if(response === 1) {
+				if(response == "TabCalendar") {
 					//수정이 성공했을 때
 					alert('일정이 수정되었습니다.');
 					
-					
-					location.reload();
 					$('#updatecalmodal').modal('hide'); // 모달창 닫기
+					/* location.reload(); */
+					/* openTab('TabCalendar'); */
+					// TabCalendar 가 json 형식이 아니라서 오류가 뜬다.
 				}else{
 					alert('일정 수정에 실패했습니다.')
 					console.log("updatepcal22에서 오류 발생");
@@ -231,7 +259,7 @@
 				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 				}
 		});
-	})
+	});
 </script>
 
 <!-- 지도 api -->
@@ -260,7 +288,7 @@
 		var geocoder3 = new kakao.maps.services.Geocoder();
 		
 		// 주소로 좌표를 검색합니다
-		console.log(splaceTextupdate); //서울 강남
+		console.log(splaceTextupdate); 
 		geocoder3.addressSearch(splaceTextupdate , function(result, status) {
 			
 			var splaceTextupdate = $('#updatecalmodal #splace').text();
@@ -282,7 +310,7 @@
 				infowindow.open(map3, marker3);
 		
 			   
-				// 이 코드 넣었더니 지도 뜸!!
+				// 지도가 안 뜰 경우 이 코드를 넣어주면됨
 			    setTimeout(function(){ map3.relayout(); }, 1000);
 				
 				// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
@@ -295,7 +323,6 @@
 				map3.setDraggable(false);
 				// 마우스 휠로 지도 확대,축소 막기
 				map3.setZoomable(false);
-				
 			} // if
 		});  // cb function
 	}

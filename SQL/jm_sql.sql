@@ -762,3 +762,31 @@ select pstatus, count(pno) piecount
     join users using(userid)
     where ccode='C001'
     group by pstatus;
+    
+    
+select pname, pstatus, pno, ut.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel, mname
+    	from ( select tno, pno, t.userid, tmember, ttitle, tcontent, tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel, mname
+                    from task t
+                    join users u on(u.userid=t.tmember)
+                    where tmember = 'sple@kh.co.kr' or t.userid = 'sple@kh.co.kr' )ut
+        join project using(pno)
+        where pstatus in ('미진행', '진행', '보류') and pno=6
+    	order by to_number(pno) desc, to_number(bref) desc, brelevel asc, to_number(brestep) asc
+;
+select pname, pstatus, pno, ut.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel, mname
+    	from ( select tno, pno, t.userid, tmember, ttitle, tcontent, tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel, mname
+                    from task t
+                    join users u on(u.userid=t.tmember)
+                    where tmember = 'sple@kh.co.kr' or t.userid = 'sple@kh.co.kr' )ut
+        join project using(pno)
+        where pstatus in ('미진행', '진행', '보류')
+    	order by to_number(pno) desc, to_number(bref) desc, brelevel asc, to_number(brestep) asc
+;    
+select pname, pstatus, pno, ut.userid, tmember, ttitle, tstatus, to_char(tdate, 'yyyy-mm-dd') tdate, to_char(tstartdate, 'yyyy-mm-dd') tstartdate, to_char(tenddate, 'yyyy-mm-dd') tenddate, tno, bref, brestep, brelevel, mname
+    	from ( select tno, pno, t.userid, tmember, ttitle, tcontent, tstatus, tdate, tstartdate, tenddate, bref, brestep, brelevel, mname
+                    from task t
+                    join users u on(u.userid=t.tmember)
+                    where tmember = 'sple@kh.co.kr' or t.userid = 'sple@kh.co.kr' )ut
+        join project using(pno)
+        where pstatus in ('미진행', '진행', '보류')
+    	order by to_number(pno) desc, to_number(bref) desc, brelevel asc, to_number(brestep) asc

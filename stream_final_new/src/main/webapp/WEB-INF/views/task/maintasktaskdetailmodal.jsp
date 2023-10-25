@@ -4,7 +4,7 @@
 
 <!-- 모달 -->
 <!-- The Modal -->
-<div id="detailProjectModal" class="modal project right fade"	aria-labelledby="myModalLabel">
+<div id="detailPtaskModal" class="modal project right fade"	aria-labelledby="myModalLabel">
 	<div class="modal-dialog addProject">
 		<!-- Modal content -->
 		<div class="modal-content detailPtask">

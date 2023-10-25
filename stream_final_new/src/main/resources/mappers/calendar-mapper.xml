@@ -22,44 +22,30 @@
 	<!-- 일정 조회 -->
 	<!-- 동적 SQL문 where을 건 이유(if랑 세트) =pno를 안 들고 진입하는 경우도 있기 때문에(이걸 걸면 안에 where을 적을 필요가 없다.) --> <!-- 다른 방법으로 trim도 있다. --><!-- 		WHERE USERID =#{userid} or attenduserid =#{userid} -->
 	<select id="selectList" resultMap="CalendarMembersMap" parameterType="CalendarParamVo">
-		select * from 
-(
-SELECT SNO, USERID, mname, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, 'yyyy-mm-dd') SEND, STITLE, SCOLOR, SPLACE, SMEMO, PNO, ATTENDUSERID , ATTENDNAME
+		SELECT SNO, USERID, mname, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, 'yyyy-mm-dd') SEND, STITLE, SCOLOR, SPLACE, SMEMO, PNO, ATTENDUSERID , ATTENDNAME
 		FROM v_u_schedule tbs left outer join v_u_member_schedule tbms using(sno) 
 		where pno
-        
 		<choose>
 			<when test="pno != null and pno != ''">
-				= #{pno})
+				= #{pno}
 			</when>
 			<otherwise>
-				in (select pno from member_project where  userid=#{userid}))
+				in (select pno from member_project where  userid=#{userid})
 			</otherwise>
 		</choose>
-		left join task using(pno,userid) 
 	</select>
-
+	
 	<!-- 일정 상세조회 -->
 	<select id="selectOne" resultMap="CalendarMembersMap" parameterType="string">
 		SELECT  SNO, USERID, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, 'yyyy-mm-dd') SEND, STITLE, SCOLOR, SPLACE, SMEMO, PNO, ATTENDUSERID
 		from ( select * from schedule WHERE sno = #{sno} ) tbs join member_schedule tbms using(sno)
 	</select>
 	
-	<!-- 프로젝트의 멤버들 조회(원래 코드) --> 
-	<!-- 	
+	<!-- 프로젝트의 멤버들 조회 -->  	
 		<select id="memberProjectList" resultType="MemberSimpleVo">
 		select userid, (select mname from users tu where tm.userid=tu.userid ) mname 
 		from MEMBER_PROJECT tm 		
 		where pno=#{pno}
-	</select>
-	 -->
-
-	<!-- 프로젝트의 멤버들 조회TODO 직급 때문에 근데 직급이 안 뜸 --> 
-	<select id="memberProjectList" resultType="MemberSimpleVo">
-		SELECT PNO, USERID, MNAME, MRANK
-		FROM MEMBER_PROJECT
-		JOIN USERS USING(USERID)
-		WHERE pno = #{pno}
 	</select>
 
 	<!-- 일정 등록 과 끼인테이블 등록 selectKey사용 -->
@@ -75,7 +61,7 @@ SELECT SNO, USERID, mname, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, '
 		'#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'))
 	</insert>
 	
-	<insert id="insertmember" parameterType="CalendarVo">
+	<insert id="insertmember" parameterType="CalendarVo"> 
 		INSERT INTO
 		Member_SCHEDULE (SNO, ATTENUERID)
 		VALUES (#{sno},#{attenduserid})
@@ -114,11 +100,6 @@ SELECT SNO, USERID, mname, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, '
 		DELETE FROM SCHEDULE
 		WHERE SNO=#{sno}
 	</delete>
-	
-<!-- 	<delete id="deleteAttenduseridArr" parameterType="CalendarVo">
-		DELETE FROM MEMBER_SCHEDULE
-		WHERE SNO=#{sno}
-	</delete> -->
 	
 	<!-- 참가자 있을 때 캘린더 삭제 --> 
 	<delete id="deletemember" parameterType="string">

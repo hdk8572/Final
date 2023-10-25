@@ -3,9 +3,10 @@
 <mapper namespace="reply">
 	
 	<select id="selectList" parameterType="string" resultType="ReplyVo">
-		SELECT RNO, TNO, USERID, RCONTENT, TO_CHAR(RDATE, 'YYYY-MM-DD HH24:MI') RDATE
+		SELECT RNO, TNO, USERID, RCONTENT, TO_CHAR(RDATE, 'YYYY-MM-DD HH24:MI') RDATE, MNAME
 		FROM REPLY
-		WHERE TNO = #{tno} 
+		    JOIN USERS USING(USERID)
+		WHERE TNO = #{tno}
 		ORDER BY TO_NUMBER(RNO) DESC
 	</select>
 

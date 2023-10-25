@@ -11,23 +11,23 @@ import kh.groupware.stream.ptask.model.vo.PtaskVo;
 public interface MaintaskService {
 	
 	/* 프로젝트, 업무 전체 목록 조회 */
-	public List<ProjectVo> projectNameList(String userid);
+	public List<ProjectVo> projectNameList(String userid) throws Exception;
 	/* 하위업무 추가 */
-	public ProjectVo insertInnerTask(PtaskVo vo);
+	public ProjectVo insertInnerTask(PtaskVo vo) throws Exception;
 	/* 하위업무 추가를 위한 프로젝트 참가자 표시 */
-	public List<MemberSimpleVo> projectMemberList(String pno);
+	public List<MemberSimpleVo> projectMemberList(String pno) throws Exception;
 	/* 업무 정렬버튼 기준 업무 조회 */
-	public List<ProjectVo> TaskSortList(MaintaskSortVo vo);
+	public List<ProjectVo> TaskSortList(MaintaskSortVo vo) throws Exception;
 	/* 로그인한 유저 이름 조회 */
-	public MemberSimpleVo findMname(String userid);
+	public MemberSimpleVo findMname(String userid) throws Exception;
 	
 	// 회사 소속 멤버 전체 조회(참가자) - 황대경
-	public List<MemberSimpleVo> companyMemberList(String userid);
+	public List<MemberSimpleVo> companyMemberList(String userid) throws Exception;
 	// 프로젝트의 현재 참가자 조회(참가자) - 황대경
-	public List<MemberSimpleVo> currentMemberList(String pno);
+	public List<MemberSimpleVo> currentMemberList(String pno) throws Exception;
 	
 	// 프로젝트의 현재 참가자 전체 삭제(참가자) - 황대경
-	public int deleteAllCurrentMember(String pno);
+	public int deleteAllCurrentMember(String pno) throws Exception;
 	
 	// 회사 참가자 1명 조회 - 황대경
 //	public MemberSimpleVo selectOneMember(String userid);

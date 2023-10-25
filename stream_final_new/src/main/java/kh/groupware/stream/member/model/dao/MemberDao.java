@@ -16,27 +16,31 @@ public class MemberDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public String selectOne(MemberVo mvo) {
-		return sqlSession.selectOne("member.selectOne", mvo);
-	}
+	//회원가입(update)
 	public int signUp(MemberVo mvo) throws Exception{
 		return sqlSession.update("member.signUp", mvo);
 	}
+	//id존재여부 체크
 	public int idCheck(String userid) {
 		return sqlSession.selectOne("member.idCheck", userid);
 	}
+	//회사코드 체크
 	public int ccodeCheck(MemberVo mvo) {
 		return sqlSession.selectOne("member.ccodeCheck", mvo);
 	}
+	//마이페이지
 	public MyPageVo showMyPage(String userid) {
 		return sqlSession.selectOne("member.showMyPage", userid);
 	}
+	//마이페이지 수정1(pwd포함)
 	public int editMyPage(MemberVo mvo) {
 		return sqlSession.update("member.editMyPage", mvo);
 	}
+	//마이페이지 수정2(pwd미포함)
 	public int editMyPage2(MemberVo mvo) {
 		return sqlSession.update("member.editMyPage2", mvo);
 	}
+	//마이페이지 수정화면
 	public MyPageVo showEditMyPage(String userid) {
 		return sqlSession.selectOne("member.showEditMyPage",userid);
 	}
