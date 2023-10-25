@@ -1,49 +1,22 @@
-.content {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-}
-
-.attendBox {
-	width: 1000px;
-	height: 100vh;
-	background-color: white;
-	padding: 20px;
-}
-
-p {
-	font-size: 20px;
-	font-weight: 600;
-	margin: 10px;
-}
-
 .attendTitle {
+	color: #000;
+	font-weight: 400;
+	line-height: 1.2;
+	margin-bottom: 0.5rem;
+	margin-top: 0;
+	font-size: 1.3125rem;
+}
+
+.tableBox {
 	text-align: center;
-	font-size: 20px;
-	margin: 20px;
-	font-weight: 600;
+}
+
+.btn {
+	margin-right: 10px;
 }
 
 .attendBtn {
 	display: flex;
-	align-items: flex-start;
-	text-align: center;
-	margin-bottom: 20px;
-	text-align: center
-}
-
-.btn {
-	margin-left: 10px;
-}
-
-table.attendTable {
-	width: 100%;
-	border-collapse: collapse;
-}
-
-table.attendTable th, table.attendTable td {
-	border: 1px solid black;
-	text-align: center;
-	padding: 5px;
+	margin-bottom: 10px;
+	align-items: flex-end;
 }

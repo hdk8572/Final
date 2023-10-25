@@ -35,6 +35,7 @@
 	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
 	rel="stylesheet">
 <style>
+
 </style>
 </head>
 <body>
@@ -46,18 +47,20 @@
 			<main class="content">
 				<div class="attendBox">
 
-					<div class="attendTitle">
-						<p>근태관리</p>
-					</div>
-					<div class="attendBtn">
-						<button type="button" class="btn btn-lg btn-primary" id="inbtn">출근</button>
-						<button type="button" class="btn btn-lg btn-primary" id="outbtn">퇴근</button>
-						<input type="hidden" id="username" name="userid"
-							value="${principal.username }">
-					</div>
-					<div class="tableBox">
-						<table class="attendTable">
-							<thead>
+
+
+					<div class="tableBox container y_outer_div">
+						<div class="attendTitle" style="text-align: left;">
+							<p>근태관리</p>
+						</div>
+						<div class="attendBtn">
+							<button type="button" class="btn btn-lg btn-primary" id="inbtn">출근</button>
+							<button type="button" class="btn btn-lg btn-primary" id="outbtn">퇴근</button>
+							<input type="hidden" id="username" name="userid"
+								value="${principal.username }">
+						</div>
+						<table class="attendTable table table-striped table-hover">
+							<thead class="head">
 								<th>날짜</th>
 								<th>출근시간</th>
 								<th>퇴근시간</th>
