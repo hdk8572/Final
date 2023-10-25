@@ -43,7 +43,6 @@
 <!-- SummerNote CDN -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 
-
 <script>
 let logined_userid="${principal.username}"; /* 로그인! */
 </script>
@@ -81,17 +80,18 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 		</div>
 	</div>
 	
-	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
-	<script src="${pageContext.request.contextPath}/js/app.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/modal.js"></script>
+<script src="${pageContext.request.contextPath}/js/app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 	
 <!-- 달력을 구성  -->
 <%@ include file="/WEB-INF/views/calendar/calendarhandler.jsp" %>
+
 <script>
-document.addEventListener('DOMContentLoaded', loadCalendarHandler);
+	document.addEventListener('DOMContentLoaded', loadCalendarHandler);
 </script>
 
-<!-- /pcal 수정,삭제 dropdown 없앰 -->
+<!-- /pcal-> 수정,삭제 dropdown 없앰 -->
 <script>
 	document.addEventListener("DOMContentLoaded", function(){
 		var hideReadSvg = document.querySelector(".feather.feather-more-vertical.me-2");

@@ -232,9 +232,10 @@
 		
 		//ajax 요청을 보낸다.
 		$.ajax({
-			url: "${pageContext.request.contextPath}/member/updatepcal", //수정 엔드포인트이다
-			type: 'POST',
+			url: contextPath+"/member/updatepcal", //수정 엔드포인트이다
+			type: "post",
 			data: $("#frm-updatecal").serialize(),	
+			/* dataType: "json", */ //얘 넣어야 하나?
 			success: function(response){
 				console.log(response);
 				//수정이 성공하면 실행될 코드
@@ -244,6 +245,8 @@
 					
 					$('#updatecalmodal').modal('hide'); // 모달창 닫기
 					/* location.reload(); */
+					/* openTab('TabCalendar'); */
+					// TabCalendar 가 json 형식이 아니라서 오류가 뜬다.
 				}else{
 					alert('일정 수정에 실패했습니다.')
 					console.log("updatepcal22에서 오류 발생");
@@ -256,7 +259,7 @@
 				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 				}
 		});
-	})
+	});
 </script>
 
 <!-- 지도 api -->

@@ -28,7 +28,7 @@
 							<input type="date" class="form-date calendar" id="start" name="start" required="required"> ~ <input type="date" class="form-date calendar" id="end" name="end" required="required"> <!-- s -->
 							
 							<!-- 작성자&참석자 -->
-							<div class="wrap-selected"><!-- 이거 걸면 안 나온다. -->
+							<div class="wrap-selected">
 								<div class="selected-leftPart">
 									<div class="d-flex align-items-center">
 										<!-- 작성자 -->
@@ -83,7 +83,6 @@
 <script>
 	document.addEventListener("DOMContentLoaded", function() {
 		
-		//title 요소 찾기
 		var addTitle= document.getElementById("title");
 
 		function addCalTitleLength() {
@@ -100,7 +99,9 @@
 <!-- 내용 유효성검사  -->
 <script>
 	$('#summernote-addcalmodal').on('summernote.keyup', function() {
+		
 		var max = 200;
+		
 		var length = $(this).summernote('code').replace(/<(?:.|\n)*?>/gm, '').length;
 		if(length > max) {
 			alert('최대 글자수를 초과하였습니다.')
@@ -110,25 +111,18 @@
 	});
 </script>
 
-
 <script>
-//addcalmodal 초기화!!!
+    //addcalmodal 초기화!!!
 	function resetcalmodal(){
 		var kakaoaddmap = document.getElementById('map');
 		kakaoaddmap.innerHTML =''; //지도를 비운다.
 		$('.map-hidden').css("display", 'none'); //지도 맵
 		$('#addcalmodal #splace').val(''); //지도 이름
-		
-		//되는데 오류뜸
-		/* $('#addcalmodal #form-content').text(''); */ 
-		/* $('#addcalmodal .form-calmemberlist.card').text(''); */
-		/* $('#addcalmodal #calmemberlist').text(''); //참가자 */
 
-		$('#addcalmodal .attenduserid-item').text(''); 
-		
-		$('#addcalmodal #summernote-addcalmodal').summernote('code', '') //내용
 		$('#addcalmodal .title').val(''); //제목
 		$('#addcalmodal #start').val(''); //시작일
 		$('#addcalmodal #end').val(''); //종료일
+		$('#addcalmodal .attenduserid-item').text(''); 
+		$('#addcalmodal #summernote-addcalmodal').summernote('code', '') //내용
 	}
 </script>

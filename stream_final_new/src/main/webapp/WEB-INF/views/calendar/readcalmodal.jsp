@@ -33,8 +33,8 @@
 							  		</div>
 								</div>
 								
-								<!-- 작성자 코드 수정하기-->
-								<div id="userid" style="display: none;"></div>
+								<!-- 작성자 코드 수정하기 style="display: none;"-->
+								<div id="userid" ></div>
 								
 								<div class="card-body">
 									<!-- 제목 -->
@@ -73,22 +73,71 @@
 <!-- 작성자만 수정,삭제 가능하도록  -->
 <!-- <script>
 	document.addEventListener("DOMContentLoaded", function() {
-		var writerUserid ='${mname.userid}';
+		var calwriterUserid ='${principal.username }';
 	
 		document.addEventListener("click", function(event) {
 			if(event.target.classList.contains("update-calButton")) {
-				if('${principal.username}' !== writerUserid) {
+				if('${principal.username}' !== calwriterUserid) {
 					alert("작성자만 수정할 수 있습니다.");
-					event.preventDefault();
+					return;
 				}
 			}
 			if(event.target.classList.contains("delete-calButton")) {
-				if('${principal.username}' !== writerUserid) {
+				if('${principal.username}' !== calwriterUserid) {
 					alert("작성자만 삭제할 수 있습니다.");
-					event.preventDefault();
+					return;
 				}
 			}
 		});
+	});
+</script>  -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var calwriterUserid = document.getElementById('userid').textContent; // 작성자 id= userid
+
+    document.getElementById('update-calButton').addEventListener("click", function() {
+        var currentUserId = '${principal.username}'; // 현재 로그인한 사용자
+
+        if ( currentUserId !== calwriterUserid) {
+            alert("작성자만 수정할 수 있습니다.");
+  			return null;   
+        } else {
+            $('#updatecalmodal').modal('show');
+        }
+    });
+});
+</script>
+
+<!-- <script>
+function selectOption(e){
+	targetPno = $(this).children("[name=pno]").val(); // 중요하다
+	var calwriterUserid = $(this).find("[name=userid]").val();
+	if($(e.target).hasClass("btn-dropdown-toggle")) {
+			
+		if('${principal.username}' != calwriterUserid) {
+			alert("작성자만 수정할 수 있습니다.");
+			return null; 
+		} else {
+			goUpdateForm(targetPno);
+			calupdateMemberList();
+		}
+	} else {
+		$(this).submit();
+	}
+}
+</script> -->
+
+<!-- <script>
+	document.getElementById("update-calButton").addEventListener("click", function() {
+		//현재 사용자의 정보
+		var currentUser = "${principal.username }";
+		//일정 작성자 정보
+		var eventCreator = document.getElementById("userid").value;
+		
+		if(currentUser != eventCreator) {
+			alert("작성자만 수정할 수 있습니다.")
+		}
 	});
 </script> -->
 
@@ -135,8 +184,7 @@
 	var mapContainer_readmodal = document.getElementById('map-readmodal'), // 지도를 표시할 div 
 	mapOption_readmodal = {
 		center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-		level : 3
-	// 지도의 확대 레벨
+		level : 3 // 지도의 확대 레벨
 	};
 	
 	//showMap 함수 정의
@@ -185,8 +233,7 @@
 				map2.setCenter(readcoords);
 			 
 				// 지도를 표시
-				 mapContainer_readmodal.style.display = 'block';
-				
+				mapContainer_readmodal.style.display = 'block';
 			} // if
 		});  // cb function
 	}
