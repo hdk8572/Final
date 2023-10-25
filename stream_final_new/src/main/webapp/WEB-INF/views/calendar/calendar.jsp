@@ -151,7 +151,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 		
 		//addcalmodal
 		$("#summernote-addcalmodal").summernote({					
-		     placeholder: '내용을 작성해주세요.',
+		     placeholder: '내용을 작성해주세요. -200글자 제한',
 		     tabsize: 2,
 		     height: 120,
 		     toolbar: [
