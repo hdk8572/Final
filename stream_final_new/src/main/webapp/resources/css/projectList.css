@@ -42,8 +42,19 @@
 }
 
 .form-control.searchBar {
-	display: inline-flex;
-    width: 15%;
-    border: 0;
-   
+	display: inline-flex;	
+    width: 45%;
+    border: none;
+    margin: unset;
+}
+
+.Wrap-Search {
+    display: inline-block;
+    width: 35%;
+}
+
+.form-select.typeBox {
+	width: auto;
+    border: none;
+    display: inline-block;
 }

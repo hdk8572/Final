@@ -57,7 +57,14 @@
 						</form> -->
 						<span><button class="btn btn-primary addProject" id="myBtn"	data-bs-toggle="modal" data-bs-target="#addProjectModal">프로젝트 추가+</button></span>
 						<svg id="hideBtn" xmlns="http://www.w3.org/2000/svg" width="24"	height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus-circle align-middle me-2 hideView"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-						<input class="form-control searchBar" name="keyword" type="text" id="searchProjectListHandler" placeholder="검색 - 프로젝트명을 입력해주세요.">
+						<div class="Wrap-Search">
+							<select class="form-select typeBox" id="typeSelect" name="type">
+								<option value="프로젝트명">프로젝트명</option>
+								<option value="작성자">작성자</option>
+								<option value="진행도">진행도</option>
+							</select>
+							<input class="form-control searchBar" name="keyword" type="text" id="searchProjectListHandler" placeholder="검색 - 프로젝트명을 입력해주세요.">
+						</div>
 					</h1>
 
 					<%@ include file="/WEB-INF/views/addProjectModal.jsp"%>
@@ -262,22 +269,33 @@
 	    });
 	    //writerUserid = $(".frm.select [name=userid]").val();
 	}
+
+	
+	$("#typeSelect").on("change", function() {
+		var typeSelect = $("select[name=type]").val();
+		$("select[name=type]").val(typeSelect).attr("selected", true);
+		var resultSelect = $("#typeSelect").val();
+	});
 	
 	$("#searchProjectListHandler").keydown(function(event) {
 		if(event.keyCode == 13) {
 			event.preventDefault();
 			SerachProjectList();			
 			$(".form-control.searchBar").val("");
-		} else { 			null;
+		} else { 		
+			null;
 		}
 	});
 	
 	function SerachProjectList() {
-		console.log("useridJs :"+useridJs);
+		var dataType = $("#typeSelect").val();
+		var dataInput = $("#searchProjectListHandler").val();
+		console.log("dataType:"+dataType);
+		console.log("dataInput:"+dataInput);
 		$.ajax({
 			url: "${pageContext.request.contextPath}/member/serachProjectList",
 			type: "get",
-			data: {keyword: $("#searchProjectListHandler").val(), userid: useridJs},
+			data: {keyword: dataInput, type: dataType, userid: useridJs},
 			dataType: "json",
 			success: function(result) {
 				makeView(result);
