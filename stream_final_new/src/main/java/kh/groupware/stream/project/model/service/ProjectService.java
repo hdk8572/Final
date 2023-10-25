@@ -20,7 +20,7 @@ public interface ProjectService {
 	public ProjectVo selectOne(PnoPrincipalParam pnoPrincipalParam);
     public List<ProjectVo> insertList(ProjectInsertParamVo vo);
 //    public int delete(String pno);
-    public int update(ProjectInsertParamVo vo);
+    public int update(ProjectInsertParamVo vo) throws Exception;
     public int updateHide(PnoPrincipalParam vo);
     
     

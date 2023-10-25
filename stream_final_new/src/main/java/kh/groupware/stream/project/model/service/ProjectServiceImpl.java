@@ -80,7 +80,7 @@ public class ProjectServiceImpl implements ProjectService {
     
 	@Override
 	@Transactional
-    public int update(ProjectInsertParamVo vo) {
+    public int update(ProjectInsertParamVo vo) throws Exception {
 		int result = projectDao.update(vo);
 		maintaskDao.deleteAllCurrentMember(vo.getPno());
     	projectDao.insertMemberProjectForUpdate(vo);
