@@ -153,7 +153,7 @@
 	    for(var i=0;i<data.length;i++){
 			var memberOne = data[i];
 			memberListHtml+=`
-				<option value="\${memberOne.userid}">\${memberOne.mname}\${memberOne.mrank}님</option>
+				<option value="\${memberOne.userid}">\${memberOne.mname}님</option>
 				`;
 	    }
 		/* memberListHtml += '</select>'; */

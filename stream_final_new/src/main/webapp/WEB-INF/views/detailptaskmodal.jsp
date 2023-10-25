@@ -14,7 +14,7 @@
 					<div class="card-body detailPtaskTitle">
 						<div class="card-header detailPtaskTitle">
 							<div class="detailPtaskTitle-title ">
-								<b>프로젝트 상세 조회</b>
+								<b>업무 상세 조회</b>
 								<div>
 									<button class="btn btn-primary updatePtask">수정</button>
 								</div>
@@ -406,7 +406,7 @@ function makeReplyList(data) {
 	    	for(var i=0;i<data.length;i++){
 				var memberOne = data[i];
 				memberUpdateTaskListHtml+=`
-				<option value="\${memberOne.userid}">\${memberOne.mname}\${memberOne.mrank}님</option>
+				<option value="\${memberOne.userid}">\${memberOne.mname}님</option>
 				`;
 	    }
 	    $("#updateTaskMember").html(memberUpdateTaskListHtml);
