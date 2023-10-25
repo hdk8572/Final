@@ -74,9 +74,9 @@
 								</div>
 								<div class="form-control detail-content input tcontent"></div>
 								<div class="form-control">
-									<input type="date" class="form-date" name="tstartdate" required="required" readonly>
+									<input type="date" id="start" class="form-date" name="tstartdate" required="required" readonly>
 									~
-									<input type="date" class="form-date" name="tenddate" required="required" readonly>
+									<input type="date" id="end" class="form-date" name="tenddate" required="required" readonly>
 								</div>
 								<input type="hidden" name="pno">
 								<input type="hidden" name="tno">
@@ -450,7 +450,8 @@ function makeReplyList(data) {
 		}
 
 	}
+	
+
 
 </script>
 
-<!-- 모달 -->

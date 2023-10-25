@@ -115,11 +115,6 @@ SELECT SNO, USERID, mname, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, '
 		WHERE SNO=#{sno}
 	</delete>
 	
-<!-- 	<delete id="deleteAttenduseridArr" parameterType="CalendarVo">
-		DELETE FROM MEMBER_SCHEDULE
-		WHERE SNO=#{sno}
-	</delete> -->
-	
 	<!-- 참가자 있을 때 캘린더 삭제 --> 
 	<delete id="deletemember" parameterType="string">
 		DELETE FROM MEMBER_SCHEDULE

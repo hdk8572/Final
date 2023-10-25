@@ -62,6 +62,7 @@ function loadCalendarHandler() {
 		            , textColor : "red"
 		        }
 			],
+			
 			/*
 	 		eventClick: function(info) {
 				var event = info.event;
@@ -77,8 +78,6 @@ function loadCalendarHandler() {
 				var event = info.event; //fullcalendar 이벤트 객체의 일부
 				
 				console.log(info.event.extendedProps.sno); //sno 찍어보기
-				/* var abc = $('#sno').val();
-				console.log(abc); */
 				
 				//참가자 list
 				var htmlval = ''; //그리고 여기도 sno로 채워짐

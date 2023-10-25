@@ -134,9 +134,12 @@
 				      });
 					}
 				},
-				error: function() {
-					alert('서버와의 통신 중 오류가 발생했습니다.');
-				}
+				error : function(request, status, error){
+					console.log(request);
+					console.log(status);
+					console.log(error);
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					}
 			});
 		}
 	});

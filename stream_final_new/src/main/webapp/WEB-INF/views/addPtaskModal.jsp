@@ -14,7 +14,7 @@
 						<h2 class="ptaskTitle"><b>업무 작성</b></h2>
 					</div>
 						<form action="${pageContext.request.contextPath}/member/insertPtask" method="post" encType="multipart/form-data">					
-						<input type="text" class="form-control title" name="ttitle" placeholder="제목을 입력하세요.">
+						<input type="text" class="form-control title" name="ttitle" placeholder="업무명을 입력해주세요. - 20글자 제한" maxlength="20">
 						<div class="d-flex align-items-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock align-middle me-2"><circle cx="12" cy= "12 " r= "10 "></circle><polyline points= "12 6 12 12 16 14 "></polyline></svg>
 							<input type="hidden" name="tstatus">
@@ -40,9 +40,9 @@
 						<input type="hidden" name="userid" value="${principal.username}">
 						<input type="hidden" name="pno" value="${pno}">
 						<div class="form-control">
-							<input type="date" class="form-date" name="tstartdate" required="required">
+							<input type="date" id="start" class="form-date" name="tstartdate" required="required">
 							~
-							<input type="date" class="form-date" name="tenddate" required="required">
+							<input type="date" id="end" class="form-date" name="tenddate" required="required">
 						</div>
 						<div align="center">
 							<button class="btn btn-primary" type="submit">추가</button>
@@ -98,6 +98,17 @@
 	    /* $("#companyMember select[name=mname] option:eq(0)").prop("selected", true); */
 	    // $(".form-select.mb-3.addProject.selectedMember").change(memberSelect);
 	    
+	    $('#summernote').on('summernote.keyup', function() {
+		    var max = 200;
+		    var length = $(this).summernote('code').replace(/<(?:.|\n)*?>/gm, '').length; // HTML 태그를 제외한 순수 텍스트의 글자수를 계산합니다.
+		    if (length > max) {
+		        alert('최대 글자수를 초과하였습니다.'); // 사용자에게 알림을 보냅니다.
+		        $(this).summernote('editor.undo'); // 마지막으로 입력한 내용을 취소(제거)합니다.
+		    }
+		});	
+	    
 	}
 
+	
+	
 </script>
