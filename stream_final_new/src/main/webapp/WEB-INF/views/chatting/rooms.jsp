@@ -57,7 +57,7 @@
 										
 										<li class="roomlist"
 											style="display: flex; align-items: center;">
-									<div class="stat text-primary" style="font-size: small; background-color: #009b77;color: white;">${room.mname}</div>	<a class="roomnamelist" href="<c:url value='/member/room'><c:param name='roomId' value='${room.roomId}' /></c:url>"
+									<div class="stat text-primary" style="font-size: 0.7em; background-color: #009b77;color: white;">${room.mname}</div>	<a class="roomnamelist" href="<c:url value='/member/room'><c:param name='roomId' value='${room.roomId}' /></c:url>"
 											style="display: inline-block;padding:15px ;width: 320px; overflow: hidden; white-space: nowrap; text-decoration: none;">${room.roomName}</a>
 										</li>
 									</div>
