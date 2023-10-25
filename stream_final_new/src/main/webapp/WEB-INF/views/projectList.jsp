@@ -48,7 +48,7 @@
 				<div class="container-fluid p-0">
 
 					<h1 class="h3 mb-3">
-						<span id="userName">a님의 프로젝트 목록</span>
+						<span id="userName"></span>
 						<!-- <form>
 							<div class="search">
 								<input name="keyword" type="text" placeholder="검색어를 입력해주세요.">
