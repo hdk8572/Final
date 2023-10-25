@@ -114,11 +114,12 @@ public class ProjectController {
 
 	@GetMapping("/member/serachProjectList")
 	@ResponseBody
-	public List<ProjectVo> search(String keyword, String userid) {
+	public List<ProjectVo> search(String keyword, String userid, String type) {
 		ProjectVo pvo = new ProjectVo();
 		pvo.setUserid(userid);
 		pvo.setKeyword(keyword);
-		return projectService.searchProjectList(pvo, keyword);
+		pvo.setType(type);
+		return projectService.searchProjectList(pvo, userid);
 	}
 
 	// 회사 소속 멤버 전체 조회 (addProjectModal 클릭 시 조회)

@@ -299,12 +299,14 @@
 		var dataInput = $("#searchProjectListHandler").val();
 		console.log("dataType:"+dataType);
 		console.log("dataInput:"+dataInput);
+		console.log("userid:"+useridJs);
 		$.ajax({
 			url: "${pageContext.request.contextPath}/member/serachProjectList",
 			type: "get",
 			data: {keyword: dataInput, type: dataType, userid: useridJs},
 			dataType: "json",
 			success: function(result) {
+				console.log("검색 성공");
 				makeView(result);
 			},
 			error: function() {
