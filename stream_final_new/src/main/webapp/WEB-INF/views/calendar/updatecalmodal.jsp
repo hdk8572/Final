@@ -201,6 +201,7 @@
 </script>
 
 <script>
+	
 	$('#updatecalmodal #updBtn').on("click", function(){
 		console.log($("#frm-updatecal").serialize());
 		
@@ -212,13 +213,12 @@
 			success: function(response){
 				console.log(response);
 				//수정이 성공하면 실행될 코드
-				if(response === 1) {
+				if(response == "TabCalendar") {
 					//수정이 성공했을 때
 					alert('일정이 수정되었습니다.');
 					
-					
-					location.reload();
 					$('#updatecalmodal').modal('hide'); // 모달창 닫기
+					/* location.reload(); */
 				}else{
 					alert('일정 수정에 실패했습니다.')
 					console.log("updatepcal22에서 오류 발생");
@@ -232,6 +232,7 @@
 				}
 		});
 	})
+
 </script>
 
 <!-- 지도 api -->

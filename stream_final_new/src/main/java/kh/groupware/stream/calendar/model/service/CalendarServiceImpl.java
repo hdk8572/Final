@@ -44,7 +44,6 @@ public class CalendarServiceImpl implements CalendarService {
 		int result = 0;
 		result += calendarDao.insert(cal);
 		System.out.println(cal);
-		
 		/*
 		 * for(int i=0; i<cal.getAttenuseridList().size(); i++) { //반복해서 각 참가자를 DB에
 		 * 등록한다. Map<String, Object> map = new HashMap<String, Object>(); //map 객체에 담는다.
@@ -59,7 +58,7 @@ public class CalendarServiceImpl implements CalendarService {
 	@Override
 	@Transactional
 	public int update(CalendarVo cal) throws Exception{
-		calendarDao.deletemember(cal.getSno());
+		calendarDao.deletemember(cal.getSno()); //이걸 넣었어야 됐어요!!!
 		calendarDao.insertAttenduseridArr(cal);
 		return calendarDao.updateCalendar(cal);
 	}

@@ -9,24 +9,13 @@ import kh.groupware.stream.member.model.vo.MemberSimpleVo;
 
 @Component
 public class CalendarVo {
-	/*
-	"SNO"	VARCHAR2(10)		NOT NULL,
-	"USERID"	VARCHAR2(40)		NOT NULL,
-	"PNO"		VARCHAR2(20) 		NOT NULL,
-	"SSTARTDATE"	VARCHAR2(20)		NOT NULL,
-	"SENDDATE"	VARCHAR2(20)		NOT NULL,
-	"SPLACE"	VARCHAR2(50)		NULL,
-	"SMEMO"	VARCHAR2(100)		NULL,
-	"STITLE"	VARCHAR2(100)		NOT NULL
-	
-	"ATTENDUSERID"	VARCHAR2(40)		NOT NULL
-	*/
+
 	private String sno;
-	private String userid;  // 작성자  //insert - login, select - 다른id(참가자)
+	private String userid;
 	private String mname;
 	private String pno;
-	private String splace;  // 장소
-	private String smemo;   // ckeditor
+	private String splace;
+	private String smemo;   
 //	private String sstartDate;
 //	private String sendDate;
 //	private String stitle;
@@ -40,20 +29,9 @@ public class CalendarVo {
 	
 	private List<MemberSimpleVo> attenduseridList; 
 	
-//	[{
-//	title : '풀캘린더완성도',
-//	start : '2023-09-12',
-//	end : '2023-09-20',
-//	color : '#'
-//			+ Math.round(Math.random() * 0xffffff)
-//					.toString(16)
-//},]
-	
 	public CalendarVo() {
 		super();
 	}
-
-	
 
 	public CalendarVo(String sno, String userid, String mname, String pno, String splace, String smemo, String start,
 		String end, String title, String color, String[] attenduseridArr, List<MemberSimpleVo> attenduseridList) {
@@ -72,8 +50,6 @@ public class CalendarVo {
 		this.attenduseridList = attenduseridList;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "CalendarVo [sno=" + sno + ", userid=" + userid + ", mname=" + mname + ", pno=" + pno + ", splace="
@@ -81,7 +57,6 @@ public class CalendarVo {
 				+ color + ", attenduseridArr=" + Arrays.toString(attenduseridArr) + ", attenduseridList="
 				+ attenduseridList + "]";
 	}
-
 
 
 	public String getSno() {
