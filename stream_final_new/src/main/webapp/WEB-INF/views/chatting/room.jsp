@@ -58,9 +58,9 @@
 	<script>
 		$(document).ready(function() {
 
-			var mainId = "${room.userId}"; 
+			var mainId = "${room.userId}"; //방만든사람 
 			var roomId = "${room.roomId}";
-			var username = "${principal.username}";  
+			var username = "${principal.username}";  //현재 로그인 사용자
 			var roomname = "${room.roomName}"; 			
 			var user = "${name.mname}";
 			
@@ -73,8 +73,8 @@
 
 				stomp.subscribe("/sub/chat/room/" + roomId, function(chat) {
 					var content = JSON.parse(chat.body);
-					var name = content.mname; 		
-					var userId = content.userId;
+					var name = content.mname; 		//stomp에서 보내는 mname 
+					var userId = content.userId;//현재 채팅방에서 치는사람 id
 					var message = content.message;
 					var str = '';
 					if (username === userId) {

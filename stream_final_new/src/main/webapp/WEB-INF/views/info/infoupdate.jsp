@@ -42,7 +42,7 @@
    <table class="col-lg-11">
         <tr class="y_insert_tr">
             <td class="y_insert_td">제목</td>
-            <td class="y_insert_td"><input type="text" class="form-control" id="ititle" name="ititle" value="${info.ititle }"maxlength="40"></td>
+            <td class="y_insert_td"><input type="text" class="form-control" id="ititle" name="ititle" value="${info.ititle }"></td>
         </tr>
         <tr class="y_insert_tr">
             <td class="y_insert_td">작성자</td>
@@ -75,7 +75,7 @@
 	       ['color', ['color']],
 	       ['para', ['ul', 'ol', 'paragraph']],
 	       ['table', ['table']],
-	       ['insert'],
+	       ['insert' /* ['link', 'picture', 'video'] */],
 	       ['view', ['fullscreen', 'codeview', 'help']]
 	     ]
 	});

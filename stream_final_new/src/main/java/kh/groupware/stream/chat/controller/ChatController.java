@@ -37,11 +37,12 @@ public class ChatController {
 		mv.setViewName("chatting/rooms");
 		mv.addObject("list", service.findAllRooms(userId));
 		mv.addObject("viewMemmber", service.ViewMember(userId));
+		System.out.println(service.findAllRooms(userId)+"========");
 		return mv;
 	}
 
 	@GetMapping("/member/room")
-	public ModelAndView getRoom(String roomId, ModelAndView mv, Principal principal)throws Exception {
+	public ModelAndView getRoom(String roomId, ModelAndView mv, Principal principal) {
 		String userId = principal.getName();
 		mv.addObject("ID", userId);
 		mv.addObject("room", service.findRoomById(roomId));
@@ -54,9 +55,11 @@ public class ChatController {
 
 	@PostMapping(value = "/member/room")
 	public String create(@RequestParam String roomName, @RequestParam String[] member, Principal principal,
-			RedirectAttributes rttr,HttpServletRequest request,ChatRoomVo vo)throws Exception {
+			RedirectAttributes rttr,HttpServletRequest request,ChatRoomVo vo) {
+//	    	log.info("# Create Chat Room, roomName: " + roomName + ", userId: " + userId);
 		String userId = principal.getName();
 		String[] sizes = request.getParameterValues("member");
+		System.out.println(sizes.length);
 		service.AddChatRoom(roomName, userId);
 		if(sizes != null) {
 			for(String size : sizes) {

@@ -33,7 +33,9 @@ public class InfoDao {
 	public int InfoUpdate(InfoVo vo) {
 		return sqlSession.update("info.infoUpdate",vo);
 	}
-
+//	public int InfoCnt(String userId) {
+//		return sqlSession.selectOne("info.infoCnt",userId);
+//	}
 	public InfoVo InfoWriter(String userId) {
 		return sqlSession.selectOne("info.infowriter",userId);
 	}

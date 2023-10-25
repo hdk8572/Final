@@ -15,6 +15,7 @@ public interface InfoService {
 	InfoVo InfoOne(String ino);
 	int InfoDelete(String userId);
 	int InfoUpdate(InfoVo vo);
+//	int InfoCnt(String userId);
 	InfoVo InfoWriter(String userId);
 	List<InfoVo> InfoSearch(String userId, String ititle, String iwriter);
 	int CountInfo();

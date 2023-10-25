@@ -61,5 +61,8 @@ public class InfoServiceImpl implements InfoService{
 		return dao.PagingInfo(vo);
 	}
 
-
+//	@Override
+//	public int InfoCnt(String userId) {
+//		return dao.InfoCnt(userId);
+//	}
 }

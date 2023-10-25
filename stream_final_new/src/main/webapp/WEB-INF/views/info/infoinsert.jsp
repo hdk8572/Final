@@ -54,7 +54,8 @@
 						</tr>
 						<tr class="y_insert_tr">
 							<td class="y_insert_td">내용</td>
-							<td class="">
+							<td class=""><!-- <textarea name="itext" id="itext"
+									style="margin: 10px; height: 200px; resize: none;"></textarea> -->
 							<div id="form-content">
 								<textarea class="smemo" id=itext rows="5" name="itext"></textarea>
 						    </div>	
@@ -85,13 +86,13 @@
 	       ['color', ['color']],
 	       ['para', ['ul', 'ol', 'paragraph']],
 	       ['table', ['table']],
-	       ['insert' ],
+	       ['insert' /* ['link', 'picture', 'video'] */],
 	       ['view', ['fullscreen', 'codeview', 'help']]
 	     ]
 	});
-		var error = "${error}"; 
+		var error = "${error}"; // 컨트롤러에서 전달한 에러 메시지
 		if (error) {
-			alert(error); 
+			alert(error); // 에러 메시지를 경고 팝업으로 표시
 		}
 	</script>
 

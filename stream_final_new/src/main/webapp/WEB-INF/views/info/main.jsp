@@ -33,7 +33,21 @@
 						<input type="hidden" name="ino" value="${info.userId}">
 						<hr>
 					</div>
-					
+					<!-- <div style="margin: 20px 0;">
+						<div class="select_outer"
+							style="display: flex; justify-content: center;">
+
+							<select id="select_search" name="select_search"
+								class="form-select mb-3" style="width: 100px;">
+								<option value="ititle">제목</option>
+								<option value="iwriter">작성자</option>
+							</select> <input type="text" class="form-control" name="search_bar"
+								id="search_bar"
+								style="width: 270px; height: 38px; margin: 0 6px;">
+							<button class="btn btn-sm btn-primary" name="btnSearch"
+								id="y_btn_search" style="height: 38px;">검색</button>
+						</div>
+					</div> -->
 					<div id="outter">
 					
 					<form id="deleteForm" action="/stream/member/info/delete" method="post">
@@ -56,7 +70,7 @@
 											href="<c:url value='/member/info/select'><c:param name='ino' value='${i.ino }'/></c:url>">${i.ititle }</a></td>
 										<td>${i.iwriter }</td>
 										<td>${i.idate }</td>
-									
+									<%-- <td>${list.cnt }</td> --%>
 								</tr>
 							</c:forEach>
 						</table>
@@ -108,16 +122,16 @@
 	}
 </script>
 		<script>
-		
+		//글쓰기 관련 권한  ROLE_C 회사만 가능
 		document.getElementById('y_btn_insert').addEventListener('click', function (event) {
 	       
-			 if ( '${principal.authorities}'.indexOf('ROLE_M') === -1) {
-			        $("#y_btn_insert").prop('disabled', true); 
-			        alert('권한이 없습니다.'); 
+			 if ( '${principal.authorities}'.indexOf('ROLE_C') === -1) {
+			        $("#y_btn_insert").prop('disabled', true); // 버튼 비활성화
+			        alert('권한이 없습니다.'); // 메시지 표시
 			    }
 	    });
 	$(document).ready(function () {
-   
+    // "전체 선택" 체크박스 클릭 이벤트 처리
     var allCheck = document.getElementById('allCheck');
     allCheck.addEventListener('click', function () {
         var rowCheckboxes = document.querySelectorAll('input[name="rowCheck"]');
@@ -126,7 +140,29 @@
         }
     });
 
-   
+    /* // 검색 버튼 클릭 이벤트 처리
+    $("#y_btn_search").click(function () {
+        var valueSelect = $("#select_search option:selected").val();
+        var valueInput = $("#search_bar").val();
+        if (valueInput === "") {
+            alert("검색어를 입력하세요.");
+        } else {
+            $.ajax({
+                url: "${pageContext.request.contextPath}/member/info",
+                type: "get",
+                data: { "select_search": valueSelect, "search_bar": valueInput },
+                success: function (result) {
+                    console.log(result);
+                    $(".wrapper").html(result);
+                },
+                error: function () {
+                    alert("검색 중 오류가 발생했습니다.");
+                }
+            });
+        }
+    }); */
+
+    // "삭제" 버튼 클릭 이벤트 처리
     $("#y_btn_delete").click(function () {
         submitDeleteForm();
     });

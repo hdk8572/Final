@@ -10,7 +10,7 @@ import org.springframework.web.socket.WebSocketSession;
 public class ChatRoomVo {
 	private String roomId;
 	private String roomName;
-	private String userId;	
+	private String userId;	//작성자
 	private String mname;
 	private Integer sessions;
 	
