@@ -408,3 +408,8 @@ form {
 .d-flex.align-items-center.second.new {
 	display: none ;
 }
+
+.feather.feather-delete.align-middle.me-2.reply-btn.replyDeleteBtn,
+.feather.feather-edit.align-middle.me-2.reply-btn.replyEditBtn {
+	color: #aea8ca;
+}

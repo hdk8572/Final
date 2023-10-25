@@ -80,7 +80,8 @@
 	</update>
 
 	<delete id="deleteList" parameterType="ProjectVo">
-		DELETE FROM PROJECT WHERE PNO = #{pno} 
+		DELETE FROM PROJECT
+		WHERE PNO = #{pno} 
 	</delete>
 	
 	<select id="searchProjectList" parameterType="ProjectVo" resultType="ProjectVo">
