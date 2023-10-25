@@ -160,7 +160,7 @@
 		var targetCcode = $(thisButton).data("ccode");
 		console.log(targetCcode);
 		
-		$("#detailProjectModal").modal("toggle");
+		$("#detailPtaskModal").modal("toggle");
 		
 		$.ajax({
 			 	url: contextPath+"/admin/showcompanydetail",

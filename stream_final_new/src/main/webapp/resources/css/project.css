@@ -52,7 +52,7 @@
 	overflow: hidden;
 }
 
-.detailProject, .deletePtask {
+.detailProject, .deletePtask  {
 	visibility: hidden;
     margin: 0 0 0 auto;
     color: #aea8ca;
@@ -65,7 +65,9 @@
     background: transparent;	
     float: right;
 }
-
+.feather.feather-delete.align-middle.me-2.deleteBtn {
+	color: #aea8ca;
+}
 .detail-project {
 	height: 0;
 }

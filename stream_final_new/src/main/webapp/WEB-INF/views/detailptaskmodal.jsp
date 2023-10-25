@@ -4,7 +4,7 @@
 
 <!-- 모달 -->
 <!-- The Modal -->
-<div id="detailProjectModal" class="modal project right fade"	aria-labelledby="myModalLabel">
+<div id="detailPtaskModal" class="modal project right fade"	aria-labelledby="myModalLabel">
 	<div class="modal-dialog addProject">
 		<!-- Modal content -->
 		<div class="modal-content detailPtask">
@@ -113,7 +113,7 @@
 	    // 모달 관련 코드
 
 	    // 모달이 닫힐 때 입력한 값 초기화와 이벤트 초기화
-	    $('#detailProjectModal').on('hidden.bs.modal', function (e) {
+	    $('#detailPtaskModal').on('hidden.bs.modal', function (e) {
 	        // Reset form values
 	        $(this).find("form")[0].reset();
 
@@ -309,7 +309,7 @@ function makeReplyList(data) {
 				dataType: "json",
 				success: function() {
 					loadPtaskList();
-					$('#detailProjectModal').modal('hide');
+					$('#detailPtaskModal').modal('hide');
 				},
 				error: function(error) {
 					console.log("updateTstatusHide 실패");
@@ -398,7 +398,20 @@ function makeReplyList(data) {
 		$("#updatePtaskTstatus option:selected").val(currentTmember);
 	}
 	
+	/* detailptaskmodal 유효성 적용 */
+
+	
 	function applyEditFunction() {
+		
+		if($("#detailPtaskModal .form-control.title").text() == "")
+		{alert("업무명을 입력해주세요!");	return}
+		else if($("#detailPtaskModal #updateTaskMember").val() == "")
+		{alert("업무 담당자를 지정해주세요!");	return}
+		else if($("#detailPtaskModal .form-control.detail-content.input.tcontent").text() == '')
+		{alert("업무 내용을 입력해주세요!");	return}
+		else if($("#detailPtaskModal #start").val() == "" || $("#addPtaskFrm #end").val() == "")
+		{alert("시작날짜 또는 종료날자를 지정해주세요!");	return}
+		
 		var changedTstatus = $(".Wrap-info input[name=tstatus]").val();
 	    console.log("changedTstatus :"+changedTstatus);
 	    var changedTmember = $(".Wrap-info input[name=tmember]").val();
@@ -413,6 +426,8 @@ function makeReplyList(data) {
 		$(".Wrap-info input[name=tstartdate]").attr("readonly", true);
 		$(".Wrap-info input[name=tenddate]").attr("readonly", false);
 		
+		
+
 		
 		var confirm_val = confirm("수정 하시겠습니까?");
 		if(confirm_val == true){
@@ -438,20 +453,18 @@ function makeReplyList(data) {
 					tenddate: $(".Wrap-info input[name=tenddate]").val()
 				},
 				success: function() {
-					$("#detailProjectModal").modal("hide");
-					loadPtaskList();		    		
+					$("#detailPtaskModal").modal("hide");
 		    	},
 		    	error: function() {	
 				alert("updateDetailProject에서 에러났습니다.");
 			}
 			});
-			
+			loadPtaskList();		    		
 		}else if(confirm_val == false){
 		}
 
 	}
 	
-
 
 </script>
 

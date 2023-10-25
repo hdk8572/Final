@@ -83,10 +83,14 @@
     /* $("select[name=updatepstatus]").change(updateOption); */
     
 	function addList () {
-//		var data = myEditor.getData();
-//		$("[name=pcontent]").val(data);
-		console.log($("[name=mname]").val())
-		console.log($("#addProject").serialize());  // "n1=v1&n2=v2"&pcontent=rkqdfjklfjlddfld   // memberProjectArr=a&memberProjectArr=b
+    	/* addProjectModal 유효성 적용 */
+		if($(".form-control.title").val() == "")
+		{alert("프로젝트명을 입력해주세요!");	return}
+		else if($(".comanyMember").length == 0)
+		{alert("프로젝트 참가자를 지정해주세요!");	return}
+		else if($("#start").val() == "" || $("#end").val() == "")
+		{alert("시작날짜 또는 종료날자를 지정해주세요!");	return}
+		
 		$.ajax ({
 			url: "${pageContext.request.contextPath}/member/projectInsert",
 			type: "post",
@@ -102,6 +106,7 @@
 				alert("addList에서 에러났습니다.");
 			}
 		});	
+		$(".comanyMember").remove();
 	}
 	
  	function selectOption() { // 추가+ 버튼을 누르면 실행되는 메서드
