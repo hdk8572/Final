@@ -1,36 +1,6 @@
-/* 캘린더 위 header!! */
-.w3-bar.tabBar {	/* 피드 쪽 */
-	height: 36.31px;
-	border-bottom: 1px solid #80808038;
-}
-.w3-bar {
-    width: 100%;
-    overflow: hidden;
-}
-.w3-bar-item.w3 {
-    background-color: #f5f7fb;
-}
-.w3-bar .w3-bar-item {
-    padding: 8px 16px;
-    float: left;
-    width: auto;
-    border: none;
-    display: block;
-    outline: 0;
-}
-.project-search {
-	padding-left: 1.5rem !important;
-	padding-right: 1.5rem !important;
-	margin-bottom: 10px;
-}
-.form-cal-control{
-	width: 20%;
-	padding: 0.3rem 0.85rem;
-}
-#btn-modal {	/* +일정추가 버튼 */
+/* +일정추가 버튼 */
+#btn-modal {	
 	border: 1px solid transparent;
-	
-	
 }
 .btn.btn-primary.addcal {
     padding: 8px 16px;
@@ -41,27 +11,19 @@
     outline: 0;
     float: right;
 }
-/* 캘린더 위 header!! */
+
 
 /* 캘린더 */
 .fc-daygrid a{
 	color: #000000;
 }
-.fc-today-button.fc-button.fc-button-primary {
-	cursor: pointer;
-}
-
-.content-cal{
-	width: 95%;
-	padding-left: 90px;
-}
-.fc-icon.fc-icon-chevron-right::before {
+.fc-icon.fc-icon-chevron-right::before,
+.fc-icon.fc-icon-chevron-left::before  {
     font-family: inherit; /* 부모 요소 폰트 스타일을 적용시킴 */
 }
-.fc-icon.fc-icon-chevron-left::before {
-    font-family: inherit;  /* 부모 요소 폰트 스타일을 적용시킴 */
-}
-/* 이거안됨 TODO */
-.fc-toolbar-title{
-   	cursor: pointer;
+
+.fc-prev-button.fc-button.fc-button-primary, 
+.fc-next-button.fc-button.fc-button-primary {
+	border-radius: 10px;
+	width: 55px;
 }

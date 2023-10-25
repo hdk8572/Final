@@ -35,7 +35,7 @@ public class CalendarController {
 	@Autowired 
 	private CalendarService calendarService;
 	
-//	@GetMapping({"/member/pcal", "/member/pcal/{pno}"})//TODO url에 치고 들어가는 코드가 필요한가?
+//	@GetMapping({"/member/pcal", "/member/pcal/{pno}"})
 //	public ModelAndView selectList(ModelAndView mv, @PathVariable(name = "pno", required = false) String pno
 
 	@GetMapping({"/member/pcal"})
@@ -85,10 +85,9 @@ public class CalendarController {
 	@ResponseBody
 	public String memberProjectList(CalendarParamVo param) throws Exception{
 		return new Gson().toJson(calendarService.memberProjectList(param));
-	}//짧게 쓰는 방법임
+	}
 
 	/*
-	//강사님이 알려주신 코드 못 씀
 	//캘린더 등록
 	@PostMapping("/insertpcal")
 	public String insert(Model model, CalendarInsertParamVo cal) {
@@ -115,7 +114,7 @@ public class CalendarController {
 			}
 			cal.setAttenduseridList(attenduseridList);
 		}
-		System.out.println("aaaa :" + cal);
+		System.out.println("[lim] :" + cal);
 		calendarService.insert(cal);
 		rttr.addFlashAttribute("projectTabs", "TabCalendar"); //projectTabs에 tabcalendar를 채워서 간다.
 		return "redirect:/member/ptasklist?pno=" + cal.getPno();

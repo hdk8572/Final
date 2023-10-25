@@ -107,30 +107,49 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 	}
 </script>
 
-<!-- 날짜 시작일-종료일  -->
-<script>
-	//id='start','end'
-	var startDateInput = document.getElementById('start');
-	var endDateInput = document.getElementById('end');
-	
-	startDateInput.addEventListener('change', function() {
-		compareDates();
-	});
-	
-	endDateInput.addEventListener('change', function() {
-		compareDates();
-	});
-	
-	function compareDates() {
-		var startDate = new Date(startDateInput.value);
-		var endDate = new Date(endDateInput.value);
+<!-- 제목  -->
+<script type="text/javascript">
+	document.getElementById("addcalmodal").addEventListener("submit", function (event) {
 		
-		if(endDate < startDate) {
-			alert("입력한 종료일이 시작일보다 이전입니다. 올바른 날짜를 선택해 주세요.");
-			
-			endDateInput.value = ''; //종료일 입력필드 초기화
+	    var title = document.getElementById("title").value;
+	    
+	    if (!title) {
+	        alert("제목을 입력해주세요.");
+	        event.preventDefault();
+	    }
+	});
+</script>
+
+<!-- 제목 유효성검사  -->
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+		
+		var addTitle= document.getElementById("title");
+
+		function addCalTitleLength() {
+			var titleValue = addTitle.value;
+		
+			if(titleValue.length > 20) {
+				alert("제목은 20자 이내여야 합니다.");
+			}
 		}
-	}
+		addTitle.addEventListener("input", addCalTitleLength);
+	});
+</script> 
+
+<!-- 내용 유효성검사  -->
+<script>
+	$('#summernote-addcalmodal').on('summernote.keyup', function() {
+		
+		var max = 200;
+		
+		var length = $(this).summernote('code').replace(/<(?:.|\n)*?>/gm, '').length;
+		if(length > max) {
+			alert('최대 글자수를 초과하였습니다.')
+			
+			$(this).summernote('editor.undo');
+		}
+	});
 </script>
 	
 <!-- summerNote	 -->

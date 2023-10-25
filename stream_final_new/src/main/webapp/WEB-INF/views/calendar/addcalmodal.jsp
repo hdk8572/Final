@@ -21,7 +21,7 @@
 							<input type="hidden" name="sno" value="${sno}">
 							
 							<!-- 제목 -->
-							<input type="text" class="form-control title" name="title" id="title" placeholder="제목을 입력해주세요. -20글자 제한" required="required">
+							<input type="text" class="form-control title" name="title" id="title" placeholder="제목을 입력해주세요. -20글자 제한">
 							
 							<!-- 날짜 -->
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar align-middle"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
@@ -79,50 +79,44 @@
 	</div>
 </div>
 
-<!-- 제목 유효성검사  -->
+<!-- 날짜 시작일-종료일  -->
 <script>
-	document.addEventListener("DOMContentLoaded", function() {
-		
-		var addTitle= document.getElementById("title");
-
-		function addCalTitleLength() {
-			var titleValue = addTitle.value;
-		
-			if(titleValue.length > 20) {
-				alert("제목은 20자 이내여야 합니다.");
-			}
-		}
-		addTitle.addEventListener("input", addCalTitleLength);
+	//id='start','end'
+	var startDateInput = document.getElementById('start');
+	var endDateInput = document.getElementById('end');
+	
+	startDateInput.addEventListener('change', function() {
+		compareDates();
 	});
-</script> 
-
-<!-- 내용 유효성검사  -->
-<script>
-	$('#summernote-addcalmodal').on('summernote.keyup', function() {
+	
+	endDateInput.addEventListener('change', function() {
+		compareDates();
+	});
+	
+	function compareDates() {
+		var startDate = new Date(startDateInput.value);
+		var endDate = new Date(endDateInput.value);
 		
-		var max = 200;
-		
-		var length = $(this).summernote('code').replace(/<(?:.|\n)*?>/gm, '').length;
-		if(length > max) {
-			alert('최대 글자수를 초과하였습니다.')
+		if(endDate < startDate) {
+			alert("입력한 종료일이 시작일보다 이전입니다. 올바른 날짜를 선택해 주세요.");
 			
-			$(this).summernote('editor.undo');
+			endDateInput.value = ''; //종료일 입력필드 초기화
 		}
-	});
+	}
 </script>
 
 <script>
     //addcalmodal 초기화!!!
 	function resetcalmodal(){
 		var kakaoaddmap = document.getElementById('map');
-		kakaoaddmap.innerHTML =''; //지도를 비운다.
-		$('.map-hidden').css("display", 'none'); //지도 맵
-		$('#addcalmodal #splace').val(''); //지도 이름
+		kakaoaddmap.innerHTML =''; 
+		$('.map-hidden').css("display", 'none'); 
+		$('#addcalmodal #splace').val(''); 
 
-		$('#addcalmodal .title').val(''); //제목
-		$('#addcalmodal #start').val(''); //시작일
-		$('#addcalmodal #end').val(''); //종료일
+		$('#addcalmodal .title').val('');
+		$('#addcalmodal #start').val(''); 
+		$('#addcalmodal #end').val(''); 
 		$('#addcalmodal .attenduserid-item').text(''); 
-		$('#addcalmodal #summernote-addcalmodal').summernote('code', '') //내용
+		$('#addcalmodal #summernote-addcalmodal').summernote('code', '') 
 	}
 </script>

@@ -164,5 +164,7 @@ input:focus {
 
 
 
-
+.readcal-userid{
+	display: none;
+}
 

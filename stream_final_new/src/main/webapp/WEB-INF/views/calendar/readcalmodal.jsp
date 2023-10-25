@@ -7,10 +7,10 @@
 	<div class="modal-dialog readpcal">
 	  <!-- Modal content -->
 		<div class="modal-content readpcal"> 
-		  	<div class="modal-header readpcal"> <!-- modal-header-pcal  --> 
+		  	<div class="modal-header readpcal">
 		  		<span class="read-close" data-bs-dismiss="modal" aria-label="Close">&times;</span>
 		  	</div>
-			 	<div class="modal-body readpcal"> <!-- modal-body-pcal  -->
+			 	<div class="modal-body readpcal">
 			 		<div class="wrap-card">
 				    	<div class="card-body">
 			 				<form id="readcalmodal">
@@ -27,14 +27,13 @@
 											<svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical me-2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
 										</div>
 										<ul class="dropdown-menu" id="read-dropdown-menu">
-											<li><a class="dropdown-item" id="update-calButton" onclick="return updateMemberProjectListHandler(this);">수정</a></li>
+											<li><a class="dropdown-item" id="update-calButton" onclick="return updateMemberProjectListHandler(this);">수정</a></li> <!-- 부트스트랩 사용x 메소드 만들어서 띄움 return 꼭 적어줘야함  -->
 											<li><a class="dropdown-item" id="delete-calButton"> 삭제</a></li>
 										</ul>
 							  		</div>
 								</div>
 								
-								<!-- 작성자 코드 수정하기 style="display: none;"-->
-								<div id="userid" ></div>
+								<div class="readcal-userid" id="userid" ></div>
 								
 								<div class="card-body">
 									<!-- 제목 -->
@@ -69,109 +68,49 @@
 		  </div>
 	 </div>
 </div>
- 
-<!-- 작성자만 수정,삭제 가능하도록  -->
-<!-- <script>
-	document.addEventListener("DOMContentLoaded", function() {
-		var calwriterUserid ='${principal.username }';
-	
-		document.addEventListener("click", function(event) {
-			if(event.target.classList.contains("update-calButton")) {
-				if('${principal.username}' !== calwriterUserid) {
-					alert("작성자만 수정할 수 있습니다.");
-					return;
-				}
-			}
-			if(event.target.classList.contains("delete-calButton")) {
-				if('${principal.username}' !== calwriterUserid) {
-					alert("작성자만 삭제할 수 있습니다.");
-					return;
-				}
-			}
-		});
-	});
-</script>  -->
-
-<!-- <script>
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById('update-calButton').addEventListener("click", function() {
-	    var calwriterUserid = document.getElementById('userid').textContent; // 작성자 id= userid
-        var currentUserId = '${principal.username}'; // 현재 로그인한 사용자
-
-        if ( currentUserId !== calwriterUserid) {
-            alert("작성자만 수정할 수 있습니다.");
-  			return false;   
-        } else {
-            $('#updatecalmodal').modal('show');
-        }
-    });
-});
-function selectOption(e){
-	targetPno = $(this).children("[name=pno]").val(); // 중요하다
-	var calwriterUserid = $(this).find("[name=userid]").val();
-	if($(e.target).hasClass("btn-dropdown-toggle")) {
-			
-		if('${principal.username}' != calwriterUserid) {
-			alert("작성자만 수정할 수 있습니다.");
-			return null; 
-		} else {
-			goUpdateForm(targetPno);
-			calupdateMemberList();
-		}
-	} else {
-		$(this).submit();
-	}
-}
-</script> -->
-
-<!-- <script>
-	document.getElementById("update-calButton").addEventListener("click", function() {
-		//현재 사용자의 정보
-		var currentUser = "${principal.username }";
-		//일정 작성자 정보
-		var eventCreator = document.getElementById("userid").value;
-		
-		if(currentUser != eventCreator) {
-			alert("작성자만 수정할 수 있습니다.")
-		}
-	});
-</script> -->
-
 
 <!-- read 일정 수정 삭제 코드 -->
 <script>
-	$('#delete-calButton').on("click", function(){
-		
-		if(confirm('글을 삭제하시겠습니까?')) {
-			var sno =$('#sno').val(); 
-			
-			//ajax
-			$.ajax({
-				url: "${pageContext.request.contextPath}/member/deletepcal",
-				type: 'POST',
-				data:{sno:sno},
-				success: function(response){
-					if(response === 1) {
-						alert('일정이 삭제되었습니다.')
-						$('#readcalmodal').modal('hide');// 모달창 닫기
-					}else{
-						alert('일정 삭제에 실패했습니다.');
-					}
-					if(eventClick_defId != 0){  // eventClick시 클릭된 event를 찾아서 삭제
-						calendar.getEvents().forEach(function(evt) {
-				            if (evt._def.defId == eventClick_defId) evt.remove();
-				      });
-					}
-				},
-				error : function(request, status, error){
-					console.log(request);
-					console.log(status);
-					console.log(error);
-					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-					}
-			});
-		}
-	});
+    $('#delete-calButton').on("click", function () {
+        var calwriterUserid = $("#readcalmodal #userid").text(); // 작성자(userid), 후손
+        var currentUserId = '${principal.username}'; // 현재 로그인한 사용자
+
+        if (currentUserId !== calwriterUserid) {
+            alert("작성자만 삭제할 수 있습니다.");
+            return;
+        }
+
+        if (confirm('글을 삭제하시겠습니까?')) {
+            var sno = $('#sno').val();
+
+            // ajax
+            $.ajax({
+                url: "${pageContext.request.contextPath}/member/deletepcal",
+                type: 'POST',
+                data: {sno: sno},
+                success: function (response) {
+                    if (response === 1) {
+                        alert('일정이 삭제되었습니다.');
+                        $('#readcalmodal').modal('hide'); 
+
+                        if (eventClick_defId !== 0) {  // eventClick시 클릭된 event를 찾아서 삭제
+                            calendar.getEvents().forEach(function (evt) {
+                                if (evt._def.defId === eventClick_defId) evt.remove();
+                            });
+                        }
+                    } else {
+                        alert('일정 삭제에 실패했습니다.');
+                    }
+                },
+                error: function (request, status, error) {
+                    console.log(request);
+                    console.log(status);
+                    console.log(error);
+                    alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                }
+            });
+        }
+    });
 </script>
 
 <!-- 지도 api -->

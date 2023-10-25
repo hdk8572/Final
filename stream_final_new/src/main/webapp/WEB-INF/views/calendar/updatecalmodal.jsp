@@ -194,7 +194,8 @@
 		
 		var calwriterUserid = $("#readcalmodal #userid").text(); // 작성자 id= userid
         var currentUserId = '${principal.username}'; // 현재 로그인한 사용자
-
+		
+        //read 수정 버튼 눌렀을 떄
         if ( currentUserId !== calwriterUserid) {
             alert("작성자만 수정할 수 있습니다.");
   			return false;   
@@ -228,7 +229,7 @@
 		$("#updatecalmemberlist").html(updateListHtml);
 	}
 	function updateMemberError(request, status, error){
-		console.log("오류발생!!!!!!!!!!!");
+		console.log("[lim]: updateMemberError");
 		console.log(request);
 		console.log(status);
 		console.log(error);
@@ -261,7 +262,7 @@
 					
 				}else{
 					alert('일정 수정에 실패했습니다.')
-					console.log("updatepcal에서 오류 발생");
+					console.log("[lim] : updatepcal에서 오류 발생");
 				}
 			},
 			error : function(request, status, error){
