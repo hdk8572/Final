@@ -22,8 +22,4 @@ public interface CompanyService {
 	//회사코드로 부서찾기
 	public List<DeptVo> deptList(String ccode);
 
-//	public int newDept (CompanyInsertParam cvo);
-//	public int newUsers (CompanyInsertParam cvo);
-//	public int newCompanyId (CompanyInsertParam cvo);
-
 }

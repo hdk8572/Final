@@ -213,7 +213,7 @@ table.attendTable th, table.attendTable td {
 						tdHtml += "<td>" + formattedDate + "</td>";
 						tdHtml += "<td>" + atList.atintime + "</td>";
 						if (atList.atouttime == null) {
-							tdHtml += "<td>" + 퇴근 전 + "</td>";
+							tdHtml += "<td>" + "퇴근 전" + "</td>";
 
 						} else {
 							tdHtml += "<td>" + atList.atouttime + "</td>";
@@ -280,7 +280,7 @@ table.attendTable th, table.attendTable td {
 						tdHtml += "<td>" + formattedDate + "</td>";
 						tdHtml += "<td>" + atList.atintime + "</td>";
 						if (atList.atouttime == null) {
-							tdHtml += "<td>" + 0 + "</td>";
+							tdHtml += "<td>" + "퇴근 전" + "</td>";
 
 						} else {
 							tdHtml += "<td>" + atList.atouttime + "</td>";

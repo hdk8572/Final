@@ -25,6 +25,7 @@ public class AttendController {
 	@Autowired
 	private AttendService attendService;
 
+	// 근태 퇴근
 	@PostMapping("/member/attendout")
 	@ResponseBody
 	public String attendOut(AttendVo avo, RedirectAttributes ra) {
@@ -47,7 +48,7 @@ public class AttendController {
 		
 		return new Gson().toJson(map);
 	}
-
+	// 근태 출근
 	@PostMapping("/member/attendin")
 	@ResponseBody
 	public String attendIn(AttendVo avo, RedirectAttributes ra) {
@@ -69,7 +70,7 @@ public class AttendController {
 	}
 
 	@GetMapping("/member/attend")
-	public String attendShow() {
+	public String showAttend() {
 		return "/member/attend";
 	}
 

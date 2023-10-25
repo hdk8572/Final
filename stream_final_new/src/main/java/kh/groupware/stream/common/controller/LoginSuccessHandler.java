@@ -17,11 +17,6 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
 
-		// session에 이름담기
-		// HttpSession session = request.getSession();
-		// session.setAttribute("userid", authentication.getName());
-		// String userid = authentication.getName();
-		
 		String msg;
 		
 		if(authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_A"))) {

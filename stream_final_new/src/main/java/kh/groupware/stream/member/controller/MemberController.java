@@ -33,7 +33,7 @@ public class MemberController {
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	// 회원가입이동창
+	// 회원가입 페이지
 	@GetMapping("/newmember")
 	public ModelAndView newMember(ModelAndView mv) {
 		mv.setViewName("login/newmember");
@@ -73,7 +73,7 @@ public class MemberController {
 		}
 	}
 
-	// 로그인이동창
+	// 로그인 페이지
 	@GetMapping("/login")
 	public String login(Model model
 			, HttpSession session) {
@@ -93,6 +93,7 @@ public class MemberController {
 		return showMyPage;
 	}
 
+	// 마이페이지 정보수정 페이지
 	@GetMapping("/member/editmypage")
 	public String showEditMyPage(Principal principal, Model model) {
 		MyPageVo mvo = memberService.showEditMyPage(principal.getName());

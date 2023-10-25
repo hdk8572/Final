@@ -33,8 +33,7 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 		} else {
 			msg = "알 수 없는 오류로 로그인 요청을 처리할 수 없습니다. 관리자에게 문의하세요.";
 		}
-//		String redirectURL = "/stream/login?msg=" + URLEncoder.encode(msg, "UTF-8");
-//		String redirectURL = "/stream/login";
+
 		request.getSession().setAttribute("msg", msg);
 		response.sendRedirect("/stream/login");
 	}
