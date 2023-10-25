@@ -12,4 +12,6 @@ public interface AttendService {
 	public int attendIn(AttendVo avo);
 	public List<AttendVo> attendList(String userid);
 	public int checkDate(AttendVo avo);
+	public int attendUpdate(AttendVo avo);
+	public int workHour(AttendVo avo);
 }

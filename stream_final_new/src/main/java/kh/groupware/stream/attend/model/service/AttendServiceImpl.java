@@ -28,4 +28,14 @@ public class AttendServiceImpl implements AttendService {
 	public int checkDate(AttendVo avo) {
 		return attendDao.checkDate(avo);
 	}
+
+	@Override
+	public int attendUpdate(AttendVo avo) {
+		return attendDao.attendUpdate(avo);
+	}
+
+	@Override
+	public int workHour(AttendVo avo) {
+		return attendDao.workHour(avo);
+	}
 }
