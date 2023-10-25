@@ -1,23 +1,4 @@
 /* read */
-/* .modal-content.pcal {
-  border-radius: 40px 0 0 40px;
-} */
-
-.modal-header.project {
-    border-radius: 40px 0 0;
-}
-
-.modal.project.right.fade .modal-dialog {
-	right:-40%;
-	-webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
-    -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
-    -o-transition: opacity 0.3s linear, right 0.3s ease-out;
-     transition: opacity 0.3s linear, right 0.3s ease-out;
-}
-.modal.project.right.fade.show .modal-dialog {
-	right: 0;
-}
-/* read */
 
 /* The Close Button */
 .read-close {
@@ -25,7 +6,7 @@
 	float: right;
 	font-size: 28px;
 	font-weight: bold;
-	padding: 20px 25px 0 0;
+	padding: 20px 40px 0 0;
 }
 
 .read-close:hover,
@@ -45,22 +26,17 @@
 }
 /* The Close Button */
 
-
-
-/* dropdown-btn */
-.card-header #userid{
-	float: left;
-}
+/* read dropdown-btn */
 .dropdown-menu.show{
 	min-width: 0;
 }
 #read-dropdown-menu{
-	transform: translate3d(-15px, 42px, 0px) !important;
+	transform: translate3d(-30px, 55px, 0px) !important;
 }
-/* dropdown-btn */
+/* read dropdown-btn */
 
 
-
+/* 공간 확보 */
 .form-select.mb-3.selectCategory {
     width: 30%;
 }
@@ -72,7 +48,6 @@
 .form-control.place {
 	width: 30%;
 }
-
 
 .feather.feather-clock.align-middle.me-2 {
     position: relative;
@@ -102,6 +77,15 @@
 	margin-bottom: 1rem;
 	
 }
+/* 참가자 */
+#attenduseridList > div{
+	margin-right: 10px;
+}
+.form-readcal{
+	margin-bottom: 1rem;
+	padding-left: 1rem;
+}
+/* 참가자 */
 
 /* 공간 확보 */
 
@@ -118,17 +102,3 @@
     padding: 1rem 0.2rem 0rem 1.5rem;
 }
 /* 일정상세 제목 */
-
-/* 참가자 */
-#attenduseridList{
-	display: flex;
-}
-
-#attenduseridList > div{
-	margin-right: 10px;
-}
-.form-readcal{
-	margin-bottom: 1rem;
-	/* width: 40%; */
-	padding-left: 1rem;
-}

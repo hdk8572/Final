@@ -537,21 +537,39 @@ REFERENCES "USERS" (
 );
 
 -- view 추가
-create view v_u_member_project
-as
-select PNO, USERID, MNAME, CCODE, DEPTNO
-from member_project join users using(userid)
-;
-create view v_u_member_schedule
-as
-select SNO, ATTENDUSERID, MNAME as ATTENDNAME, CCODE, DEPTNO
-from member_schedule join users on (ATTENDUSERID = USERID)
+--    create view v_u_member_project
+--    as
+--    select PNO, USERID, MNAME, CCODE, DEPTNO
+--    from member_project join users using(userid)
+--    ;
+CREATE VIEW V_U_MEMBER_PROJECT
+AS
+SELECT PNO, USERID, MNAME, CCODE, DEPTNO
+FROM MEMBER_PROJECT JOIN USERS USING(USERID)
 ;
 
-create view v_u_schedule
-as
-select s.*, u.mname, CCODE, DEPTNO
-from schedule s join users u on (s.userid = u.userid)
+--    create view v_u_member_schedule
+--    as
+--    select SNO, ATTENDUSERID, MNAME as ATTENDNAME, CCODE, DEPTNO
+--    from member_schedule join users on (ATTENDUSERID = USERID)
+--    ;
+
+CREATE VIEW V_U_MEMBER_SCHEDULE
+AS
+SELECT SNO, ATTENDUSERID, MNAME AS ATTENDNAME, CCODE, DEPTNO
+FROM MEMBER_SCHEDULE JOIN USERS ON (ATTENDUSERID = USERID)
+;
+
+--    create view v_u_schedule
+--    as
+--    select s.*, u.mname, CCODE, DEPTNO
+--    from schedule s join users u on (s.userid = u.userid)
+--    ;
+
+CREATE VIEW V_U_SCHEDULE
+AS
+SELECT S.*, U.MNAME, CCODE, DEPTNO
+FROM SCHEDULE S JOIN USERS U ON (S.USERID = U.USERID)
 ;
 
 commit;

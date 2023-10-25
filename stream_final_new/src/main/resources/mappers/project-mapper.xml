@@ -84,19 +84,43 @@
 	</delete>
 	
 	<select id="searchProjectList" parameterType="ProjectVo" resultType="ProjectVo">
+	
 		SELECT TP.PNO, TP.PNAME, TP.PSTATUS, TP.PACCESS
-		, TP.USERID, VUD.MNAME, VUD.MRANK, VUD.DEPTNAME
+		, TP.USERID, VUD.MNAME, VUD.MRANK, VUD.DEPTNAME, PCOLOR
 		, (SELECT COUNT(*) FROM MEMBER_PROJECT WHERE PNO= TP.PNO) AS COUNTMEMBER
 		FROM (
 		SELECT * FROM PROJECT
-		WHERE (USERID= #{USERID} OR PNO IN (SELECT PNO FROM MEMBER_PROJECT WHERE
+		WHERE (USERID= #{userid} OR PNO IN (SELECT PNO FROM MEMBER_PROJECT WHERE
 		USERID=#{userid}))
 		AND PSTATUS IN ('미진행', '진행', '보류')
 		AND PACCESS IN ('ACCESS')
-		AND PSTATUS IN ('미진행', '진행', '보류') AND PNAME LIKE '%' || #{keyword} || '%')
+		<if test="type == '프로젝트명'">
+			AND PNAME LIKE '%' || #{keyword} || '%'
+		</if>
+		<if test="type == '진행도'">
+			AND PSTATUS LIKE '%' || #{keyword} || '%'
+		</if>	
+		) TP
+		JOIN V_U_DEPT VUD ON TP.USERID = VUD.USERID
+		<if test="type == '작성자'">
+		WHERE MNAME LIKE '%' || #{keyword} || '%'
+		</if>
+		ORDER BY TO_NUMBER(PNO) DESC
+		<!--  
+		SELECT TP.PNO, TP.PNAME, TP.PSTATUS, TP.PACCESS
+		, TP.USERID, VUD.MNAME, VUD.MRANK, VUD.DEPTNAME, PCOLOR
+		, (SELECT COUNT(*) FROM MEMBER_PROJECT WHERE PNO= TP.PNO) AS COUNTMEMBER
+		FROM (
+		SELECT * FROM PROJECT
+		WHERE (USERID= #{userid} OR PNO IN (SELECT PNO FROM MEMBER_PROJECT WHERE
+		USERID=#{userid}))
+		AND PSTATUS IN ('미진행', '진행', '보류')
+		AND PACCESS IN ('ACCESS')
+        AND PNAME LIKE '%' || #{keyword} || '%'
 		) TP
 		JOIN V_U_DEPT VUD ON TP.USERID = VUD.USERID
 		ORDER BY TO_NUMBER(PNO) DESC
+		-->
 	</select>
 	
 	<select id="selectMname" resultType="MemberSimpleVo">

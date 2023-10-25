@@ -5,9 +5,9 @@
 <div id="addcalmodal" class="modal">
 	<div class="modal-dialog pcal">
 		<!-- Modal content -->
-		<div class="pcal modal-container ">
-			<div class="modal-header-pcal"></div>
-			<div class="modal-body-pcal">
+		<div class="modal-container pcal add ">
+			<div class="modal-header-pcal add"></div>
+			<div class="modal-body pcal">
 				<div class="card pcal">
 					<div class="card-body pcal">
 					<div class="card-header pcalTitle">
@@ -21,7 +21,7 @@
 							<input type="hidden" name="sno" value="${sno}">
 							
 							<!-- 제목 -->
-							<input type="text" class="form-control title" name="title" id="title" placeholder="제목을 입력하세요." required="required">
+							<input type="text" class="form-control title" name="title" id="title" placeholder="제목을 입력해주세요. -20글자 제한" required="required">
 							
 							<!-- 날짜 -->
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar align-middle"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
@@ -86,16 +86,30 @@
 		//title 요소 찾기
 		var addTitle= document.getElementById("title");
 
-		function calendartitleLength() {
+		function addCalTitleLength() {
 			var titleValue = addTitle.value;
 		
-			if(titleValue.length > 30) {
-				alert("제목은 30자 이내여야 합니다.");
+			if(titleValue.length > 20) {
+				alert("제목은 20자 이내여야 합니다.");
 			}
 		}
-		addTitle.addEventListener("input", calendartitleLength);
+		addTitle.addEventListener("input", addCalTitleLength);
 	});
 </script> 
+
+<!-- 내용 유효성검사  -->
+<script>
+	$('#summernote-addcalmodal').on('summernote.keyup', function() {
+		var max = 200;
+		var length = $(this).summernote('code').replace(/<(?:.|\n)*?>/gm, '').length;
+		if(length > max) {
+			alert('최대 글자수를 초과하였습니다.')
+			
+			$(this).summernote('editor.undo');
+		}
+	});
+</script>
+
 
 <script>
 //addcalmodal 초기화!!!

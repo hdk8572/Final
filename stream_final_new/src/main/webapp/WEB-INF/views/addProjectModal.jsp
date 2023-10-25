@@ -65,7 +65,7 @@
 							<input type="date" class="form-date" id="end" name="penddate" required="required">
 						</div>
 						<div align="center">
-							<button class="btn btn-primary" id="btn-submit" type="submit">추가</button>
+							<button class="btn btn-primary" id="btn-submit" type="button">추가</button>
 							<button class="btn btn-warning" type="reset">취소</button>
 						</div>
 						</form>
@@ -90,6 +90,7 @@
 		$.ajax ({
 			url: "${pageContext.request.contextPath}/member/projectInsert",
 			type: "post",
+			//async:false,
 			data : $("#addProject").serialize(),
 			dateType: "json",
 			success: function(result){
