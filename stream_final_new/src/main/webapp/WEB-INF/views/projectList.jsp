@@ -48,7 +48,7 @@
 				<div class="container-fluid p-0">
 
 					<h1 class="h3 mb-3">
-						<span id="userName">${principal.username}님의 프로젝트 목록</span>
+						<span id="userName">a님의 프로젝트 목록</span>
 						<!-- <form>
 							<div class="search">
 								<input name="keyword" type="text" placeholder="검색어를 입력해주세요.">
@@ -431,7 +431,17 @@
 	    });
 	} 
 	
-
+	$.ajax ({
+		url: "${pageContext.request.contextPath}/member/loginUser",
+		type: "get",
+		data: {userid: '${principal.username}'},
+		success: function(result) {
+			$("#userName").text(result.mname+"님의 프로젝트 목록");
+		},
+		error: function() {
+			console.log("ProjectList.jsp - loginUser에서 오류 발생");
+		}
+	});	
 	
 /*  	function listDelete($thisEle) {
  		console.log($thisEle.parents("[name=pno]").val());
