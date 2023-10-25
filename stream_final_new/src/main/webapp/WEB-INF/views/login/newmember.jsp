@@ -227,7 +227,7 @@
 				},
 				dataType : "json",
 				success : deptView,
-				error : deptError
+				error : newmemberError
 
 			});
 
@@ -238,7 +238,7 @@
 					$("#deptdrop").html(listHtml);
 					return;
 				} else
-					console.log("성공하였습니다")
+					console.log("[jy] deptView성공")
 				var listHtml = "";
 
 				for (var i = 0; i < data.length; i++) {
@@ -247,7 +247,7 @@
 				}
 				$("#deptdrop").html(listHtml);
 			}
-			function deptError(request, status, error) {
+			function newmemberError(request, status, error) {
 				console.log(request);
 				console.log(status);
 				console.log(error);

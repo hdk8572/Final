@@ -1,32 +1,15 @@
 .content {
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	height: 100vh;
 }
 
 .attendBox {
 	width: 1000px;
-	border: 1px white solid;
+	height: 100vh;
 	background-color: white;
-	border-radius: 20px;
 	padding: 20px;
-	border-radius: 20px;
-	justify-content: center;
-}
-
-.input-email {
-	width: 500px;
-}
-
-.emailTable {
-	margin-top: 50px; width : 650px;
-	text-align: center;
-	width: 650px;
-}
-
-.addTable {
-	width: 650px;
-	text-align: center;
 }
 
 p {
@@ -42,6 +25,25 @@ p {
 	font-weight: 600;
 }
 
-.delete-text {
-	cursor: pointer;
+.attendBtn {
+	display: flex;
+	align-items: flex-start;
+	text-align: center;
+	margin-bottom: 20px;
+	text-align: center
+}
+
+.btn {
+	margin-left: 10px;
+}
+
+table.attendTable {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table.attendTable th, table.attendTable td {
+	border: 1px solid black;
+	text-align: center;
+	padding: 5px;
 }

@@ -17,8 +17,8 @@
 <link href="${pageContext.request.contextPath}/css/streamapp.css"
 	rel="stylesheet">
 <!-- Attend Css -->
-<%-- <link href="${pageContext.request.contextPath}/css/attend.css"
-	rel="stylesheet"> --%>
+<link href="${pageContext.request.contextPath}/css/attend.css"
+	rel="stylesheet">
 <!-- Modal Css -->
 <link href="${pageContext.request.contextPath}/css/Modal.css"
 	rel="stylesheet">
@@ -35,55 +35,6 @@
 	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
 	rel="stylesheet">
 <style>
-.content {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-}
-
-.attendBox {
-	width: 1000px;
-	height: 100vh;
-	background-color: white;
-	padding: 20px;
-}
-
-p {
-	font-size: 20px;
-	font-weight: 600;
-	margin: 10px;
-}
-
-.attendTitle {
-	text-align: center;
-	font-size: 20px;
-	margin: 20px;
-	font-weight: 600;
-}
-
-.attendBtn {
-	display: flex;
-	align-items: flex-start;
-	text-align: center;
-	margin-bottom: 20px;
-	text-align: center
-}
-
-.btn {
-	margin-left: 10px;
-}
-
-table.attendTable {
-	width: 100%;
-	border-collapse: collapse;
-}
-
-table.attendTable th, table.attendTable td {
-	border: 1px solid black;
-	text-align: center;
-	padding: 5px;
-}
 </style>
 </head>
 <body>
@@ -164,14 +115,18 @@ table.attendTable th, table.attendTable td {
 						// 생성된 HTML 문자열을 원하는 위치에 추가
 						$("#attendAppend").html(tdHtml);
 					},
-					error : function(xhr, status, error) {
-						console.log("AJAX 요청 실패");
-						console.log("에러 상태: " + status);
-						console.log("에러 메시지: " + error);
+					error : function(request, status, error) {
+						console.log(request);
+						console.log(status);
+						console.log(error);
+						alert("code: " + request.status + "\n" + "message: "
+								+ request.responseText + "\n" + "error: "
+								+ error);
 					}
 				});
 			});
 	// 출근버튼 (inbtn)
+
 	$("#inbtn").click(inbtnClickHandler);
 
 	function inbtnClickHandler() {
@@ -198,7 +153,7 @@ table.attendTable th, table.attendTable td {
 			},
 			dataType : "json",
 			success : function(data) {
-				console.log("success");
+				console.log("[jy] inbtn성공");
 				console.log(data);
 				if (data.msg == undefined) {
 					var tdHtml = "";
@@ -227,14 +182,15 @@ table.attendTable th, table.attendTable td {
 					$("#attendAppend").html(tdHtml);
 					alert("출근이 처리되었습니다.")
 				} else {
-					console.log(data.msg);
 					alert(data.msg)
 				}
 			},
-			error : function(xhr, status, error) {
-				console.log("AJAX 요청 실패");
-				console.log("에러 상태: " + status);
-				console.log("에러 메시지: " + error);
+			error : function(request, status, error) {
+				console.log(request);
+				console.log(status);
+				console.log(error);
+				alert("code: " + request.status + "\n" + "message: "
+						+ request.responseText + "\n" + "error: " + error);
 			}
 		});
 	};
@@ -265,7 +221,7 @@ table.attendTable th, table.attendTable td {
 			},
 			dataType : "json",
 			success : function(data) {
-				console.log("success");
+				console.log("[jy]outbtn성공");
 				console.log(data);
 				if (data.msg == undefined) {
 					var tdHtml = "";
@@ -294,14 +250,15 @@ table.attendTable th, table.attendTable td {
 					$("#attendAppend").html(tdHtml);
 					alert("퇴근이 처리되었습니다.")
 				} else {
-					console.log(data.msg);
 					alert(data.msg)
 				}
 			},
-			error : function(xhr, status, error) {
-				console.log("AJAX 요청 실패");
-				console.log("에러 상태: " + status);
-				console.log("에러 메시지: " + error);
+			error : function(request, status, error) {
+				console.log(request);
+				console.log(status);
+				console.log(error);
+				alert("code: " + request.status + "\n" + "message: "
+						+ request.responseText + "\n" + "error: " + error);
 			}
 		});
 	};

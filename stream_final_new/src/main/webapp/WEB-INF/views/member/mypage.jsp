@@ -245,7 +245,7 @@
 		});
 	}
 	function deptView(data) {
-		console.log("성공하였습니다")
+		console.log("[jy] deptView성공")
 		var listHtml = "";
 		for (var i = 0; i < data.length; i++) {
 			var deptName = data[i];
