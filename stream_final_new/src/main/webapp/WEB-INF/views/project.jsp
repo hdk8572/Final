@@ -29,7 +29,8 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <!-- fullcalendar 언어 설정관련 script -->
 <script
-	src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
+	src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js">
+</script>
 
 <!-- Tab bar -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -353,7 +354,7 @@
 		 		$(".wrap-card .tcontent").html(result.tcontent);
 		 		$(".wrap-card .ttitle").html(result.ttitle);
 		 		$(".wrap-card .tstatus").html(result.tstatus);
-		 		$(".wrap-card .mname").text(result.mname+" "+result.mrank);
+		 		$(".wrap-card .mname").text(result.mname+"님");
 		 		$(".wrap-card .mname").val(result.tmember);
 		 		$(".wrap-card [name=tstartdate]").val(result.tstartdate);
 		 		$(".wrap-card [name=tenddate]").val(result.tenddate);

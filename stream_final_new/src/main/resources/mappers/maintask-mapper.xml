@@ -71,8 +71,13 @@
 	
 	<!-- 회사 참가자 전체 조회 - 황대경 -->
 	<select id="companyMemberList" resultType="MemberSimpleVo">
+		SELECT USERID, MNAME, MRANK, AUTHORITY FROM USERS
+		WHERE CCODE = (SELECT CCODE FROM USERS WHERE USERID = #{userid})
+    	AND AUTHORITY = 'ROLE_M'
+		<!--  	
 		SELECT USERID, MNAME, MRANK FROM USERS
 		WHERE CCODE = (SELECT CCODE FROM USERS WHERE USERID = #{userid})
+		-->
 	</select>
 	
 	<!-- 프로젝트의 현재 참가자 조회 -->
@@ -81,6 +86,7 @@
 		FROM MEMBER_PROJECT
 		    JOIN USERS USING(USERID)
 		WHERE pno = #{pno}
+			AND AUTHORITY = 'ROLE_M'
 	</select>
 	
 	<!-- 프로젝트의 현재 참가자 전체 삭제 - 황대경 -->

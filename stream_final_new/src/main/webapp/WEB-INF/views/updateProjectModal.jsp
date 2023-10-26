@@ -170,7 +170,7 @@
 			currentListHtml+=`
 				<div class='comanyMember'>
 					<input type="hidden" name="memberProjectArr" value="\${currentMember.userid}"> 	
-					<span data-addmemberuserid='\${currentMember.userid}'>\${currentMember.mname}\${currentMember.mrank}님</span>
+					<span data-addmemberuserid='\${currentMember.userid}'>\${currentMember.mname}님</span>
 					<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-delete align-middle me-2'><path d='M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z'></path><line x1='18' y1='9' x2='12' y2='15'></line><line x1='12' y1='9' x2='18' y2='15'></line></svg>
 				</div>
 			`;
@@ -185,13 +185,19 @@
  	function updateMemberSelect() { // 중복 조회 (유효성검사) 
  		console.log("updateMemberSelect 실행했습니다.");
  		var selectedVal = $(".form-select.mb-3.updateProject.selectedMember").val();
- 		// console.log("선택한 selectedVal :"+selectedVal); 삭제하자
+		console.log("선택한 selectedVal :"+selectedVal);
  		//$(".form-select.mb-3.addProject.selectedMember").val(selectedVal);
  		var checkAddedUserId = false;	
  		$(".comanyMember").each(function(idx, thisElement){
  			var addeduserid = $(thisElement).children("span").data("addmemberuserid");
  			console.log("addeduserid :"+addeduserid);
  			console.log("selectedVal :"+selectedVal);
+ 			if(addeduserid == selectedVal){
+ 				checkAddedUserId = true;
+ 				console.log("중복이라 추가 안했습니다.");
+ 				return false;
+ 			}
+ 			var addeduserid = $(thisElement).children("span").data("addmemberuserid");
  			if(addeduserid == selectedVal){
  				checkAddedUserId = true;
  				console.log("중복이라 추가 안했습니다.");

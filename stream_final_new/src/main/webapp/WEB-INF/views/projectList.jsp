@@ -163,6 +163,8 @@
 		});
 		
 	}); 
+	
+	
 		
 	$("#hideBtn").click(listAndHide);
 	
