@@ -88,7 +88,7 @@ where roomid = '1';
 
 
 
-
+select * from users;
 
 
 INSERT INTO CHATMEMBER (ROOMID, USERID)
@@ -527,5 +527,18 @@ select *
 	from (select rownum rn, i.*
 			from (select *
 					from info order by ino desc) i);
-select * from users;	
+select * from users;
+delete from chatroom where roomid=#{roomid};
+select * from chatroom;
+SELECT DISTINCT *
+		FROM CHATMEMBER
+		JOIN CHATROOM USING(ROOMID)
+		WHERE chatmember.userid='streamjj1@naver.co.kr';
+        SELECT DISTINCT ROOMID
+FROM CHATMEMBER
+JOIN CHATROOM USING (ROOMID)
+WHERE chatmember.userid = 'streamjj1@naver.co.kr';
+SELECT userId, mname
+	FROM users
+	WHERE (userId = 'streamjj1@naver.co.kr' or ccode = (SELECT ccode FROM users WHERE userId = 'streamjj1@naver.co.kr')) and enabled =1 and NOT authority ='ROLE_C';
 commit;

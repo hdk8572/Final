@@ -26,7 +26,7 @@ public class InfoController {
 	private InfoService service;
 	
 	
-	@GetMapping("/member/info")
+	@GetMapping("/info")
 	public ModelAndView info(ModelAndView mv, Principal principal,InfoPageVo vo,
 			 				@RequestParam(name = "select_search", required = false) String selectSearch,
              				@RequestParam(name = "search_bar", required = false) String searchBar,
@@ -57,27 +57,26 @@ public class InfoController {
 			cntPerPage = "10";
 		}
 		vo = new InfoPageVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		/* mv.addObject("list", vo); */
 		mv.addObject("paging", vo);
 		mv.addObject("viewAll", service.PagingInfo(vo));
 	    mv.setViewName("info/main");
 	    return mv;
 	}
-	@GetMapping("/member/info/insert")
+	@GetMapping("/info/insert")
 	public ModelAndView insert(ModelAndView mv,Principal principal) {
 		String userId = principal.getName();
 		mv.addObject("name",service.InfoWriter(userId));
 		mv.setViewName("info/infoinsert");
 		return mv;
 	}
-	@PostMapping(value="/member/info/insert")
+	@PostMapping(value="/info/insert")
 	public String insertdo(ModelAndView mv,Principal principal ,@RequestParam String ititle, @RequestParam String iwriter,
 			 @RequestParam String itext,RedirectAttributes rttr,InfoVo vo) {
 		String userId = principal.getName();
 		if (ititle.isEmpty() || itext.isEmpty()) {
 	        
 	        rttr.addFlashAttribute("error", "제목과 내용을 모두 입력하세요.");
-	        return "redirect:/member/info/insert";
+	        return "redirect:/info/insert";
 	    }
 		vo.setUserId(userId);
 		service.InfoInsert(vo);
@@ -85,16 +84,16 @@ public class InfoController {
 		rttr.addFlashAttribute("iwriter", iwriter);
 		rttr.addFlashAttribute("itext", itext);
 		
-		return "redirect:/member/info";
+		return "redirect:/info";
 	}
-	@GetMapping("/member/info/select")
+	@GetMapping("/info/select")
 	public ModelAndView select(ModelAndView mv,Principal principal,String ino) {
 		String userId = principal.getName();
 		mv.addObject("info",service.InfoOne(ino));
 		mv.setViewName("info/infoselect");
 		return mv;
 	}
-	@GetMapping("/member/info/update")
+	@GetMapping("/info/update")
 	public ModelAndView update(ModelAndView mv,Principal principal,@RequestParam String ino) {
 		String userId = principal.getName();
 		mv.addObject("userId",userId);
@@ -102,21 +101,20 @@ public class InfoController {
 		mv.setViewName("info/infoupdate");
 		return mv;
 	}
-	@PostMapping(value="/member/info/update")
+	@PostMapping(value="/info/update")
 	public String updatedo(ModelAndView mv,Principal principal ,@RequestParam String ino,@RequestParam String ititle, 
 			 @RequestParam String itext,RedirectAttributes rttr,InfoVo vo) {
 		String userId = principal.getName();
 		vo.setUserId(userId);
 		vo.setItext(itext);
 		vo.setItitle(ititle);
-		System.out.println(vo+"================");
 		service.InfoUpdate(vo);
 		
 		rttr.addFlashAttribute("message", "정보가 업데이트되었습니다.");
 		
-		return "redirect:/member/info";
+		return "redirect:/info";
 	}
-	@PostMapping(value="/member/info/delete")
+	@PostMapping(value="/info/delete")
 	public String deletedo(@RequestParam String[] ino,HttpServletRequest request) {
 		String[] sizes = request.getParameterValues("ino");
 		if(sizes != null) {
@@ -125,6 +123,6 @@ public class InfoController {
 			}
 		}
 		
-		return "redirect:/member/info";
+		return "redirect:/info";
 	}
 }

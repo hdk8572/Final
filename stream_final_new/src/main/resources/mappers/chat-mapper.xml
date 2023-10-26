@@ -67,7 +67,7 @@ VALUES (chat_sequence.NEXTVAL, #{userId}, #{roomName}, (SELECT MNAME FROM USERS 
 	<select id="viewMember" resultMap="chatRoomMap">
 	SELECT userId, mname
 	FROM users
-	WHERE (userId = #{userId} or ccode = (SELECT ccode FROM users WHERE userId = #{userId})) and enabled =1
+	WHERE (userId = #{userId} or ccode = (SELECT ccode FROM users WHERE userId = #{userId})) and enabled =1 and NOT authority ='ROLE_C'
 	</select>
 	
 	<select id="findWriter" resultMap="chatRoomMap">
@@ -87,6 +87,8 @@ VALUES (chat_sequence.NEXTVAL, #{userId}, #{roomName}, (SELECT MNAME FROM USERS 
 	)
 	where rn = 1
 	</select>
-
+	<delete id="chatDelete" parameterType="ChatRoomVo">
+		delete from chatroom where roomid=#{roomid}	
+	</delete>
 </mapper>
 

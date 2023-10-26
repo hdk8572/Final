@@ -33,12 +33,12 @@
 				<hr>
 			</div>
 			<div class="tablewrapper">
-			<form action="/stream/member/info" method="get">
+			<form action="/stream/info" method="get">
 				<button type="submit" class="btn btn-secondary" id="y_btn_back"
 					style="margin: 30px 20px 10px;">목록</button>
 			</form>
 			<div style="margin-left: 20px;">
-				<form action="/stream/member/info/insert" method="post">
+				<form action="/stream/info/insert" method="post">
 
 					<table class="col-lg-11">
 						<tr class="y_insert_tr">

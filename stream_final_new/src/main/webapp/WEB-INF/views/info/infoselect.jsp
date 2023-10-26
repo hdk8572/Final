@@ -39,7 +39,7 @@
 				<input type="hidden" id="y_emp_dCode" value="">
 			</div>
 			<div style="margin-left: 70px;">
-			<form action="/stream/member/info"  method="get">
+			<form action="/stream/info"  method="get">
     <button type="submit" class="btn btn-secondary" id="y_btn_back" style="margin: 30px 0px 10px;">목록</button>
 			</form>
 			<input type="hidden" name="ino" value="${info.userId}">
@@ -47,7 +47,7 @@
 				value="${readBoard.board_title }"> <input id="y_hid_content"
 				name="y_hid_content" type="hidden"
 				value="${readBoard.board_content }">
-			<form action="/stream/member/info/update" method="get">
+			<form action="/stream/info/update" method="get">
 				<div >
 					<table class="col-lg-11" >
 						<tr class="y_read_tr">

@@ -60,5 +60,9 @@ public class ChatServlceImpl implements ChatService{
 		
 		return dao.findname();
 	}
+	@Override
+	public int ChatDelete(String roomId) {
+		return dao.ChatDelete(roomId);
+	}
 
 }

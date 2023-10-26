@@ -33,11 +33,11 @@
 		<hr>
 	</div>
 	<div style="margin-left: 70px;">
-   <form action="/stream/member/info"  method="get">
+   <form action="/stream/info"  method="get">
     <button type="submit" class="btn btn-secondary" id="y_btn_back" style="margin: 30px 0px 10px;">목록</button>
 	</form>
     
-    <form id="y_board_update" action="/stream/member/info/update" method="post">
+    <form id="y_board_update" action="/stream/info/update" method="post">
     <input type="text" name="ino" value="${info.ino }" style="display: none;"">
    <table class="col-lg-11">
         <tr class="y_insert_tr">

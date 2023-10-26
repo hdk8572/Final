@@ -26,13 +26,13 @@
 			<div class="main">
 				<%@ include file="/WEB-INF/views/headernavbar.jsp"%>
 				<main class="content">
-				<div class="row" style="margin: 0 25px;">
+
 						<div class="col-lg-12">
-							<h1 class="page-header">공지사항</h1>
+							<h1 class="h3 mb-3">공지사항</h1>
 						</div>
 						<input type="hidden" name="ino" value="${info.userId}">
-						<hr>
-					</div>
+						
+			
 					<!-- <div style="margin: 20px 0;">
 						<div class="select_outer"
 							style="display: flex; justify-content: center;">
@@ -50,7 +50,7 @@
 					</div> -->
 					<div id="outter">
 					
-					<form id="deleteForm" action="/stream/member/info/delete" method="post">
+					<form id="deleteForm" action="/stream/info/delete" method="post">
 					<div class="container y_outer_div" style="display: flex; justify-content: center;">
 						<table class="table table-striped table-hover" style="text-align: center;">
 							<tr class="head">
@@ -67,7 +67,7 @@
 											value="${i.ino }"><label for="rowCheck"></label></td>
 									<td class="y_td_no" style="display: none;">${i.ino }</td>
 										<td id="y_td_hover"><a class="infolist" style="color:black ;"
-											href="<c:url value='/member/info/select'><c:param name='ino' value='${i.ino }'/></c:url>">${i.ititle }</a></td>
+											href="<c:url value='/info/select'><c:param name='ino' value='${i.ino }'/></c:url>">${i.ititle }</a></td>
 										<td>${i.iwriter }</td>
 										<td>${i.idate }</td>
 								</tr>
@@ -76,7 +76,7 @@
 						</div>
 						</form>
 						<div style="margin: 0 230px; display: flex; justify-content: flex-start;">
-						<form action="/stream/member/info/insert" method="get">
+						<form action="/stream/info/insert" method="get">
 							<button type="submit" class="btn btn-primary" id="y_btn_insert"
 								style="margin: 5px">글쓰기</button>
 						</form>
@@ -87,7 +87,7 @@
 						<div style="display: block; text-align: center;">
 							<c:if test="${paging.startPage != 1 }">
 								<a
-									href="${pageContext.request.contextPath }/member/info?nowPage=${paging.startPage - 1 }">&lt;</a>
+									href="${pageContext.request.contextPath }/info?nowPage=${paging.startPage - 1 }">&lt;</a>
 							</c:if>
 							<c:forEach begin="${paging.startPage }" end="${paging.endPage }"
 								var="p">
@@ -97,13 +97,13 @@
 									</c:when>
 									<c:when test="${p != paging.nowPage }">
 										<a
-											href="${pageContext.request.contextPath }/member/info?nowPage=${p }">${p }</a>
+											href="${pageContext.request.contextPath }/info?nowPage=${p }">${p }</a>
 									</c:when>
 								</c:choose>
 							</c:forEach>
 							<c:if test="${paging.endPage != paging.lastPage}">
 								<a
-									href="${pageContext.request.contextPath }/member/info?nowPage=${paging.endPage+1 }">&gt;</a>
+									href="${pageContext.request.contextPath }/info?nowPage=${paging.endPage+1 }">&gt;</a>
 							</c:if>
 						</div>
 						</div>
@@ -117,15 +117,16 @@
 		<script>
 	function selChange() {
 		var sel = $('#cntPerPage').val();
-		location.href=contextPath+"/member/info?nowPage${paging.nowPage}&cntPerPage="+sel;
+		location.href=contextPath+"/info?nowPage${paging.nowPage}&cntPerPage="+sel;
 	}
 </script>
 		<script>
 		document.getElementById('y_btn_insert').addEventListener('click', function (event) {
 	       
-			 if ( '${principal.authorities}'.indexOf('ROLE_M') === -1) {
-			        $("#y_btn_insert").prop('disabled', true);
+			 if ( '${principal.authorities}'.indexOf('ROLE_C') === -1  && '${principal.authorities}'.indexOf('ROLE_A') === -1) {
+			        
 			        alert('권한이 없습니다.'); 
+			        event.preventDefault();
 			    }
 	    });
 	$(document).ready(function () {
@@ -169,7 +170,7 @@
 	    var currentUserId = '${principal.username}';
 	    var userAuthorities = '${principal.authorities}';
 
-	    if (userAuthorities.indexOf('ROLE_M') !== -1) {
+	    if (userAuthorities.indexOf('ROLE_C') !== -1  && '${principal.authorities}'.indexOf('ROLE_A') === -1) {
 	        for (var i = 0; i < checkboxes.length; i++) {
 	            selectedInoArray.push(checkboxes[i].value);
 	        }
