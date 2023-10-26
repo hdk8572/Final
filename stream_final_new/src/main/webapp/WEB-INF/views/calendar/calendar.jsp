@@ -29,49 +29,6 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 <%@ include file="/WEB-INF/views/calendar/updatecalmodal.jsp" %>
 
 
-
-
-<!-- 제목 유효성 검사  -->
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    var addTitle = document.getElementById("title");
-
-    function validateTitle() {
-        var titleValue = addTitle.value;
-
-        if (!titleValue) {
-            alert("제목을 입력해주세요.");
-        } else if (titleValue.length > 20) {
-            alert("제목은 20자 이내여야 합니다.");
-        }
-    }
-
-    addTitle.addEventListener("input", validateTitle);
-
-    document.getElementById("addcalmodal").addEventListener("submit", function(event) {
-        validateTitle(); // 폼 제출 시 다시 한 번 검사
-        if (addTitle.value === "") {
-            event.preventDefault(); // 제목이 비어있을 때 폼 제출 방지
-        }
-    });
-});
-</script>
-
-<!-- 내용 유효성검사  -->
-<script>
-	$('#summernote-addcalmodal').on('summernote.keyup', function() {
-		
-		var max = 200;
-		
-		var length = $(this).summernote('code').replace(/<(?:.|\n)*?>/gm, '').length;
-		if(length > max) {
-			alert('최대 글자수를 초과하였습니다.')
-			
-			$(this).summernote('editor.undo');
-		}
-	});
-</script>
-	
 <!-- summerNote	 -->
 <script>
 	$(document).ready(function (){

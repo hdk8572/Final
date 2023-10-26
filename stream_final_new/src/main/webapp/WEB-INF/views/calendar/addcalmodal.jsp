@@ -43,7 +43,7 @@
 									<!-- 장소 이름 -->
 									<div class="d-flex align-items-center">
 										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin align-middle me-2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-										<input type= "text" class= "form-control addplace" id="splace" name="splace" placeholder= "장소를 입력하세요." onkeydown="searchOnEnter(event)">
+										<input type= "text" class= "form-control addplace" id="splace" name="splace" value="장소 미지정"  placeholder= "장소를 입력하세요." onkeydown="searchOnEnter(event)">
 									</div>
 								</div>
 								<!-- 참가자 반복 -->
@@ -157,6 +157,50 @@
 		$("#calmemberlist").html(listHtml);
 	}
 </script>
+
+
+<!-- 제목 유효성 검사  -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var addTitle = document.querySelector(".form-control#title"); //TODO
+
+    function validateTitle() {
+        var titleValue = addTitle.value;
+
+        if (!titleValue) {
+            alert("제목을 입력해주세요.");
+        } else if (titleValue.length > 20) {
+            alert("제목은 20자 이내여야 합니다.");
+        }
+    }
+
+    addTitle.addEventListener("input", validateTitle);
+
+    document.getElementById("addcalmodal").addEventListener("submit", function(event) {
+        validateTitle(); // 폼 제출 시 다시 한 번 검사
+        if (addTitle.value === "") {
+            event.preventDefault(); // 제목이 비어있을 때 폼 제출 방지
+        }
+    });
+});
+</script>
+
+<!-- 내용 유효성검사  -->
+<script>
+	$('#summernote-addcalmodal').on('summernote.keyup', function() {
+		
+		var max = 200;
+		
+		var length = $(this).summernote('code').replace(/<(?:.|\n)*?>/gm, '').length;
+		if(length > max) {
+			alert('최대 글자수를 초과하였습니다.')
+			
+			$(this).summernote('editor.undo');
+		}
+	});
+</script>
+
+
 
 <!-- 날짜 시작일-종료일  -->
 <script>
