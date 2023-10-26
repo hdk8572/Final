@@ -138,50 +138,44 @@
 		return this;
 	};
 
-	document
-			.getElementById('mypage-open')
-			.addEventListener(
-					'click',
-					function() {
-						$
-								.ajax({
-									url : '${pageContext.request.contextPath}/showmypage',
-									method : 'GET',
-									data : {
-										userid : '${principal.username}'
-									},
-									dataType : 'json',
-									success : function(data) {
-										console.log(data);
-										var mname = data.mname;
-										var cname = data.cname;
-										if (data.mrank == "null") {
-											var mrank = "-"
-										} else {
-											var mrank = data.mrank;
-										}
-										var mphone = data.mphone;
-										var deptname = data.deptname;
+	document.getElementById('mypage-open').addEventListener('click',
+			function() {
+				$.ajax({
+					url : '${pageContext.request.contextPath}/showmypage',
+					method : 'GET',
+					data : {
+						userid : '${principal.username}'
+					},
+					dataType : 'json',
+					success : function(data) {
+						console.log(data);
+						var mname = data.mname;
+						var cname = data.cname;
+						var mrank = data.mrank;
+						var mphone = data.mphone;
+						var deptname = data.deptname;
 
-										$('.mp-content[data-field="mname"]')
-												.text(data.mname);
-										$('.mp-content[data-field="cname"]')
-												.text(data.cname);
-										$('.mp-content[data-field="mrank"]')
-												.text(data.mrank);
-										$('.mp-content[data-field="mphone"]')
-												.text(data.mphone);
-										$('.mp-content[data-field="deptname"]')
-												.text(data.deptname);
+						if (mrank === null) {
+							mrank = "  ";
+						}
+						if (mphone === null){
+							mphone = "  ";
+						}
 
-										modal('mypage-modal');
-									},
-									error : function(error) {
-										console.error('오류발생', error);
-									}
-								});
-						// 모달창 띄우기
-					});
+						$('.mp-content[data-field="mname"]').text(mname);
+						$('.mp-content[data-field="cname"]').text(cname);
+						$('.mp-content[data-field="mrank"]').text(mrank);
+						$('.mp-content[data-field="mphone"]').text(mphone);
+						$('.mp-content[data-field="deptname"]').text(deptname);
+
+						modal('mypage-modal');
+					},
+					error : function(error) {
+						console.error('오류발생', error);
+					}
+				});
+				// 모달창 띄우기
+			});
 
 	$("#editmypage").click(function() {
 		var url = "${pageContext.request.contextPath}/member/editmypage";
