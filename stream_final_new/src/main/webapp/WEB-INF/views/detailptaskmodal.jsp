@@ -314,7 +314,7 @@ function makeReplyList(data) {
 			replyLoadList(targetTno);
 		}
 	});
-	
+/*  	
 	$(document).on('click', '.dropdown-item.hide', function() {
 		var targetTno = $(".wrap-reply input[name=tno]").val();
 		console.log("삭제할 놈 : "+ targetTno);
@@ -337,6 +337,7 @@ function makeReplyList(data) {
 		}else if(confirm_val == false){
 		}
 });
+*/
 	
 </script>
 <script>
