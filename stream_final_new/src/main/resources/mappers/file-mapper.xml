@@ -6,5 +6,11 @@
 		INSERT INTO FILES (FNAME, TNO, USERID, FDATE, FSIZE, FPATH, FORIGINNAME)
 		VALUES (#{filevo.fname}, #{tno}, #{userid}, SYSDATE, #{filevo.fsize}, #{filevo.fpath}, #{filevo.foriginname}) 
 	</insert>
+	
+	<delete id="deleteFile" parameterType="String">
+		DELETE FROM FILES 
+		WHERE TNO = #{tno}
+  	</delete>
+	
 
 </mapper>

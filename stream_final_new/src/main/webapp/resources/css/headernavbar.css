@@ -73,6 +73,8 @@
     font-weight: bold;
     margin-top: 200%;
     color: #009b77;
+    position: absolute;
+    bottom: 20px;
 }
 
 .text-light:focus {

@@ -25,9 +25,6 @@ public class PtaskServiceImpl implements PtaskService {
 	private FileDao fileDao;
 	
 	@Autowired
-	private ProjectDao projectDao;
-	
-	@Autowired
 	private ReplyDao replyDao;
 	
 	@Override
@@ -69,6 +66,7 @@ public class PtaskServiceImpl implements PtaskService {
 	@Override
 	@Transactional
 	public int deleteTask(String tno) {
+		fileDao.deleteFile(tno);
 		replyDao.deleteReplyAll(tno);
 		int result = ptaskDao.deleteTask(tno);
 		return result;

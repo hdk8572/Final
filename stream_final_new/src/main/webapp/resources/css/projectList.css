@@ -58,3 +58,9 @@
     border: none;
     display: inline-block;
 }
+
+.feather.feather-alert-circle.align-middle.me-2.pcontent {
+    color: #6c757d;
+    position: absolute;
+    margin: 10px 0px 0px 5px;
+}

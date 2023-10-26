@@ -85,11 +85,8 @@
 						data-tabmenu="TabTask">업무</button>
 					<button class="w3-bar-item w3" onclick="openTab('TabCalendar')"
 						data-tabmenu="TabCalendar">캘린더</button>
-					<button class="w3-bar-item w3" onclick="openTab('TabPheed')"
-						data-tabmenu="TabPheed">피드</button>
 				</div>
-
-				<!-- 피드 탭 -->
+<!--  
 				<div id="TabPheed" class="w3-container tab ptab">
 					<main class="content">
 						<div class="tabtitle">
@@ -99,11 +96,10 @@
 						</div>
 						<div class="container-fluid p-0">
 							<p>추후 진행</p>
-							<!-- 내용 -->
 						</div>
 					</main>
 				</div>
-
+-->
 				<!-- 업무 탭 [Task]-->
 				<div id="TabTask" class="w3-container tab ptab">
 					<main class="content">

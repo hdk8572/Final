@@ -260,6 +260,11 @@ form {
 		padding: 20px;
 		overflow: auto;
 	}
+	/* 스크롤바 색상  
+	.s_modal_menu_box.s_scroll::-webkit-scrollbar-thumb {
+		background-color: #009b77;
+	}
+	*/
 	.primary{
 		position: relative;
 		top: 15px;

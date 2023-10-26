@@ -131,7 +131,7 @@
 	function makeMemberView(data) { // 회사 소속인 참가자 리스트 조회
 		var memberListHtml = "";
 		/* memberListHtml += '<select class="form-select mb-3 selectCategory ml-2" name="mname">'; */
-		memberListHtml += '<option value="" selected>참가자선택</option>';
+		// memberListHtml += '<option value="" selected>참가자선택</option>';
 	    for(var i=0;i<data.length;i++){
 			var memberOne = data[i];
 			memberListHtml+=`
@@ -153,15 +153,18 @@
  		$(".form-select.mb-3.addProject.selectedMember").val(selectedVal);
  		var checkAddedUserId = false;													
  		$(".comanyMember").each(function(idx, thisElement){
- 			var addeduserid = $(thisElement).children("span").data("addmemberuserid");
+ 			// var addeduserid = $(thisElement).children("span").data("addmemberuserid");
+ 			var addeduserid = $(thisElement).find("input[name='memberProjectArr']").val();
  			// console.log(addeduserid);  삭제하자 
  			if(addeduserid == selectedVal){
  				checkAddedUserId = true;
  				console.log("중복이라 추가 안했습니다.");
+ 				event.preventDefault();
  				return false;
  			}
  		});
- 		if(!checkAddedUserId){ // 
+ 		//if(!checkAddedUserId){ //
+		if(!checkAddedUserId && selectedVal !== ""){ // 
  			memberAdded(selectedVal);
 			console.log("중복이 아니여서 추가했습니다.");
  		}
@@ -223,6 +226,21 @@
 	    }
 	});
 </script>
+<script>
+$("#addProjectModal").on('hidden.bs.modal', function() {
+    // 모달이 닫히면 실행될 코드를 여기에 작성합니다.
+    
+    // 예를 들어, 폼 내용을 초기화하려면 아래와 같이 작성할 수 있습니다.
+    $('#addProject')[0].reset();
 
+    // 참가자 목록을 초기화하려면 아래와 같이 작성할 수 있습니다.
+    $(".comanyMember").remove();
+
+    // summernote 내용을 초기화하려면 아래와 같이 작성할 수 있습니다.
+    $('#summernote').summernote('reset');
+
+    // 이 외에도 필요한 초기화 작업을 추가로 작성할 수 있습니다.
+});
+</script>
 
 <!-- 모달 -->

@@ -17,4 +17,8 @@ public class FileDao {
 		return sqlSession.insert("file.savedFile", vo);
 	}
 	
+	public int deleteFile(String tno) {
+		return sqlSession.delete("file.deleteFile", tno);
+	}
+	
 }

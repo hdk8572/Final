@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-  
 <!-- The Modal -->
 <div class="modal" id="updateProjectModal">
   	<div class="modal-dialog updateProject">
@@ -149,7 +148,7 @@
 	function makeUpdateMemberView(data) {										 // 회사 소속인 참가자 리스트 조회
 		var memberListHtml = "";
 		/* memberListHtml += '<select class="form-select mb-3 selectCategory ml-2" name="mname">'; */
-		memberListHtml += '<option value="" selected>참가자선택</option>';
+		// memberListHtml += '<option value="" selected>참가자선택</option>';
 	    for(var i=0;i<data.length;i++){
 			var memberOne = data[i];
 			memberListHtml+=`
@@ -183,7 +182,7 @@
 	}
 	
  	function updateMemberSelect() { // 중복 조회 (유효성검사) 
- 		console.log("updateMemberSelect 실행했습니다.");
+ 		console.log("====updateMemberSelect 실행했습니다.====");
  		var selectedVal = $(".form-select.mb-3.updateProject.selectedMember").val();
 		console.log("선택한 selectedVal :"+selectedVal);
  		//$(".form-select.mb-3.addProject.selectedMember").val(selectedVal);
