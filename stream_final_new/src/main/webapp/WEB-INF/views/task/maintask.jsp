@@ -286,16 +286,16 @@
 																				</select>
 																			</div>
 																			<div class="dropdown jm-title-tstartdate jm-col-b jm-grey jm-cenalign">
-																				<div data-bs-toggle="dropdown">
-																					<button class="btn btn-secondary">시작일</button>
+																				<div data-bs-toggle="dropdown" class="jm-dateChage">
+																					<span>시작일</span>
 																				</div>
 																				<div class="mini-pop jm-date-input-layer dropdown-menu dropdown-menu-end">
 																					<input type="date" name="tstartdate" required="required">
 																				</div>
 																			</div>
 																			<div class="dropdown jm-title-tenddate jm-col-b jm-grey jm-cenalign">
-																				<div data-bs-toggle="dropdown">
-																					<button class="btn btn-secondary">마감일</button>
+																				<div data-bs-toggle="dropdown" class="jm-dateChage">
+																					<span>마감일</span>
 																				</div>
 																				<div class="mini-pop jm-date-input-layer dropdown-menu dropdown-menu-end">
 																					<input type="date" name="tenddate" required="required">
@@ -333,9 +333,33 @@
 	<%@include file="/WEB-INF/views/task/maintasktaskdetailmodal.jsp" %>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 	<%@include file="/WEB-INF/views/task/maintaskscript.jsp" %>
-	<%-- <%@ include file="/WEB-INF/views/detailptaskmodal.jsp"%> --%>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
-	<%-- <script src="${pageContext.request.contextPath}/js/maintask.js"></script> --%>
+	<script>
+	tsartdateChange=()=>{
+		console.log("[JM]==tsartdateChange==");
+		var btn = event.target;
+		var tstart = $(btn).val();
+			console.log(tstart);
+			if($(".jm-innerTaskInput").hasClass('active')){
+			$(btn).parent().siblings(".show").html('<span>'+tstart+'</span>')
+			}
+		}
+	</script>
+	<script>
+	tenddateChange=()=>{
+		console.log("[JM]==tenddageChange==");
+		var btn = event.target;
+		var tend = $(btn).val();
+		console.log(tend);
+		if($(".jm-innerTaskInput").hasClass('active')){
+		$(btn).parent().siblings(".show").html('<span>'+tend+'</span>')
+		}
+	}
+	</script>
+	<script>
+		$('input[name=tstartdate]').on("change", tsartdateChange)
+		$('input[name=tenddate]').on("change", tenddateChange)
+	</script>
 	
 	<script>
 	/* 업무 정렬을 위한 함수 (ajax) */
@@ -458,17 +482,17 @@
 												</select>
 										</div>
 										<div class="dropdown jm-title-tstartdate jm-col-b jm-grey jm-cenalign">
-											<div data-bs-toggle="dropdown">
-												<button class="btn btn-secondary">시작일</button>
-											</div>
+										<div data-bs-toggle="dropdown" class="jm-dateChage">
+											<span>시작일</span>
+										</div>
 											<div class="mini-pop dropdown-menu dropdown-menu-end">
 												<input type="date" name="tstartdate">
 											</div>
 										</div>
 										<div class="dropdown jm-title-tenddate jm-col-b jm-grey jm-cenalign">
-											<div data-bs-toggle="dropdown">
-												<button class="btn btn-secondary">마감일</button>
-											</div>
+										<div data-bs-toggle="dropdown" class="jm-dateChage">
+											<span>마감일</span>
+										</div>
 											<div class="mini-pop dropdown-menu dropdown-menu-end ">
 												<input type="date" name="tenddate">
 											</div>

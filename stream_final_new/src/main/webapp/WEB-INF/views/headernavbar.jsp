@@ -13,7 +13,7 @@
 		class="hamburger align-self-center"></i>
 	</a>
 	<div class="navbar-collapse collapse">
-		<ul class="navbar-nav navbar-align">				
+		<ul class="navbar-nav navbar-align">
 
 			<li class="nav-item dropdown"><a
 				class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
@@ -23,8 +23,7 @@
 				data-bs-toggle="dropdown"> <img
 					src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 					class="avatar img-fluid rounded me-1" alt="Charles Hall"
-					border-radius: 50% !important />
-					<span class="text-dark"></span>
+					border-radius: 50% !important /> <span class="text-dark"></span>
 			</a>
 
 				<div class="dropdown-menu dropdown-menu-end">
@@ -139,42 +138,44 @@
 		return this;
 	};
 
-	
-	document.getElementById('mypage-open').addEventListener('click',function() {
-		$.ajax({
-			url : '${pageContext.request.contextPath}/showmypage',
-			method : 'GET',
-			data : {
-				userid : '${principal.username}'
-			},
-			dataType : 'json',
-			success : function(data) {
-				console.log(data);
-				var mname = data.mname;
-				var cname = data.cname;
-				var mrank = data.mrank;
-				var mphone = data.mphone;
-				var deptname = data.deptname;
+	document.getElementById('mypage-open').addEventListener('click',
+			function() {
+				$.ajax({
+					url : '${pageContext.request.contextPath}/showmypage',
+					method : 'GET',
+					data : {
+						userid : '${principal.username}'
+					},
+					dataType : 'json',
+					success : function(data) {
+						console.log(data);
+						var mname = data.mname;
+						var cname = data.cname;
+						var mrank = data.mrank;
+						var mphone = data.mphone;
+						var deptname = data.deptname;
 
-				$('.mp-content[data-field="mname"]')
-						.text(data.mname);
-				$('.mp-content[data-field="cname"]')
-						.text(data.cname);
-				$('.mp-content[data-field="mrank"]')
-						.text(data.mrank);
-				$('.mp-content[data-field="mphone"]')
-						.text(data.mphone);
-				$('.mp-content[data-field="deptname"]')
-						.text(data.deptname);
+						if (mrank === null) {
+							mrank = "  ";
+						}
+						if (mphone === null){
+							mphone = "  ";
+						}
 
-				modal('mypage-modal');
-			},
-			error : function(error) {
-				console.error('오류발생', error);
-			}
-		});
-		// 모달창 띄우기
-	});
+						$('.mp-content[data-field="mname"]').text(mname);
+						$('.mp-content[data-field="cname"]').text(cname);
+						$('.mp-content[data-field="mrank"]').text(mrank);
+						$('.mp-content[data-field="mphone"]').text(mphone);
+						$('.mp-content[data-field="deptname"]').text(deptname);
+
+						modal('mypage-modal');
+					},
+					error : function(error) {
+						console.error('오류발생', error);
+					}
+				});
+				// 모달창 띄우기
+			});
 
 	$("#editmypage").click(function() {
 		var url = "${pageContext.request.contextPath}/member/editmypage";
@@ -182,15 +183,17 @@
 	});
 </script>
 <script>
-	$.ajax ({
-		url: "${pageContext.request.contextPath}/member/loginUser",
-		type: "get",
-		data: {userid: '${principal.username}'},
-		success: function(result) {
-			$(".text-dark").text(result.mname+"님");
+	$.ajax({
+		url : "${pageContext.request.contextPath}/member/loginUser",
+		type : "get",
+		data : {
+			userid : '${principal.username}'
 		},
-		error: function() {
+		success : function(result) {
+			$(".text-dark").text(result.mname + "님");
+		},
+		error : function() {
 			console.log("loginUser에서 오류 발생");
 		}
-	});	
+	});
 </script>

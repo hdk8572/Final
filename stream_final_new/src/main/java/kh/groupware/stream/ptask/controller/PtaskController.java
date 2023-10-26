@@ -140,17 +140,17 @@ public class PtaskController {
 		return ptaskService.update(vo);
 	}
 	
-	@GetMapping("/member/updateTstatus")
-	@ResponseBody
-	public int updateTstatus(PtaskVo vo) {
-		return ptaskService.update(vo);
-	}
+//	@GetMapping("/member/updateTstatus")
+//	@ResponseBody
+//	public int updateTstatus(PtaskVo vo) {
+//		return ptaskService.update(vo);
+//	}
 	
-	@PostMapping("/member/updateTstatusHide")
-	@ResponseBody
-	public int deletePtask(String tno) {
-		return ptaskService.updateHide(tno);
-	}
+//	@PostMapping("/member/updateTstatusHide")
+//	@ResponseBody
+//	public int deletePtask(String tno) {
+//		return ptaskService.updateHide(tno);
+//	}
 	
 	@PostMapping("/member/deleteTask")
 	@ResponseBody

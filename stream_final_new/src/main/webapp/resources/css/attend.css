@@ -1,12 +1,12 @@
-.attendTitle {
-	color: #000;
-	font-weight: 400;
-	line-height: 1.2;
-	margin-bottom: 0.5rem;
-	margin-top: 0;
-	font-size: 1.3125rem;
+.jm-header {
+    color: #000;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+    font-size: 1.3125rem;
+    margin-bottom: 1rem !important;
 }
-
 .tableBox {
 	text-align: center;
 }

@@ -28,3 +28,7 @@
 	margin: 10px;
 	font-weight: 600;
 }
+
+.form-control:disabled, .form-control[readonly] {
+	background-color: white;
+}

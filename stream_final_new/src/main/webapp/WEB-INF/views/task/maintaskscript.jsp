@@ -122,7 +122,9 @@ boxOutHandler=(event)=>{
 			var i = 0;
 			for(i=0;i<size;i++){
 			$('.addInnerTask')[i].reset();
-	}
+			$(a1).parents('div').find(".jm-title-tstartdate").find(".jm-dateChage").html('<span>시작일</span>');
+			$(a1).parents('div').find(".jm-title-tenddate").find(".jm-dateChage").html('<span>마감일</span>');
+			}
 		}
 	}
 	
@@ -303,7 +305,7 @@ listHtml += `
 																		</div>
 																		<div class="dropdown jm-title-tstartdate jm-col-b jm-grey jm-cenalign">
 																			<div data-bs-toggle="dropdown">
-																				<button class="btn btn-secondary">시작일</button>
+																				<span>시작일</span>
 																			</div>
 																			<div class="mini-pop dropdown-menu dropdown-menu-end">
 																				<input type="date" name="tstartdate">
@@ -311,7 +313,7 @@ listHtml += `
 																		</div>
 																		<div class="dropdown jm-title-tenddate jm-col-b jm-grey jm-cenalign">
 																			<div data-bs-toggle="dropdown">
-																				<button class="btn btn-secondary">마감일</button>
+																				<span>마감일</span>
 																			</div>
 																			<div class="mini-pop dropdown-menu dropdown-menu-end">
 																				<input type="date" name="tenddate">

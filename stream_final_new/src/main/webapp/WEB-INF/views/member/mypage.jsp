@@ -187,28 +187,14 @@
 	}
 	//폰번호확인
 	function checkPhone(userphone) {
-		if (!checkBlank(userphone, "전화번호를"))
-			return false;
-
-		const phoneToCheck = userphone.replace(/\D/g, '');
-
-		if (phoneToCheck.length !== 10 && phoneToCheck.length !== 11) {
-			alert("전화번호는 10 또는 11자리의 숫자를 입력해주세요.");
-			return false;
+			if (!checkBlank(userphone, "회사 전화번호를"))
+				return false;
+			if (!/^(01[01])-?\d{3,4}-?\d{4}$/.test(userphone)) {
+				alert("전화번호는 010 또는 011로 시작되는 유효한 전화번호 형식이어야 합니다.");
+				return false;
+			}
+			return true;
 		}
-
-		if (!/^01[01]/.test(phoneToCheck)) {
-			alert("전화번호는 010 또는 011로 시작되는 전화번호를 입력해주세요.");
-			return false;
-		}
-
-		if (!/^\d+$/.test(phoneToCheck)) {
-			alert("전화번호 형식이 옳지 않습니다.");
-			return false;
-		}
-
-		return true;
-	}
 	//이름 확인
 	function checkUsername(username) {
 		if (!checkBlank(username, "이름을")) {

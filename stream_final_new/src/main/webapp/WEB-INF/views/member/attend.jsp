@@ -45,13 +45,10 @@
 		<div class="main">
 			<%@ include file="/WEB-INF/views/headernavbar.jsp"%>
 			<main class="content">
-				<div class="attendBox">
-
-
-
-					<div class="tableBox container y_outer_div">
+	
+					<div class="tableBox y_outer_div">
 						<div class="attendTitle" style="text-align: left;">
-							<p>근태관리</p>
+							<div class="h3 mb-3 jm-header">근태관리</div>
 						</div>
 						<div class="attendBtn">
 							<button type="button" class="btn btn-lg btn-primary" id="inbtn">출근</button>
@@ -72,7 +69,7 @@
 							</tbody>
 						</table>
 					</div>
-				</div>
+	
 			</main>
 		</div>
 	</div>

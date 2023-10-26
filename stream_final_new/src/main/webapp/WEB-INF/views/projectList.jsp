@@ -163,6 +163,8 @@
 		});
 		
 	}); 
+	
+	
 		
 	$("#hideBtn").click(listAndHide);
 	
@@ -171,11 +173,13 @@
 	    	$(this).css("color", "black");
 	         $(this).html(plusImg);
 	        loadHide();	        
+	        $(".Wrap-Search").css("display", "none");
 	        $(".dropdown-btn-hide").closest("a").hide();
 	    } else {
 	         $(this).html(minusImg);
 	        $(this).css("color", "#009b77");
 	        loadList();
+	        $(".Wrap-Search").css("display", "inline-block");
 	        $(".dropdown-btn-hide").closest("a").show();
 	    }
 	}
