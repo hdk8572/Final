@@ -7,7 +7,7 @@
 		VALUES (#{filevo.fname}, #{tno}, #{userid}, SYSDATE, #{filevo.fsize}, #{filevo.fpath}, #{filevo.foriginname}) 
 	</insert>
 	
-	<delete id="deleteFile" parameterType="String">
+	<delete id="deleteFile" parameterType="FileVo">
 		DELETE FROM FILES 
 		WHERE TNO = #{tno}
   	</delete>

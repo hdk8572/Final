@@ -131,7 +131,7 @@
 	function makeMemberView(data) { // 회사 소속인 참가자 리스트 조회
 		var memberListHtml = "";
 		/* memberListHtml += '<select class="form-select mb-3 selectCategory ml-2" name="mname">'; */
-		// memberListHtml += '<option value="" selected>참가자선택</option>';
+		memberListHtml += '<option value="" selected>참가자선택</option>';
 	    for(var i=0;i<data.length;i++){
 			var memberOne = data[i];
 			memberListHtml+=`
