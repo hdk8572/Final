@@ -23,7 +23,6 @@ import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
-@Slf4j
 public class ChatController {
 	@Autowired
 	private ChatService service;

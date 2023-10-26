@@ -123,7 +123,7 @@
 		<script>
 		document.getElementById('y_btn_insert').addEventListener('click', function (event) {
 	       
-			 if ( '${principal.authorities}'.indexOf('ROLE_C') === -1) {
+			 if ( '${principal.authorities}'.indexOf('ROLE_M') === -1) {
 			        $("#y_btn_insert").prop('disabled', true);
 			        alert('권한이 없습니다.'); 
 			    }
