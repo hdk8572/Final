@@ -223,7 +223,7 @@
 											<li class="projectNo" id="projectNo_${project.pno }">
 												<div class="jm-grey">
 													<div class="jm-box-project-title jm-gr">
-														<span> <svg xmlns="http://www.w3.org/2000/svg"
+														<span class="jm-imgpd"> <svg xmlns="http://www.w3.org/2000/svg"
 																width="24" height="24" viewBox="0 0 24 24" fill="none"
 																stroke="currentColor" stroke-width="2"
 																stroke-linecap="round" stroke-linejoin="round"
@@ -405,7 +405,7 @@
 		<li class="projectNo" id="projectNo_\${project.pno }">
 			<div class="jm-grey">
 				<div class="jm-box-project-title jm-gr">
-					<span> <svg xmlns="http://www.w3.org/2000/svg"
+					<span class="jm-imgpd"> <svg xmlns="http://www.w3.org/2000/svg"
 							width="24" height="24" viewBox="0 0 24 24" fill="none"
 							stroke="currentColor" stroke-width="2"
 							stroke-linecap="round" stroke-linejoin="round"
@@ -542,23 +542,23 @@
 	/* 업무 추가시 날자(시작, 마감) 유효성 검사 */
 	DateInputCheckHandler=(thisElement)=>{
 		console.log("===[JM]DateInputCheckHandler===")
-		console.log("[JM]"+thisElement);
+		console.log(thisElement);
 		var dateA1 = $(thisElement).closest('li').next().children('form')[0].id;
-		console.log("[JM]"+dateA1);
+		console.log(dateA1);
 		var dateA2 = "#"+dateA1;
-		console.log("[JM]"+dateA2);
+		console.log(dateA2);
 		var startDateInput = $(dateA2).find('input[name=tstartdate]')[0];
 		var endDateInput = $(dateA2).find('input[name=tenddate]')[0];
-		console.log("[JM]"+startDateInput);
-		console.log("[JM]"+endDateInput);
+		console.log(startDateInput);
+		console.log(endDateInput);
 		
 			startDateInput.addEventListener('change', function() {
-				console.log("[JM]"+startDateInput.value);
+				console.log(startDateInput.value);
 			compareDates();
 		});
 		
 			endDateInput.addEventListener('change', function() {
-				console.log("[JM]"+endDateInput.value);
+				console.log(endDateInput.value);
 			compareDates();
 		});
 	
@@ -578,34 +578,50 @@
 	/* 업무 추가시 유효성 검사 */
 	jmRegExp=(thisElement)=>{
 		console.log("[JM]===정규표현식===");
-		console.log("[JM]"+thisElement);	//추가하기 버튼
+		console.log(thisElement);	//추가하기 버튼
 		var eTarget1 = $(thisElement).parent();	
-		console.log("[JM]"+eTarget1);
+		console.log(eTarget1);
 		var eTargetTtitle = $(eTarget1).siblings('.jm-title-ttitle').find('input[name=ttitle]')[0];
-		console.log("[JM]"+eTargetTtitle);	//	input [name=ttitle]
+		console.log(eTargetTtitle);	//	input [name=ttitle]
 		var ttitleValue = $(eTargetTtitle).val();	
-		console.log("[JM]"+ttitleValue);	//input 입력값
+		console.log(ttitleValue);	//input 입력값
 		
 		var eTargetTstartdate = $(eTarget1).siblings('.jm-title-tstartdate').find('input[name=tstartdate]')[0];
-		console.log("[JM]"+eTargetTstartdate);
+		console.log(eTargetTstartdate);
 		var tstartdateValue = $(eTargetTstartdate).val();	//input[name=tstartdate].val
-		console.log("[JM]"+tstartdateValue);
+		console.log(tstartdateValue);
 		
 		var eTargetTenddate = $(eTarget1).siblings('.jm-title-tenddate').find('input[name=tenddate]')[0];
-		console.log("[JM]"+eTargetTenddate);
+		console.log(eTargetTenddate);
 		var tendDateValue = $(eTargetTenddate).val();	//input[name=tenddate].val
-		console.log("[JM]"+tendDateValue);
+		console.log(tendDateValue);
 		
-		var regTtitleValue = /^(?:(?:[ㄱ-ㅎ가-힣]{1,13}|[A-Za-z]{1,40}|[!@#$%^&*()_+]{1,13}|\d{1,40}| ){1,40})$/;
+		var testReg = /^[ㄱ-ㅎ가-힣]{1,13}$/;		
+		
+		
+ 			var str = ttitleValue.toString();
+ 			let getSize = 0;
+ 			let text="";
+ 			for(var memo=0; !isNaN(str.charCodeAt(memo)); memo++){
+ 				text = str.charCodeAt(memo)
+ 				if(text>11){
+ 					getSize+=3;
+ 				}else if(text>7){
+ 					getSize+=2;
+ 				}else{
+ 					getSize+=1;
+ 				}
+ 			}
+ 			console.log(getSize)
 		
 		
 		if(ttitleValue==""){
 			alert("업무명을 입력해 주세요.")
-			
 			$(eTargetTtitle).focus();
 			return false;
-		}else if(!regTtitleValue.test(ttitleValue)){
-			alert("업무명은 한글 13자(띄어쓰기 포함), 영어, 숫자, 특수문자 40자(띄어쓰기 포함) 까지 입력 가능합니다.")
+		}
+		if(getSize>40){
+			alert("업무명은 40byte 까지 가능합니다.(띄어쓰기 포함, 한글, 한문, 특수문자 13자, 숫자, 영어 대,소문자 40자 )");
 			eTargetTtitle.value="";
 			$(eTargetTtitle).focus();
 			return false;
