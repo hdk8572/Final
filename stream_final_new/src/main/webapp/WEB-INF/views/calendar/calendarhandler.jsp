@@ -63,15 +63,6 @@ function loadCalendarHandler() {
 		        }
 			],
 			
-			/*
-	 		eventClick: function(info) {
-				var event = info.event;
-				if(event.extendedProps.googleCalendarId === 'ko.south_korea#holiday@group.v.calendar.google.com'){
-					return; //info.jsEvent.preventDefault();
-				}
-			},			
-			*/
-			
 		 	/* 일정 상세정보를 띄우겠다.*/
 			eventClick: function(info) {
 				console.log(info.event.title);

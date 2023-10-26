@@ -100,7 +100,6 @@ public class CalendarController {
 	*/
 	
 	//캘린더 등록 
-	//탭 jsp에서 필요하니깐 RedirectAttributes를 써준다.
 	@PostMapping("/member/insertpcal")
 	public String insert(Model model, CalendarVo cal, RedirectAttributes rttr) throws Exception {
 		if(cal.getAttenduseridArr() != null && cal.getAttenduseridArr().length > 0) {

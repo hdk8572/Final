@@ -21,11 +21,11 @@
 							<input type="hidden" name="sno" value="${sno}">
 							
 							<!-- 제목 -->
-							<input type="text" class="form-control title" name="title" id="title" placeholder="제목을 입력해주세요. -20글자 제한">
+							<input type="text" class="form-control addtitle" name="title" id="title" placeholder="제목을 입력해주세요. -20글자 제한">
 							
 							<!-- 날짜 -->
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar align-middle"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-							<input type="date" class="form-date calendar" id="start" name="start" required="required"> ~ <input type="date" class="form-date calendar" id="end" name="end" required="required"> <!-- s -->
+							<input type="date" class="form-date-cal addStart" id="start" name="start" required="required"> ~ <input type="date" class="form-date-cal addEnd" id="end" name="end" required="required"> <!-- s -->
 							
 							<!-- 작성자&참석자 -->
 							<div class="wrap-selected">
@@ -162,7 +162,7 @@
 <!-- 제목 유효성 검사  -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    var addTitle = document.querySelector(".form-control#title"); //TODO
+    var addTitle = document.querySelector(".form-control.addtitle"); 
 
     function validateTitle() {
         var titleValue = addTitle.value;
@@ -202,28 +202,29 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-<!-- 날짜 시작일-종료일  -->
+
+<!-- 날짜 시작일-종료일 유효성검사  -->
 <script>
 	//id='start','end'
-	var startDateInput = $("#addcalmodal #start").get(0);
-	var endDateInput = $("#addcalmodal #end").get(0);
+	var calStartDateInput = document.querySelector(".form-date-cal.addStart");
+	var calEndDateInput = document.querySelector(".form-date-cal.addEnd");
 	
-	startDateInput.addEventListener('change', function() {
-		compareDates();
+	calStartDateInput.addEventListener('change', function() {
+		calCompareDates();
 	});
 	
-	endDateInput.addEventListener('change', function() {
-		compareDates();
+	calEndDateInput.addEventListener('change', function() {
+		calCompareDates();
 	});
 	
-	function compareDates() {
-		var startDate = new Date(startDateInput.value);
-		var endDate = new Date(endDateInput.value);
+	function calCompareDates() {
+		var calStartDate = new Date(calStartDateInput.value);
+		var calEndDate = new Date(calEndDateInput.value);
 		
-		if(endDate < startDate) {
+		if(calEndDate < calStartDate) {
 			alert("입력한 종료일이 시작일보다 이전입니다. 올바른 날짜를 선택해 주세요.");
 			
-			endDateInput.value = ''; //종료일 입력필드 초기화
+			calEndDateInput.value = ''; //종료일 입력필드 초기화
 		}
 	}
 </script>

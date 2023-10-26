@@ -23,7 +23,7 @@
 						
 							<!-- 날짜 -->
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar align-middle"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-							<input type="date" class="form-date calendar" id="start" name="start" required="required"> ~ <input type="date" class="form-date calendar" id="end" name="end" required="required"> <!-- s -->
+							<input type="date" class="form-date-cal updateStart" id="start" name="start" required="required"> ~ <input type="date" class="form-date-cal updateEnd" id="end" name="end" required="required"> <!-- s -->
 							
 							<!-- 작성자&참석자 -->
 							<div class="wrap-selected">
@@ -104,6 +104,32 @@
 			$(this).summernote('editor.undo');
 		}
 	});
+</script>
+
+<!-- 날짜 시작일-종료일 유효성검사  -->
+<script>
+	//id='start','end'
+	var updateStartDateInput = document.querySelector(".form-date-cal.updateStart");
+	var updateEndDateInput = document.querySelector(".form-date-cal.updateEnd");
+	
+	updateStartDateInput.addEventListener('change', function() {
+		updateCompareDates();
+	});
+	
+	updateEndDateInput.addEventListener('change', function() {
+		updateCompareDates();
+	});
+	
+	function updateCompareDates() {
+		var updateStartDate = new Date(updateStartDateInput.value);
+		var updateEndDate = new Date(updateEndDateInput.value);
+		
+		if(updateEndDate < updateStartDate) {
+			alert("입력한 종료일이 시작일보다 이전입니다. 올바른 날짜를 선택해 주세요.");
+			
+			updateEndDateInput.value = ''; //종료일 입력필드 초기화
+		}
+	}
 </script>
 
 

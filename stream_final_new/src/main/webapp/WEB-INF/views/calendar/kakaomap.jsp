@@ -36,7 +36,7 @@
 	// showMap 함수 정의
 	function showMap() {
 	    var address = $('#splace').val(); // 입력된 주소 가져오기
-		
+	    
 	// 지도를 생성합니다    
 	var map = new kakao.maps.Map(mapContainer, mapOption);
 	
@@ -80,3 +80,4 @@
 		});  // cb function
 	}
 </script>
+

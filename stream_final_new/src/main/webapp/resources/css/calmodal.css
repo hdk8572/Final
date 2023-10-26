@@ -45,8 +45,9 @@
 #smemo{
 	margin-bottom: 1.5rem;
 }
-.form-date {
-	margin-bottom: 1.5rem;
+.form-date-cal {
+	margin-bottom: 1rem;
+	width: 45%;
 }
 /* 모달 간격 조정 */
 
@@ -155,10 +156,7 @@ input:focus {
 	width: 15px;
 }
 
-.form-date.calendar{
-	margin-bottom: 1rem;
 
-}
 
 
 
