@@ -59,7 +59,7 @@
 
 					<li class="sidebar-item"><a class="sidebar-link"
 						href="${pageContext.request.contextPath}/member/pcal"><i
-							class="align-middle me-2" data-feather="calendar"></i> <span
+							class="align-middle me-2" data-feather="calendar"></i><span
 							class="align-middle">전체 캘린더</span> </a></li>
 					<li class="sidebar-item"><a class="sidebar-link"
 						href="${pageContext.request.contextPath}/member/attend"><i
@@ -97,11 +97,6 @@
 							class="align-middle">공지사항</span> </a></li>
 				</c:if>
 				<c:if test="${authority.authority eq 'ROLE_A' }">
-					<li class="sidebar-item"><a class="sidebar-link"
-						href="${pageContext.request.contextPath}/logout"> <i
-							class="align-middle me-2" data-feather="users"></i> <span
-							class="align-middle">로그아웃</span>
-					</a></li>
 					<li class="sidebar-item"><a class="sidebar-link"
 						href="${pageContext.request.contextPath}/info"><svg
 								xmlns="http://www.w3.org/2000/svg" width="24" height="24"
