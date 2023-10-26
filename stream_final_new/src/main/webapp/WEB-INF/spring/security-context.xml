@@ -26,6 +26,7 @@
 		<intercept-url pattern="/showmypage"
 			access="hasAnyRole('ROLE_C', 'ROLE_M')" />
 		<intercept-url pattern="/**" access="permitAll" />
+		<intercept-url pattern="/info/**" access="hasAnyRole('ROLE_C','ROLE_M','ROLE_A')"/>
 
 		<access-denied-handler
 			error-page="/accessdenied" />

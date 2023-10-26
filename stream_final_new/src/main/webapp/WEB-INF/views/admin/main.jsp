@@ -14,10 +14,14 @@
 
 <title>Stream - 업무도 흐름이다!</title>
 
-<link href="${pageContext.request.contextPath }/css/streamapp.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath }/css/maintask.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/Modal.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/admin.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/streamapp.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/maintask.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/Modal.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/admin.css"
+	rel="stylesheet">
 
 
 <!-- 폰트 -->
@@ -33,13 +37,14 @@
 
 </head>
 <body>
+	<%@ include file="/WEB-INF/views/alertmsg.jsp"%>
 	<div class="wrapper">
-	<%@ include file="/WEB-INF/views/sidebar.jsp"%>
+		<%@ include file="/WEB-INF/views/sidebar.jsp"%>
 		<div class="main">
-		<%@ include file="/WEB-INF/views/headernavbar.jsp"%>
+			<%@ include file="/WEB-INF/views/headernavbar.jsp"%>
 			<main class="content admin-main">
 				<div class="admin-cen">
-				<!-- 간단 통계 -->
+					<!-- 간단 통계 -->
 					<div class="admin-maintext col-lg-8 offset-lg-2">
 						<c:if test="${CNT != null }">
 							<div>
@@ -61,9 +66,11 @@
 						<div>
 							<select id="cntPerPage" name="sel" onchange="selChange()">
 								<option value="5"
-									<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄 보기</option>
+									<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄
+									보기</option>
 								<option value="10"
-									<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄 보기</option>
+									<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄
+									보기</option>
 							</select>
 							<table class="list-table">
 								<thead>
@@ -77,7 +84,9 @@
 								<tbody>
 									<c:forEach items="${viewAll }" var="companyList">
 										<tr>
-											<td class="admin-pointer" data-ccode="${companyList.ccode }" data-bs-toggle="modal" data-bs-target="#detailCompanyModal" onclick="companyDetailModalHandler(this);">${companyList.ccode }</td>
+											<td class="admin-pointer" data-ccode="${companyList.ccode }"
+												data-bs-toggle="modal" data-bs-target="#detailCompanyModal"
+												onclick="companyDetailModalHandler(this);">${companyList.ccode }</td>
 											<td>${companyList.cname }</td>
 											<td>${companyList.cphone }</td>
 											<td>${companyList.caddress }</td>
@@ -86,21 +95,25 @@
 								</tbody>
 							</table>
 							<div>
-							<c:if test="${paging.startPage != 1 }">
-								<a href="${pageContext.request.contextPath }/admin/main?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
-							</c:if>
-								<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+								<c:if test="${paging.startPage != 1 }">
+									<a
+										href="${pageContext.request.contextPath }/admin/main?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+								</c:if>
+								<c:forEach begin="${paging.startPage }" end="${paging.endPage }"
+									var="p">
 									<c:choose>
 										<c:when test="${p==paging.nowPage }">
 											<b>${p }</b>
 										</c:when>
 										<c:when test="${p != paging.nowPage }">
-											<a href="${pageContext.request.contextPath }/admin/main?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+											<a
+												href="${pageContext.request.contextPath }/admin/main?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
 										</c:when>
 									</c:choose>
 								</c:forEach>
 								<c:if test="${paging.endPage != paging.lastPage}">
-									<a href="${pageContext.request.contextPath }/admin/main?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+									<a
+										href="${pageContext.request.contextPath }/admin/main?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
 								</c:if>
 							</div>
 						</div>
@@ -120,11 +133,17 @@
 							<tbody>
 								<tr>
 									<th class="admin-border-top">주소</th>
-									<td class="admin-border-top">서울특별시 강남구 테헤란로 10길 9 그랑프리빌딩 7F (공공데이터 융합 자바개발자 양성과정A23(2)/stream)</td>
+									<td class="admin-border-top">서울특별시 강남구 테헤란로 10길 9 그랑프리빌딩
+										7F (공공데이터 융합 자바개발자 양성과정A23(2)/stream)</td>
 								</tr>
 								<tr>
 									<th class="admin-border-t-and-b">버스</th>
-									<td class="admin-border-t-and-b">역삼역.포스코P&S타워 정류장<br><img alt="지선" src="/stream/img/icons/busB.jpg"> 146 / 740 / 341 / 360<br><img alt="간선" src="/stream/img/icons/busR.jpg"> 1100 / 1700 / 2000 / 7007 / 8001</td>
+									<td class="admin-border-t-and-b">역삼역.포스코P&S타워 정류장<br>
+									<img alt="지선" src="/stream/img/icons/busB.jpg"> 146 / 740
+										/ 341 / 360<br>
+									<img alt="간선" src="/stream/img/icons/busR.jpg"> 1100 /
+										1700 / 2000 / 7007 / 8001
+									</td>
 								</tr>
 								<tr>
 									<th class="admin-border-bottom">지하철</th>
@@ -144,9 +163,9 @@
 	</div>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 	<script src="${pageContext.request.contextPath}/js/app.js"></script>
-	<%@include file="/WEB-INF/views/admin/admincompanymodal.jsp" %>
-	<%@include file="/WEB-INF/views/admin/adminmap.jsp" %>
-	
+	<%@include file="/WEB-INF/views/admin/admincompanymodal.jsp"%>
+	<%@include file="/WEB-INF/views/admin/adminmap.jsp"%>
+
 	<script>
 		function selChange(){
 			var sel = $('#cntPerPage').val();

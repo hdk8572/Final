@@ -1,9 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal" var="principal"/>
+	<sec:authentication property="principal" var="principal" />
 </sec:authorize>
 <!DOCTYPE html>
 <html>
@@ -17,31 +19,42 @@
 <title>Stream - 업무도 흐름이다!</title>
 
 <!-- Bootstrap CSS -->
-<link href="${pageContext.request.contextPath}/css/streamapp.css"	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/streamapp.css"
+	rel="stylesheet">
 
 <!-- Modal CSS -->
-<link href="${pageContext.request.contextPath}/css/Modal.css"	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/Modal.css"
+	rel="stylesheet">
 
 <!-- ProjectList CSS -->
-<link href="${pageContext.request.contextPath}/css/projectList.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/projectList.css"
+	rel="stylesheet">
 <!-- DropDown - Option CSS -->
-<link href="${pageContext.request.contextPath}/css/projectList.option.css"	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"	rel="stylesheet">
-<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/css/projectList.option.css"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+	rel="stylesheet">
+<link
+	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
+	rel="stylesheet">
 
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
 <!-- SummerNote CDN -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
+	rel="stylesheet">
 
 
 </head>
 <body>
 	<div class="wrapper">
-	
+		<%@ include file="/WEB-INF/views/alertmsg.jsp"%>
 		<%@ include file="/WEB-INF/views/sidebar.jsp"%>
-			<div class="main">
+		<div class="main">
 			<%@ include file="/WEB-INF/views/headernavbar.jsp"%>
 
 			<main class="content">
@@ -55,15 +68,22 @@
 							</div>
 							<button>검색하기</button>
 						</form> -->
-						<span><button class="btn btn-primary addProject" id="myBtn"	data-bs-toggle="modal" data-bs-target="#addProjectModal">프로젝트 추가+</button></span>
-						<svg id="hideBtn" xmlns="http://www.w3.org/2000/svg" width="24"	height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus-circle align-middle me-2 hideView"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+						<span><button class="btn btn-primary addProject" id="myBtn"
+								data-bs-toggle="modal" data-bs-target="#addProjectModal">프로젝트
+								추가+</button></span>
+						<svg id="hideBtn" xmlns="http://www.w3.org/2000/svg" width="24"
+							height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+							stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+							class="feather feather-minus-circle align-middle me-2 hideView">
+							<circle cx="12" cy="12" r="10"></circle>
+							<line x1="8" y1="12" x2="16" y2="12"></line></svg>
 						<div class="Wrap-Search">
 							<select class="form-select typeBox" id="typeSelect" name="type">
 								<option value="프로젝트명">프로젝트명</option>
 								<option value="작성자">작성자</option>
 								<option value="진행도">진행도</option>
-							</select>
-							<input class="form-control searchBar" name="keyword" type="text" id="searchProjectListHandler" placeholder="키워드를 입력해주세요.">
+							</select> <input class="form-control searchBar" name="keyword" type="text"
+								id="searchProjectListHandler" placeholder="키워드를 입력해주세요.">
 						</div>
 					</h1>
 
@@ -89,7 +109,8 @@
 <!-------------------- Script ----------------------->
 <script src="${pageContext.request.contextPath}/js/modal.js"></script>
 <script src="${pageContext.request.contextPath}/js/app.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <script>
 	/* ajax 용 - contextPath 변수 지정 */
 	const contextPath = "${pageContext.request.contextPath}";
@@ -150,11 +171,13 @@
 	    	$(this).css("color", "black");
 	         $(this).html(plusImg);
 	        loadHide();	        
+	        $(".Wrap-Search").css("display", "none");
 	        $(".dropdown-btn-hide").closest("a").hide();
 	    } else {
 	         $(this).html(minusImg);
 	        $(this).css("color", "#009b77");
 	        loadList();
+	        $(".Wrap-Search").css("display", "inline-block");
 	        $(".dropdown-btn-hide").closest("a").show();
 	    }
 	}
