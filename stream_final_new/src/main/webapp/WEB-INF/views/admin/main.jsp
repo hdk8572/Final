@@ -216,16 +216,16 @@
 			htmlList+=`
 			<ul>
 				<li class="col-lg-3 admin-cen admin-deptname">
-					<div>\${result.deptname}</div>
+					<div><span>\${result.deptname}</span></div>
 				</li>
 				<li class="col-lg-3 admin-cen admin-usercount">
-					<div>\${result.ucnt}</div>
+					<div><span>\${result.ucnt}</span></div>
 				</li>
 				<li class="col-lg-3 admin-cen admin-projectcount">
-					<div>\${result.pcnt}</div>
+					<div><span>\${result.pcnt}</span></div>
 				</li>
 				<li class="col-lg-3 admin-cen admin-taskcount">
-					<div>\${result.tcnt}</div>
+					<div><span>\${result.tcnt}</span></div>
 				</li>
 			</ul>
 			`
@@ -237,16 +237,16 @@
 		htmlList+=`
 			<ul>
 			<li class="col-lg-3 admin-cen">
-				<div>합계</div>
+				<div><span>합계</span></div>
 			</li>
 			<li class="col-lg-3 admin-cen">
-				<div>\${totalUcnt}</div>
+				<div><span>\${totalUcnt}</span></div>
 			</li>
 			<li class="col-lg-3 admin-cen">
-				<div>\${totalPcnt}</div>
+				<div><span>\${totalPcnt}</span></div>
 			</li>
 			<li class="col-lg-3 admin-cen">
-				<div>\${totlaTcnt}</div>
+				<div><span>\${totlaTcnt}</span></div>
 			</li>
 			</ul>
 			`

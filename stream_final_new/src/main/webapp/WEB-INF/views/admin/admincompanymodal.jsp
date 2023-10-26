@@ -25,22 +25,22 @@
 							<div class="jm-companydetail">
 								<ul>
 									<li class="col-lg-3 admin-cen admin-deptname">
-										<div>부서명</div>
+										<div><span>부서명</span></div>
 									</li>
 									<li class="col-lg-3 admin-cen admin-usercount">
-										<div>사원수</div>
+										<div><span>사원수</span></div>
 									</li>
 									<li class="col-lg-3 admin-cen admin-projectcount">
-										<div>프로젝트수</div>
+										<div><span>프로젝트수</span></div>
 									</li>
 									<li class="col-lg-3 admin-cen admin-taskcount">
-										<div>업무수</div>
+										<div><span>업무수</span></div>
 									</li>
 								</ul>
 							</div>
 							<div class="jm-companydetail admin-result">
 							</div>
-							<hr>
+							<br><br>
 							<div class="admin-chart-pie">
 							</div>
 						</div>
