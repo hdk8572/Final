@@ -29,113 +29,33 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 <%@ include file="/WEB-INF/views/calendar/updatecalmodal.jsp" %>
 
 
-<!-- 참가자들을 input에 추가한다. -->
+
+
+<!-- 제목 유효성 검사  -->
 <script>
-	document.getElementById("calmemberlist").addEventListener("change", function() {
-		if(this.selectedIndex == 0){
-			return;
-		}
-	    var selectedText = this.options[this.selectedIndex].text;
-	    var selectedValue = this.options[this.selectedIndex].value;
-	    //document.getElementById("calmemberinput").value = selectedValue; // 하나가 아니기때문에 id = "calmemberinput" 안됨
-		var checkSameUserId = false;
-	    $(".attenduserid-item").each(function(idx, thisItem){
-	    	itemValue = $(thisItem).children("[name=attenduseridArr]").val();
-	    	console.log(itemValue);
-	    	if(selectedValue == itemValue){
-	    		alert("이미 참석자에 등록된 사원입니다.");
-	    		checkSameUserId = true;
-	    		return false;
-	    	}
-	    });
-	    if(checkSameUserId == false){  //등록된 적 없는 사원일 경우 추가
-		    var htmlVal='';
-		    htmlVal+='<div class="attenduserid-item">';
-		    htmlVal+='<input type="text" class="form-control-userid" placeholder="참가자" readonly value="'+selectedText+'">';
-		    htmlVal+='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg>';
-		    htmlVal+='<input type="hidden" name="attenduseridArr" value="'+selectedValue+'" >';
-		    htmlVal+='</div>';
-		    
-		    $("#attenduserid-wrap").append(htmlVal);
-		    
-		    //참가자 svg 누르면 삭제됨
-		    $(".feather.feather-delete.align-middle.me-2").click(function() {
-		 		console.log("add삭제");
-		 		$(this).closest(".attenduserid-item").remove();
-		 	});
-	    }
-	});
+document.addEventListener("DOMContentLoaded", function() {
+    var addTitle = document.getElementById("title");
+
+    function validateTitle() {
+        var titleValue = addTitle.value;
+
+        if (!titleValue) {
+            alert("제목을 입력해주세요.");
+        } else if (titleValue.length > 20) {
+            alert("제목은 20자 이내여야 합니다.");
+        }
+    }
+
+    addTitle.addEventListener("input", validateTitle);
+
+    document.getElementById("addcalmodal").addEventListener("submit", function(event) {
+        validateTitle(); // 폼 제출 시 다시 한 번 검사
+        if (addTitle.value === "") {
+            event.preventDefault(); // 제목이 비어있을 때 폼 제출 방지
+        }
+    });
+});
 </script>
-
-<!-- 참가자 list select option  -->
-<script>
-	function getMemberProjectListHandler(thisElement){
-		console.log("calendar_pno: "+calendar_pno);
-		console.log("logined_userid: "+logined_userid);
-		$.ajax({
-			url:'${pageContext.request.contextPath}/member/memberProjectList',
-			type:"get",
-			data : {
-				pno : calendar_pno,
-				userid : logined_userid
-			},
-			dataType: "json",
-			success: memberView,
-			error:memberError
-		});
-	}
-	
-	function memberView(data){
-		console.log(data)
-		console.log("성공하였습니다.")
-		var listHtml = '<option value="">참가자 추가</option>';
-		for (var i=0; i<data.length; i++){
-			var mname = data[i];
-			listHtml += `<option value="\${mname.userid}">\${mname.mname}</option>`; //data를 뿌리고 그걸 option에다가 넣어줌 //value=userid
-		}
-		$("#calmemberlist").html(listHtml);
-	}
-	function memberError(request, status, error){
-		console.log("오류발생!!!!!!!!!!!");
-		console.log(request);
-		console.log(status);
-		console.log(error);
-		
-		var listHtml = '<option value="">참가자 추가</option>';
-		listHtml += `<option selected>해당하는 이름이 없습니다.</option>`;
-		$("#calmemberlist").html(listHtml);
-	}
-</script>
-
-<!-- 제목  -->
-<script type="text/javascript">
-	document.getElementById("addcalmodal").addEventListener("submit", function (event) {
-		
-	    var title = document.getElementById("title").value;
-	    
-	    if (!title) {
-	        alert("제목을 입력해주세요.");
-	        event.preventDefault();
-	    }
-	});
-</script>
-
-<!-- 제목 유효성검사  -->
-<script>
-	document.addEventListener("DOMContentLoaded", function() {
-		
-		var addTitle= document.getElementById("title");
-
-		function addCalTitleLength() {
-			var titleValue = addTitle.value;
-		
-			if(titleValue.length > 20) {
-				alert("제목은 20자 이내여야 합니다.");
-			}
-		}
-		addTitle.addEventListener("input", addCalTitleLength);
-	});
-</script> 
 
 <!-- 내용 유효성검사  -->
 <script>
