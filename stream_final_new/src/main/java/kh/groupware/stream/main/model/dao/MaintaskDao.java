@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import kh.groupware.stream.main.model.dto.MaintaskSortVo;
 import kh.groupware.stream.member.model.vo.MemberSimpleVo;
-import kh.groupware.stream.member.model.vo.MemberVo;
 import kh.groupware.stream.project.model.vo.ProjectVo;
 import kh.groupware.stream.ptask.model.vo.PtaskVo;
 

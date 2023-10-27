@@ -95,6 +95,11 @@
 								<line x1="12" y1="16" x2="12" y2="12"></line>
 						  <line x1="12" y1="8" x2="12.01" y2="8"></line></svg><span
 							class="align-middle">공지사항</span> </a></li>
+							<li class="sidebar-item">
+					    <div class="parent d-flex justify-content-center align-items-center text-center">
+					        <div id="time" class="text-light"></div>
+					    </div>
+					</li>
 				</c:if>
 				<c:if test="${authority.authority eq 'ROLE_A' }">
 					<li class="sidebar-item"><a class="sidebar-link"
@@ -107,6 +112,11 @@
 								<line x1="12" y1="16" x2="12" y2="12"></line>
 						  <line x1="12" y1="8" x2="12.01" y2="8"></line></svg><span
 							class="align-middle">공지사항</span> </a></li>
+							<li class="sidebar-item">
+					    <div class="parent d-flex justify-content-center align-items-center text-center">
+					        <div id="time" class="text-light"></div>
+					    </div>
+					</li>
 				</c:if>
 			</c:forEach>
 		</ul>
