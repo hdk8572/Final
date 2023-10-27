@@ -79,6 +79,31 @@
 					<div class="project-header-group">
 						<h2 style="font-weight: bold; position: relative; left: -12px;">${projectPname.pname}</h2>
 					</div>
+					<div class="wrap">
+						<div class="box">
+							<svg xmlns="http://www.w3.org/2000/svg" id="infoPcontent"
+								width="24" height="24" viewBox="0 0 24 24" fill="none"
+								stroke="currentColor" stroke-width="2" stroke-linecap="round"
+								stroke-linejoin="round"
+								class="feather feather-alert-circle align-middle me-2 pcontent">
+								<circle cx="12" cy="12" r="10"></circle>
+								<line x1="12" y1="8" x2="12" y2="12"></line>
+								<line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+						</div>
+						<div class="tooltip">
+							<div>
+								<div class="tooltip-title">
+									<span>프로젝트 내용</span>
+								</div>
+								<div class="tooltip-contents">
+									<div>${projectPname.pcontent}</div>
+								</div>
+								<div class="tooltip-date">
+									<div>${projectPname.pstartdate}-${projectPname.penddate}</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="w3-bar tabBar">
 					<button class="w3-bar-item w3" onclick="openTab('TabTask')"

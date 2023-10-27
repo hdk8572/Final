@@ -64,6 +64,7 @@
     color: #6c757d;
     position: absolute;
     margin: 10px 0px 0px 5px;
+    
 }
 /*  */
 
@@ -100,7 +101,7 @@
     border-bottom: 8px solid #646FD4;
   } 
   .wrap:hover .tooltip{display: block;}
-  
+
 .tooltip-title {
 	color: #939ba2;
 	font-size: .925rem;
