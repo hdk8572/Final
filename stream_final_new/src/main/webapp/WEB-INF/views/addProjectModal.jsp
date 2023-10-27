@@ -175,6 +175,8 @@
 		var addedmember = $(".form-select.mb-3.addProject.selectedMember option:checked").text();
 		console.log("selectedVal :"+selectedVal);
 		console.log("addedmember :"+addedmember);
+		var thisElement = $(thisElement).val();
+		console.log($(thisElement));
 		var memberaddedHtml = "";
 			memberaddedHtml+=`
 				<div class='comanyMember'>
