@@ -172,19 +172,7 @@
 	z-index: 5;
 	border: 1px solid #009b77;
 }
-.tooltip:after{
-	display: block; 
-	content: ''; 
-	position: absolute;
-	top: -7px; 
-	left:170px; 
-	width: 0px; 
-	height: 0px; 
-	border-top: 8px solid none; 
-	border-left: 8psolid transparent; 
-	border-right: 8px solid transparent; 
-	border-bottom: 8px solid #646FD4;
-} 
+ 
 .wrap:hover .tooltip{display: block;}
 
 .tooltip-title {
