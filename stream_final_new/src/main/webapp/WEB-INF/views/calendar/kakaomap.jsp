@@ -2,7 +2,10 @@
 	pageEncoding="UTF-8"%>
 
 
-		<div class="map" id="map"></div>
+	
+
+
+
 		
 <script>
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -36,7 +39,7 @@
 	// showMap 함수 정의
 	function showMap() {
 	    var address = $('#splace').val(); // 입력된 주소 가져오기
-	    
+	   
 	// 지도를 생성합니다    
 	var map = new kakao.maps.Map(mapContainer, mapOption);
 	

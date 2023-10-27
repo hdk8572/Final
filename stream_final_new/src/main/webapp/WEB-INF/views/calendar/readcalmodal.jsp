@@ -127,7 +127,7 @@
 	function readshowMap() {
 		
 		var splaceText = $('#readcalmodal #splace').text().trim();
-		if(!splaceText){
+		if(!splaceText || "장소 미지정"){
 			mapContainer_readmodal.innerHTML ='';
 			mapContainer_readmodal.style.display ='none';
 			return;

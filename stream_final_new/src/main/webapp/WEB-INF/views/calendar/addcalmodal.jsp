@@ -58,6 +58,7 @@
 							</div>
 							<!-- 지도 -->
 							<div class="map-hidden">
+									<div class="map" id="map"></div>
 								<%@ include file="/WEB-INF/views/calendar/kakaomap.jsp"%>
 							</div>
 							
@@ -78,6 +79,19 @@
 		</div>
 	</div>
 </div>
+
+<!-- <script>
+function hideKakaoMap() {
+    var splaceText = $('.form-control.addplace').val();
+    if (splaceText == "장소 미지정") {
+		$('.map').css("display", 'none');
+		console.log(splaceText);
+    }
+}
+
+	$('#addcalmodal #splace').on("input", hideKakaoMap);
+	hideKakaoMap();
+</script> -->
 
 <!-- 참가자들을 input에 추가한다. -->
 <script>
@@ -201,8 +215,6 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 
-
-
 <!-- 날짜 시작일-종료일 유효성검사  -->
 <script>
 	//id='start','end'
@@ -230,20 +242,16 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <script>
-    //addcalmodal 초기화!!!
-	function resetcalmodal(){
+	//일정 추가 모달 초기화
+	$('#addcalmodal').on('hidden.bs.modal', function() {
 		var kakaoaddmap = document.getElementById('map');
 		$(".attenduserid-item").remove();
 		kakaoaddmap.innerHTML =''; 
 		$('.map-hidden').css("display", 'none'); 
 		$('#addcalmodal #splace').val(''); 
-
-		$('#addcalmodal .title').val('');
-		$('#addcalmodal #start').val(''); 
-		$('#addcalmodal #end').val(''); 
-		$('#addcalmodal .attenduserid-item').each(function(){
-			$(this).text('');
-		});
-		$('#addcalmodal #summernote-addcalmodal').summernote('code', '') 
-	}
+		
+		$(".addcalmodal-frm")[0].reset();
+		$(".attenduserid-item").remove();
+		$('#summernote-addcalmodal').summernote('code', '');
+	})
 </script>

@@ -12,7 +12,7 @@ function loadCalendarHandler() {
 	// calendar date get from db 
 	$.ajax({
 		//동기 async : false, 
-		url: '${pageContext.request.contextPath}/member/pcalselectlist'	
+		 url: '${pageContext.request.contextPath}/member/pcalselectlist'	
 		,data: { startdate : '2023-09-12', pno: '${pno}', userid:'${principal.username}' } //pcalselectlist로 정보보냄
 		,dataType : "json"
 		,success: function(result){	//요청이 성공적으로 완료될 때 실행할 콜백 함수를 정의 //console에 정보를 뿌림
@@ -29,7 +29,7 @@ function loadCalendarHandler() {
 	
 	function makeFullCalendar ( eventsDataArr ){	//makeFullCalendar 이 함수는 ajax 요청에서 받은 이벤트 데이터 배열 eventDataArr을 인자로 받는다.
 		calendar = new FullCalendar.Calendar(calendarEl, {
-			height: '900px',  // 캘린더 칸 높이 설정(이거 안하고 more 코드 작성하면 칸 크기가 중구난방임)
+			height: '900px',  // 캘린더 칸 높이 설정
 	        expandRows: true, // 화면에 맞게 높이 재설정
 			headerToolbar : { // 헤더에 표시할 툴 바
 				start : 'prev next today',
@@ -41,13 +41,13 @@ function loadCalendarHandler() {
 				return date.date.year + '년 '
 						+ (parseInt(date.date.month) + 1) + '월';
 			},
-			//initialDate: '2021-07-15', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
-			selectable : true, // 달력 일자 드래그 설정가능
+			//initialDate: '2021-07-15', // 초기 날짜 설정(설정하지 않으면 오늘 날짜가 보인다.)
+			//locale: 'ko', // 한국어 설정 
+			selectable : true, 
 			droppable : true,
-			editable : true,
+			editable : false,	// 달력 일자 드래그 설정가능
 			nowIndicator : true, // 현재 시간 마크
 			dayMaxEvents : true, // 일정 more 
-			//locale: 'ko', // 한국어 설정 
 			
 			events : eventsDataArr
 		 	,
@@ -68,22 +68,19 @@ function loadCalendarHandler() {
 				console.log(info.event.title);
 				var event = info.event; //fullcalendar 이벤트 객체의 일부
 				
-				console.log(info.event.extendedProps.sno); //sno 찍어보기
+				console.log(info.event.extendedProps.sno);
 				
-				//참가자 list
-				var htmlval = ''; //그리고 여기도 sno로 채워짐
+				//참가자 list readcalmodal
+				var htmlval = ''; //sno
 				for(var i=0; i<info.event.extendedProps.attenduseridList.length; i++){
 					htmlval += '<div class="attenduseridItem" data-attenduserid="'+info.event.extendedProps.attenduseridList[i].userid+'">'+info.event.extendedProps.attenduseridList[i].mname+'</div>';
 				}
-				$("#readcalmodal.modal  #attenduseridList").html(htmlval); //여기서 sno가 들어옴
+				$("#readcalmodal.modal  #attenduseridList").html(htmlval); //sno
 				
-				//TODO 찍어봐라
-				console.log("info.event 구분짓는 id는 defId !!!!!!!");
 				console.log(info.event._def.defId);
 				eventClick_defId = info.event._def.defId;   // 전역변수 eventClick_defId에 캘린더의 고유 id를 저장해두고.. 수정이나 삭제시 적용 //선택한 이벤트에 클릭 이벤트 적용
 				
-				//캘린더 api에 있는 거 말고 내가 추가한 것들은 extendedProps를 써줘야 한다.(api)
-				
+				//캘린더 api에 있는 거 말고 내가 추가한 것들은 extendedProps를 써줘야 한다.
 				$("#readcalmodal.modal  #sno").val(info.event.extendedProps.sno);
 				$("#readcalmodal.modal  #title").html(info.event.title); 
 				$("#readcalmodal.modal  #userid").html(info.event.extendedProps.userid); 
