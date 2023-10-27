@@ -87,8 +87,8 @@
 											<input type="checkbox" class="check_btn" name="member"
 											value="${viewMemmber.userId}" style="margin: 10px"
 											<c:if test="${viewMemmber.userId == principal.username}">
-                checked
-            </c:if>>
+                								checked
+           									 </c:if>>
 											<label for="check_btn_${viewMember.userId}"><span>${viewMemmber.mname}</span></label>
 										</li>
 									</c:forEach>
