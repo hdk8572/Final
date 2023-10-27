@@ -359,6 +359,28 @@ form {
 	cursor: pointer;
 }
 
+.replyList {
+	height: 480px;
+    overflow-y: scroll;
+}
+
+.replyList::-webkit-scrollbar {
+	height: 480px;
+    overflow-y: scroll;
+    width: 5px;
+   
+}
+
+.replyList::-webkit-scrollbar-thumb {
+	height: 30%;
+    background: #34343482;
+    border-radius: 10px;
+}
+
+.replyList::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
 .input.tcontent {
     border: 1px solid #ced4da;
 }
