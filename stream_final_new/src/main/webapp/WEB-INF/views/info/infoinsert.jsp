@@ -25,12 +25,11 @@
 		<div class="main">
 			<%@ include file="/WEB-INF/views/headernavbar.jsp"%>
 			<main class="content">
-			<div class="row" style="margin: 0 25px;">
+			<div class="row" >
 				<div class="col-lg-12">
-					<h1 class="page-header">글쓰기</h1>
+					<h1 class="h3 mb-3">글쓰기</h1>
 				</div>
 
-				<hr>
 			</div>
 			<div class="tablewrapper">
 			<form action="/stream/info" method="get">
@@ -50,7 +49,7 @@
 							<td class="y_insert_td">작성자</td>
 							<td class="y_insert_td"><input type="text"
 								class="form-control" value="${name.mname}" id="iwriter"
-								name="iwriter" readonly></td>
+								name="iwriter" readonly style="background-color: white;"></td>
 						</tr>
 						<tr class="y_insert_tr">
 							<td class="y_insert_td">내용</td>

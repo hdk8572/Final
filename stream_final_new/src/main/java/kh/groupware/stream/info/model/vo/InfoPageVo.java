@@ -11,17 +11,24 @@ import org.springframework.stereotype.Component;
 		private int cntPerPage;	
 		private int lastPage;	
 		private int start;		
-		private int end;		
+		private int end;
+		private String userId;
 		private int cntPage=5;
 		
-		
-		
-		
+
+		public String getUserId() {
+			return userId;
+		}
+
+		public void setUserId(String userId) {
+			this.userId = userId;
+		}
+
 		@Override
 		public String toString() {
-			return "PagingVo [nowPage=" + nowPage + ", startPage=" + startPage + ", endPage=" + endPage + ", total=" + total
-					+ ", cntPerPage=" + cntPerPage + ", lastPage=" + lastPage + ", start=" + start + ", end=" + end
-					+ ", cntPage=" + cntPage + "]";
+			return "InfoPageVo [nowPage=" + nowPage + ", startPage=" + startPage + ", endPage=" + endPage + ", total="
+					+ total + ", cntPerPage=" + cntPerPage + ", lastPage=" + lastPage + ", start=" + start + ", end="
+					+ end + ", userId=" + userId + ", cntPage=" + cntPage + "]";
 		}
 
 		public InfoPageVo() {

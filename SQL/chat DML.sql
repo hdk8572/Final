@@ -528,8 +528,27 @@ select *
 			from (select *
 					from info order by ino desc) i);
 select * from users;
+SELECT ino, userid, idate, ititle, iwriter
+    		FROM info
+    		JOIN users USING (userid)
+    		WHERE ccode = (SELECT ccode FROM users WHERE userid = 'C004@stream.com');
+            
+            
+select ino, userid, idate, ititle, iwriter
+	from (select rownum rn, i.*
+			from (select *
+					from info order by ino desc) i)
+                    JOIN users USING (userid)
+    		WHERE ccode = (SELECT ccode FROM users WHERE userid = 'C004@stream.com') and (rn between '1' and '5);
+            
+            
+select * from chatmember;
 delete from chatroom where roomid=#{roomid};
 select * from chatroom;
+SELECT DISTINCT *
+		FROM CHATMEMBER
+		JOIN CHATROOM USING(ROOMID)
+		WHERE chatmember.userid='streamjj1@naver.co.kr';
 SELECT DISTINCT *
 		FROM CHATMEMBER
 		JOIN CHATROOM USING(ROOMID)
@@ -538,6 +557,10 @@ SELECT DISTINCT *
 FROM CHATMEMBER
 JOIN CHATROOM USING (ROOMID)
 WHERE chatmember.userid = 'streamjj1@naver.co.kr';
+	SELECT ino, userid, idate, ititle, iwriter
+    		FROM info
+    		JOIN users USING (userid)
+    		WHERE ccode = (SELECT ccode FROM users WHERE userid = 'streamjj1@naver.co.kr') and (rn between #{start} and #{end})
 SELECT userId, mname
 	FROM users
 	WHERE (userId = 'streamjj1@naver.co.kr' or ccode = (SELECT ccode FROM users WHERE userId = 'streamjj1@naver.co.kr')) and enabled =1 and NOT authority ='ROLE_C';

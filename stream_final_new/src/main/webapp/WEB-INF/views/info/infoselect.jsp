@@ -33,9 +33,8 @@
 			<div class="row" >
 			<div>
 				<div class="col-lg-12">
-					<h1 class="page-header">글읽기</h1>
+					<h1 class="h3 mb-3">글읽기</h1>
 				</div>
-				<hr>
 				<input type="hidden" id="y_emp_dCode" value="">
 			</div>
 			<div style="margin-left: 70px;">
