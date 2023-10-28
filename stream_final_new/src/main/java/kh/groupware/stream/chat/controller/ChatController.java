@@ -30,11 +30,11 @@ public class ChatController {
 	
 
 	@GetMapping(value = "/member/rooms")
-	public ModelAndView rooms(ModelAndView mv, Principal principal) throws Exception {
+	public ModelAndView mainRooms(ModelAndView mv, Principal principal) throws Exception {
 		String userId = principal.getName();
 			
 		mv.setViewName("chatting/rooms");
-		mv.addObject("list", service.findAllRooms(userId));
+		mv.addObject("list", service.FindAllRooms(userId));
 		mv.addObject("viewMemmber", service.ViewMember(userId));
 		return mv;
 	}
@@ -43,15 +43,15 @@ public class ChatController {
 	public ModelAndView getRoom(String roomId, ModelAndView mv, Principal principal) {
 		String userId = principal.getName();
 		mv.addObject("ID", userId);
-		mv.addObject("room", service.findRoomById(roomId));
+		mv.addObject("room", service.FindRoomById(roomId));
 		mv.addObject("viewChat", service.ViewChat(roomId));
-		mv.addObject("name", service.findWriter(userId));
+		mv.addObject("name", service.FindWriter(userId));
 		mv.setViewName("chatting/room");
 		
 		return mv;
 	}
 	@PostMapping(value = "/member/rooms/do")
-	public String deletchat(@ModelAttribute("Id") String Id,HttpServletRequest request, Principal principal,ChatRoomVo vo) {
+	public String deleteChat(@ModelAttribute("Id") String Id,HttpServletRequest request, Principal principal,ChatRoomVo vo) {
 		String userId = principal.getName();
 		vo.setUserId(userId);
 		vo.setRoomId(Id);
@@ -60,14 +60,14 @@ public class ChatController {
 		return "redirect:/member/rooms";
 	}
 	@PostMapping(value = "/member/room")
-	public String create(@RequestParam String roomName, @RequestParam String[] member, Principal principal,
+	public String createChat(@RequestParam String roomName, @RequestParam String[] member, Principal principal,
 			RedirectAttributes rttr,HttpServletRequest request,ChatRoomVo vo) {
 		String userId = principal.getName();
 		String[] sizes = request.getParameterValues("member");
 		service.AddChatRoom(roomName, userId);
 		if(sizes != null) {
 			for(String size : sizes) {
-				service.memberInsert(size); 			
+				service.MemberInsert(size); 			
 			}
 		}
 		rttr.addFlashAttribute("roomName1", roomName);

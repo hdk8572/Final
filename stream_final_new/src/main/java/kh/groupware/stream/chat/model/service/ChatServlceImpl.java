@@ -24,41 +24,38 @@ public class ChatServlceImpl implements ChatService{
 		return dao.MessageInsert(vo);
 	}
 	@Override
-	public List<ChatRoomVo> findAllRooms(String userId){
-		return dao.findAllRooms(userId);
+	public List<ChatRoomVo> FindAllRooms(String userId){
+		return dao.FindAllRooms(userId);
 	}
 	@Override
 	public int AddChatRoom(String roomName,String userId) {
 		return dao.AddChatRoom(roomName,userId);
 	}
 	@Override
-	public ChatRoomVo findRoomById(String roomId) {
-		return dao.findRoomById(roomId);
+	public ChatRoomVo FindRoomById(String roomId) {
+		return dao.FindRoomById(roomId);
 	}
 	@Override
 	public List<ChatRoomVo> ViewMember(String userId) {
 		return dao.ViewMember(userId);
 	}
 	@Override
-	public ChatRoomVo findWriter(String userId) {
-		return dao.findWriter(userId);
+	public ChatRoomVo FindWriter(String userId) {
+		return dao.FindWriter(userId);
 	}
 	@Override
-	public List<ChatRoomVo> findRooms(String userId) {
-		return dao.findRooms(userId);
+	public List<ChatRoomVo> FindRooms(String userId) {
+		return dao.FindRooms(userId);
+	}
+
+	@Override
+	public int MemberInsert(String userId) {
+		return dao.MemberInsert(userId);
 	}
 	@Override
-	public ChatRoomVo lastMessage(String roomId) {
-		return dao.lastMessage(roomId);
-	}
-	@Override
-	public int memberInsert(String userId) {
-		return dao.memberInsert(userId);
-	}
-	@Override
-	public  List<ChatRoomVo> findname() {
+	public  List<ChatRoomVo> FindName() {
 		
-		return dao.findname();
+		return dao.FindName();
 	}
 	@Override
 	public int ChatDelete(ChatRoomVo vo) {
