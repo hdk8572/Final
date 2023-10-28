@@ -35,7 +35,7 @@
 .mt-1.mb-3 {
 	font-weight: 350;
     font-size: 30px;
-    display: flex;	
+    display: inline-block;	
 }
 
 .form-control:disabled, .form-control[readonly] {
@@ -63,7 +63,7 @@
 .feather.feather-alert-circle.align-middle.me-2.pcontent {
     color: #6c757d;
     position: absolute;
-    margin: 10px 0px 0px 5px;
+    margin: 15px 0px 0px 5px;
     
 }
 /*  */
@@ -71,11 +71,11 @@
   .wrap {
     position: relative; 
     display: inline-block;
-    cursor: auto;
+    // cursor: auto;
   }
   .tooltip{
     position:absolute; 
-    left:-150px; 
+    left:0	; 
     top:50px; 
     background: #fff; 
     padding: 10px; 
@@ -88,19 +88,8 @@
     border: 1px solid #009b77;
   }
   .tooltip:after{
-    display: block; 
-    content: ''; 
-    position: absolute;
-    top: -7px; 
-    left:170px; 
-    width: 0px; 
-    height: 0px; 
-    border-top: 8px solid none; 
-    border-left: 8psolid transparent; 
-    border-right: 8px solid transparent; 
-    border-bottom: 8px solid #646FD4;
   } 
-  .wrap:hover .tooltip{display: block;}
+  .wrap #infoPcontent:hover ~ .tooltip {display: block;}
 
 .tooltip-title {
 	color: #939ba2;
