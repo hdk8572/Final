@@ -52,13 +52,18 @@
 							<ul style="list-style: none;padding: 0">
 								<c:forEach var="room" items="${list}">
 									<div class="room-link">
-										
+										<form action="/stream/member/rooms/do" method="post">
 										<li class="roomlist"
 											style="display: flex; align-items: center;">
 									<div class="stat text-primary" style="font-size: 0.7em; background-color: #009b77;color: white;">${room.mname}</div>	<a class="roomnamelist" href="<c:url value='/member/room'><c:param name='roomId' value='${room.roomId}' /></c:url>"
 											style="display: inline-block;padding:15px ;width: 320px; overflow: hidden; white-space: nowrap; text-decoration: none;">${room.roomName}</a>
-										
-										</li>
+										<input type="hidden" name="Id" value="${room.roomId}">
+											<button type="submit" class="delbtn" style="border: 0 ;background-color:#f5f7fb ;" onclick="confirmDelete()">
+													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete align-middle me-2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg>
+													</button>
+
+											</li>
+										</form>
 									</div>
 								</c:forEach>
 							</ul>
@@ -121,6 +126,7 @@
 	        }
 	        
 	    });
+	    
 	});
 
     	$("#s_chat_list").click(function() {
@@ -142,6 +148,7 @@
     		$("#s_emp_list").attr('class', 'btn btn-primary');
     		$("#s_chat_list").attr('class', 'btn btn-light');
     	});
+    	
     	function showAlert(message) {
     	    var alertBox = $("<div>").text(message).addClass("alert-box");
     	    $("body").append(alertBox);
@@ -149,6 +156,14 @@
     	    setTimeout(function() {
     	        alertBox.remove();
     	    }, 3000);
+    	}
+    	function confirmDelete() {
+    	    var confirmation = confirm("채팅방을 나가시겠습니까?");
+    	    if (confirmation) {
+
+    	        document.querySelector('form').submit();
+    	    }else
+    	    	 event.preventDefault();
     	}
     </script>
 </body>

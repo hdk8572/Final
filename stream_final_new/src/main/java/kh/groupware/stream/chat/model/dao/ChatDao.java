@@ -52,7 +52,7 @@ public class ChatDao {
 	public List<ChatRoomVo> findname() {
 		return sqlSession.selectList("chat.findname");
 	}
-	public int ChatDelete(String roomId) {
-		return sqlSession.delete("chat.chatDelete",roomId);
+	public int ChatDelete(ChatRoomVo vo) {
+		return sqlSession.delete("chat.chatDelete",vo);
 	}
 }

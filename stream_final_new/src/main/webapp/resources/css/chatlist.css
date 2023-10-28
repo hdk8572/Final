@@ -33,7 +33,6 @@
   background-color: rgba(0,0,0,0.4);
 }
 
-
 .modal-content {
   background-color: #f5f7fb;
   padding: 0px;
@@ -250,7 +249,9 @@ form {
 		padding: 0px
 	}
 	.roomlist:hover{
-		background-color: #b2b2b2;
+		border: solid 1px #d4d4d4; 
+		border-radius: 5px;
+		
 	}
 	.s_modal_menu_box {
 		width: 100%;

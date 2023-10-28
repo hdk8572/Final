@@ -50,12 +50,15 @@ public class ChatController {
 		
 		return mv;
 	}
-//	@PostMapping(value = "/member/rooms")
-//	public String deletchat(@RequestParam String ino,HttpServletRequest request) {
-//		String size= request.getParameter("ino");
-//		service.ChatDelete(size);
-//		return "redirect:/member/rooms";
-//	}
+	@PostMapping(value = "/member/rooms/do")
+	public String deletchat(@ModelAttribute("Id") String Id,HttpServletRequest request, Principal principal,ChatRoomVo vo) {
+		String userId = principal.getName();
+		vo.setUserId(userId);
+		vo.setRoomId(Id);
+
+		service.ChatDelete(vo);
+		return "redirect:/member/rooms";
+	}
 	@PostMapping(value = "/member/room")
 	public String create(@RequestParam String roomName, @RequestParam String[] member, Principal principal,
 			RedirectAttributes rttr,HttpServletRequest request,ChatRoomVo vo) {
