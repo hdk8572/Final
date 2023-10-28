@@ -314,7 +314,7 @@
 	function updateshowMap() {
 		
 		var splaceTextupdate = $('#updatecalmodal #splace').text().trim();
-		if(!splaceTextupdate){
+		if(!splaceTextupdate || splaceTextupdate == "장소 미지정"){
 			mapContainer_updatemodal.innerHTML ='';
 			mapContainer_updatemodal.style.display ='none';
 			return;

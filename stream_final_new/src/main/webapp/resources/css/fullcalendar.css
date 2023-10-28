@@ -18,7 +18,8 @@
 	color: #000000;
 }
 .fc-icon.fc-icon-chevron-right::before,
-.fc-icon.fc-icon-chevron-left::before  {
+.fc-icon.fc-icon-chevron-left::before,
+.fc-popover-close.fc-icon.fc-icon-x::before{
     font-family: inherit; /* 부모 요소 폰트 스타일을 적용시킴 */
 }
 
@@ -27,3 +28,4 @@
 	border-radius: 10px;
 	width: 55px;
 }
+

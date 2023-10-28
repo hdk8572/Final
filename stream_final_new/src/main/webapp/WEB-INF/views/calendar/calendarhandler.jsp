@@ -43,9 +43,9 @@ function loadCalendarHandler() {
 			},
 			//initialDate: '2021-07-15', // 초기 날짜 설정(설정하지 않으면 오늘 날짜가 보인다.)
 			//locale: 'ko', // 한국어 설정 
-			selectable : true, 
-			droppable : true,
-			editable : false,	// 달력 일자 드래그 설정가능
+			selectable : true, 	// 날짜 선택
+			droppable : false,	// 외부 이벤트 끌어오기
+			editable : true,	// 달력 일자 드래그 설정
 			nowIndicator : true, // 현재 시간 마크
 			dayMaxEvents : true, // 일정 more 
 			
@@ -77,8 +77,8 @@ function loadCalendarHandler() {
 				}
 				$("#readcalmodal.modal  #attenduseridList").html(htmlval); //sno
 				
-				console.log(info.event._def.defId);
-				eventClick_defId = info.event._def.defId;   // 전역변수 eventClick_defId에 캘린더의 고유 id를 저장해두고.. 수정이나 삭제시 적용 //선택한 이벤트에 클릭 이벤트 적용
+				console.log(info.event.calId);
+				eventClick_defcalId = info.event.calId;   // 전역변수 eventClick_defId에 캘린더의 고유 id를 저장해두고.. 수정이나 삭제시 적용 //선택한 이벤트에 클릭 이벤트 적용
 				
 				//캘린더 api에 있는 거 말고 내가 추가한 것들은 extendedProps를 써줘야 한다.
 				$("#readcalmodal.modal  #sno").val(info.event.extendedProps.sno);

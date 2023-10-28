@@ -11,7 +11,7 @@
 				<div class="card pcal">
 					<div class="card-body pcal">
 					<div class="card-header pcalTitle">
-						<h2 class="pcalTitle"><b>일정 작성</b></h2>
+						<h2 class="pcalTitle"><b>일정 등록</b></h2>
 					</div>
 						<form class="addcalmodal-frm" action="${pageContext.request.contextPath}/member/insertpcal" method="post">
 							
@@ -58,7 +58,6 @@
 							</div>
 							<!-- 지도 -->
 							<div class="map-hidden">
-									<div class="map" id="map"></div>
 								<%@ include file="/WEB-INF/views/calendar/kakaomap.jsp"%>
 							</div>
 							
@@ -79,19 +78,6 @@
 		</div>
 	</div>
 </div>
-
-<!-- <script>
-function hideKakaoMap() {
-    var splaceText = $('.form-control.addplace').val();
-    if (splaceText == "장소 미지정") {
-		$('.map').css("display", 'none');
-		console.log(splaceText);
-    }
-}
-
-	$('#addcalmodal #splace').on("input", hideKakaoMap);
-	hideKakaoMap();
-</script> -->
 
 <!-- 참가자들을 input에 추가한다. -->
 <script>
@@ -176,24 +162,18 @@ function hideKakaoMap() {
 <!-- 제목 유효성 검사  -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    var addTitle = document.querySelector(".form-control.addtitle"); 
-
-    function validateTitle() {
-        var titleValue = addTitle.value;
-
-        if (!titleValue) {
-            alert("제목을 입력해주세요.");
-        } else if (titleValue.length > 20) {
-            alert("제목은 20자 이내여야 합니다.");
-        }
-    }
-
-    addTitle.addEventListener("input", validateTitle);
+    var addTitle = document.querySelector(".form-control.addtitle");
 
     document.getElementById("addcalmodal").addEventListener("submit", function(event) {
-        validateTitle(); // 폼 제출 시 다시 한 번 검사
-        if (addTitle.value === "") {
-            event.preventDefault(); // 제목이 비어있을 때 폼 제출 방지
+        var titleValue = addTitle.value.trim();
+
+        if (titleValue.length > 20) {
+            event.preventDefault();
+            alert("제목은 20자 이내여야 합니다.");
+            addTitle.value = titleValue.substring(0, 20);
+        } else if (!titleValue) {
+            event.preventDefault();
+            alert("제목을 입력해주세요.");
         }
     });
 });

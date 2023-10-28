@@ -60,7 +60,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 				<main class="content" id="content-calendar">
 					<div class="content-cal">
  						<h2>
-							Calendar
+							전체 캘린더
 						</h2>
 						<div class="container-fluid p-0">
 							<div class="card-header">

@@ -89,13 +89,13 @@
                 type: 'POST',
                 data: {sno: sno},
                 success: function (response) {
-                    if (response === 1) {
+                    if (response == 1) {
                         alert('일정이 삭제되었습니다.');
                         $('#readcalmodal').modal('hide'); 
 
-                        if (eventClick_defId !== 0) {  // eventClick시 클릭된 event를 찾아서 삭제
-                            calendar.getEvents().forEach(function (evt) {
-                                if (evt._def.defId === eventClick_defId) evt.remove();
+                        if (eventClick_defcalId !== 0) {  // eventClick시 클릭된 event를 찾아서 삭제
+                            calendar.getEvents().forEach(function (event) {
+                                if (event.calId == eventClick_defcalId) event.remove();
                             });
                         }
                     } else {
@@ -127,7 +127,7 @@
 	function readshowMap() {
 		
 		var splaceText = $('#readcalmodal #splace').text().trim();
-		if(!splaceText || "장소 미지정"){
+		if(!splaceText || splaceText == "장소 미지정"){
 			mapContainer_readmodal.innerHTML ='';
 			mapContainer_readmodal.style.display ='none';
 			return;
@@ -160,7 +160,6 @@
 					content : '<div style="width:150px;text-align:center;padding:6px 0;">장소</div>'
 				});
 				infowindow.open(map2, marker2);
-		
 			   
 				// 지도가 안 보일 때 넣은 코드(relayout->readcoords 순서로 적어줘야 한다.)
 			    setTimeout(function(){ map2.relayout(); }, 1000); //map2
@@ -170,6 +169,7 @@
 			 
 				// 지도를 표시
 				mapContainer_readmodal.style.display = 'block';
+				
 			} // if
 		});  // cb function
 	}
