@@ -24,7 +24,7 @@
 							    <svg xmlns="http://www.w3.org/2000/svg" id="read-dropdown detailPtask" data-bs-toggle="dropdown" class="feather feather-more-vertical align-middle me-2 detailPtask" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
 							  <ul class="dropdown-menu">
 							    <li><a class="dropdown-item update" href="#">수정</a></li>
-							    <li><a class="dropdown-item hide" href="#">삭제</a></li>
+							    <li><a class="dropdown-item delete" href="#">삭제</a></li>
 							  </ul>
 							</div>
 							<!--  
@@ -74,9 +74,9 @@
 								</div>
 								<div class="form-control detail-content input tcontent"></div>
 								<div class="form-control">
-									<input type="date" id="start" class="form-date" name="tstartdate" required="required" readonly>
+									<input type="date" id="startUpdate" class="form-date" name="tstartdate" required="required" readonly>
 									~
-									<input type="date" id="end" class="form-date" name="tenddate" required="required" readonly>
+									<input type="date" id="endUpdate" class="form-date" name="tenddate" required="required" readonly>
 								</div>
 								<input type="hidden" name="pno">
 								<input type="hidden" name="tno">
@@ -142,12 +142,6 @@
 	
 	
 function replyLoadList(targetTno) {
-	console.log(targetTno);
-	
-	
-	
-	
-	
 	
 	$.ajax({
 		url: "${pageContext.request.contextPath}/member/replyList",
@@ -343,10 +337,8 @@ function makeReplyList(data) {
 <script>
 	
 	$(".dropdown-item.update").on("click", updateFunction);
+	$(".dropdown-item.delete").on("click", deleteTaskAndReply);
 	$(".btn.btn-primary.updatePtask").on("click", applyEditFunction);
-	
-	
-	
 	
 	// <수정> 눌렀을 때 수정창으로 변경
 	function updateFunction() {
@@ -400,6 +392,28 @@ function makeReplyList(data) {
 	}
 	
 	
+	function deleteTaskAndReply() {
+		
+		var confirm_val = confirm("삭제하시겠습니까?");
+		if(confirm_val == true){
+		    <!--- 확인 or yes 버튼을 눌렀을 때 실행 될 함수 구현 --->
+		    $.ajax({
+		    	url:"${pageContext.request.contextPath}/member/deleteTask",
+		    	data: {tno: $("input[name=tno]").val()},
+		    	type: "post",
+		    	dataType: "json",
+		    	success: function(data) {
+		    		$("#detailPtaskModal").modal("hide");
+		    	},
+		    	error: function() {	
+					alert("deleteTaskAndReply에서 에러났습니다.");
+				}
+		    });
+		    loadPtaskList();
+		}else if(confirm_val == false){
+		}
+	}
+	
 	
 	function updateTaskMemberView(data) { // 회사 소속인 참가자 리스트 조회
 		
@@ -423,7 +437,7 @@ function makeReplyList(data) {
 	
 	function applyEditFunction() {
 		
-		if($("#detailPtaskModal .form-control.title").text() == "")
+		if($("#detailPtaskModal .form-control.ttitle").text() == "")
 		{alert("업무명을 입력해주세요!");	return}
 		else if($("#detailPtaskModal #updateTaskMember").val() == "")
 		{alert("업무 담당자를 지정해주세요!");	return}
@@ -461,6 +475,7 @@ function makeReplyList(data) {
 			$.ajax({
 				url: "${pageContext.request.contextPath}/member/updateDetailProject",
 				data: "get",
+				async: false,
 				dataType: "json",
 				data: {
 					pno: $(".Wrap-info [name=pno]").val(),
@@ -474,15 +489,38 @@ function makeReplyList(data) {
 				},
 				success: function() {
 					$("#detailPtaskModal").modal("hide");
+					
 		    	},
 		    	error: function() {	
 				alert("updateDetailProject에서 에러났습니다.");
 			}
 			});
-			loadPtaskList();		    		
+				    		
 		}else if(confirm_val == false){
 		}
-
+		loadPtaskList();	
+	}
+	
+	var startDateInputUpdate = document.getElementById('startUpdate');
+	var endDateInputUpdate = document.getElementById('endUpdate');
+	
+	startDateInputUpdate.addEventListener('change', function() {
+		compareUpdateDates();
+	});
+	
+	endDateInputUpdate.addEventListener('change', function() {
+		compareUpdateDates();
+	});
+	
+	function compareUpdateDates() {
+		var startDateUpdate = new Date(startDateInputUpdate.value);
+		var endDateUpdate = new Date(endDateInputUpdate.value);
+		
+		if(endDateUpdate < startDateUpdate) {
+			alert("입력한 종료일이 시작일보다 이전입니다. 올바른 날짜를 선택해 주세요.");
+			
+			endDateInput.value = ''; //종료일 입력필드 초기화
+		}
 	}
 	
 
