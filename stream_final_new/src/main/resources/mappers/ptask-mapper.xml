@@ -19,6 +19,7 @@
             JOIN USERS U ON (T.TMEMBER = U.USERID)
 		WHERE PNO= #{pno}
 			AND TSTATUS IN ('미진행', '진행', '보류')
+		ORDER BY TO_NUMBER(TNO) DESC
 	<!--  
 		SELECT tno,  pno, userid, tmember, ttitle, tcontent, tstatus
 			, to_char(tdate, 'yyyy-mm-dd') tdate
