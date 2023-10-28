@@ -20,10 +20,17 @@
 				data-bs-toggle="dropdown"> <i class="align-middle"
 					data-feather="settings"></i></a> <a
 				class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
-				data-bs-toggle="dropdown"> <img
+				data-bs-toggle="dropdown">
+				<div class="profile-img">
+					
+				</div>
+				<!--  
+				<img
 					src="${pageContext.request.contextPath}/img/avatars/user1.jpg"
 					class="avatar img-fluid rounded me-1" alt="Charles Hall"
-					border-radius: 50% !important /> <span class="text-dark"></span>
+					border-radius: 50% !important />
+				-->
+				 <span class="text-dark"></span>
 			</a>
 
 				<div class="dropdown-menu dropdown-menu-end">
@@ -191,6 +198,8 @@
 		},
 		success : function(result) {
 			$(".text-dark").text(result.mname + "님");
+			$(".profile-img").text(result.mname.substr(1,2));
+			
 		},
 		error : function() {
 			console.log("loginUser에서 오류 발생");

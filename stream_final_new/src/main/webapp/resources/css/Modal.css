@@ -435,3 +435,18 @@ form {
 .feather.feather-edit.align-middle.me-2.reply-btn.replyEditBtn {
 	color: #aea8ca;
 }
+
+.profile-reply {
+	color: white;
+    border-radius: 50%;
+    width: 50px;
+    background: #009b77;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    display: inline-block;
+}
+
+.flex-grow-1 {
+    margin-left: 5px;
+}
