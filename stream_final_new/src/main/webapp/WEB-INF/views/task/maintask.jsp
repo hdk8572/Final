@@ -366,9 +366,7 @@
 		taskSortHandler=()=>{
 			var e1 = event.target;
 			console.log("[JM]===taskSortHandler===")
-			console.log("[JM]"+e1);
 			var e2 = $(e1).data("ordertype");
-			console.log("[JM]"+e2);
 			
 			$.ajax({
 				type:"post",
