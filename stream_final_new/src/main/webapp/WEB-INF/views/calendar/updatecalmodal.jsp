@@ -6,7 +6,7 @@
 		<!-- Modal content -->
 		<div class="modal-container pcal update">
 			<div class="modal-header-pcal"></div>
-			<div class="modal-body-pcal">
+			<div class="modal-body pcal">
 				<div class="card pcal">
 					<div class="card-body pcal">
 					<div class="card-header pcalTitle">
