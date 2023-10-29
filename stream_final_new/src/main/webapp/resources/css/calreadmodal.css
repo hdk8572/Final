@@ -26,6 +26,8 @@
 }
 /* The Close Button */
 
+
+
 /* read dropdown-btn */
 .dropdown-menu.show{
 	min-width: 0;
@@ -34,6 +36,7 @@
 	transform: translate3d(-30px, 55px, 0px) !important;
 }
 /* read dropdown-btn */
+
 
 
 /* 공간 확보 */
@@ -90,6 +93,7 @@
 /* 공간 확보 */
 
 
+
 /* 일정상세 제목 */
 .pcalTitle{
 	width: 100%;
@@ -102,3 +106,8 @@
     padding: 1rem 0.2rem 0rem 1.5rem;
 }
 /* 일정상세 제목 */
+
+/* 작성자 */
+.readcal-userid{
+	display: none;
+}
