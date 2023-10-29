@@ -87,7 +87,7 @@
 						</div>
 					</h1>
 
-					<%@ include file="/WEB-INF/views/addprojectmodal.jsp"%>
+ 					<%@ include file="/WEB-INF/views/addprojectmodal.jsp"%>
 					<%@ include file="/WEB-INF/views/updateprojectmodal.jsp"%>
 
 					<div class="row">
