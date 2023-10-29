@@ -26,7 +26,7 @@ DROP SEQUENCE replyrno_sequence;
 DROP SEQUENCE company_sequence;
 DROP SEQUENCE dept_sequence;
 DROP SEQUENCE chat_sequence;
-
+DROP SEQUENCE info_sequence;
 CREATE TABLE "COMPANY" (
 	"CCODE"	VARCHAR2(10)		NOT NULL,
 	"CNAME"	VARCHAR2(50)		NOT NULL,
