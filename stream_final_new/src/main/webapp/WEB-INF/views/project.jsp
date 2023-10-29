@@ -134,7 +134,7 @@
 								data-bs-target="#myModal">업무 등록</button>
 						</div>
 
-						<%@ include file="/WEB-INF/views/addPtaskModal.jsp"%>
+						<%@ include file="/WEB-INF/views/addptaskmodal.jsp"%>
 
 						<div class="container-fluid p-0">
 							<input type="hidden" name="pno" value="${pno}">
