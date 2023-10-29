@@ -34,15 +34,11 @@ function loadCalendarHandler() {
 			headerToolbar : { // 헤더에 표시할 툴 바
 				start : 'prev next today',
 				center : 'title',
-				end : 'dayGridMonth,dayGridWeek,dayGridDay'
+				end : 'dayGridMonth,dayGridWeek,dayGridDay,listWeek'
 			},
 			
-			titleFormat : function(date) {
-				return date.date.year + '년 '
-						+ (parseInt(date.date.month) + 1) + '월';
-			},
 			//initialDate: '2021-07-15', // 초기 날짜 설정(설정하지 않으면 오늘 날짜가 보인다.)
-			//locale: 'ko', // 한국어 설정 
+			locale: 'ko', // 한국어 설정 
 			selectable : true, 	// 날짜 선택
 			droppable : false,	// 외부 이벤트 끌어오기
 			editable : true,	// 달력 일자 드래그 설정
