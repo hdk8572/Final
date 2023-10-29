@@ -94,9 +94,9 @@
                         alert('일정이 삭제되었습니다.');
                         $('#readcalmodal').modal('hide'); 
 
-                        if (eventClick_defcalId !== 0) {  // eventClick시 클릭된 event를 찾아서 삭제
-                            calendar.getEvents().forEach(function (event) {
-                                if (event.calId == eventClick_defcalId) event.remove();
+                        if (eventClick_defId !== 0) {  // eventClick시 클릭된 event를 찾아서 삭제
+                            calendar.getEvents().forEach(function (evt) {
+                            	 if (evt._def.defId === eventClick_defId) evt.remove();
                             });
                         }
                     } else {

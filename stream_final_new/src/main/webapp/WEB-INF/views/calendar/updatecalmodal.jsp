@@ -12,7 +12,7 @@
 					<div class="card-header pcalTitle">
 						<h2 class="pcalTitle"><b>일정 수정</b></h2>
 					</div>
-						<form action="${pageContext.request.contextPath}/member/updatepcal" method="post" id="frm-updatecal">
+						<form action="${pageContext.request.contextPath}/member/updatepcal" method="post" id="updatecal-frm">
 							<!-- 일정번호 프로젝트번호  url 때문에 pno필요함 -->
 							<%--<input type="hidden" name="pno" value="${pno}"> --%>
 							<!-- TODO 일정번호 -->
@@ -169,8 +169,8 @@
 		$("#updatecalmodal input[name='title']").val(selectedUpdateTitle);
 		$("#updatecalmodal input[name='start']").val(selectedUpdateStart);
 		$("#updatecalmodal input[name='end']").val(selectedUpdateEnd);
-		$("#summernote-updatecalmodal").summernote("code" ,selectedUpdateSmemo); //썸머노트
-		$('#updatecalmodal #userid').text(selectedUpdateUserid);   // 작성자
+		$("#summernote-updatecalmodal").summernote("code" ,selectedUpdateSmemo); 
+		$('#updatecalmodal #userid').text(selectedUpdateUserid); 
 		$('#updatecalmodal #splace').text(selectedUpdateSplace);
 		 updateshowMap(); 
 	}
@@ -266,14 +266,28 @@
 	}
 </script>
 
+<script >
+$('#updatecalmodal #updBtn').on("click", function(){
+   
+});
+</script>
+
+
 <script>
 	$('#updatecalmodal #updBtn').on("click", function(){
-		console.log($("#frm-updatecal").serialize());
+		console.log($("#updatecal-frm").serialize());
+		 var updateattendees = document.querySelectorAll('.attenduserid-item');
+
+		    if(updateattendees.length == 0){
+		        alert("참가자를 추가해주세요.");
+		        // 여기에 추가적인 로직을 넣을 수 있습니다.
+		        return;
+		    }
 		
 		$.ajax({
 			url: contextPath+"/member/updatepcal", 
 			type: "post",
-			data: $("#frm-updatecal").serialize(),	
+			data: $("#updatecal-frm").serialize(),	
 			
 			success: function(response){
 				console.log(response);

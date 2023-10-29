@@ -159,24 +159,34 @@
 </script>
 
 
-<!-- 제목 유효성 검사  -->
+<!-- 제목,참가자 유효성 검사  -->
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    var addTitle = document.querySelector(".form-control.addtitle");
-
-    document.getElementById("addcalmodal").addEventListener("submit", function(event) {
-        var titleValue = addTitle.value.trim();
-
-        if (titleValue.length > 20) {
-            event.preventDefault();
-            alert("제목은 20자 이내여야 합니다.");
-            addTitle.value = titleValue.substring(0, 20);
-        } else if (!titleValue) {
-            event.preventDefault();
-            alert("제목을 입력해주세요.");
-        }
-    });
-});
+	document.addEventListener("DOMContentLoaded", function() {
+	    var addTitle = document.querySelector(".form-control.addtitle");
+	    var addCalModal = document.getElementById("addcalmodal");
+		
+			addTitle.addEventListener("input", function(event){
+		        var titleValue = addTitle.value.trim();
+		        if (titleValue.length > 20) {
+		            event.preventDefault();
+		            alert("제목은 20자 이내여야 합니다.");
+		            addTitle.value = titleValue.substring(0, 20);
+		        }
+			});
+		
+		addCalModal.addEventListener("submit", function(event){
+			var titleValue = addTitle.value.trim();
+			var attendees = document.querySelectorAll('.attenduserid-item');
+			
+			if(!titleValue){
+	            event.preventDefault();
+	            alert("제목을 입력해주세요.");
+			}else if(attendees.length  == 0){
+	        	event.preventDefault();
+	        	alert("참가자를 추가해주세요");
+			}
+		});
+	});
 </script>
 
 <!-- 내용 유효성검사  -->
