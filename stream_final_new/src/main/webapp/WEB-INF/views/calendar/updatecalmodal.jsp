@@ -190,7 +190,7 @@
 	    	updateValue = $(updateItem).children("[name=attenduseridArr]").val();
 	    	console.log(updateValue);
 	    	if(selectedValue == updateValue){
-	    		alert("이미 참석자에 등록된 사원입니다.");
+	    		alert("이미 참가자에 등록된 사원입니다.");
 	    		updateCheckUserId = true;
 	    		return false;
 	    	}
@@ -377,7 +377,7 @@ $('#updatecalmodal #updBtn').on("click", function(){
 				// 마우스 휠로 지도 확대,축소 막기
 				map3.setZoomable(false);
 			} // if
-		});  // cb function
+		});  // function
 	}
 </script>
 

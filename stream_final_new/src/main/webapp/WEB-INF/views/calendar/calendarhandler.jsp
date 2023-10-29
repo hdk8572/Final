@@ -9,7 +9,6 @@ function loadCalendarHandler() {
 	const calendarEl = document.getElementById('calendar'); //calender라는 id를 가진 요소를 찾아 calendarEl 변수에 할당한다. 이건 fullcalendar를 표시할 컨테이너이다.
 	
 	//<달력에 표시될 일정을 가져옴>
-	// calendar date get from db 
 	$.ajax({
 		//동기 async : false, 
 		 url: '${pageContext.request.contextPath}/member/pcalselectlist'	
@@ -58,7 +57,7 @@ function loadCalendarHandler() {
 		            , textColor : "red"
 		        }
 			],
-			
+		
 		 	/* 일정 상세정보를 띄우겠다.*/
 			eventClick: function(info) {
 				console.log(info.event.title);

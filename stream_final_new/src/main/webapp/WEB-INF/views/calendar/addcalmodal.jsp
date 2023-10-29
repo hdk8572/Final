@@ -93,7 +93,7 @@
 	    	itemValue = $(thisItem).children("[name=attenduseridArr]").val();
 	    	console.log(itemValue);
 	    	if(selectedValue == itemValue){
-	    		alert("이미 참석자에 등록된 사원입니다.");
+	    		alert("이미 참가자에 등록된 사원입니다.");
 	    		checkSameUserId = true;
 	    		return false;
 	    	}
