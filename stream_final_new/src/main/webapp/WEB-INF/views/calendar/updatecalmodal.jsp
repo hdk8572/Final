@@ -13,6 +13,10 @@
 						<h2 class="pcalTitle"><b>일정 수정</b></h2>
 					</div>
 						<form action="${pageContext.request.contextPath}/member/updatepcal" method="post" id="updatecal-frm">
+						
+							<!-- 일정번호 프로젝트번호  url 때문에 pno필요함 -->
+							<%--<input type="hidden" name="pno" value="${pno}"> --%>
+						
 							<!-- 일정번호 -->
 							<input type="hidden" id="sno" name="sno">
 							

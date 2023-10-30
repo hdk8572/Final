@@ -20,6 +20,7 @@ public class CalendarVo {
 	private String end;
 	private String title;  
 	private String color;
+	private boolean allDay = true;
 	
 	private String[] attenduseridArr;
 	
@@ -47,14 +48,16 @@ public class CalendarVo {
 		this.attenduseridList = attenduseridList;
 	}
 
+
+
+
 	@Override
 	public String toString() {
 		return "CalendarVo [sno=" + sno + ", userid=" + userid + ", mname=" + mname + ", pno=" + pno + ", splace="
 				+ splace + ", smemo=" + smemo + ", start=" + start + ", end=" + end + ", title=" + title + ", color="
-				+ color + ", attenduseridArr=" + Arrays.toString(attenduseridArr) + ", attenduseridList="
-				+ attenduseridList + "]";
+				+ color + ", allDay=" + allDay + ", attenduseridArr=" + Arrays.toString(attenduseridArr)
+				+ ", attenduseridList=" + attenduseridList + "]";
 	}
-
 
 	public String getSno() {
 		return sno;
@@ -196,6 +199,14 @@ public class CalendarVo {
 
 	public void setAttenduseridList(List<MemberSimpleVo> attenduseridList) {
 		this.attenduseridList = attenduseridList;
+	}
+
+	public boolean isAllDay() {
+		return allDay;
+	}
+
+	public void setAllDay(boolean allDay) {
+		this.allDay = allDay;
 	}	
 	
 	

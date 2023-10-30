@@ -47,9 +47,9 @@ function loadCalendarHandler() {
 			events : eventsDataArr,
 			
 			eventDataTransform: function(event){
-				//if(event.allDay){
+				if(event.allDay){
 					event.end = moment(event.end, 'YYYY-MM-DD').add(1, 'days').format('YYYY-MM-DD');
-				//}
+				}
 				return event;
 			},
 		 	
@@ -86,7 +86,11 @@ function loadCalendarHandler() {
 				$("#readcalmodal.modal  #title").html(info.event.title); 
 				$("#readcalmodal.modal  #userid").html(info.event.extendedProps.userid); 
 				$("#readcalmodal.modal  #start").html(info.event.startStr);
-				$("#readcalmodal.modal  #end").html(info.event.endStr, 'YYYY-MM-DD').add(-1, 'days').format('YYYY-MM-DD');
+				if(event.allDay){
+				$("#readcalmodal.modal  #end").html(moment(info.event.endStr, 'YYYY-MM-DD').add(-1, 'days').format('YYYY-MM-DD'));
+				} else {
+				$("#readcalmodal.modal  #end").html(info.event.endStr);
+				}
 				$("#readcalmodal.modal  #smemo").html(info.event.extendedProps.smemo);
 				$("#readcalmodal.modal  #splace").html(info.event.extendedProps.splace);
 				$("#readcalmodal").modal("toggle"); 
