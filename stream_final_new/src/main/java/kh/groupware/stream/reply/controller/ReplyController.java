@@ -28,16 +28,16 @@ public class ReplyController {
 		return vo; 
 	}
 
-	@PostMapping ("/member/insertReply")
-	@ResponseBody
-	public List<ReplyVo> insertReply(ReplyVo vo) {
-		return replyService.insertReply(vo);
-	}
-	
 	@PostMapping ("/member/goUpdateReply")
 	@ResponseBody
 	public ReplyVo selectOne(String rno) {
 		return replyService.selectOne(rno);
+	}
+	
+	@PostMapping ("/member/insertReply")
+	@ResponseBody
+	public List<ReplyVo> insertReply(ReplyVo vo) {
+		return replyService.insertReply(vo);
 	}
 	
 	@PostMapping ("/member/doUpdateReply")
