@@ -170,7 +170,8 @@
 	    var currentUserId = '${principal.username}';
 	    var userAuthorities = '${principal.authorities}';
 
-	    if (userAuthorities.indexOf('ROLE_C') !== -1  && '${principal.authorities}'.indexOf('ROLE_A') === -1) {
+	    if (userAuthorities.indexOf('ROLE_C') !== -1 || userAuthorities.indexOf('ROLE_A') !== -1) {
+
 	        for (var i = 0; i < checkboxes.length; i++) {
 	            selectedInoArray.push(checkboxes[i].value);
 	        }
