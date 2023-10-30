@@ -273,10 +273,8 @@
 																			</div>
 																			<div class="jm-title-tstatus jm-col-b jm-grey jm-cenalign">
 																				<select class="selectCategory ml-2 "name="tstatus">
-																					<option value="요청" class="status request" selected="selected">요청</option>
+																					<option value="미진행" class="status request" selected="selected">미진행</option>
 																					<option value="진행" class="status progress">진행</option>
-																					<option value="피드백" class="status feedback">피드백</option>
-																					<option value="완료" class="status complete">완료</option>
 																					<option value="보류" class="status remain">보류</option>
 																				</select>
 																			</div>
@@ -466,10 +464,8 @@
 										</div>
 										<div class="jm-title-tstatus jm-col-b jm-grey jm-cenalign">
 											<select class="selectCategory ml-2" name="tstatus">
-													<option value="요청" class="status request" selected="selected">요청</option>
+													<option value="미진행" class="status request" selected="selected">미진행</option>
 													<option value="진행" class="status progress">진행</option>
-													<option value="피드백" class="status feedback">피드백</option>
-													<option value="완료" class="status complete">완료</option>
 													<option value="보류" class="status remain">보류</option>
 											</select>
 											
