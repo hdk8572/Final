@@ -4,11 +4,10 @@
 	<div class="map" id="map"></div>
 
 <script>
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 id
 	mapOption = {
 		center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-		level : 3
-	// 지도의 확대 레벨
+		level : 3 // 지도의 확대 레벨
 	};
 	
 	// Input 요소에 Enter 키 이벤트 핸들러 등록 
@@ -18,12 +17,12 @@
         if (key === 'Enter') { 
             event.preventDefault(); // 폼 제출을 막음
             
-            $('.map-hidden').css("display", 'block'); //class에서 id로 바꿈
+            $('.map-hidden').css("display", 'block');
             showMap(); // 지도를 표시하는 함수 호출
         }
     };
     
-  //지도 초기화!!!
+    //지도 초기화
     function cancelAddEvent(){
     	var kakaoaddmap = document.getElementById('map');
     	kakaoaddmap.innerHTML =''; //지도를 비운다.
@@ -42,9 +41,9 @@
 	// 주소-좌표 변환 객체를 생성합니다
 	var geocoder = new kakao.maps.services.Geocoder();
 
-	
+	console.log(address); //ex)서울 강남
+
 	// 주소로 좌표를 검색합니다
-	console.log(address); //서울 강남
 	geocoder.addressSearch(address, function(result, status) {
 		
 			var address = $('#splace').text();
@@ -76,7 +75,7 @@
 			    mapContainer.style.display = 'block';
 				
 			}//if
-		});  // cb function
+		});// 좌표 function
 	}
 </script>
 

@@ -9,7 +9,6 @@ function loadCalendarHandler() {
 	const calendarEl = document.getElementById('calendar'); //calender라는 id를 가진 요소를 찾아 calendarEl 변수에 할당한다. 이건 fullcalendar를 표시할 컨테이너이다.
 	
 	//<달력에 표시될 일정을 가져옴>
-	// calendar date get from db 
 	$.ajax({
 		//동기 async : false, 
 		 url: '${pageContext.request.contextPath}/member/pcalselectlist'	
@@ -58,7 +57,7 @@ function loadCalendarHandler() {
 		            , textColor : "red"
 		        }
 			],
-			
+		
 		 	/* 일정 상세정보를 띄우겠다.*/
 			eventClick: function(info) {
 				console.log(info.event.title);
@@ -73,8 +72,8 @@ function loadCalendarHandler() {
 				}
 				$("#readcalmodal.modal  #attenduseridList").html(htmlval); //sno
 				
-				console.log(info.event.calId);
-				eventClick_defcalId = info.event.calId;   // 전역변수 eventClick_defId에 캘린더의 고유 id를 저장해두고.. 수정이나 삭제시 적용 //선택한 이벤트에 클릭 이벤트 적용
+				console.log(info.event._def.defId);
+				eventClick_defId = info.event._def.defId;     // 전역변수 eventClick_defId에 캘린더의 고유 id를 저장해두고.. 수정이나 삭제시 적용 //선택한 이벤트에 클릭 이벤트 적용
 				
 				//캘린더 api에 있는 거 말고 내가 추가한 것들은 extendedProps를 써줘야 한다.
 				$("#readcalmodal.modal  #sno").val(info.event.extendedProps.sno);

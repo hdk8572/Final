@@ -155,25 +155,26 @@
 			return false;
 		}
 		var pwdToCheck = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,15}$/;
-		if (!pwdToCheck.test(userpwd)) {
-			alert("비밀번호는 대소문자와 영어를 포함한 8-15자로 작성해주세요.");
-			Account.userpwd.value = "";
-			Account.userpwd.focus();
-			return false;
+		if (!userpwd || pwdToCheck.test(userpwd)) {
+			return true;
 		}
-		return true;
+		alert("비밀번호는 대소문자와 영어를 포함한 8-15자로 작성해주세요.");
+		Account.userpwd.value = "";
+		Account.userpwd.focus();
+		return false;
+
 	}
 
 	//직급확인
 	function checkUserrank(userrank) {
 		var rankToCheck = /^[가-힣]{2,20}$/;
-		if (!rankToCheck.test(userrank)) {
-			alert("직급 형식이 옳지 않습니다.");
-			Account.userrank.value = "";
-			Account.userrank.focus();
-			return false;
+		if (!userrank || rankToCheck.test(userrank)) {
+			return true;
 		}
-		return true;
+		alert("직급 형식이 옳지 않습니다.");
+		Account.userrank.value = "";
+		Account.userrank.focus();
+		return false;
 
 	}
 	//부서확인
@@ -187,14 +188,13 @@
 	}
 	//폰번호확인
 	function checkPhone(userphone) {
-			if (!checkBlank(userphone, "회사 전화번호를"))
-				return false;
-			if (!/^(01[01])-?\d{3,4}-?\d{4}$/.test(userphone)) {
-				alert("전화번호는 010 또는 011로 시작되는 유효한 전화번호 형식이어야 합니다.");
-				return false;
-			}
+		if (!userphone || /^(01[01])-?\d{3,4}-?\d{4}$/.test(userphone)) {
 			return true;
 		}
+		alert("전화번호는 010 또는 011로 시작되는 유효한 전화번호 형식이어야 합니다.");
+		return false;
+	}
+
 	//이름 확인
 	function checkUsername(username) {
 		if (!checkBlank(username, "이름을")) {

@@ -87,8 +87,8 @@
 						</div>
 					</h1>
 
-					<%@ include file="/WEB-INF/views/addProjectModal.jsp"%>
-					<%@ include file="/WEB-INF/views/updateProjectModal.jsp"%>
+ 					<%@ include file="/WEB-INF/views/addprojectmodal.jsp"%>
+					<%@ include file="/WEB-INF/views/updateprojectmodal.jsp"%>
 
 					<div class="row">
 						<div class="col-xl-6 col-xxl-5 d-flex">
