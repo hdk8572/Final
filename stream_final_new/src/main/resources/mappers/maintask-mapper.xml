@@ -46,8 +46,19 @@
         where pstatus in ('미진행', '진행', '보류') and pno=#{pno}
     	order by to_number(pno) desc, to_number(bref) desc, brelevel asc, to_number(brestep) asc
 	</select>
+	<!-- 하위 업무 프로시져 -->
+	<select id="insertInnerTaskProcedure" statementType="CALLABLE" parameterType="PtaskVo">
+		{
+		call insertInnerTask(
+			#{tno, mode=IN}, #{pno, mode=IN}, #{userid, mode=IN}, #{tmember, mode=IN},
+			#{ttitle, mode=IN}, #{tstatus, mode=IN}, #{tstartdate, mode=IN}, #{tenddate, mode=IN}
+			
+			)
+		}
+	</select>
 	
-	<!-- 하위업무 추가 -->
+	
+	
 	<insert id="innerTaskInsert" parameterType="PtaskVo">
 		insert into task (TNO, PNO, USERID, tmember, TTITLE, tcontent, TSTATUS, TDATE, tstartdate, tenddate, BREF, BRESTEP, BRELEVEL)
 		values (
@@ -57,12 +68,13 @@
 				(select brelevel+1 from task where tno=#{tno})
 				)
 	</insert>
-	<!-- 하위업무 추가 전 step 처리 -->
+	
 	<update id="InnerTaskInsertBeforeUpdate" parameterType="PtaskVo">
 		update task set BRESTEP = BRESTEP +1 
    			where BRESTEP > (SELECT BRESTEP FROM task WHERE tno = #{tno})
         	and BREF = (select bref from task where tno = #{tno})
 	</update>
+	
 	<!-- 로그인한 유저 이름 조회 -->
 	<select id="selectMname" resultType="MemberSimpleVo">
 		select userid, mname from users where userid=#{userid}

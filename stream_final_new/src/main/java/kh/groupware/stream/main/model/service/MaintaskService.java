@@ -12,8 +12,13 @@ public interface MaintaskService {
 	
 	/* 프로젝트, 업무 전체 목록 조회 */
 	public List<ProjectVo> projectNameList(String userid) throws Exception;
-	/* 하위업무 추가 */
+	
+	public ProjectVo insertInnerTaskProcedure(PtaskVo vo) throws Exception;
+	
+	
+	/* 
 	public ProjectVo insertInnerTask(PtaskVo vo) throws Exception;
+	*/
 	/* 하위업무 추가를 위한 프로젝트 참가자 표시 */
 	public List<MemberSimpleVo> projectMemberList(String pno) throws Exception;
 	/* 업무 정렬버튼 기준 업무 조회 */

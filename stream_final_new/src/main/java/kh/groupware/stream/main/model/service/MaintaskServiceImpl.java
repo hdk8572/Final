@@ -25,7 +25,12 @@ public class MaintaskServiceImpl implements MaintaskService  {
 		return maintaskDao.projectNameList(userid);
 	}
 	
-	/* 하위업무 추가 */
+	public ProjectVo insertInnerTaskProcedure(PtaskVo vo) throws Exception{
+		int insertData = maintaskDao.insertInnerTaskProcedure(vo);
+		ProjectVo result = maintaskDao.projectOneTaskList(vo);
+		return result;
+	}
+	/* 하위업무 추가 
 	@Transactional
 	public ProjectVo insertInnerTask(PtaskVo vo) throws Exception {
 		ProjectVo result = null;
@@ -36,6 +41,7 @@ public class MaintaskServiceImpl implements MaintaskService  {
 		}
         return result;
 	}
+	*/
 	/* 하위업무 추가를 위한 프로젝트 참가자 표시 */
 	public List<MemberSimpleVo> projectMemberList(String pno) throws Exception{
 		return maintaskDao.projectMemberList(pno);

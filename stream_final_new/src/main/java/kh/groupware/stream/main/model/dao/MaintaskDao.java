@@ -26,17 +26,24 @@ public class MaintaskDao {
 	public ProjectVo projectOneTaskList(PtaskVo vo) throws Exception {
 		return sqlSession.selectOne("mainTask.projectOneTaskList", vo);
 	}
-
-	/* 하위업무 추가 */
+	/* 하위업무 추가 (프로시져) */
+	public int insertInnerTaskProcedure(PtaskVo vo) throws Exception{
+		sqlSession.selectOne("mainTask.insertInnerTaskProcedure", vo);
+		return 1;				
+	}
+	
+	
+	/* 
 	public int insertInnerTask(PtaskVo vo) throws Exception {
 		return sqlSession.insert("mainTask.innerTaskInsert", vo);
 	}
 
-	/* 하위업무 추가 전처리 (bref 관련 값 변경) */
+	
 	public int UpdateBeforeInsertInnerTask(PtaskVo vo) throws Exception {
 		return sqlSession.update("mainTask.InnerTaskInsertBeforeUpdate", vo);
 	}
-
+	/*
+	
 	/* 하위업무 추가를 위한 프로젝트 참가자 표시 */
 	public List<MemberSimpleVo> projectMemberList(String pno) throws Exception {
 		return sqlSession.selectList("mainTask.memberProjectselectOne", pno);

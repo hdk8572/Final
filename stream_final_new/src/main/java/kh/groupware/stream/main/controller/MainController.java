@@ -41,7 +41,7 @@ public class MainController {
 	@PostMapping("/member/innertaskinsert")
 	@ResponseBody
 	public ProjectVo insert(PtaskVo vo) throws Exception {
-		ProjectVo projectTaskList = maintastService.insertInnerTask(vo);
+		ProjectVo projectTaskList = maintastService.insertInnerTaskProcedure(vo);
 		return projectTaskList;
 	}
 	
