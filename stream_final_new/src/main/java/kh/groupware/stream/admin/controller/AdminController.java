@@ -22,7 +22,7 @@ import com.google.gson.Gson;
 import kh.groupware.stream.admin.model.service.AdminService;
 import kh.groupware.stream.admin.model.vo.AdminVo;
 import kh.groupware.stream.admin.model.vo.PagingVo;
-import kh.groupware.stream.admin.model.vo.ProjectStatusCountVo;
+import kh.groupware.stream.admin.model.vo.projectStatusCountVo;
 
 @Controller
 public class AdminController {
@@ -70,7 +70,7 @@ public class AdminController {
 	@Transactional
 	public String showCompanyDetail(String ccode) throws Exception{
 		List<AdminVo> adminVoList = adminService.showCompanyDetail(ccode);  // 부서별 상세조회
-		List<ProjectStatusCountVo> voListforPieChart = adminService.makePieChart(ccode);  // 상태별 조회
+		List<projectStatusCountVo> voListforPieChart = adminService.makePieChart(ccode);  // 상태별 조회
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("adminvoList", adminVoList);
 		map.put("voListforPieChart", voListforPieChart);

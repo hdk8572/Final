@@ -6,7 +6,7 @@ import java.util.List;
 
 import kh.groupware.stream.admin.model.vo.AdminVo;
 import kh.groupware.stream.admin.model.vo.PagingVo;
-import kh.groupware.stream.admin.model.vo.ProjectStatusCountVo;
+import kh.groupware.stream.admin.model.vo.projectStatusCountVo;
 import kh.groupware.stream.company.model.vo.CompanyVo;
 
 public interface AdminService {
@@ -22,5 +22,5 @@ public interface AdminService {
 	/* 회사 상세 조회 */
 	public List<AdminVo> showCompanyDetail(String ccode) throws Exception;
 	/* 차트 그리기 */
-	public List<ProjectStatusCountVo> makePieChart(String ccode) throws Exception;
+	public List<projectStatusCountVo> makePieChart(String ccode) throws Exception;
 }
