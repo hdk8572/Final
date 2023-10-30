@@ -6,17 +6,17 @@ let calendar;  // 풀캘린더 객체 전체
 let eventClick_defId = 0; // 풀캘린더 클린된 event의 고유 id
 
 function loadCalendarHandler() {
-	const calendarEl = document.getElementById('calendar'); //calender라는 id를 가진 요소를 찾아 calendarEl 변수에 할당한다. 이건 fullcalendar를 표시할 컨테이너이다.
+	const calendarEl = document.getElementById('calendar'); 
 	
-	//<달력에 표시될 일정을 가져옴>
+	//달력에 표시될 일정을 가져오겠다.
 	$.ajax({
 		//동기 async : false, 
-		 url: '${pageContext.request.contextPath}/member/pcalselectlist'	
-		,data: { startdate : '2023-09-12', pno: '${pno}', userid:'${principal.username}' } //pcalselectlist로 정보보냄
+		 url: '${pageContext.request.contextPath}/member/pcalselectlist' 	
+		,data: { startdate : '2023-09-12', pno: '${pno}', userid:'${principal.username}' } 
 		,dataType : "json"
-		,success: function(result){	//요청이 성공적으로 완료될 때 실행할 콜백 함수를 정의 //console에 정보를 뿌림
-				 console.log(result);  // result == event Data Arr //서버에서 반환된 데이터를 담고 있는 매개변수이다.
-				 makeFullCalendar(result);	//받은 데이터를 이용하여 makeFullCalendar 함수를 호출한다.
+		,success: function(result){	
+				 console.log(result); 
+				 makeFullCalendar(result);	//makeFullCalendar 함수를 호출한다.
 		}
 		,error : ( request, status, error) => {
 			console.log(request);
@@ -36,12 +36,12 @@ function loadCalendarHandler() {
 				end : 'dayGridMonth,dayGridWeek,dayGridDay,listWeek'
 			},
 			
-			//initialDate: '2021-07-15', // 초기 날짜 설정(설정하지 않으면 오늘 날짜가 보인다.)
+			//initialDate: '2021-07-15', // 초기 날짜 설정
 			locale: 'ko', // 한국어 설정 
-			selectable : true, 	// 날짜 선택
+			selectable : true, 	// 날짜 선택 여부
 			droppable : false,	// 외부 이벤트 끌어오기
 			editable : true,	// 달력 일자 드래그 설정
-			nowIndicator : true, // 현재 시간 마크
+			nowIndicator : false, // 현재 시간 
 			dayMaxEvents : true, // 일정 more 
 			
 			events : eventsDataArr
