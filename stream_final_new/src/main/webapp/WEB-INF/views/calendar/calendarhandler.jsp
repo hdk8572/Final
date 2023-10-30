@@ -44,8 +44,14 @@ function loadCalendarHandler() {
 			nowIndicator : false, // 현재 시간 
 			dayMaxEvents : true, // 일정 more 
 			
-			events : eventsDataArr
-		 	,
+			events : eventsDataArr,
+			
+			eventDataTransform: function(event){
+				//if(event.allDay){
+					event.end = moment(event.end, 'YYYY-MM-DD').add(1, 'days').format('YYYY-MM-DD');
+				//}
+				return event;
+			},
 		 	
 		 	//공휴일
 		 	googleCalendarApiKey : "AIzaSyDcnW6WejpTOCffshGDDb4neIrXVUA1EAE"
@@ -80,7 +86,7 @@ function loadCalendarHandler() {
 				$("#readcalmodal.modal  #title").html(info.event.title); 
 				$("#readcalmodal.modal  #userid").html(info.event.extendedProps.userid); 
 				$("#readcalmodal.modal  #start").html(info.event.startStr);
-				$("#readcalmodal.modal  #end").html(info.event.endStr);
+				$("#readcalmodal.modal  #end").html(info.event.endStr, 'YYYY-MM-DD').add(-1, 'days').format('YYYY-MM-DD');
 				$("#readcalmodal.modal  #smemo").html(info.event.extendedProps.smemo);
 				$("#readcalmodal.modal  #splace").html(info.event.extendedProps.splace);
 				$("#readcalmodal").modal("toggle"); 
