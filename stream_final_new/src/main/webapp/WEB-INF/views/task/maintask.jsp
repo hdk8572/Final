@@ -92,8 +92,8 @@
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
-																<li class="dropdown-item jm-order" data-ordertype="tstatus1">오름차순</li>
-																<li class="dropdown-item jm-order" data-ordertype="tstatus2">내림차순</li>
+																<li class="dropdown-item jm-order" data-ordertype="tstatus1">미진행-보류-진행순</li>
+																<li class="dropdown-item jm-order" data-ordertype="tstatus2">진행-보류-미진행순</li>
 																<li class="dropdown-item jm-order" data-ordertype="tstatus0">정렬 해제</li>
 															</ul>
 														</div>

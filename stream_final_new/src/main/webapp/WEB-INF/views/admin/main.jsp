@@ -290,24 +290,30 @@
 	chartPie=(result)=>{
 		console.log("[JM]===chartPie===")
 		console.log(result);
+		var statusArr = new Array()
+		for(i=0;i<result.length;i++){
+			statusArr[i]=result[i].pstatus;
+		}
+		console.log(statusArr);
+		
 		var Arr1 = new Array()
 		for(ps=0;ps<result.length;ps++){
-			console.log(result[ps].countforpiechart );
 			Arr1[ps]=result[ps].countforpiechart;
 		}
 		console.log(Arr1);
+		
 				// Pie chart
 			 	new Chart($(".pie"), {
 					type: "pie",
 					data: {
-						labels: ["미진행", "보류", "숨김", "요청", "진행"],
+					/*	labels: ["미진행", "보류", "숨김", "진행"],*/
+						labels: statusArr,
 						datasets: [{
 							data: Arr1,
 							backgroundColor: [
 								"#dee2e6",
 								window.theme.danger,
 								"#000000",
-								window.theme.warning,
 								window.theme.primary
 							],
 							borderColor: "transparent"
