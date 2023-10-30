@@ -1,10 +1,11 @@
 package kh.groupware.stream.admin.model.vo;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 @Component
 public class AdminVo {
-	
 	private String ucnt;	//사용자 수
 	private String ccnt;	//사용 회사 수
 	private String pcnt;	//프로젝트 수
@@ -15,35 +16,12 @@ public class AdminVo {
 	private String deptno;	//부서코드
 	private String deptname;//부서명
 	
-	private String pstatus;	//프로젝트 진행 상태
-	private String countforpiechart;//회사별 프로젝트 숫자 카운트
+	//private List<ProjectStatusCountVo> pstatuscountList;
 	
 	@Override
 	public String toString() {
 		return "AdminVo [ucnt=" + ucnt + ", ccnt=" + ccnt + ", pcnt=" + pcnt + ", tcnt=" + tcnt + ", ccode=" + ccode
 				+ ", cname=" + cname + ", deptno=" + deptno + ", deptname=" + deptname + "]";
-	}
-	public AdminVo() {
-		super();
-	}
-	public AdminVo(String ucnt, String ccnt, String pcnt, String tcnt, String ccode, String cname, String deptno,
-			String deptname) {
-		super();
-		this.ucnt = ucnt;
-		this.ccnt = ccnt;
-		this.pcnt = pcnt;
-		this.tcnt = tcnt;
-		this.ccode = ccode;
-		this.cname = cname;
-		this.deptno = deptno;
-		this.deptname = deptname;
-	}
-	
-	public AdminVo(String ccode, String pstatus, String countforpiechart) {
-		super();
-		this.ccode = ccode;
-		this.pstatus = pstatus;
-		this.countforpiechart = countforpiechart;
 	}
 	public String getUcnt() {
 		return ucnt;
@@ -92,18 +70,6 @@ public class AdminVo {
 	}
 	public void setDeptname(String deptname) {
 		this.deptname = deptname;
-	}
-	public String getPstatus() {
-		return pstatus;
-	}
-	public void setPstatus(String pstatus) {
-		this.pstatus = pstatus;
-	}
-	public String getCountforpiechart() {
-		return countforpiechart;
-	}
-	public void setCountforpiechart(String countforpiechart) {
-		this.countforpiechart = countforpiechart;
 	}
 	
 	

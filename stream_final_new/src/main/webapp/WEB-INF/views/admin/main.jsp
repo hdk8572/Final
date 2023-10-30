@@ -186,12 +186,17 @@
 			 	type: "post",
 			 	dataType: "json",
 			 	data: {ccode: targetCcode },
-			 	success: function(cdetail){
-			 		var cname = cdetail[0].cname;
-			 		var ccode = cdetail[0].ccode;
+			 	success: function(res){
+			 		// map에 실려온 2가지 회사의 부서별 list, status별list
+			 		var volist = res.adminvoList;
+			 		var voListforPieChart = res.voListforPieChart;
+			 		
+			 		var cname = volist[0].cname;
+			 		var ccode = volist[0].ccode;
 			 		$(".jm-find-cname .admin-result-cname").html(cname);
-			 		makeView(cdetail);
-			 		makeModalPieChart(ccode);
+			 		makeView(volist);
+			 		//makeModalPieChart(ccode);
+			 		makeChartTest(voListforPieChart);
 			 	},
 			 	error : function(request, status, error){
 					console.log(request);
@@ -204,36 +209,35 @@
 	
 	</script>
 	<script>
-	makeView=(cdetail)=>{
-		console.log(cdetail)
+	makeView=(volist)=>{
+		console.log(volist)
 		var htmlList="";
 		var totalUcnt=0;
 		var totalPcnt=0;
 		var totlaTcnt=0;
-		
-		for(var c=0;c<cdetail.length;c++){
-			const result = cdetail[c];
+		for(var i=0; i<volist.length; i++){
+			var cdetail = volist[i];
 			htmlList+=`
 			<ul>
 				<li class="col-lg-3 admin-cen admin-deptname">
-					<div><span>\${result.deptname}</span></div>
+					<div><span>\${cdetail.deptname}</span></div>
 				</li>
 				<li class="col-lg-3 admin-cen admin-usercount">
-					<div><span>\${result.ucnt}</span></div>
+					<div><span>\${cdetail.ucnt}</span></div>
 				</li>
 				<li class="col-lg-3 admin-cen admin-projectcount">
-					<div><span>\${result.pcnt}</span></div>
+					<div><span>\${cdetail.pcnt}</span></div>
 				</li>
 				<li class="col-lg-3 admin-cen admin-taskcount">
-					<div><span>\${result.tcnt}</span></div>
+					<div><span>\${cdetail.tcnt}</span></div>
 				</li>
 			</ul>
 			`
-		totalUcnt+=parseInt(result.ucnt);
-		totalPcnt+=parseInt(result.pcnt);
-		totlaTcnt+=parseInt(result.tcnt);
-		
+			totalUcnt+=parseInt(cdetail.ucnt);
+			totalPcnt+=parseInt(cdetail.pcnt);
+			totlaTcnt+=parseInt(cdetail.tcnt);
 		}
+		
 		htmlList+=`
 			<ul>
 			<li class="col-lg-3 admin-cen">
@@ -251,11 +255,10 @@
 			</ul>
 			`
 		$('.admin-result').html(htmlList);
-		
-		
 	}
 	</script>
 	<script>
+	/* 
 	makeModalPieChart=(data)=>{
 		console.log("[JM]===makeModalPieChart===");
 		console.log(data);
@@ -275,10 +278,11 @@
 					}
 			});
 	}
+	 */
 	</script>
 	<script>
 	makeChartTest=(result)=>{
-		if(result[0]!=null){
+		if(result && result.length > 0){
 			makeChart();
 			chartPie(result);
 		}else{
@@ -290,43 +294,55 @@
 	chartPie=(result)=>{
 		console.log("[JM]===chartPie===")
 		console.log(result);
-		var statusArr = new Array()
+		var statusArr = new Array();
+		var colorArr = new Array();
+		var countArr = new Array();
 		for(i=0;i<result.length;i++){
 			statusArr[i]=result[i].pstatus;
+			/* 
+			switch (result[i].pstatus){
+			case "진행":
+				colorArr[i] = "#dee2e6";
+				break;
+			case "미진행":
+				colorArr[i] = "#2ee2e6";
+				break;
+			case "보류":
+				colorArr[i] = "#de62e6";
+				break;
+			case "숨김":
+				colorArr[i] = "#000000";
+				break;
+			default:
+				colorArr[i] = "#fffffa";
+				break;
+			}
+			 */
+			colorArr[i]=result[i].pcolor;
+			countArr[i]=result[i].countforpiechart;
 		}
 		console.log(statusArr);
 		
-		var Arr1 = new Array()
-		for(ps=0;ps<result.length;ps++){
-			Arr1[ps]=result[ps].countforpiechart;
-		}
-		console.log(Arr1);
-		
-				// Pie chart
-			 	new Chart($(".pie"), {
-					type: "pie",
-					data: {
-					/*	labels: ["미진행", "보류", "숨김", "진행"],*/
-						labels: statusArr,
-						datasets: [{
-							data: Arr1,
-							backgroundColor: [
-								"#dee2e6",
-								window.theme.danger,
-								"#000000",
-								window.theme.primary
-							],
-							borderColor: "transparent"
-						}]
-					},
-					options: {
-						maintainAspectRatio: false,
-						legend: {
-							display: false
-						}
-					}
-				}); 
-			};
+		// Pie chart
+	 	new Chart($(".pie"), {
+			type: "pie",
+			data: {
+			/*	labels: ["미진행", "보류", "숨김", "진행"],*/
+				labels: statusArr,
+				datasets: [{
+					data: countArr,
+					backgroundColor:colorArr,
+					borderColor: "transparent"
+				}]
+			},
+			options: {
+				maintainAspectRatio: false,
+				legend: {
+					display: false
+				}
+			}
+		}); 
+	};
 	</script>
 	<script>
 	makeChart=()=>{
