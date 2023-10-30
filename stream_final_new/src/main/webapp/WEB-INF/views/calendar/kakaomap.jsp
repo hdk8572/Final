@@ -42,7 +42,6 @@
 	var geocoder = new kakao.maps.services.Geocoder();
 
 	console.log(address); //ex)서울 강남
-
 	// 주소로 좌표를 검색합니다
 	geocoder.addressSearch(address, function(result, status) {
 		

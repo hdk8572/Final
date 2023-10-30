@@ -48,9 +48,6 @@ public class CalendarVo {
 		this.attenduseridList = attenduseridList;
 	}
 
-
-
-
 	@Override
 	public String toString() {
 		return "CalendarVo [sno=" + sno + ", userid=" + userid + ", mname=" + mname + ", pno=" + pno + ", splace="

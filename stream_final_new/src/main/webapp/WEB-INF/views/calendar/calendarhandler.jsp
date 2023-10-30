@@ -3,7 +3,7 @@
 <!-- 달력을 구성  -->
 <script>
 let calendar;  // 풀캘린더 객체 전체 
-let eventClick_defId = 0; // 풀캘린더 클린된 event의 고유 id
+let eventClick_defId = 0; // 풀캘린더 클릭된 event의 고유 id
 
 function loadCalendarHandler() {
 	const calendarEl = document.getElementById('calendar'); 

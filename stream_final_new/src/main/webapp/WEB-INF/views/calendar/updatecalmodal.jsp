@@ -47,7 +47,7 @@
 								     </div>	
 								 </div>
 							     <!-- 참가자 반복 -->
-							     <div id="updatedAttendees" class="selected-rightPart card updatecalendar">
+							     <div class="selected-rightPart card updatecalendar" id="updatedAttendees">
 									 <!-- 
 										 <div class="attenduserid-item">
 											 <input type="text" placeholder="참가자" readonly>
@@ -272,7 +272,6 @@ $('#updatecalmodal #updBtn').on("click", function(){
    
 });
 </script>
-
 
 <script>
 	$('#updatecalmodal #updBtn').on("click", function(){

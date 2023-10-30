@@ -48,7 +48,7 @@
 									</div>
 								</div>
 								<!-- 참가자 반복 -->
-								<div  id="attenduserid-wrap" class="selected-rightPart card addcalendar">
+								<div class="selected-rightPart card addcalendar" id="attenduserid-wrap" >
 									<!-- 
 										<div class="attenduserid-item">
 											<input type="text" placeholder="참가자" readonly>
