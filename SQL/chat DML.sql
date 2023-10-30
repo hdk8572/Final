@@ -1,4 +1,5 @@
 DROP TABLE "CHATMESSAGE";
+select * from users;
 DROP TABLE "CHATROOM";
 CREATE TABLE "USERS"(
     "USERID" VARCHAR2(40)	NOT NULL,
@@ -545,6 +546,11 @@ select ino, userid, idate, ititle, iwriter
 select * from chatmember;
 delete from chatroom where roomid=#{roomid};
 select * from chatroom;
+
+
+
+
+
 SELECT DISTINCT *
 		FROM CHATMEMBER
 		JOIN CHATROOM USING(ROOMID)

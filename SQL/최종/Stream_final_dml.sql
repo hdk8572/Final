@@ -342,5 +342,72 @@ VALUES (replyrno_sequence.nextval, '12', 'streamjj2@naver.co.kr', '가입 승인
 INSERT INTO REPLY(RNO, TNO, USERID, RCONTENT, RDATE)
 VALUES (replyrno_sequence.nextval, '13', 'streamjj2@naver.co.kr', '가입 승인 되었습니다.', systimestamp)
 ;
-
+INSERT INTO CHATROOM (ROOMID, USERID, ROOMNAME, MNAME)
+VALUES (chat_sequence.NEXTVAL,'streamjj@naver.co.kr', 'Stream채팅방', (SELECT MNAME FROM USERS WHERE USERID = 'streamjj@naver.co.kr'))
+;
+INSERT INTO CHATMEMBER (ROOMID, USERID)
+		SELECT (SELECT MAX(ROOMid) FROM chatROOM)AS ROOMID, 'streamjj@naver.co.kr' FROM DUAL;
+INSERT INTO CHATROOM (ROOMID, USERID, ROOMNAME, MNAME)
+VALUES (chat_sequence.NEXTVAL,'streamjj1@naver.co.kr', '공공데이터 채팅방', (SELECT MNAME FROM USERS WHERE USERID = 'streamjj1@naver.co.kr'))
+;
+INSERT INTO CHATMEMBER (ROOMID, USERID)
+		SELECT (SELECT MAX(ROOMid) FROM chatROOM)AS ROOMID, 'streamjj@naver.co.kr' FROM DUAL;
+INSERT INTO CHATROOM (ROOMID, USERID, ROOMNAME, MNAME)
+VALUES (chat_sequence.NEXTVAL,'streamjj1@naver.co.kr', '황대경님의 채팅방', (SELECT MNAME FROM USERS WHERE USERID = 'streamjj1@naver.co.kr'))
+;
+INSERT INTO CHATMEMBER (ROOMID, USERID)
+		SELECT (SELECT MAX(ROOMid) FROM chatROOM)AS ROOMID, 'streamjj@naver.co.kr' FROM DUAL;
+INSERT INTO CHATROOM (ROOMID, USERID, ROOMNAME, MNAME)
+VALUES (chat_sequence.NEXTVAL,'streamjj3@naver.co.kr', 'KH 채팅방', (SELECT MNAME FROM USERS WHERE USERID = 'streamjj3@naver.co.kr'))
+;
+INSERT INTO CHATMEMBER (ROOMID, USERID)
+		SELECT (SELECT MAX(ROOMid) FROM chatROOM)AS ROOMID, 'streamjj@naver.co.kr' FROM DUAL;
+INSERT INTO info (ino, itext, userid, idate, ititle, iwriter)
+		SELECT info_sequence.NEXTVAL,'성희롱 예방/장애인 인식개선 교육영상 시청','C004@stream.com', TO_CHAR(SYSTIMESTAMP, 'YY/MM/DD HH24:MI:SS'), '성희롱 예방/장애인 인식개선 교육영상 시청', mname
+		FROM users
+		WHERE userid = 'C004@stream.com';
+INSERT INTO info (ino, itext, userid, idate, ititle, iwriter)
+		SELECT info_sequence.NEXTVAL,'[프로그래밍 언어 활용] 보충수업/첨삭지도일지','C004@stream.com', TO_CHAR(SYSTIMESTAMP, 'YY/MM/DD HH24:MI:SS'), '[프로그래밍 언어 활용] 보충수업/첨삭지도일지', mname
+		FROM users
+		WHERE userid = 'C004@stream.com';
+INSERT INTO info (ino, itext, userid, idate, ititle, iwriter)
+		SELECT info_sequence.NEXTVAL,'[단위기간 9/17 - 10/16] 5차 훈련장려금 신청 공지입니다.','C004@stream.com', TO_CHAR(SYSTIMESTAMP, 'YY/MM/DD HH24:MI:SS'), '[단위기간 9/17 - 10/16] 5차 훈련장려금 신청 공지입니다.', mname
+		FROM users
+		WHERE userid = 'C004@stream.com';
+INSERT INTO info (ino, itext, userid, idate, ititle, iwriter)
+		SELECT info_sequence.NEXTVAL,'[단위기간 8/17 - 9/16] 4차 훈련장려금 신청 공지입니다.', TO_CHAR(SYSTIMESTAMP, 'YY/MM/DD HH24:MI:SS'), '[단위기간 8/17 - 9/16] 4차 훈련장려금 신청 공지입니다.', mname
+		FROM users
+		WHERE userid = 'C004@stream.com';
+INSERT INTO info (ino, itext, userid, idate, ititle, iwriter)
+		SELECT info_sequence.NEXTVAL,'[단위기간 7/17 - 8/16] 3차 훈련장려금 신청 공지입니다.','C004@stream.com', TO_CHAR(SYSTIMESTAMP, 'YY/MM/DD HH24:MI:SS'), '[단위기간 7/17 - 8/16] 3차 훈련장려금 신청 공지입니다.', mname
+		FROM users
+		WHERE userid = 'C004@stream.com';
+INSERT INTO info (ino, itext, userid, idate, ititle, iwriter)
+		SELECT info_sequence.NEXTVAL,'[단위기간 6/17 - 7/16] 2차 훈련장려금 신청 공지입니다.','C004@stream.com', TO_CHAR(SYSTIMESTAMP, 'YY/MM/DD HH24:MI:SS'), '[단위기간 6/17 - 7/16] 2차 훈련장려금 신청 공지입니다.', mname
+		FROM users
+		WHERE userid = 'C004@stream.com';
+INSERT INTO info (ino, itext, userid, idate, ititle, iwriter)
+		SELECT info_sequence.NEXTVAL,'[단위기간 5/17 - 6/16] 1차 훈련장려금 신청 공지입니다.','C004@stream.com', TO_CHAR(SYSTIMESTAMP, 'YY/MM/DD HH24:MI:SS'), '[단위기간 5/17 - 6/16] 1차 훈련장려금 신청 공지입니다.', mname
+		FROM users
+		WHERE userid = 'C004@stream.com';
+INSERT INTO info (ino, itext, userid, idate, ititle, iwriter)
+		SELECT info_sequence.NEXTVAL,'[애플리케이션 테스트 수행] 보충수업/첨삭지도일지','C004@stream.com', TO_CHAR(SYSTIMESTAMP, 'YY/MM/DD HH24:MI:SS'), '[애플리케이션 테스트 수행] 보충수업/첨삭지도일지', mname
+		FROM users
+		WHERE userid = 'C004@stream.com';
+INSERT INTO info (ino, itext, userid, idate, ititle, iwriter)
+		SELECT info_sequence.NEXTVAL,'[애플리케이션 테스트 수행] 보충수업/첨삭지도일지','C004@stream.com', TO_CHAR(SYSTIMESTAMP, 'YY/MM/DD HH24:MI:SS'), '[애플리케이션 테스트 수행] 보충수업/첨삭지도일지', mname
+		FROM users
+		WHERE userid = 'C004@stream.com';
+INSERT INTO info (ino, itext, userid, idate, ititle, iwriter)
+		SELECT info_sequence.NEXTVAL,'[애플리케이션 테스트 수행] 보충수업/첨삭지도일지','C004@stream.com', TO_CHAR(SYSTIMESTAMP, 'YY/MM/DD HH24:MI:SS'), '[필독]훈련장려금 신청 절차 안내입니다.', mname
+		FROM users
+		WHERE userid = 'C004@stream.com';
+INSERT INTO info (ino, itext, userid, idate, ititle, iwriter)
+		SELECT info_sequence.NEXTVAL,'국민내일배움카드 운영규정 개정','C004@stream.com', TO_CHAR(SYSTIMESTAMP, 'YY/MM/DD HH24:MI:SS'), '국민내일배움카드 운영규정 개정', mname
+		FROM users
+		WHERE userid = 'C004@stream.com';
+INSERT INTO info (ino, itext, userid, idate, ititle, iwriter)
+		SELECT info_sequence.NEXTVAL,'코로나19 관련 출석인정 기준 변경','C004@stream.com', TO_CHAR(SYSTIMESTAMP, 'YY/MM/DD HH24:MI:SS'), '코로나19 관련 출석인정 기준 변경', mname
+		FROM users
+		WHERE userid = 'C004@stream.com';
 commit;
