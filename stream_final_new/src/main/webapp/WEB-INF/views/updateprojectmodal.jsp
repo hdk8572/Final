@@ -108,22 +108,6 @@
 <script>
 	function updateMemberList() {
 	    $.ajax({
-	    	url:"${pageContext.request.contextPath}/member/getCompanyMemberList",
-	    	// data : principal -controller
-	    	data: {userid: useridJs},
-	    	type: "get",
-	    	async : false,
-	    	dataType: "json",
-	    	success: function(data) {
-	    		makeUpdateMemberView(data);
-	    		makeCurrentMemberView(data);
-	    	},
-	    	error: function() {	
-			alert("getCompanyMemberList에서 에러났습니다.");
-		}
-	    });	
-  		
-	    $.ajax({
 	    	url:"${pageContext.request.contextPath}/member/getCurrentMemberList",
 	    	data: {pno: $("input[name=pno]").val()},
 	    	type: "get",
@@ -132,10 +116,23 @@
 	    		makeCurrentMemberView(data);
 	    	},
 	    	error: function() {	
-			alert("updateModal - getCurrentMemberList에서 에러났습니다.");
-		}
+				alert("updateModal - getCurrentMemberList에서 에러났습니다.");
+			}
 	    });
-		    
+	    $.ajax({
+	    	url:"${pageContext.request.contextPath}/member/getCompanyMemberList",
+	    	// data : principal -controller
+	    	data: {userid: useridJs},
+	    	type: "get",
+	    	async : false,
+	    	dataType: "json",
+	    	success: function(data) {
+	    		makeUpdateMemberView(data);
+	    	},
+	    	error: function() {	
+				alert("getCompanyMemberList에서 에러났습니다.");
+			}
+	    });	
 	}
  	/*   	
 		function updateOption() {
@@ -188,15 +185,9 @@
  		//$(".form-select.mb-3.addProject.selectedMember").val(selectedVal);
  		var checkAddedUserId = false;	
  		$(".comanyMember").each(function(idx, thisElement){
- 			var addeduserid = $(thisElement).children("span").data("addmemberuserid"); // 수정 버튼 눌렀을 때, 현재 목록에 있는 애들의 data값을 인식, 하지만 다 지워버리면 ? 읽을게 없어서 유효성을 벗어난다.
+ 			var addeduserid = $(thisElement).children("span").data("currememberuserid"); // 수정 버튼 눌렀을 때, 현재 목록에 있는 애들의 data값을 인식, 하지만 다 지워버리면 ? 읽을게 없어서 유효성을 벗어난다.
  			console.log("addeduserid :"+addeduserid);
  			console.log("checkSelectedVal :"+checkSelectedVal);
- 			if(addeduserid == checkSelectedVal){
- 				checkAddedUserId = true;
- 				console.log("중복이라 추가 안했습니다.");
- 				return false;
- 			}
- 			var addeduserid = $(thisElement).children("span").data("addmemberuserid");
  			if(addeduserid == checkSelectedVal){
  				checkAddedUserId = true;
  				console.log("중복이라 추가 안했습니다.");

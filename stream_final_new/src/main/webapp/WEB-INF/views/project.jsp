@@ -381,7 +381,7 @@
 		 		$(".wrap-card [name=tenddate]").val(result.tenddate);
 		 		$(".wrap-card [name=tno]").val(result.tno);
 		 		$(".wrap-card [name=pno]").val(result.pno);
-		 		$(".wrap-card [name=userid]").val(result.userid);
+		 		//$(".wrap-card [name=userid]").val(result.userid);
 		 		replyLoadList(targetTno);
 		 	},
 		 	error: function() {

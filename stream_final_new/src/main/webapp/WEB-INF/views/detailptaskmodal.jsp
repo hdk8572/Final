@@ -87,15 +87,15 @@
 								<input type="hidden" name="tno">
 							</form>
 							<div>
-								<form class="wrap-reply" action="${pageContext.request.contextPath}/doUpload" method="post" enctype="multipart/form-data">
+								<form class="wrap-reply">
 									<div class="reply-input">
 										<input type="text" class="form-control replyInput" name="rcontent" placeholder="댓글창 - Enter 클릭시 입력됩니다.(50자 제한)" maxlength="50">
 										<input type="hidden" name="tno">
 										<input type="hidden" name="userid" value="${principal.username}">
 									</div>
-									<div class="replyList">
-									</div>
 								</form>
+								<div class="replyList">
+								</div>
 							</div>
 						</div>
 					</div>
@@ -199,6 +199,7 @@ function makeReplyList(data) {
 	$(".form-control.replyInput").keydown(function(event) {
 		if(event.keyCode == 13) {
 			event.preventDefault();
+			event.stopPropagation();
 			insertReply();			
 			$(".form-control.replyInput").val("");
 		} else {
@@ -211,6 +212,11 @@ function makeReplyList(data) {
 		if($("#detailPtaskModal .form-control.replyInput").val() == "")
 		{alert("내용을 입력해주세요."); return}
 		
+		console.log("============");
+		console.log($(".wrap-reply .reply-input").serialize());
+		console.log($(".wrap-reply .reply-input [name=userid]").val());
+		console.log("${principal.username}");
+		console.log("============");
 		$.ajax ({
 			url: "${pageContext.request.contextPath}/member/insertReply",
 			type: "post",
