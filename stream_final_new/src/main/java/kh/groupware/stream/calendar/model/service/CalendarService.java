@@ -15,6 +15,4 @@ public interface CalendarService {
 	public int insert(CalendarVo cal) throws Exception;	//캘린더 등록
 	public int update(CalendarVo cal) throws Exception;	//캘린더 수정
 	public int delete(String sno) throws Exception;		//캘린더 삭제
-	public int isAttendedProject(Map<String, String> map);	//프로젝트에 참여중인 사람인지 확인
-
 }

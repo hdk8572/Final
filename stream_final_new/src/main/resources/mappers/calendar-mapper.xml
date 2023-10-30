@@ -106,10 +106,5 @@
 		DELETE FROM MEMBER_SCHEDULE
 		WHERE SNO=#{sno}
 	</delete>
-
-	<!-- 프로젝트에 참여중인 회원인지 확인 -->
-	<select id="isAttendedProject" resultType="_int" parameterType="map">
-	select count(*) cnt from member_project where pno=#{pno} and userid=#{userid}
-	</select>
 	
 </mapper>

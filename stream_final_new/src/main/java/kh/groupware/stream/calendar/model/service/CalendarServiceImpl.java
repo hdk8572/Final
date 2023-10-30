@@ -71,12 +71,5 @@ public class CalendarServiceImpl implements CalendarService {
 		calendarDao.deletemember(sno);
 		return 	calendarDao.deleteCalendar(sno);
 	}
-	
-	// 프로젝트에 참여중인 회원인지 확인함.
-	@Override
-	public int isAttendedProject(Map<String, String> map) {
-		return calendarDao.isAttendedProject(map);
-	}
-
 
 }
