@@ -19,6 +19,7 @@
             JOIN USERS U ON (T.TMEMBER = U.USERID)
 		WHERE PNO= #{pno}
 			AND TSTATUS IN ('미진행', '진행', '보류')
+		ORDER BY TO_NUMBER(TNO) DESC
 	<!--  
 		SELECT tno,  pno, userid, tmember, ttitle, tcontent, tstatus
 			, to_char(tdate, 'yyyy-mm-dd') tdate
@@ -57,7 +58,7 @@
 		</selectKey>
 		INSERT 
 		INTO TASK (TNO, PNO, USERID, TMEMBER, TTITLE, TCONTENT, TSTATUS, tstartdate, tenddate, bref, brelevel, brestep)
-		VALUES (#{tno}, #{pno}, #{userid}, #{tmember}, #{ttitle}, #{tcontent}, #{tstatus}, #{tstartdate}, #{tenddate}, #{tno}, '0', '0')
+		VALUES (task_sequence.NEXTVAL, #{pno}, #{userid}, #{tmember}, #{ttitle}, #{tcontent}, #{tstatus}, #{tstartdate}, #{tenddate}, #{tno}, '0', '0')
 	</insert>
 
 	<delete id="deleteTask" parameterType="String">

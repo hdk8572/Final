@@ -11,13 +11,14 @@
 				<div class="card pcal">
 					<div class="card-body pcal">
 					<div class="card-header pcalTitle">
-						<h2 class="pcalTitle"><b>일정 작성</b></h2>
+						<h2 class="pcalTitle"><b>일정 등록</b></h2>
 					</div>
 						<form class="addcalmodal-frm" action="${pageContext.request.contextPath}/member/insertpcal" method="post">
 							
 							<!-- 일정번호 프로젝트번호  url 때문에 pno필요함 -->
 							<input type="hidden" name="pno" value="${pno}">
-							<!-- TODO 일정번호 -->
+							
+							<!-- 일정번호 -->
 							<input type="hidden" name="sno" value="${sno}">
 							
 							<!-- 제목 -->
@@ -69,7 +70,7 @@
 						    <!-- 등록 취소 버튼 -->
 							<div align="center">
 								<button type="submit" class="btn btn-primary" >등록</button>
-								<button  type="reset"  class="btn btn-warning" onclick="resetcalmodal()">취소</button>
+								<button  type="reset"  class="btn btn-warning">취소</button>
 							</div>
 						</form>
 					</div>
@@ -93,7 +94,7 @@
 	    	itemValue = $(thisItem).children("[name=attenduseridArr]").val();
 	    	console.log(itemValue);
 	    	if(selectedValue == itemValue){
-	    		alert("이미 참석자에 등록된 사원입니다.");
+	    		alert("이미 참가자에 등록된 사원입니다.");
 	    		checkSameUserId = true;
 	    		return false;
 	    	}
@@ -159,30 +160,34 @@
 </script>
 
 
-<!-- 제목 유효성 검사  -->
+<!-- 제목,참가자 유효성 검사  -->
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    var addTitle = document.querySelector(".form-control.addtitle"); 
-
-    function validateTitle() {
-        var titleValue = addTitle.value;
-
-        if (!titleValue) {
-            alert("제목을 입력해주세요.");
-        } else if (titleValue.length > 20) {
-            alert("제목은 20자 이내여야 합니다.");
-        }
-    }
-
-    addTitle.addEventListener("input", validateTitle);
-
-    document.getElementById("addcalmodal").addEventListener("submit", function(event) {
-        validateTitle(); // 폼 제출 시 다시 한 번 검사
-        if (addTitle.value === "") {
-            event.preventDefault(); // 제목이 비어있을 때 폼 제출 방지
-        }
-    });
-});
+	document.addEventListener("DOMContentLoaded", function() {
+	    var addTitle = document.querySelector(".form-control.addtitle");
+	    var addCalModal = document.getElementById("addcalmodal");
+		
+			addTitle.addEventListener("input", function(event){
+		        var titleValue = addTitle.value.trim();
+		        if (titleValue.length > 20) {
+		            event.preventDefault();
+		            alert("제목은 20자 이내여야 합니다.");
+		            addTitle.value = titleValue.substring(0, 20);
+		        }
+			});
+		
+		addCalModal.addEventListener("submit", function(event){
+			var titleValue = addTitle.value.trim();
+			var attendees = document.querySelectorAll('.attenduserid-item');
+			
+			if(!titleValue){
+	            event.preventDefault();
+	            alert("제목을 입력해주세요.");
+			}else if(attendees.length  == 0){
+	        	event.preventDefault();
+	        	alert("참가자를 추가해주세요");
+			}
+		});
+	});
 </script>
 
 <!-- 내용 유효성검사  -->
@@ -199,8 +204,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 	});
 </script>
-
-
 
 
 <!-- 날짜 시작일-종료일 유효성검사  -->
@@ -230,20 +233,16 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <script>
-    //addcalmodal 초기화!!!
-	function resetcalmodal(){
+	//일정 추가 모달 초기화
+	$('#addcalmodal').on('hidden.bs.modal', function() {
 		var kakaoaddmap = document.getElementById('map');
 		$(".attenduserid-item").remove();
 		kakaoaddmap.innerHTML =''; 
 		$('.map-hidden').css("display", 'none'); 
 		$('#addcalmodal #splace').val(''); 
-
-		$('#addcalmodal .title').val('');
-		$('#addcalmodal #start').val(''); 
-		$('#addcalmodal #end').val(''); 
-		$('#addcalmodal .attenduserid-item').each(function(){
-			$(this).text('');
-		});
-		$('#addcalmodal #summernote-addcalmodal').summernote('code', '') 
-	}
+		
+		$(".addcalmodal-frm")[0].reset();
+		$(".attenduserid-item").remove();
+		$('#summernote-addcalmodal').summernote('code', '');
+	})
 </script>

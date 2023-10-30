@@ -16,15 +16,13 @@ public class CalendarVo {
 	private String pno;
 	private String splace;
 	private String smemo;   
-//	private String sstartDate;
-//	private String sendDate;
-//	private String stitle;
 	private String start;
 	private String end;
-	private String title;  //제목
+	private String title;  
 	private String color;
+	private boolean allDay = true;
 	
-	private String[] attenduseridArr;  // view에서 같은 name에 여러개 값이 있을때 배열에 실림
+	private String[] attenduseridArr;
 	
 	
 	private List<MemberSimpleVo> attenduseridList; 
@@ -50,14 +48,16 @@ public class CalendarVo {
 		this.attenduseridList = attenduseridList;
 	}
 
+
+
+
 	@Override
 	public String toString() {
 		return "CalendarVo [sno=" + sno + ", userid=" + userid + ", mname=" + mname + ", pno=" + pno + ", splace="
 				+ splace + ", smemo=" + smemo + ", start=" + start + ", end=" + end + ", title=" + title + ", color="
-				+ color + ", attenduseridArr=" + Arrays.toString(attenduseridArr) + ", attenduseridList="
-				+ attenduseridList + "]";
+				+ color + ", allDay=" + allDay + ", attenduseridArr=" + Arrays.toString(attenduseridArr)
+				+ ", attenduseridList=" + attenduseridList + "]";
 	}
-
 
 	public String getSno() {
 		return sno;
@@ -199,6 +199,14 @@ public class CalendarVo {
 
 	public void setAttenduseridList(List<MemberSimpleVo> attenduseridList) {
 		this.attenduseridList = attenduseridList;
+	}
+
+	public boolean isAllDay() {
+		return allDay;
+	}
+
+	public void setAllDay(boolean allDay) {
+		this.allDay = allDay;
 	}	
 	
 	

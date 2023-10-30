@@ -143,3 +143,54 @@
 .listOne > td:nth-child(1) {
 	padding-left: 2%;
 }
+
+.feather.feather-alert-circle.align-middle.me-2.pcontent {
+    color: #6c757d;
+    position: absolute;
+    // margin: 10px 0px 0px 5px;
+    margin: 16px 0px 0px -17px;
+    
+}
+/*  */
+
+.wrap {
+	position: relative; 
+	display: inline-block;
+	cursor: auto;
+}
+.tooltip{
+	position:absolute; 
+	left:-150px; 
+	top:50px; 
+	background: #fff; 
+	padding: 10px; 
+	border-radius:5px; 
+	color: black; 
+	text-align: left; 
+	display: none;
+	width: 300px;
+	z-index: 5;
+	border: 1px solid #009b77;
+}
+ 
+.wrap:hover .tooltip{display: block;}
+
+.tooltip-title {
+	color: #939ba2;
+	font-size: .925rem;
+	font-weight: 600;
+}
+
+.tooltip-contents {
+	color: black;
+	font-size: .925rem;
+	margin-top: 1rem;
+}
+
+.tooltip-date {
+	color: #939ba2;
+	font-size: .800rem;
+	font-weight: 600;
+	float: right;
+	margin-top: 1rem;
+}

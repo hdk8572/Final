@@ -359,6 +359,28 @@ form {
 	cursor: pointer;
 }
 
+.replyList {
+	height: 480px;
+    overflow-y: scroll;
+}
+
+.replyList::-webkit-scrollbar {
+	height: 480px;
+    overflow-y: scroll;
+    width: 5px;
+   
+}
+
+.replyList::-webkit-scrollbar-thumb {
+	height: 30%;
+    background: #34343482;
+    border-radius: 10px;
+}
+
+.replyList::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
 .input.tcontent {
     border: 1px solid #ced4da;
 }
@@ -412,4 +434,19 @@ form {
 .feather.feather-delete.align-middle.me-2.reply-btn.replyDeleteBtn,
 .feather.feather-edit.align-middle.me-2.reply-btn.replyEditBtn {
 	color: #aea8ca;
+}
+
+.profile-reply {
+	color: white;
+    border-radius: 50%;
+    width: 50px;
+    background: #009b77;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    display: inline-block;
+}
+
+.flex-grow-1 {
+    margin-left: 5px;
 }

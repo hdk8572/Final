@@ -46,12 +46,14 @@
     GROUP BY C.CCODE, C.CNAME, D.DEPTNO, D.DEPTNAME
 </select>
 <!-- 차트용 프로젝트 상태별 개수 조회 -->
-<select id="makePieChart" resultType="AdminVo">
-	select pstatus, count(pno) countforpiechart
+<select id="makePieChart" resultType="ProjectStatusCountVo" parameterType="string">
+	select pstatus 
+	, count(pno) countforpiechart
     from project
     join users using(userid)
     where ccode=#{ccode}
     group by pstatus
     order by pstatus asc
 </select>
+
 </mapper>

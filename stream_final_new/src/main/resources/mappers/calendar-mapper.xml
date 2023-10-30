@@ -20,19 +20,9 @@
 	</resultMap>
 	
 	<!-- 일정 조회 -->
-	<!-- 동적 SQL문 where을 건 이유(if랑 세트) =pno를 안 들고 진입하는 경우도 있기 때문에(이걸 걸면 안에 where을 적을 필요가 없다.) -->
 	<select id="selectList" resultMap="CalendarMembersMap" parameterType="CalendarParamVo">
 		SELECT SNO, USERID, mname, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, 'yyyy-mm-dd') SEND, STITLE, SCOLOR, SPLACE, SMEMO, PNO, ATTENDUSERID , ATTENDNAME
 		FROM v_u_schedule tbs left outer join v_u_member_schedule tbms using(sno) 
-		where pno
-		<choose>
-			<when test="pno != null and pno != ''">
-				= #{pno}
-			</when>
-			<otherwise>
-				in (select pno from member_project where  userid=#{userid})
-			</otherwise>
-		</choose>
 	</select>
 	
 	<!-- 일정 상세조회 -->
@@ -47,26 +37,6 @@
 		from MEMBER_PROJECT tm 		
 		where pno=#{pno}
 	</select>
-
-	<!-- 일정 등록 과 끼인테이블 등록 selectKey사용 -->
-	<!-- 	
-	<insert id="insert" parameterType="CalendarVo">
-		<selectKey keyProperty="sno" resultType="_int"
-			order="BEFORE">
-			SELECT schedule_sequence.NEXTVAL FROM dual
-		</selectKey> 
-		
-		INSERT INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SCOLOR)
-		VALUES (schedule_sequence.NEXTVAL, #{userid}, #{pno}, #{start}, #{end}, #{smemo}, #{title},
-		'#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'))
-	</insert>
-	
-	<insert id="insertmember" parameterType="CalendarVo"> 
-		INSERT INTO
-		Member_SCHEDULE (SNO, ATTENUERID)
-		VALUES (#{sno},#{attenduserid})
-	</insert>
-	-->
 
 	<!-- 일정 등록 + 끼인 테이블 attenduserid 등록-->
 	<insert id="insert" parameterType="CalendarVo">
@@ -89,6 +59,7 @@
 		WHERE SNO=#{sno}
 	</update>
 	
+	<!-- 참가자 -->
 	<insert id="insertAttenduseridArr" parameterType="CalendarVo">
 		<foreach collection="attenduseridArr" item="attenduserid" open="INSERT ALL" close="SELECT * FROM DUAL">
 			INTO MEMBER_SCHEDULE(SNO, ATTENDUSERID) values (#{sno}, #{attenduserid} )
@@ -106,10 +77,5 @@
 		DELETE FROM MEMBER_SCHEDULE
 		WHERE SNO=#{sno}
 	</delete>
-
-	<!-- 프로젝트에 참여중인 회원인지 확인 -->
-	<select id="isAttendedProject" resultType="_int" parameterType="map">
-	select count(*) cnt from member_project where pno=#{pno} and userid=#{userid}
-	</select>
 	
 </mapper>

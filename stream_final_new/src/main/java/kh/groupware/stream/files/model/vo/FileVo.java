@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 public class FileVo {
 
 	private String fname;
+	private String tno;
 	private String userid;
 	private String fdate;
 	private long fsize;
@@ -14,22 +15,8 @@ public class FileVo {
 	
 	@Override
 	public String toString() {
-		return "FileVo [fname=" + fname + ", userid=" + userid + ", fdate=" + fdate + ", fsize=" + fsize + ", fpath="
-				+ fpath + ", foriginname=" + foriginname + "]";
-	}
-
-	public FileVo(String fname, String userid, String fdate, long fsize, String fpath, String foriginname) {
-		super();
-		this.fname = fname;
-		this.userid = userid;
-		this.fdate = fdate;
-		this.fsize = fsize;
-		this.fpath = fpath;
-		this.foriginname = foriginname;
-	}
-
-	public FileVo() {
-		super();
+		return "FileVo [fname=" + fname + ", tno=" + tno + ", userid=" + userid + ", fdate=" + fdate + ", fsize="
+				+ fsize + ", fpath=" + fpath + ", foriginname=" + foriginname + "]";
 	}
 
 	public String getFname() {
@@ -38,6 +25,14 @@ public class FileVo {
 
 	public void setFname(String fname) {
 		this.fname = fname;
+	}
+
+	public String getTno() {
+		return tno;
+	}
+
+	public void setTno(String tno) {
+		this.tno = tno;
 	}
 
 	public String getUserid() {

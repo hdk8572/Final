@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import kh.groupware.stream.admin.model.vo.AdminVo;
 import kh.groupware.stream.admin.model.vo.PagingVo;
+import kh.groupware.stream.admin.model.vo.projectStatusCountVo;
 import kh.groupware.stream.company.model.vo.CompanyVo;
 
 @Repository
@@ -43,7 +44,7 @@ public class AdminDao {
 	}
 
 	/* 차트 그리기 */
-	public List<AdminVo> makePieChart(String ccode) throws Exception{
+	public List<projectStatusCountVo> makePieChart(String ccode) throws Exception{
 		return sqlSession.selectList("admin.makePieChart", ccode);
 	}
 	

@@ -79,6 +79,31 @@
 					<div class="project-header-group">
 						<h2 style="font-weight: bold; position: relative; left: -12px;">${projectPname.pname}</h2>
 					</div>
+					<div class="wrap">
+						<div class="box">
+							<svg xmlns="http://www.w3.org/2000/svg" id="infoPcontent"
+								width="24" height="24" viewBox="0 0 24 24" fill="none"
+								stroke="currentColor" stroke-width="2" stroke-linecap="round"
+								stroke-linejoin="round"
+								class="feather feather-alert-circle align-middle me-2 pcontent">
+								<circle cx="12" cy="12" r="10"></circle>
+								<line x1="12" y1="8" x2="12" y2="12"></line>
+								<line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+						</div>
+						<div class="tooltip">
+							<div>
+								<div class="tooltip-title">
+									<span>프로젝트 내용</span>
+								</div>
+								<div class="tooltip-contents">
+									<div>${projectPname.pcontent}</div>
+								</div>
+								<div class="tooltip-date">
+									<div>${projectPname.pstartdate}-${projectPname.penddate}</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="w3-bar tabBar">
 					<button class="w3-bar-item w3" onclick="openTab('TabTask')"
@@ -109,7 +134,7 @@
 								data-bs-target="#myModal">업무 등록</button>
 						</div>
 
-						<%@ include file="/WEB-INF/views/addPtaskModal.jsp"%>
+						<%@ include file="/WEB-INF/views/addptaskmodal.jsp"%>
 
 						<div class="container-fluid p-0">
 							<input type="hidden" name="pno" value="${pno}">
@@ -161,7 +186,7 @@
 							<span class="text-tab">캘린더</span>
 							<button class="btn btn-primary addcal" id="myBtn" type="reset"
 								data-bs-toggle="modal" data-bs-target="#addcalmodal"
-								onclick="getMemberProjectListHandler(this)">+일정추가</button>
+								onclick="getMemberProjectListHandler(this)">+일정 추가</button>
 						</div>
 						<div class="container-fluid p-0">
 							<!-- 내용  -->
@@ -356,7 +381,7 @@
 		 		$(".wrap-card [name=tenddate]").val(result.tenddate);
 		 		$(".wrap-card [name=tno]").val(result.tno);
 		 		$(".wrap-card [name=pno]").val(result.pno);
-		 		$(".wrap-card [name=userid]").val(result.userid);
+		 		//$(".wrap-card [name=userid]").val(result.userid);
 		 		replyLoadList(targetTno);
 		 	},
 		 	error: function() {

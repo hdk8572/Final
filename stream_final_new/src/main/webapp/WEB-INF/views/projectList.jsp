@@ -87,8 +87,8 @@
 						</div>
 					</h1>
 
-					<%@ include file="/WEB-INF/views/addProjectModal.jsp"%>
-					<%@ include file="/WEB-INF/views/updateProjectModal.jsp"%>
+ 					<%@ include file="/WEB-INF/views/addprojectmodal.jsp"%>
+					<%@ include file="/WEB-INF/views/updateprojectmodal.jsp"%>
 
 					<div class="row">
 						<div class="col-xl-6 col-xxl-5 d-flex">
@@ -162,6 +162,13 @@
 			$("#summernote").summernote('code', "");				// addProjectModal 닫을 시 summernote 값 초기화
 		});
 		
+		
+	    // SVG 요소에 마우스를 올렸을 때 툴팁을 보여주는 코드
+	    $(document).on('mouseenter', '#infoPcontent', function() {
+	        $(this).closest('.wrap').find('.tooltip').show();
+	    }).on('mouseleave', '#infoPcontent', function() {
+	        $(this).closest('.wrap').find('.tooltip').hide();
+	    });
 	}); 
 	
 	
@@ -239,9 +246,26 @@
 			                            \${projectOne.countmember}명
 			                        </div>
 			                    </div>
-			                    	<h1 class="mt-1 mb-3" data-pname="\${projectOne.pname}">\${projectOne.pname}
-			                    	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-circle align-middle me-2 pcontent"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-			                    	</h1>
+			                    	<div class="wrap">
+				                    	<div class="box">
+					                    	<span class="mt-1 mb-3" data-pname="\${projectOne.pname}">\${projectOne.pname}
+					                    		<svg xmlns="http://www.w3.org/2000/svg" id="infoPcontent" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-circle align-middle me-2 pcontent"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+				                    		</span>
+				                    	</div>
+				                    	<div class="tooltip">
+				                    		<div>
+					                    		<div class="tooltip-title">
+				                    				<span>프로젝트 내용</span>
+				                    			</div>
+				                    			<div class="tooltip-contents">
+			               	     					<div>\${projectOne.pcontent}</div>
+				                    			</div>
+				                    			<div class="tooltip-date">
+		               	     						<div>\${projectOne.pstartdate}-\${projectOne.penddate}</div>
+			                    				</div>
+				                    		</div>
+				                    	</div>
+			                    	</div>
 			                    <div class="mb-0">
 			                        <span class="text-muted" data-pstatus="\${projectOne.pstatus}">\${projectOne.pstatus}</span>
 			                        <div class="dropdown-option">
@@ -303,7 +327,7 @@
 	    	doUpdateProject();
 	    });
 	}
-
+	
 	$("#typeSelect").on("change", function() {
 		var typeSelect = $("select[name=type]").val();
 		$("select[name=type]").val(typeSelect).attr("selected", true);
@@ -319,7 +343,7 @@
 			null;
 		}
 	});
-	
+		
 	function SerachProjectList() {
 		var dataType = $("#typeSelect").val();
 		var dataInput = $("#searchProjectListHandler").val();

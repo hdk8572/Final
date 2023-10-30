@@ -92,8 +92,8 @@
 														</div>
 														<div class="mini-pop dropdown-menu dropdown-menu-end">
 															<ul>
-																<li class="dropdown-item jm-order" data-ordertype="tstatus1">오름차순</li>
-																<li class="dropdown-item jm-order" data-ordertype="tstatus2">내림차순</li>
+																<li class="dropdown-item jm-order" data-ordertype="tstatus1">미진행-보류-진행순</li>
+																<li class="dropdown-item jm-order" data-ordertype="tstatus2">진행-보류-미진행순</li>
 																<li class="dropdown-item jm-order" data-ordertype="tstatus0">정렬 해제</li>
 															</ul>
 														</div>
@@ -273,10 +273,8 @@
 																			</div>
 																			<div class="jm-title-tstatus jm-col-b jm-grey jm-cenalign">
 																				<select class="selectCategory ml-2 "name="tstatus">
-																					<option value="요청" class="status request" selected="selected">요청</option>
+																					<option value="미진행" class="status request" selected="selected">미진행</option>
 																					<option value="진행" class="status progress">진행</option>
-																					<option value="피드백" class="status feedback">피드백</option>
-																					<option value="완료" class="status complete">완료</option>
 																					<option value="보류" class="status remain">보류</option>
 																				</select>
 																			</div>
@@ -366,9 +364,7 @@
 		taskSortHandler=()=>{
 			var e1 = event.target;
 			console.log("[JM]===taskSortHandler===")
-			console.log("[JM]"+e1);
 			var e2 = $(e1).data("ordertype");
-			console.log("[JM]"+e2);
 			
 			$.ajax({
 				type:"post",
@@ -468,10 +464,8 @@
 										</div>
 										<div class="jm-title-tstatus jm-col-b jm-grey jm-cenalign">
 											<select class="selectCategory ml-2" name="tstatus">
-													<option value="요청" class="status request" selected="selected">요청</option>
+													<option value="미진행" class="status request" selected="selected">미진행</option>
 													<option value="진행" class="status progress">진행</option>
-													<option value="피드백" class="status feedback">피드백</option>
-													<option value="완료" class="status complete">완료</option>
 													<option value="보류" class="status remain">보류</option>
 											</select>
 											

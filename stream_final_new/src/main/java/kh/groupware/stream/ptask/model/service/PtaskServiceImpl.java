@@ -20,49 +20,49 @@ public class PtaskServiceImpl implements PtaskService {
 
 	@Autowired
 	private PtaskDao ptaskDao;
-	
+
 	@Autowired
 	private FileDao fileDao;
-	
+
 	@Autowired
 	private ReplyDao replyDao;
-	
+
 	@Override
 	public List<PtaskVo> pselectList(String pno) {
 		return ptaskDao.pselectList(pno);
 	}
-	
+
 	@Override
 	@Transactional
 	public int insertTask(PtaskVo vo) {
-		System.out.println("before: " +vo);
+		System.out.println("before: " + vo);
 		int result = ptaskDao.insertTask(vo);
-		System.out.println("result : " +result);
-		System.out.println("after 11: " +vo);
-		
-		if(vo.getFilevo() != null && !vo.getFilevo().equals("")){
+		System.out.println("result : " + result);
+		System.out.println("after 11: " + vo);
+
+		if (vo.getFilevo() != null && !vo.getFilevo().equals("")) {
 			System.out.println("들렸어");
-            int savedFileId = fileDao.savedFile(vo); 
-        }
+			int savedFileId = fileDao.savedFile(vo);
+		}
 		System.out.println("안들렸어");
 		return result;
-	} 
-	
+	}
+
 	@Override
-    public int updateHide(String tno) {
-    	return ptaskDao.updateHide(tno);
-    }
-	
+	public int updateHide(String tno) {
+		return ptaskDao.updateHide(tno);
+	}
+
 	@Override
 	public PtaskVo selectOneInner(PnoTnoParam pnoTnoParam) {
 		return ptaskDao.selectOneInner(pnoTnoParam);
 	}
-	
+
 	@Override
 	public int update(PtaskVo vo) {
 		return ptaskDao.update(vo);
 	}
-	
+
 	@Override
 	@Transactional
 	public int deleteTask(String tno) {
@@ -71,5 +71,5 @@ public class PtaskServiceImpl implements PtaskService {
 		int result = ptaskDao.deleteTask(tno);
 		return result;
 	}
-	
+
 }

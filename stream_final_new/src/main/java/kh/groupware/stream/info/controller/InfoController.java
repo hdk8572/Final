@@ -27,7 +27,7 @@ public class InfoController {
 	
 	
 	@GetMapping("/info")
-	public ModelAndView info(ModelAndView mv, Principal principal,InfoPageVo vo,
+	public ModelAndView infoMain(ModelAndView mv, Principal principal,InfoPageVo vo,
 			 				@RequestParam(name = "select_search", required = false) String selectSearch,
              				@RequestParam(name = "search_bar", required = false) String searchBar,
 	                        @RequestParam(value="nowPage", required=false)String nowPage, 
@@ -63,14 +63,14 @@ public class InfoController {
 	    return mv;
 	}
 	@GetMapping("/info/insert")
-	public ModelAndView insert(ModelAndView mv,Principal principal) {
+	public ModelAndView infoInsert(ModelAndView mv,Principal principal) {
 		String userId = principal.getName();
 		mv.addObject("name",service.InfoWriter(userId));
 		mv.setViewName("info/infoinsert");
 		return mv;
 	}
 	@PostMapping(value="/info/insert")
-	public String insertdo(ModelAndView mv,Principal principal ,@RequestParam String ititle, @RequestParam String iwriter,
+	public String infoInsertdo(ModelAndView mv,Principal principal ,@RequestParam String ititle, @RequestParam String iwriter,
 			 @RequestParam String itext,RedirectAttributes rttr,InfoVo vo) {
 		String userId = principal.getName();
 		if (ititle.isEmpty() || itext.isEmpty()) {
@@ -87,14 +87,14 @@ public class InfoController {
 		return "redirect:/info";
 	}
 	@GetMapping("/info/select")
-	public ModelAndView select(ModelAndView mv,Principal principal,String ino) {
+	public ModelAndView infoSelect(ModelAndView mv,Principal principal,String ino) {
 		String userId = principal.getName();
 		mv.addObject("info",service.InfoOne(ino));
 		mv.setViewName("info/infoselect");
 		return mv;
 	}
 	@GetMapping("/info/update")
-	public ModelAndView update(ModelAndView mv,Principal principal,@RequestParam String ino) {
+	public ModelAndView infoUpdate(ModelAndView mv,Principal principal,@RequestParam String ino) {
 		String userId = principal.getName();
 		mv.addObject("userId",userId);
 		mv.addObject("info",service.InfoOne(ino));
@@ -102,7 +102,7 @@ public class InfoController {
 		return mv;
 	}
 	@PostMapping(value="/info/update")
-	public String updatedo(ModelAndView mv,Principal principal ,@RequestParam String ino,@RequestParam String ititle, 
+	public String infoUpdatedo(ModelAndView mv,Principal principal ,@RequestParam String ino,@RequestParam String ititle, 
 			 @RequestParam String itext,RedirectAttributes rttr,InfoVo vo) {
 		String userId = principal.getName();
 		vo.setUserId(userId);
@@ -115,7 +115,7 @@ public class InfoController {
 		return "redirect:/info";
 	}
 	@PostMapping(value="/info/delete")
-	public String deletedo(@RequestParam String[] ino,HttpServletRequest request) {
+	public String infoDeletedo(@RequestParam String[] ino,HttpServletRequest request) {
 		String[] sizes = request.getParameterValues("ino");
 		if(sizes != null) {
 			for(String size : sizes) {

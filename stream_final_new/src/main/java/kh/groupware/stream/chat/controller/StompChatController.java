@@ -20,17 +20,17 @@ public class StompChatController {
     
 
     @MessageMapping(value = "/chat/enter")
-    public void enter(ChatMessageVo message,Principal principal) {
+    public void enterStomp(ChatMessageVo message,Principal principal) {
     	String userId = principal.getName();
-    	message.setMessage(chatDao.findWriter(userId).getMname() +"님이 채팅방에 참여하였습니다.");
-    	message.setMname(chatDao.findWriter(userId).getMname());
+    	message.setMessage(chatDao.FindWriter(userId).getMname() +"님이 채팅방에 참여하였습니다.");
+    	message.setMname(chatDao.FindWriter(userId).getMname());
         template.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
     }
     @MessageMapping(value = "/chat/message")
-    public void message(ChatMessageVo message,Principal principal){
+    public void messageStomp(ChatMessageVo message,Principal principal){
     	String userId = principal.getName(); 
     	chatDao.MessageInsert(message);
-    	message.setMname(chatDao.findWriter(userId).getMname());
+    	message.setMname(chatDao.FindWriter(userId).getMname());
         template.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);      
     }
 

@@ -14,14 +14,13 @@ public interface ChatService {
 
 	List<ChatMessageVo> ViewChat(String roomId);
 	int MessageInsert(ChatMessageVo vo);
-	List<ChatRoomVo> findAllRooms(String userId);
-	List<ChatRoomVo> findRooms(String userId);
+	List<ChatRoomVo> FindAllRooms(String userId);
+	List<ChatRoomVo> FindRooms(String userId);
 	int AddChatRoom(String roomName,String userId);
-	ChatRoomVo findRoomById(String roomId);
+	ChatRoomVo FindRoomById(String roomId);
 	List<ChatRoomVo> ViewMember(String userId);
-	ChatRoomVo findWriter(String userId);
-	ChatRoomVo lastMessage(String roomId);
-	int memberInsert(String userId);
-	 List<ChatRoomVo> findname();
-	 int ChatDelete(String roomId);
+	ChatRoomVo FindWriter(String userId);
+	int MemberInsert(String userId);
+	 List<ChatRoomVo> FindName();
+	 int ChatDelete(ChatRoomVo vo);
 }

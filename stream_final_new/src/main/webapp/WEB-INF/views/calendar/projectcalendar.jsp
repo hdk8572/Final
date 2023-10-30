@@ -60,7 +60,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 				<main class="content" id="content-calendar">
 					<div class="content-cal">
  						<h2>
-							Calendar
+							전체 캘린더
 						</h2>
 						<div class="container-fluid p-0">
 							<div class="card-header">
@@ -91,7 +91,7 @@ let calendar_pno="${pno}"; /* 프로젝트 번호! */
 	document.addEventListener('DOMContentLoaded', loadCalendarHandler);
 </script>
 
-<!-- /pcal-> 수정,삭제 dropdown 없앰 -->
+<!-- /pcal-> 수정,삭제 dropdown 삭제 -->
 <script>
 	document.addEventListener("DOMContentLoaded", function(){
 		var hideReadSvg = document.querySelector(".feather.feather-more-vertical.me-2");

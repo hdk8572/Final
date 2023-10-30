@@ -32,6 +32,7 @@ import kh.groupware.stream.project.model.vo.PnoTnoParam;
 import kh.groupware.stream.project.model.vo.ProjectVo;
 import kh.groupware.stream.ptask.model.service.PtaskService;
 import kh.groupware.stream.ptask.model.vo.PtaskVo;
+import kh.groupware.stream.reply.model.service.ReplyService;
 
 @Controller
 public class PtaskController {
@@ -41,6 +42,9 @@ public class PtaskController {
 
 	@Autowired
 	private ProjectService projectService;
+	
+	@Autowired
+	private ReplyService replyService;
 
 	@GetMapping("/member/ptasklist")
 	public String ptasklist(Model model, String pno) {
@@ -155,6 +159,7 @@ public class PtaskController {
 	@PostMapping("/member/deleteTask")
 	@ResponseBody
 	public int deleteTask(String tno) {
+		replyService.deleteReply(tno);
 		return ptaskService.deleteTask(tno);
 	}
 	

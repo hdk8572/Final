@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import kh.groupware.stream.admin.model.dao.AdminDao;
 import kh.groupware.stream.admin.model.vo.AdminVo;
 import kh.groupware.stream.admin.model.vo.PagingVo;
+import kh.groupware.stream.admin.model.vo.projectStatusCountVo;
 import kh.groupware.stream.company.model.vo.CompanyVo;
 
 @Service
@@ -37,7 +38,7 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.showCompanyDetail(ccode); 
 	}
 	/* 차트 그리기 */
-	public List<AdminVo> makePieChart(String ccode) throws Exception{
+	public List<projectStatusCountVo> makePieChart(String ccode) throws Exception{
 		return adminDao.makePieChart(ccode);
 	}
 }

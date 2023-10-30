@@ -220,7 +220,7 @@ a:hover {
 }
 
 .roomnamelist:hover{
-	color: white;
+	color: #009b77;
 }
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
 	color: inherit;

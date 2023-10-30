@@ -10,6 +10,7 @@ public class ReplyVo {
 	public String userid;
 	public String rcontent;
 	public String rdate;
+	
 	public String mname;
 	
 	@Override

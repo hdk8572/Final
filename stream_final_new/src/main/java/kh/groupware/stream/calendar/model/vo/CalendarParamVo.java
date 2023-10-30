@@ -8,7 +8,6 @@ public class CalendarParamVo {
 	private String userid;
 	private String pno;
 	
-	// TODO
 	private String startdate;
 	private String enddate;
 	

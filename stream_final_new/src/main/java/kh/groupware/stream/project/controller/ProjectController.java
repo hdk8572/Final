@@ -105,9 +105,6 @@ public class ProjectController {
 	@GetMapping("/member/doUpdateProjectHide")
 	@ResponseBody
 	public int updateBtn(PnoPrincipalParam pnoPrincipalParam) {
-//		ProjectVo currentVo = projectService.selectOne(pnoPrincipalParam);
-//		System.out.println(currentVo);
-//		currentVo.setPstatus("숨김");
 		int result = projectService.updateHide(pnoPrincipalParam);
 		return result;
 	}

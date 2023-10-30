@@ -22,19 +22,9 @@ public class ProjectDao {
 		return sqlSession.selectList("project.selectList", userid);
 	}
 	
-	// 프로젝트의 작성자
-//	public ProjectVo selectProjectInfo(String pno) {
-//		return sqlSession.selectOne("project.selectProjectInfo", pno);
-//	}
-	
 	public List<ProjectVo> selectHide(String userid) {
 		return sqlSession.selectList("project.selectHide", userid);
 	}
-	
-	/*
-	 * public ProjectVo selectOne(ProjectVo vo) { return
-	 * sqlSession.selectOne("project.selectOne", vo); }
-	 */
 
 	public ProjectVo selectOne(PnoPrincipalParam pnoPrincipalParam) {
 		return sqlSession.selectOne("project.selectOne", pnoPrincipalParam);

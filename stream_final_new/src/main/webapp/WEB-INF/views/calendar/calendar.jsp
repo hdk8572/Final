@@ -3,10 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <script>
-let logined_userid="${principal.username}"; /* 로그인! */
+let logined_userid="${principal.username}"; /* 로그인 */
 </script>
 <script>
-let calendar_pno="${pno}"; /* 프로젝트 번호! */
+let calendar_pno="${pno}"; /* 프로젝트 번호 */
 </script>
 
 	<div class="card-header">

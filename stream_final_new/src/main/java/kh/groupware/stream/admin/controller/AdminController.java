@@ -1,11 +1,14 @@
 package kh.groupware.stream.admin.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+
 import kh.groupware.stream.admin.model.service.AdminService;
 import kh.groupware.stream.admin.model.vo.AdminVo;
 import kh.groupware.stream.admin.model.vo.PagingVo;
+import kh.groupware.stream.admin.model.vo.projectStatusCountVo;
 
 @Controller
 public class AdminController {
@@ -61,19 +67,23 @@ public class AdminController {
 	/* 회사 상세보기 (ajax)*/
 	@PostMapping("/admin/showcompanydetail")
 	@ResponseBody
-	public List<AdminVo> showCompanyDetail(String ccode) throws Exception{
-		List<AdminVo> adminVolist = adminService.showCompanyDetail(ccode);
-		return adminVolist;
-		
+	@Transactional
+	public String showCompanyDetail(String ccode) throws Exception{
+		List<AdminVo> adminVoList = adminService.showCompanyDetail(ccode);  // 부서별 상세조회
+		List<projectStatusCountVo> voListforPieChart = adminService.makePieChart(ccode);  // 상태별 조회
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("adminvoList", adminVoList);
+		map.put("voListforPieChart", voListforPieChart);
+		return new Gson().toJson(map);
 	}
 
 	/* 차트 그리기용 (ajax) */
-	@PostMapping("/admin/makepiechart")
-	@ResponseBody
-	public List<AdminVo> makePikeChart(String ccode) throws Exception{
-		List<AdminVo> voListforPieChart = adminService.makePieChart(ccode);
-		return voListforPieChart;
-	}
+//	@PostMapping("/admin/makepiechart")
+//	@ResponseBody
+//	public List<AdminVo> makePikeChart(String ccode) throws Exception{
+//		List<AdminVo> voListforPieChart = adminService.makePieChart(ccode);
+//		return voListforPieChart;
+//	}
 	
 	@ExceptionHandler
 	private ModelAndView exceptionHandler(Exception e) {
