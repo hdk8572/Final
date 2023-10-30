@@ -376,7 +376,7 @@ INSERT INTO info (ino, itext, userid, idate, ititle, iwriter)
 		FROM users
 		WHERE userid = 'C004@stream.com';
 INSERT INTO info (ino, itext, userid, idate, ititle, iwriter)
-		SELECT info_sequence.NEXTVAL,'[단위기간 8/17 - 9/16] 4차 훈련장려금 신청 공지입니다.', TO_CHAR(SYSTIMESTAMP, 'YY/MM/DD HH24:MI:SS'), '[단위기간 8/17 - 9/16] 4차 훈련장려금 신청 공지입니다.', mname
+		SELECT info_sequence.NEXTVAL,'[단위기간 8/17 - 9/16] 4차 훈련장려금 신청 공지입니다.','C004@stream.com', TO_CHAR(SYSTIMESTAMP, 'YY/MM/DD HH24:MI:SS'), '[단위기간 8/17 - 9/16] 4차 훈련장려금 신청 공지입니다.', mname
 		FROM users
 		WHERE userid = 'C004@stream.com';
 INSERT INTO info (ino, itext, userid, idate, ititle, iwriter)
