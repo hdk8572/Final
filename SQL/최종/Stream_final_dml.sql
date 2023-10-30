@@ -342,6 +342,7 @@ VALUES (replyrno_sequence.nextval, '12', 'streamjj2@naver.co.kr', '가입 승인
 INSERT INTO REPLY(RNO, TNO, USERID, RCONTENT, RDATE)
 VALUES (replyrno_sequence.nextval, '13', 'streamjj2@naver.co.kr', '가입 승인 되었습니다.', systimestamp)
 ;
+
 INSERT INTO CHATROOM (ROOMID, USERID, ROOMNAME, MNAME)
 VALUES (chat_sequence.NEXTVAL,'streamjj@naver.co.kr', 'Stream채팅방', (SELECT MNAME FROM USERS WHERE USERID = 'streamjj@naver.co.kr'))
 ;
@@ -410,4 +411,128 @@ INSERT INTO info (ino, itext, userid, idate, ititle, iwriter)
 		SELECT info_sequence.NEXTVAL,'코로나19 관련 출석인정 기준 변경','C004@stream.com', TO_CHAR(SYSTIMESTAMP, 'YY/MM/DD HH24:MI:SS'), '코로나19 관련 출석인정 기준 변경', mname
 		FROM users
 		WHERE userid = 'C004@stream.com';
-commit;
+
+--calendar
+INSERT All INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SPLACE, SCOLOR) VALUES 
+(schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr', '2', '2023-10-03', '2023-10-05', '요구사항정의서 해주세요', 
+'요구사항정의서', '장소 미지정','#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0')) 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr') 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj2@naver.co.kr') 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj3@naver.co.kr') 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj4@naver.co.kr') 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj@naver.co.kr') 
+SELECT * FROM dual ;
+
+INSERT All INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SPLACE, SCOLOR) VALUES 
+(schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr', '2', '2023-10-04', '2023-10-06', '클래스다이어그램 해주세요', 
+'클래스다이어그램 ', '장소 미지정','#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0')) 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr') 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj@naver.co.kr') 
+SELECT * FROM dual ;
+
+
+INSERT All INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SPLACE, SCOLOR) VALUES 
+(schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr', '2', '2023-10-10', '2023-10-12', '화면설계서 해주세요', 
+'화면설계서 작성 ', '장소 미지정','#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0')) 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr')  
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj@naver.co.kr') 
+SELECT * FROM dual ;
+
+INSERT All INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SPLACE, SCOLOR) VALUES 
+(schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr', '2', '2023-10-24', '2023-10-28', 'spring 공부하기', 
+'spring ', '장소 미지정','#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0')) 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr') 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj2@naver.co.kr') 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj3@naver.co.kr') 
+SELECT * FROM dual ;
+
+INSERT All INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SPLACE, SCOLOR) VALUES 
+(schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr', '2', '2023-10-11', '2023-10-12', '시험준비기간', 
+'시험 ', '장소 미지정','#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0')) 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr') 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj2@naver.co.kr') 
+SELECT * FROM dual ;
+
+INSERT All INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SPLACE, SCOLOR) VALUES 
+(schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr', '2', '2023-10-05', '2023-10-07', 'SQL 해주세요', 
+'SQL ', '장소 미지정','#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0')) 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj2@naver.co.kr') 
+SELECT * FROM dual ;
+
+INSERT All INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SPLACE, SCOLOR) VALUES 
+(schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr', '2', '2023-10-05', '2023-10-07', '이전에 배운 거 복습하기', 
+'복습 ', '장소 미지정','#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0')) 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr') 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj2@naver.co.kr') 
+SELECT * FROM dual ;
+
+INSERT All INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SPLACE, SCOLOR) VALUES 
+(schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr', '2', '2023-10-05', '2023-10-7', '깃 정리해요', 
+'깃 정리하기 ', '장소 미지정','#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0')) 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr') 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj2@naver.co.kr') 
+SELECT * FROM dual ;
+
+INSERT All INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SPLACE, SCOLOR) VALUES 
+(schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr', '2', '2023-10-19', '2023-10-20', '쇼핑, 맛집 탐방, 문화 공연, 카페 투어, 밤 문화, 거리 음식 즐기기, 영화 감상, 테마 카페 방문, 피부관리 및 마사지 체험, 주변 관광 명소 방문, 서면 공원 산책.', 
+'여행 ', '부산광역시 부산진구 서면로 ','#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0')) 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr') 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj2@naver.co.kr') 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj3@naver.co.kr') 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj4@naver.co.kr') 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj@naver.co.kr') 
+SELECT * FROM dual ;
+
+--2
+INSERT All INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SPLACE, SCOLOR) VALUES 
+(schedule_sequence.NEXTVAL, 'streamjj2@naver.co.kr', '2', '2023-10-15', '2023-10-17', '일정 확인하기', 
+'프로젝트 일정 ', '장소 미지정','#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0')) 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr') 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj@naver.co.kr') 
+SELECT * FROM dual ;
+
+INSERT All INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SPLACE, SCOLOR) VALUES 
+(schedule_sequence.NEXTVAL, 'streamjj2@naver.co.kr', '2', '2023-10-15', '2023-10-16', '유스케이스 다이어그램 공부하기', 
+'유스케이스', '장소 미지정','#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0')) 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr') 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj@naver.co.kr') 
+SELECT * FROM dual ;
+
+INSERT All INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SPLACE, SCOLOR) VALUES 
+(schedule_sequence.NEXTVAL, 'streamjj2@naver.co.kr', '2', '2023-10-22', '2023-10-24', '시퀀스 다이어그램 공부하기', 
+'시퀀스다이어그램 ', '장소 미지정','#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0')) 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr')  
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj@naver.co.kr') 
+SELECT * FROM dual ;
+
+INSERT All INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SPLACE, SCOLOR) VALUES 
+(schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr', '2', '2023-10-29', '2023-10-30', 'erd 수정하기,공부하기', 
+'ERD', '장소 미지정','#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'))  
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj4@naver.co.kr') 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj@naver.co.kr') 
+SELECT * FROM dual ;
+
+INSERT All INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SPLACE, SCOLOR) VALUES 
+(schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr', '2', '2023-10-29', '2023-10-30', '개발환경 공부하기', 
+'개발환경', '장소 미지정','#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0')) 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr') 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj4@naver.co.kr') 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj@naver.co.kr') 
+SELECT * FROM dual ;
+
+INSERT All INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SPLACE, SCOLOR) VALUES 
+(schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr', '2', '2023-10-26', '2023-10-27', 'HTML공부하기', 
+'HTML', '장소 미지정','#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0')) 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr') 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj4@naver.co.kr') 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj@naver.co.kr') 
+SELECT * FROM dual ;
+
+INSERT All INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SPLACE, SCOLOR) VALUES 
+(schedule_sequence.NEXTVAL, 'streamjj1@naver.co.kr', '2', '2023-10-26', '2023-10-27', '공부하기', 
+'복습하기 ', '서울','#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0')) 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj4@naver.co.kr') 
+INTO MEMBER_SCHEDULE (SNO, ATTENDUSERID) VALUES (schedule_sequence.NEXTVAL, 'streamjj@naver.co.kr') 
+SELECT * FROM dual ;
+
+COMMIT;
