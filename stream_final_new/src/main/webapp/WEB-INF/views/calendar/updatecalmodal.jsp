@@ -13,13 +13,11 @@
 						<h2 class="pcalTitle"><b>일정 수정</b></h2>
 					</div>
 						<form action="${pageContext.request.contextPath}/member/updatepcal" method="post" id="updatecal-frm">
-							<!-- 일정번호 프로젝트번호  url 때문에 pno필요함 -->
-							<%--<input type="hidden" name="pno" value="${pno}"> --%>
-							<!-- TODO 일정번호 -->
+							<!-- 일정번호 -->
 							<input type="hidden" id="sno" name="sno">
 							
 							<!-- 제목 -->
-							<input type="text" class="form-control updatetitle" id="title" name="title" placeholder="제목을 입력해주세요."><!--  id="form-content" -->
+							<input type="text" class="form-control updatetitle" id="title" name="title" placeholder="제목을 입력해주세요.">
 						
 							<!-- 날짜 -->
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar align-middle"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
@@ -69,7 +67,7 @@
 							</div>
 						</form>
 					</div>
-				</div>  <!-- end of card -->
+				</div>  
 			</div>
 		</div>
 	</div>
@@ -127,7 +125,7 @@
 		if(updateEndDate < updateStartDate) {
 			alert("입력한 종료일이 시작일보다 이전입니다. 올바른 날짜를 선택해 주세요.");
 			
-			updateEndDateInput.value = ''; //종료일 입력필드 초기화
+			updateEndDateInput.value = ''; 
 		}
 	}
 </script>
@@ -135,9 +133,8 @@
 
 <!-- 일정 상세 정보 가져오기 -->
 <script>
-	//$('#update-calButton').on("click", updateMenuBtnClickHandler);
 	function updateMenuBtnClickHandler () {
-		var selectedUpdateSno= $("#readcalmodal #sno").val(); //sno읽어옴
+		var selectedUpdateSno= $("#readcalmodal #sno").val(); //sno
 		var selectedUpdateTitle = $("#readcalmodal #title").text();
 		var selectedUpdateStart = $("#readcalmodal #start").text();
 		var selectedUpdateEnd = $("#readcalmodal #end").text();
@@ -162,7 +159,7 @@
 	        $(this).closest(".attenduserid-item").remove();
 	    });
 	    
-		$("#updatecalmodal #updatedAttendees").html(htmlVal); //참가자들 input들이 추가됨.
+		$("#updatecalmodal #updatedAttendees").html(htmlVal); //(input)참가자들이 추가됨.
 		console.log("=====");
 		
 		$("#updatecalmodal input[name= 'sno']").val(selectedUpdateSno);
@@ -184,7 +181,6 @@
 		}
 	    var selectedText = this.options[this.selectedIndex].text;
 	    var selectedValue = this.options[this.selectedIndex].value;
-	    //document.getElementById("calmemberinput").value = selectedValue; // 하나가 아니기때문에 id = "calmemberinput" 안됨
 		var updateCheckUserId = false;
 	    $("#updatedAttendees .attenduserid-item").each(function(idx, updateItem){
 	    	updateValue = $(updateItem).children("[name=attenduseridArr]").val();
@@ -195,7 +191,8 @@
 	    		return false;
 	    	}
 	    });
-	    if(updateCheckUserId == false){  //등록된 적 없는 사원일 경우 추가
+	    //등록된 적 없는 사원일 경우 추가
+	    if(updateCheckUserId == false){  
 		    var htmlVal='';
 		    htmlVal+='<div class="attenduserid-item">';
 		    htmlVal+='<input type="text" class="form-control-updateUserid" placeholder="참가자" readonly value="'+selectedText+'">';
@@ -280,7 +277,6 @@ $('#updatecalmodal #updBtn').on("click", function(){
 
 		    if(updateattendees.length == 0){
 		        alert("참가자를 추가해주세요.");
-		        // 여기에 추가적인 로직을 넣을 수 있습니다.
 		        return;
 		    }
 		
