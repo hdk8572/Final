@@ -35,7 +35,7 @@ end;
 
 variable r_result number;
 
-exec insertInnerTask('9', '3', 'streamjj@naver.co.kr', 'streamjj2@naver.co.kr', 'TEST02', '진행', '2023-10-30', '2023-10-31', :r_result)
+exec insertInnerTask('9', '3', 'streamjj@naver.co.kr', 'streamjj2@naver.co.kr', 'TEST02', '진행', '2023-10-30', '2023-10-31')
 ;
 
 --update task set BRESTEP = BRESTEP +1 where BRESTEP > (SELECT BRESTEP FROM task WHERE tno = 

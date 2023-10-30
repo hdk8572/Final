@@ -18,15 +18,7 @@ DROP TABLE "DEPT";              --ref COMPANY
 DROP TABLE "COMPANY";
 
 
-DROP SEQUENCE schedule_sequence;
-DROP SEQUENCE task_sequence;
-DROP SEQUENCE project_sequence;
-DROP SEQUENCE brestep_sequence;
-DROP SEQUENCE replyrno_sequence;
-DROP SEQUENCE company_sequence;
-DROP SEQUENCE dept_sequence;
-DROP SEQUENCE chat_sequence;
-DROP SEQUENCE info_sequence;
+
 CREATE TABLE "COMPANY" (
 	"CCODE"	VARCHAR2(10)		NOT NULL,
 	"CNAME"	VARCHAR2(50)		NOT NULL,
@@ -574,4 +566,39 @@ SELECT S.*, U.MNAME, CCODE, DEPTNO
 FROM SCHEDULE S JOIN USERS U ON (S.USERID = U.USERID)
 ;
 
-commit;
+--drop procedure
+drop procedure insertInnerTask;
+-- procedure
+create or replace procedure insertInnerTask
+(
+        p_tno IN task.tno%type
+        ,p_pno  IN task.pno%type
+        ,p_userid  IN task.userid%type
+        ,p_tmember  IN task.tmember%type
+        ,p_ttitle  IN task.ttitle%type
+        ,p_tstatus  IN task.tstatus%type
+        ,p_tstartdate  IN task.tstartdate%type
+        ,p_tenddate  IN task.tenddate%type
+) as
+ r_result number;
+begin
+    r_result := 0;
+    update task set brestep=brestep+1
+        where brestep > (select brestep from task where tno = p_tno)
+        and bref = (select bref from task where tno=p_tno);
+        
+    insert into task (TNO, PNO, USERID, tmember, TTITLE, tcontent, TSTATUS, TDATE, tstartdate, tenddate, BREF, BRESTEP, BRELEVEL)
+        values (
+            task_sequence.NEXTVAL, p_pno, p_userid, p_tmember, p_ttitle, 'DEFAULT', p_tstatus, 
+                    sysdate, p_tstartdate, p_tenddate, 
+                (select bref from task where tno=p_tno),
+                (select brestep+1 from task where tno=p_tno),
+                (select brelevel+1 from task where tno=p_tno)
+                );
+    r_result := 1;
+    commit;
+EXCEPTION 
+    WHEN OTHERS THEN
+    r_result:=0;
+    rollback;
+end;
