@@ -20,19 +20,9 @@
 	</resultMap>
 	
 	<!-- 일정 조회 -->
-	<!-- 동적 SQL문 where을 건 이유(if랑 세트) =pno를 안 들고 진입하는 경우도 있기 때문에(이걸 걸면 안에 where을 적을 필요가 없다.) -->
 	<select id="selectList" resultMap="CalendarMembersMap" parameterType="CalendarParamVo">
 		SELECT SNO, USERID, mname, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, 'yyyy-mm-dd') SEND, STITLE, SCOLOR, SPLACE, SMEMO, PNO, ATTENDUSERID , ATTENDNAME
 		FROM v_u_schedule tbs left outer join v_u_member_schedule tbms using(sno) 
-		where pno
-		<choose>
-			<when test="pno != null and pno != ''">
-				= #{pno}
-			</when>
-			<otherwise>
-				in (select pno from member_project where  userid=#{userid})
-			</otherwise>
-		</choose>
 	</select>
 	
 	<!-- 일정 상세조회 -->
@@ -89,6 +79,7 @@
 		WHERE SNO=#{sno}
 	</update>
 	
+	<!-- 참가자 -->
 	<insert id="insertAttenduseridArr" parameterType="CalendarVo">
 		<foreach collection="attenduseridArr" item="attenduserid" open="INSERT ALL" close="SELECT * FROM DUAL">
 			INTO MEMBER_SCHEDULE(SNO, ATTENDUSERID) values (#{sno}, #{attenduserid} )

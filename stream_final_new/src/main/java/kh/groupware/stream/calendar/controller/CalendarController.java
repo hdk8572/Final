@@ -34,29 +34,10 @@ public class CalendarController {
 	
 	@Autowired 
 	private CalendarService calendarService;
-	
-//	@GetMapping({"/member/pcal", "/member/pcal/{pno}"})
-//	public ModelAndView selectList(ModelAndView mv, @PathVariable(name = "pno", required = false) String pno
 
 	@GetMapping({"/member/pcal"})
-	public ModelAndView selectList(ModelAndView mv
-			, Principal principal
-			, RedirectAttributes rttr
+	public ModelAndView selectList(ModelAndView mv, Principal principal, RedirectAttributes rttr
 			) {
-//		if(pno != null) {
-//			Map<String, String> map = new HashMap<String, String>();
-//			map.put("pno", pno);
-//			map.put("userid", principal.getName());
-//			// 해당 프로젝트에 참여여부 확인
-//			int result = calendarService.isAttendedProject(map);
-//			if(result < 1) {
-//				// 해당 프로젝트에 참여하고 있지 않은 회원으로 프로젝트 리스트 화면으로 이동하게 함.
-//				rttr.addFlashAttribute("alertmsg", "소속된 프로젝트를 선택하세요.");
-//				mv.setViewName("redirect:/member/projectlist");
-//				return mv;
-//			}
-//		}
-//		mv.addObject("pno", pno);
 		mv.setViewName("calendar/projectcalendar");
 		return mv;
 	}
@@ -119,6 +100,13 @@ public class CalendarController {
 		return "redirect:/member/ptasklist?pno=" + cal.getPno();
 	}
 	
+	//캘린더 삭제
+	@PostMapping("/member/deletepcal")
+	@ResponseBody
+	public int delete(String sno) throws Exception { 
+		return calendarService.delete(sno); 
+	}
+		
 	//캘린더 수정
 	@PostMapping("/member/updatepcal")
 	@ResponseBody
@@ -131,13 +119,6 @@ public class CalendarController {
 		}
 	}
 
-	//캘린더 삭제
-	@PostMapping("/member/deletepcal")
-	@ResponseBody
-	public int delete(String sno) throws Exception { 
-		return calendarService.delete(sno); 
-	}
-	
 	// 예외처리
 	@ExceptionHandler
 	private ModelAndView exceptionHandler(Exception e, RedirectAttributes rttr, HttpSession session) {

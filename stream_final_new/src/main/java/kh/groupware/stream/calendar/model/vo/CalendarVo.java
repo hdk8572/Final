@@ -16,17 +16,12 @@ public class CalendarVo {
 	private String pno;
 	private String splace;
 	private String smemo;   
-//	private String sstartDate;
-//	private String sendDate;
-//	private String stitle;
-	
-
 	private String start;
 	private String end;
-	private String title;  //제목
+	private String title;  
 	private String color;
 	
-	private String[] attenduseridArr;  // view에서 같은 name에 여러개 값이 있을때 배열에 실림
+	private String[] attenduseridArr;
 	
 	
 	private List<MemberSimpleVo> attenduseridList; 
