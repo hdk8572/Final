@@ -67,18 +67,6 @@ public class CalendarController {
 	public String memberProjectList(CalendarParamVo param) throws Exception{
 		return new Gson().toJson(calendarService.memberProjectList(param));
 	}
-
-	/*
-	//캘린더 등록
-	@PostMapping("/insertpcal")
-	public String insert(Model model, CalendarInsertParamVo cal) {
-		//cal.setAttenduseridList(Arrays.asList(cal.getAttenduseridArr()));
-		cal.setAttenduseridList(Arrays.asList(cal.getAttenduseridArr()));
-		System.out.println("aaaa :" + cal);
-		calendarService.insert(cal);
-		return "redirect:pcal?sno="+cal.getSno();
-	}
-	*/
 	
 	//캘린더 등록 
 	@PostMapping("/member/insertpcal")

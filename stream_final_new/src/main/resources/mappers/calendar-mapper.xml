@@ -38,26 +38,6 @@
 		where pno=#{pno}
 	</select>
 
-	<!-- 일정 등록 과 끼인테이블 등록 selectKey사용 -->
-	<!-- 	
-	<insert id="insert" parameterType="CalendarVo">
-		<selectKey keyProperty="sno" resultType="_int"
-			order="BEFORE">
-			SELECT schedule_sequence.NEXTVAL FROM dual
-		</selectKey> 
-		
-		INSERT INTO SCHEDULE (SNO, USERID, PNO, SSTART, SEND, SMEMO, STITLE, SCOLOR)
-		VALUES (schedule_sequence.NEXTVAL, #{userid}, #{pno}, #{start}, #{end}, #{smemo}, #{title},
-		'#'||lpad(trim(to_char(floor(dbms_random.value(0,16777216)),'XXXXXX')),6,'0'))
-	</insert>
-	
-	<insert id="insertmember" parameterType="CalendarVo"> 
-		INSERT INTO
-		Member_SCHEDULE (SNO, ATTENUERID)
-		VALUES (#{sno},#{attenduserid})
-	</insert>
-	-->
-
 	<!-- 일정 등록 + 끼인 테이블 attenduserid 등록-->
 	<insert id="insert" parameterType="CalendarVo">
 		INSERT All
