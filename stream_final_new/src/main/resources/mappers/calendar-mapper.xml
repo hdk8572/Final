@@ -23,6 +23,15 @@
 	<select id="selectList" resultMap="CalendarMembersMap" parameterType="CalendarParamVo">
 		SELECT SNO, USERID, mname, to_char(SSTART, 'yyyy-mm-dd') SSTART, to_char(SEND, 'yyyy-mm-dd') SEND, STITLE, SCOLOR, SPLACE, SMEMO, PNO, ATTENDUSERID , ATTENDNAME
 		FROM v_u_schedule tbs left outer join v_u_member_schedule tbms using(sno) 
+		where pno
+		<choose>
+			<when test="pno != null and pno != ''">
+				= #{pno}
+			</when>
+			<otherwise>
+				in (select pno from member_project where  userid=#{userid})
+			</otherwise>
+		</choose>
 	</select>
 	
 	<!-- 일정 상세조회 -->
