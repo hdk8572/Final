@@ -139,9 +139,9 @@
 								<tr>
 									<th class="admin-border-t-and-b">버스</th>
 									<td class="admin-border-t-and-b">역삼역.포스코P&S타워 정류장<br>
-									<img alt="지선" src="/stream/img/icons/busB.jpg"> 146 / 740
+									<img alt="지선" src="${pageContext.request.contextPath }/img/icons/busB.jpg"> 146 / 740
 										/ 341 / 360<br>
-									<img alt="간선" src="/stream/img/icons/busR.jpg"> 1100 /
+									<img alt="간선" src="${pageContext.request.contextPath }/img/icons/busR.jpg"> 1100 /
 										1700 / 2000 / 7007 / 8001
 									</td>
 								</tr>

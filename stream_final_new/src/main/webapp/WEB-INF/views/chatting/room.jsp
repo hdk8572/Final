@@ -65,7 +65,7 @@
 			var user = "${name.mname}";
 			
 			console.log(mainId + ", " + roomId + ", " + username+", "+roomname+",");		
-			var sockJs = new SockJS("/stream/stomp/chat");
+			var sockJs = new SockJS("${pageContext.request.contextPath }/stomp/chat");
 			var stomp = Stomp.over(sockJs);
 
 			stomp.connect({}, function() {

@@ -52,7 +52,7 @@
 							<ul style="list-style: none;padding: 0">
 								<c:forEach var="room" items="${list}">
 									<div class="room-link">
-										<form action="/stream/member/rooms/do" method="post">
+										<form action="${pageContext.request.contextPath }/member/rooms/do" method="post">
 										<li class="roomlist"
 											style="display: flex; align-items: center;">
 									<div class="stat text-primary" style="font-size: 0.7em; background-color: #009b77;color: white;">${room.mname}</div>	<a class="roomnamelist" href="<c:url value='/member/room'><c:param name='roomId' value='${room.roomId}' /></c:url>"
@@ -72,7 +72,7 @@
 				</div>
 
 				<div id="s_menu_box2" class="s_menu_box s_scroll">
-					<form action="/stream/member/room" method="post">
+					<form action="${pageContext.request.contextPath }/member/room" method="post">
 					<div class="modal-body">
 						<div>
 							<div class="s_select_part_tt">방 제목</div>

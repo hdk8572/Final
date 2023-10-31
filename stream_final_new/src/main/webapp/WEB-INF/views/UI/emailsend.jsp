@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div class="form-email">
-		<form action="/stream/mailsend" method="post">
+		<form action="${pageContext.request.contextPath }/mailsend" method="post">
 		<button type="submit"> go!</button>
 		</form>
 	</div>

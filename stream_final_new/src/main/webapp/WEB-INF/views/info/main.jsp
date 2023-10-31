@@ -50,7 +50,7 @@
 					</div> -->
 					<div id="outter">
 					
-					<form id="deleteForm" action="/stream/info/delete" method="post">
+					<form id="deleteForm" action="${pageContext.request.contextPath }/info/delete" method="post">
 					<div class="container y_outer_div" style="display: flex; justify-content: center;">
 						<table class="table table-striped table-hover" style="text-align: center;">
 							<tr class="head">
@@ -76,7 +76,7 @@
 						</div>
 						</form>
 						<div style="margin: 0 230px; display: flex; justify-content: flex-start;">
-						<form action="/stream/info/insert" method="get">
+						<form action="${pageContext.request.contextPath }/info/insert" method="get">
 							<button type="submit" class="btn btn-primary" id="y_btn_insert"
 								style="margin: 5px">글쓰기</button>
 						</form>

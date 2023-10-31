@@ -28,7 +28,7 @@ public class LogoutHandler implements LogoutSuccessHandler{
 		}
 		response.setStatus(HttpServletResponse.SC_OK);
 		request.getSession().setAttribute("msg", msg);
-		response.sendRedirect("/stream/main");
+		response.sendRedirect(request.getContextPath()+"/main");
 	}
 
 }

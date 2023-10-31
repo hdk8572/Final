@@ -147,7 +147,7 @@
 	});
 	popupclickHandler=()=>{
 		var jsPopup = window
-		.open("/stream/member/rooms",null,"width=450, height=650, resizable=no, scrollbars=no,toolbars=no, menubar=no");
+		.open("${pageContext.request.contextPath }/member/rooms",null,"width=450, height=650, resizable=no, scrollbars=no,toolbars=no, menubar=no");
 
 	}
 	$("#popup").on("click", popupclickHandler)
@@ -157,7 +157,7 @@
 		var popupButton = document.getElementById("popup");
 		popupButton.onclick = function() {
 			var jsPopup = window
-					.open("/stream/member/rooms",null,"width=450, height=650, resizable=no, scrollbars=no,toolbars=no, menubar=no");
+					.open("${pageContext.request.contextPath }/member/rooms",null,"width=450, height=650, resizable=no, scrollbars=no,toolbars=no, menubar=no");
 
 		};
 	}; */

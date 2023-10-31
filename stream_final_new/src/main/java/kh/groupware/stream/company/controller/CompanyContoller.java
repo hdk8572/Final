@@ -80,7 +80,7 @@ public class CompanyContoller {
 					mailHelper.setTo(email);
 					mailHelper.setSubject("업무협업툴 Stream으로 여러분을 초대합니다!");
 					mailHelper.setText("다음 Url에 접속하셔서 회원가입을 진행해주세요! \n ※회원가입시 본 이메일을 전송받은 이메일을 입력해주셔야합니다※ \n 회사코드: "
-							+ cvo.getCcode() + "\n http://127.0.0.1:8090/stream/newmember");
+							+ cvo.getCcode() + "\n http://ec2-15-164-211-70.ap-northeast-2.compute.amazonaws.com:8080/newmember");
 
 					mailSender.send(mail);
 				}
@@ -121,7 +121,7 @@ public class CompanyContoller {
 					mailHelper.setTo(email);
 					mailHelper.setSubject("업무협업툴 Stream으로 여러분을 초대합니다!");
 					mailHelper.setText("다음 Url에 접속하셔서 회원가입을 진행해주세요! \n ※회원가입시 본 이메일을 전송받은 이메일을 입력해주셔야합니다※ \n 회사코드: "
-							+ cvo.getCcode() + "\n http://127.0.0.1:8090/stream/newmember");
+							+ cvo.getCcode() + "\n http://ec2-15-164-211-70.ap-northeast-2.compute.amazonaws.com:8080/newmember");
 
 					mailSender.send(mail);
 				}
