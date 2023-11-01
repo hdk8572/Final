@@ -1,6 +1,10 @@
 # Final Project <Stream>
 
 
+### 프로젝트 사이트 링크: http://ec2-15-164-211-70.ap-northeast-2.compute.amazonaws.com:8080/login
+아이디: streamjj1@naver.co.kr <br>
+비밀번호: Aa12345!
+
 ![제목 없음](https://github.com/hdk8572/Final/assets/133844702/5337b689-3037-43cf-aabd-6ac80daa7acc)
 
 
