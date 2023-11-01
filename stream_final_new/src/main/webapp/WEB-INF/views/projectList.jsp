@@ -445,26 +445,8 @@
 				console.log("doUpdateProject에서 오류 발생");
 			}
 		});	
-	 	//deleteAllCurrentMember();
 	}
-	/* 
-	function deleteAllCurrentMember() {	
-		console.log("멤버 삭제 실행"); 
-		$.ajax ({
-		 	url: "${pageContext.request.contextPath}/member/deleteAllCurrentMember",
-		 	type: "post",
-		 	data: {pno: pno},
-		 	dataType: "json",
-		 	success: function(){
-		 		console.log("삭제했습니다.");
-		 	},
-		 	error:function(){
-				console.log("deleteAllCurrentMember에서 에러 발생");
-			}
-		});
-		console.log("삭제했습니다2.");
-	}
- */
+
 	function hideProject($thisElement) {
 	    //var pstatus = $thisElement.closest(".list-card").find(".text-muted").attr("data-pstatus");// 엄청 중요합니다.
 	    var pno = $thisElement;

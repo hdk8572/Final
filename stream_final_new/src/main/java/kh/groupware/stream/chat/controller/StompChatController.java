@@ -2,6 +2,7 @@ package kh.groupware.stream.chat.controller;
 
 import java.security.Principal;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
@@ -15,10 +16,15 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class StompChatController {
 	
-	private final ChatDao chatDao;
+	private final ChatDao chatDao; 
     private final SimpMessagingTemplate template; 
     
-
+    @Autowired
+    public StompChatController(ChatDao chatDao, SimpMessagingTemplate template) {
+        this.chatDao = chatDao;
+        this.template = template;
+    }
+    
     @MessageMapping(value = "/chat/enter")
     public void enterStomp(ChatMessageVo message,Principal principal) {
     	String userId = principal.getName();
