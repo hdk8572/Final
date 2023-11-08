@@ -80,7 +80,7 @@
 
 <hr>
 
-## 5️⃣ 상세 기능
+## 6️⃣ 상세 기능
 
 <details>
     <summary>황대경</summary>
@@ -165,6 +165,29 @@
 ![image](https://github.com/hdk8572/Final/assets/133844702/5e5bdc7d-7868-48f0-ae8f-90fdc56d1d84)
 </details>
 <br>
+<hr>
+
+## 7️⃣ ERD
+### 전체 ERD
+![image](https://github.com/hdk8572/Final/assets/133844702/3de79d0d-e8ac-405d-a4cd-8bd6cae2e173)
+
+
+
+<hr>
+
+## 8️⃣ 히스토리
+
+<details>
+    <summary>히스토리 펼치기</summary>
+<!-- summary 아래 한칸 공백 두고 내용 삽입 -->
+  
+![image](https://github.com/hdk8572/Final/assets/133844702/0efaf180-0475-4954-b3ef-b5afecf6d490)
+![image](https://github.com/hdk8572/Final/assets/133844702/0762d49f-58eb-4ecb-90ad-dcc89ec10ba7)
+![image](https://github.com/hdk8572/Final/assets/133844702/d3f45ff4-46e4-41f2-beba-26df9236046b)
+![image](https://github.com/hdk8572/Final/assets/133844702/aa6646f2-9556-4cb0-a32d-7333caaea280)
+![image](https://github.com/hdk8572/Final/assets/133844702/809ad9ff-e374-4c0b-b05b-52554dfc4182)
+![image](https://github.com/hdk8572/Final/assets/133844702/4c4b657b-e2fc-4a9f-a0b5-94a64d581fe7)
+</details>
 <hr>
 
 ## 🖥️ 개발환경
