@@ -101,7 +101,7 @@
 
 
 </details>
-
+<br>
 <details>
     <summary>박준모</summary>
 <!-- summary 아래 한칸 공백 두고 내용 삽입 -->
@@ -118,7 +118,7 @@
 ![image](https://github.com/hdk8572/Final/assets/133844702/411b7c1a-6d04-4ccb-be58-1b892cb484e7)
 ![image](https://github.com/hdk8572/Final/assets/133844702/bd5c70f6-5e95-4513-9602-00c7d00546cc)
 </details>
-
+<br>
 <details>
     <summary>이지영</summary>
 <!-- summary 아래 한칸 공백 두고 내용 삽입 -->
@@ -139,7 +139,7 @@
 ![image](https://github.com/hdk8572/Final/assets/133844702/ecee0294-6bec-4e38-b497-4cf8bb97dfc8)
 ![image](https://github.com/hdk8572/Final/assets/133844702/f488a609-b1ad-48f0-bf6e-5d4db5a26f91)
 </details>
-
+<br>
 <details>
     <summary>임지연</summary>
 <!-- summary 아래 한칸 공백 두고 내용 삽입 -->
@@ -156,7 +156,7 @@
 ![image](https://github.com/hdk8572/Final/assets/133844702/6986e3a0-a10c-4083-ba07-f949648361ad)
 ![image](https://github.com/hdk8572/Final/assets/133844702/5e3217d1-f705-4428-b172-8f644fa761de)
 </details>
-
+<br>
 <details>
     <summary>김민성</summary>
 <!-- summary 아래 한칸 공백 두고 내용 삽입 -->
