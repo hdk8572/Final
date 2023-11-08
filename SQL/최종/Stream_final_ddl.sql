@@ -10,14 +10,12 @@ DROP TABLE "WORKSTATE";
 DROP TABLE "CHATMESSAGE";
 DROP TABLE "CHATROOM";
 DROP TABLE "INFO";
-DROP TABLE "SCHEDULE";          --ref USERS             
 DROP TABLE "TASK";              --ref PROJECT, USERS
+DROP TABLE "SCHEDULE";          --ref USERS             
 DROP TABLE "PROJECT";           --ref USERS
 DROP TABLE "USERS";             --ref DEPT
 DROP TABLE "DEPT";              --ref COMPANY
 DROP TABLE "COMPANY";
-
-
 
 CREATE TABLE "COMPANY" (
 	"CCODE"	VARCHAR2(10)		NOT NULL,
@@ -530,13 +528,21 @@ REFERENCES "USERS" (
 	"USERID"
 );
 
+CREATE OR REPLACE FORCE VIEW V_U_DEPT
+as 
+select tu.userid, tu.mname, tu.mrank, td.deptno, td.deptname, tu.ccode
+from users tu 
+join dept td 
+on (tu.deptno= td.deptno and tu.ccode= td.ccode)
+;
+
 -- view 추가
 --    create view v_u_member_project
 --    as
 --    select PNO, USERID, MNAME, CCODE, DEPTNO
 --    from member_project join users using(userid)
 --    ;
-CREATE VIEW V_U_MEMBER_PROJECT
+CREATE OR REPLACE FORCE VIEW V_U_MEMBER_PROJECT
 AS
 SELECT PNO, USERID, MNAME, CCODE, DEPTNO
 FROM MEMBER_PROJECT JOIN USERS USING(USERID)
@@ -548,7 +554,7 @@ FROM MEMBER_PROJECT JOIN USERS USING(USERID)
 --    from member_schedule join users on (ATTENDUSERID = USERID)
 --    ;
 
-CREATE VIEW V_U_MEMBER_SCHEDULE
+CREATE OR REPLACE FORCE VIEW V_U_MEMBER_SCHEDULE
 AS
 SELECT SNO, ATTENDUSERID, MNAME AS ATTENDNAME, CCODE, DEPTNO
 FROM MEMBER_SCHEDULE JOIN USERS ON (ATTENDUSERID = USERID)
@@ -560,7 +566,7 @@ FROM MEMBER_SCHEDULE JOIN USERS ON (ATTENDUSERID = USERID)
 --    from schedule s join users u on (s.userid = u.userid)
 --    ;
 
-CREATE VIEW V_U_SCHEDULE
+CREATE OR REPLACE FORCE VIEW V_U_SCHEDULE
 AS
 SELECT S.*, U.MNAME, CCODE, DEPTNO
 FROM SCHEDULE S JOIN USERS U ON (S.USERID = U.USERID)
