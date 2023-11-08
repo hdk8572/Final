@@ -8,6 +8,9 @@
 ![제목 없음](https://github.com/hdk8572/Final/assets/133844702/5337b689-3037-43cf-aabd-6ac80daa7acc)
 
 
+
+
+
 ## 🧑‍🤝‍🧑  팀프로젝트
 
 팀구성
@@ -51,7 +54,52 @@
 
 ## 4️⃣ 상세 기능
 
-<발표 후 작성>
+<details>
+    <summary>황대경</summary>
+<!-- summary 아래 한칸 공백 두고 내용 삽입 -->
+
+![image](https://github.com/hdk8572/Final/assets/133844702/4edaaa5e-6a52-4d54-941d-0fb43e050560)
+
+
+
+</details>
+
+<details>
+    <summary>박준모</summary>
+<!-- summary 아래 한칸 공백 두고 내용 삽입 -->
+
+![image](https://github.com/hdk8572/Final/assets/133844702/521e4692-d05d-463c-a260-782dacc3db77)
+
+</details>
+
+<details>
+    <summary>이지영</summary>
+<!-- summary 아래 한칸 공백 두고 내용 삽입 -->
+  
+![image](https://github.com/hdk8572/Final/assets/133844702/8a2636e9-58c7-4ce2-b2f8-835eb8cf7759)
+
+</details>
+
+<details>
+    <summary>임지연</summary>
+<!-- summary 아래 한칸 공백 두고 내용 삽입 -->
+
+![image](https://github.com/hdk8572/Final/assets/133844702/e2d997cf-389a-4856-ad93-12c11b54a40c)
+
+</details>
+
+<details>
+    <summary>김민성</summary>
+<!-- summary 아래 한칸 공백 두고 내용 삽입 -->
+
+![image](https://github.com/hdk8572/Final/assets/133844702/406836e1-59a6-4b69-8c67-284a3a79c089)
+
+</details>
+
+
+
+
+
 
 <br>
 <hr>
