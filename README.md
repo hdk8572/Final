@@ -52,7 +52,35 @@
 <br>
 <hr>
 
-## 4️⃣ 상세 기능
+## 4️⃣ 프로젝트 일정
+![image](https://github.com/hdk8572/Final/assets/133844702/d78e0365-77c7-44f2-82e6-bf9d8d690fec)
+<hr>
+
+## 5️⃣ 요구사항정의서
+
+<details>
+    <summary>상세보기</summary>
+<!-- summary 아래 한칸 공백 두고 내용 삽입 -->
+
+![image](https://github.com/hdk8572/Final/assets/133844702/a979ece9-a22b-4af6-9b53-95aabb871e64)
+![image](https://github.com/hdk8572/Final/assets/133844702/39408c53-f602-41e6-83d6-70ae6ed5c3ee)
+![image](https://github.com/hdk8572/Final/assets/133844702/ab63e035-201b-4e76-820b-18c3455cb5d7)
+![image](https://github.com/hdk8572/Final/assets/133844702/d335ee2d-5c91-4535-bde1-687b6fa9403b)
+![image](https://github.com/hdk8572/Final/assets/133844702/3d6672c4-820b-4d07-b2e6-12342e787e1a)
+![image](https://github.com/hdk8572/Final/assets/133844702/22b3288c-9ba9-4005-b0bd-e4549c838cf8)
+![image](https://github.com/hdk8572/Final/assets/133844702/9a95520b-560d-4f21-8ce5-b1b8d369692c)
+![image](https://github.com/hdk8572/Final/assets/133844702/db0b3c00-e6a5-4bc6-a976-f6fc1b23c6ee)
+![image](https://github.com/hdk8572/Final/assets/133844702/759835cb-9d63-4eef-a9ea-c701ff2dd629)
+![image](https://github.com/hdk8572/Final/assets/133844702/f974528c-f640-4611-be6a-012cd02cf1a3)
+![image](https://github.com/hdk8572/Final/assets/133844702/55da2c0f-1abc-4426-bcc9-b54b3563dc3a)
+
+
+</details>
+
+
+<hr>
+
+## 5️⃣ 상세 기능
 
 <details>
     <summary>황대경</summary>
@@ -106,14 +134,8 @@
 
 ## 🖥️ 개발환경
 
-- 운영체제 : Window 10 OS
-- 언어 : Java (JDK11), JSP, HTML5, CSS3, JavaScript, SQL, Ajax, JDBC
-- WAS : Apache Tomcat 9.0
-- DB : Oracle(19.4.0)
-- Framework / Library : Spring, Mybatis, Bootstrap, Gson, Json, JSTL, jQuery
-- Tool : Spring Tools Suite(5.3.19), SQL Developer, UML(ERD Cloud, Ovenapp.io, Draw.io), Visual Studio Code
-- API : Spring Security, MailSender, Stomp, Kakao API, Google API, Fullcalendar API, Summernote API, Chart.js
-- Collaboration : GitHub
+  ![image](https://github.com/hdk8572/Final/assets/133844702/d70e9381-bda9-4eaf-a2e7-c10272418074)
+
 <br>
 <hr>
 
