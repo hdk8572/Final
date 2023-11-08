@@ -19,12 +19,6 @@ public class StompChatController {
 	private final ChatDao chatDao; 
     private final SimpMessagingTemplate template; 
     
-    @Autowired
-    public StompChatController(ChatDao chatDao, SimpMessagingTemplate template) {
-        this.chatDao = chatDao;
-        this.template = template;
-    }
-    
     @MessageMapping(value = "/chat/enter")
     public void enterStomp(ChatMessageVo message,Principal principal) {
     	String userId = principal.getName();

@@ -64,13 +64,13 @@
 												method="post">
 												<div class="mb-3">
 
-													<label class="form-label">ID</label> <input
+													<label class="form-label">ID <span>ex) streamjj1@naver.co.kr</span></label> <input
 														class="form-control form-control-lg" type="email"
 														name="userid" placeholder="이메일을 입력해주세요."
 														required="required" />
 												</div>
 												<div class="mb-3">
-													<label class="form-label">Password</label> <input
+													<label class="form-label">Password <span>ex) Aa12345!</span></label> <input
 														class="form-control form-control-lg" type="password"
 														name="password" placeholder="비밀번호를 입력해주세요."
 														required="required" />

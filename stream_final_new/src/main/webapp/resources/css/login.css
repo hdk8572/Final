@@ -3,3 +3,7 @@
 	border: 1px solid #ced4da;
 	cursor: auto;
 }
+
+.mb-3 > label > span {
+	color: black;
+}
