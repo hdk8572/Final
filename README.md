@@ -199,8 +199,8 @@
 <hr>
 
 ## 🖥️ 개발환경
-
-  ![image](https://github.com/hdk8572/Final/assets/133844702/d70e9381-bda9-4eaf-a2e7-c10272418074)
+  
+  ![image](https://github.com/hdk8572/Final/assets/133844702/686629bb-22e2-49bd-9d9f-078ed56a2169)
 
 <br>
 <hr>
