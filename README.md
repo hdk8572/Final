@@ -28,7 +28,7 @@ Document 링크 : https://drive.google.com/drive/folders/1Bn-oiVC6orgu3B69K9axr5
 ### STREAM 
 > #### 사람 대 사람, 업무 대 업무 간의 원활한 소통과 효율적인 업무 처리를 목표로한 그룹웨어 프로젝트입니다.
 <hr>
--요구사항정의서 [🔗](https://docs.google.com/spreadsheets/d/1ImyTUihix0WhIOm3eeLubFSX6QaDFiD_/edit?usp=drive_link&ouid=100040572355075249937&rtpof=true&sd=true).
+- 요구사항정의서 [🔗](https://github.com/alstjd0930)
 
 <br>
 
